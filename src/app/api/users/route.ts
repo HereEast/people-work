@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 import { connectDB } from "~/app/lib/connectDB";
 import { User } from "~/models/User";
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   const { email, password } = await req.json();
 
   try {
@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     const newUser = new User({ email, password });
     await newUser.save();
 
-    return NextResponse.json(newUser, { status: 201 });
+    return NextResponse.json(newUser);
   } catch (err) {
     console.log(err);
   }

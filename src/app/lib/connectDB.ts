@@ -1,7 +1,5 @@
 import mongoose, { Connection } from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI || "";
-
 let cachedConnection: Connection | null = null;
 
 export async function connectDB() {
@@ -10,7 +8,7 @@ export async function connectDB() {
     return cachedConnection;
   }
   try {
-    const cnx = await mongoose.connect(MONGODB_URI);
+    const cnx = await mongoose.connect(process.env.MONGODB_URI || "");
 
     cachedConnection = cnx.connection;
     console.log("✅ New DB connection.");
