@@ -1,6 +1,6 @@
 "use client";
 
-import { createUser } from "~/service/users";
+import { createUser } from "~/client-api/users";
 
 export function Home() {
   async function handleClick() {
