@@ -23,7 +23,7 @@ export default function Layout({ children }: LayoutProps) {
         className="flex min-h-screen flex-col"
       >
         <Header />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow px-4">{children}</main>
         <Footer />
       </body>
     </html>

@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 
 import { IQuestion } from "~/utils/types";
 
@@ -9,8 +9,6 @@ const QuestionSchema = new Schema({
   isActive: { type: Boolean, required: true, default: true },
 });
 
-export const Question = model<IQuestion>(
-  "Question",
-  QuestionSchema,
-  "questions",
-);
+export const Question =
+  mongoose.models.Question ||
+  model<IQuestion>("Question", QuestionSchema, "questions");

@@ -4,8 +4,12 @@ import { handleRequestError } from "~/utils/handlers";
 
 // Create
 export async function createUser(email: string, password: string) {
-  if (!email.trim().length || !password.trim().length) {
-    throw new Error("Fields can't be empty.");
+  if (!email.trim().length) {
+    throw new Error("Email can't be empty.");
+  }
+
+  if (!password.trim().length) {
+    throw new Error("Password can't be empty.");
   }
 
   try {
