@@ -1,4 +1,4 @@
-import { Home } from "../components/layouts/Home";
+import { Home } from "~/components/layouts";
 
 export default function HomePage() {
   return <Home />;

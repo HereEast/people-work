@@ -3,8 +3,8 @@ import { Metadata } from "next";
 
 import "./globals.css";
 
-import { Header } from "~/components/layouts/Header";
-import { Footer } from "~/components/layouts/Footer";
+import { Header } from "~/components/layouts";
+import { Footer } from "~/components/layouts";
 
 export const metadata: Metadata = {
   title: "People Work",

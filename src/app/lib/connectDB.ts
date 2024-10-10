@@ -1,19 +1,19 @@
 import mongoose, { Connection } from "mongoose";
 
-let cachedConnection: Connection | null = null;
+let connection: Connection | null = null;
 
 export async function connectDB() {
-  if (cachedConnection) {
+  if (connection) {
     console.log("✅ DB connected.");
-    return cachedConnection;
+    return connection;
   }
   try {
     const cnx = await mongoose.connect(process.env.MONGODB_URI || "");
 
-    cachedConnection = cnx.connection;
+    connection = cnx.connection;
     console.log("✅ New DB connection.");
 
-    return cachedConnection;
+    return connection;
   } catch (error) {
     console.log(error);
     throw error;

@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-import { handleRequestError } from "../utils/handlers";
+import { handleRequestError } from "~/utils/handlers";
 
 // Create
 export async function createUser(email: string, password: string) {

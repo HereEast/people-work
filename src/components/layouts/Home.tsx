@@ -10,13 +10,13 @@ export function Home() {
     console.log(user);
   }
   return (
-    <main className="flex items-center justify-center gap-8 sm:items-start">
+    <section className="flex items-center justify-center gap-8 sm:items-start">
       <button
         onClick={handleClick}
         className="rounded-full bg-black p-4 text-slate-100"
       >
         Deploy now
       </button>
-    </main>
+    </section>
   );
 }
