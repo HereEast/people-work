@@ -11,12 +11,12 @@ export function Home() {
   }
   return (
     <section className="flex items-center justify-center gap-8 sm:items-start">
-      <button
+      {/* <button
         onClick={handleClick}
         className="rounded-full bg-black p-4 text-slate-100"
       >
         Deploy now
-      </button>
+      </button> */}
     </section>
   );
 }

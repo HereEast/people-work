@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
 
+export enum PAGE {
+  HOME = "/",
+  QUESTIONS = "/questions",
+}
+
 export interface IPerson {
   _id: mongoose.Types.ObjectId;
   name: string;

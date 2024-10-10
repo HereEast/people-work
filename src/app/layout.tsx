@@ -1,7 +1,13 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
 
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
+
+const DMSans = DM_Sans({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 import { Header } from "~/components/layouts";
 import { Footer } from "~/components/layouts";
@@ -17,7 +23,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" className={DMSans.className}>
       <body
         suppressHydrationWarning={true}
         className="flex min-h-screen flex-col"
