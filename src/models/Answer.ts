@@ -1,13 +1,6 @@
 import mongoose, { Schema, model } from "mongoose";
 
-export interface IAnswer {
-  _id: mongoose.Types.ObjectId;
-  personId: mongoose.Types.ObjectId;
-  questionId: mongoose.Types.ObjectId;
-  body: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { IAnswer } from "~/utils/types";
 
 const AnswerSchema = new Schema(
   {

@@ -1,17 +1,15 @@
-import mongoose, { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
 
-export interface IPerson {
-  _id: mongoose.Types.ObjectId;
-  name: string;
-  email: string;
-  company: string;
-  jobTitle: string;
-  country: string;
-  profileImage?: string;
-  keyWords?: string[];
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { IPerson } from "~/utils/types";
+
+const SocialLinksSchema = new Schema(
+  {
+    linkedIn: { type: String },
+    twitter: { type: String },
+    instagram: { type: String },
+  },
+  { _id: false },
+);
 
 const PersonSchema = new Schema(
   {
@@ -21,6 +19,7 @@ const PersonSchema = new Schema(
     jobTitle: { type: String, required: true },
     country: { type: String, required: true },
     profileImage: { type: String },
+    socialLinks: { type: SocialLinksSchema },
     keyWords: { type: [String] },
   },
   { timestamps: true },
