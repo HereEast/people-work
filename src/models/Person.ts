@@ -18,9 +18,10 @@ const PersonSchema = new Schema(
     company: { type: String, required: true },
     jobTitle: { type: String, required: true },
     country: { type: String, required: true },
-    profileImage: { type: String },
+    profileImageURL: { type: String },
     socialLinks: { type: SocialLinksSchema },
     keyWords: { type: [String] },
+    isActive: { type: Boolean, required: true },
   },
   { timestamps: true },
 );

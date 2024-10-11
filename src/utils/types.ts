@@ -12,9 +12,10 @@ export interface IPerson {
   company: string;
   jobTitle: string;
   country: string;
-  profileImage?: string;
+  profileImageURL?: string;
   socialLinks: ISocialLinks;
   keyWords?: string[];
+  isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
