@@ -4,10 +4,10 @@ import { AxiosError } from "axios";
 
 // Handle request error
 export function handleRequestError(err: Error) {
-  if (err instanceof AxiosError && err.response) {
-    console.log("🔴 Error:", err.response.data.message);
+  if (err instanceof AxiosError) {
+    console.log("🔴 Error:", err.message);
 
-    throw new Error(err.response.data.message);
+    throw new Error(err.message);
   }
 }
 

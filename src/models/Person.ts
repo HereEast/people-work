@@ -22,6 +22,7 @@ const PersonSchema = new Schema(
     socialLinks: { type: SocialLinksSchema },
     keyWords: { type: [String] },
     isActive: { type: Boolean, required: true },
+    slug: { type: String, required: true, unique: true },
   },
   { timestamps: true },
 );

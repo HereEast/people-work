@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/app/lib/connectDB";
-import { Question } from "~/models/Question";
+import { Person } from "~/models/Person";
 
 export async function GET() {
   try {
     await connectDB();
 
-    const questions = await Question.find().exec();
+    const questions = await Person.find().exec();
 
     return NextResponse.json(questions);
   } catch (err) {
