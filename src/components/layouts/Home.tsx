@@ -1,10 +1,10 @@
+import Link from "next/link";
+
 import { ImageThumbnail } from "../ImageThumbnail";
 import { getPerson } from "~/client-api/people";
 
 export async function Home() {
   const margo = await getPerson("margo-lazarenkova");
-
-  console.log(margo);
 
   const companyURL = margo?.companyURL?.startsWith("https")
     ? margo.companyURL
@@ -18,17 +18,19 @@ export async function Home() {
           alt={margo?.name || ""}
         />
 
-        <div>
-          <div className="mb-2 space-y-[-10px]">
-            {margo?.name.split(" ").map((item) => (
-              <h4
-                className="leading-0 text-center text-5xl font-bold tracking-tighter"
-                key={item}
-              >
-                {item}
-              </h4>
-            ))}
-          </div>
+        <div className="mb-2">
+          <h4>
+            <Link href={`/${margo?.slug}`} className="space-y-[-10px]">
+              {margo?.name.split(" ").map((item) => (
+                <span
+                  className="leading-0 block text-center text-5xl font-bold tracking-tighter"
+                  key={item}
+                >
+                  {item}
+                </span>
+              ))}
+            </Link>
+          </h4>
         </div>
 
         <div className="flex flex-col items-center space-y-[-5px]">

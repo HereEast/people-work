@@ -6,7 +6,7 @@ import { BASE_URL } from "~/utils/constants";
 
 export async function getQuestions() {
   try {
-    const response: AxiosResponse<IQuestion[]> = await axios.get(
+    const response: AxiosResponse<IQuestion[] | undefined> = await axios.get(
       `${BASE_URL}/api/questions`,
     );
 
@@ -15,9 +15,7 @@ export async function getQuestions() {
     return data;
   } catch (err) {
     if (err instanceof Error) {
-      console.log("🔴 Error:", err.message);
+      handleRequestError(err);
     }
-
-    return [];
   }
 }

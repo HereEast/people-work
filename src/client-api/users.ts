@@ -1,5 +1,6 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
+import { IUser } from "~/models";
 import { handleRequestError } from "~/utils/handlers";
 
 // Create
@@ -13,7 +14,7 @@ export async function createUser(email: string, password: string) {
   }
 
   try {
-    const response = await axios.post(
+    const response = await axios.post<IUser | undefined>(
       "api/users",
       {
         email,
@@ -30,6 +31,8 @@ export async function createUser(email: string, password: string) {
 
     return data;
   } catch (err) {
-    console.log(err);
+    if (err instanceof Error) {
+      handleRequestError(err);
+    }
   }
 }

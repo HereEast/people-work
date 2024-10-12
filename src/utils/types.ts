@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+export type ObjectIdType = mongoose.Types.ObjectId;
+
 export enum PAGE {
   HOME = "/",
   QUESTIONS = "/questions",
@@ -34,7 +36,9 @@ export interface IAnswer {
   _id: mongoose.Types.ObjectId;
   personId: mongoose.Types.ObjectId;
   questionId: mongoose.Types.ObjectId;
-  body: string;
+  name: string;
+  question: string;
+  answer: string;
   createdAt: Date;
   updatedAt: Date;
 }
