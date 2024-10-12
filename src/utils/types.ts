@@ -10,6 +10,7 @@ export interface IPerson {
   name: string;
   email: string;
   company: string;
+  companyURL: string;
   jobTitle: string;
   country: string;
   profileImageURL?: string;

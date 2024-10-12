@@ -16,6 +16,7 @@ const PersonSchema = new Schema(
     name: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     company: { type: String, required: true },
+    companyURL: { type: String },
     jobTitle: { type: String, required: true },
     country: { type: String, required: true },
     profileImageURL: { type: String },
