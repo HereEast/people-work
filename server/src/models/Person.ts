@@ -1,6 +1,27 @@
 import mongoose, { Schema, model } from "mongoose";
 
-import { IPerson } from "~/utils/types";
+export interface IPerson {
+  _id: mongoose.Types.ObjectId;
+  name: string;
+  email: string;
+  company: string;
+  companyURL: string;
+  jobTitle: string;
+  country: string;
+  profileImageURL?: string;
+  socialLinks: ISocialLinks;
+  keyWords?: string[];
+  slug: string;
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface ISocialLinks {
+  linkedIn?: string;
+  twitter?: string;
+  instagram?: string;
+}
 
 const SocialLinksSchema = new Schema(
   {
@@ -28,5 +49,4 @@ const PersonSchema = new Schema(
   { timestamps: true },
 );
 
-export const Person =
-  mongoose.models.Person || model<IPerson>("Person", PersonSchema, "persons");
+export const Person = model<IPerson>("Person", PersonSchema, "persons");

@@ -1,6 +1,18 @@
 import mongoose, { Schema, model } from "mongoose";
 
-import { IAnswer } from "~/utils/types";
+import { IPerson } from "./Person.js";
+import { IQuestion } from "./Question.js";
+
+export interface IAnswer {
+  _id: mongoose.Types.ObjectId;
+  personId: mongoose.Types.ObjectId | IPerson;
+  questionId: mongoose.Types.ObjectId | IQuestion;
+  name: string;
+  question: string;
+  answer: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
 const AnswerSchema = new Schema(
   {
@@ -21,5 +33,4 @@ const AnswerSchema = new Schema(
   { timestamps: true },
 );
 
-export const Answer =
-  mongoose.models.Answer || model<IAnswer>("Answer", AnswerSchema, "answers");
+export const Answer = model<IAnswer>("Answer", AnswerSchema, "answers");

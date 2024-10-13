@@ -1,6 +1,12 @@
 import mongoose, { Schema, model } from "mongoose";
 
-import { IQuestion } from "~/utils/types";
+export interface IQuestion {
+  _id: mongoose.Types.ObjectId;
+  body: string;
+  description: string;
+  order: number;
+  isActive: boolean;
+}
 
 const QuestionSchema = new Schema({
   body: { type: String, required: true, unique: true },
@@ -10,5 +16,4 @@ const QuestionSchema = new Schema({
 });
 
 export const Question =
-  mongoose.models.Question ||
   model<IQuestion>("Question", QuestionSchema, "questions");
