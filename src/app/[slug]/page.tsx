@@ -6,6 +6,6 @@ interface PersonPageProps {
   };
 }
 
-export default async function PersonPage({ params }: PersonPageProps) {
+export default function PersonPage({ params }: PersonPageProps) {
   return <Person slug={params.slug} />;
 }
