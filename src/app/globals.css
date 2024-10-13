@@ -21,6 +21,15 @@ body {
   box-sizing: border-box;
 }
 
+.answer a {
+  text-decoration: underline;
+}
+
+.answer a:hover {
+  opacity: 50%;
+  text-decoration: none;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

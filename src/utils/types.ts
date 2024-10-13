@@ -34,8 +34,8 @@ export interface IQuestion {
 
 export interface IAnswer {
   _id: mongoose.Types.ObjectId;
-  personId: mongoose.Types.ObjectId;
-  questionId: mongoose.Types.ObjectId;
+  personId: mongoose.Types.ObjectId | IPerson;
+  questionId: mongoose.Types.ObjectId | IQuestion;
   name: string;
   question: string;
   answer: string;

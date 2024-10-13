@@ -7,7 +7,7 @@ export async function GET() {
   try {
     await connectDB();
 
-    const questions = await Question.find().exec();
+    const questions = await Question.find().sort({ order: 1 }).exec();
 
     return NextResponse.json(questions);
   } catch (err) {

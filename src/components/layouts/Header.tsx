@@ -11,13 +11,13 @@ export function Header() {
         </h1>
       </div>
 
-      <nav>
+      {/* <nav>
         <ul>
           <li>
             <Link href={PAGE.QUESTIONS}>questions</Link>
           </li>
         </ul>
-      </nav>
+      </nav> */}
 
       <div>hello 👋</div>
     </header>
