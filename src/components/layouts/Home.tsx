@@ -1,29 +1,45 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { ImageThumbnail } from "../ImageThumbnail";
 import { getPerson } from "~/client-api/people";
+import { IPerson } from "~/utils/types";
 
-export async function Home() {
-  const margo = await getPerson("margo-lazarenkova");
+export function Home() {
+  const [person, setPerson] = useState<IPerson | null>(null);
 
-  const companyURL = margo?.companyURL?.startsWith("https")
-    ? margo.companyURL
-    : `https://${margo?.companyURL}`;
+  useEffect(() => {
+    async function fetchPerson() {
+      const data = await getPerson("margo-lazarenkova");
 
-  console.log(margo);
+      if (data) {
+        setPerson(data);
+      }
+    }
+
+    fetchPerson();
+  }, []);
+
+  const companyURL = person?.companyURL?.startsWith("https")
+    ? person.companyURL
+    : `https://${person?.companyURL}`;
+
+  console.log(person);
 
   return (
     <section className="flex items-center justify-center gap-8 sm:items-start">
       <div className="flex flex-col items-center space-y-2">
         <ImageThumbnail
-          src={`/public/images/people/${margo?.profileImageURL}` || ""}
-          alt={margo?.name || ""}
+          src={`/images/people/${person?.profileImageURL}` || ""}
+          alt={person?.name || ""}
         />
 
         <div className="mb-2">
           <h4 className="hover:opacity-50">
-            <Link href={`/people/${margo?.slug}`} className="space-y-[-10px]">
-              {margo?.name.split(" ").map((item) => (
+            <Link href={`/people/${person?.slug}`} className="space-y-[-10px]">
+              {person?.name.split(" ").map((item) => (
                 <span
                   className="leading-0 block text-center text-5xl font-bold tracking-tighter"
                   key={item}
@@ -42,9 +58,9 @@ export async function Home() {
             rel="noopener noreferrer"
             className="leading-0 underline hover:no-underline hover:opacity-50"
           >
-            {margo?.company}
+            {person?.company}
           </a>
-          <p className="leading-0">{margo?.jobTitle}</p>
+          <p className="leading-0">{person?.jobTitle}</p>
         </div>
       </div>
     </section>
