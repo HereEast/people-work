@@ -10,7 +10,7 @@ interface AnswerProps {
 }
 
 export function AnswerParagraph({ answer }: AnswerProps) {
-  const parsedAnswer = parseAnswer(answer);
+  const parsedAnswer = parseAnswer(answer.replace(/\n/g, "<br />"));
   const sanitizedHTML = DOMPurify.sanitize(parsedAnswer);
 
   useEffect(() => {
