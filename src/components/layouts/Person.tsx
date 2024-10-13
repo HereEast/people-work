@@ -1,24 +1,24 @@
-import { PersonIntro } from "~/components/PersonIntro";
+// import { PersonIntro } from "~/components/PersonIntro";
 
-import { getPerson } from "~/client-api/people";
-import { getAnswers } from "~/client-api/answers";
-import { getQuestions } from "~/client-api/questions";
-import { AnswerParagraph } from "~/components";
+// import { getPerson } from "~/client-api/people";
+// import { getAnswers } from "~/client-api/answers";
+// import { getQuestions } from "~/client-api/questions";
+// import { AnswerParagraph } from "~/components";
 
 interface PersonProps {
   slug: string;
 }
 
-export async function Person({ slug }: PersonProps) {
-  const person = await getPerson(slug);
-  const questions = await getQuestions();
-  const answers = await getAnswers(String(person?._id));
+export function Person({ slug }: PersonProps) {
+  // const person = await getPerson(slug);
+  // const questions = await getQuestions();
+  // const answers = await getAnswers(String(person?._id));
 
-  console.log(answers);
+  console.log(slug);
 
   return (
     <div className="space-y-10">
-      {person && <PersonIntro person={person} />}
+      {/* {person && <PersonIntro person={person} />}
 
       <div className="rounded-3xl border border-stone-700 text-xl">
         {questions?.map((q, index) => (
@@ -34,7 +34,7 @@ export async function Person({ slug }: PersonProps) {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
