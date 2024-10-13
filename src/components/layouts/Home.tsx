@@ -19,7 +19,7 @@ export async function Home() {
         />
 
         <div className="mb-2">
-          <h4>
+          <h4 className="hover:opacity-50">
             <Link href={`/${margo?.slug}`} className="space-y-[-10px]">
               {margo?.name.split(" ").map((item) => (
                 <span
