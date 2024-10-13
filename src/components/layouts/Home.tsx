@@ -1,10 +1,26 @@
+"use client";
+
 import Link from "next/link";
 
 import { ImageThumbnail } from "../ImageThumbnail";
 import { getPerson } from "~/client-api/people";
+import { useEffect, useState } from "react";
+import { IPerson } from "~/utils/types";
 
-export async function Home() {
-  const margo = await getPerson("margo-lazarenkova");
+export function Home() {
+  const [margo, setMargo] = useState<IPerson | undefined>(undefined);
+
+  useEffect(() => {
+    async function fetchPerson() {
+      const person = await getPerson("margo-lazarenkova");
+
+      if (margo) {
+        setMargo(person);
+      }
+    }
+
+    fetchPerson();
+  }, [margo]);
 
   const companyURL = margo?.companyURL?.startsWith("https")
     ? margo.companyURL
