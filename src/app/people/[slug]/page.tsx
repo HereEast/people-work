@@ -1,9 +1,9 @@
 interface PersonPageProps {
   params: {
-    person: string;
+    slug: string;
   };
 }
 
 export default function PersonPage({ params }: PersonPageProps) {
-  return <div>{params.person}</div>;
+  return <div>{params.slug}</div>;
 }
