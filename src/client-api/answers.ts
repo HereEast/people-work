@@ -1,7 +1,6 @@
 import axios from "axios";
 
 import { IAnswer } from "~/utils/types";
-import { BASE_URL } from "~/utils/constants";
 
 // Get
 export async function getAnswers(
@@ -9,7 +8,7 @@ export async function getAnswers(
 ): Promise<IAnswer[] | undefined> {
   try {
     const response = await axios.get<IAnswer[] | undefined>(
-      `${BASE_URL}/api/answers/${personId}`,
+      `/api/answers/${personId}`,
     );
 
     const data = response.data;
@@ -38,7 +37,7 @@ export async function createAnswer(inputData: IAnswerData) {
 
   try {
     const response = await axios.post<IAnswer | undefined>(
-      "api/answers",
+      "/api/answers",
       {
         personId,
         questionId,
