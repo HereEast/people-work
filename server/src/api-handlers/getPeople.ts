@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 
 import { Person } from "../models/Person.js";
-import { Answer } from "../models/Answer.js";
-import { IQuestion } from "../models/Question.js";
 
 // Get person by slug
 export async function getPerson(req: Request, res: Response) {
