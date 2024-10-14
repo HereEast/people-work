@@ -1,11 +1,9 @@
-"use client";
-
 import { useEffect, useState } from "react";
 
 import { getQuestions } from "~/client-api/questions";
 import { AnswerForm } from "~/components/AnswerForm";
 import { QuestionsList } from "~/components/QuestionList";
-import { IQuestion } from "~/utils/types";
+import { IQuestion } from "~/~/models/Question";
 
 export default function QuestionsPage() {
   const [questions, setQuestions] = useState<IQuestion[]>([]);

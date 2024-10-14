@@ -1,5 +1,5 @@
 import { ImageThumbnail } from "./ImageThumbnail";
-import { IPerson } from "~/utils/types";
+import { IPerson } from "~/~/models/Person";
 
 interface PersonIntroProps {
   person: IPerson;

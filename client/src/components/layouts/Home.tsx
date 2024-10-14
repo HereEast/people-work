@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { ImageThumbnail } from "../ImageThumbnail";
 import { getPerson } from "~/client-api/people";
-import { IPerson } from "~/utils/types";
+import { IPerson } from "~/~/models/Person";
 
 export function Home() {
   const [person, setPerson] = useState<IPerson | null>(null);

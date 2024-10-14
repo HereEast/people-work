@@ -1,9 +1,7 @@
-"use client";
-
 import { FormEvent, useState } from "react";
 
 import { createAnswer } from "~/client-api/answers";
-import { IQuestion } from "~/utils/types";
+import { IQuestion } from "~/~/models/Question";
 
 // Answer Form
 interface AnswerFormProps {

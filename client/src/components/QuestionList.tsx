@@ -1,4 +1,4 @@
-import { IQuestion } from "~/utils/types";
+import { IQuestion } from "~/~/models/Question";
 
 interface QuestionsListProps {
   questions: IQuestion[];
