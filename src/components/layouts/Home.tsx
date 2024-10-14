@@ -12,10 +12,14 @@ export function Home() {
 
   useEffect(() => {
     async function fetchPerson() {
-      const data = await getPerson("margo-lazarenkova");
+      try {
+        const data = await getPerson("margo-lazarenkova");
 
-      if (data) {
-        setPerson(data);
+        if (data) {
+          setPerson(data);
+        }
+      } catch (err) {
+        console.log(err);
       }
     }
 
@@ -25,8 +29,6 @@ export function Home() {
   const companyURL = person?.companyURL?.startsWith("https")
     ? person.companyURL
     : `https://${person?.companyURL}`;
-
-  console.log(person);
 
   return (
     <section className="flex items-center justify-center gap-8 sm:items-start">

@@ -5,6 +5,8 @@ import { IPerson } from "~/utils/types";
 
 // Get Person by slug
 export async function getPerson(slug: string): Promise<IPerson | undefined> {
+  console.log(`${BASE_URL}/api/people/${slug}`);
+
   try {
     const response: AxiosResponse<IPerson> = await axios.get(
       `${BASE_URL}/api/people/${slug}`,
