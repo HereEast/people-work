@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { IAnswer } from "~/utils/types";
+import { IAnswer } from "~/~/models/Answer";
 import { BASE_URL } from "~/utils/constants";
 
 // Get
@@ -38,7 +38,7 @@ export async function createAnswer(inputData: IAnswerData) {
 
   try {
     const response = await axios.post<IAnswer | undefined>(
-      "api/answers",
+      `${BASE_URL}/api/answers`,
       {
         personId,
         questionId,

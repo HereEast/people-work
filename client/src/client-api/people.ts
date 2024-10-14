@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 import { BASE_URL } from "~/utils/constants";
-import { IPerson } from "~/utils/types";
+import { IPerson } from "~/~/models/Person";
 
 // Get Person by slug
 export async function getPerson(slug: string): Promise<IPerson | undefined> {

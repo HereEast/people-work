@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-import { IQuestion } from "~/utils/types";
+import { IQuestion } from "~/~/models/Question";
 import { BASE_URL } from "~/utils/constants";
 
 export async function getQuestions() {

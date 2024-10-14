@@ -1,6 +1,7 @@
 import axios from "axios";
+import { BASE_URL } from "~/utils/constants";
 
-import { IUser } from "~/models";
+import { IUser } from "~/~/models/User";
 
 // Create
 export async function createUser(email: string, password: string) {
@@ -14,7 +15,7 @@ export async function createUser(email: string, password: string) {
 
   try {
     const response = await axios.post<IUser | undefined>(
-      "api/users",
+      `${BASE_URL}/api/answers`,
       {
         email,
         password,
