@@ -3,9 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import { IPerson } from "~/utils/types";
 
 // Get Person by slug
-export async function getPerson(slug: string): Promise<IPerson | undefined> {
-  console.log(`/api/people/${slug}`);
-
+export async function getPerson(slug: string): Promise<IPerson | null> {
   try {
     const response: AxiosResponse<IPerson> = await axios.get(
       `/api/people/${slug}`,
@@ -18,6 +16,8 @@ export async function getPerson(slug: string): Promise<IPerson | undefined> {
     if (err instanceof Error) {
       console.log(err);
     }
+
+    return null;
   }
 }
 
@@ -34,6 +34,6 @@ export async function getPeople() {
       console.log("🔴 Error:", err.message);
     }
 
-    return [];
+    return null;
   }
 }

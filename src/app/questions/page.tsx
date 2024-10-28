@@ -10,7 +10,8 @@ import { IQuestion } from "~/utils/types";
 export default function QuestionsPage() {
   const [questions, setQuestions] = useState<IQuestion[]>([]);
 
-  const personId = "67098060ce227186c1ea8599";
+  // const personId = "67098060ce227186c1ea8599"; // Margo
+  const personId = "671fe48de87242472acf92d1"; // Ivan
 
   useEffect(() => {
     async function fetchQuestions() {

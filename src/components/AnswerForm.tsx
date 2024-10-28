@@ -31,8 +31,10 @@ export function AnswerForm({ personId, question }: AnswerFormProps) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="flex w-1/2 flex-col">
-        <span className="font-medium tracking-tight">{question.body}</span>
+      <div className="flex w-full flex-col">
+        <span className="font-medium tracking-tight">
+          {`${question.order}. ${question.body}`}
+        </span>
         <textarea
           name="answer-body"
           onChange={(e) => setAnswerData(e.target.value)}

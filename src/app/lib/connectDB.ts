@@ -11,7 +11,7 @@ export async function connectDB() {
     const cnx = await mongoose.connect(process.env.MONGODB_URI || "");
 
     connection = cnx.connection;
-    console.log("✅ New DB connection.");
+    console.log("✅ New DB connected.");
 
     return connection;
   } catch (error) {

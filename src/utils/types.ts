@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Document } from "mongoose";
 
 export type ObjectIdType = mongoose.Types.ObjectId;
 
@@ -7,8 +7,8 @@ export enum PAGE {
   QUESTIONS = "/questions",
 }
 
-export interface IPerson {
-  _id: mongoose.Types.ObjectId;
+export interface IPerson extends Document {
+  // _id: mongoose.Types.ObjectId;
   name: string;
   email: string;
   company: string;
@@ -24,16 +24,16 @@ export interface IPerson {
   updatedAt: Date;
 }
 
-export interface IQuestion {
-  _id: mongoose.Types.ObjectId;
+export interface IQuestion extends Document {
+  // _id: mongoose.Types.ObjectId;
   body: string;
   description: string;
   order: number;
   isActive: boolean;
 }
 
-export interface IAnswer {
-  _id: mongoose.Types.ObjectId;
+export interface IAnswer extends Document {
+  // _id: mongoose.Types.ObjectId;
   personId: mongoose.Types.ObjectId | IPerson;
   questionId: mongoose.Types.ObjectId | IQuestion;
   name: string;

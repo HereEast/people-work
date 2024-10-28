@@ -2,18 +2,19 @@ import axios from "axios";
 
 import { IUser } from "~/models";
 
-// Create
-export async function createUser(email: string, password: string) {
-  if (!email.trim().length) {
-    throw new Error("Email can't be empty.");
-  }
+interface CreateUserProps {
+  email: string;
+  password: string;
+}
 
-  if (!password.trim().length) {
-    throw new Error("Password can't be empty.");
+// Create
+export async function createUser({ email, password }: CreateUserProps) {
+  if (!email || !password) {
+    throw new Error("Email and password are required.");
   }
 
   try {
-    const response = await axios.post<IUser | undefined>(
+    const response = await axios.post<IUser>(
       "api/users",
       {
         email,

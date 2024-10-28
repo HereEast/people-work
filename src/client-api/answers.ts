@@ -3,13 +3,9 @@ import axios from "axios";
 import { IAnswer } from "~/utils/types";
 
 // Get
-export async function getAnswers(
-  personId: string,
-): Promise<IAnswer[] | undefined> {
+export async function getAnswers(personId: string): Promise<IAnswer[]> {
   try {
-    const response = await axios.get<IAnswer[] | undefined>(
-      `/api/answers/${personId}`,
-    );
+    const response = await axios.get<IAnswer[]>(`/api/answers/${personId}`);
 
     const data = response.data;
 
@@ -18,6 +14,8 @@ export async function getAnswers(
     if (err instanceof Error) {
       console.log("🔴", err.message);
     }
+
+    return [];
   }
 }
 

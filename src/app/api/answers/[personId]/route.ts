@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Types } from "mongoose";
 
 import { connectDB } from "~/app/lib/connectDB";
 import { IAnswer, IQuestion } from "~/utils/types";
@@ -8,9 +9,15 @@ interface ReqParams {
   params: { personId: string };
 }
 
-// Get person's answers
+// Get answers by PersonId
 export async function GET(req: Request, { params }: ReqParams) {
   const { personId } = params;
+
+  if (!Types.ObjectId.isValid(personId)) {
+    return NextResponse.json("🔴 Invalid personId.", {
+      status: 400,
+    });
+  }
 
   try {
     await connectDB();
@@ -30,10 +37,15 @@ export async function GET(req: Request, { params }: ReqParams) {
       return questionA.order - questionB.order;
     });
 
-    console.log("👋", sortedAnswers);
-
-    return NextResponse.json(sortedAnswers);
+    return NextResponse.json(sortedAnswers, { status: 200 });
   } catch (err) {
-    console.log("🔴", err);
+    console.log(err);
+
+    return NextResponse.json(
+      { message: "🔴 Error fetching answers by personId." },
+      {
+        status: 500,
+      },
+    );
   }
 }
