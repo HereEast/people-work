@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-import { getPerson } from "~/client-api/people";
-import { IPerson } from "~/utils/types";
+import { getQuestions } from "~/client-api/questions";
+import { IQuestion } from "~/utils/types";
 
-export function usePerson(slug: string) {
-  const [data, setData] = useState<IPerson | null>(null);
+export function useQuestions() {
+  const [data, setData] = useState<IQuestion[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -14,10 +14,10 @@ export function usePerson(slug: string) {
       setIsError(false);
 
       try {
-        const data = await getPerson(slug);
+        const questions = await getQuestions();
 
-        if (data) {
-          setData(data);
+        if (questions) {
+          setData(questions);
         }
       } catch {
         setIsError(true);
@@ -27,7 +27,7 @@ export function usePerson(slug: string) {
     }
 
     fetchData();
-  }, [slug]);
+  }, []);
 
   return { data, isLoading, isError };
 }

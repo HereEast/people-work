@@ -11,14 +11,6 @@ export function Header() {
         </h1>
       </div>
 
-      {/* <nav>
-        <ul>
-          <li>
-            <Link href={PAGE.QUESTIONS}>questions</Link>
-          </li>
-        </ul>
-      </nav> */}
-
       <div>hello 👋</div>
     </header>
   );
