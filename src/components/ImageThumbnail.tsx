@@ -10,7 +10,12 @@ interface ImageThumbnailProps {
 
 export function ImageThumbnail({ src, alt, classes }: ImageThumbnailProps) {
   return (
-    <div className={cn("size-40 overflow-hidden rounded-3xl", classes || "")}>
+    <div
+      className={cn(
+        "size-40 shrink-0 overflow-hidden rounded-3xl",
+        classes || "",
+      )}
+    >
       <Image
         src={src}
         alt={alt}
