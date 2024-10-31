@@ -3,9 +3,9 @@ import axios from "axios";
 import { IAnswer } from "~/utils/types";
 
 // Get
-export async function getAnswers(personId: string): Promise<IAnswer[]> {
+export async function getAnswers(slug: string): Promise<IAnswer[]> {
   try {
-    const response = await axios.get<IAnswer[]>(`/api/answers/${personId}`);
+    const response = await axios.get<IAnswer[]>(`/api/answers/${slug}`);
 
     const data = response.data;
 

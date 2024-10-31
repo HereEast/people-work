@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 
-import { AnswerParagraph, SidePeoplePanel, PersonIntro } from "~/components";
+import { AnswerParagraph, SidePanel, PersonIntro } from "~/components";
 
 import { usePerson } from "~/hooks/usePerson";
 import { useQuestions } from "~/hooks/useQuestions";
@@ -16,7 +16,7 @@ interface PersonProps {
 export function Person({ slug }: PersonProps) {
   const { data: person } = usePerson(slug);
   const { data: questions } = useQuestions();
-  const { data: answers } = useAnswers(String(person?._id));
+  const { data: answers } = useAnswers(slug);
 
   if (!person || !questions || !answers) {
     return <div>Loading...</div>;
@@ -54,7 +54,7 @@ export function Person({ slug }: PersonProps) {
         </div> */}
       </div>
 
-      <SidePeoplePanel />
+      <SidePanel />
     </div>
   );
 }

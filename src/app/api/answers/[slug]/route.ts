@@ -1,28 +1,29 @@
 import { NextResponse } from "next/server";
-import { Types } from "mongoose";
 
 import { connectDB } from "~/app/lib/connectDB";
-import { IAnswer, IQuestion } from "~/utils/types";
-import { Answer } from "~/models";
+import { IAnswer, IPerson, IQuestion } from "~/utils/types";
+import { Answer, Person } from "~/models";
 
 interface ReqParams {
-  params: { personId: string };
+  params: { slug: string };
 }
 
 // Get answers by PersonId
 export async function GET(req: Request, { params }: ReqParams) {
-  const { personId } = params;
-
-  if (!Types.ObjectId.isValid(personId)) {
-    return NextResponse.json("🔴 Invalid personId.", {
-      status: 400,
-    });
-  }
+  const { slug } = params;
 
   try {
     await connectDB();
 
-    const answers: IAnswer[] = await Answer.find({ personId })
+    const person: IPerson | null = await Person.findOne({ slug });
+
+    if (!person) {
+      return NextResponse.json("🔴 Failed to fetch a person by slug.", {
+        status: 400,
+      });
+    }
+
+    const answers: IAnswer[] = await Answer.find({ personId: person._id })
       .populate("questionId")
       .exec();
 

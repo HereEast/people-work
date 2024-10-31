@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getAnswers } from "~/client-api/answers";
 import { IAnswer } from "~/utils/types";
 
-export function useAnswers(personId: string) {
+export function useAnswers(slug: string) {
   const [data, setData] = useState<IAnswer[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -14,7 +14,7 @@ export function useAnswers(personId: string) {
       setIsError(false);
 
       try {
-        const answers = await getAnswers(personId);
+        const answers = await getAnswers(slug);
 
         if (answers) {
           setData(answers);
@@ -27,7 +27,7 @@ export function useAnswers(personId: string) {
     }
 
     fetchData();
-  }, [personId]);
+  }, [slug]);
 
   return { data, isLoading, isError };
 }
