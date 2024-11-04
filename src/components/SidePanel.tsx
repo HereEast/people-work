@@ -10,7 +10,7 @@ import { IPerson } from "~/utils/types";
 import { ImageThumbnail } from "./ImageThumbnail";
 
 import { usePeople } from "~/hooks/usePeople";
-import { cn, handleURLOnCompare } from "~/utils/handlers";
+import { cn } from "~/utils/handlers";
 
 // Side Panel
 export function SidePanel() {
@@ -21,8 +21,8 @@ export function SidePanel() {
   const people = data?.filter((item) => item.slug !== params.slug);
 
   return (
-    <div className="w-[360px] shrink-0 rounded-3xl border-2 border-stone-700 p-2">
-      <div>
+    <div className="w-[360px] shrink-0 rounded-3xl border-2 border-stone-700 p-4">
+      <div className="space-y-1">
         {people?.map((person, index) => (
           <PanelItem person={person} key={index} />
         ))}
@@ -46,7 +46,18 @@ export function PanelItem({ person }: PanelItemProps) {
   useEffect(() => {
     const params = new URLSearchParams(searchParams.toString());
 
-    handleURLOnCompare(params, selected, person.slug);
+    if (selected) {
+      if (!params.getAll("person").includes(person.slug)) {
+        params.append("person", person.slug);
+      }
+    } else {
+      const updatedParams = params
+        .getAll("person")
+        .filter((slug) => slug !== person.slug);
+
+      params.delete("person");
+      updatedParams.forEach((slug) => params.append("person", slug));
+    }
 
     router.replace(pathname + "?" + params.toString());
   }, [selected, pathname, router, searchParams, person.slug]);
@@ -54,10 +65,14 @@ export function PanelItem({ person }: PanelItemProps) {
   return (
     <div
       className={cn(
-        "flex gap-4 rounded-2xl p-2 hover:bg-stone-400/30",
-        selected && "bg-stone-400/20",
+        "flex gap-4 rounded-2xl bg-stone-300/40 p-3",
+        !selected && "hover:bg-stone-300/60",
+        selected && "bg-stone-900 text-stone-50",
       )}
-      onClick={() => setSelected((prev) => !prev)}
+      onClick={() => {
+        setSelected((prev) => !prev);
+        console.log(searchParams.getAll("person"));
+      }}
     >
       <ImageThumbnail
         src={`/images/people/${person?.profileImageURL}` || ""}
@@ -66,13 +81,17 @@ export function PanelItem({ person }: PanelItemProps) {
       />
 
       <div className="flex flex-col justify-between overflow-hidden">
-        <h5 className="truncate text-nowrap font-bold leading-none tracking-tight">
+        <h5 className="cursor-default truncate text-nowrap font-semibold leading-none tracking-tight">
           {person.name}
         </h5>
 
         <div className="flex flex-col gap-1 text-base">
-          <span className="block h-fit leading-none">{person.jobTitle}</span>
-          <span className="block h-fit leading-none">{person.company}</span>
+          <span className="block h-fit cursor-default leading-none">
+            {person.jobTitle}
+          </span>
+          <span className="block h-fit cursor-default leading-none">
+            {person.company}
+          </span>
         </div>
       </div>
     </div>
