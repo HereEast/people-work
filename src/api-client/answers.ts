@@ -1,11 +1,34 @@
 import axios from "axios";
 
-import { IAnswer, IAnswerSubmitData } from "~/utils/types";
+import { IAnswer, IAnswerSubmitData, ISelectedResult } from "~/utils/types";
 
 // Get
 export async function getAnswers(slug: string): Promise<IAnswer[]> {
   try {
     const response = await axios.get<IAnswer[]>(`/api/answers/${slug}`);
+
+    const data = response.data;
+
+    return data;
+  } catch (err) {
+    if (err instanceof Error) {
+      console.log("🔴", err.message);
+    }
+
+    return [];
+  }
+}
+
+// Get selected answers
+export async function getSelectedAnswers(
+  slugs: string[],
+): Promise<ISelectedResult[]> {
+  try {
+    const response = await axios.get<ISelectedResult[]>(`/api/answers`, {
+      params: {
+        slugs: slugs.toString(),
+      },
+    });
 
     const data = response.data;
 

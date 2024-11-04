@@ -48,6 +48,11 @@ export interface IAnswerSubmitData {
   answer: string;
 }
 
+export interface ISelectedResult {
+  person: IPerson;
+  answers: IAnswer[];
+}
+
 export interface ISocialLinks {
   linkedIn?: string;
   twitter?: string;

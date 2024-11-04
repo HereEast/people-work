@@ -1,12 +1,73 @@
 import { NextResponse } from "next/server";
 
 import { Answer, Person, Question } from "~/models";
-import { IAnswer, IAnswerSubmitData, IPerson, IQuestion } from "~/utils/types";
+import {
+  IAnswer,
+  IAnswerSubmitData,
+  IPerson,
+  IQuestion,
+  ISelectedResult,
+} from "~/utils/types";
+
 import { connectDB } from "~/app/lib/connectDB";
 
-const slug = "alexander-starodetko"; // Sasha
+// Get answers by slug array
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+
+  const slugs = searchParams.getAll("slugs").toString().split(",");
+
+  try {
+    await connectDB();
+
+    const results: ISelectedResult[] = [];
+
+    for (const slug of slugs) {
+      const person: IPerson | null = await Person.findOne({ slug });
+
+      if (!person) {
+        return NextResponse.json("🔴 Failed to fetch a person by slug.", {
+          status: 400,
+        });
+      }
+
+      const answers: IAnswer[] = await Answer.find({ personId: person._id })
+        .populate("questionId")
+        .exec();
+
+      const activeAnswers = answers.filter((answer) => {
+        const question = answer.questionId as IQuestion;
+        return question.isActive === true;
+      });
+
+      const sortedAnswers = activeAnswers.sort((a, b) => {
+        const questionA = a.questionId as IQuestion;
+        const questionB = b.questionId as IQuestion;
+        return questionA.order - questionB.order;
+      });
+
+      results.push({
+        person,
+        answers: sortedAnswers,
+      });
+    }
+
+    return NextResponse.json(results, { status: 200 });
+  } catch (err) {
+    console.log(err);
+
+    return NextResponse.json(
+      { message: "🔴 Error fetching answers by personId." },
+      {
+        status: 500,
+      },
+    );
+  }
+}
 
 // Submit answers
+const slug = "alexander-starodetko"; // Sasha
+
 export async function POST(req: Request) {
   const data = await req.json();
 

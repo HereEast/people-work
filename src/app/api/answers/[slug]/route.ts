@@ -8,7 +8,7 @@ interface ReqParams {
   params: { slug: string };
 }
 
-// Get answers by PersonId
+// Get answers by slug
 export async function GET(req: Request, { params }: ReqParams) {
   const { slug } = params;
 

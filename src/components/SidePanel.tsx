@@ -43,6 +43,14 @@ export function PanelItem({ person }: PanelItemProps) {
 
   const [selected, setSelected] = useState(false);
 
+  // Check URL params
+  useEffect(() => {
+    if (searchParams.getAll("person").includes(person.slug)) {
+      setSelected(true);
+    }
+  }, [searchParams, setSelected]);
+
+  // Set URL params on select
   useEffect(() => {
     const params = new URLSearchParams(searchParams.toString());
 
@@ -69,10 +77,7 @@ export function PanelItem({ person }: PanelItemProps) {
         !selected && "hover:bg-stone-300/60",
         selected && "bg-stone-900 text-stone-50",
       )}
-      onClick={() => {
-        setSelected((prev) => !prev);
-        console.log(searchParams.getAll("person"));
-      }}
+      onClick={() => setSelected((prev) => !prev)}
     >
       <ImageThumbnail
         src={`/images/people/${person?.profileImageURL}` || ""}
