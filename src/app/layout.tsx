@@ -50,7 +50,7 @@ export default function Layout({ children }: LayoutProps) {
         className="flex min-h-screen flex-col text-xl"
       >
         <Header />
-        <main className="flex-grow px-4 py-10">{children}</main>
+        <main className="flex-grow">{children}</main>
         <Footer />
       </body>
     </html>

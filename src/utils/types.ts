@@ -43,6 +43,11 @@ export interface IAnswer extends Document {
   updatedAt: Date;
 }
 
+export interface IAnswerSubmitData {
+  questionId: string;
+  answer: string;
+}
+
 export interface ISocialLinks {
   linkedIn?: string;
   twitter?: string;

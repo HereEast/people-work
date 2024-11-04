@@ -8,6 +8,7 @@ import { usePerson } from "~/hooks/usePerson";
 import { useQuestions } from "~/hooks/useQuestions";
 import { useAnswers } from "~/hooks/useAnswers";
 import { IAnswer, IQuestion } from "~/utils/types";
+import { PageContainer } from "./PageContainer";
 
 interface PersonProps {
   slug: string;
@@ -23,16 +24,17 @@ export function Person({ slug }: PersonProps) {
   }
 
   return (
-    <div className="flex gap-6">
-      <div className="space-y-10">
-        {person && <PersonIntro person={person} />}
+    <PageContainer>
+      <div className="flex gap-6">
+        <div className="space-y-10">
+          {person && <PersonIntro person={person} />}
 
-        <div className="grid grid-cols-2 border-b-2 border-stone-700 last:border-b-0">
-          <QuestionsColumn questions={questions} />
-          <AnswersColumn answers={answers} />
-        </div>
+          <div className="grid grid-cols-2 border-b-2 border-stone-700 last:border-b-0">
+            <QuestionsColumn questions={questions} />
+            <AnswersColumn answers={answers} />
+          </div>
 
-        {/* <div className="rounded-3xl border-2 border-stone-700 text-xl">
+          {/* <div className="rounded-3xl border-2 border-stone-700 text-xl">
           {questions?.map((q, index) => (
             <div
               key={index}
@@ -52,10 +54,11 @@ export function Person({ slug }: PersonProps) {
             </div>
           ))}
         </div> */}
-      </div>
+        </div>
 
-      <SidePanel />
-    </div>
+        <SidePanel />
+      </div>
+    </PageContainer>
   );
 }
 

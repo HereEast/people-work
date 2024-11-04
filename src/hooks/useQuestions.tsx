@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { getQuestions } from "~/client-api/questions";
+import { getQuestions } from "~/api-client/questions";
 import { IQuestion } from "~/utils/types";
 
 export function useQuestions() {

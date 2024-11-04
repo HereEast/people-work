@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { getAnswers } from "~/client-api/answers";
+import { getAnswers } from "~/api-client/answers";
 import { IAnswer } from "~/utils/types";
 
 export function useAnswers(slug: string) {

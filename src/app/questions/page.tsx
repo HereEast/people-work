@@ -1,39 +1,68 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 
-import { getQuestions } from "~/client-api/questions";
-import { AnswerForm } from "~/components/AnswerForm";
-import { QuestionsList } from "~/components/QuestionList";
-import { IQuestion } from "~/utils/types";
+import { AnswerField, QuestionsList } from "~/components";
+import { PageContainer } from "~/components/layouts";
+
+import { useQuestions } from "~/hooks/useQuestions";
+import { submitAnswers } from "~/api-client/answers";
 
 export default function QuestionsPage() {
-  const [questions, setQuestions] = useState<IQuestion[]>([]);
+  const { data: questions, isLoading } = useQuestions();
 
-  // const personId = "67098060ce227186c1ea8599"; // Margo
-  const personId = "671fe48de87242472acf92d1"; // Ivan
+  const [error, setError] = useState("");
 
-  useEffect(() => {
-    async function fetchQuestions() {
-      const questions = await getQuestions();
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError("");
 
-      if (questions) {
-        setQuestions(questions);
-      }
+    const formData = new FormData(e.currentTarget);
+
+    const emptyValuesExist = Array.from(formData.values()).some(
+      (value) => String(value).trim().length === 0,
+    );
+
+    if (emptyValuesExist) {
+      setError("All inputs are required.");
+      return;
     }
 
-    fetchQuestions();
-  }, []);
+    const answersData = Array.from(formData.entries()).map(
+      ([questionId, answer]) => {
+        return {
+          questionId,
+          answer: answer as string,
+        };
+      },
+    );
+
+    const result = await submitAnswers(answersData);
+
+    console.log(result);
+  }
 
   return (
-    <section>
-      <div className="mb-20 space-y-6">
-        {questions?.map((question, index) => (
-          <AnswerForm personId={personId} question={question} key={index} />
-        ))}
-      </div>
+    <PageContainer classes="bg-stone-200 px-20">
+      {isLoading && <div>Loading...</div>}
 
-      <QuestionsList questions={questions} />
-    </section>
+      {error && (
+        <div className="mb-6 bg-red-600 px-4 py-3 text-base text-stone-50">
+          {error}
+        </div>
+      )}
+
+      {questions && questions.length > 0 && (
+        <form onSubmit={handleSubmit} className="mb-20 space-y-10">
+          {questions.map((question, index) => (
+            <AnswerField question={question} key={index} />
+          ))}
+
+          <button type="submit" className="w-40 bg-black p-4 text-stone-50">
+            Submit
+          </button>
+        </form>
+      )}
+    </PageContainer>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { getPerson } from "~/client-api/people";
+import { getPerson } from "~/api-client/people";
 import { IPerson } from "~/utils/types";
 
 export function usePerson(slug: string) {
