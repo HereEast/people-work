@@ -1,6 +1,6 @@
 "use client";
 
-import { usePerson } from "~/hooks/usePerson";
+import { usePerson } from "~/hooks";
 import { PersonCard } from "../PersonCard";
 
 const MARGO = "margo-lazarenkova";

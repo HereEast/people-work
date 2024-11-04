@@ -1,16 +1,19 @@
 "use client";
 
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { AnswerParagraph, SidePanel, PersonIntro } from "~/components";
 import { PageContainer } from "./PageContainer";
 
-import { usePerson } from "~/hooks/usePerson";
-import { useQuestions } from "~/hooks/useQuestions";
-import { useAnswers } from "~/hooks/useAnswers";
+import {
+  usePerson,
+  useQuestions,
+  useAnswers,
+  useSelectedAnswers,
+} from "~/hooks";
 import { IAnswer, IQuestion } from "~/utils/types";
-import { useSelectedAnswers } from "~/hooks/useSelectedAnswers";
+import { cn } from "~/utils/handlers";
 
 interface PersonProps {
   slug: string;
@@ -19,18 +22,24 @@ interface PersonProps {
 export function Person({ slug }: PersonProps) {
   const searchParams = useSearchParams();
 
+  const [selectedSlugs, setSelectedSlugs] = useState<string[]>(
+    searchParams.getAll("person"),
+  );
+
+  useEffect(() => {
+    const selected = searchParams.getAll("person");
+
+    console.log(selected);
+    setSelectedSlugs(selected);
+  }, [searchParams]);
+
+  const { data: selected } = useSelectedAnswers(selectedSlugs);
+
   const { data: person } = usePerson(slug);
   const { data: questions } = useQuestions();
   const { data: answers } = useAnswers(slug);
 
-  const { data } = useSelectedAnswers(["ivan-baranov", "alexander-starodetko"]);
-
-  console.log(data);
-
-  // useEffect(() => {
-  //   const selectedPeople = searchParams.getAll("person");
-  //   console.log(selectedPeople);
-  // }, [searchParams]);
+  console.log(selected);
 
   if (!person || !questions || !answers) {
     return <div>Loading...</div>;
@@ -51,7 +60,12 @@ export function Person({ slug }: PersonProps) {
             {questions?.map((q, index) => (
               <div
                 key={index}
-                className="grid grid-cols-2 border-b-2 border-stone-700 last:border-b-0"
+                className={cn(
+                  "grid grid-cols-2 border-b-2 border-stone-700 last:border-b-0",
+                  selected &&
+                    selected?.length > 0 &&
+                    `grid-cols-${2 + selected?.length}`,
+                )}
               >
                 <div className="flex-1 border-r-2 border-stone-700 p-6">
                   <h5 className="font-semibold">{q.body}</h5>
@@ -64,6 +78,21 @@ export function Person({ slug }: PersonProps) {
                     />
                   )}
                 </div>
+
+                {selected &&
+                  selected?.length > 0 &&
+                  selected.map((item, index) => (
+                    <div
+                      className="flex-1 border-l-2 border-stone-700 p-6"
+                      key={index}
+                    >
+                      {item.answers?.[index]?.answer && (
+                        <AnswerParagraph
+                          answer={item.answers?.[index]?.answer as string}
+                        />
+                      )}
+                    </div>
+                  ))}
               </div>
             ))}
           </div>
@@ -72,31 +101,6 @@ export function Person({ slug }: PersonProps) {
         <SidePanel />
       </div>
     </PageContainer>
-  );
-}
-
-// Q&A Table
-interface TableProps {
-  questions: IQuestion[];
-  children: ReactNode;
-}
-
-export function Table({ questions, children }: TableProps) {
-  return (
-    <div className="rounded-3xl border-2 border-stone-700 text-xl">
-      {questions?.map((q, index) => (
-        <div
-          key={index}
-          className="grid grid-cols-2 border-b-2 border-stone-700 last:border-b-0"
-        >
-          <div className="flex-1 border-r-2 border-stone-700 p-6">
-            <h5 className="font-semibold">{q.body}</h5>
-          </div>
-
-          {children}
-        </div>
-      ))}
-    </div>
   );
 }
 

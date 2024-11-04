@@ -23,6 +23,10 @@ export async function getAnswers(slug: string): Promise<IAnswer[]> {
 export async function getSelectedAnswers(
   slugs: string[],
 ): Promise<ISelectedResult[]> {
+  if (!slugs.length) {
+    return [];
+  }
+
   try {
     const response = await axios.get<ISelectedResult[]>(`/api/answers`, {
       params: {

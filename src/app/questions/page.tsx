@@ -5,7 +5,7 @@ import { FormEvent, useState } from "react";
 import { AnswerField, QuestionsList } from "~/components";
 import { PageContainer } from "~/components/layouts";
 
-import { useQuestions } from "~/hooks/useQuestions";
+import { useQuestions } from "~/hooks";
 import { submitAnswers } from "~/api-client/answers";
 
 export default function QuestionsPage() {

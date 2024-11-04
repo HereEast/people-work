@@ -4,7 +4,7 @@ import { getSelectedAnswers } from "~/api-client/answers";
 import { ISelectedResult } from "~/utils/types";
 
 export function useSelectedAnswers(slugArray: string[]) {
-  const [data, setData] = useState<ISelectedResult[] | null>(null);
+  const [data, setData] = useState<ISelectedResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -27,7 +27,7 @@ export function useSelectedAnswers(slugArray: string[]) {
     }
 
     fetchData();
-  }, []);
+  }, [slugArray]);
 
   return { data, isLoading, isError };
 }
