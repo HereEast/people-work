@@ -1,33 +1,12 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 import { getQuestions } from "~/api-client/questions";
-import { IQuestion } from "~/utils/types";
 
 export function useQuestions() {
-  const [data, setData] = useState<IQuestion[] | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    async function fetchData() {
-      setIsLoading(true);
-      setIsError(false);
-
-      try {
-        const questions = await getQuestions();
-
-        if (questions) {
-          setData(questions);
-        }
-      } catch {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchData();
-  }, []);
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["questions"],
+    queryFn: getQuestions,
+  });
 
   return { data, isLoading, isError };
 }

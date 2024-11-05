@@ -1,17 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { AnswerParagraph, SidePanel, PersonIntro } from "~/components";
 import { PageContainer } from "./PageContainer";
 
-import {
-  usePerson,
-  useQuestions,
-  useAnswers,
-  useSelectedAnswers,
-} from "~/hooks";
+import { usePerson, useAnswers, useQuestions } from "~/hooks";
 import { IAnswer, IQuestion } from "~/utils/types";
 import { cn } from "~/utils/handlers";
 
@@ -22,26 +16,21 @@ interface PersonProps {
 export function Person({ slug }: PersonProps) {
   const searchParams = useSearchParams();
 
-  const [selectedSlugs, setSelectedSlugs] = useState<string[]>(
-    searchParams.getAll("person"),
-  );
+  const selectedSlug = searchParams.get("person") || "";
 
-  useEffect(() => {
-    const selected = searchParams.getAll("person");
-    setSelectedSlugs(selected);
-  }, [searchParams]);
-
-  const { data: selected } = useSelectedAnswers(selectedSlugs);
-
-  const { data: person } = usePerson(slug);
-  const { data: questions } = useQuestions();
+  const { data: selected } = useAnswers(selectedSlug);
   const { data: answers } = useAnswers(slug);
+
+  const { data: person, isLoading: personLoading } = usePerson(slug);
+  const { data: questions, isLoading: questionsLoading } = useQuestions();
 
   // console.log(selected);
 
-  if (!person || !questions || !answers) {
+  if (personLoading || questionsLoading || !answers) {
     return <div>Loading...</div>;
   }
+
+  const isSidePanelSelected = selected && selected?.length > 0;
 
   return (
     <PageContainer>
@@ -60,9 +49,7 @@ export function Person({ slug }: PersonProps) {
                 key={index}
                 className={cn(
                   "grid grid-cols-2 border-b-2 border-stone-700 last:border-b-0",
-                  selected &&
-                    selected?.length > 0 &&
-                    `grid-cols-${2 + selected?.length}`,
+                  isSidePanelSelected && "grid-cols-3",
                 )}
               >
                 <div className="flex-1 border-r-2 border-stone-700 p-6">
@@ -70,35 +57,22 @@ export function Person({ slug }: PersonProps) {
                 </div>
 
                 <div className="flex-1 p-6">
-                  {answers.map((answer, index) => {
-                    // console.log(answer);
-
-                    return <p key={index}>{answer.answer}</p>;
-                  })}
-                </div>
-
-                {/* <div className="flex-1 p-6">
                   {answers?.[index]?.answer && (
                     <AnswerParagraph
                       answer={answers?.[index]?.answer as string}
                     />
                   )}
-                </div> */}
+                </div>
 
-                {selected &&
-                  selected?.length > 0 &&
-                  selected.map((item, i) => (
-                    <div
-                      className="flex-1 border-l-2 border-stone-700 p-6"
-                      key={i}
-                    >
-                      {item.answers?.[index]?.answer && (
-                        <AnswerParagraph
-                          answer={item.answers?.[index]?.answer as string}
-                        />
-                      )}
-                    </div>
-                  ))}
+                {isSidePanelSelected && (
+                  <div className="flex-1 border-l-2 border-stone-700 p-6">
+                    {selected?.[index]?.answer && (
+                      <AnswerParagraph
+                        answer={selected?.[index]?.answer as string}
+                      />
+                    )}
+                  </div>
+                )}
               </div>
             ))}
           </div>
