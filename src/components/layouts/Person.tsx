@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { AnswerParagraph, SidePanel, PersonIntro } from "~/components";
@@ -28,8 +28,6 @@ export function Person({ slug }: PersonProps) {
 
   useEffect(() => {
     const selected = searchParams.getAll("person");
-
-    console.log(selected);
     setSelectedSlugs(selected);
   }, [searchParams]);
 
@@ -39,7 +37,7 @@ export function Person({ slug }: PersonProps) {
   const { data: questions } = useQuestions();
   const { data: answers } = useAnswers(slug);
 
-  console.log(selected);
+  // console.log(selected);
 
   if (!person || !questions || !answers) {
     return <div>Loading...</div>;
@@ -56,7 +54,7 @@ export function Person({ slug }: PersonProps) {
             <AnswersColumn answers={answers} />
           </div> */}
 
-          <div className="rounded-3xl border-2 border-stone-700 text-xl">
+          <div className="overflow-x-auto rounded-3xl border-2 border-stone-700 text-xl">
             {questions?.map((q, index) => (
               <div
                 key={index}
@@ -72,19 +70,27 @@ export function Person({ slug }: PersonProps) {
                 </div>
 
                 <div className="flex-1 p-6">
+                  {answers.map((answer, index) => {
+                    // console.log(answer);
+
+                    return <p key={index}>{answer.answer}</p>;
+                  })}
+                </div>
+
+                {/* <div className="flex-1 p-6">
                   {answers?.[index]?.answer && (
                     <AnswerParagraph
                       answer={answers?.[index]?.answer as string}
                     />
                   )}
-                </div>
+                </div> */}
 
                 {selected &&
                   selected?.length > 0 &&
-                  selected.map((item, index) => (
+                  selected.map((item, i) => (
                     <div
                       className="flex-1 border-l-2 border-stone-700 p-6"
-                      key={index}
+                      key={i}
                     >
                       {item.answers?.[index]?.answer && (
                         <AnswerParagraph
