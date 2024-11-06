@@ -18,25 +18,25 @@ export function Person({ slug }: PersonProps) {
 
   const selectedSlug = searchParams.get("person") || "";
 
-  const { data: selected } = useAnswers(selectedSlug);
+  const { data: selectedAnswers } = useAnswers(selectedSlug);
   const { data: answers } = useAnswers(slug);
 
   const { data: person, isLoading: personLoading } = usePerson(slug);
   const { data: questions, isLoading: questionsLoading } = useQuestions();
 
-  // console.log(selected);
+  console.log(selectedAnswers);
 
   if (personLoading || questionsLoading || !answers) {
     return <div>Loading...</div>;
   }
 
-  const isSidePanelSelected = selected && selected?.length > 0;
+  const isSidePanelSelected = selectedAnswers && selectedAnswers?.length > 0;
 
   return (
     <PageContainer>
       <div className="flex gap-6">
         <div className="space-y-10">
-          {person && <PersonIntro person={person} />}
+          {person && !personLoading && <PersonIntro person={person} />}
 
           {/* <div className="grid grid-cols-2 border-b-2 border-stone-700 last:border-b-0">
             <QuestionsColumn questions={questions} />
@@ -66,9 +66,9 @@ export function Person({ slug }: PersonProps) {
 
                 {isSidePanelSelected && (
                   <div className="flex-1 border-l-2 border-stone-700 p-6">
-                    {selected?.[index]?.answer && (
+                    {selectedAnswers?.[index]?.answer && (
                       <AnswerParagraph
-                        answer={selected?.[index]?.answer as string}
+                        answer={selectedAnswers?.[index]?.answer as string}
                       />
                     )}
                   </div>
