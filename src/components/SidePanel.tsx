@@ -20,7 +20,7 @@ export function SidePanel() {
   const people = data?.filter((item) => item.slug !== params.slug);
 
   return (
-    <div className="w-[260px] shrink-0 rounded-3xl border-2 border-stone-700 p-4">
+    <div className="w-[320px] shrink-0 rounded-3xl border-2 border-stone-700 p-4">
       <div className="space-y-1">
         {people?.map((person, index) => (
           <PanelItem person={person} key={index} />
@@ -77,7 +77,7 @@ export function PanelItem({ person }: PanelItemProps) {
 // Person Details
 function PersonDetails({ person }: PanelItemProps) {
   return (
-    <div className="flex flex-col justify-between overflow-hidden">
+    <div className="flex flex-col justify-between overflow-hidden text-lg">
       <h5 className="cursor-default truncate text-nowrap font-semibold leading-none tracking-tight">
         {person.name}
       </h5>

@@ -23,14 +23,14 @@ export function PersonIntro({ person }: PersonIntroProps) {
 
       <div className="mb-2">
         <h4 className="space-y-[-10px]">
-          {/* {person.name.split(" ").map((item) => (
+          {person.name.split(" ").map((item) => (
             <span
               className="leading-0 block text-center text-5xl font-bold tracking-tighter"
               key={item}
             >
               {item}
             </span>
-          ))} */}
+          ))}
         </h4>
       </div>
 

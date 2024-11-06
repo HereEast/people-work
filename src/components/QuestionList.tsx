@@ -1,13 +1,15 @@
-import { IQuestion } from "~/utils/types";
+import { useQuestions } from "~/hooks";
 
-interface QuestionsListProps {
-  questions: IQuestion[];
-}
+export function QuestionsList() {
+  const { data: questions, isLoading } = useQuestions();
 
-export function QuestionsList({ questions }: QuestionsListProps) {
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
-      <span>{questions.length} questions:</span>
+      <span>{questions?.length} questions:</span>
       <div>
         {questions?.map((q) => (
           <div key={String(q._id)}>

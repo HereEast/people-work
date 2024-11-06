@@ -38,8 +38,7 @@ export default function QuestionsPage() {
     );
 
     const result = await submitAnswers(answersData);
-
-    console.log(result);
+    console.log(result); // Console
   }
 
   return (
@@ -63,6 +62,8 @@ export default function QuestionsPage() {
           </button>
         </form>
       )}
+
+      <QuestionsList />
     </PageContainer>
   );
 }

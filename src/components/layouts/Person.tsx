@@ -21,8 +21,6 @@ export function Person({ slug }: PersonProps) {
   const { data: answers, isLoading: answersLoading } = useAnswers(slug);
   const { data: person, isLoading: personLoading } = usePerson(slug);
 
-  console.log(answers);
-
   if (personLoading || answersLoading) {
     return <div>Loading...</div>;
   }
@@ -43,14 +41,13 @@ export function Person({ slug }: PersonProps) {
                 <div
                   key={index}
                   className={cn(
-                    "grid border-b-2 border-stone-700 last:border-b-0",
+                    "grid border-b-2 border-stone-700 last:border-b-0 hover:bg-stone-200",
                     isSidePanelSelected ? "grid-cols-3" : "grid-cols-2",
                   )}
                 >
                   <QuestionItem question={answerItem.question} />
                   <AnswerItem answer={answerItem.answer} />
 
-                  {/* Optional Side Panel Column */}
                   {isSidePanelSelected && (
                     <AnswerItem answer={selectedAnswer?.answer} />
                   )}
