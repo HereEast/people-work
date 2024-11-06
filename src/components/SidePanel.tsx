@@ -7,7 +7,7 @@ import {
 
 import { ImageThumbnail } from "./ImageThumbnail";
 
-import { usePeople } from "~/hooks/usePeople";
+import { usePeople } from "~/hooks";
 import { IPerson } from "~/utils/types";
 import { cn } from "~/utils/handlers";
 
@@ -20,7 +20,7 @@ export function SidePanel() {
   const people = data?.filter((item) => item.slug !== params.slug);
 
   return (
-    <div className="w-[360px] shrink-0 rounded-3xl border-2 border-stone-700 p-4">
+    <div className="w-[260px] shrink-0 rounded-3xl border-2 border-stone-700 p-4">
       <div className="space-y-1">
         {people?.map((person, index) => (
           <PanelItem person={person} key={index} />
@@ -83,10 +83,10 @@ function PersonDetails({ person }: PanelItemProps) {
       </h5>
 
       <div className="flex flex-col gap-1 text-base">
-        <span className="block h-fit cursor-default leading-none">
+        <span className="block h-fit cursor-default truncate leading-none">
           {person.jobTitle}
         </span>
-        <span className="block h-fit cursor-default leading-none">
+        <span className="block h-fit cursor-default truncate leading-none">
           {person.company}
         </span>
       </div>

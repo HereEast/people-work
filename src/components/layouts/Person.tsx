@@ -5,8 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { AnswerParagraph, SidePanel, PersonIntro } from "~/components";
 import { PageContainer } from "./PageContainer";
 
-import { usePerson, useAnswers, useQuestions } from "~/hooks";
-import { IAnswer, IQuestion } from "~/utils/types";
+import { usePerson, useAnswers } from "~/hooks";
 import { cn } from "~/utils/handlers";
 
 interface PersonProps {
@@ -19,14 +18,12 @@ export function Person({ slug }: PersonProps) {
   const selectedSlug = searchParams.get("person") || "";
 
   const { data: selectedAnswers } = useAnswers(selectedSlug);
-  const { data: answers } = useAnswers(slug);
-
+  const { data: answers, isLoading: answersLoading } = useAnswers(slug);
   const { data: person, isLoading: personLoading } = usePerson(slug);
-  const { data: questions, isLoading: questionsLoading } = useQuestions();
 
-  console.log(selectedAnswers);
+  console.log(answers);
 
-  if (personLoading || questionsLoading || !answers) {
+  if (personLoading || answersLoading) {
     return <div>Loading...</div>;
   }
 
@@ -38,43 +35,28 @@ export function Person({ slug }: PersonProps) {
         <div className="space-y-10">
           {person && !personLoading && <PersonIntro person={person} />}
 
-          {/* <div className="grid grid-cols-2 border-b-2 border-stone-700 last:border-b-0">
-            <QuestionsColumn questions={questions} />
-            <AnswersColumn answers={answers} />
-          </div> */}
-
           <div className="overflow-x-auto rounded-3xl border-2 border-stone-700 text-xl">
-            {questions?.map((q, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "grid grid-cols-2 border-b-2 border-stone-700 last:border-b-0",
-                  isSidePanelSelected && "grid-cols-3",
-                )}
-              >
-                <div className="flex-1 border-r-2 border-stone-700 p-6">
-                  <h5 className="font-semibold">{q.body}</h5>
-                </div>
+            {answers?.map((answerItem, index) => {
+              const selectedAnswer = selectedAnswers?.[index];
 
-                <div className="flex-1 p-6">
-                  {answers?.[index]?.answer && (
-                    <AnswerParagraph
-                      answer={answers?.[index]?.answer as string}
-                    />
+              return (
+                <div
+                  key={index}
+                  className={cn(
+                    "grid border-b-2 border-stone-700 last:border-b-0",
+                    isSidePanelSelected ? "grid-cols-3" : "grid-cols-2",
+                  )}
+                >
+                  <QuestionItem question={answerItem.question} />
+                  <AnswerItem answer={answerItem.answer} />
+
+                  {/* Optional Side Panel Column */}
+                  {isSidePanelSelected && (
+                    <AnswerItem answer={selectedAnswer?.answer} />
                   )}
                 </div>
-
-                {isSidePanelSelected && (
-                  <div className="flex-1 border-l-2 border-stone-700 p-6">
-                    {selectedAnswers?.[index]?.answer && (
-                      <AnswerParagraph
-                        answer={selectedAnswers?.[index]?.answer as string}
-                      />
-                    )}
-                  </div>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -85,41 +67,27 @@ export function Person({ slug }: PersonProps) {
 }
 
 // Answers
-interface AnswersColumnProps {
-  answers: IAnswer[];
+interface AnswersItemProps {
+  answer?: string;
 }
 
-export function AnswersColumn({ answers }: AnswersColumnProps) {
+export function AnswerItem({ answer = "" }: AnswersItemProps) {
   return (
-    <div className="rounded-r-3xl border-2 border-stone-700 text-xl">
-      {answers.map((answer, index) => (
-        <div
-          key={index}
-          className="border-b-2 border-stone-700 p-6 last:border-b-0"
-        >
-          <AnswerParagraph answer={answer.answer} />
-        </div>
-      ))}
+    <div className="flex-1 border-stone-700 p-6 [&:not(:first-child)]:border-l-2">
+      {answer && <AnswerParagraph answer={answer} />}
     </div>
   );
 }
 
 // Questions
-interface QuestionsColumnProps {
-  questions: IQuestion[];
+interface QuestionItemProps {
+  question: string;
 }
 
-export function QuestionsColumn({ questions }: QuestionsColumnProps) {
+export function QuestionItem({ question }: QuestionItemProps) {
   return (
-    <div className="rounded-l-3xl border-2 border-r-0 border-stone-700 text-xl">
-      {questions?.map((q, index) => (
-        <div
-          key={index}
-          className="border-b-2 border-stone-700 p-6 last:border-b-0"
-        >
-          <h5 className="font-semibold">{q.body}</h5>
-        </div>
-      ))}
+    <div className="flex-1 border-stone-700 p-6">
+      {question && <h5 className="font-semibold">{question}</h5>}
     </div>
   );
 }
