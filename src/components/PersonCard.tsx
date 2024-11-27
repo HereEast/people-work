@@ -21,7 +21,7 @@ export function PersonCard({ person }: PersonCardProps) {
 
       <div className="mb-2">
         <h4 className="hover:opacity-50">
-          <Link href={`/people/${person?.slug}`} className="space-y-[-10px]">
+          <Link href={`/${person?.slug}`} className="space-y-[-10px]">
             {person?.name.split(" ").map((item) => (
               <span
                 className="leading-0 block text-center text-5xl font-bold tracking-tighter"

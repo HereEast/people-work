@@ -7,6 +7,11 @@ export enum PAGE {
   QUESTIONS = "/questions",
 }
 
+export interface IResult {
+  answers: IAnswer[];
+  person: IPerson;
+}
+
 export interface IPerson extends Document {
   // _id: mongoose.Types.ObjectId;
   name: string;

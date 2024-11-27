@@ -25,6 +25,7 @@ export async function GET(req: Request, { params }: ReqParams) {
 
     const answers: IAnswer[] = await Answer.find({ personId: person._id })
       .populate("questionId")
+      .populate("personId")
       .exec();
 
     const activeAnswers = answers.filter((answer) => {
@@ -38,7 +39,12 @@ export async function GET(req: Request, { params }: ReqParams) {
       return questionA.order - questionB.order;
     });
 
-    return NextResponse.json(sortedAnswers, { status: 200 });
+    const result = {
+      answers: sortedAnswers,
+      person,
+    };
+
+    return NextResponse.json(result, { status: 200 });
   } catch (err) {
     console.log(err);
 

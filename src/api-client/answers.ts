@@ -1,11 +1,11 @@
 import axios from "axios";
 
-import { IAnswer, IAnswerSubmitData, ISelectedResult } from "~/utils/types";
+import { IAnswerSubmitData, IResult, ISelectedResult } from "~/utils/types";
 
 // Get
-export async function getAnswers(slug: string): Promise<IAnswer[]> {
+export async function getAnswers(slug: string): Promise<IResult | null> {
   try {
-    const response = await axios.get<IAnswer[]>(`/api/answers/${slug}`);
+    const response = await axios.get<IResult>(`/api/answers/${slug}`);
 
     const data = response.data;
 
@@ -15,7 +15,7 @@ export async function getAnswers(slug: string): Promise<IAnswer[]> {
       console.log("🔴", err.message);
     }
 
-    return [];
+    return null;
   }
 }
 
