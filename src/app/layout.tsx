@@ -1,10 +1,11 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
 
-import { ClientLayout } from "~/components/layouts/ClientLayout";
-
-import "./globals.css";
 import localFont from "next/font/local";
+import "./globals.css";
+
+import { Footer, Header } from "~/components/layouts";
+import { ClientProvider } from "~/providers";
 
 const InnovatorGrotesk = localFont({
   src: [
@@ -47,7 +48,11 @@ export default function Layout({ children }: LayoutProps) {
         suppressHydrationWarning={true}
         className="flex min-h-screen flex-col text-xl"
       >
-        <ClientLayout>{children}</ClientLayout>
+        <ClientProvider>
+          <Header />
+          <main className="mt-16 flex-grow">{children}</main>
+          <Footer />
+        </ClientProvider>
       </body>
     </html>
   );

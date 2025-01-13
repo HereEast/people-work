@@ -32,7 +32,10 @@ export async function GET(req: Request) {
       }
 
       const answers: IAnswer[] = await Answer.find({ personId: person._id })
-        .populate("questionId")
+        .populate({
+          path: "questionId",
+          model: Question,
+        })
         .exec();
 
       const activeAnswers = answers.filter((answer) => {
