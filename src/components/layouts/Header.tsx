@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { PAGE } from "~/utils/types";
-import { Logo } from "./Logo";
+import { Logo } from "../icons/Logo";
 
 export function Header() {
   return (

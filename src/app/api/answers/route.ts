@@ -69,7 +69,7 @@ export async function GET(req: Request) {
 }
 
 // Submit answers
-const slug = "alexander-starodetko"; // Sasha
+const ID = "67098060ce227186c1ea8599___"; // Margo
 
 export async function POST(req: Request) {
   const data = await req.json();
@@ -88,7 +88,7 @@ export async function POST(req: Request) {
   try {
     await connectDB();
 
-    const person: IPerson | null = await Person.findOne({ slug });
+    const person: IPerson | null = await Person.findOne({ _id: ID });
 
     if (!person) {
       return NextResponse.json("🔴 Error: Failed to fetch a Person.", {

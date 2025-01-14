@@ -1,6 +1,6 @@
 "use client";
 
-import { usePerson } from "~/hooks";
+import { usePeople, usePerson } from "~/hooks";
 import { PersonCard } from "../PersonCard";
 import { PageContainer } from "./PageContainer";
 
@@ -10,6 +10,9 @@ const IVAN = "ivan-baranov";
 export function Home() {
   const { data: margo, isLoading: margoIsLoading } = usePerson(MARGO);
   const { data: ivan, isLoading: ivanIsLoading } = usePerson(IVAN);
+
+  const { data } = usePeople();
+  console.log(data);
 
   // get people
 
@@ -25,10 +28,13 @@ export function Home() {
             <PersonCard person={margo} />
             <PersonCard person={ivan} />
           </div>
-          <div className="grid w-full gap-4 sm:grid-cols-3">
-            <PersonCard person={margo} />
-            <PersonCard person={ivan} />
-            <PersonCard person={margo} />
+
+          <div>
+            <p className="text-center text-4xl font-medium">
+              This project is for anyone curious about the diverse paths people
+              take in their careers — students, aspiring professionals, or
+              anyone navigating their own career path.
+            </p>
           </div>
         </div>
       )}
