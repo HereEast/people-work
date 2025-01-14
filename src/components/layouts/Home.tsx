@@ -1,32 +1,27 @@
 "use client";
 
-import { usePeople, usePerson } from "~/hooks";
 import { PersonCard } from "../PersonCard";
+import { FormCard } from "./FormCard";
 import { PageContainer } from "./PageContainer";
-
-const MARGO = "margo-lazarenkova";
-const IVAN = "ivan-baranov";
+import { usePeople } from "~/hooks";
 
 export function Home() {
-  const { data: margo, isLoading: margoIsLoading } = usePerson(MARGO);
-  const { data: ivan, isLoading: ivanIsLoading } = usePerson(IVAN);
+  const { data: people, isLoading } = usePeople();
 
-  const { data } = usePeople();
-  console.log(data);
-
-  // get people
-
-  if (margoIsLoading || ivanIsLoading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
     <PageContainer classes="max-w-7xl">
-      {margo && ivan && (
-        <div className="space-y-4">
-          <div className="grid w-full gap-4 sm:grid-cols-2">
-            <PersonCard person={margo} />
-            <PersonCard person={ivan} />
+      {people && (
+        <div className="space-y-20">
+          <div className="flex w-full justify-center gap-4">
+            {people?.map((person, index) => (
+              <PersonCard person={person} key={index} />
+            ))}
+
+            <FormCard />
           </div>
 
           <div>

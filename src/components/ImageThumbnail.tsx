@@ -12,7 +12,7 @@ export function ImageThumbnail({ src, alt, classes }: ImageThumbnailProps) {
   return (
     <div
       className={cn(
-        "size-40 shrink-0 overflow-hidden rounded-[40px]",
+        "size-full shrink-0 overflow-hidden rounded-[40px]",
         classes || "",
       )}
     >
