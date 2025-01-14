@@ -10,6 +10,10 @@ export function PersonIntro({ person }: PersonIntroProps) {
     ? person.companyURL
     : `https://${person?.companyURL}`;
 
+  if (!person) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="flex flex-col items-center space-y-2">
       <ImageThumbnail
@@ -19,7 +23,7 @@ export function PersonIntro({ person }: PersonIntroProps) {
 
       <div className="mb-2">
         <h4 className="space-y-[-10px]">
-          {person?.name.split(" ").map((item) => (
+          {person.name.split(" ").map((item) => (
             <span
               className="leading-0 block text-center text-5xl font-bold tracking-tighter"
               key={item}

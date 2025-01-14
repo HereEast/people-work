@@ -7,6 +7,11 @@ export enum PAGE {
   QUESTIONS = "/questions",
 }
 
+export interface IResult {
+  answers: IAnswer[];
+  person: IPerson;
+}
+
 export interface IPerson extends Document {
   // _id: mongoose.Types.ObjectId;
   name: string;
@@ -41,6 +46,16 @@ export interface IAnswer extends Document {
   answer: string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface IAnswerSubmitData {
+  questionId: string;
+  answer: string;
+}
+
+export interface ISelectedResult {
+  person: IPerson;
+  answers: IAnswer[];
 }
 
 export interface ISocialLinks {

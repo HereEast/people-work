@@ -1,27 +1,38 @@
 "use client";
 
-import { usePerson } from "~/hooks/usePerson";
 import { PersonCard } from "../PersonCard";
-
-const MARGO = "margo-lazarenkova";
-const IVAN = "ivan-baranov";
+import { FormCard } from "./FormCard";
+import { PageContainer } from "./PageContainer";
+import { usePeople } from "~/hooks";
 
 export function Home() {
-  const { data: margo, isLoading: margoIsLoading } = usePerson(MARGO);
-  const { data: ivan, isLoading: ivanIsLoading } = usePerson(IVAN);
+  const { data: people, isLoading } = usePeople();
 
-  if (margoIsLoading || ivanIsLoading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <section className="flex items-center justify-center gap-8 sm:items-start">
-      {margo && ivan && (
-        <div className="flex gap-10">
-          <PersonCard person={margo} />
-          <PersonCard person={ivan} />
+    <PageContainer classes="max-w-7xl">
+      {people && (
+        <div className="space-y-20">
+          <div className="flex w-full justify-center gap-4">
+            {people?.map((person, index) => (
+              <PersonCard person={person} key={index} />
+            ))}
+
+            <FormCard />
+          </div>
+
+          <div>
+            <p className="text-center text-4xl font-medium">
+              This project is for anyone curious about the diverse paths people
+              take in their careers — students, aspiring professionals, or
+              anyone navigating their own career path.
+            </p>
+          </div>
         </div>
       )}
-    </section>
+    </PageContainer>
   );
 }

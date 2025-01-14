@@ -9,7 +9,7 @@ export async function GET() {
   try {
     await connectDB();
 
-    const people: IPerson[] = await Person.find().exec();
+    const people: IPerson[] = await Person.find({ isActive: true }).exec();
 
     return NextResponse.json(people);
   } catch (err) {

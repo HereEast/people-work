@@ -1,23 +1,14 @@
 import Link from "next/link";
 
 import { PAGE } from "~/utils/types";
+import { Logo } from "../icons/Logo";
 
 export function Header() {
   return (
-    <header className="flex w-full items-center justify-between p-4">
-      <div>
-        <h1 className="font-semibold tracking-tighter">
-          <Link href={PAGE.HOME}>people work</Link>
-        </h1>
-      </div>
-
-      {/* <nav>
-        <ul>
-          <li>
-            <Link href={PAGE.QUESTIONS}>questions</Link>
-          </li>
-        </ul>
-      </nav> */}
+    <header className="fixed flex w-full items-center justify-between bg-white p-4">
+      <Link href={PAGE.HOME}>
+        <Logo />
+      </Link>
 
       <div>hello 👋</div>
     </header>

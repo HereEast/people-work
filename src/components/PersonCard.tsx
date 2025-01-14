@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 
-import { ImageThumbnail } from "./ImageThumbnail";
 import { IPerson } from "~/utils/types";
 
 interface PersonCardProps {
@@ -8,43 +8,41 @@ interface PersonCardProps {
 }
 
 export function PersonCard({ person }: PersonCardProps) {
-  const companyURL = person?.companyURL?.startsWith("https")
-    ? person.companyURL
-    : `https://${person?.companyURL}`;
-
   return (
-    <div className="flex flex-col items-center space-y-2">
-      <ImageThumbnail
-        src={`/images/people/${person?.profileImageURL}` || ""}
-        alt={person?.name || ""}
-      />
+    <Link href={`/${person?.slug}`}>
+      <div className="flex w-full max-w-[320px] flex-col items-center gap-4 overflow-hidden rounded-[80px] bg-stone-950 p-5 pb-8 text-stone-50">
+        <Image
+          src={`/images/people/${person?.profileImageURL}` || ""}
+          alt={`Image of ${person?.name}` || ""}
+          width={400}
+          height={400}
+          className="rounded-[60px] object-cover"
+        />
 
-      <div className="mb-2">
-        <h4 className="hover:opacity-50">
-          <Link href={`/people/${person?.slug}`} className="space-y-[-10px]">
-            {person?.name.split(" ").map((item) => (
-              <span
-                className="leading-0 block text-center text-5xl font-bold tracking-tighter"
-                key={item}
-              >
-                {item}
-              </span>
-            ))}
-          </Link>
-        </h4>
-      </div>
+        <div className="w-[240px] space-y-3">
+          {/* Name */}
+          <h4 className="text-center text-4xl font-bold tracking-tighter">
+            <div className="flex flex-col items-center">
+              {person?.name.split(" ").map((item) => (
+                <span
+                  className="block text-center [&:not(:first-child)]:mt-[-8px]"
+                  key={item}
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </h4>
 
-      <div className="flex flex-col items-center space-y-[-5px]">
-        <a
-          href={companyURL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="leading-0 underline hover:no-underline hover:opacity-50"
-        >
-          {person?.company}
-        </a>
-        <p className="leading-0">{person?.jobTitle}</p>
+          {/* Company and Title */}
+          <div className="flex flex-col items-center space-y-0.5">
+            <div className="rounded-full bg-stone-50 px-2">
+              <span className="text-stone-950">{person?.company}</span>
+            </div>
+            <span className="leading-0">{person?.jobTitle}</span>
+          </div>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
