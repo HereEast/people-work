@@ -4,9 +4,9 @@ export function SharePersonForm() {
   return (
     <Card classes="p-10 h-full">
       <div className="mb-10">
-        <p className="text-center text-2xl font-bold leading-none text-stone-50">
+        <h5 className="text-center text-4xl font-bold leading-none text-stone-50 lg:text-3xl">
           Know anyone cool who does amazing work?
-        </p>
+        </h5>
       </div>
 
       <div className="flex w-full flex-col items-center space-y-1">

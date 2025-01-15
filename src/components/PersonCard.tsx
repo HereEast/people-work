@@ -13,11 +13,11 @@ interface PersonCardProps {
 export function PersonCard({ person }: PersonCardProps) {
   return (
     <Link href={`/${person?.slug}`}>
-      <Card classes="max-w-[320px] hover:shadow-brand-blue-600 hover:shadow-xl transition hover:scale-[101%]">
+      <Card classes="hover:shadow-brand-blue-600 hover:shadow-xl transition hover:scale-[101%] h-full">
         <div className="flex flex-col items-center gap-4 text-stone-50">
           <div className="relative">
             {/* Arrow */}
-            <div className="absolute right-5 top-5 hidden size-16 items-center justify-center rounded-full bg-brand-blue-600 group-hover:flex">
+            <div className="absolute right-5 top-5 z-0 hidden size-16 items-center justify-center rounded-full bg-brand-blue-600 group-hover:flex">
               <ArrowRightFull className="w-6 text-stone-50" />
             </div>
 

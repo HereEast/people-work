@@ -16,14 +16,14 @@ export function Home() {
     <PageContainer classes="max-w-7xl">
       {people && (
         <div className="flex flex-col items-center gap-20">
-          <div className="grid grid-cols-[2fr_1fr] gap-5">
-            <div className="grid grid-cols-[320px_320px] gap-5">
-              {people?.map((person, index) => (
-                <PersonCard person={person} key={index} />
-              ))}
-            </div>
+          <div className="grid justify-items-center gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {people?.map((person, index) => (
+              <div className="w-full xs:max-w-[320px]" key={index}>
+                <PersonCard person={person} />
+              </div>
+            ))}
 
-            <div className="col-span-1 w-full max-w-[320px]">
+            <div className="w-full max-w-[640px] sm:col-span-2 lg:col-span-1 lg:max-w-[320px]">
               <SharePersonForm />
             </div>
           </div>
