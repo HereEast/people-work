@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { ArrowRightFull, Logo } from "../icons";
+import { ButtonLink } from "../ui/ButtonLink";
 
 import { PAGE } from "~/utils/types";
 import { LINKEDIN } from "~/utils/constants";
@@ -15,14 +16,10 @@ export function Header() {
       <div className="flex gap-2 text-2xl font-bold">
         <span>follow:</span>
 
-        <Link
-          href={LINKEDIN}
-          target="_blank"
-          className="flex items-center rounded-full bg-stone-950 px-2 pl-3 text-stone-50 transition hover:shadow-lg hover:shadow-blue-600"
-        >
+        <ButtonLink to={LINKEDIN}>
           <span className="mr-2">linkedin</span>
-          <ArrowRightFull className="w-6 text-stone-50" />
-        </Link>
+          <ArrowRightFull className="w-4 text-stone-50" />
+        </ButtonLink>
       </div>
     </header>
   );

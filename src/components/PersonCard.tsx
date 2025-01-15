@@ -18,7 +18,7 @@ export function PersonCard({ person }: PersonCardProps) {
           <div className="relative">
             {/* Arrow */}
             <div className="absolute right-5 top-5 z-0 hidden size-16 items-center justify-center rounded-full bg-brand-blue-600 group-hover:flex">
-              <ArrowRightFull className="w-6 text-stone-50" />
+              <ArrowRightFull className="w-4 text-stone-50" />
             </div>
 
             <Image
