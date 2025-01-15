@@ -9,8 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        "brand-blue": {
+          DEFAULT: "#0044FF",
+          600: "#0044FF",
+        },
       },
       fontSize: {
         "4xl": ["38px", { lineHeight: "100%" }],

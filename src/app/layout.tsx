@@ -29,6 +29,16 @@ const InnovatorGrotesk = localFont({
       weight: "700",
       style: "normal",
     },
+    {
+      path: "../../public/fonts/innovator-grotesk-extrabold.woff2",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/innovator-grotesk-black.woff2",
+      weight: "900",
+      style: "normal",
+    },
   ],
 });
 
@@ -46,7 +56,7 @@ export default function Layout({ children }: LayoutProps) {
     <html lang="en" className={InnovatorGrotesk.className}>
       <body
         suppressHydrationWarning={true}
-        className="flex min-h-screen flex-col text-xl"
+        className="flex min-h-screen flex-col text-lg"
       >
         <ClientProvider>
           <Header />

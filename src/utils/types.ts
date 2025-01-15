@@ -63,3 +63,8 @@ export interface ISocialLinks {
   twitter?: string;
   instagram?: string;
 }
+
+// SVG Icons
+export interface IconProps {
+  className?: string;
+}
