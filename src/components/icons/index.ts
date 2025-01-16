@@ -1,3 +1,3 @@
 export * from "./ArrowRightFull";
-export * from "./Logo";
+export * from "./LogoIcon";
 export * from "./Rat";

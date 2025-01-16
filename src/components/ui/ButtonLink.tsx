@@ -1,10 +1,6 @@
 import { ReactNode } from "react";
 import Link from "next/link";
 
-import { ArrowRightFull } from "../icons";
-
-export type ButtonIconType = "arrow-right" | false;
-
 interface ButtonLinkProps {
   children: ReactNode;
   to: string;
