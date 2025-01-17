@@ -1,7 +1,7 @@
 "use client";
 
 import { PersonCard } from "../PersonCard";
-import { FormCard } from "./FormCard";
+import { SharePersonForm } from "../SharePersonForm";
 import { PageContainer } from "./PageContainer";
 import { usePeople } from "~/hooks";
 
@@ -15,13 +15,17 @@ export function Home() {
   return (
     <PageContainer classes="max-w-7xl">
       {people && (
-        <div className="space-y-20">
-          <div className="flex w-full justify-center gap-4">
+        <div className="flex flex-col items-center gap-20">
+          <div className="grid justify-items-center gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {people?.map((person, index) => (
-              <PersonCard person={person} key={index} />
+              <div className="w-full xs:max-w-[320px]" key={index}>
+                <PersonCard person={person} />
+              </div>
             ))}
 
-            <FormCard />
+            <div className="w-full max-w-[640px] sm:col-span-2 lg:col-span-1 lg:max-w-[320px]">
+              <SharePersonForm />
+            </div>
           </div>
 
           <div>

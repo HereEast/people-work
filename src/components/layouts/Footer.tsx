@@ -10,13 +10,13 @@ export function Footer() {
   }).format(date);
 
   return (
-    <footer className="w-full p-4 text-2xl">
+    <footer className="w-full p-4 text-2xl font-bold">
       <div className="w-full items-center sm:flex sm:justify-between">
-        <div className="text-right font-bold">
+        <div className="text-right">
           <span>{formatDate}</span>
         </div>
 
-        <div className="flex justify-end gap-2 font-bold">
+        <div className="flex justify-end gap-2">
           <div className="w-20">
             <RatRightPixelIcon />
           </div>
