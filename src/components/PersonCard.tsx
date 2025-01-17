@@ -47,11 +47,14 @@ export function PersonCard({ person }: PersonCardProps) {
 
             {/* Company and Title */}
             <div className="flex flex-col items-center space-y-0.5 text-lg">
-              <div className="rounded-full bg-stone-50 px-2 py-1 text-center">
+              <span className="block leading-none text-stone-50 underline decoration-1 underline-offset-2">
+                {person?.company}
+              </span>
+              {/* <div className="rounded-full bg-stone-50 px-2 py-1 text-center">
                 <span className="block leading-none text-stone-950">
                   {person?.company}
                 </span>
-              </div>
+              </div> */}
               <div className="text-center">
                 <span className="leading-0 block">{person?.jobTitle}</span>
               </div>

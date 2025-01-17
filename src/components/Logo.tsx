@@ -6,11 +6,9 @@ import { cn } from "~/utils/handlers";
 export function Logo() {
   return (
     <div className="group flex items-center gap-0.5 text-2xl font-bold text-stone-50">
-      <LogoBlock label="people" />
-      <LogoBlock label="-" classes="px-1.5" />
-      <LogoBlock label="work" />
-      <LogoBlock label=".co" />
-      <LogoBlock>
+      {/* <LogoBlock label="people" /> */}
+      {/* <LogoBlock label="-" classes="px-1.5" /> */}
+      <LogoBlock label="people—work.co">
         <RatRightPixelIcon className="w-16 text-stone-50" />
       </LogoBlock>
     </div>
@@ -28,12 +26,12 @@ export function LogoBlock({ label, children, classes = "" }: LogoBlockProps) {
   return (
     <div
       className={cn(
-        "h-8 overflow-hidden rounded-full bg-stone-950 px-2.5 transition group-hover:shadow-lg group-hover:shadow-blue-600",
+        "flex h-8 gap-1 overflow-hidden rounded-full bg-stone-950 px-2.5 transition group-hover:shadow-lg group-hover:shadow-blue-600",
         classes && classes,
       )}
     >
-      {label ? <span className="relative top-[-1.5px]">{label}</span> : null}
-      {children ? children : null}
+      {label && <span className="relative top-[-1.5px]">{label}</span>}
+      {children && <div className="flex items-center">{children}</div>}
     </div>
   );
 }
