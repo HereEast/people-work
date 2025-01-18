@@ -33,9 +33,19 @@ const config: Config = {
         "2xl": "40px",
         xxl: "30px",
         xl: "25px",
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      },
+      backgroundSize: {
+        "600%": "600%",
+      },
+      keyframes: {
+        anime: {
+          "0%": { "background-position": "0% 50%" },
+          "50%": { "background-position": "100% 50%" },
+          "100%": { "background-position": "0% 50%" },
+        },
+      },
+      animation: {
+        anime: "anime 5s linear infinite",
       },
     },
   },

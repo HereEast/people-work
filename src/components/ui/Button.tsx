@@ -8,6 +8,7 @@ interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   className?: string;
+  animate?: boolean;
 }
 
 const noop = (): void => {
@@ -20,11 +21,14 @@ export function Button({
   type = "button",
   disabled = false,
   className = "",
+  animate = false,
 }: ButtonProps) {
   return (
     <button
       className={cn(
-        "group/button relative flex h-14 w-full items-center justify-center rounded-full bg-white text-lg font-bold transition",
+        "group/button relative z-10 flex h-14 w-full animate-anime items-center justify-center rounded-full bg-white text-lg font-bold",
+        animate &&
+          "from-[#ffc814] via-[#ff185d] to-[#1e7fff] bg-[length:600%] filter transition hover:bg-gradient-to-r",
         className,
       )}
       onClick={onClick}

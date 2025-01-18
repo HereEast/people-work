@@ -11,7 +11,7 @@ export function ButtonLink({ children, to }: ButtonLinkProps) {
     <Link
       href={to}
       target="_blank"
-      className="flex items-center rounded-full bg-stone-950 px-3 text-stone-50 transition hover:shadow-lg hover:shadow-blue-600"
+      className="group/button-link flex items-center rounded-full bg-stone-950 px-3 text-stone-50 transition hover:shadow-lg hover:shadow-blue-600"
     >
       {children}
     </Link>

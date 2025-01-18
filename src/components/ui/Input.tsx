@@ -15,7 +15,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       <div className="relative w-full">
         <input
           className={cn(
-            "h-14 w-full rounded-full border border-stone-600 bg-stone-950 px-5 text-base font-light text-stone-50 outline-none placeholder:font-light placeholder:text-stone-600 focus:border-stone-50",
+            "h-12 w-full rounded-full border border-stone-600 bg-stone-950 px-4 text-base font-light text-stone-50 outline-none placeholder:text-base placeholder:font-light placeholder:text-stone-600 focus:border-stone-50",
             className,
           )}
           placeholder={placeholder}
