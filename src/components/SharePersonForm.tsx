@@ -1,25 +1,43 @@
+import { FormEvent } from "react";
+
 import { Card } from "./Card";
+import { Button } from "./ui/Button";
+import { Input } from "./ui/Input";
+import { useForm } from "react-hook-form";
 
 export function SharePersonForm() {
+  const { register } = useForm({
+    defaultValues: {
+      name: "",
+      link: "",
+    },
+  });
+
+  function handleForm(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    console.log(e.target);
+    console.log("Send!");
+  }
+
   return (
     <Card classes="p-10 h-full">
-      <div className="mb-10">
-        <h5 className="text-center text-4xl font-bold leading-none text-stone-50 lg:text-3xl">
-          Know anyone cool who does amazing work?
-        </h5>
-      </div>
+      <form onSubmit={(e) => handleForm(e)}>
+        <div className="mb-10">
+          <h5 className="text-center text-3xl font-bold leading-[100%] text-stone-50">
+            Know anyone cool who does amazing work?
+          </h5>
+        </div>
 
-      <div className="flex w-full flex-col items-center space-y-1">
-        <div className="flex h-16 w-full items-center rounded-full border border-stone-600 px-5 text-base font-light text-stone-50 opacity-50">
-          Name
+        <div className="flex w-full flex-col items-center space-y-5">
+          <div className="space-y-2">
+            <Input placeholder="Name" {...register("name")} />
+            <Input placeholder="Link" {...register("name")} />
+          </div>
+
+          <Button type="submit">send</Button>
         </div>
-        <div className="flex h-16 w-full items-center rounded-full border border-stone-600 px-5 text-base font-light text-stone-50 opacity-50">
-          Link
-        </div>
-        <div className="flex h-16 w-full items-center justify-center rounded-full bg-stone-50 font-black">
-          send
-        </div>
-      </div>
+      </form>
     </Card>
   );
 }
