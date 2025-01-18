@@ -31,6 +31,7 @@ const config: Config = {
         "5xl": "70px",
         "3xl": "50px",
         "2xl": "40px",
+        xxl: "30px",
         xl: "25px",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
