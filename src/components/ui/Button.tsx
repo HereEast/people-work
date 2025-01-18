@@ -24,7 +24,7 @@ export function Button({
   return (
     <button
       className={cn(
-        "relative flex h-14 w-full items-center justify-center rounded-full bg-white text-xl font-bold transition hover:shadow-xl hover:shadow-brand-blue-600",
+        "group/button relative flex h-14 w-full items-center justify-center rounded-full bg-white text-lg font-bold transition",
         className,
       )}
       onClick={onClick}

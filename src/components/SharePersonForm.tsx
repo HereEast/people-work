@@ -18,7 +18,6 @@ export function SharePersonForm() {
 
   function onSubmit(values: IFormInputs) {
     console.log(values);
-    console.log(errors);
     console.log("Send!");
   }
 
@@ -31,9 +30,11 @@ export function SharePersonForm() {
         </div>
 
         <Button type="submit">
-          <div className="flex items-center gap-2">
-            <span>share the name</span>
-            <ArrowRightFull className="w-4 text-stone-950" />
+          <div className="flex items-center gap-1.5">
+            <span className="transition group-hover/button:-translate-x-0.5">
+              share the name
+            </span>
+            <ArrowRightFull className="w-4 text-stone-950 transition group-hover/button:translate-x-0.5" />
           </div>
         </Button>
       </div>

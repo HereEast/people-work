@@ -23,7 +23,7 @@ export function PersonCard({ person, isLink = true }: PersonCardProps) {
       {isLink && (
         <Link href={`/${person?.slug}`}>
           {/* Arrow */}
-          <div className="absolute right-10 top-10 z-10 hidden size-16 items-center justify-center rounded-full bg-brand-blue-600 group-hover:flex">
+          <div className="absolute right-10 top-10 z-10 hidden size-16 items-center justify-center rounded-full bg-brand-blue-600 group-hover/card:flex">
             <ArrowRightFull className="w-4 text-stone-50" />
           </div>
 

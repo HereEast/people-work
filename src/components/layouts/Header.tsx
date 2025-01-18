@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { ArrowRightFull } from "../icons";
 import { ButtonLink } from "../ui/ButtonLink";
 import { Logo } from "../Logo";
+import { ArrowTopRightSquare } from "../icons";
 
 import { PAGE } from "~/utils/types";
 import { LINKEDIN } from "~/utils/constants";
@@ -21,7 +21,7 @@ export function Header() {
 
         <ButtonLink to={LINKEDIN}>
           <span className="mr-2">linkedin</span>
-          <ArrowRightFull className="w-4 text-stone-50" />
+          <ArrowTopRightSquare className="mt-0.5 w-2.5 text-stone-50" />
         </ButtonLink>
       </div>
     </header>
