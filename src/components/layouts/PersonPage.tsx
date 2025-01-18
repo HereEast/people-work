@@ -1,9 +1,9 @@
 "use client";
 
-import { ParsedParagraph } from "~/components";
-
+import { ParsedParagraph } from "../ParsedParagraph";
 import { PersonCard } from "../PersonCard";
-import { PersonPageLayout } from "./PersonPageLayout";
+import { SidePanel } from "../SidePanel";
+import { PageContainer } from "./PageContainer";
 
 import { useAnswers } from "~/hooks";
 
@@ -19,7 +19,7 @@ export function PersonPage({ slug }: PersonProps) {
   }
 
   return (
-    <PersonPageLayout>
+    <PageContainer classes="flex gap-10 relative">
       <div className="grid grid-cols-[320px_1fr] gap-10">
         {data && !isLoading && (
           <div className="sticky top-10 w-[320px]">
@@ -40,7 +40,9 @@ export function PersonPage({ slug }: PersonProps) {
           })}
         </div>
       </div>
-    </PersonPageLayout>
+
+      <SidePanel />
+    </PageContainer>
   );
 }
 

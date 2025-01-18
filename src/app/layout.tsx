@@ -4,7 +4,8 @@ import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-import { Footer, Header } from "~/components/layouts";
+import { Header } from "~/components/layouts/Header";
+import { Footer } from "~/components/layouts/Footer";
 import { ClientProvider } from "~/providers";
 
 const InnovatorGrotesk = localFont({
@@ -60,7 +61,7 @@ export default function Layout({ children }: LayoutProps) {
       >
         <ClientProvider>
           <Header />
-          <main className="mt-16 flex-grow">{children}</main>
+          <main className="mx-auto mt-16 flex-grow">{children}</main>
           <Footer />
         </ClientProvider>
       </body>

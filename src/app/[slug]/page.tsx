@@ -1,4 +1,4 @@
-import { PersonPage } from "~/components/layouts";
+import { PersonPage } from "~/components/layouts/PersonPage";
 
 interface PersonPageProps {
   params: {

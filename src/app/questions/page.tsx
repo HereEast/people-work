@@ -2,11 +2,11 @@
 
 import { FormEvent, useState } from "react";
 
-import { AnswerField, QuestionsList } from "~/components";
-import { PageContainer } from "~/components/layouts";
+import { PageContainer } from "~/components/layouts/PageContainer";
 
-import { useQuestions } from "~/hooks";
 import { submitAnswers } from "~/api-client/answers";
+import { useQuestions } from "~/hooks";
+import { IQuestion } from "~/utils/types";
 
 export default function QuestionsPage() {
   const { data: questions, isLoading } = useQuestions();
@@ -62,8 +62,31 @@ export default function QuestionsPage() {
           </button>
         </form>
       )}
-
-      <QuestionsList />
     </PageContainer>
+  );
+}
+
+// Answer Field
+interface AnswerFormProps {
+  question: IQuestion;
+}
+
+export function AnswerField({ question }: AnswerFormProps) {
+  return (
+    <div className="flex w-full flex-col gap-2">
+      <label
+        htmlFor={String(question._id)}
+        className="font-medium tracking-tight"
+      >
+        {`${question.order}. ${question.body}`}
+      </label>
+
+      <textarea
+        id={String(question._id)}
+        name={String(question._id)}
+        rows={6}
+        className="border border-stone-700 px-5 py-4 text-base outline-none focus:border-stone-400"
+      />
+    </div>
   );
 }
