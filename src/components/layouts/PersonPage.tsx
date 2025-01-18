@@ -53,7 +53,7 @@ interface AnswersProps {
 
 export function Answer({ children }: AnswersProps) {
   return (
-    <div className="text-2xl leading-tight">
+    <div className="answer text-2xl leading-tight">
       <ParsedParagraph>{children}</ParsedParagraph>
     </div>
   );

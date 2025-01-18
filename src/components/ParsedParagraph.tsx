@@ -14,13 +14,17 @@ export function ParsedParagraph({ children }: ParsedParagraphProps) {
   const sanitizedHTML = DOMPurify.sanitize(parsedAnswer);
 
   useEffect(() => {
-    const links = document.querySelectorAll("a");
+    const answersElements = document.querySelectorAll(".answer");
 
-    links.forEach((link) => {
-      link.setAttribute("target", "_blank");
-      link.setAttribute("rel", "noopener noreferrer");
+    Array.from(answersElements).forEach((element) => {
+      const links = element.querySelectorAll("a");
+
+      links.forEach((link) => {
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+      });
     });
-  }, [children]);
+  }, [sanitizedHTML]);
 
   return (
     <p

@@ -19,7 +19,7 @@ export function SidePanel() {
           className="w-20 overflow-hidden rounded-xl transition hover:scale-[101%] hover:shadow-lg hover:shadow-brand-blue-600"
           key={index}
         >
-          <Link href={`/${person.slug}`} target="_self">
+          <Link href={`/${person.slug}`}>
             <Image
               src={`/images/people/${person?.profileImageURL}` || ""}
               alt={`Image of ${person?.name}` || ""}
