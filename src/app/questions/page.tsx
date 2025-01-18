@@ -6,7 +6,6 @@ import { PageContainer } from "~/components/layouts/PageContainer";
 
 import { submitAnswers } from "~/api-client/answers";
 import { useQuestions } from "~/hooks";
-import { IQuestion } from "~/utils/types";
 
 export default function QuestionsPage() {
   const { data: questions, isLoading } = useQuestions();
@@ -54,7 +53,21 @@ export default function QuestionsPage() {
       {questions && questions.length > 0 && (
         <form onSubmit={handleSubmit} className="mb-20 space-y-10">
           {questions.map((question, index) => (
-            <AnswerField question={question} key={index} />
+            <div className="flex w-full flex-col gap-2" key={index}>
+              <label
+                htmlFor={String(question._id)}
+                className="font-medium tracking-tight"
+              >
+                {`${question.order}. ${question.body}`}
+              </label>
+
+              <textarea
+                id={String(question._id)}
+                name={String(question._id)}
+                rows={6}
+                className="border border-stone-700 px-5 py-4 text-base outline-none focus:border-stone-400"
+              />
+            </div>
           ))}
 
           <button type="submit" className="w-40 bg-black p-4 text-stone-50">
@@ -63,30 +76,5 @@ export default function QuestionsPage() {
         </form>
       )}
     </PageContainer>
-  );
-}
-
-// Answer Field
-interface AnswerFormProps {
-  question: IQuestion;
-}
-
-export function AnswerField({ question }: AnswerFormProps) {
-  return (
-    <div className="flex w-full flex-col gap-2">
-      <label
-        htmlFor={String(question._id)}
-        className="font-medium tracking-tight"
-      >
-        {`${question.order}. ${question.body}`}
-      </label>
-
-      <textarea
-        id={String(question._id)}
-        name={String(question._id)}
-        rows={6}
-        className="border border-stone-700 px-5 py-4 text-base outline-none focus:border-stone-400"
-      />
-    </div>
   );
 }

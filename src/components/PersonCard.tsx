@@ -39,13 +39,14 @@ export function PersonCard({ person, isLink = true }: PersonCardProps) {
 export function PersonIntro({ person }: PersonCardProps) {
   return (
     <div className="flex flex-col items-center gap-4 text-stone-50">
-      <div>
+      <div className="overflow-hidden rounded-3xl">
         <Image
           src={`/images/people/${person?.profileImageURL}` || ""}
           alt={`Image of ${person?.name}` || ""}
           width={400}
           height={400}
-          className="rounded-3xl object-cover"
+          className="object-cover"
+          priority
         />
       </div>
 
