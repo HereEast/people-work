@@ -1,5 +1,5 @@
-export * from "./Home";
+export * from "./HomePage";
 export * from "./Header";
 export * from "./Footer";
-export * from "./Person";
+export * from "./PersonPage";
 export * from "./PageContainer";

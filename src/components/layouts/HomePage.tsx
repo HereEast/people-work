@@ -3,9 +3,10 @@
 import { PersonCard } from "../PersonCard";
 import { SharePersonForm } from "../SharePersonForm";
 import { PageContainer } from "./PageContainer";
+
 import { usePeople } from "~/hooks";
 
-export function Home() {
+export function HomePage() {
   const { data: people, isLoading } = usePeople();
 
   if (isLoading) {
@@ -13,7 +14,7 @@ export function Home() {
   }
 
   return (
-    <PageContainer classes="max-w-7xl">
+    <PageContainer>
       {people && (
         <div className="flex flex-col items-center gap-20">
           <div className="grid justify-items-center gap-5 sm:grid-cols-2 lg:grid-cols-3">

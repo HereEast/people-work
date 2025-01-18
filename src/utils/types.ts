@@ -13,7 +13,6 @@ export interface IResult {
 }
 
 export interface IPerson extends Document {
-  // _id: mongoose.Types.ObjectId;
   name: string;
   email: string;
   company: string;
@@ -30,7 +29,6 @@ export interface IPerson extends Document {
 }
 
 export interface IQuestion extends Document {
-  // _id: mongoose.Types.ObjectId;
   body: string;
   description: string;
   order: number;
@@ -38,9 +36,8 @@ export interface IQuestion extends Document {
 }
 
 export interface IAnswer extends Document {
-  // _id: mongoose.Types.ObjectId;
-  personId: mongoose.Types.ObjectId | IPerson;
-  questionId: mongoose.Types.ObjectId | IQuestion;
+  personId: mongoose.Types.ObjectId;
+  questionId: IQuestion;
   name: string;
   question: string;
   answer: string;

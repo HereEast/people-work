@@ -9,8 +9,8 @@ interface PageContainerProps {
 
 export function PageContainer({ children, classes = "" }: PageContainerProps) {
   return (
-    <section className={cn("mx-auto max-w-6xl px-4 py-10", classes)}>
+    <div className={cn("mx-auto max-w-7xl px-4 py-10", classes)}>
       {children}
-    </section>
+    </div>
   );
 }

@@ -7,7 +7,7 @@ body {
   box-sizing: border-box;
 }
 
-.answer a {
+/* .answer a {
   text-decoration: underline;
 }
 
@@ -26,4 +26,4 @@ body {
   :root {
     --radius: 0.5rem;
   }
-}
+} */
