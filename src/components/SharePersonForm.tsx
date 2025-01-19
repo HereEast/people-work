@@ -4,6 +4,8 @@ import { ArrowRightFull } from "./icons";
 import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
 
+import { createName } from "~/api-client/names";
+
 interface IFormInputs {
   name: string;
   link: string;
@@ -16,9 +18,9 @@ export function SharePersonForm() {
     formState: { errors },
   } = useForm<IFormInputs>();
 
-  function onSubmit(values: IFormInputs) {
-    console.log(values);
-    console.log("Send!");
+  async function onSubmit(values: IFormInputs) {
+    const result = await createName({ name: values.name, link: values.link });
+    console.log("Shared!", result);
   }
 
   return (
@@ -29,12 +31,12 @@ export function SharePersonForm() {
           <Input placeholder="Link" {...register("link", { required: true })} />
         </div>
 
-        <Button type="submit" animate={true} className="h-20">
+        <Button type="submit" animate={true} className="h-[70px]">
           <div className="flex items-center gap-1.5">
-            <span className="transition group-hover/button:-translate-x-0.5 group-hover/button:text-white">
+            <span className="group-hover/button:text-white">
               share the name
             </span>
-            <ArrowRightFull className="w-4 text-stone-950 transition group-hover/button:translate-x-0.5 group-hover/button:text-white" />
+            <ArrowRightFull className="w-4 text-stone-950 group-hover/button:text-white" />
           </div>
         </Button>
       </div>
