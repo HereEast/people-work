@@ -13,6 +13,13 @@ const config: Config = {
         xs: "420px",
         "2xl": "1400px",
       },
+      maxWidth: {
+        card: "340px",
+      },
+      gridTemplateColumns: {
+        "cards-3": "repeat(3, minmax(0, 320px))",
+        "cards-2": "repeat(2, minmax(0, 320px))",
+      },
       colors: {
         "brand-blue": {
           "600": "#0047FF",
@@ -36,6 +43,10 @@ const config: Config = {
       },
       backgroundSize: {
         "600%": "600%",
+      },
+      backgroundImage: {
+        "animate-gradient":
+          "linear-gradient(to right, #ffc814, #ff185d, #1e7fff)",
       },
       keyframes: {
         anime: {

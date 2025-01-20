@@ -13,14 +13,14 @@ export function Footer() {
     <footer className="w-full p-4 text-2xl font-bold">
       <div className="w-full items-center sm:flex sm:justify-between">
         <div className="text-right">
-          <span>{formatDate}</span>
+          <span className="leading-none">{formatDate}</span>
         </div>
 
         <div className="flex justify-end gap-2">
           <div className="w-20">
             <RatRightPixelIcon />
           </div>
-          <span>this website in a wip</span>
+          <span className="leading-none">this website in a wip</span>
         </div>
       </div>
     </footer>

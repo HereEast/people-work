@@ -11,16 +11,25 @@ interface IFormInputs {
   link: string;
 }
 
-export function SharePersonForm() {
+interface SharePersonFormProps {
+  setName: (name: string) => void;
+}
+
+export function SharePersonForm({ setName }: SharePersonFormProps) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { isSubmitting, isSubmitted },
   } = useForm<IFormInputs>();
 
   async function onSubmit(values: IFormInputs) {
-    const result = await createName({ name: values.name, link: values.link });
-    console.log("Shared!", result);
+    const result = await createName(values);
+
+    if (isSubmitted && result) {
+      setName(result?.name);
+      reset();
+    }
   }
 
   return (
@@ -31,7 +40,12 @@ export function SharePersonForm() {
           <Input placeholder="Link" {...register("link", { required: true })} />
         </div>
 
-        <Button type="submit" animate={true} className="h-[70px]">
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          isAnimated={true}
+          className="h-[70px]"
+        >
           <div className="flex items-center gap-1.5">
             <span className="group-hover/button:text-white">
               share the name

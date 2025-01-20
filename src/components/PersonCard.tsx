@@ -17,7 +17,7 @@ export function PersonCard({ person, isLink = true }: PersonCardProps) {
     <Card
       classes={cn(
         isLink &&
-          "hover:shadow-brand-blue-600 relative max-w-[400px] transition hover:scale-[101%] hover:shadow-xl",
+          "hover:shadow-brand-blue-600 relative transition hover:scale-[101%] hover:shadow-xl",
       )}
     >
       {isLink && (
@@ -30,6 +30,7 @@ export function PersonCard({ person, isLink = true }: PersonCardProps) {
           <PersonIntro person={person} />
         </Link>
       )}
+
       {!isLink && <PersonIntro person={person} />}
     </Card>
   );
@@ -38,44 +39,62 @@ export function PersonCard({ person, isLink = true }: PersonCardProps) {
 // Intro
 export function PersonIntro({ person }: PersonCardProps) {
   return (
-    <div className="flex flex-col items-center gap-4 text-stone-50">
+    <div className="flex flex-col items-center gap-5 p-5 pb-8 text-stone-50">
       <div className="overflow-hidden rounded-3xl">
         <Image
           src={`/images/people/${person?.profileImageURL}` || ""}
           alt={`Image of ${person?.name}` || ""}
-          width={400}
-          height={400}
+          width={800}
+          height={800}
           className="object-cover"
           priority
         />
       </div>
 
-      <div className="w-[240px] space-y-4">
-        {/* Name */}
-        <h4 className="text-center text-4xl font-extrabold tracking-tighter">
-          <div className="flex flex-col items-center">
-            {person?.name.split(" ").map((item) => (
-              <span
-                className="block text-center [&:not(:first-child)]:mt-[-8px]"
-                key={item}
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        </h4>
+      <div className="space-y-4">
+        <Name>{person?.name}</Name>
+        <Job company={person.company} title={person.jobTitle} />
+      </div>
+    </div>
+  );
+}
 
-        {/* Company and Title */}
-        <div className="flex flex-col items-center space-y-0.5 text-lg">
-          <div className="rounded-full bg-stone-50 px-2 py-1 text-center">
-            <span className="block leading-none text-stone-950">
-              {person?.company}
-            </span>
-          </div>
-          <div className="text-center">
-            <span className="leading-0 block">{person?.jobTitle}</span>
-          </div>
-        </div>
+// Name
+interface NameProps {
+  children: string;
+}
+
+function Name({ children }: NameProps) {
+  return (
+    <h4 className="text-center text-4xl font-extrabold tracking-tighter">
+      <div className="flex flex-col items-center">
+        {children.split(" ").map((item) => (
+          <span
+            className="block text-center [&:not(:first-child)]:mt-[-8px]"
+            key={item}
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </h4>
+  );
+}
+
+// Job
+interface JobProps {
+  company: string;
+  title: string;
+}
+
+function Job({ company, title }: JobProps) {
+  return (
+    <div className="flex flex-col items-center space-y-2 text-lg">
+      <div className="rounded-full bg-stone-50 px-2 py-1 text-center">
+        <span className="block leading-none text-stone-950">{company}</span>
+      </div>
+      <div className="text-center leading-tight">
+        <p className="block">{title}</p>
       </div>
     </div>
   );

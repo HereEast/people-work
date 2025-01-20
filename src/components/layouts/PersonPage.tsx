@@ -1,7 +1,9 @@
 "use client";
 
+import { Loader } from "../Loader";
 import { ParsedParagraph } from "../ParsedParagraph";
 import { PersonCard } from "../PersonCard";
+import { SharePersonCard } from "../SharePersonCard";
 import { SidePanel } from "../SidePanel";
 import { PageContainer } from "./PageContainer";
 
@@ -14,34 +16,49 @@ interface PersonProps {
 export function PersonPage({ slug }: PersonProps) {
   const { data, isLoading } = useAnswers(slug);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <PageContainer classes="flex gap-10 relative">
-      <div className="grid grid-cols-[320px_1fr] gap-10">
-        {data && !isLoading && (
-          <div className="sticky top-10 w-[320px]">
-            <PersonCard person={data.person} isLink={false} />
-          </div>
-        )}
+    <PageContainer classes="min-h-screen max-w-full">
+      {isLoading && <Loader />}
 
-        <div className="flex flex-col gap-2 rounded-5xl bg-stone-100 p-10 text-xl">
-          {data?.answers?.map((item, index) => {
-            const question = item.questionId;
-
-            return (
-              <div key={index} className="space-y-4 rounded-2xl bg-white p-8">
-                <Question>{question.body}</Question>
-                <Answer>{item.answer}</Answer>
+      {!isLoading && (
+        <div className="flex justify-between gap-4">
+          <div className="relative flex max-w-7xl gap-10">
+            {data && (
+              <div className="relative">
+                <div className="sticky top-16 w-[340px]">
+                  <PersonCard person={data.person} isLink={false} />
+                </div>
               </div>
-            );
-          })}
-        </div>
-      </div>
+            )}
 
-      <SidePanel />
+            <div className="space-y-10">
+              <div className="flex flex-col gap-2 rounded-5xl bg-stone-100 p-10 text-xl">
+                {data?.answers?.map((item, index) => {
+                  const question = item.questionId;
+
+                  return (
+                    <div
+                      key={index}
+                      className="space-y-4 rounded-2xl bg-white p-8"
+                    >
+                      <Question>{question.body}</Question>
+                      <Answer>{item.answer}</Answer>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <SharePersonCard />
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="sticky top-16">
+              <SidePanel />
+            </div>
+          </div>
+        </div>
+      )}
     </PageContainer>
   );
 }
