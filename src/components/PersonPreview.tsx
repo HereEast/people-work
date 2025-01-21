@@ -1,42 +1,32 @@
-import Link from "next/link";
 import Image from "next/image";
 
 import { Card } from "./Card";
-import { ArrowRightFull } from "./icons";
-
 import { IPerson } from "~/utils/types";
 
 interface PersonCardProps {
   person: IPerson;
 }
 
-export function PersonCard({ person }: PersonCardProps) {
+export function PersonPreview({ person }: PersonCardProps) {
   return (
-    <Card classes="hover:shadow-brand-blue-600 transition hover:scale-[101%] hover:shadow-xl relative">
-      <Link href={`/${person?.slug}`}>
-        {/* Arrow */}
-        <div className="absolute right-10 top-10 z-10 flex size-16 items-center justify-center rounded-full bg-brand-blue-600">
-          <ArrowRightFull className="w-4 text-stone-50" />
+    <Card>
+      <div className="flex flex-col items-center gap-5 p-5 pb-8 text-stone-50">
+        <div className="overflow-hidden rounded-3xl">
+          <Image
+            src={`/images/people/${person?.profileImageURL}` || ""}
+            alt={`Image of ${person?.name}` || ""}
+            width={800}
+            height={800}
+            className="object-cover"
+            priority
+          />
         </div>
 
-        <div className="flex flex-col items-center gap-5 p-5 pb-8 text-stone-50">
-          <div className="overflow-hidden rounded-3xl">
-            <Image
-              src={`/images/people/${person?.profileImageURL}` || ""}
-              alt={`Image of ${person?.name}` || ""}
-              width={800}
-              height={800}
-              className="object-cover"
-              priority
-            />
-          </div>
-
-          <div className="space-y-4">
-            <Name>{person?.name}</Name>
-            <Job company={person.company.name} title={person.jobTitle} />
-          </div>
+        <div className="space-y-4">
+          <Name>{person?.name}</Name>
+          <Job company={person.company.name} title={person.jobTitle} />
         </div>
-      </Link>
+      </div>
     </Card>
   );
 }

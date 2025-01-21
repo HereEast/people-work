@@ -61,7 +61,7 @@ export default function Layout({ children }: LayoutProps) {
       >
         <ClientProvider>
           <Header />
-          <main className="mt-16 flex-grow">{children}</main>
+          <main className="mt-16 grow">{children}</main>
           <Footer />
         </ClientProvider>
       </body>

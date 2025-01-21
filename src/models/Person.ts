@@ -11,12 +11,19 @@ const SocialLinksSchema = new Schema(
   { _id: false },
 );
 
+const CompanySchema = new Schema(
+  {
+    name: { type: String, required: true },
+    url: { type: String },
+  },
+  { _id: false },
+);
+
 const PersonSchema = new Schema(
   {
     name: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
-    company: { type: String, required: true },
-    companyURL: { type: String },
+    company: { type: CompanySchema },
     jobTitle: { type: String, required: true },
     country: { type: String, required: true },
     profileImageURL: { type: String },

@@ -1,19 +1,20 @@
 "use client";
 
+import { IPerson, IResult } from "~/utils/types";
 import { Loader } from "../Loader";
 import { ParsedParagraph } from "../ParsedParagraph";
-import { PersonCard } from "../PersonCard";
 import { SharePersonCard } from "../SharePersonCard";
 import { SidePanel } from "../SidePanel";
+import { PersonPreview } from "../PersonPreview";
 import { PageContainer } from "./PageContainer";
 
 import { useAnswers } from "~/hooks";
 
-interface PersonProps {
+interface QAPageProps {
   slug: string;
 }
 
-export function PersonPage({ slug }: PersonProps) {
+export function QAPage({ slug }: QAPageProps) {
   const { data, isLoading } = useAnswers(slug);
 
   return (
@@ -26,33 +27,18 @@ export function PersonPage({ slug }: PersonProps) {
             {data && (
               <div className="relative">
                 <div className="sticky top-16 w-[340px]">
-                  <PersonCard person={data.person} isLink={false} />
+                  <PersonPreview person={data.person} />
                 </div>
               </div>
             )}
 
             <div className="space-y-10">
-              <div className="flex flex-col gap-2 rounded-5xl bg-stone-100 p-10 text-xl">
-                {data?.answers?.map((item, index) => {
-                  const question = item.questionId;
-
-                  return (
-                    <div
-                      key={index}
-                      className="space-y-4 rounded-2xl bg-white p-8"
-                    >
-                      <Question>{question.body}</Question>
-                      <Answer>{item.answer}</Answer>
-                    </div>
-                  );
-                })}
-              </div>
-
+              {data && <Content data={data} />}
               <SharePersonCard />
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative hidden md:block">
             <div className="sticky top-16">
               <SidePanel />
             </div>
@@ -63,15 +49,54 @@ export function PersonPage({ slug }: PersonProps) {
   );
 }
 
+// Content
+interface ContentProps {
+  data: IResult;
+}
+
+function Content({ data }: ContentProps) {
+  return (
+    <div className="flex flex-col gap-2 rounded-5xl bg-stone-100 p-10 text-xl">
+      {data?.answers?.map((item, index) => {
+        const question = item.questionId;
+
+        return (
+          <div key={index} className="space-y-4 rounded-2xl bg-white p-8">
+            <Question>{question.body}</Question>
+            <Answer question={question.order} person={data.person}>
+              {item.answer}
+            </Answer>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 // Answer
 interface AnswersProps {
   children: string;
+  question: number;
+  person: IPerson;
 }
 
-export function Answer({ children }: AnswersProps) {
+export function Answer({ children, question, person }: AnswersProps) {
   return (
     <div className="answer text-2xl leading-tight">
-      <ParsedParagraph>{children}</ParsedParagraph>
+      {question === 2 ? (
+        <p>
+          {person.jobTitle} @{" "}
+          <a
+            href={person.company.url}
+            target="_blank"
+            className="underline hover:no-underline hover:opacity-50"
+          >
+            {person.company.name}
+          </a>
+        </p>
+      ) : (
+        <ParsedParagraph>{children}</ParsedParagraph>
+      )}
     </div>
   );
 }

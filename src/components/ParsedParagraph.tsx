@@ -22,14 +22,14 @@ export function ParsedParagraph({ children }: ParsedParagraphProps) {
       links.forEach((link) => {
         link.setAttribute("target", "_blank");
         link.setAttribute("rel", "noopener noreferrer");
+        link.classList.add(
+          "underline",
+          "hover:no-underline",
+          "hover:opacity-50",
+        );
       });
     });
   }, [sanitizedHTML]);
 
-  return (
-    <p
-      className="[&>a]:underline [&>a]:hover:no-underline [&>a]:hover:opacity-75"
-      dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
-    />
-  );
+  return <p dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />;
 }

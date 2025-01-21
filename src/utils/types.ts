@@ -12,11 +12,15 @@ export interface IResult {
   person: IPerson;
 }
 
+export interface ICompany {
+  name: string;
+  url: string;
+}
+
 export interface IPerson extends Document {
   name: string;
   email: string;
-  company: string;
-  companyURL: string;
+  company: ICompany;
   jobTitle: string;
   country: string;
   profileImageURL?: string;
