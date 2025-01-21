@@ -34,7 +34,7 @@ export function SharePersonForm({ setName }: SharePersonFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
-      <div className="flex w-full flex-col items-center space-y-2">
+      <div className="flex w-full flex-col items-center space-y-4">
         <div className="w-full space-y-2">
           <Input placeholder="Name" {...register("name", { required: true })} />
           <Input placeholder="Link" {...register("link", { required: true })} />

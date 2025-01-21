@@ -24,7 +24,7 @@ export function HomePage() {
             ))}
 
             <div className="max-w-[700px] sm:col-span-2 lg:col-span-1 lg:max-w-card">
-              <SharePersonCard className="h-full" />
+              <SharePersonCard className="h-full pt-8" />
             </div>
           </div>
 

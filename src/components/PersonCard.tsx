@@ -17,13 +17,16 @@ export function PersonCard({ person, isLink = true }: PersonCardProps) {
     <Card
       classes={cn(
         isLink &&
-          "hover:shadow-brand-blue-600 relative transition hover:scale-[101%] hover:shadow-xl",
+          "hover:shadow-brand-blue-600 transition hover:scale-[101%] hover:shadow-xl relative",
       )}
     >
       {isLink && (
         <Link href={`/${person?.slug}`}>
           {/* Arrow */}
-          <div className="absolute right-10 top-10 z-10 hidden size-16 items-center justify-center rounded-full bg-brand-blue-600 group-hover/card:flex">
+          {/* <div className="absolute right-10 top-10 z-10 hidden size-16 items-center justify-center rounded-full bg-brand-blue-600 group-hover/card:flex">
+            <ArrowRightFull className="w-4 text-stone-50" />
+          </div> */}
+          <div className="absolute right-10 top-10 z-10 flex size-16 items-center justify-center rounded-full bg-brand-blue-600">
             <ArrowRightFull className="w-4 text-stone-50" />
           </div>
 
