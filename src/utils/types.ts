@@ -36,7 +36,7 @@ export interface IQuestion extends Document {
   body: string;
   description: string;
   order: number;
-  isActive: boolean;
+  active: boolean;
 }
 
 export interface IAnswer extends Document {
