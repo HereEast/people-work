@@ -41,7 +41,7 @@ export default function QuestionsPage() {
   }
 
   return (
-    <PageContainer classes="bg-stone-200 px-20">
+    <PageContainer className="bg-stone-200 px-20">
       {isLoading && <div>Loading...</div>}
 
       {error && (
