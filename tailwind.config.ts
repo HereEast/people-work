@@ -49,6 +49,9 @@ const config: Config = {
         "animate-gradient":
           "linear-gradient(to right, #ffc814, #ff185d, #1e7fff)",
       },
+      // boxShadow: {
+      //   header: "0 1px 4px rgba(0,0,0,0.4)",
+      // },
       keyframes: {
         anime: {
           "0%": { "background-position": "0% 50%" },

@@ -9,7 +9,7 @@ import { LINKEDIN } from "~/utils/constants";
 
 export function Header() {
   return (
-    <header className="fixed z-50 flex w-full items-center justify-between gap-1 bg-white p-4">
+    <header className="fixed z-50 flex w-full items-center justify-between gap-1 bg-white p-2 sm:p-4">
       <div className="w-full sm:w-fit">
         <Link href={PAGE.HOME}>
           <Logo />

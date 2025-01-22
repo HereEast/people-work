@@ -1,4 +1,4 @@
-import { IPerson, IResult } from "~/utils/types";
+import { IResult } from "~/utils/types";
 import { ParsedParagraph } from "./ParsedParagraph";
 
 // Content
@@ -8,19 +8,23 @@ interface ContentProps {
 
 export function Content({ data }: ContentProps) {
   return (
-    <div className="flex flex-col gap-2 rounded-4xl bg-stone-100 p-3 text-xl md:rounded-5xl md:p-10">
-      {data?.answers?.map((item, index) => {
-        const question = item.questionId;
+    <div className="space-y-12 rounded-4xl bg-stone-100 p-3 pb-6 text-xl sm:p-10 md:rounded-5xl">
+      <div className="flex flex-col gap-2">
+        {data?.answers?.map((item, index) => {
+          const question = item.questionId;
 
-        return (
-          <div key={index} className="space-y-4 rounded-3xl bg-white p-8">
-            <Question>{question.body}</Question>
-            <Answer question={question.order} person={data.person}>
-              {item.answer}
-            </Answer>
-          </div>
-        );
-      })}
+          return (
+            <div key={index} className="space-y-6 rounded-3xl bg-white p-8">
+              <Question>{question.body}</Question>
+              <Answer>{item.answer}</Answer>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="rounded-full bg-stone-950 p-6 text-center text-stone-50">
+        Share
+      </div>
     </div>
   );
 }
@@ -28,27 +32,12 @@ export function Content({ data }: ContentProps) {
 // Answer
 interface AnswersProps {
   children: string;
-  question: number;
-  person: IPerson;
 }
 
-function Answer({ children, question, person }: AnswersProps) {
+function Answer({ children }: AnswersProps) {
   return (
-    <div className="answer leading-tight md:text-2xl">
-      {question === 2 ? (
-        <p>
-          {person.jobTitle} @{" "}
-          <a
-            href={person.company.url}
-            target="_blank"
-            className="underline hover:no-underline hover:opacity-50"
-          >
-            {person.company.name}
-          </a>
-        </p>
-      ) : (
-        <ParsedParagraph>{children}</ParsedParagraph>
-      )}
+    <div className="answer text-lg leading-tight sm:text-xl lg:text-2xl">
+      <ParsedParagraph>{children}</ParsedParagraph>
     </div>
   );
 }
