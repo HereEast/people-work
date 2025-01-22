@@ -12,7 +12,7 @@ interface PersonCardProps {
 
 export function PersonCard({ person }: PersonCardProps) {
   return (
-    <Card classes="hover:shadow-brand-blue-600 transition hover:scale-[101%] hover:shadow-xl relative">
+    <Card className="relative transition hover:scale-[101%] hover:shadow-xl hover:shadow-brand-blue-600">
       <Link href={`/${person?.slug}`}>
         {/* Arrow */}
         <div className="absolute right-10 top-10 z-10 flex size-16 items-center justify-center rounded-full bg-brand-blue-600">

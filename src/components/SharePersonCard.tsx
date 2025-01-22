@@ -13,7 +13,7 @@ export function SharePersonCard({ className = "" }: SharePersonCardProps) {
   const [name, setName] = useState("");
 
   return (
-    <Card classes={cn("p-10", className)}>
+    <Card className={cn("p-10", className)}>
       <div id="share" className="mb-10 grow space-y-8">
         <h5 className="text-center text-4xl font-bold leading-[100%] text-stone-50">
           Know anyone cool 🦍 who does amazing work✨?
