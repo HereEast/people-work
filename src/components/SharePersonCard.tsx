@@ -14,7 +14,7 @@ export function SharePersonCard({ className = "" }: SharePersonCardProps) {
 
   return (
     <Card classes={cn("p-10", className)}>
-      <div className="mb-10 flex-grow space-y-8">
+      <div id="share" className="mb-10 grow space-y-8">
         <h5 className="text-center text-4xl font-bold leading-[100%] text-stone-50">
           Know anyone cool 🦍 who does amazing work✨?
         </h5>

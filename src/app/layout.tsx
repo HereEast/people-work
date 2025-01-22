@@ -54,7 +54,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <html lang="en" className={InnovatorGrotesk.className}>
+    <html lang="en" className={`${InnovatorGrotesk.className} scroll-smooth`}>
       <body
         suppressHydrationWarning={true}
         className="flex min-h-screen flex-col text-lg"

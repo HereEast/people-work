@@ -40,12 +40,9 @@ export function SidePanel() {
 function AddButton() {
   return (
     <div className="flex size-20 items-center justify-center overflow-hidden rounded-xl bg-slate-950 text-slate-50 transition hover:scale-[101%] hover:shadow-lg hover:shadow-brand-blue-600">
-      <button
-        className="size-full"
-        onClick={() => console.log("Scroll to the Form")}
-      >
+      <a href="#share" className="flex size-full items-center justify-center">
         +
-      </button>
+      </a>
     </div>
   );
 }

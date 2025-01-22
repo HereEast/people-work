@@ -36,6 +36,7 @@ const config: Config = {
       },
       borderRadius: {
         "5xl": "70px",
+        "4xl": "60px",
         "3xl": "50px",
         "2xl": "40px",
         xxl: "30px",
@@ -61,6 +62,7 @@ const config: Config = {
     },
   },
   plugins: [],
+  safelist: ["scroll-smooth"],
 };
 
 export default config;

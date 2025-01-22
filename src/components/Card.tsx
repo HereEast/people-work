@@ -4,15 +4,15 @@ import { cn } from "~/utils/handlers";
 
 interface CardProps {
   children: ReactNode;
-  classes?: string;
+  className?: string;
 }
 
-export function Card({ children, classes = "" }: CardProps) {
+export function Card({ children, className = "" }: CardProps) {
   return (
     <div
       className={cn(
-        "group/card flex w-full flex-col overflow-hidden rounded-5xl bg-stone-950",
-        classes,
+        "group/card relative flex max-w-full flex-col overflow-hidden rounded-5xl bg-stone-950",
+        className,
       )}
     >
       {children}

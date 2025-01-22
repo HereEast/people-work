@@ -12,7 +12,7 @@ export function HomePage() {
   const { data: people, isLoading } = usePeople();
 
   return (
-    <PageContainer classes="mx-auto space-y-16">
+    <PageContainer className="mx-auto space-y-16">
       {isLoading && <Loader />}
       {!isLoading && people && <MainCards people={people} />}
 

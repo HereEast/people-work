@@ -8,12 +8,12 @@ interface ContentProps {
 
 export function Content({ data }: ContentProps) {
   return (
-    <div className="flex flex-col gap-2 rounded-5xl bg-stone-100 p-10 text-xl">
+    <div className="flex flex-col gap-2 rounded-4xl bg-stone-100 p-3 text-xl md:rounded-5xl md:p-10">
       {data?.answers?.map((item, index) => {
         const question = item.questionId;
 
         return (
-          <div key={index} className="space-y-4 rounded-2xl bg-white p-8">
+          <div key={index} className="space-y-4 rounded-3xl bg-white p-8">
             <Question>{question.body}</Question>
             <Answer question={question.order} person={data.person}>
               {item.answer}
@@ -34,7 +34,7 @@ interface AnswersProps {
 
 function Answer({ children, question, person }: AnswersProps) {
   return (
-    <div className="answer text-2xl leading-tight">
+    <div className="answer leading-tight md:text-2xl">
       {question === 2 ? (
         <p>
           {person.jobTitle} @{" "}

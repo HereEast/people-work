@@ -4,11 +4,16 @@ import { cn } from "~/utils/handlers";
 
 interface PageContainerProps {
   children: ReactNode;
-  classes?: string;
+  className?: string;
 }
 
-export function PageContainer({ children, classes = "" }: PageContainerProps) {
+export function PageContainer({
+  children,
+  className = "",
+}: PageContainerProps) {
   return (
-    <div className={cn("max-w-7xl px-4 pb-20 pt-10", classes)}>{children}</div>
+    <div className={cn("relative max-w-7xl px-4 pb-20 pt-10", className)}>
+      {children}
+    </div>
   );
 }
