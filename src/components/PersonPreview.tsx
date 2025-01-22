@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { Card } from "./Card";
 import { ICompany, IPerson } from "~/utils/types";
+import { Label } from "./Label";
 
 interface PersonCardProps {
   person: IPerson;
@@ -9,8 +9,10 @@ interface PersonCardProps {
 
 export function PersonPreview({ person }: PersonCardProps) {
   return (
-    <Card className="rounded-4xl md:rounded-5xl">
-      <div className="flex w-full items-center gap-3 p-5 md:flex-col">
+    <div className="relative rounded-4xl bg-stone-950 md:rounded-5xl">
+      <StickyLabel />
+
+      <div className="flex w-full items-center gap-3 p-4 md:flex-col">
         <div className="size-[68px] shrink-0 overflow-hidden rounded-3xl md:size-full">
           <Image
             src={`/images/people/${person?.profileImageURL}` || ""}
@@ -27,33 +29,18 @@ export function PersonPreview({ person }: PersonCardProps) {
           <Job company={person.company} title={person.jobTitle} />
         </div>
       </div>
-    </Card>
+    </div>
   );
 }
 
-// export function PersonPreview({ person }: PersonCardProps) {
-//   return (
-//     <Card className="sticky -top-8 rounded-4xl lg:w-[340px]">
-//       <div className="p-5">
-//         <div className="mx-auto mb-2 size-[60px] overflow-hidden rounded-3xl">
-//           <Image
-//             src={`/images/people/${person?.profileImageURL}` || ""}
-//             alt={`Image of ${person?.name}` || ""}
-//             width={800}
-//             height={800}
-//             className="object-cover"
-//             priority
-//           />
-//         </div>
-
-//         <div className="mx-auto space-y-3 overflow-hidden text-stone-50">
-//           <Name>{person?.name}</Name>
-//           <Job company={person.company} title={person.jobTitle} />
-//         </div>
-//       </div>
-//     </Card>
-//   );
-// }
+// Sticky Label
+function StickyLabel() {
+  return (
+    <div className="absolute right-14 top-[-15px] z-20 md:right-10 md:top-8">
+      <Label>👋 Hey!</Label>
+    </div>
+  );
+}
 
 // Name
 interface NameProps {
@@ -95,27 +82,3 @@ function Job({ company, title }: JobProps) {
     </div>
   );
 }
-
-// export function PersonPreview({ person }: PersonCardProps) {
-//   return (
-//     <Card>
-//       <div className="flex gap-3 p-5 pb-8 text-stone-50 md:flex-col md:items-center md:gap-5">
-//         <div className="size-[68px] overflow-hidden rounded-3xl">
-//           <Image
-//             src={`/images/people/${person?.profileImageURL}` || ""}
-//             alt={`Image of ${person?.name}` || ""}
-//             width={800}
-//             height={800}
-//             className="object-cover"
-//             priority
-//           />
-//         </div>
-
-//         <div className="space-y-4">
-//           <Name>{person?.name}</Name>
-//           <Job company={person.company.name} title={person.jobTitle} />
-//         </div>
-//       </div>
-//     </Card>
-//   );
-// }

@@ -10,7 +10,7 @@ export function Footer() {
   }).format(date);
 
   return (
-    <footer className="w-full p-4 text-2xl font-bold">
+    <footer className="w-full p-4 text-2xl font-bold md:pb-0">
       <div className="w-full items-center sm:flex sm:justify-between">
         <div className="text-right">
           <span className="leading-none">{formatDate}</span>

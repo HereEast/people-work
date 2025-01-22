@@ -5,10 +5,11 @@ import { SharePersonCard } from "../SharePersonCard";
 import { SidePanel } from "../SidePanel";
 import { PersonPreview } from "../PersonPreview";
 import { PageContainer } from "./PageContainer";
-
-import { useAnswers } from "~/hooks";
 import { Content } from "../Content";
 import { Label } from "../Label";
+
+import { useAnswers } from "~/hooks";
+import { ReactNode } from "react";
 
 interface QAPageProps {
   slug: string;
@@ -24,31 +25,27 @@ export function QAPage({ slug }: QAPageProps) {
       <div>
         {!isLoading && data && (
           <section className="max-w-7xl">
-            <div className="grid grid-cols-1 gap-4 pb-24 md:grid-cols-[340px_auto]">
-              <div className="sticky top-12 mb-2 rounded-b-4xl bg-white pt-4 sm:top-16 md:static md:pt-0">
-                <div className="relative md:sticky md:top-16">
-                  {/* Hey Label */}
-                  <div className="absolute right-16 top-[-15px] z-20 md:right-10 md:top-8">
-                    <Label>👋 Hey!</Label>
-                  </div>
-
-                  <PersonPreview person={data.person} />
-                </div>
-              </div>
+            <div className="grid gap-4 pb-24 md:grid-cols-[340px_auto] md:pb-16">
+              <StickyPersonPreview>
+                <PersonPreview person={data.person} />
+              </StickyPersonPreview>
 
               <div className="space-y-16">
                 <Content data={data} />
-                <SharePersonCard />
+
+                {/* Desktop */}
+                <div className="hidden md:block">
+                  <SharePersonCard />
+                </div>
               </div>
             </div>
           </section>
         )}
 
-        {/* <section className="grid grid-cols-1 gap-4 md:grid-cols-[340px_auto]">
-          <div className="col-start-2">
-            <SharePersonCard />
-          </div>
-        </section> */}
+        {/* Mobile */}
+        <section className="mb-10 md:hidden">
+          <SharePersonCard />
+        </section>
       </div>
 
       <aside className="relative hidden lg:block">
@@ -60,10 +57,15 @@ export function QAPage({ slug }: QAPageProps) {
   );
 }
 
-{
-  /* <div className="relative hidden lg:block">
-        <div className="sticky top-16">
-          <SidePanel />
-        </div>
-      </div> */
+// Sticky Person Preview
+interface StickyPersonPreviewProps {
+  children: ReactNode;
+}
+
+function StickyPersonPreview({ children }: StickyPersonPreviewProps) {
+  return (
+    <div className="sticky top-12 rounded-b-4xl bg-white pt-4 sm:top-16 md:static md:rounded-4xl md:pt-0">
+      <div className="md:sticky md:top-16">{children}</div>
+    </div>
+  );
 }

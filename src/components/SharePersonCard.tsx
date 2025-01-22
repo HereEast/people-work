@@ -13,7 +13,7 @@ export function SharePersonCard({ className = "" }: SharePersonCardProps) {
   const [name, setName] = useState("");
 
   return (
-    <Card className={cn("p-10", className)}>
+    <Card className={cn("min-h-[420px] p-10", className)}>
       <div id="share" className="mb-10 grow space-y-8">
         <h5 className="text-center text-4xl font-bold leading-[100%] text-stone-50">
           Know anyone cool 🦍 who does amazing work✨?
@@ -22,8 +22,8 @@ export function SharePersonCard({ className = "" }: SharePersonCardProps) {
         {name && (
           <div>
             <p className="bg-animate-gradient bg-clip-text text-center text-base leading-tight text-transparent">
-              <span className="inline-block">Thaaaanks!!!</span>
-              <span className="inline-block">You shared {name}</span>
+              <span className="block">Thaaaanks!!!</span>
+              <span className="block">{`You've shared ${name}`}</span>
             </p>
           </div>
         )}
