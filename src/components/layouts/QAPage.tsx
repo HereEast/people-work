@@ -1,7 +1,7 @@
 "use client";
 
 import { Loader } from "../Loader";
-import { SharePersonCard } from "../ShareForm";
+import { ShareForm } from "../ShareForm";
 import { SidePanel } from "../SidePanel";
 import { PersonPreview } from "../PersonPreview";
 import { PageContainer } from "./PageContainer";
@@ -34,18 +34,18 @@ export function QAPage({ slug }: QAPageProps) {
                 <Content data={data} />
 
                 {/* Desktop */}
-                <div className="hidden md:block">
-                  <SharePersonCard />
-                </div>
+                {/* <div className="hidden md:block">
+                  <ShareForm />
+                </div> */}
               </div>
             </div>
           </section>
         )}
 
         {/* Mobile */}
-        <section className="mb-10 md:hidden">
-          <SharePersonCard />
-        </section>
+        {/* <section className="mb-10 md:hidden">
+          <ShareForm />
+        </section> */}
       </div>
 
       <aside className="relative hidden lg:block">
