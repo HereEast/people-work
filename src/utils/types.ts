@@ -7,21 +7,25 @@ export enum PAGE {
   QUESTIONS = "/questions",
 }
 
+// API
+
 export interface IResult {
   answers: IAnswer[];
   person: IPerson;
 }
 
+export interface ICompany {
+  name: string;
+  url: string;
+}
+
 export interface IPerson extends Document {
-  // _id: mongoose.Types.ObjectId;
   name: string;
   email: string;
-  company: string;
-  companyURL: string;
+  company: ICompany;
   jobTitle: string;
   country: string;
-  profileImageURL?: string;
-  socialLinks: ISocialLinks;
+  links: ILinks;
   keyWords?: string[];
   slug: string;
   isActive: boolean;
@@ -30,17 +34,15 @@ export interface IPerson extends Document {
 }
 
 export interface IQuestion extends Document {
-  // _id: mongoose.Types.ObjectId;
   body: string;
   description: string;
   order: number;
-  isActive: boolean;
+  active: boolean;
 }
 
 export interface IAnswer extends Document {
-  // _id: mongoose.Types.ObjectId;
-  personId: mongoose.Types.ObjectId | IPerson;
-  questionId: mongoose.Types.ObjectId | IQuestion;
+  personId: mongoose.Types.ObjectId;
+  questionId: IQuestion;
   name: string;
   question: string;
   answer: string;
@@ -58,8 +60,8 @@ export interface ISelectedResult {
   answers: IAnswer[];
 }
 
-export interface ISocialLinks {
-  linkedIn?: string;
+export interface ILinks {
+  linkedin?: string;
   twitter?: string;
   instagram?: string;
 }

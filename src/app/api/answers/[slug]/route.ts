@@ -25,12 +25,11 @@ export async function GET(req: Request, { params }: ReqParams) {
 
     const answers: IAnswer[] = await Answer.find({ personId: person._id })
       .populate("questionId")
-      .populate("personId")
       .exec();
 
     const activeAnswers = answers.filter((answer) => {
       const question = answer.questionId as IQuestion;
-      return question.isActive === true;
+      return question.active === true;
     });
 
     const sortedAnswers = activeAnswers.sort((a, b) => {

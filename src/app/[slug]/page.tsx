@@ -1,4 +1,4 @@
-import { Person } from "~/components/layouts";
+import { QAPage } from "~/components/layouts/QAPage";
 
 interface PersonPageProps {
   params: {
@@ -6,6 +6,6 @@ interface PersonPageProps {
   };
 }
 
-export default function PersonPage({ params }: PersonPageProps) {
-  return <Person slug={params.slug} />;
+export default function Person({ params }: PersonPageProps) {
+  return <QAPage slug={params.slug} />;
 }

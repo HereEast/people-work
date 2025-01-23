@@ -4,7 +4,8 @@ import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-import { Footer, Header } from "~/components/layouts";
+import { Header } from "~/components/layouts/Header";
+import { Footer } from "~/components/layouts/Footer";
 import { ClientProvider } from "~/providers";
 
 const InnovatorGrotesk = localFont({
@@ -53,14 +54,14 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <html lang="en" className={InnovatorGrotesk.className}>
+    <html lang="en" className={`${InnovatorGrotesk.className} scroll-smooth`}>
       <body
         suppressHydrationWarning={true}
         className="flex min-h-screen flex-col text-lg"
       >
         <ClientProvider>
           <Header />
-          <main className="mt-16 flex-grow">{children}</main>
+          <main className="mt-12 grow sm:mt-16">{children}</main>
           <Footer />
         </ClientProvider>
       </body>

@@ -1,5 +1,5 @@
-import { Home } from "~/components/layouts";
+import { HomePage } from "~/components/layouts/HomePage";
 
-export default function HomePage() {
-  return <Home />;
+export default function Home() {
+  return <HomePage />;
 }

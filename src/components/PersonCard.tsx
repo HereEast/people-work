@@ -4,7 +4,9 @@ import Image from "next/image";
 import { Card } from "./Card";
 import { ArrowRightFull } from "./icons";
 
-import { IPerson } from "~/utils/types";
+import { ICompany, IPerson } from "~/utils/types";
+import { cn } from "~/utils/handlers";
+import { PersonImage } from "./PersonImage";
 
 interface PersonCardProps {
   person: IPerson;
@@ -12,56 +14,69 @@ interface PersonCardProps {
 
 export function PersonCard({ person }: PersonCardProps) {
   return (
-    <Link href={`/${person?.slug}`}>
-      <Card classes="hover:shadow-brand-blue-600 hover:shadow-xl transition hover:scale-[101%] h-full">
-        <div className="flex flex-col items-center gap-4 text-stone-50">
-          <div className="relative">
-            {/* Arrow */}
-            <div className="absolute right-5 top-5 z-0 hidden size-16 items-center justify-center rounded-full bg-brand-blue-600 group-hover:flex">
-              <ArrowRightFull className="w-4 text-stone-50" />
-            </div>
+    <Card className="h-full transition hover:scale-[101%] hover:shadow-xl hover:shadow-brand-blue-600">
+      <Link href={`/${person?.slug}`}>
+        {/* Arrow */}
+        <div className="absolute right-10 top-10 z-10 flex size-16 items-center justify-center rounded-full bg-brand-blue-600">
+          <ArrowRightFull className="w-4 text-stone-50" />
+        </div>
 
-            <Image
-              src={`/images/people/${person?.profileImageURL}` || ""}
-              alt={`Image of ${person?.name}` || ""}
-              width={400}
-              height={400}
-              className="rounded-[60px] object-cover"
-            />
+        <div className="flex flex-col items-center gap-5 p-5 pb-8 text-stone-50">
+          <div className="overflow-hidden rounded-4xl">
+            <PersonImage person={person} />
           </div>
 
-          <div className="w-[240px] space-y-3">
-            {/* Name */}
-            <h4 className="text-center text-4xl font-extrabold tracking-tighter">
-              <div className="flex flex-col items-center">
-                {person?.name.split(" ").map((item) => (
-                  <span
-                    className="block text-center [&:not(:first-child)]:mt-[-8px]"
-                    key={item}
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </h4>
-
-            {/* Company and Title */}
-            <div className="flex flex-col items-center space-y-0.5 text-lg">
-              <span className="block leading-none text-stone-50 underline decoration-1 underline-offset-2">
-                {person?.company}
-              </span>
-              {/* <div className="rounded-full bg-stone-50 px-2 py-1 text-center">
-                <span className="block leading-none text-stone-950">
-                  {person?.company}
-                </span>
-              </div> */}
-              <div className="text-center">
-                <span className="leading-0 block">{person?.jobTitle}</span>
-              </div>
-            </div>
+          <div className="w-full space-y-4">
+            <Name>{person?.name}</Name>
+            <Job company={person.company} title={person.jobTitle} />
           </div>
         </div>
-      </Card>
-    </Link>
+      </Link>
+    </Card>
+  );
+}
+
+// Name
+interface NameProps {
+  children: string;
+  className?: string;
+}
+
+export function Name({ children, className = "" }: NameProps) {
+  return (
+    <div className="w-full overflow-hidden">
+      {children.split(" ").map((item) => (
+        <h4
+          className={cn(
+            "truncate text-center text-4xl font-extrabold tracking-tighter [&:not(:first-child)]:mt-[-8px]",
+            className,
+          )}
+          key={item}
+        >
+          {item}
+        </h4>
+      ))}
+    </div>
+  );
+}
+
+// Job
+interface JobProps {
+  company: ICompany;
+  title: string;
+}
+
+export function Job({ company, title }: JobProps) {
+  return (
+    <div className="flex flex-col items-center space-y-2 text-lg">
+      <div className="rounded-full bg-stone-50 px-2.5 py-1 text-center">
+        <span className="block leading-none tracking-tight text-stone-950">
+          {company.name}
+        </span>
+      </div>
+      <div className="text-center leading-tight">
+        <p className="block">{title}</p>
+      </div>
+    </div>
   );
 }
