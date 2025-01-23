@@ -1,7 +1,7 @@
 import { useParams } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 
+import { PersonImage } from "./PersonImage";
 import { usePeople } from "~/hooks";
 
 // Side Panel
@@ -20,13 +20,7 @@ export function SidePanel() {
           key={index}
         >
           <Link href={`/${person.slug}`}>
-            <Image
-              src={`/images/people/${person?.profileImageURL}` || ""}
-              alt={`Image of ${person?.name}` || ""}
-              width={400}
-              height={400}
-              className="object-cover"
-            />
+            <PersonImage person={person} />
           </Link>
         </div>
       ))}

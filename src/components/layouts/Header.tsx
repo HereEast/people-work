@@ -20,8 +20,10 @@ export function Header() {
         <span className="hidden sm:inline-block">follow:</span>
 
         <ButtonLink to={LINKEDIN}>
-          <span className="mr-2">li</span>
-          <ArrowTopRightSquare className="mt-0.5 w-2.5 text-stone-50" />
+          <div className="flex gap-2 px-3">
+            <span>li</span>
+            <ArrowTopRightSquare className="mt-0.5 w-2.5 text-stone-50" />
+          </div>
         </ButtonLink>
       </div>
     </header>

@@ -28,7 +28,7 @@ export function Button({
       className={cn(
         "group/button relative z-10 flex h-14 w-full animate-anime items-center justify-center rounded-full bg-white text-lg font-bold",
         isAnimated &&
-          "from-[#ffc814] via-[#ff185d] to-[#1e7fff] bg-[length:600%] filter transition hover:bg-gradient-to-r",
+          "bg-gradient-to-r from-[#ffc814] via-[#ff185d] to-[#1e7fff] bg-[length:600%] filter transition",
         className,
       )}
       onClick={onClick}

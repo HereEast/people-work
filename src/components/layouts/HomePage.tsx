@@ -2,21 +2,25 @@
 
 import { Loader } from "../Loader";
 import { PersonCard } from "../PersonCard";
-import { SharePersonCard } from "../SharePersonCard";
+import { ShareForm } from "../ShareForm";
 import { PageContainer } from "./PageContainer";
+import { Backlog } from "../Backlog";
 
-import { usePeople } from "~/hooks";
 import { IPerson } from "~/utils/types";
+import { usePeople } from "~/hooks";
 
 export function HomePage() {
   const { data: people, isLoading } = usePeople();
 
   return (
-    <PageContainer className="mx-auto space-y-16">
+    <PageContainer className="mx-auto py-10 pb-16">
       {isLoading && <Loader />}
+
       {!isLoading && people && <MainCards people={people} />}
 
       <About />
+      <Form />
+      <Backlog />
     </PageContainer>
   );
 }
@@ -28,17 +32,13 @@ interface MainCardsProps {
 
 function MainCards({ people }: MainCardsProps) {
   return (
-    <section>
-      <div className="mx-auto grid size-fit gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <section className="mb-20">
+      <div className="grid grid-cols-main place-content-center gap-4">
         {people?.map((person, index) => (
-          <div className="sm:max-w-card" key={index}>
+          <div key={index}>
             <PersonCard person={person} />
           </div>
         ))}
-
-        <div className="max-w-[700px] sm:col-span-2 lg:col-span-1 lg:max-w-card">
-          <SharePersonCard className="h-full pt-8" />
-        </div>
       </div>
     </section>
   );
@@ -47,12 +47,42 @@ function MainCards({ people }: MainCardsProps) {
 // About
 function About() {
   return (
-    <section>
-      <p className="text-center text-4xl font-medium">
-        This project is for anyone curious about the diverse paths people take
-        in their careers — students, aspiring professionals, or anyone
-        navigating their own career path.
-      </p>
+    <section id="about" className="mb-20">
+      <div className="mb-12">
+        <p className="text-center text-4xl font-medium">
+          This project is for anyone curious about the diverse paths people take
+          in their careers — students, aspiring professionals, or anyone
+          navigating their own career path.
+        </p>
+      </div>
+
+      <div className="space-y-4">
+        <div className="flex justify-center gap-4">
+          <div className="size-16 rounded-xl bg-stone-400" />
+          <div className="size-16 rounded-xl bg-stone-400" />
+          <div className="size-16 rounded-xl bg-stone-400" />
+          <div className="size-16 rounded-xl bg-stone-400" />
+          <div className="size-16 rounded-xl bg-stone-400" />
+          <div className="size-16 rounded-xl bg-stone-400" />
+        </div>
+
+        <div>
+          <p className="text-center">More awesome people are coming!</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Form
+function Form() {
+  return (
+    <section className="mb-10 flex justify-center">
+      <ShareForm className="min-h-[420px] max-w-4xl">
+        <h5 className="text-center text-5xl font-bold leading-[95%] tracking-header text-stone-50">
+          Know anyone cool 🦍 who does amazing work✨?
+        </h5>
+      </ShareForm>
     </section>
   );
 }

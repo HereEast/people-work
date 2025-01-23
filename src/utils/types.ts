@@ -7,6 +7,8 @@ export enum PAGE {
   QUESTIONS = "/questions",
 }
 
+// API
+
 export interface IResult {
   answers: IAnswer[];
   person: IPerson;
@@ -23,8 +25,7 @@ export interface IPerson extends Document {
   company: ICompany;
   jobTitle: string;
   country: string;
-  profileImageURL?: string;
-  socialLinks: ISocialLinks;
+  links: ILinks;
   keyWords?: string[];
   slug: string;
   isActive: boolean;
@@ -59,8 +60,8 @@ export interface ISelectedResult {
   answers: IAnswer[];
 }
 
-export interface ISocialLinks {
-  linkedIn?: string;
+export interface ILinks {
+  linkedin?: string;
   twitter?: string;
   instagram?: string;
 }

@@ -11,13 +11,18 @@ const config: Config = {
     extend: {
       screens: {
         xs: "420px",
+        xl: "1280px",
         "2xl": "1400px",
       },
       maxWidth: {
-        card: "340px",
+        // card: "340px",
+        "8xl": "1440px",
+      },
+      minWidth: {
+        // card: "280px",
       },
       gridTemplateColumns: {
-        "cards-3": "repeat(3, minmax(0, 320px))",
+        main: "repeat(4, minmax(0, 300px))",
         "cards-2": "repeat(2, minmax(0, 320px))",
       },
       colors: {
@@ -34,7 +39,11 @@ const config: Config = {
           },
         ],
       },
+      letterSpacing: {
+        header: "-0.02em",
+      },
       borderRadius: {
+        "6xl": "80px",
         "5xl": "70px",
         "4xl": "60px",
         "3xl": "50px",

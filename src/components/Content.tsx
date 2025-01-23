@@ -8,7 +8,7 @@ interface ContentProps {
 
 export function Content({ data }: ContentProps) {
   return (
-    <div className="space-y-12 rounded-4xl bg-stone-100 p-4 text-xl sm:p-10 md:rounded-5xl">
+    <div className="space-y-12 rounded-4xl bg-stone-100 p-4 text-xl sm:p-10 md:rounded-6xl">
       <div className="flex flex-col gap-2">
         {data?.answers?.map((item, index) => {
           const question = item.questionId;

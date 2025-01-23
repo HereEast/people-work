@@ -11,7 +11,7 @@ export function Card({ children, className = "" }: CardProps) {
   return (
     <div
       className={cn(
-        "group/card relative flex max-w-full flex-col overflow-hidden rounded-5xl bg-stone-950",
+        "relative flex max-w-full flex-col overflow-hidden rounded-6xl bg-stone-950",
         className,
       )}
     >

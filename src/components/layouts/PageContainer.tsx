@@ -12,7 +12,7 @@ export function PageContainer({
   className = "",
 }: PageContainerProps) {
   return (
-    <div className={cn("relative max-w-7xl px-2 sm:px-4", className)}>
+    <div className={cn("relative max-w-8xl px-2 sm:px-4", className)}>
       {children}
     </div>
   );
