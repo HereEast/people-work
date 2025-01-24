@@ -6,7 +6,6 @@ import { ShareFormCard } from "../ShareForm";
 import { PageContainer } from "./PageContainer";
 import { Backlog } from "../Backlog";
 
-import { IPerson } from "~/utils/types";
 import { usePeople } from "~/hooks";
 import { IconTile } from "../IconTile";
 import { cn } from "~/utils/handlers";
@@ -17,10 +16,18 @@ export function HomePage() {
   return (
     <PageContainer className="mx-auto py-10 pb-16">
       {isLoading && <Loader />}
-      {/* 
-      {!isLoading && people && <MainCards people={people} />}
 
-      <About /> */}
+      {!isLoading && people && (
+        <section className="mb-16">
+          <div className="grid grid-cols-main place-content-center gap-4">
+            {people?.map((person, index) => (
+              <div key={index}>
+                <PersonCard person={person} />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section id="about" className="mb-20">
         <About />
@@ -36,25 +43,6 @@ export function HomePage() {
         <Backlog />
       </section>
     </PageContainer>
-  );
-}
-
-// Main Cards
-interface MainCardsProps {
-  people: IPerson[];
-}
-
-function MainCards({ people }: MainCardsProps) {
-  return (
-    <section className="mb-16">
-      <div className="grid grid-cols-main place-content-center gap-4">
-        {people?.map((person, index) => (
-          <div key={index}>
-            <PersonCard person={person} />
-          </div>
-        ))}
-      </div>
-    </section>
   );
 }
 
