@@ -2,13 +2,14 @@
 
 import { Loader } from "../Loader";
 import { PersonCard } from "../PersonCard";
-import { ShareForm } from "../ShareForm";
+import { ShareFormCard } from "../ShareForm";
 import { PageContainer } from "./PageContainer";
 import { Backlog } from "../Backlog";
-import { SmileIconSolid } from "../icons";
 
 import { IPerson } from "~/utils/types";
 import { usePeople } from "~/hooks";
+import { IconTile } from "../IconTile";
+import { cn } from "~/utils/handlers";
 
 export function HomePage() {
   const { data: people, isLoading } = usePeople();
@@ -16,12 +17,24 @@ export function HomePage() {
   return (
     <PageContainer className="mx-auto py-10 pb-16">
       {isLoading && <Loader />}
-
+      {/* 
       {!isLoading && people && <MainCards people={people} />}
 
-      <About />
-      <Form />
-      <Backlog />
+      <About /> */}
+
+      <section id="about" className="mb-20">
+        <About />
+      </section>
+
+      <section className="mb-10 flex justify-center">
+        <div className="max-w-4xl">
+          <ShareFormCard />
+        </div>
+      </section>
+
+      <section className="flex justify-center">
+        <Backlog />
+      </section>
     </PageContainer>
   );
 }
@@ -50,20 +63,30 @@ function About() {
   const array = new Array(6).fill(0);
 
   return (
-    <section id="about" className="mb-20">
-      <div className="mb-16">
-        <p className="text-center text-4xl font-medium">
-          This project is for anyone curious about the diverse paths people take
-          in their careers — students, aspiring professionals, or anyone
-          navigating their own career path.
+    <div className="space-y-16">
+      <div className="space-y-6">
+        <p
+          className="text-center text-3xl font-medium sm:text-4xl"
+          style={{
+            lineHeight: "110%",
+          }}
+        >
+          This project is for anyone curious about the different paths people
+          take in their careers. It demystifies job titles, shares daily
+          routines, highlights and aspirations in a{" "}
+          <span className="text-gradient bg-[length:200%]">
+            simple Q&A format.
+          </span>
         </p>
       </div>
 
       {/* Icons */}
       <div className="space-y-6">
-        <div className="flex justify-center gap-3">
+        <div className="flex flex-wrap justify-center gap-3">
           {array.map((_, index) => (
-            <SmileIconTile key={index} />
+            <div className={cn(index > 3 && "hidden sm:block")} key={index}>
+              <IconTile />
+            </div>
           ))}
         </div>
 
@@ -73,31 +96,6 @@ function About() {
           </p>
         </div>
       </div>
-    </section>
-  );
-}
-
-// Smile Icon
-function SmileIconTile() {
-  return (
-    <div className="hover:bg-animate-gradient-sm group/icon relative flex size-16 shrink-0 items-center justify-center rounded-xl bg-stone-950 transition hover:-translate-y-1">
-      <div className="absolute -top-10 flex h-8 w-6 items-center justify-center rounded-full bg-stone-200 text-base font-semibold opacity-0 group-hover/icon:opacity-100">
-        ?
-      </div>
-      <SmileIconSolid className="w-8 fill-stone-50" />
     </div>
-  );
-}
-
-// Form
-function Form() {
-  return (
-    <section className="mb-10 flex justify-center">
-      <ShareForm className="min-h-[420px] max-w-4xl">
-        <h5 className="text-center text-5xl font-bold leading-[95%] tracking-header text-stone-50">
-          Know anyone cool 🦍 who does amazing work✨?
-        </h5>
-      </ShareForm>
-    </section>
   );
 }

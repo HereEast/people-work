@@ -54,8 +54,9 @@ const config: Config = {
         "600%": "600%",
       },
       backgroundImage: {
-        "animate-gradient":
-          "linear-gradient(to right, #ffc814, #ff185d, #1e7fff)",
+        "gradient-base": "linear-gradient(to right, #ffc814, #ff185d, #1e7fff)",
+        "gradient-base-diagonal":
+          "linear-gradient(to right bottom, #ffc814, #ff185d, #1e7fff)",
       },
       keyframes: {
         anime: {
@@ -65,7 +66,8 @@ const config: Config = {
         },
       },
       animation: {
-        anime: "anime 5s linear infinite",
+        anime: "anime 8s linear infinite",
+        "anime-sm": "anime 5s linear infinite",
       },
     },
   },

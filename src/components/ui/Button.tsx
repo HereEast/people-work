@@ -27,12 +27,12 @@ export function Button({
     <button
       className={cn(
         "group/button relative z-10 flex h-14 w-full items-center justify-center rounded-full bg-white text-lg font-bold",
-        isAnimated && "bg-animate-gradient",
+        isAnimated && "animate-anime bg-gradient-base bg-[length:600%]",
         className,
       )}
       onClick={onClick}
       type={type}
-      // disabled={isSubmitting}
+      disabled={isSubmitting}
     >
       {children}
     </button>
