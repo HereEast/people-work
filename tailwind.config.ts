@@ -17,10 +17,6 @@ const config: Config = {
       maxWidth: {
         "8xl": "1440px",
       },
-      gridTemplateColumns: {
-        main: "repeat(4, minmax(0, 300px))",
-        "cards-2": "repeat(2, minmax(0, 320px))",
-      },
       colors: {
         "brand-blue": {
           "600": "#0047FF",

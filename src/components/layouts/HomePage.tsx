@@ -18,8 +18,8 @@ export function HomePage() {
       {isLoading && <Loader />}
 
       {!isLoading && people && (
-        <section className="mb-16">
-          <div className="grid grid-cols-main place-content-center gap-4">
+        <section className="mb-16 flex justify-center">
+          <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(260px,1fr))] place-content-center gap-4">
             {people?.map((person, index) => (
               <div key={index}>
                 <PersonCard person={person} />
