@@ -40,14 +40,21 @@ export function ShareForm({ children, className = "" }: ShareFormProps) {
   }
 
   return (
-    <Card className={cn("p-10 pt-8", className)}>
+    <Card className={cn("p-10", className)}>
       <div id="share" className="mb-10 grow space-y-8">
         {children}
 
-        {name && <SubmittedName name={name} />}
+        {name && (
+          <div>
+            <p className="bg-animate-gradient bg-clip-text text-center text-base leading-tight text-transparent">
+              <span className="block">Thaaaanks!!!</span>
+              <span className="block">{`You've shared ${name}`}</span>
+            </p>
+          </div>
+        )}
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex w-full flex-col items-center space-y-4">
           <div className="w-full space-y-2">
             <Input
@@ -62,42 +69,19 @@ export function ShareForm({ children, className = "" }: ShareFormProps) {
 
           <Button
             type="submit"
-            disabled={isSubmitting}
+            isSubmitting={isSubmitting}
             isAnimated={true}
             className="h-20"
           >
-            <ButtonLabel />
+            <div className="flex items-center gap-1.5">
+              <span className="text-white transition duration-200 group-hover/button:-translate-x-0.5">
+                share the name
+              </span>
+              <ArrowRightFull className="w-4 text-white transition duration-200 group-hover/button:translate-x-0.5" />
+            </div>
           </Button>
         </div>
       </form>
     </Card>
-  );
-}
-
-// Button Label
-function ButtonLabel() {
-  return (
-    <div className="flex items-center gap-1.5">
-      <span className="text-white transition duration-200 group-hover/button:-translate-x-0.5">
-        share the name
-      </span>
-      <ArrowRightFull className="w-4 text-white transition duration-200 group-hover/button:translate-x-0.5" />
-    </div>
-  );
-}
-
-// Submitted Name
-interface SubmittedNameProps {
-  name: string;
-}
-
-function SubmittedName({ name }: SubmittedNameProps) {
-  return (
-    <div>
-      <p className="bg-animate-gradient bg-clip-text text-center text-base leading-tight text-transparent">
-        <span className="block">Thaaaanks!!!</span>
-        <span className="block">{`You've shared ${name}`}</span>
-      </p>
-    </div>
   );
 }

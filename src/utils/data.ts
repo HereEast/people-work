@@ -44,6 +44,10 @@ export const BACKLOG: BacklogItem[] = [
     done: false,
   },
   {
+    title: "Research analytics tools",
+    done: false,
+  },
+  {
     title: "Launch whatever is ready.",
     done: true,
   },

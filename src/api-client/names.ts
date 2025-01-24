@@ -13,8 +13,6 @@ export async function createName({ name, link }: CreateUserProps) {
     throw new Error("Name and link are required.");
   }
 
-  console.log(name, link);
-
   try {
     const response = await axios.post<IName>(
       "api/names",
