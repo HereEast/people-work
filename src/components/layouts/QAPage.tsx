@@ -38,7 +38,11 @@ export function QAPage({ slug }: QAPageProps) {
           </section>
 
           {/* Side Panel — Mobile */}
-          <div className="flex justify-center lg:hidden">
+          <div className="flex flex-col items-center justify-center gap-6 lg:hidden">
+            <p className="text-gradient w-fit text-center font-medium leading-tight">
+              More awesome people:
+            </p>
+
             <SidePeoplePanel />
           </div>
 
