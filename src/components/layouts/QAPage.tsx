@@ -1,7 +1,7 @@
 "use client";
 
 import { Loader } from "../Loader";
-import { ShareForm } from "../ShareForm";
+import { ShareFormCard } from "../ShareForm";
 import { SidePanel } from "../SidePanel";
 import { PersonPreview } from "../PersonPreview";
 import { PageContainer } from "./PageContainer";

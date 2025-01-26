@@ -2,87 +2,88 @@
 
 import { Loader } from "../Loader";
 import { PersonCard } from "../PersonCard";
-import { ShareForm } from "../ShareForm";
+import { ShareFormCard } from "../ShareForm";
 import { PageContainer } from "./PageContainer";
 import { Backlog } from "../Backlog";
 
-import { IPerson } from "~/utils/types";
 import { usePeople } from "~/hooks";
+import { IconTile } from "../IconTile";
+import { cn } from "~/utils/handlers";
 
 export function HomePage() {
   const { data: people, isLoading } = usePeople();
 
   return (
-    <PageContainer className="mx-auto py-10 pb-16">
+    <PageContainer className="mx-auto py-8 pb-16">
       {isLoading && <Loader />}
 
-      {!isLoading && people && <MainCards people={people} />}
-
-      <About />
-      <Form />
-      <Backlog />
-    </PageContainer>
-  );
-}
-
-// Main Cards
-interface MainCardsProps {
-  people: IPerson[];
-}
-
-function MainCards({ people }: MainCardsProps) {
-  return (
-    <section className="mb-20">
-      <div className="grid grid-cols-main place-content-center gap-4">
-        {people?.map((person, index) => (
-          <div key={index}>
-            <PersonCard person={person} />
+      {!isLoading && people && (
+        <section className="mb-16 flex justify-center">
+          <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(260px,1fr))] place-content-center gap-4">
+            {people?.map((person, index) => (
+              <div key={index}>
+                <PersonCard person={person} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </section>
+        </section>
+      )}
+
+      <section id="about" className="mb-20">
+        <About />
+      </section>
+
+      <section className="mb-10 flex justify-center">
+        <div className="max-w-4xl">
+          <ShareFormCard />
+        </div>
+      </section>
+
+      <section className="flex justify-center">
+        <Backlog />
+      </section>
+    </PageContainer>
   );
 }
 
 // About
 function About() {
+  const array = new Array(6).fill(0);
+
   return (
-    <section id="about" className="mb-20">
-      <div className="mb-12">
-        <p className="text-center text-4xl font-medium">
-          This project is for anyone curious about the diverse paths people take
-          in their careers — students, aspiring professionals, or anyone
-          navigating their own career path.
+    <div className="space-y-16">
+      <div className="space-y-6">
+        <p
+          className="text-center text-3xl font-medium sm:text-4xl"
+          style={{
+            lineHeight: "110%",
+          }}
+        >
+          This project is for anyone curious about the different paths people
+          take in their careers. It demystifies job titles, shares daily
+          routines, highlights and aspirations in a{" "}
+          <span className="text-gradient bg-[length:200%]">
+            simple Q&A format.
+          </span>
         </p>
       </div>
 
-      <div className="space-y-4">
-        <div className="flex justify-center gap-4">
-          <div className="size-16 rounded-xl bg-stone-400" />
-          <div className="size-16 rounded-xl bg-stone-400" />
-          <div className="size-16 rounded-xl bg-stone-400" />
-          <div className="size-16 rounded-xl bg-stone-400" />
-          <div className="size-16 rounded-xl bg-stone-400" />
-          <div className="size-16 rounded-xl bg-stone-400" />
+      {/* Icons */}
+      <div className="space-y-6">
+        <div className="flex flex-wrap justify-center gap-3">
+          {array.map((_, index) => (
+            <div className={cn(index > 3 && "hidden sm:block")} key={index}>
+              <IconTile />
+            </div>
+          ))}
         </div>
 
-        <div>
-          <p className="text-center">More awesome people are coming!</p>
+        <div className="flex justify-center">
+          <p className="text-gradient w-fit text-center font-medium leading-tight">
+            More awesome people are coming!
+          </p>
         </div>
       </div>
-    </section>
-  );
-}
-
-// Form
-function Form() {
-  return (
-    <section className="mb-10 flex justify-center">
-      <ShareForm className="min-h-[420px] max-w-4xl">
-        <h5 className="text-center text-5xl font-bold leading-[95%] tracking-header text-stone-50">
-          Know anyone cool 🦍 who does amazing work✨?
-        </h5>
-      </ShareForm>
-    </section>
+    </div>
   );
 }

@@ -6,7 +6,7 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   children: string | ReactNode;
   onClick?: () => void;
-  disabled?: boolean;
+  isSubmitting?: boolean;
   className?: string;
   isAnimated?: boolean;
 }
@@ -19,21 +19,20 @@ export function Button({
   children,
   onClick = noop,
   type = "button",
-  disabled = false,
+  isSubmitting = false,
   className = "",
   isAnimated = false,
 }: ButtonProps) {
   return (
     <button
       className={cn(
-        "group/button relative z-10 flex h-14 w-full animate-anime items-center justify-center rounded-full bg-white text-lg font-bold",
-        isAnimated &&
-          "bg-gradient-to-r from-[#ffc814] via-[#ff185d] to-[#1e7fff] bg-[length:600%] filter transition",
+        "group/button relative z-10 flex h-14 w-full items-center justify-center rounded-full bg-white text-lg font-bold",
+        isAnimated && "animate-anime bg-gradient-base bg-[length:600%]",
         className,
       )}
       onClick={onClick}
       type={type}
-      disabled={disabled}
+      disabled={isSubmitting}
     >
       {children}
     </button>

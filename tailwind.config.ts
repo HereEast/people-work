@@ -15,21 +15,16 @@ const config: Config = {
         "2xl": "1400px",
       },
       maxWidth: {
-        // card: "340px",
         "8xl": "1440px",
-      },
-      minWidth: {
-        // card: "280px",
-      },
-      gridTemplateColumns: {
-        main: "repeat(4, minmax(0, 300px))",
-        "cards-2": "repeat(2, minmax(0, 320px))",
       },
       colors: {
         "brand-blue": {
           "600": "#0047FF",
           DEFAULT: "#0047FF",
         },
+        "gradient-color-1": "rgb(var(--gradient-color-1))",
+        "gradient-color-2": "rgb(var(--gradient-color-2))",
+        "gradient-color-3": "rgb(var(--gradient-color-3))",
       },
       fontSize: {
         "4xl": [
@@ -55,12 +50,10 @@ const config: Config = {
         "600%": "600%",
       },
       backgroundImage: {
-        "animate-gradient":
-          "linear-gradient(to right, #ffc814, #ff185d, #1e7fff)",
+        "gradient-base": "linear-gradient(to right, #ffc814, #ff185d, #1e7fff)",
+        "gradient-base-diagonal":
+          "linear-gradient(to right bottom, #ffc814, #ff185d, #1e7fff)",
       },
-      // boxShadow: {
-      //   header: "0 1px 4px rgba(0,0,0,0.4)",
-      // },
       keyframes: {
         anime: {
           "0%": { "background-position": "0% 50%" },
@@ -69,7 +62,8 @@ const config: Config = {
         },
       },
       animation: {
-        anime: "anime 5s linear infinite",
+        anime: "anime 8s linear infinite",
+        "anime-sm": "anime 5s linear infinite",
       },
     },
   },

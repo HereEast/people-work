@@ -11,41 +11,48 @@ export function Backlog() {
   const doneList = BACKLOG.filter((item) => item.done);
 
   return (
-    <section className="flex justify-center">
-      <div className="w-full max-w-4xl rounded-2xl bg-stone-100 p-10">
-        {/* Header */}
-        <div className="mb-6 flex w-full items-center justify-between">
+    <div className="w-full max-w-4xl rounded-2xl bg-stone-100 p-8 md:p-10">
+      {/* Header */}
+      <div className="mb-6 flex w-full items-center justify-between">
+        <div className="flex items-center gap-2">
           <h4 className="text-2xl font-bold">Backlog</h4>
-          <span className="text-base text-stone-400">Upd: Jan 23, 2025</span>
-        </div>
-
-        {/* List */}
-        <div className="mb-10 space-y-6">
-          <ul className="space-y-1.5">
-            {todoList.map((item, index) => (
-              <ListItem item={item} key={index} />
-            ))}
-          </ul>
-
-          <ul className="space-y-1.5">
-            {doneList.map((item, index) => (
-              <ListItem item={item} key={index} />
-            ))}
-          </ul>
-        </div>
-
-        {/* Footer */}
-        <div className="flex w-full items-center justify-between">
-          <span className="text-base">
-            Open to any feedback and decent suggestions.
+          <span className="rounded-full bg-stone-950 px-2 text-base text-stone-50">
+            {todoList.length}
           </span>
+        </div>
+        <span className="text-base text-stone-400">Upd: Jan 26</span>
+      </div>
 
+      {/* List */}
+      <div className="mb-16 space-y-6 sm:mb-10">
+        <ul className="space-y-2">
+          {todoList.map((item, index) => (
+            <ListItem item={item} key={index} />
+          ))}
+        </ul>
+
+        <ul className="space-y-2">
+          {doneList.map((item, index) => (
+            <ListItem item={item} key={index} />
+          ))}
+        </ul>
+      </div>
+
+      {/* Footer */}
+      <div className="flex w-full flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+        <span className="text-base">
+          Open to any feedback, decent suggestions or really bad jokes.
+        </span>
+
+        <div className="w-full sm:w-fit">
           <ButtonLink to={`mailto:${EMAIL}`}>
-            <span className="px-5 py-2 text-base font-bold">drop an email</span>
+            <span className="w-full text-nowrap px-5 py-2 text-center text-base font-bold">
+              drop an email
+            </span>
           </ButtonLink>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
