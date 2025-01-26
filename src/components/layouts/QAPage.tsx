@@ -17,7 +17,7 @@ export function QAPage({ slug }: QAPageProps) {
   const { data, isLoading } = useAnswers(slug);
 
   return (
-    <PageContainer className="min-h-screen max-w-full gap-10 pb-10 pt-6 lg:grid lg:grid-cols-[auto_80px]">
+    <PageContainer className="min-h-screen max-w-full gap-10 pb-16 pt-6 lg:grid lg:grid-cols-[auto_80px]">
       {isLoading && <Loader />}
 
       {!isLoading && data && (
@@ -38,9 +38,9 @@ export function QAPage({ slug }: QAPageProps) {
           </section>
 
           {/* Side Panel — Mobile */}
-          {/* <div className="flex justify-center lg:hidden">
+          <div className="flex justify-center lg:hidden">
             <SidePeoplePanel />
-          </div> */}
+          </div>
 
           {/* Form */}
           <section className="mb-10 grid-cols-[300px_auto] gap-6 lg:grid">
