@@ -1,11 +1,11 @@
-import { useParams } from "next/navigation";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
 import { PersonImage } from "./PersonImage";
 import { usePeople } from "~/hooks";
 
 // Side Panel
-export function SidePanel() {
+export function SidePeoplePanel() {
   const params = useParams();
 
   const { data } = usePeople();
@@ -13,7 +13,7 @@ export function SidePanel() {
   const people = data?.filter((item) => item.slug !== params.slug);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex gap-2 lg:flex-col">
       {people?.map((person, index) => (
         <div
           className="w-20 overflow-hidden rounded-xl transition hover:scale-[101%] hover:shadow-lg hover:shadow-brand-blue-600"
@@ -25,7 +25,9 @@ export function SidePanel() {
         </div>
       ))}
 
-      <AddButton />
+      <div className="hidden lg:block">
+        <AddButton />
+      </div>
     </div>
   );
 }
