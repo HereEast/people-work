@@ -2,14 +2,12 @@
 
 import { Loader } from "../Loader";
 import { ShareFormCard } from "../ShareForm";
-import { SidePanel } from "../SidePanel";
+import { SidePeoplePanel } from "../SidePeoplePanel";
 import { PersonPreview } from "../PersonPreview";
 import { PageContainer } from "./PageContainer";
 import { Content } from "../Content";
-import { Label } from "../Label";
 
 import { useAnswers } from "~/hooks";
-import { ReactNode } from "react";
 
 interface QAPageProps {
   slug: string;
@@ -19,53 +17,50 @@ export function QAPage({ slug }: QAPageProps) {
   const { data, isLoading } = useAnswers(slug);
 
   return (
-    <PageContainer className="min-h-screen max-w-full gap-10 pt-6 lg:grid lg:grid-cols-[auto_80px]">
+    <PageContainer className="min-h-screen max-w-full gap-10 pb-16 pt-6 lg:grid lg:grid-cols-[auto_80px]">
       {isLoading && <Loader />}
 
-      <div>
-        {!isLoading && data && (
+      {!isLoading && data && (
+        <div className="space-y-16">
           <section className="max-w-7xl">
-            <div className="grid gap-4 pb-24 md:grid-cols-[340px_auto] md:pb-16">
-              <StickyPersonPreview>
-                <PersonPreview person={data.person} />
-              </StickyPersonPreview>
+            <div className="grid gap-6 md:grid-cols-[300px_auto]">
+              {/* Sticky */}
+              <div className="sticky top-12 rounded-b-4xl bg-white pt-4 sm:top-16 md:static md:rounded-4xl md:pt-0">
+                <div className="md:sticky md:top-16">
+                  <PersonPreview person={data.person} />
+                </div>
+              </div>
 
               <div className="space-y-16">
                 <Content data={data} />
-
-                {/* Desktop */}
-                {/* <div className="hidden md:block">
-                  <ShareForm />
-                </div> */}
               </div>
             </div>
           </section>
-        )}
 
-        {/* Mobile */}
-        {/* <section className="mb-10 md:hidden">
-          <ShareForm />
-        </section> */}
-      </div>
+          {/* Side Panel — Mobile */}
+          <div className="flex flex-col items-center justify-center gap-6 lg:hidden">
+            <p className="text-gradient w-fit text-center font-medium leading-tight">
+              More awesome people:
+            </p>
 
+            <SidePeoplePanel />
+          </div>
+
+          {/* Form */}
+          <section className="mb-10 grid-cols-[300px_auto] gap-6 lg:grid">
+            <div className="md:col-start-2">
+              <ShareFormCard />
+            </div>
+          </section>
+        </div>
+      )}
+
+      {/* Side Panel — Desktop */}
       <aside className="relative hidden lg:block">
         <div className="sticky top-16">
-          <SidePanel />
+          <SidePeoplePanel />
         </div>
       </aside>
     </PageContainer>
-  );
-}
-
-// Sticky Person Preview
-interface StickyPersonPreviewProps {
-  children: ReactNode;
-}
-
-function StickyPersonPreview({ children }: StickyPersonPreviewProps) {
-  return (
-    <div className="sticky top-12 rounded-b-4xl bg-white pt-4 sm:top-16 md:static md:rounded-4xl md:pt-0">
-      <div className="md:sticky md:top-16">{children}</div>
-    </div>
   );
 }

@@ -7,7 +7,7 @@ body {
   box-sizing: border-box;
 }
 
-/* .answer a {
+.answer a {
   text-decoration: underline;
 }
 
@@ -15,7 +15,6 @@ body {
   opacity: 50%;
   text-decoration: none;
 }
-} */
 
 @layer base {
   :root {

@@ -1,7 +1,6 @@
-import { IResult } from "~/utils/types";
 import { ParsedParagraph } from "./ParsedParagraph";
+import { IResult } from "~/utils/types";
 
-// Content
 interface ContentProps {
   data: IResult;
 }
@@ -20,10 +19,6 @@ export function Content({ data }: ContentProps) {
             </div>
           );
         })}
-      </div>
-
-      <div className="rounded-full bg-stone-950 p-6 text-center text-stone-50">
-        Share
       </div>
     </div>
   );
