@@ -14,7 +14,7 @@ export function HomePage() {
   const { data: people, isLoading } = usePeople();
 
   return (
-    <PageContainer className="mx-auto py-10 pb-16">
+    <PageContainer className="mx-auto py-8 pb-16">
       {isLoading && <Loader />}
 
       {!isLoading && people && (
