@@ -11,6 +11,64 @@ import {
 
 import { connectDB } from "~/app/lib/connectDB";
 
+// Submit Answers
+const ID = "";
+
+export async function POST(req: Request) {
+  const data = await req.json();
+
+  const inputData: IAnswerSubmitData[] = Array.from(data.inputData);
+
+  if (!Array.isArray(inputData)) {
+    return NextResponse.json(
+      "🔴 Error: Invalid data format, expected an array.",
+      {
+        status: 400,
+      },
+    );
+  }
+
+  try {
+    await connectDB();
+
+    const person: IPerson | null = await Person.findOne({ _id: ID });
+
+    if (!person) {
+      return NextResponse.json("🔴 Error: Failed to fetch a Person.", {
+        status: 400,
+      });
+    }
+
+    for (const input of inputData) {
+      const answerItem = new Answer({
+        questionId: input.questionId,
+        personId: person._id,
+        name: person?.name,
+        question: input?.question,
+        answer: input.answer,
+      });
+
+      await answerItem.save();
+    }
+
+    return NextResponse.json(
+      { message: "✅ Success: All answers are submitted." },
+      {
+        status: 201,
+      },
+    );
+  } catch (err) {
+    console.log(err);
+
+    return NextResponse.json(
+      { message: "🔴 Error: Failed to submit answers." },
+      {
+        status: 500,
+      },
+    );
+  }
+}
+
 // Get answers by slug array
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -61,85 +119,6 @@ export async function GET(req: Request) {
 
     return NextResponse.json(
       { message: "🔴 Error fetching answers by personId." },
-      {
-        status: 500,
-      },
-    );
-  }
-}
-
-// Submit answers
-const ID = "67098060ce227186c1ea8599___"; // Margo
-
-export async function POST(req: Request) {
-  const data = await req.json();
-
-  const inputData: IAnswerSubmitData[] = Array.from(data.inputData);
-
-  if (!Array.isArray(inputData)) {
-    return NextResponse.json(
-      "🔴 Error: Invalid data format, expected an array.",
-      {
-        status: 400,
-      },
-    );
-  }
-
-  try {
-    await connectDB();
-
-    const person: IPerson | null = await Person.findOne({ _id: ID });
-
-    if (!person) {
-      return NextResponse.json("🔴 Error: Failed to fetch a Person.", {
-        status: 400,
-      });
-    }
-
-    for (const input of inputData) {
-      const existingAnswer: IAnswer | null = await Answer.findOne({
-        personId: person._id,
-        questionId: input.questionId,
-      });
-
-      if (existingAnswer) {
-        existingAnswer.answer = input.answer;
-
-        await existingAnswer.save();
-      } else {
-        const question: IQuestion | null = await Question.findById(
-          input.questionId,
-        );
-
-        if (!question) {
-          return NextResponse.json("🔴 Error: Failed to fetch a Question.", {
-            status: 400,
-          });
-        }
-
-        const newAnswer = new Answer({
-          questionId: input.questionId,
-          personId: person._id,
-          name: person?.name,
-          question: question?.body,
-          answer: input.answer,
-        });
-
-        await newAnswer.save();
-      }
-    }
-
-    return NextResponse.json(
-      { message: "✅ Success: All answers are submitted." },
-      {
-        status: 201,
-      },
-    );
-  } catch (err) {
-    console.log(err);
-
-    return NextResponse.json(
-      { message: "🔴 Error: Failed to submit answers." },
       {
         status: 500,
       },

@@ -7,8 +7,7 @@ import { Input } from "./ui/Input";
 
 import { createSubscription } from "~/api-client/subscriptions";
 
-// Form Inputs
-interface ISubscribeFormInputs {
+interface IFormInputs {
   email: string;
 }
 
@@ -20,9 +19,9 @@ export function SubscribeForm() {
     handleSubmit,
     reset,
     formState: { isSubmitting },
-  } = useForm<ISubscribeFormInputs>();
+  } = useForm<IFormInputs>();
 
-  async function onSubmit(values: ISubscribeFormInputs) {
+  async function onSubmit(values: IFormInputs) {
     const result = await createSubscription(values);
 
     if (result?.email) {

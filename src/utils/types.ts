@@ -53,6 +53,7 @@ export interface IAnswer extends Document {
 export interface IAnswerSubmitData {
   questionId: string;
   answer: string;
+  question: string;
 }
 
 export interface ISelectedResult {
