@@ -11,7 +11,7 @@ export function Backlog() {
   const doneList = BACKLOG.filter((item) => item.done);
 
   return (
-    <div className="w-full max-w-4xl rounded-xl bg-stone-100 p-8 md:p-10">
+    <div className="w-full rounded-xl bg-stone-100 p-8 md:p-10">
       {/* Header */}
       <div className="mb-6 flex w-full items-center justify-between">
         <div className="flex items-center gap-2">
@@ -48,7 +48,7 @@ export function Backlog() {
 
         <div className="w-full sm:w-fit">
           <ButtonLink to={`mailto:${EMAIL}`}>
-            <span className="w-full text-nowrap px-5 py-2 text-center text-base font-bold">
+            <span className="w-full text-nowrap px-5 py-1 text-center text-base font-bold">
               drop an email
             </span>
           </ButtonLink>

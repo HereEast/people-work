@@ -45,7 +45,7 @@ export function SidePeoplePanel() {
 // Add button
 function AddButton() {
   return (
-    <div className="flex aspect-square size-full items-center justify-center overflow-hidden rounded-xl bg-slate-950 text-slate-50 transition hover:-translate-y-1 hover:animate-anime hover:bg-gradient-base-diagonal hover:bg-[length:400%] lg:hover:-translate-x-1 lg:hover:translate-y-0">
+    <div className="flex aspect-square size-20 items-center justify-center overflow-hidden rounded-xl bg-slate-950 text-slate-50 transition hover:-translate-y-1 hover:animate-anime hover:bg-gradient-base-diagonal hover:bg-[length:400%] lg:hover:-translate-x-1 lg:hover:translate-y-0">
       <a href="#share" className="flex size-full items-center justify-center">
         <PlusIcon className="size-8" />
       </a>

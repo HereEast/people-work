@@ -6,11 +6,12 @@ import { cn } from "~/utils/handlers";
 interface InputProps {
   placeholder: string;
   error?: FieldError;
+  disabled?: boolean;
   className?: string;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ placeholder, error, className = "", ...props }, ref) => {
+  ({ placeholder, error, className = "", disabled = false, ...props }, ref) => {
     return (
       <div className="relative w-full">
         <input
@@ -19,6 +20,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             className,
           )}
           placeholder={placeholder}
+          disabled={disabled}
           ref={ref}
           {...props}
         />
