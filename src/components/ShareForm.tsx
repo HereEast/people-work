@@ -77,7 +77,7 @@ function ShareForm({ setSubmittedName }: ShareFormProps) {
 
         <Button
           type="submit"
-          isSubmitting={isSubmitting}
+          disabled={isSubmitting}
           isAnimated={true}
           className="h-20"
         >
