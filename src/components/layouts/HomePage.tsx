@@ -5,9 +5,9 @@ import { PersonCard } from "../PersonCard";
 import { ShareFormCard } from "../ShareForm";
 import { PageContainer } from "./PageContainer";
 import { Backlog } from "../Backlog";
+import { IconTile } from "../IconTile";
 
 import { usePeople } from "~/hooks";
-import { IconTile } from "../IconTile";
 import { cn } from "~/utils/handlers";
 
 export function HomePage() {

@@ -47,7 +47,7 @@ export function QAPage({ slug }: QAPageProps) {
           </div>
 
           {/* Form */}
-          <section className="mb-10 grid-cols-[300px_auto] gap-6 lg:grid">
+          <section className="mb-10 max-w-7xl grid-cols-[300px_auto] gap-6 lg:grid">
             <div className="md:col-start-2">
               <ShareFormCard />
             </div>
