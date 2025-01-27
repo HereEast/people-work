@@ -16,12 +16,12 @@ export function PersonPreview({ person }: PersonCardProps) {
         <Label>👋 Hey!</Label>
       </div>
 
-      <div className="flex w-full items-center gap-3 p-5 md:flex-col">
+      <div className="flex w-full items-center gap-5 p-5 pb-8 md:flex-col">
         <div className="size-[68px] shrink-0 overflow-hidden rounded-4xl md:size-full">
           <PersonImage person={person} />
         </div>
 
-        <div className="space-y-3 overflow-hidden text-stone-50">
+        <div className="space-y-4 overflow-hidden text-stone-50">
           <Name className="text-left md:text-center">{person?.name}</Name>
           <div className="hidden md:block">
             <Job company={person.company} title={person.jobTitle} />

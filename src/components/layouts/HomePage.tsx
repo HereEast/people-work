@@ -2,7 +2,7 @@
 
 import { Loader } from "../Loader";
 import { PersonCard } from "../PersonCard";
-import { ShareFormCard } from "../ShareForm";
+import { ShareForm } from "../ShareForm";
 import { SubscribeForm } from "../SubscribeForm";
 import { PageContainer } from "./PageContainer";
 import { Backlog } from "../Backlog";
@@ -36,7 +36,7 @@ export function HomePage() {
 
       <section className="mb-10 flex justify-center">
         <div className="max-w-4xl">
-          <ShareFormCard />
+          <ShareForm />
         </div>
       </section>
 

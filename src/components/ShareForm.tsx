@@ -19,8 +19,26 @@ interface ShareFormCardProps {
   className?: string;
 }
 
-export function ShareFormCard({ className = "" }: ShareFormCardProps) {
+export function ShareForm({ className = "" }: ShareFormCardProps) {
   const [submittedName, setSubmittedName] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<IShareFormInputs>();
+
+  // Handle submit
+  async function onSubmit(values: IShareFormInputs) {
+    const result = await createName(values);
+
+    if (result) {
+      setSubmittedName(result?.name);
+    }
+
+    reset();
+  }
 
   return (
     <Card className={cn("min-h-[420px] p-8 pt-10 sm:p-10", className)}>
@@ -39,56 +57,34 @@ export function ShareFormCard({ className = "" }: ShareFormCardProps) {
         </div>
       )}
 
-      <ShareForm setSubmittedName={setSubmittedName} />
-    </Card>
-  );
-}
-
-// Share Form
-interface ShareFormProps {
-  setSubmittedName: (value: string) => void;
-}
-
-function ShareForm({ setSubmittedName }: ShareFormProps) {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { isSubmitting },
-  } = useForm<IShareFormInputs>();
-
-  async function onSubmit(values: IShareFormInputs) {
-    const result = await createName(values);
-
-    if (result) {
-      setSubmittedName(result?.name);
-    }
-
-    reset();
-  }
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex w-full flex-col items-center space-y-4">
-        <div className="w-full space-y-2">
-          <Input placeholder="Name" {...register("name", { required: true })} />
-          <Input placeholder="Link" {...register("link", { required: true })} />
-        </div>
-
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          isAnimated={true}
-          className="h-20"
-        >
-          <div className="flex items-center gap-1.5">
-            <span className="text-white transition duration-200 group-hover/button:-translate-x-0.5">
-              share the name
-            </span>
-            <ArrowRightFull className="w-4 text-white transition duration-200 group-hover/button:translate-x-0.5" />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex w-full flex-col items-center space-y-4">
+          <div className="w-full space-y-2">
+            <Input
+              placeholder="Name"
+              {...register("name", { required: true })}
+            />
+            <Input
+              placeholder="Link"
+              {...register("link", { required: true })}
+            />
           </div>
-        </Button>
-      </div>
-    </form>
+
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            isAnimated={true}
+            className="h-20"
+          >
+            <div className="flex items-center gap-1.5">
+              <span className="text-white transition duration-200 group-hover/button:-translate-x-0.5">
+                share the name
+              </span>
+              <ArrowRightFull className="w-4 text-white transition duration-200 group-hover/button:translate-x-0.5" />
+            </div>
+          </Button>
+        </div>
+      </form>
+    </Card>
   );
 }

@@ -17,12 +17,16 @@ export async function POST(req: Request) {
   try {
     await connectDB();
 
-    // Check if exists and add counts.
+    const existingEmail = await Subscription.findOne({ email }).exec();
 
-    const subscription: ISubscription = new Subscription({ email });
-    await subscription.save();
+    if (existingEmail) {
+      return NextResponse.json(existingEmail);
+    }
 
-    return NextResponse.json(subscription);
+    const newSubscription: ISubscription = new Subscription({ email });
+    await newSubscription.save();
+
+    return NextResponse.json(newSubscription);
   } catch (err) {
     console.log(err);
 

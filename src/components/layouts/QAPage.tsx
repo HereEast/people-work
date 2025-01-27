@@ -1,7 +1,7 @@
 "use client";
 
 import { Loader } from "../Loader";
-import { ShareFormCard } from "../ShareForm";
+import { ShareForm } from "../ShareForm";
 import { SidePeoplePanel } from "../SidePeoplePanel";
 import { PersonPreview } from "../PersonPreview";
 import { PageContainer } from "./PageContainer";
@@ -17,7 +17,7 @@ export function QAPage({ slug }: QAPageProps) {
   const { data, isLoading } = useAnswers(slug);
 
   return (
-    <PageContainer className="min-h-screen max-w-full gap-10 pb-16 pt-6 lg:grid lg:grid-cols-[auto_80px]">
+    <PageContainer className="min-h-screen max-w-full gap-10 pb-16 pt-8 lg:grid lg:grid-cols-[auto_80px]">
       {isLoading && <Loader />}
 
       {!isLoading && data && (
@@ -49,7 +49,7 @@ export function QAPage({ slug }: QAPageProps) {
           {/* Form */}
           <section className="mb-10 max-w-7xl grid-cols-[300px_auto] gap-6 lg:grid">
             <div className="md:col-start-2">
-              <ShareFormCard />
+              <ShareForm />
             </div>
           </section>
         </div>
