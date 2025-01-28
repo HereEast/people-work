@@ -12,12 +12,12 @@ export interface IPerson extends Document {
   isActive: boolean;
 }
 
-interface ICompany {
+export interface ICompany {
   name: string;
   url: string;
 }
 
-interface ILinks {
+export interface ILinks {
   linkedin?: string;
   twitter?: string;
   instagram?: string;

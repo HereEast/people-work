@@ -2,7 +2,7 @@ import { PersonImage } from "./PersonImage";
 import { Job, Name } from "./PersonCard";
 import { Label } from "./Label";
 
-import { IPerson } from "~/utils/types";
+import { IPerson } from "~/models/Person";
 
 interface PersonCardProps {
   person: IPerson;

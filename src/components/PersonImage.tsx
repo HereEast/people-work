@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { IPerson } from "~/utils/types";
+import { IPerson } from "~/models/Person";
 
 interface PersonImageProps {
   person: IPerson;

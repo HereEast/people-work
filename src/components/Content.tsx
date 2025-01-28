@@ -1,8 +1,9 @@
 import { ParsedParagraph } from "./ParsedParagraph";
-import { IResult } from "~/utils/types";
+
+import { IAnswerResult } from "~/api-client/answers";
 
 interface ContentProps {
-  data: IResult;
+  data: IAnswerResult;
 }
 
 export function Content({ data }: ContentProps) {
