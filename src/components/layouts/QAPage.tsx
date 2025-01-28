@@ -17,19 +17,14 @@ export function QAPage({ slug }: QAPageProps) {
   const { data, isLoading } = useAnswers(slug);
 
   return (
-    <PageContainer className="min-h-screen max-w-full gap-10 pb-16 pt-8 lg:grid lg:grid-cols-[auto_80px]">
+    <PageContainer className="min-h-screen max-w-full gap-10 pb-16 pt-4 sm:pt-8 lg:grid lg:grid-cols-[auto_80px]">
       {isLoading && <Loader />}
 
       {!isLoading && data && (
         <div className="space-y-16">
           <section className="max-w-7xl">
             <div className="grid gap-6 md:grid-cols-[300px_auto]">
-              {/* Sticky */}
-              <div className="sticky top-12 rounded-b-4xl bg-white pt-4 sm:top-16 md:static md:rounded-4xl md:pt-0">
-                <div className="md:sticky md:top-16">
-                  <PersonPreview person={data.person} />
-                </div>
-              </div>
+              <PersonPreview person={data.person} />
 
               <div className="space-y-16">
                 <Content data={data} />
@@ -57,7 +52,7 @@ export function QAPage({ slug }: QAPageProps) {
 
       {/* Side Panel — Desktop */}
       <aside className="relative hidden lg:block">
-        <div className="sticky top-16">
+        <div className="sticky top-[56px]">
           <SidePeoplePanel />
         </div>
       </aside>

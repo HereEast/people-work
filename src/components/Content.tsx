@@ -8,13 +8,13 @@ interface ContentProps {
 
 export function Content({ data }: ContentProps) {
   return (
-    <div className="space-y-12 rounded-4xl bg-stone-100 p-4 text-xl sm:p-10 md:rounded-6xl">
+    <div className="space-y-12 rounded-4xl bg-stone-200/50 p-4 text-xl sm:p-10 md:rounded-6xl">
       <div className="flex flex-col gap-2">
         {data?.answers?.map((item, index) => {
           const question = item.questionId;
 
           return (
-            <div key={index} className="space-y-6 rounded-3xl bg-white p-8">
+            <div key={index} className="space-y-5 rounded-3xl bg-white p-8">
               <Question>{question.body}</Question>
               <Answer>{item.answer}</Answer>
             </div>
@@ -45,7 +45,7 @@ interface QuestionProps {
 
 function Question({ children }: QuestionProps) {
   return (
-    <div className="flex-1 border-stone-700">
+    <div>
       <h5 className="text-base leading-tight text-stone-400/75">{children}</h5>
     </div>
   );
