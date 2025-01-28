@@ -4,9 +4,10 @@ import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
+import { ClientProvider } from "~/providers/ClientProvider";
+
 import { Header } from "~/components/layouts/Header";
 import { Footer } from "~/components/layouts/Footer";
-import { ClientProvider } from "~/providers";
 
 const InnovatorGrotesk = localFont({
   src: [

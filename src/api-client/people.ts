@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-import { IPerson } from "~/utils/types";
+import { IPerson } from "~/models/Person";
 
 // GET BY SLUG
 export async function getPerson(slug: string): Promise<IPerson | null> {
