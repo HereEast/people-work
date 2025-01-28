@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, Document } from "mongoose";
+import mongoose, { Schema, Document, model } from "mongoose";
 
 export interface IQuestion extends Document {
   body: string;
