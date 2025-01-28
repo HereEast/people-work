@@ -1,6 +1,7 @@
 import { ParsedParagraph } from "./ParsedParagraph";
 
 import { IAnswerResult } from "~/api-client/answers";
+import { IQuestion } from "~/models/Question";
 
 interface ContentProps {
   data: IAnswerResult;
@@ -15,7 +16,7 @@ export function Content({ data }: ContentProps) {
 
           return (
             <div key={index} className="space-y-5 rounded-3xl bg-white p-8">
-              <Question>{question.body}</Question>
+              <Question>{(question as IQuestion).body}</Question>
               <Answer>{item.answer}</Answer>
             </div>
           );

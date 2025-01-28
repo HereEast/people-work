@@ -44,9 +44,7 @@ export async function submitAnswers(formData: IFormDataProps[]) {
 }
 
 // GET BY SLUG
-export async function getAnswersBySlug(
-  slug: string,
-): Promise<IAnswerResult | null> {
+export async function getAnswersBySlug(slug: string) {
   try {
     const response = await axios.get<IAnswerResult>(`/api/answers/${slug}`);
 
@@ -63,9 +61,7 @@ export async function getAnswersBySlug(
 }
 
 // GET BY SLUG ARRAY
-export async function getAnswersBySlugArray(
-  slugs: string[],
-): Promise<IAnswerResult[]> {
+export async function getAnswersBySlugArray(slugs: string[]) {
   if (!slugs.length) {
     return [];
   }
