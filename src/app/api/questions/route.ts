@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/app/lib/connectDB";
-import { Question } from "~/models/Question";
-import { IQuestion } from "~/utils/types";
+import { IQuestion, Question } from "~/models/Question";
 
 // Get all questions
 export async function GET() {

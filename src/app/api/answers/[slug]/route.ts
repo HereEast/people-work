@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/app/lib/connectDB";
-import { IAnswer, IPerson, IQuestion } from "~/utils/types";
-import { Answer, Person } from "~/models";
+import { Answer, IAnswer } from "~/models/Answer";
+import { IPerson, Person } from "~/models/Person";
+import { IQuestion } from "~/models/Question";
 
 interface ReqParams {
   params: { slug: string };

@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/app/lib/connectDB";
-import { Person } from "~/models/Person";
-import { IPerson } from "~/utils/types";
+import { Person, IPerson } from "~/models/Person";
+// import { IPerson } from "~/utils/types";
 
-// Get all people
+// GET ALL
 export async function GET() {
   try {
     await connectDB();

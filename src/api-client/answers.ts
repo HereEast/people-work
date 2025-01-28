@@ -1,62 +1,30 @@
 import axios from "axios";
 
-import { IAnswerSubmitData, IResult, ISelectedResult } from "~/utils/types";
+import { IAnswer } from "~/models/Answer";
+import { IPerson } from "~/models/Person";
 
-// Get
-export async function getAnswers(slug: string): Promise<IResult | null> {
-  try {
-    const response = await axios.get<IResult>(`/api/answers/${slug}`);
-
-    const data = response.data;
-
-    return data;
-  } catch (err) {
-    if (err instanceof Error) {
-      console.log("🔴", err.message);
-    }
-
-    return null;
-  }
+export interface IFormDataProps {
+  questionId: string;
+  question: string;
+  answer: string;
 }
 
-// Get selected answers
-export async function getSelectedAnswers(
-  slugs: string[],
-): Promise<ISelectedResult[]> {
-  if (!slugs.length) {
-    return [];
-  }
-
-  try {
-    const response = await axios.get<ISelectedResult[]>(`/api/answers`, {
-      params: {
-        slugs: slugs.toString(),
-      },
-    });
-
-    const data = response.data;
-
-    return data;
-  } catch (err) {
-    if (err instanceof Error) {
-      console.log("🔴", err.message);
-    }
-
-    return [];
-  }
+export interface IAnswerResult {
+  answers: IAnswer[];
+  person: IPerson;
 }
 
-// Submit answers
-export async function submitAnswers(inputData: IAnswerSubmitData[]) {
-  if (!inputData.length) {
-    throw new Error("Some params are missing: inputData.");
+// SUBMIT
+export async function submitAnswers(formData: IFormDataProps[]) {
+  if (!formData.length) {
+    throw new Error("Input data length is 0.");
   }
 
   try {
-    const response = await axios.post<IAnswerSubmitData[] | undefined>(
+    const response = await axios.post<IFormDataProps[]>(
       "/api/answers",
       {
-        inputData,
+        formData,
       },
       {
         headers: {
@@ -72,5 +40,51 @@ export async function submitAnswers(inputData: IAnswerSubmitData[]) {
     if (err instanceof Error) {
       console.log(err.message);
     }
+  }
+}
+
+// GET BY SLUG
+export async function getAnswersBySlug(
+  slug: string,
+): Promise<IAnswerResult | null> {
+  try {
+    const response = await axios.get<IAnswerResult>(`/api/answers/${slug}`);
+
+    const data = response.data;
+
+    return data;
+  } catch (err) {
+    if (err instanceof Error) {
+      console.log("🔴", err.message);
+    }
+
+    return null;
+  }
+}
+
+// GET BY SLUG ARRAY
+export async function getAnswersBySlugArray(
+  slugs: string[],
+): Promise<IAnswerResult[]> {
+  if (!slugs.length) {
+    return [];
+  }
+
+  try {
+    const response = await axios.get<IAnswerResult[]>(`/api/answers`, {
+      params: {
+        slugs: slugs.toString(),
+      },
+    });
+
+    const data = response.data;
+
+    return data;
+  } catch (err) {
+    if (err instanceof Error) {
+      console.log("🔴", err.message);
+    }
+
+    return [];
   }
 }

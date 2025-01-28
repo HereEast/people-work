@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 
 import { PageContainer } from "~/components/layouts/PageContainer";
 
-import { submitAnswers } from "~/api-client/answers";
+import { IFormDataProps, submitAnswers } from "~/api-client/answers";
 import { useQuestions } from "~/hooks";
 
 export default function QuestionsPage() {
@@ -27,7 +27,7 @@ export default function QuestionsPage() {
       return;
     }
 
-    const answersData = Array.from(formData.entries()).map(
+    const answersData: IFormDataProps[] = Array.from(formData.entries()).map(
       ([questionId, answer], index) => {
         return {
           questionId,

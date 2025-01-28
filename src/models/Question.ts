@@ -1,6 +1,11 @@
-import mongoose, { Schema, model } from "mongoose";
+import mongoose, { Schema, model, Document } from "mongoose";
 
-import { IQuestion } from "~/utils/types";
+export interface IQuestion extends Document {
+  body: string;
+  description: string;
+  order: number;
+  active: boolean;
+}
 
 const QuestionSchema = new Schema({
   body: { type: String, required: true, unique: true },

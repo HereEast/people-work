@@ -1,7 +1,8 @@
 import axios, { AxiosResponse } from "axios";
 
-import { IQuestion } from "~/utils/types";
+import { IQuestion } from "~/models/Question";
 
+// GET ALL
 export async function getQuestions() {
   try {
     const response: AxiosResponse<IQuestion[] | undefined> =

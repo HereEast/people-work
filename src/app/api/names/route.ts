@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/app/lib/connectDB";
-import { IName, Name } from "~/models";
+import { IName, Name } from "~/models/Name";
 
-// Create new Name (Share)
+// CREATE NAME (SHARE)
 export async function POST(req: Request) {
   const { name, link } = await req.json();
 
   if (!name || !link) {
     return NextResponse.json(
-      { message: "🔴 Name and link are required." },
+      { message: "🔴 All inputs are required." },
       { status: 400 },
     );
   }

@@ -3,8 +3,6 @@ import mongoose, { Schema, Document, model } from "mongoose";
 export interface IName extends Document {
   name: string;
   link: string;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 const NameSchema = new Schema(

@@ -2,8 +2,6 @@ import mongoose, { Schema, Document, model } from "mongoose";
 
 export interface ISubscription extends Document {
   email: string;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 const SubscriptionSchema = new Schema(
