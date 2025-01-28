@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 
 import { connectDB } from "~/app/lib/connectDB";
 import { Person, IPerson } from "~/models/Person";
-// import { IPerson } from "~/utils/types";
 
 interface ReqParams {
   params: { slug: string };

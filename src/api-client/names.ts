@@ -7,7 +7,7 @@ interface INameProps {
   link: string;
 }
 
-// CREATE NAME
+// CREATE NAME (SHARE FORM)
 export async function createName({ name, link }: INameProps) {
   if (!name || !link) {
     throw new Error("Name and link are required.");

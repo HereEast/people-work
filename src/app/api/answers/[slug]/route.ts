@@ -9,7 +9,7 @@ interface ReqParams {
   params: { slug: string };
 }
 
-// Get answers by slug
+// GET ANSWERS BY SLUG
 export async function GET(req: Request, { params }: ReqParams) {
   const { slug } = params;
 
@@ -33,16 +33,11 @@ export async function GET(req: Request, { params }: ReqParams) {
       return question.active === true;
     });
 
-    const sortedAnswers = activeAnswers.sort((a, b) => {
+    const result = activeAnswers.sort((a, b) => {
       const questionA = a.questionId as IQuestion;
       const questionB = b.questionId as IQuestion;
       return questionA.order - questionB.order;
     });
-
-    const result = {
-      answers: sortedAnswers,
-      person,
-    };
 
     return NextResponse.json(result, { status: 200 });
   } catch (err) {

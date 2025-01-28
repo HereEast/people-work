@@ -1,7 +1,6 @@
 import axios from "axios";
 
 import { IAnswer } from "~/models/Answer";
-import { IPerson } from "~/models/Person";
 
 export interface IFormDataProps {
   questionId: string;
@@ -9,12 +8,7 @@ export interface IFormDataProps {
   answer: string;
 }
 
-export interface IAnswerResult {
-  answers: IAnswer[];
-  person: IPerson;
-}
-
-// SUBMIT
+// SUBMIT ANSWERS
 export async function submitAnswers(formData: IFormDataProps[]) {
   if (!formData.length) {
     throw new Error("Input data length is 0.");
@@ -43,10 +37,10 @@ export async function submitAnswers(formData: IFormDataProps[]) {
   }
 }
 
-// GET BY SLUG
+// GET ANSWERS BY SLUG
 export async function getAnswersBySlug(slug: string) {
   try {
-    const response = await axios.get<IAnswerResult>(`/api/answers/${slug}`);
+    const response = await axios.get<IAnswer[]>(`/api/answers/${slug}`);
 
     const data = response.data;
 
@@ -60,14 +54,14 @@ export async function getAnswersBySlug(slug: string) {
   }
 }
 
-// GET BY SLUG ARRAY
+// GET ANSWERS BY SLUG ARRAY
 export async function getAnswersBySlugArray(slugs: string[]) {
   if (!slugs.length) {
     return [];
   }
 
   try {
-    const response = await axios.get<IAnswerResult[]>(`/api/answers`, {
+    const response = await axios.get<IAnswer[]>(`/api/answers`, {
       params: {
         slugs: slugs.toString(),
       },

@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { IPerson } from "~/models/Person";
 
-// GET BY SLUG
+// GET PERSON BY SLUG
 export async function getPerson(slug: string) {
   try {
     const response = await axios.get<IPerson>(`/api/people/${slug}`);
@@ -19,7 +19,7 @@ export async function getPerson(slug: string) {
   }
 }
 
-// GET ALL
+// GET ALL PEOPLE
 export async function getPeople() {
   try {
     const response = await axios.get<IPerson[]>(`/api/people`);

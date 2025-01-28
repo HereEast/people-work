@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { IQuestion } from "~/models/Question";
 
-// GET ALL
+// GET ALL QUESTIONS
 export async function getQuestions() {
   try {
     const response = await axios.get<IQuestion[]>(`/api/questions`);

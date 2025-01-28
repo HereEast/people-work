@@ -1,17 +1,17 @@
+import { IAnswer } from "~/models/Answer";
 import { ParsedParagraph } from "./ParsedParagraph";
 
-import { IAnswerResult } from "~/api-client/answers";
 import { IQuestion } from "~/models/Question";
 
 interface ContentProps {
-  data: IAnswerResult;
+  data: IAnswer[];
 }
 
 export function Content({ data }: ContentProps) {
   return (
     <div className="space-y-12 rounded-4xl bg-stone-200/50 p-4 text-xl sm:p-10 md:rounded-6xl">
       <div className="flex flex-col gap-2">
-        {data?.answers?.map((item, index) => {
+        {data?.map((item, index) => {
           const question = item.questionId;
 
           return (
