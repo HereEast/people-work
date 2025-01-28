@@ -1,12 +1,13 @@
-import { RatRightPixelIcon } from "./icons";
-
 export function Logo() {
   return (
-    <div className="group flex items-center gap-0.5 overflow-hidden rounded-full bg-stone-950 px-2.5 text-2xl font-bold text-stone-50 transition hover:shadow-lg hover:shadow-blue-600">
-      <h1 className="relative top-[-1.5px] mr-1 text-nowrap">
-        people–work.net
+    <div className="flex h-8 items-center justify-between overflow-hidden rounded-full bg-stone-950 pl-3 pr-3 transition hover:shadow-lg hover:shadow-blue-600 sm:gap-10">
+      <h1 className="text-nowrap text-2xl font-extrabold text-stone-50">
+        PEOPLE–WORK
       </h1>
-      <RatRightPixelIcon className="ml-auto w-16 text-stone-50 sm:ml-0" />
+
+      <div className="flex shrink-0 items-center">
+        <span className="text-lg font-bold text-stone-50">(.NET)</span>
+      </div>
     </div>
   );
 }

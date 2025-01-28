@@ -62,7 +62,7 @@ export default function Layout({ children }: LayoutProps) {
       >
         <ClientProvider>
           <Header />
-          <main className="mt-12 grow sm:mt-16">{children}</main>
+          <main className="mt-[56px] grow">{children}</main>
           <Footer />
         </ClientProvider>
       </body>
