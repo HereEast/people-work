@@ -16,7 +16,7 @@ export function PersonPreview({ person }: PersonCardProps) {
         <Label>👋 Hey!</Label>
       </div>
 
-      <div className="flex w-full items-center gap-5 p-5 pb-8 md:flex-col">
+      <div className="flex w-full items-center gap-5 p-5 md:flex-col md:pb-8">
         <div className="size-[68px] shrink-0 overflow-hidden rounded-4xl md:size-full">
           <PersonImage person={person} />
         </div>
