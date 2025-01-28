@@ -1,6 +1,14 @@
 import mongoose, { Schema, model } from "mongoose";
 
-import { IAnswer } from "~/utils/types";
+import { IQuestion } from "./Question";
+
+export interface IAnswer extends Document {
+  personId: mongoose.Types.ObjectId;
+  questionId: IQuestion;
+  name: string;
+  question: string;
+  answer: string;
+}
 
 const AnswerSchema = new Schema(
   {
@@ -15,6 +23,7 @@ const AnswerSchema = new Schema(
       required: true,
     },
     name: { type: String, required: true },
+    question: { type: String, required: true },
     answer: { type: String, required: true },
   },
   { timestamps: true },

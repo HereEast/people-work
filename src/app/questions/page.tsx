@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 
 import { PageContainer } from "~/components/layouts/PageContainer";
 
-import { submitAnswers } from "~/api-client/answers";
+import { IFormDataProps, submitAnswers } from "~/api-client/answers";
 import { useQuestions } from "~/hooks";
 
 export default function QuestionsPage() {
@@ -18,23 +18,26 @@ export default function QuestionsPage() {
 
     const formData = new FormData(e.currentTarget);
 
-    const emptyValuesExist = Array.from(formData.values()).some(
+    const isEmptyValue = Array.from(formData.values()).some(
       (value) => String(value).trim().length === 0,
     );
 
-    if (emptyValuesExist) {
+    if (isEmptyValue) {
       setError("All inputs are required.");
       return;
     }
 
-    const answersData = Array.from(formData.entries()).map(
-      ([questionId, answer]) => {
+    const answersData: IFormDataProps[] = Array.from(formData.entries()).map(
+      ([questionId, answer], index) => {
         return {
           questionId,
+          question: questions?.[index].body || "",
           answer: answer as string,
         };
       },
     );
+
+    console.log(answersData);
 
     const result = await submitAnswers(answersData);
     console.log(result); // Console

@@ -1,14 +1,14 @@
 import axios from "axios";
 
-import { IName } from "~/models";
+import { IName } from "~/models/Name";
 
-interface CreateUserProps {
+interface INameProps {
   name: string;
   link: string;
 }
 
-// Create
-export async function createName({ name, link }: CreateUserProps) {
+// CREATE NAME
+export async function createName({ name, link }: INameProps) {
   if (!name || !link) {
     throw new Error("Name and link are required.");
   }

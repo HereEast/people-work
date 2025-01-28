@@ -1,6 +1,27 @@
-import mongoose, { Schema, model } from "mongoose";
+import mongoose, { Schema, model, Document } from "mongoose";
 
-import { IPerson } from "~/utils/types";
+export interface IPerson extends Document {
+  name: string;
+  email: string;
+  company: ICompany;
+  jobTitle: string;
+  country: string;
+  links: ILinks;
+  keyWords?: string[];
+  slug: string;
+  isActive: boolean;
+}
+
+export interface ICompany {
+  name: string;
+  url: string;
+}
+
+export interface ILinks {
+  linkedin?: string;
+  twitter?: string;
+  instagram?: string;
+}
 
 const LinksSchema = new Schema(
   {

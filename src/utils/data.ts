@@ -5,12 +5,8 @@ export interface BacklogItem {
 
 export const BACKLOG: BacklogItem[] = [
   {
-    title: "Design a proper layout for a Q&A Page",
-    done: false,
-  },
-  {
     title:
-      "How to render answers with rich text and cool custom elements (Contact Max) + Custom form",
+      "Render answers with rich text and cool custom elements (Contact Max) + Custom form",
     done: false,
   },
   {
@@ -19,7 +15,7 @@ export const BACKLOG: BacklogItem[] = [
     done: false,
   },
   {
-    title: "Message all people on the list to take part in PW",
+    title: "Message all people on the list for a Q&A",
     done: false,
   },
   {
@@ -49,10 +45,6 @@ export const BACKLOG: BacklogItem[] = [
   },
   {
     title: "Launch whatever is ready.",
-    done: true,
-  },
-  {
-    title: "GitHub actions — Done!",
     done: true,
   },
   {

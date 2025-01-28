@@ -1,10 +1,20 @@
-import { RatRightPixelIcon } from "./icons";
+import Image from "next/image";
 
 export function Logo() {
   return (
-    <div className="group flex items-center gap-0.5 overflow-hidden rounded-full bg-stone-950 px-2.5 text-2xl font-bold text-stone-50 transition hover:shadow-lg hover:shadow-blue-600">
-      <h1 className="relative top-[-1.5px] mr-1 text-nowrap">people—work.co</h1>
-      <RatRightPixelIcon className="ml-auto w-16 text-stone-50 sm:ml-0" />
+    <div className="flex h-8 items-center justify-between overflow-hidden rounded-full bg-stone-950 pl-3 pr-2 transition hover:shadow-lg hover:shadow-blue-600 sm:gap-10">
+      <h1 className="mb-1 text-nowrap text-2xl font-bold text-stone-50">
+        people—work.net
+      </h1>
+
+      <div className="flex shrink-0 items-center">
+        <Image
+          src="./icons/ic-logo.svg"
+          width={32}
+          height={20}
+          alt="Logo icon"
+        />
+      </div>
     </div>
   );
 }

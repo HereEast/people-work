@@ -11,16 +11,18 @@ export function Backlog() {
   const doneList = BACKLOG.filter((item) => item.done);
 
   return (
-    <div className="w-full max-w-4xl rounded-2xl bg-stone-100 p-8 md:p-10">
+    <div className="w-full rounded-xl bg-stone-100 p-8 md:p-10">
       {/* Header */}
       <div className="mb-6 flex w-full items-center justify-between">
         <div className="flex items-center gap-2">
           <h4 className="text-2xl font-bold">Backlog</h4>
-          <span className="rounded-full bg-stone-950 px-2 text-base text-stone-50">
+          <span className="rounded-full bg-stone-950 px-1.5 text-base text-stone-50">
             {todoList.length}
           </span>
         </div>
-        <span className="text-base text-stone-400">Upd: Jan 26</span>
+        <div>
+          <span className="text-base text-stone-400">UPD: Jan 26</span>
+        </div>
       </div>
 
       {/* List */}
@@ -41,12 +43,12 @@ export function Backlog() {
       {/* Footer */}
       <div className="flex w-full flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <span className="text-base">
-          Open to any feedback, decent suggestions or really bad jokes.
+          Open to any feedback, decent suggestions 24/7.
         </span>
 
         <div className="w-full sm:w-fit">
           <ButtonLink to={`mailto:${EMAIL}`}>
-            <span className="w-full text-nowrap px-5 py-2 text-center text-base font-bold">
+            <span className="w-full text-nowrap px-5 py-1 text-center text-base font-bold">
               drop an email
             </span>
           </ButtonLink>

@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/app/lib/connectDB";
-import { Person } from "~/models/Person";
-import { IPerson } from "~/utils/types";
+import { Person, IPerson } from "~/models/Person";
+// import { IPerson } from "~/utils/types";
 
 interface ReqParams {
   params: { slug: string };
 }
 
-// Get a person by slug
+// GET PERSON BY SLUG
 export async function GET(req: Request, { params }: ReqParams) {
   const slug = params.slug;
 

@@ -2,12 +2,13 @@
 
 import { Loader } from "../Loader";
 import { PersonCard } from "../PersonCard";
-import { ShareFormCard } from "../ShareForm";
+import { ShareForm } from "../ShareForm";
+import { SubscribeForm } from "../SubscribeForm";
 import { PageContainer } from "./PageContainer";
 import { Backlog } from "../Backlog";
+import { IconTile } from "../IconTile";
 
 import { usePeople } from "~/hooks";
-import { IconTile } from "../IconTile";
 import { cn } from "~/utils/handlers";
 
 export function HomePage() {
@@ -35,12 +36,20 @@ export function HomePage() {
 
       <section className="mb-10 flex justify-center">
         <div className="max-w-4xl">
-          <ShareFormCard />
+          <ShareForm />
+        </div>
+      </section>
+
+      <section className="mb-10 flex justify-center">
+        <div className="w-full max-w-4xl">
+          <SubscribeForm />
         </div>
       </section>
 
       <section className="flex justify-center">
-        <Backlog />
+        <div className="w-full max-w-4xl">
+          <Backlog />
+        </div>
       </section>
     </PageContainer>
   );

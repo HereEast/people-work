@@ -1,8 +1,8 @@
 import axios, { AxiosResponse } from "axios";
 
-import { IPerson } from "~/utils/types";
+import { IPerson } from "~/models/Person";
 
-// Get Person by slug
+// GET BY SLUG
 export async function getPerson(slug: string): Promise<IPerson | null> {
   try {
     const response: AxiosResponse<IPerson> = await axios.get(
@@ -21,7 +21,7 @@ export async function getPerson(slug: string): Promise<IPerson | null> {
   }
 }
 
-// Get ALL people
+// GET ALL
 export async function getPeople() {
   try {
     const response: AxiosResponse<IPerson[]> = await axios.get(`/api/people`);

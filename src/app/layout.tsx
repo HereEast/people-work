@@ -4,9 +4,10 @@ import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
+import { ClientProvider } from "~/providers/ClientProvider";
+
 import { Header } from "~/components/layouts/Header";
 import { Footer } from "~/components/layouts/Footer";
-import { ClientProvider } from "~/providers";
 
 const InnovatorGrotesk = localFont({
   src: [
@@ -61,7 +62,7 @@ export default function Layout({ children }: LayoutProps) {
       >
         <ClientProvider>
           <Header />
-          <main className="mt-12 grow sm:mt-16">{children}</main>
+          <main className="mt-[56px] grow">{children}</main>
           <Footer />
         </ClientProvider>
       </body>

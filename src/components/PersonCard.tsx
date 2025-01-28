@@ -1,12 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
 
 import { Card } from "./Card";
+import { PersonImage } from "./PersonImage";
 import { ArrowRightFull } from "./icons";
 
-import { ICompany, IPerson } from "~/utils/types";
+import { IPerson, ICompany } from "~/models/Person";
 import { cn } from "~/utils/handlers";
-import { PersonImage } from "./PersonImage";
 
 interface PersonCardProps {
   person: IPerson;
