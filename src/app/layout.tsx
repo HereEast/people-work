@@ -45,9 +45,15 @@ const InnovatorGrotesk = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "People-work",
-  description: "People-work website.",
+  title: "people-work.net",
+  description: "Job titles decoded. In a simle Q&A format.",
 };
+
+const og = {
+  title: "people-work.net",
+  description: "Job titles decoded. In a simle Q&A format.",
+  image: "https://people-work.net/images/og-image.jpg",
+} as const;
 
 interface LayoutProps {
   children: ReactNode;
@@ -56,6 +62,17 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en" className={`${InnovatorGrotesk.className} scroll-smooth`}>
+      <head>
+        <meta name="description" content={og.description} />
+        <meta property="og:title" content={og.title} />
+        <meta property="og:description" content={og.description} />
+        <meta property="og:url" content="https://people-work.net" />
+        <meta property="og:image" content={og.image} />
+        <meta name="twitter:title" content={og.title} />
+        <meta name="twitter:description" content={og.description} />
+        <meta name="twitter:image" content={og.image} />
+        <title>{og.title}</title>
+      </head>
       <body
         suppressHydrationWarning={true}
         className="flex min-h-screen flex-col text-lg"
