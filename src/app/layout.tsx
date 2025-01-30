@@ -9,6 +9,8 @@ import { ClientProvider } from "~/providers/ClientProvider";
 import { Header } from "~/components/layouts/Header";
 import { Footer } from "~/components/layouts/Footer";
 
+import { OG_DESCRIPTION, OG_TITLE } from "~/utils/constants";
+
 const InnovatorGrotesk = localFont({
   src: [
     {
@@ -45,20 +47,18 @@ const InnovatorGrotesk = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "People-work.net — Job titles decoded. In a simle Q&A format.",
-  description:
-    "People-work.net is a web project for anyone curious about the different paths people take in their careers. And how it turned out for them.",
+  title: OG_TITLE,
+  description: OG_DESCRIPTION,
+  metadataBase: new URL("https://people-work.net"),
   openGraph: {
-    images: [
-      {
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/opengraph-image.jpg`,
-        alt: "People-work Open Graph Image",
-      },
-      {
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/twitter-image.jpg`,
-        alt: "People-work Open Graph Image",
-      },
-    ],
+    images: ["opengraph-image.jpg"],
+  },
+  twitter: {
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
+    site: "people-work.net",
+    card: "summary_large_image",
+    images: ["opengraph-image.jpg"],
   },
 };
 

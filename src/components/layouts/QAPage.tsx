@@ -17,6 +17,8 @@ export function QAPage({ slug }: QAPageProps) {
   const { data: answers, isLoading: isAnswersLoading } = useAnswers(slug);
   const { data: person, isLoading: isPersonLoading } = usePerson(slug);
 
+  console.log(answers);
+
   const isLoading = isAnswersLoading && isPersonLoading;
 
   if (isLoading) {

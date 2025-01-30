@@ -1,10 +1,9 @@
 import mongoose, { Schema, Document, model } from "mongoose";
 
 import { IQuestion } from "./Question";
-import { IPerson } from "./Person";
 
 export interface IAnswer extends Document {
-  personId: mongoose.Types.ObjectId | IPerson;
+  personId: mongoose.Types.ObjectId;
   questionId: mongoose.Types.ObjectId | IQuestion;
   name: string;
   question: string;
