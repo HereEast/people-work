@@ -50,11 +50,11 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_URL}/opengraph-image.jpg`,
+        url: "https://people-work.net/opengraph-image.jpg",
         alt: "People-work Open Graph Image",
       },
       {
-        url: `${process.env.NEXT_PUBLIC_URL}/twitter-image.jpg`,
+        url: "https://people-work.net/twitter-image.jpg",
         alt: "People-work Open Graph Image",
       },
     ],
