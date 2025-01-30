@@ -45,16 +45,17 @@ const InnovatorGrotesk = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "people-work.net",
-  description: "Job titles decoded. In a simle Q&A format.",
+  title: "People-work.net — Job titles decoded. In a simle Q&A format.",
+  description:
+    "People-work.net is a web project for anyone curious about the different paths people take in their careers. And how it turned out for them.",
   openGraph: {
     images: [
       {
-        url: "https://people-work.net/opengraph-image.jpg",
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/opengraph-image.jpg`,
         alt: "People-work Open Graph Image",
       },
       {
-        url: "https://people-work.net/twitter-image.jpg",
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/twitter-image.jpg`,
         alt: "People-work Open Graph Image",
       },
     ],
