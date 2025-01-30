@@ -47,6 +47,18 @@ const InnovatorGrotesk = localFont({
 export const metadata: Metadata = {
   title: "people-work.net",
   description: "Job titles decoded. In a simle Q&A format.",
+  openGraph: {
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/opengraph-image.jpg`,
+        alt: "People-work Open Graph Image",
+      },
+      {
+        url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/twitter-image.jpg`,
+        alt: "People-work Open Graph Image",
+      },
+    ],
+  },
 };
 
 interface LayoutProps {
