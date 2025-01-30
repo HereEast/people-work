@@ -45,8 +45,8 @@ const InnovatorGrotesk = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "People-work",
-  description: "People-work website.",
+  title: "people-work.net",
+  description: "Job titles decoded. In a simle Q&A format.",
 };
 
 interface LayoutProps {
