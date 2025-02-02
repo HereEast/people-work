@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { ButtonLink } from "../ui/ButtonLink";
 import { Logo } from "../Logo";
+import { ButtonLink } from "../ui/ButtonLink";
 import { ArrowTopRightSquare } from "../icons";
 
 import { PAGE } from "~/utils/types";

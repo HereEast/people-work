@@ -1,21 +1,22 @@
+import { IAnswer } from "~/models/Answer";
 import { ParsedParagraph } from "./ParsedParagraph";
 
-import { IAnswerResult } from "~/api-client/answers";
+import { IQuestion } from "~/models/Question";
 
 interface ContentProps {
-  data: IAnswerResult;
+  data: IAnswer[];
 }
 
 export function Content({ data }: ContentProps) {
   return (
     <div className="space-y-12 rounded-4xl bg-stone-200/50 p-4 text-xl sm:p-10 md:rounded-6xl">
       <div className="flex flex-col gap-2">
-        {data?.answers?.map((item, index) => {
+        {data?.map((item, index) => {
           const question = item.questionId;
 
           return (
             <div key={index} className="space-y-5 rounded-3xl bg-white p-8">
-              <Question>{question.body}</Question>
+              <Question>{(question as IQuestion).body}</Question>
               <Answer>{item.answer}</Answer>
             </div>
           );
@@ -45,8 +46,8 @@ interface QuestionProps {
 
 function Question({ children }: QuestionProps) {
   return (
-    <div>
-      <h5 className="text-base leading-tight text-stone-400/75">{children}</h5>
+    <div className="text-base leading-tight text-stone-400/75">
+      <h5>{children}</h5>
     </div>
   );
 }

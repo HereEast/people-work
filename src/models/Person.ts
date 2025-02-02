@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, Document } from "mongoose";
+import mongoose, { Schema, Document, model } from "mongoose";
 
 export interface IPerson extends Document {
   name: string;
@@ -48,9 +48,9 @@ const PersonSchema = new Schema(
     jobTitle: { type: String, required: true },
     country: { type: String, required: true },
     links: { type: LinksSchema },
+    slug: { type: String, required: true, unique: true },
     keyWords: { type: [String] },
     isActive: { type: Boolean, required: true },
-    slug: { type: String, required: true, unique: true },
   },
   { timestamps: true },
 );

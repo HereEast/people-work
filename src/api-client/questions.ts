@@ -1,12 +1,11 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
 import { IQuestion } from "~/models/Question";
 
-// GET ALL
+// GET ALL QUESTIONS
 export async function getQuestions() {
   try {
-    const response: AxiosResponse<IQuestion[] | undefined> =
-      await axios.get(`/api/questions`);
+    const response = await axios.get<IQuestion[]>(`/api/questions`);
 
     const data = response.data;
 

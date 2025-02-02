@@ -17,8 +17,6 @@ export async function POST(req: Request) {
   try {
     await connectDB();
 
-    // Check if exists and add counts.
-
     const newName: IName = new Name({ name, link });
     await newName.save();
 

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { connectDB } from "~/app/lib/connectDB";
 import { ISubscription, Subscription } from "~/models/Subscription";
 
-// Create new Subscription
+// CREATE NEW SUBSCRIPTION (ADD EMAIL)
 export async function POST(req: Request) {
   const { email } = await req.json();
 

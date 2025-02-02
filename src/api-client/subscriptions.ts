@@ -2,9 +2,11 @@ import axios from "axios";
 
 import { ISubscription } from "~/models/Subscription";
 
-export type SubscriptionProps = Pick<ISubscription, "email">;
+interface SubscriptionProps {
+  email: string;
+}
 
-// CREATE SUBSCRIPTION
+// CREATE SUBSCRIPTION (ADD EMAIL)
 export async function createSubscription({ email }: SubscriptionProps) {
   if (!email) {
     throw new Error("Email is required.");

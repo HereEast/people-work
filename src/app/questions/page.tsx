@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 
-import { PageContainer } from "~/components/layouts/PageContainer";
+import { PageLayout } from "~/components/layouts/PageLayout";
 
 import { IFormDataProps, submitAnswers } from "~/api-client/answers";
 import { useQuestions } from "~/hooks";
@@ -44,7 +44,7 @@ export default function QuestionsPage() {
   }
 
   return (
-    <PageContainer className="bg-stone-200 px-20">
+    <PageLayout className="bg-stone-200 px-20">
       {isLoading && <div>Loading...</div>}
 
       {error && (
@@ -78,6 +78,6 @@ export default function QuestionsPage() {
           </button>
         </form>
       )}
-    </PageContainer>
+    </PageLayout>
   );
 }

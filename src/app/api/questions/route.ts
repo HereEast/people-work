@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { connectDB } from "~/app/lib/connectDB";
 import { IQuestion, Question } from "~/models/Question";
 
-// Get all questions
+// GET ALL QUESTIONS
 export async function GET() {
   try {
     await connectDB();

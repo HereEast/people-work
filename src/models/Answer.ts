@@ -1,10 +1,10 @@
-import mongoose, { Schema, model } from "mongoose";
+import mongoose, { Schema, Document, model } from "mongoose";
 
 import { IQuestion } from "./Question";
 
 export interface IAnswer extends Document {
   personId: mongoose.Types.ObjectId;
-  questionId: IQuestion;
+  questionId: mongoose.Types.ObjectId | IQuestion;
   name: string;
   question: string;
   answer: string;
@@ -14,7 +14,7 @@ const AnswerSchema = new Schema(
   {
     personId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Person",
       required: true,
     },
     questionId: {

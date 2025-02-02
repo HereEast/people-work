@@ -1,13 +1,11 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
 import { IPerson } from "~/models/Person";
 
-// GET BY SLUG
-export async function getPerson(slug: string): Promise<IPerson | null> {
+// GET PERSON BY SLUG
+export async function getPerson(slug: string) {
   try {
-    const response: AxiosResponse<IPerson> = await axios.get(
-      `/api/people/${slug}`,
-    );
+    const response = await axios.get<IPerson>(`/api/people/${slug}`);
 
     const data = response.data;
 
@@ -21,10 +19,10 @@ export async function getPerson(slug: string): Promise<IPerson | null> {
   }
 }
 
-// GET ALL
+// GET ALL PEOPLE
 export async function getPeople() {
   try {
-    const response: AxiosResponse<IPerson[]> = await axios.get(`/api/people`);
+    const response = await axios.get<IPerson[]>(`/api/people`);
 
     const data = response.data;
 

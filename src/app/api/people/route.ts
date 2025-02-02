@@ -2,9 +2,8 @@ import { NextResponse } from "next/server";
 
 import { connectDB } from "~/app/lib/connectDB";
 import { Person, IPerson } from "~/models/Person";
-// import { IPerson } from "~/utils/types";
 
-// GET ALL
+// GET ALL PEOPLE
 export async function GET() {
   try {
     await connectDB();

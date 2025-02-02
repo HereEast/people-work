@@ -63,7 +63,6 @@ export function SubscribeForm() {
               />
 
               <Button
-                type="submit"
                 disabled={isSubmitting}
                 className="h-12 animate-anime bg-[length:600%] px-10 hover:bg-gradient-base hover:text-stone-50 sm:w-fit"
               >
