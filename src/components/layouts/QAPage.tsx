@@ -4,7 +4,7 @@ import { Loader } from "../Loader";
 import { ShareForm } from "../ShareForm";
 import { SidePeoplePanel } from "../SidePeoplePanel";
 import { PersonPreview } from "../PersonPreview";
-import { PageContainer } from "./PageContainer";
+import { PageLayout } from "./PageLayout";
 import { Content } from "../Content";
 
 import { useAnswers, usePerson } from "~/hooks";
@@ -17,8 +17,6 @@ export function QAPage({ slug }: QAPageProps) {
   const { data: answers, isLoading: isAnswersLoading } = useAnswers(slug);
   const { data: person, isLoading: isPersonLoading } = usePerson(slug);
 
-  console.log(answers);
-
   const isLoading = isAnswersLoading && isPersonLoading;
 
   if (isLoading) {
@@ -26,7 +24,7 @@ export function QAPage({ slug }: QAPageProps) {
   }
 
   return (
-    <PageContainer className="min-h-screen max-w-full gap-10 pb-16 pt-4 sm:pt-8 lg:grid lg:grid-cols-[auto_80px]">
+    <PageLayout className="min-h-screen max-w-full gap-10 pb-16 pt-4 sm:pt-8 lg:grid lg:grid-cols-[auto_80px]">
       {answers && person && (
         <>
           <div className="space-y-16">
@@ -65,6 +63,6 @@ export function QAPage({ slug }: QAPageProps) {
           </aside>
         </>
       )}
-    </PageContainer>
+    </PageLayout>
   );
 }

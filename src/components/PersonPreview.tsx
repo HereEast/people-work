@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 
 import { PersonImage } from "./PersonImage";
 import { Job, Name } from "./PersonCard";
-import { Label } from "./Label";
 
 import { IPerson } from "~/models/Person";
 
@@ -36,8 +35,20 @@ export function PersonPreview({ person }: PersonCardProps) {
   );
 }
 
-// Sticky
+// Label
+interface LabelProps {
+  children: string;
+}
 
+function Label({ children }: LabelProps) {
+  return (
+    <div className="flex w-fit items-center justify-center rounded-full bg-brand-blue-600 py-0.5 pl-1.5 pr-2 text-base font-medium text-stone-50">
+      {children}
+    </div>
+  );
+}
+
+// Sticky
 function StickyContainer({ children }: { children: ReactNode }) {
   return (
     <div className="sticky top-[56px] rounded-b-4xl bg-white pt-[15px] md:static md:rounded-4xl md:pt-0">
