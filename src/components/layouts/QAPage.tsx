@@ -24,7 +24,7 @@ export function QAPage({ slug }: QAPageProps) {
   }
 
   return (
-    <PageLayout className="min-h-screen max-w-full gap-10 pb-16 pt-4 sm:pt-8 lg:grid lg:grid-cols-[auto_80px]">
+    <PageLayout className="min-h-screen max-w-full gap-10 pt-4 sm:pt-10 lg:grid lg:grid-cols-[auto_80px]">
       {answers && person && (
         <>
           <div className="space-y-16">

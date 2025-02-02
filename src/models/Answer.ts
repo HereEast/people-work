@@ -14,7 +14,7 @@ const AnswerSchema = new Schema(
   {
     personId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Person",
       required: true,
     },
     questionId: {

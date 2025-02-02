@@ -46,8 +46,8 @@ interface QuestionProps {
 
 function Question({ children }: QuestionProps) {
   return (
-    <div>
-      <h5 className="text-base leading-tight text-stone-400/75">{children}</h5>
+    <div className="text-base leading-tight text-stone-400/75">
+      <h5>{children}</h5>
     </div>
   );
 }

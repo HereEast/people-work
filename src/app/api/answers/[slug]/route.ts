@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/app/lib/connectDB";
+import { IQuestion, Question } from "~/models/Question";
 import { Answer, IAnswer } from "~/models/Answer";
 import { IPerson, Person } from "~/models/Person";
-import { IQuestion } from "~/models/Question";
 
 interface ReqParams {
   params: { slug: string };
@@ -23,6 +23,9 @@ export async function GET(req: Request, { params }: ReqParams) {
         status: 400,
       });
     }
+
+    // Remove later (make sure Questions are available before populate)
+    const questions: IQuestion[] = await Question.find({}).exec();
 
     const answers: IAnswer[] = await Answer.find({ personId: person._id })
       .populate("questionId")
