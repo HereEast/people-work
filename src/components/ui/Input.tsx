@@ -3,7 +3,7 @@ import { FieldError } from "react-hook-form";
 
 import { cn } from "~/utils/handlers";
 
-interface InputProps {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
   error?: FieldError;
   disabled?: boolean;

@@ -2,8 +2,8 @@ import { forwardRef, ReactNode } from "react";
 
 import { cn } from "~/utils/handlers";
 
-interface ButtonProps {
-  children: string | ReactNode;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
   disabled?: boolean;
   className?: string;
   isAnimated?: boolean;

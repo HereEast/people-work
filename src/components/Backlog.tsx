@@ -21,7 +21,7 @@ export function Backlog() {
           </span>
         </div>
         <div>
-          <span className="text-base text-stone-400">UPD: Jan 26</span>
+          <span className="text-base text-stone-400">UPD: Feb 3</span>
         </div>
       </div>
 
@@ -47,7 +47,7 @@ export function Backlog() {
         </span>
 
         <div className="w-full sm:w-fit">
-          <ButtonLink to={`mailto:${EMAIL}`}>
+          <ButtonLink href={`mailto:${EMAIL}`}>
             <span className="w-full text-nowrap px-5 py-1 text-center text-base font-bold">
               drop an email
             </span>
