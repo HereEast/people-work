@@ -1,4 +1,4 @@
-import { RatRightPixelIcon } from "../icons/Rat";
+import Image from "next/image";
 
 export function Footer() {
   const date = new Date();
@@ -16,9 +16,15 @@ export function Footer() {
           <span className="leading-none">{formatDate}</span>
         </div>
 
-        <div className="flex justify-end gap-2">
-          <div className="w-20">
-            <RatRightPixelIcon />
+        <div className="flex items-center justify-end gap-1">
+          <div className="relative h-8 w-20">
+            <Image
+              src="/gifs/rat.gif"
+              width={400}
+              height={400}
+              alt="A running rat"
+              className="absolute inset-0 m-auto object-contain"
+            />
           </div>
           <span className="leading-none">this website in a wip</span>
         </div>
