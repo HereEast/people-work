@@ -24,7 +24,7 @@ export const BACKLOG: BacklogItem[] = [
   },
   {
     title: "Animate the Rat",
-    done: false,
+    done: true,
   },
   {
     title: "Finish (aka start and finish) working on branding",
