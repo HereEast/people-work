@@ -10,6 +10,8 @@ export interface IPerson extends Document {
   keyWords?: string[];
   slug: string;
   isActive: boolean;
+  updatedAt: Date;
+  createdAt: Date;
 }
 
 export interface ICompany {
