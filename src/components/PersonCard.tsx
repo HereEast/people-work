@@ -45,7 +45,7 @@ export function Name({ children, className = "" }: NameProps) {
   return (
     <div className="w-full overflow-hidden">
       {children.split(" ").map((item) => (
-        <h4
+        <h2
           className={cn(
             "truncate text-center text-4xl font-extrabold tracking-tighter [&:not(:first-child)]:mt-[-8px]",
             className,
@@ -53,7 +53,7 @@ export function Name({ children, className = "" }: NameProps) {
           key={item}
         >
           {item}
-        </h4>
+        </h2>
       ))}
     </div>
   );
@@ -69,12 +69,12 @@ export function Job({ company, title }: JobProps) {
   return (
     <div className="flex flex-col items-center space-y-2 text-lg">
       <div className="rounded-full bg-stone-50 px-2.5 py-1 text-center">
-        <span className="block leading-none tracking-tight text-stone-950">
+        <h3 className="block leading-none tracking-tight text-stone-950">
           {company.name}
-        </span>
+        </h3>
       </div>
       <div className="text-center leading-tight">
-        <p className="block">{title}</p>
+        <h4 className="block">{title}</h4>
       </div>
     </div>
   );

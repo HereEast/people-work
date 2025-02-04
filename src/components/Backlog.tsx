@@ -15,7 +15,7 @@ export function Backlog() {
       {/* Header */}
       <div className="mb-6 flex w-full items-center justify-between">
         <div className="flex items-center gap-2">
-          <h4 className="text-2xl font-bold">Backlog</h4>
+          <h5 className="text-2xl font-bold">Backlog</h5>
           <span className="rounded-full bg-stone-950 px-1.5 text-base text-stone-50">
             {todoList.length}
           </span>
