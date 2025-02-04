@@ -1,7 +1,7 @@
 "use client";
 
+import { MainCards } from "../MainCards";
 import { Loader } from "../Loader";
-import { PersonCard } from "../PersonCard";
 import { ShareForm } from "../ShareForm";
 import { SubscribeForm } from "../SubscribeForm";
 import { PageLayout } from "./PageLayout";
@@ -13,45 +13,44 @@ import { usePeople } from "~/hooks";
 export function HomePage() {
   const { data: people, isLoading } = usePeople();
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <PageLayout>
-      {isLoading && <Loader />}
-
-      {!isLoading && people && (
-        <section className="mb-16">
-          <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(260px,1fr))] place-content-center gap-4">
-            {people?.map((person, index) => (
-              <div key={index}>
-                <PersonCard person={person} />
-              </div>
-            ))}
+      {people && (
+        <>
+          {/* Add skeletons for cards */}
+          <div className="mb-16">
+            <MainCards people={people} />
           </div>
-        </section>
+
+          <div id="about" className="mb-20">
+            <div className="w-full">
+              <About />
+            </div>
+          </div>
+
+          <div className="mb-10">
+            <div className="mx-auto w-full max-w-4xl">
+              <ShareForm />
+            </div>
+          </div>
+
+          <div className="mb-10">
+            <div className="mx-auto w-full max-w-4xl">
+              <SubscribeForm />
+            </div>
+          </div>
+
+          <div>
+            <div className="mx-auto w-full max-w-4xl">
+              <Backlog />
+            </div>
+          </div>
+        </>
       )}
-
-      <section id="about" className="mb-20">
-        <div className="w-full">
-          <About />
-        </div>
-      </section>
-
-      <section className="mb-10 flex justify-center">
-        <div className="w-full max-w-4xl">
-          <ShareForm />
-        </div>
-      </section>
-
-      <section className="mb-10 flex justify-center">
-        <div className="w-full max-w-4xl">
-          <SubscribeForm />
-        </div>
-      </section>
-
-      <section className="flex justify-center">
-        <div className="w-full max-w-4xl">
-          <Backlog />
-        </div>
-      </section>
     </PageLayout>
   );
 }
