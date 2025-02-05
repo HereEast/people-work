@@ -9,7 +9,7 @@ import { ClientProvider } from "~/providers/ClientProvider";
 import { Header } from "~/components/layouts/Header";
 import { Footer } from "~/components/layouts/Footer";
 
-import { OG_DESCRIPTION, OG_TITLE } from "~/utils/constants";
+import { OG } from "~/utils/constants";
 
 const InnovatorGrotesk = localFont({
   src: [
@@ -47,18 +47,35 @@ const InnovatorGrotesk = localFont({
 });
 
 export const metadata: Metadata = {
-  title: OG_TITLE,
-  description: OG_DESCRIPTION,
-  metadataBase: new URL("https://people-work.net"),
+  title: OG.TITLE,
+  description: OG.DESCRIPTION,
+  metadataBase: new URL(OG.BASE_URL),
   openGraph: {
-    images: ["opengraph-image.jpg"],
+    title: OG.TITLE,
+    description: OG.DESCRIPTION,
+    url: OG.BASE_URL,
+    siteName: "people-work.net",
+    images: [
+      {
+        url: OG.IMAGE,
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en-EN",
   },
   twitter: {
-    title: OG_TITLE,
-    description: OG_DESCRIPTION,
+    title: OG.TITLE,
+    description: OG.DESCRIPTION,
     site: "people-work.net",
     card: "summary_large_image",
-    images: ["opengraph-image.jpg"],
+    images: [
+      {
+        url: OG.IMAGE,
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 };
 

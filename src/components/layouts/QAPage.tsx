@@ -28,7 +28,7 @@ export function QAPage({ slug }: QAPageProps) {
       {answers && person && (
         <>
           <div className="space-y-16">
-            <section className="max-w-7xl">
+            <div className="max-w-7xl">
               <div className="grid gap-6 md:grid-cols-[300px_auto]">
                 <PersonPreview person={person} />
 
@@ -36,7 +36,7 @@ export function QAPage({ slug }: QAPageProps) {
                   <Content data={answers} />
                 </div>
               </div>
-            </section>
+            </div>
 
             {/* Side Panel — Mobile */}
             <div className="flex flex-col items-center justify-center gap-6 lg:hidden">
@@ -48,11 +48,11 @@ export function QAPage({ slug }: QAPageProps) {
             </div>
 
             {/* Form */}
-            <section className="mb-10 max-w-7xl grid-cols-[300px_auto] gap-6 lg:grid">
+            <div className="mb-10 max-w-7xl grid-cols-[300px_auto] gap-6 lg:grid">
               <div className="md:col-start-2">
                 <ShareForm />
               </div>
-            </section>
+            </div>
           </div>
 
           {/* Side Panel — Desktop */}

@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { ReactNode } from "react";
 import { useParams } from "next/navigation";
-import Link from "next/link";
 
 import { PersonImage } from "./PersonImage";
 import { PlusIcon } from "./icons/Plus";
@@ -16,29 +16,31 @@ export function SidePeoplePanel() {
   const people = data?.filter((item) => item.slug !== params.slug);
 
   return (
-    <div className="flex flex-wrap justify-center gap-3 lg:flex-col lg:gap-2">
-      {people?.map((person, index) => (
-        <div
-          className="group/side-tile relative w-20 transition hover:-translate-y-1 lg:hover:-translate-x-1 lg:hover:translate-y-0"
-          key={index}
-        >
-          <Tooltip>
-            <span className="mr-1 inline-block opacity-90">{`${person.name},`}</span>
-            <span className="inline-block opacity-90">{`${person.jobTitle} @ ${person.company.name}`}</span>
-          </Tooltip>
+    <nav>
+      <ul className="flex flex-wrap justify-center gap-3 lg:flex-col lg:gap-2">
+        {people?.map((person, index) => (
+          <li
+            className="group/side-tile relative w-20 transition hover:-translate-y-1 lg:hover:-translate-x-1 lg:hover:translate-y-0"
+            key={index}
+          >
+            <Tooltip>
+              <span className="mr-1 inline-block opacity-90">{`${person.name},`}</span>
+              <span className="inline-block opacity-90">{`${person.jobTitle} @ ${person.company.name}`}</span>
+            </Tooltip>
 
-          <Link href={`/${person.slug}`}>
-            <div className="overflow-hidden rounded-xl">
-              <PersonImage person={person} />
-            </div>
-          </Link>
-        </div>
-      ))}
+            <Link href={`/${person.slug}`}>
+              <div className="overflow-hidden rounded-xl">
+                <PersonImage person={person} />
+              </div>
+            </Link>
+          </li>
+        ))}
 
-      <div className="hidden lg:block">
-        <AddButton />
-      </div>
-    </div>
+        <li className="hidden lg:block">
+          <AddButton />
+        </li>
+      </ul>
+    </nav>
   );
 }
 
