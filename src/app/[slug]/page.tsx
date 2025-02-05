@@ -1,5 +1,7 @@
 import { QAPage } from "~/components/layouts/QAPage";
-import { getPerson } from "~/api-client/people";
+
+import { connectDB } from "../lib/connectDB";
+import { Person, IPerson } from "~/models/Person";
 
 interface PersonPageProps {
   params: {
@@ -8,11 +10,12 @@ interface PersonPageProps {
 }
 
 export async function generateMetadata({ params }: PersonPageProps) {
-  const person = await getPerson(params.slug);
+  await connectDB();
+
+  const person: IPerson = await Person.findOne({ slug: params.slug }).exec();
 
   if (person) {
-    const personInfo = `${person.name}, ${person.jobTitle}`;
-    const title = `${personInfo} | Job titles decoded. In a simple Q&A format.`;
+    const title = `PEOPLE—WORK.NET | ${person.name}, ${person.jobTitle} at ${person.company.name}`;
 
     return {
       title: title,
@@ -26,6 +29,6 @@ export async function generateMetadata({ params }: PersonPageProps) {
   }
 }
 
-export default function Person({ params }: PersonPageProps) {
+export default function PersonPage({ params }: PersonPageProps) {
   return <QAPage slug={params.slug} />;
 }
