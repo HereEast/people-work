@@ -92,7 +92,7 @@ export default function Layout({ children }: LayoutProps) {
       >
         <ClientProvider>
           <Header />
-          <main className="mt-[56px] grow">{children}</main>
+          <main className="mt-[56px] flex h-full grow">{children}</main>
           <Footer />
         </ClientProvider>
       </body>
