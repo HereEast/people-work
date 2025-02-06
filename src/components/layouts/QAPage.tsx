@@ -1,5 +1,7 @@
 "use client";
 
+import { notFound } from "next/navigation";
+
 import { Loader } from "../Loader";
 import { ShareForm } from "../ShareForm";
 import { SidePeoplePanel } from "../SidePeoplePanel";
@@ -21,6 +23,10 @@ export function QAPage({ slug }: QAPageProps) {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (!isLoading && !person) {
+    notFound();
   }
 
   return (
