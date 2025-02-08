@@ -15,6 +15,12 @@ export interface IAnswer extends Document {
   }[];
 }
 
+export interface IAnswerLink {
+  body: string;
+  url: string;
+  image?: string;
+}
+
 const AnswerLinksSchema = new Schema(
   {
     body: { type: String, required: true },
