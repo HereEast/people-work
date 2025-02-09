@@ -12,16 +12,14 @@ export function GoogleAnalytics() {
   // Add searchParams
   const searchParams = "";
 
+  // Track page view change
   useEffect(() => {
     const url = pathname + searchParams;
 
-    // Track page view change
     if (typeof window.gtag === "function" && GA_MEASUREMENT_ID) {
       window.gtag("config", GA_MEASUREMENT_ID, {
         page_path: url,
       });
-    } else {
-      console.error("Google Analytics gtag function not loaded.");
     }
   }, [pathname, searchParams]);
 
