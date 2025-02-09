@@ -21,7 +21,7 @@ export function Backlog() {
           </span>
         </div>
         <div>
-          <span className="text-base text-stone-400">UPD: Jan 26</span>
+          <span className="text-base text-stone-400">UPD: Feb 10</span>
         </div>
       </div>
 
