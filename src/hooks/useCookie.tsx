@@ -25,9 +25,11 @@ export function useCookie() {
 
     const consentStatus = isConsent ? "granted" : "denied";
 
-    window.gtag("consent", "update", {
-      analytics_storage: consentStatus,
-    });
+    if (typeof window.gtag !== "undefined") {
+      window.gtag("consent", "update", {
+        analytics_storage: consentStatus,
+      });
+    }
 
     localStorage.setItem("cookie_consent", JSON.stringify(isConsent));
     setIsCookieBanner(false);
