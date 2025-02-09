@@ -5,17 +5,21 @@ export interface BacklogItem {
 
 export const BACKLOG: BacklogItem[] = [
   {
+    title: "Improve Person page render speed (!!!)",
+    done: false,
+  },
+  {
     title:
-      "Render answers with rich text and cool custom elements (Contact Max) + Custom form",
+      "Render answers with rich text and cool custom elements (Contact Max)",
+    done: false,
+  },
+  {
+    title: "Redesign Person page (make it more useful and readable)",
     done: false,
   },
   {
     title:
       "Add subscriptions. How to work with subscr. + Add in the UI + Design email patterns",
-    done: false,
-  },
-  {
-    title: "Message all people on the list for a Q&A",
     done: false,
   },
   {
@@ -27,11 +31,24 @@ export const BACKLOG: BacklogItem[] = [
     done: true,
   },
   {
-    title: "Finish (aka start and finish) working on branding",
+    title:
+      "Finish (aka start and finish) working on branding + Create basic UI kit",
     done: false,
   },
   {
     title: "Create business email",
+    done: false,
+  },
+  {
+    title: "Create a single question page + Upd Sitemap",
+    done: false,
+  },
+  {
+    title: "Move backlog to a separate page + Upd Sitemap",
+    done: false,
+  },
+  {
+    title: "Create About page + Upd Sitemap",
     done: false,
   },
   {
@@ -40,11 +57,15 @@ export const BACKLOG: BacklogItem[] = [
     done: false,
   },
   {
-    title: "Research analytics tools",
-    done: false,
+    title: "Add analytics + Cookie banner",
+    done: true,
   },
   {
     title: "Launch whatever is ready.",
+    done: true,
+  },
+  {
+    title: "Add 404 page.",
     done: true,
   },
   {
