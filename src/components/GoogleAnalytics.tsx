@@ -11,9 +11,7 @@ interface GoogleAnalyticsProps {
 }
 
 export function GoogleAnalytics({ gaID }: GoogleAnalyticsProps) {
-  if (!gaID) {
-    throw Error("No gaID found.");
-  }
+  console.log(gaID);
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
