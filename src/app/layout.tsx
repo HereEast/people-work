@@ -8,7 +8,7 @@ import { ClientProvider } from "~/providers/ClientProvider";
 
 import { Header } from "~/components/layouts/Header";
 import { Footer } from "~/components/layouts/Footer";
-import { GoogleAnalytics } from "~/components/GoogleAnalytics";
+// import { GoogleAnalytics } from "~/components/GoogleAnalytics";
 // import { CookieBanner } from "~/components/CookieBanner";
 
 import { GA_MEASUREMENT_ID, OG } from "~/utils/constants";
@@ -88,7 +88,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en" className={`${InnovatorGrotesk.className} scroll-smooth`}>
-      <GoogleAnalytics gaID={GA_MEASUREMENT_ID || ""} />
+      {/* <GoogleAnalytics gaID={GA_MEASUREMENT_ID || ""} /> */}
 
       <body
         suppressHydrationWarning={true}
