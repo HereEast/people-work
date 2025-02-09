@@ -5,6 +5,10 @@ export interface BacklogItem {
 
 export const BACKLOG: BacklogItem[] = [
   {
+    title: "Improve Person page render speed (!!!)",
+    done: false,
+  },
+  {
     title:
       "Render answers with rich text and cool custom elements (Contact Max)",
     done: false,
@@ -16,10 +20,6 @@ export const BACKLOG: BacklogItem[] = [
   {
     title:
       "Add subscriptions. How to work with subscr. + Add in the UI + Design email patterns",
-    done: false,
-  },
-  {
-    title: "Message all people on the list for a Q&A",
     done: false,
   },
   {
