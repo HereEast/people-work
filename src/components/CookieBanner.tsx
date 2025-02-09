@@ -3,7 +3,7 @@
 import { useCookie } from "~/hooks/useCookie";
 
 export function CookieBanner() {
-  const { isCookieBanner, handleConsent } = useCookie();
+  const { isCookieBanner, setConsent } = useCookie();
 
   if (!isCookieBanner) {
     return null;
@@ -18,14 +18,14 @@ export function CookieBanner() {
 
         <div className="flex w-full justify-center gap-2 md:justify-end">
           <button
-            onClick={() => handleConsent(false)}
+            onClick={() => setConsent(false)}
             className="w-full rounded-[16px] border border-stone-50 px-10 py-4 transition hover:opacity-75 md:w-fit"
           >
             Decline
           </button>
 
           <button
-            onClick={() => handleConsent(true)}
+            onClick={() => setConsent(true)}
             className="w-full rounded-[16px] bg-stone-50 px-10 py-4 font-medium text-stone-900 transition hover:opacity-75 md:w-fit"
           >
             Accept

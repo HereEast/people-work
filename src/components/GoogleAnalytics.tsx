@@ -1,38 +1,40 @@
 "use client";
 
 import { useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Script from "next/script";
 
-import { updatePagePath } from "~/utils/ga";
+import { GA_MEASUREMENT_ID } from "~/utils/constants";
 
-interface GoogleAnalyticsProps {
-  gaID: string;
-}
-
-export function GoogleAnalytics({ gaID }: GoogleAnalyticsProps) {
-  console.log(gaID);
-
+export function GoogleAnalytics() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
+  // Add searchParams
+  const searchParams = "";
+
+  // Track page view change
   useEffect(() => {
-    const url = pathname + searchParams.toString();
+    const url = pathname + searchParams;
 
-    updatePagePath(gaID, url);
-  }, [pathname, searchParams, gaID]);
+    if (typeof window.gtag === "function" && GA_MEASUREMENT_ID) {
+      window.gtag("config", GA_MEASUREMENT_ID, {
+        page_path: url,
+      });
+    }
+  }, [pathname, searchParams]);
 
   return (
-    <>
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${gaID}`}
-      />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
+    GA_MEASUREMENT_ID && (
+      <>
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -41,12 +43,13 @@ export function GoogleAnalytics({ gaID }: GoogleAnalyticsProps) {
                 'analytics_storage': 'denied'
             });
                 
-            gtag('config', '${gaID}', {
+            gtag('config', '${GA_MEASUREMENT_ID}', {
                 page_path: window.location.pathname,
             });
             `,
-        }}
-      />
-    </>
+          }}
+        />
+      </>
+    )
   );
 }
