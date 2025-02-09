@@ -10,7 +10,7 @@ export function CookieBanner() {
   }
 
   return (
-    <div className="fixed inset-x-2 bottom-6 z-30 mx-auto sm:inset-x-4">
+    <div className="fixed inset-x-2 bottom-2 z-30 mx-auto sm:inset-x-4 sm:bottom-6">
       <div className="flex flex-col items-center justify-between gap-4 rounded-xl bg-brand-blue-600 p-6 text-stone-50 md:flex-row">
         <div className="w-full text-center md:text-left">
           <p>🍪 We use cookies on our website.</p>

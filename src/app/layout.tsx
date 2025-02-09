@@ -9,9 +9,9 @@ import { ClientProvider } from "~/providers/ClientProvider";
 import { Header } from "~/components/layouts/Header";
 import { Footer } from "~/components/layouts/Footer";
 import { GoogleAnalytics } from "~/components/GoogleAnalytics";
-import { CookieBanner } from "~/components/CookieBanner";
+// import { CookieBanner } from "~/components/CookieBanner";
 
-import { OG } from "~/utils/constants";
+import { GA_MEASUREMENT_ID, OG } from "~/utils/constants";
 
 const InnovatorGrotesk = localFont({
   src: [
@@ -88,7 +88,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en" className={`${InnovatorGrotesk.className} scroll-smooth`}>
-      <GoogleAnalytics gaID="G-8YB65J6WL0" />
+      <GoogleAnalytics gaID={GA_MEASUREMENT_ID || ""} />
 
       <body
         suppressHydrationWarning={true}
@@ -100,7 +100,7 @@ export default function Layout({ children }: LayoutProps) {
           <Footer />
         </ClientProvider>
 
-        <CookieBanner />
+        {/* <CookieBanner /> */}
       </body>
     </html>
   );
