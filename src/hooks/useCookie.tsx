@@ -25,10 +25,12 @@ export function useCookie() {
 
     const consentStatus = isConsent ? "granted" : "denied";
 
-    if (typeof window.gtag !== "undefined") {
+    if (typeof window !== "undefined") {
       window.gtag("consent", "update", {
         analytics_storage: consentStatus,
       });
+    } else {
+      throw Error("Error 1 Hook");
     }
 
     localStorage.setItem("cookie_consent", JSON.stringify(isConsent));

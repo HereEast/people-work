@@ -11,6 +11,8 @@ interface GoogleAnalyticsProps {
 }
 
 export function GoogleAnalytics({ gaID }: GoogleAnalyticsProps) {
+  console.log(gaID);
+
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
