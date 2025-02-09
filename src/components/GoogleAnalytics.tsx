@@ -1,17 +1,17 @@
 "use client";
 
 import { useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Script from "next/script";
 
 import { GA_MEASUREMENT_ID } from "~/utils/constants";
 
 export function GoogleAnalytics() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const searchParams = window ? window.location.search.slice(1) : "";
 
   useEffect(() => {
-    const url = pathname + searchParams.toString();
+    const url = pathname + searchParams;
 
     // Track page view change
     if (typeof window.gtag === "function" && GA_MEASUREMENT_ID) {
