@@ -8,6 +8,8 @@ import { ClientProvider } from "~/providers/ClientProvider";
 
 import { Header } from "~/components/layouts/Header";
 import { Footer } from "~/components/layouts/Footer";
+import { GoogleAnalytics } from "~/components/GoogleAnalytics";
+import { CookieBanner } from "~/components/CookieBanner";
 
 import { OG } from "~/utils/constants";
 
@@ -86,6 +88,8 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en" className={`${InnovatorGrotesk.className} scroll-smooth`}>
+      <GoogleAnalytics gaID="G-8YB65J6WL0" />
+
       <body
         suppressHydrationWarning={true}
         className="flex min-h-screen flex-col text-lg"
@@ -95,6 +99,8 @@ export default function Layout({ children }: LayoutProps) {
           <main className="mt-[56px] flex h-full grow">{children}</main>
           <Footer />
         </ClientProvider>
+
+        <CookieBanner />
       </body>
     </html>
   );

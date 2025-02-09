@@ -3,6 +3,8 @@ export const BASE_URL =
     ? "https://people-work.net"
     : "http://localhost:3000";
 
+export const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID;
+
 export const LINKEDIN = "https://www.linkedin.com/company/people-work-net";
 export const EMAIL = "heypeoplework@gmail.com";
 
