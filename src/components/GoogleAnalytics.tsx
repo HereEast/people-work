@@ -8,7 +8,9 @@ import { GA_MEASUREMENT_ID } from "~/utils/constants";
 
 export function GoogleAnalytics() {
   const pathname = usePathname();
-  const searchParams = window ? window.location.search.slice(1) : "";
+
+  // Add searchParams
+  const searchParams = "";
 
   useEffect(() => {
     const url = pathname + searchParams;
