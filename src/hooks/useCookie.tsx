@@ -25,13 +25,17 @@ export function useCookie() {
 
     const consentStatus = isConsent ? "granted" : "denied";
 
-    if (typeof window !== "undefined") {
-      window.gtag("consent", "update", {
-        analytics_storage: consentStatus,
-      });
-    } else {
-      throw Error("Error 1 Hook");
-    }
+    window.gtag("consent", "update", {
+      analytics_storage: consentStatus,
+    });
+
+    // if (typeof window.gtag === "function") {
+    //   window.gtag("consent", "update", {
+    //     analytics_storage: consentStatus,
+    //   });
+    // } else {
+    //   console.log("Google Analytics gtag function not loaded.");
+    // }
 
     localStorage.setItem("cookie_consent", JSON.stringify(isConsent));
     setIsCookieBanner(false);

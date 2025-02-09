@@ -1,4 +1,4 @@
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 import { Metadata } from "next";
 
 import localFont from "next/font/local";
@@ -11,7 +11,7 @@ import { Footer } from "~/components/layouts/Footer";
 import { GoogleAnalytics } from "~/components/GoogleAnalytics";
 import { CookieBanner } from "~/components/CookieBanner";
 
-import { GA_MEASUREMENT_ID, OG } from "~/utils/constants";
+import { OG } from "~/utils/constants";
 
 const InnovatorGrotesk = localFont({
   src: [
@@ -88,9 +88,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en" className={`${InnovatorGrotesk.className} scroll-smooth`}>
-      <Suspense>
-        <GoogleAnalytics gaID={GA_MEASUREMENT_ID || ""} />
-      </Suspense>
+      <GoogleAnalytics />
 
       <body
         suppressHydrationWarning={true}
