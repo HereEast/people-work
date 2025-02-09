@@ -88,9 +88,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en" className={`${InnovatorGrotesk.className} scroll-smooth`}>
-      <Suspense>
-        <GoogleAnalytics gaID={GA_MEASUREMENT_ID || ""} />
-      </Suspense>
+      <Suspense>{<GoogleAnalytics gaID={GA_MEASUREMENT_ID || ""} />}</Suspense>
 
       <body
         suppressHydrationWarning={true}
