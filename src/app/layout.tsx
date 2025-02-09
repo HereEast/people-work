@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import { Metadata } from "next";
 
 import localFont from "next/font/local";
@@ -8,8 +8,8 @@ import { ClientProvider } from "~/providers/ClientProvider";
 
 import { Header } from "~/components/layouts/Header";
 import { Footer } from "~/components/layouts/Footer";
-// import { GoogleAnalytics } from "~/components/GoogleAnalytics";
-// import { CookieBanner } from "~/components/CookieBanner";
+import { GoogleAnalytics } from "~/components/GoogleAnalytics";
+import { CookieBanner } from "~/components/CookieBanner";
 
 import { GA_MEASUREMENT_ID, OG } from "~/utils/constants";
 
@@ -88,7 +88,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en" className={`${InnovatorGrotesk.className} scroll-smooth`}>
-      {/* <GoogleAnalytics gaID={GA_MEASUREMENT_ID || ""} /> */}
+      <GoogleAnalytics gaID={GA_MEASUREMENT_ID || ""} />
 
       <body
         suppressHydrationWarning={true}
@@ -96,11 +96,15 @@ export default function Layout({ children }: LayoutProps) {
       >
         <ClientProvider>
           <Header />
-          <main className="mt-[56px] flex h-full grow">{children}</main>
+
+          <main className="mt-[56px] flex h-full grow">
+            <Suspense>{children}</Suspense>
+          </main>
+
           <Footer />
         </ClientProvider>
 
-        {/* <CookieBanner /> */}
+        <CookieBanner />
       </body>
     </html>
   );
