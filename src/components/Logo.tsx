@@ -13,6 +13,7 @@ export function Logo() {
           width={32}
           height={20}
           alt="Logo icon"
+          style={{ objectFit: "contain" }}
         />
       </div>
     </div>

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { Card } from "./Card";
 import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
-import { ArrowRightFull } from "./icons";
+// import { ArrowRightFull } from "./icons";
 
 import { createName } from "~/api-client/names";
 import { cn } from "~/utils/handlers";
@@ -80,7 +80,7 @@ export function ShareForm({ className = "" }: ShareFormCardProps) {
             <span className="text-white transition duration-200 group-hover/button:-translate-x-0.5">
               share the name
             </span>
-            <ArrowRightFull className="w-4 text-white transition duration-200 group-hover/button:translate-x-0.5" />
+            {/* <ArrowRightFull className="w-4 text-white transition duration-200 group-hover/button:translate-x-0.5" /> */}
           </Button>
         </div>
       </form>

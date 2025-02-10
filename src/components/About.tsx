@@ -1,4 +1,4 @@
-import { SmileIconSolid } from "./icons";
+// import { SmileIconSolid } from "./icons";
 
 import { cn } from "~/utils/handlers";
 
@@ -50,7 +50,7 @@ function IconTile() {
       <span className="absolute -top-10 flex h-8 w-6 items-center justify-center rounded-full bg-stone-200 text-base font-semibold text-stone-950 opacity-0 group-hover/icon:opacity-100">
         ?
       </span>
-      <SmileIconSolid className="w-8 fill-stone-50" />
+      {/* <SmileIconSolid className="w-8 fill-stone-50" /> */}
     </div>
   );
 }
