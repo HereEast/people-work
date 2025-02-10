@@ -58,9 +58,11 @@ export async function generateMetadata({ params }: PersonPageProps) {
 export async function generateStaticParams() {
   const people = await getPeople();
 
-  return people?.map((person) => ({
-    slug: person.slug,
-  }));
+  return (
+    people?.map((person) => ({
+      slug: person.slug,
+    })) || []
+  );
 }
 
 export default async function PersonPage({ params }: PersonPageProps) {

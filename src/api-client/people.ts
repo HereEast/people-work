@@ -1,5 +1,3 @@
-import axios from "axios";
-
 import { IPerson } from "~/models/Person";
 import { BASE_URL } from "~/utils/constants";
 

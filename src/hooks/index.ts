@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { getAnswersBySlug } from "~/api-client/answers";
-import { getPeople, getPerson } from "~/api-client/people";
 import { getQuestions } from "~/api-client/questions";
 
 // Answers
