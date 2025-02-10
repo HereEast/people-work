@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 import { PersonImage } from "./PersonImage";
-// import { PlusIcon } from "./icons/Plus";
+import { PlusIcon } from "./icons/Plus";
 
 import { getPeople } from "~/api-client/people";
 
@@ -52,7 +52,7 @@ function AddButton() {
         href="#share"
         className="flex size-full items-center justify-center"
       >
-        {/* <PlusIcon className="size-8" /> */}
+        <PlusIcon className="size-8" />
       </Link>
     </div>
   );

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { LogoIcon } from "./icons/LogoIcon";
 
 export function Logo() {
   return (
@@ -7,15 +7,7 @@ export function Logo() {
         people—work.net
       </h1>
 
-      <div className="flex shrink-0 items-center">
-        <Image
-          src="./icons/ic-logo.svg"
-          width={32}
-          height={20}
-          alt="Logo icon"
-          style={{ objectFit: "contain" }}
-        />
-      </div>
+      <LogoIcon className="w-9" />
     </div>
   );
 }

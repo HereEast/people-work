@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Card } from "./Card";
 import { PersonImage } from "./PersonImage";
-// import { ArrowRightFull } from "./icons";
+import { ArrowRightFull } from "./icons/ArrowRightFull";
 
 import { IPerson, ICompany } from "~/models/Person";
 import { cn } from "~/utils/handlers";
@@ -17,7 +17,7 @@ export function PersonCard({ person }: PersonCardProps) {
       <Link href={`/${person?.slug}`}>
         {/* Arrow */}
         <div className="absolute right-10 top-10 z-10 flex size-16 items-center justify-center rounded-full bg-brand-blue-600">
-          {/* <ArrowRightFull className="w-4 text-stone-50" /> */}
+          <ArrowRightFull className="w-4 text-stone-50" />
         </div>
 
         <div className="flex flex-col items-center gap-5 p-5 pb-8 text-stone-50">
