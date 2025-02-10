@@ -16,24 +16,24 @@ export function useAnswers(slug: string) {
 }
 
 // Person
-export function usePerson(slug: string) {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["person", slug],
-    queryFn: () => getPerson(slug),
-  });
+// export function usePerson(slug: string) {
+//   const { data, isLoading, isError } = useQuery({
+//     queryKey: ["person", slug],
+//     queryFn: () => getPerson(slug),
+//   });
 
-  return { data, isLoading, isError };
-}
+//   return { data, isLoading, isError };
+// }
 
 // People
-export function usePeople() {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["people"],
-    queryFn: getPeople,
-  });
+// export function usePeople() {
+//   const { data, isLoading, isError } = useQuery({
+//     queryKey: ["people"],
+//     queryFn: getPeople,
+//   });
 
-  return { data, isLoading, isError };
-}
+//   return { data, isLoading, isError };
+// }
 
 // Questions
 export function useQuestions() {

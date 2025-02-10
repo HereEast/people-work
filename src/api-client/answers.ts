@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { IAnswer } from "~/models/Answer";
+import { BASE_URL } from "~/utils/constants";
 
 export interface IFormDataProps {
   questionId: string;
@@ -40,41 +41,42 @@ export async function submitAnswers(formData: IFormDataProps[]) {
 // GET ANSWERS BY SLUG
 export async function getAnswersBySlug(slug: string) {
   try {
-    const response = await axios.get<IAnswer[]>(`/api/answers/${slug}`);
+    const answersResponse = await fetch(`${BASE_URL}/api/answers/${slug}`);
 
-    const data = response.data;
-
-    return data;
-  } catch (err) {
-    if (err instanceof Error) {
-      console.log("🔴", err.message);
+    if (!answersResponse.ok) {
+      throw new Error("🔴 Data fetch failed");
     }
 
+    const answers: IAnswer[] = await answersResponse.json();
+
+    return answers;
+  } catch (error) {
+    console.error("Error fetching data:", error);
     return null;
   }
 }
 
 // GET ANSWERS BY SLUG ARRAY
-export async function getAnswersBySlugArray(slugs: string[]) {
-  if (!slugs.length) {
-    return [];
-  }
+// export async function getAnswersBySlugArray(slugs: string[]) {
+//   if (!slugs.length) {
+//     return [];
+//   }
 
-  try {
-    const response = await axios.get<IAnswer[]>(`/api/answers`, {
-      params: {
-        slugs: slugs.toString(),
-      },
-    });
+//   try {
+//     const response = await axios.get<IAnswer[]>(`/api/answers`, {
+//       params: {
+//         slugs: slugs.toString(),
+//       },
+//     });
 
-    const data = response.data;
+//     const data = response.data;
 
-    return data;
-  } catch (err) {
-    if (err instanceof Error) {
-      console.log("🔴", err.message);
-    }
+//     return data;
+//   } catch (err) {
+//     if (err instanceof Error) {
+//       console.log("🔴", err.message);
+//     }
 
-    return [];
-  }
-}
+//     return [];
+//   }
+// }

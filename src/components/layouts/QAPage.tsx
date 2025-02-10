@@ -1,40 +1,25 @@
-// "use client";
-
 import { notFound } from "next/navigation";
 
-import { Loader } from "../Loader";
 import { ShareForm } from "../ShareForm";
-import { SidePeoplePanel } from "../SidePeoplePanel";
 import { PersonPreview } from "../PersonPreview";
 import { PageLayout } from "./PageLayout";
 import { Content } from "../Content";
+import { SidePeoplePanel } from "../SidePeoplePanel";
 
-import { useAnswers, usePerson } from "~/hooks";
-import { IAnswer } from "~/models/Answer";
-import { IPerson } from "~/models/Person";
-
-// interface QAPageProps {
-//   slug: string;
-// }
+import { getPerson } from "~/api-client/people";
+import { getAnswersBySlug } from "~/api-client/answers";
 
 interface QAPageProps {
-  person: IPerson;
-  answers: IAnswer[];
+  slug: string;
 }
 
-export function QAPage({ answers, person }: QAPageProps) {
-  // const { data: answers, isLoading: isAnswersLoading } = useAnswers(slug);
-  // const { data: person, isLoading: isPersonLoading } = usePerson(slug);
+export async function QAPage({ slug }: QAPageProps) {
+  const person = await getPerson(slug);
+  const answers = await getAnswersBySlug(slug);
 
-  // const isLoading = isAnswersLoading && isPersonLoading;
-
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
-
-  // if (!isLoading && !person) {
-  //   notFound();
-  // }
+  if (!person || !answers) {
+    notFound();
+  }
 
   return (
     <PageLayout className="min-h-screen max-w-full gap-10 pt-4 sm:pt-10 lg:grid lg:grid-cols-[auto_80px]">
@@ -52,13 +37,13 @@ export function QAPage({ answers, person }: QAPageProps) {
             </div>
 
             {/* Side Panel — Mobile */}
-            {/* <div className="flex flex-col items-center justify-center gap-6 lg:hidden">
+            <div className="flex flex-col items-center justify-center gap-6 lg:hidden">
               <p className="text-gradient w-fit text-center font-medium leading-tight">
                 More awesome people:
               </p>
 
-              <SidePeoplePanel />
-            </div> */}
+              <SidePeoplePanel slug={slug} />
+            </div>
 
             {/* Form */}
             <div className="mb-10 max-w-7xl grid-cols-[300px_auto] gap-6 lg:grid">
@@ -69,11 +54,11 @@ export function QAPage({ answers, person }: QAPageProps) {
           </div>
 
           {/* Side Panel — Desktop */}
-          {/* <aside className="relative hidden lg:block">
+          <aside className="relative hidden lg:block">
             <div className="sticky top-[56px]">
-              <SidePeoplePanel />
+              <SidePeoplePanel slug={slug} />
             </div>
-          </aside> */}
+          </aside>
         </>
       )}
     </PageLayout>
