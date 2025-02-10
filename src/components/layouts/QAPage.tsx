@@ -1,31 +1,23 @@
-"use client";
-
 import { notFound } from "next/navigation";
 
-import { Loader } from "../Loader";
 import { ShareForm } from "../ShareForm";
-import { SidePeoplePanel } from "../SidePeoplePanel";
 import { PersonPreview } from "../PersonPreview";
 import { PageLayout } from "./PageLayout";
 import { Content } from "../Content";
+import { SidePeoplePanel } from "../SidePeoplePanel";
 
-import { useAnswers, usePerson } from "~/hooks";
+import { getPerson } from "~/api-client/people";
+import { getAnswersBySlug } from "~/api-client/answers";
 
 interface QAPageProps {
   slug: string;
 }
 
-export function QAPage({ slug }: QAPageProps) {
-  const { data: answers, isLoading: isAnswersLoading } = useAnswers(slug);
-  const { data: person, isLoading: isPersonLoading } = usePerson(slug);
+export async function QAPage({ slug }: QAPageProps) {
+  const person = await getPerson(slug);
+  const answers = await getAnswersBySlug(slug);
 
-  const isLoading = isAnswersLoading && isPersonLoading;
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (!isLoading && !person) {
+  if (!person || !answers) {
     notFound();
   }
 
@@ -50,7 +42,7 @@ export function QAPage({ slug }: QAPageProps) {
                 More awesome people:
               </p>
 
-              <SidePeoplePanel />
+              <SidePeoplePanel slug={slug} />
             </div>
 
             {/* Form */}
@@ -64,7 +56,7 @@ export function QAPage({ slug }: QAPageProps) {
           {/* Side Panel — Desktop */}
           <aside className="relative hidden lg:block">
             <div className="sticky top-[56px]">
-              <SidePeoplePanel />
+              <SidePeoplePanel slug={slug} />
             </div>
           </aside>
         </>

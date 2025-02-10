@@ -5,7 +5,6 @@ export function ArrowTopRightSquare({ className = "" }: IconProps) {
   return (
     <div className={cn("flex items-center justify-center", className)}>
       <svg
-        // className={className}
         width="100%"
         height="100%"
         viewBox="0 0 16 16"

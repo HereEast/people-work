@@ -1,20 +1,20 @@
-import axios from "axios";
-
 import { IPerson } from "~/models/Person";
+import { BASE_URL } from "~/utils/constants";
 
 // GET PERSON BY SLUG
 export async function getPerson(slug: string) {
   try {
-    const response = await axios.get<IPerson>(`/api/people/${slug}`);
+    const response = await fetch(`${BASE_URL}/api/people/${slug}`);
 
-    const data = response.data;
-
-    return data;
-  } catch (err) {
-    if (err instanceof Error) {
-      console.log(err);
+    if (!response.ok) {
+      throw new Error("🔴 Data fetch failed");
     }
 
+    const person: IPerson = await response.json();
+
+    return person;
+  } catch (error) {
+    console.error("Error fetching data:", error);
     return null;
   }
 }
@@ -22,11 +22,15 @@ export async function getPerson(slug: string) {
 // GET ALL PEOPLE
 export async function getPeople() {
   try {
-    const response = await axios.get<IPerson[]>(`/api/people`);
+    const response = await fetch(`${BASE_URL}/api/people`);
 
-    const data = response.data;
+    if (!response.ok) {
+      throw new Error("🔴 Data fetch failed");
+    }
 
-    return data;
+    const people: IPerson[] = await response.json();
+
+    return people;
   } catch (err) {
     if (err instanceof Error) {
       console.log("🔴 Error:", err.message);

@@ -1,5 +1,5 @@
 import { HomePage } from "~/components/layouts/HomePage";
 
-export default function Home() {
+export default async function Home() {
   return <HomePage />;
 }

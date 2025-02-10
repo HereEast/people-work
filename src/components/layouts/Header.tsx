@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Logo } from "../Logo";
 import { ButtonLink } from "../ui/ButtonLink";
-import { ArrowTopRightSquare } from "../icons";
+import { ArrowTopRightSquare } from "../icons/ArrowTopRightSquare";
 
 import { PAGE } from "~/utils/types";
 import { LINKEDIN } from "~/utils/constants";

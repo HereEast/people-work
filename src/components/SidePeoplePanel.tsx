@@ -1,24 +1,24 @@
 import Link from "next/link";
 import { ReactNode } from "react";
-import { useParams } from "next/navigation";
 
 import { PersonImage } from "./PersonImage";
 import { PlusIcon } from "./icons/Plus";
 
-import { usePeople } from "~/hooks";
+import { getPeople } from "~/api-client/people";
 
-// Side Panel
-export function SidePeoplePanel() {
-  const params = useParams();
+interface SidePeoplePanelProps {
+  slug: string;
+}
 
-  const { data } = usePeople();
+export async function SidePeoplePanel({ slug }: SidePeoplePanelProps) {
+  const people = await getPeople();
 
-  const people = data?.filter((item) => item.slug !== params.slug);
+  const sidePanelPeople = people?.filter((item) => item.slug !== slug);
 
   return (
     <nav>
       <ul className="flex flex-wrap justify-center gap-3 lg:flex-col lg:gap-2">
-        {people?.map((person, index) => (
+        {sidePanelPeople?.map((person, index) => (
           <li
             className="group/side-tile relative w-20 transition hover:-translate-y-1 lg:hover:-translate-x-1 lg:hover:translate-y-0"
             key={index}
@@ -48,9 +48,12 @@ export function SidePeoplePanel() {
 function AddButton() {
   return (
     <div className="flex aspect-square size-20 items-center justify-center overflow-hidden rounded-xl bg-slate-950 text-slate-50 transition hover:-translate-y-1 hover:animate-anime hover:bg-gradient-base-diagonal hover:bg-[length:400%] lg:hover:-translate-x-1 lg:hover:translate-y-0">
-      <a href="#share" className="flex size-full items-center justify-center">
+      <Link
+        href="#share"
+        className="flex size-full items-center justify-center"
+      >
         <PlusIcon className="size-8" />
-      </a>
+      </Link>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Card } from "./Card";
 import { PersonImage } from "./PersonImage";
-import { ArrowRightFull } from "./icons";
+import { ArrowRightFull } from "./icons/ArrowRightFull";
 
 import { IPerson, ICompany } from "~/models/Person";
 import { cn } from "~/utils/handlers";

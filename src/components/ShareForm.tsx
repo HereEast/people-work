@@ -1,10 +1,12 @@
+"use client";
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Card } from "./Card";
 import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
-import { ArrowRightFull } from "./icons";
+import { ArrowRightFull } from "./icons/ArrowRightFull";
 
 import { createName } from "~/api-client/names";
 import { cn } from "~/utils/handlers";

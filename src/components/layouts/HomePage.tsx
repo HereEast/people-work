@@ -1,21 +1,14 @@
-"use client";
-
 import { MainCards } from "../MainCards";
-import { Loader } from "../Loader";
 import { ShareForm } from "../ShareForm";
 import { SubscribeForm } from "../SubscribeForm";
 import { PageLayout } from "./PageLayout";
 import { Backlog } from "../Backlog";
 import { About } from "../About";
 
-import { usePeople } from "~/hooks";
+import { getPeople } from "~/api-client/people";
 
-export function HomePage() {
-  const { data: people, isLoading } = usePeople();
-
-  if (isLoading) {
-    return <Loader />;
-  }
+export async function HomePage() {
+  const people = await getPeople();
 
   return (
     <PageLayout>

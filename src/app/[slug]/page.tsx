@@ -2,6 +2,8 @@ import { QAPage } from "~/components/layouts/QAPage";
 
 import { connectDB } from "../lib/connectDB";
 import { Person, IPerson } from "~/models/Person";
+import { getPeople } from "~/api-client/people";
+
 import { OG } from "~/utils/constants";
 
 interface PersonPageProps {
@@ -53,6 +55,16 @@ export async function generateMetadata({ params }: PersonPageProps) {
   }
 }
 
-export default function PersonPage({ params }: PersonPageProps) {
+export async function generateStaticParams() {
+  const people = await getPeople();
+
+  return (
+    people?.map((person) => ({
+      slug: person.slug,
+    })) || []
+  );
+}
+
+export default async function PersonPage({ params }: PersonPageProps) {
   return <QAPage slug={params.slug} />;
 }

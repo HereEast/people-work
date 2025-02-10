@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { getAnswersBySlug } from "~/api-client/answers";
-import { getPeople, getPerson } from "~/api-client/people";
 import { getQuestions } from "~/api-client/questions";
 
 // Answers
@@ -16,24 +15,24 @@ export function useAnswers(slug: string) {
 }
 
 // Person
-export function usePerson(slug: string) {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["person", slug],
-    queryFn: () => getPerson(slug),
-  });
+// export function usePerson(slug: string) {
+//   const { data, isLoading, isError } = useQuery({
+//     queryKey: ["person", slug],
+//     queryFn: () => getPerson(slug),
+//   });
 
-  return { data, isLoading, isError };
-}
+//   return { data, isLoading, isError };
+// }
 
 // People
-export function usePeople() {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["people"],
-    queryFn: getPeople,
-  });
+// export function usePeople() {
+//   const { data, isLoading, isError } = useQuery({
+//     queryKey: ["people"],
+//     queryFn: getPeople,
+//   });
 
-  return { data, isLoading, isError };
-}
+//   return { data, isLoading, isError };
+// }
 
 // Questions
 export function useQuestions() {
