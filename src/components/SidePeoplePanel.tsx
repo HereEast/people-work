@@ -28,7 +28,7 @@ export async function SidePeoplePanel({ slug }: SidePeoplePanelProps) {
               <span className="inline-block opacity-90">{`${person.jobTitle} @ ${person.company.name}`}</span>
             </Tooltip>
 
-            <Link href={`/${person.slug}`}>
+            <Link href={`/people/${person.slug}`}>
               <div className="overflow-hidden rounded-xl">
                 <PersonImage person={person} />
               </div>

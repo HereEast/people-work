@@ -14,7 +14,7 @@ interface PersonCardProps {
 export function PersonCard({ person }: PersonCardProps) {
   return (
     <Card className="h-full transition hover:scale-[101%] hover:shadow-xl hover:shadow-brand-blue-600">
-      <Link href={`/${person?.slug}`}>
+      <Link href={`/people/${person?.slug}`}>
         {/* Arrow */}
         <div className="absolute right-10 top-10 z-10 flex size-16 items-center justify-center rounded-full bg-brand-blue-600">
           <ArrowRightFull className="w-4 text-stone-50" />

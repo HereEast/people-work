@@ -1,6 +1,6 @@
 import { QAPage } from "~/components/layouts/QAPage";
 
-import { connectDB } from "../lib/connectDB";
+import { connectDB } from "~/app/lib/connectDB";
 import { Person, IPerson } from "~/models/Person";
 import { getPeople } from "~/api-client/people";
 
