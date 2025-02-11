@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { PageLayout } from "~/components/layouts/PageLayout";
-import { PAGE } from "~/utils/types";
+import { PAGE } from "~/utils/constants";
 
 export default function NotFound() {
   return (
