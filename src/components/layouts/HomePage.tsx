@@ -2,8 +2,8 @@ import { MainCards } from "../MainCards";
 import { ShareForm } from "../ShareForm";
 import { SubscribeForm } from "../SubscribeForm";
 import { PageLayout } from "./PageLayout";
-import { Backlog } from "../Backlog";
 import { About } from "../About";
+import { BacklogPreview } from "../BacklogPreview";
 
 import { getPeople } from "~/api-client/people";
 
@@ -37,10 +37,8 @@ export async function HomePage() {
             </div>
           </div>
 
-          <div>
-            <div className="mx-auto w-full max-w-4xl">
-              <Backlog />
-            </div>
+          <div className="mx-auto w-full max-w-4xl">
+            <BacklogPreview />
           </div>
         </>
       )}

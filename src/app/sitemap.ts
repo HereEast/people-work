@@ -22,6 +22,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: BASE_URL,
       lastModified: new Date(),
     },
+    {
+      url: "/backlog",
+      lastModified: new Date(),
+    },
     ...peopleSitemapData,
   ];
 }

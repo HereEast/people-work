@@ -4,8 +4,7 @@ import { Logo } from "../Logo";
 import { ButtonLink } from "../ui/ButtonLink";
 import { ArrowTopRightSquare } from "../icons/ArrowTopRightSquare";
 
-import { PAGE } from "~/utils/types";
-import { LINKEDIN } from "~/utils/constants";
+import { LINKEDIN, PAGE } from "~/utils/constants";
 
 export function Header() {
   return (
