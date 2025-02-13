@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PersonPageProps) {
 
   const person: IPerson = await Person.findOne({ slug: params.slug }).exec();
 
-  if (person) {
+  if (person && OG.BASE_URL) {
     const title = `${person.name}, ${person.jobTitle} at ${person.company.name}`;
 
     return {

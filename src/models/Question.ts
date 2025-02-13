@@ -4,6 +4,7 @@ export type AnswerViewType = "all" | "links" | "text";
 
 export interface IQuestion extends Document {
   body: string;
+  slug: string;
   description: string;
   order: number;
   active: boolean;
@@ -12,6 +13,7 @@ export interface IQuestion extends Document {
 
 const QuestionSchema = new Schema({
   body: { type: String, required: true, unique: true },
+  slug: { type: String, required: true, unique: true },
   description: { type: String },
   order: { type: Number, required: true, unique: true },
   active: { type: Boolean, required: true, default: true },
