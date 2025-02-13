@@ -8,11 +8,11 @@ import { BASE_URL } from "~/utils/constants";
 import { getAnswersByQuestionSlug } from "~/api-client/answers";
 
 interface QuestionPageProps {
-  slug: string;
+  questionSlug: string;
 }
 
-export async function QuestionPage({ slug }: QuestionPageProps) {
-  const answers = await getAnswersByQuestionSlug(slug);
+export async function QuestionPage({ questionSlug }: QuestionPageProps) {
+  const answers = await getAnswersByQuestionSlug(questionSlug);
 
   if (!answers) {
     notFound();

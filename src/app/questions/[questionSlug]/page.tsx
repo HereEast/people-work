@@ -4,7 +4,7 @@ import { getQuestions } from "~/api-client/questions";
 
 interface QuestionPageProps {
   params: {
-    slug: string;
+    questionSlug: string;
   };
 }
 
@@ -13,11 +13,11 @@ export async function generateStaticParams() {
 
   return (
     questions?.map((question) => ({
-      slug: question.slug,
+      questionSlug: question.slug,
     })) || []
   );
 }
 
 export default async function Question({ params }: QuestionPageProps) {
-  return <QuestionPage slug={params.slug} />;
+  return <QuestionPage questionSlug={params.questionSlug} />;
 }
