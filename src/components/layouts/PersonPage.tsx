@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { ShareForm } from "../ShareForm";
 import { PersonPreview } from "../PersonPreview";
-import { PageLayout } from "./PageContainer";
+import { PageContainer } from "./PageContainer";
 import { Content } from "../Content";
 import { SidePeoplePanel } from "../SidePeoplePanel";
 
@@ -22,7 +22,7 @@ export async function PersonPage({ slug }: QAPageProps) {
   }
 
   return (
-    <PageLayout className="min-h-screen max-w-full gap-10 pt-4 sm:pt-10 lg:grid lg:grid-cols-[auto_80px]">
+    <PageContainer className="min-h-screen max-w-full gap-10 pt-4 sm:pt-10 lg:grid lg:grid-cols-[auto_80px]">
       {answers && person && (
         <>
           <div className="space-y-16">
@@ -61,6 +61,6 @@ export async function PersonPage({ slug }: QAPageProps) {
           </aside>
         </>
       )}
-    </PageLayout>
+    </PageContainer>
   );
 }
