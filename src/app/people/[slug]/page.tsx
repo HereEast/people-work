@@ -1,4 +1,4 @@
-import { QAPage } from "~/components/layouts/QAPage";
+import { PersonPage } from "~/components/layouts/PersonPage";
 
 import { connectDB } from "~/app/lib/connectDB";
 import { Person, IPerson } from "~/models/Person";
@@ -65,6 +65,6 @@ export async function generateStaticParams() {
   );
 }
 
-export default async function PersonPage({ params }: PersonPageProps) {
-  return <QAPage slug={params.slug} />;
+export default async function PersonQA({ params }: PersonPageProps) {
+  return <PersonPage slug={params.slug} />;
 }

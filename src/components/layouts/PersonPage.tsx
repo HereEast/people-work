@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { ShareForm } from "../ShareForm";
 import { PersonPreview } from "../PersonPreview";
-import { PageLayout } from "./PageLayout";
+import { PageLayout } from "./PageContainer";
 import { Content } from "../Content";
 import { SidePeoplePanel } from "../SidePeoplePanel";
 
@@ -13,7 +13,7 @@ interface QAPageProps {
   slug: string;
 }
 
-export async function QAPage({ slug }: QAPageProps) {
+export async function PersonPage({ slug }: QAPageProps) {
   const person = await getPerson(slug);
   const answers = await getAnswersBySlug(slug);
 
