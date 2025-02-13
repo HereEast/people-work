@@ -7,7 +7,7 @@ export interface IQuestion extends Document {
   slug: string;
   description: string;
   order: number;
-  active: boolean;
+  isActive: boolean;
   answerView?: AnswerViewType;
 }
 
@@ -16,7 +16,7 @@ const QuestionSchema = new Schema({
   slug: { type: String, required: true, unique: true },
   description: { type: String },
   order: { type: Number, required: true, unique: true },
-  active: { type: Boolean, required: true, default: true },
+  isActive: { type: Boolean, required: true, default: true },
   answerView: { type: String, enum: ["links", "all"] },
 });
 
