@@ -51,7 +51,7 @@ const InnovatorGrotesk = localFont({
 export const metadata: Metadata = {
   title: OG.TITLE,
   description: OG.DESCRIPTION,
-  metadataBase: new URL(OG.BASE_URL || "https://people-work.net"),
+  metadataBase: new URL(OG.BASE_URL),
   openGraph: {
     title: OG.TITLE,
     description: OG.DESCRIPTION,
