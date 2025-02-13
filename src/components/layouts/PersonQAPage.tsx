@@ -9,11 +9,11 @@ import { SidePeoplePanel } from "../SidePeoplePanel";
 import { getPerson } from "~/api-client/people";
 import { getAnswersBySlug } from "~/api-client/answers";
 
-interface QAPageProps {
+interface PersonQAPageProps {
   slug: string;
 }
 
-export async function PersonPage({ slug }: QAPageProps) {
+export async function PersonQAPage({ slug }: PersonQAPageProps) {
   const person = await getPerson(slug);
   const answers = await getAnswersBySlug(slug);
 
