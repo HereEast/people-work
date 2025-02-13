@@ -35,7 +35,12 @@ export async function GET(req: Request, { params }: ReqParams) {
       .populate("personId")
       .exec();
 
-    return NextResponse.json(answers, { status: 200 });
+    const activeAnswers = answers.filter((answer) => {
+      const person = answer.personId as IPerson;
+      return person.isActive === true;
+    });
+
+    return NextResponse.json(activeAnswers, { status: 200 });
   } catch (err) {
     console.log(err);
 
