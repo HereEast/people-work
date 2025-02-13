@@ -7,7 +7,7 @@ import { Content } from "../Content";
 import { SidePeoplePanel } from "../SidePeoplePanel";
 
 import { getPerson } from "~/api-client/people";
-import { getAnswersBySlug } from "~/api-client/answers";
+import { getAnswersByPersonSlug } from "~/api-client/answers";
 
 interface PersonQAPageProps {
   slug: string;
@@ -15,7 +15,7 @@ interface PersonQAPageProps {
 
 export async function PersonQAPage({ slug }: PersonQAPageProps) {
   const person = await getPerson(slug);
-  const answers = await getAnswersBySlug(slug);
+  const answers = await getAnswersByPersonSlug(slug);
 
   if (!person || !answers) {
     notFound();

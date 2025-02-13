@@ -3,7 +3,7 @@ import mongoose, { Schema, Document, model } from "mongoose";
 import { IQuestion } from "./Question";
 
 export interface IAnswer extends Document {
-  personId: mongoose.Types.ObjectId;
+  personId: mongoose.Types.ObjectId | IQuestion;
   questionId: mongoose.Types.ObjectId | IQuestion;
   name: string;
   question: string;
