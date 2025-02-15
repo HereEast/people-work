@@ -1,26 +1,28 @@
 import { notFound } from "next/navigation";
 
 import { ShareForm } from "../ShareForm";
-import { PageContainer } from "./PageContainer";
-import { PersonPreview, SidePeoplePanel, Content } from "../pages/person";
+import { PersonPreview } from "../PersonPreview";
+import { PageLayout } from "./PageLayout";
+import { Content } from "../Content";
+import { SidePeoplePanel } from "../SidePeoplePanel";
 
 import { getPerson } from "~/api-client/people";
-import { getAnswersByPersonSlug } from "~/api-client/answers";
+import { getAnswersBySlug } from "~/api-client/answers";
 
-interface PersonQAPageProps {
+interface QAPageProps {
   slug: string;
 }
 
-export async function PersonQAPage({ slug }: PersonQAPageProps) {
+export async function QAPage({ slug }: QAPageProps) {
   const person = await getPerson(slug);
-  const answers = await getAnswersByPersonSlug(slug);
+  const answers = await getAnswersBySlug(slug);
 
   if (!person || !answers) {
     notFound();
   }
 
   return (
-    <PageContainer className="min-h-screen max-w-full gap-10 pt-4 sm:pt-10 lg:grid lg:grid-cols-[auto_80px]">
+    <PageLayout className="min-h-screen max-w-full gap-10 pt-4 sm:pt-10 lg:grid lg:grid-cols-[auto_80px]">
       {answers && person && (
         <>
           <div className="space-y-16">
@@ -59,6 +61,6 @@ export async function PersonQAPage({ slug }: PersonQAPageProps) {
           </aside>
         </>
       )}
-    </PageContainer>
+    </PageLayout>
   );
 }

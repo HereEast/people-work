@@ -8,7 +8,7 @@ export async function GET() {
   try {
     await connectDB();
 
-    const questions: IQuestion[] = await Question.find({ isActive: true })
+    const questions: IQuestion[] = await Question.find()
       .sort({ order: 1 })
       .exec();
 

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { ParsedParagraph } from "~/components/ParsedParagraph";
+import { ParsedParagraph } from "./ParsedParagraph";
 
 import { IAnswer, IAnswerLink } from "~/models/Answer";
 import { AnswerViewType, IQuestion } from "~/models/Question";
@@ -15,42 +15,40 @@ interface ContentProps {
 export function Content({ data }: ContentProps) {
   return (
     <div className="space-y-12 rounded-4xl bg-stone-200/50 p-4 text-xl sm:p-10 md:rounded-6xl">
-      <ul className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2">
         {data?.map((item, index) => {
           const question = item.questionId as IQuestion;
 
           return (
-            <li key={index}>
-              <div className="space-y-5 rounded-3xl bg-white p-8">
-                <Question>{question.body}</Question>
-                <Answer answerData={item} view={question.answerView} />
-              </div>
-            </li>
+            <div key={index} className="space-y-5 rounded-3xl bg-white p-8">
+              <Question>{question.body}</Question>
+              <Answer item={item} view={question.answerView || "text"} />
+            </div>
           );
         })}
-      </ul>
+      </div>
     </div>
   );
 }
 
 // Answer
 interface AnswersProps {
-  answerData: IAnswer;
+  item: IAnswer;
   view?: AnswerViewType;
 }
 
-export function Answer({ answerData, view = "text" }: AnswersProps) {
+function Answer({ item, view }: AnswersProps) {
   return (
     <>
       {view === "text" && (
         <div className="answer text-xl leading-tight sm:text-xl lg:text-2xl">
-          <ParsedParagraph>{answerData.answer}</ParsedParagraph>
+          <ParsedParagraph>{item.answer}</ParsedParagraph>
         </div>
       )}
 
       {view === "links" && (
         <div className="space-y-0.5">
-          {answerData.links?.map((link, index) => (
+          {item.links?.map((link, index) => (
             <LinkItem link={link} key={index} />
           ))}
         </div>

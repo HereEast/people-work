@@ -1,23 +1,18 @@
+import axios from "axios";
+
 import { IQuestion } from "~/models/Question";
-import { BASE_URL } from "~/utils/constants";
 
 // GET ALL QUESTIONS
 export async function getQuestions() {
   try {
-    const response = await fetch(`${BASE_URL}/api/questions`);
+    const response = await axios.get<IQuestion[]>(`/api/questions`);
 
-    if (!response.ok) {
-      throw new Error("🔴 Data fetch failed (questions)");
-    }
+    const data = response.data;
 
-    const people: IQuestion[] = await response.json();
-
-    return people;
+    return data;
   } catch (err) {
     if (err instanceof Error) {
-      console.log("🔴 Error:", err.message);
+      console.log(err);
     }
-
-    return null;
   }
 }

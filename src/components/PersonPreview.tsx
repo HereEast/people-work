@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
-import { PersonImage } from "~/components/PersonImage";
-import { Job, Name } from "~/components/PersonCard";
+import { PersonImage } from "./PersonImage";
+import { Job, Name } from "./PersonCard";
 
 import { IPerson } from "~/models/Person";
 
