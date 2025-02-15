@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 
 import { PageContainer } from "./PageContainer";
 import { PersonImage } from "../PersonImage";
-import { Answer } from "../Content";
-import { QuestionsNavigation } from "../QuestionsNavigation";
+import { Answer } from "../pages/person";
+import { QuestionsNavigation } from "../pages/questions";
 
 import { getAnswersByQuestionSlug } from "~/api-client/answers";
 import { getQuestions } from "~/api-client/questions";
