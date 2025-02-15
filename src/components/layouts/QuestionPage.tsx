@@ -2,13 +2,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageContainer } from "./PageContainer";
+import { PersonImage } from "../PersonImage";
+import { Answer } from "../Content";
 
 import { getAnswersByQuestionSlug } from "~/api-client/answers";
 import { getQuestions } from "~/api-client/questions";
-import { Answer } from "../Content";
-import { PersonImage } from "../PersonImage";
 import { IPerson } from "~/models/Person";
+
 import { BASE_URL } from "~/utils/constants";
+import { IQuestion } from "~/models/Question";
 
 interface QuestionPageProps {
   questionSlug: string;
@@ -16,13 +18,17 @@ interface QuestionPageProps {
 
 export async function QuestionPage({ questionSlug }: QuestionPageProps) {
   const questions = await getQuestions();
-  const question = questions?.find((item) => item.slug === questionSlug);
-
   const answers = await getAnswersByQuestionSlug(questionSlug);
 
-  if (!answers || !question) {
+  if (!answers || !questions) {
     notFound();
   }
+
+  const currentIndex = questions?.findIndex(
+    (item) => item.slug === questionSlug,
+  );
+
+  const question = questions?.[currentIndex];
 
   return (
     <PageContainer className="max-w-4xl">
@@ -43,7 +49,7 @@ export async function QuestionPage({ questionSlug }: QuestionPageProps) {
             </h2>
           </div>
 
-          <ul className="space-y-2">
+          <ul className="mb-6 space-y-2">
             {answers.map((answer, index) => {
               const person = answer.personId as IPerson;
 
@@ -60,9 +66,30 @@ export async function QuestionPage({ questionSlug }: QuestionPageProps) {
               );
             })}
           </ul>
+
+          <QuestionsNav questions={questions} currentIndex={currentIndex} />
         </div>
       )}
     </PageContainer>
+  );
+}
+
+// Questions Nav
+interface QuestionsNavProps {
+  currentIndex: number;
+  questions: IQuestion[];
+}
+
+function QuestionsNav({ questions, currentIndex }: QuestionsNavProps) {
+  return (
+    <div className="flex justify-between">
+      <Link href="#" className="underline hover:no-underline hover:opacity-50">
+        Prev
+      </Link>
+      <Link href="#" className="underline hover:no-underline hover:opacity-50">
+        Next
+      </Link>
+    </div>
   );
 }
 
