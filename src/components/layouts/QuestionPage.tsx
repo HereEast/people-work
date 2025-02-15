@@ -33,11 +33,12 @@ export async function QuestionPage({ questionSlug }: QuestionPageProps) {
   return (
     <PageContainer className="max-w-4xl">
       {answers && question && (
-        <div>
-          <div className="mb-2">
+        <>
+          <div className="mb-4">
             <Link
               href={`${BASE_URL}/questions`}
               className="underline hover:no-underline hover:opacity-50"
+              scroll={false}
             >
               All Questions
             </Link>
@@ -71,7 +72,7 @@ export async function QuestionPage({ questionSlug }: QuestionPageProps) {
             questions={questions}
             currentIndex={currentIndex}
           />
-        </div>
+        </>
       )}
     </PageContainer>
   );
