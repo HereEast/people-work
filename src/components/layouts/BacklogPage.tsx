@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CheckIcon } from "@heroicons/react/16/solid";
 
-import { PageLayout } from "./PageLayout";
+import { PageContainer } from "./PageContainer";
 import { BacklogCountLabel } from "../BacklogPreview";
 
 import { EMAIL } from "~/utils/constants";
@@ -13,7 +13,7 @@ export function BacklogPage() {
   const doneList = BACKLOG.items.filter((item) => item.done);
 
   return (
-    <PageLayout className="max-w-4xl">
+    <PageContainer className="max-w-4xl">
       <div className="w-full rounded-xl bg-stone-100 p-8 md:p-10">
         {/* Header */}
         <div className="mb-6 flex w-full items-center justify-between">
@@ -57,7 +57,7 @@ export function BacklogPage() {
           </div>
         </div>
       </div>
-    </PageLayout>
+    </PageContainer>
   );
 }
 

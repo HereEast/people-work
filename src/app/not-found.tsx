@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-import { PageLayout } from "~/components/layouts/PageLayout";
+import { PageContainer } from "~/components/layouts/PageContainer";
 import { PAGE } from "~/utils/constants";
 
 export default function NotFound() {
   return (
-    <PageLayout className="grow">
+    <PageContainer className="grow">
       <section className="flex h-full items-center justify-center">
         <div className="space-y-6 text-center">
           <h2 className="text-2xl">
@@ -20,6 +20,6 @@ export default function NotFound() {
           </Link>
         </div>
       </section>
-    </PageLayout>
+    </PageContainer>
   );
 }

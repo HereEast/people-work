@@ -6,17 +6,17 @@ import { Answer, IAnswer } from "~/models/Answer";
 import { IPerson, Person } from "~/models/Person";
 
 interface ReqParams {
-  params: { slug: string };
+  params: { personSlug: string };
 }
 
-// GET ANSWERS BY SLUG
+// GET ANSWERS BY PERSON SLUG
 export async function GET(req: Request, { params }: ReqParams) {
-  const { slug } = params;
+  const { personSlug } = params;
 
   try {
     await connectDB();
 
-    const person: IPerson | null = await Person.findOne({ slug });
+    const person: IPerson | null = await Person.findOne({ slug: personSlug });
 
     if (!person) {
       return NextResponse.json("🔴 Failed to fetch a person by slug.", {
@@ -33,7 +33,7 @@ export async function GET(req: Request, { params }: ReqParams) {
 
     const activeAnswers = answers.filter((answer) => {
       const question = answer.questionId as IQuestion;
-      return question.active === true;
+      return question.isActive === true;
     });
 
     const result = activeAnswers.sort((a, b) => {

@@ -1,4 +1,4 @@
-import { QAPage } from "~/components/layouts/QAPage";
+import { PersonQAPage } from "~/components/layouts/PersonQAPage";
 
 import { connectDB } from "~/app/lib/connectDB";
 import { Person, IPerson } from "~/models/Person";
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PersonPageProps) {
 
   const person: IPerson = await Person.findOne({ slug: params.slug }).exec();
 
-  if (person) {
+  if (person && OG.BASE_URL) {
     const title = `${person.name}, ${person.jobTitle} at ${person.company.name}`;
 
     return {
@@ -65,6 +65,6 @@ export async function generateStaticParams() {
   );
 }
 
-export default async function PersonPage({ params }: PersonPageProps) {
-  return <QAPage slug={params.slug} />;
+export default async function PersonQA({ params }: PersonPageProps) {
+  return <PersonQAPage slug={params.slug} />;
 }
