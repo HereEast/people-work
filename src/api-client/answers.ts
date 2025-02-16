@@ -41,13 +41,31 @@ export async function submitAnswers(formData: IFormDataProps[]) {
 // GET ANSWERS BY PERSON SLUG
 export async function getAnswersByPersonSlug(slug: string) {
   try {
-    const answersResponse = await fetch(`${BASE_URL}/api/answers/${slug}`);
+    const response = await fetch(`${BASE_URL}/api/answers/person/${slug}`);
 
-    if (!answersResponse.ok) {
+    if (!response.ok) {
       throw new Error("🔴 Data fetch failed");
     }
 
-    const answers: IAnswer[] = await answersResponse.json();
+    const answers: IAnswer[] = await response.json();
+
+    return answers;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+}
+
+// GET ANSWERS BY QUESTION SLUG
+export async function getAnswersByQuestionSlug(slug: string) {
+  try {
+    const response = await fetch(`${BASE_URL}/api/answers/question/${slug}`);
+
+    if (!response.ok) {
+      throw new Error("🔴 Data fetch failed");
+    }
+
+    const answers: IAnswer[] = await response.json();
 
     return answers;
   } catch (error) {
