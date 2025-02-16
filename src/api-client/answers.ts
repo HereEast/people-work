@@ -38,8 +38,8 @@ export async function submitAnswers(formData: IFormDataProps[]) {
   }
 }
 
-// GET ANSWERS BY SLUG
-export async function getAnswersBySlug(slug: string) {
+// GET ANSWERS BY PERSON SLUG
+export async function getAnswersByPersonSlug(slug: string) {
   try {
     const answersResponse = await fetch(`${BASE_URL}/api/answers/${slug}`);
 

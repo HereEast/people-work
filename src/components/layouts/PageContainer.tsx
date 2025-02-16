@@ -7,7 +7,7 @@ interface PageLayoutProps {
   className?: string;
 }
 
-export function PageLayout({ children, className = "" }: PageLayoutProps) {
+export function PageContainer({ children, className = "" }: PageLayoutProps) {
   return (
     <div
       className={cn("relative mx-auto max-w-7xl px-2 py-10 sm:px-4", className)}
