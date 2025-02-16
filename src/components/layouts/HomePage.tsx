@@ -1,7 +1,5 @@
-import { ShareForm } from "../ShareForm";
-import { SubscribeForm } from "../SubscribeForm";
-import { PageContainer } from "./PageContainer";
-import { About, MainCards, BacklogPreview } from "../pages/home";
+import { ShareForm, SubscribeForm, PageContainer } from "~/components/shared";
+import { About, MainCards, BacklogPreview } from "~/components/pages/home";
 
 import { getPeople } from "~/api-client/people";
 

@@ -1,4 +1,4 @@
-import { SmileIconSolid } from "../../icons/SmileIconSolid";
+import { SmileIconSolid } from "~/components/icons";
 
 import { cn } from "~/utils/handlers";
 

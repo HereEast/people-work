@@ -1,4 +1,4 @@
-import { BacklogPage } from "~/components/layouts/BacklogPage";
+import { BacklogPage } from "~/components/layouts";
 
 export default async function Backlog() {
   return <BacklogPage />;

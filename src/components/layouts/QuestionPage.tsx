@@ -1,16 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { PageContainer } from "./PageContainer";
-import { PersonImage } from "../PersonImage";
-import { Answer } from "../Content";
-import { QuestionsNavigation } from "../pages/question/QuestionsNavigation";
+import { PersonImage, PageContainer } from "~/components/shared";
+import { Answer } from "~/components/pages/person";
+import { QuestionsNavigation } from "~/components/pages/question";
 
 import { getAnswersByQuestionSlug } from "~/api-client/answers";
-import { getQuestions } from "~/api-client/questions";
 import { IPerson } from "~/models/Person";
 
 import { BASE_URL } from "~/utils/constants";
+import { getQuestions } from "~/api-client/questions";
 
 interface QuestionPageProps {
   slug: string;

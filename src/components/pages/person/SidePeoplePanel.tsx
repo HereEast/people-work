@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 
-import { PlusIcon } from "~/components/icons/Plus";
-import { PersonImage } from "~/components/PersonImage";
+import { PlusIcon } from "~/components/icons";
+import { PersonImage } from "~/components/shared";
 
 import { getPeople } from "~/api-client/people";
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { PageContainer } from "~/components/layouts/PageContainer";
+import { PageContainer } from "~/components/shared";
 import { PAGE } from "~/utils/constants";
 
 export default function NotFound() {

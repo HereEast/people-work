@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { PageContainer } from "./PageContainer";
+import { PageContainer } from "~/components/shared";
 
 import { getQuestions } from "~/api-client/questions";
 import { IQuestion } from "~/models/Question";

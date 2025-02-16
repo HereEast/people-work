@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { Logo } from "../Logo";
-import { ButtonLink } from "../ui/ButtonLink";
-import { ArrowTopRightSquare } from "../icons/ArrowTopRightSquare";
+import { Logo } from "~/components/shared";
+import { ButtonLink } from "~/components/ui";
+import { ArrowTopRightSquare } from "~/components/icons";
 
 import { LINKEDIN, PAGE } from "~/utils/constants";
 

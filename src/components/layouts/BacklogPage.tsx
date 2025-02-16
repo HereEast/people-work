@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { CheckIcon } from "@heroicons/react/16/solid";
 
-import { PageContainer } from "./PageContainer";
-import { BacklogCountLabel } from "../pages/home/BacklogPreview";
+import { PageContainer } from "~/components/shared";
+import { BacklogCountLabel } from "~/components/pages/home";
 
 import { EMAIL } from "~/utils/constants";
 import { BACKLOG, BacklogItem } from "~/utils/data";

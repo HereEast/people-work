@@ -2,7 +2,8 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { ParsedParagraph } from "./ParsedParagraph";
+import { ParsedParagraph } from "~/components/pages/person";
+
 import { IAnswer, IAnswerLink } from "~/models/Answer";
 import { AnswerViewType, IQuestion } from "~/models/Question";
 import { isOuterURL } from "~/utils/handlers";

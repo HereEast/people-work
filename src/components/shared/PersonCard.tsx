@@ -1,8 +1,7 @@
 import Link from "next/link";
 
-import { Card } from "./Card";
-import { PersonImage } from "./PersonImage";
-import { ArrowRightFull } from "./icons/ArrowRightFull";
+import { Card, PersonImage } from "~/components/shared";
+import { ArrowRightFull } from "~/components/icons";
 
 import { IPerson, ICompany } from "~/models/Person";
 import { cn } from "~/utils/handlers";

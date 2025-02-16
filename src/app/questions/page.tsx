@@ -1,4 +1,4 @@
-import { QuestionsPage } from "~/components/layouts/QuestionsPage";
+import { QuestionsPage } from "~/components/layouts";
 
 export default function Questions() {
   return <QuestionsPage />;

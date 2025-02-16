@@ -6,10 +6,8 @@ import "./globals.css";
 
 import { ClientProvider } from "~/providers/ClientProvider";
 
-import { Header } from "~/components/layouts/Header";
-import { Footer } from "~/components/layouts/Footer";
-import { GoogleAnalytics } from "~/components/GoogleAnalytics";
-import { CookieBanner } from "~/components/CookieBanner";
+import { Header, Footer } from "~/components/layouts";
+import { GoogleAnalytics, CookieBanner } from "~/components/shared";
 
 import { OG } from "~/utils/constants";
 
