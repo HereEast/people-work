@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 import { PlusIcon } from "~/components/icons";
-import { PersonImage } from "~/components/shared";
+import { PersonImage } from "~/components/PersonImage";
 
 import { getPeople } from "~/api-client/people";
 

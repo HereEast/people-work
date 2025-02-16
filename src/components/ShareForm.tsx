@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { Card } from "~/components/shared";
-import { Button, Input } from "~/components/ui";
 import { ArrowRightFull } from "~/components/icons";
+import { Card } from "~/components/Card";
+import { Button } from "~/components/Button";
+import { Input } from "~/components/Input";
 
 import { submitName } from "~/api-client/names";
 import { cn } from "~/utils/handlers";

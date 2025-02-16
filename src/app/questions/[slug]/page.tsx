@@ -1,4 +1,4 @@
-import { QuestionPage } from "~/components/layouts";
+import { QuestionPage } from "~/components/pages/QuestionPage";
 
 import { getQuestions } from "~/api-client/questions";
 

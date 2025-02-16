@@ -1,4 +1,4 @@
-import { PersonCard } from "~/components/shared";
+import { PersonCard } from "~/components/PersonCard";
 
 import { IPerson } from "~/models/Person";
 

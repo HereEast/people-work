@@ -1,4 +1,4 @@
-import { PersonQAPage } from "~/components/layouts";
+import { PersonQAPage } from "~/components/pages/PersonQAPage";
 
 import { connectDB } from "~/app/lib/connectDB";
 import { Person, IPerson } from "~/models/Person";
