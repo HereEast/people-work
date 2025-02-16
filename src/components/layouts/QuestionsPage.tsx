@@ -10,6 +10,8 @@ import { BASE_URL } from "~/utils/constants";
 export async function QuestionsPage() {
   const questions = await getQuestions();
 
+  console.log(questions);
+
   if (!questions) {
     notFound();
   }
