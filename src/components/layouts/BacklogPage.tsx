@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CheckIcon } from "@heroicons/react/16/solid";
 
 import { PageContainer } from "./PageContainer";
-import { BacklogCountLabel } from "../BacklogPreview";
+import { BacklogCountLabel } from "../pages/home/BacklogPreview";
 
 import { EMAIL } from "~/utils/constants";
 import { BACKLOG, BacklogItem } from "~/utils/data";

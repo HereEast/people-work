@@ -1,10 +1,8 @@
 import { notFound } from "next/navigation";
 
 import { ShareForm } from "../ShareForm";
-import { PersonPreview } from "../PersonPreview";
 import { PageContainer } from "./PageContainer";
-import { Content } from "../Content";
-import { SidePeoplePanel } from "../SidePeoplePanel";
+import { PersonPreview, Content, SidePeoplePanel } from "../pages/person";
 
 import { getPerson } from "~/api-client/people";
 import { getAnswersByPersonSlug } from "~/api-client/answers";

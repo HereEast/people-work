@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { PageContainer } from "./PageContainer";
 import { PersonImage } from "../PersonImage";
 import { Answer } from "../Content";
-import { QuestionsNavigation } from "../QuestionsNavigation";
+import { QuestionsNavigation } from "../pages/question/QuestionsNavigation";
 
 import { getAnswersByQuestionSlug } from "~/api-client/answers";
 import { getQuestions } from "~/api-client/questions";

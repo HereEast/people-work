@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { ParsedParagraph } from "./ParsedParagraph";
-
 import { IAnswer, IAnswerLink } from "~/models/Answer";
 import { AnswerViewType, IQuestion } from "~/models/Question";
 import { isOuterURL } from "~/utils/handlers";

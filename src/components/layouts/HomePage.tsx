@@ -1,9 +1,7 @@
-import { MainCards } from "../MainCards";
 import { ShareForm } from "../ShareForm";
 import { SubscribeForm } from "../SubscribeForm";
 import { PageContainer } from "./PageContainer";
-import { About } from "../About";
-import { BacklogPreview } from "../BacklogPreview";
+import { About, MainCards, BacklogPreview } from "../pages/home";
 
 import { getPeople } from "~/api-client/people";
 
