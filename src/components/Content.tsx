@@ -22,7 +22,7 @@ export function Content({ data }: ContentProps) {
           return (
             <div key={index} className="space-y-5 rounded-3xl bg-white p-8">
               <Question>{question.body}</Question>
-              <Answer item={item} view={question.answerView || "text"} />
+              <Answer answerData={item} view={question.answerView || "text"} />
             </div>
           );
         })}
@@ -33,22 +33,22 @@ export function Content({ data }: ContentProps) {
 
 // Answer
 interface AnswersProps {
-  item: IAnswer;
+  answerData: IAnswer;
   view?: AnswerViewType;
 }
 
-function Answer({ item, view }: AnswersProps) {
+export function Answer({ answerData, view = "text" }: AnswersProps) {
   return (
     <>
       {view === "text" && (
         <div className="answer text-xl leading-tight sm:text-xl lg:text-2xl">
-          <ParsedParagraph>{item.answer}</ParsedParagraph>
+          <ParsedParagraph>{answerData.answer}</ParsedParagraph>
         </div>
       )}
 
       {view === "links" && (
         <div className="space-y-0.5">
-          {item.links?.map((link, index) => (
+          {answerData.links?.map((link, index) => (
             <LinkItem link={link} key={index} />
           ))}
         </div>
