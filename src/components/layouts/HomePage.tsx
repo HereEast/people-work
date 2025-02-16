@@ -1,7 +1,7 @@
 import { MainCards } from "../MainCards";
 import { ShareForm } from "../ShareForm";
 import { SubscribeForm } from "../SubscribeForm";
-import { PageLayout } from "./PageLayout";
+import { PageContainer } from "./PageContainer";
 import { About } from "../About";
 import { BacklogPreview } from "../BacklogPreview";
 
@@ -11,7 +11,7 @@ export async function HomePage() {
   const people = await getPeople();
 
   return (
-    <PageLayout>
+    <PageContainer>
       {people && (
         <>
           {/* Add skeletons for cards */}
@@ -42,6 +42,6 @@ export async function HomePage() {
           </div>
         </>
       )}
-    </PageLayout>
+    </PageContainer>
   );
 }

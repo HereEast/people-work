@@ -2,27 +2,27 @@ import { notFound } from "next/navigation";
 
 import { ShareForm } from "../ShareForm";
 import { PersonPreview } from "../PersonPreview";
-import { PageLayout } from "./PageLayout";
+import { PageContainer } from "./PageContainer";
 import { Content } from "../Content";
 import { SidePeoplePanel } from "../SidePeoplePanel";
 
 import { getPerson } from "~/api-client/people";
-import { getAnswersBySlug } from "~/api-client/answers";
+import { getAnswersByPersonSlug } from "~/api-client/answers";
 
 interface QAPageProps {
   slug: string;
 }
 
-export async function QAPage({ slug }: QAPageProps) {
+export async function PersonQAPage({ slug }: QAPageProps) {
   const person = await getPerson(slug);
-  const answers = await getAnswersBySlug(slug);
+  const answers = await getAnswersByPersonSlug(slug);
 
   if (!person || !answers) {
     notFound();
   }
 
   return (
-    <PageLayout className="min-h-screen max-w-full gap-10 pt-4 sm:pt-10 lg:grid lg:grid-cols-[auto_80px]">
+    <PageContainer className="min-h-screen max-w-full gap-10 pt-4 sm:pt-10 lg:grid lg:grid-cols-[auto_80px]">
       {answers && person && (
         <>
           <div className="space-y-16">
@@ -61,6 +61,6 @@ export async function QAPage({ slug }: QAPageProps) {
           </aside>
         </>
       )}
-    </PageLayout>
+    </PageContainer>
   );
 }
