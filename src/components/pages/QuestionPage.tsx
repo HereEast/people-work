@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { PageContainer } from "./PageContainer";
-import { PersonImage } from "../PersonImage";
-import { Answer } from "../Content";
-import { QuestionsNavigation } from "../QuestionsNavigation";
+import { PageContainer } from "~/components/PageContainer";
+import { Answer } from "~/components/pages/person";
+import { PersonDetails, QuestionsNavigation } from "./question";
 
 import { getAnswersByQuestionSlug } from "~/api-client/answers";
 import { getQuestions } from "~/api-client/questions";
@@ -23,8 +22,6 @@ export async function QuestionPage({ slug }: QuestionPageProps) {
   if (!answers || !questions) {
     notFound();
   }
-
-  // console.log(answers);
 
   const currentIndex = questions?.findIndex((item) => item.slug === slug);
 
@@ -75,29 +72,5 @@ export async function QuestionPage({ slug }: QuestionPageProps) {
         </>
       )}
     </PageContainer>
-  );
-}
-
-// Person details
-interface PersonDetailsProps {
-  person: IPerson;
-}
-
-function PersonDetails({ person }: PersonDetailsProps) {
-  return (
-    <div className="flex items-start gap-3 text-base leading-none">
-      <div className="size-10 shrink-0 overflow-hidden rounded-full">
-        <PersonImage person={person} />
-      </div>
-      <div className="flex flex-col gap-1.5">
-        <Link
-          href={`${BASE_URL}/people/${person.slug}`}
-          className="w-fit font-semibold tracking-header underline underline-offset-1 hover:no-underline hover:opacity-50"
-        >
-          {person.name}
-        </Link>
-        <span>{`${person.jobTitle} @ ${person.company.name}`}</span>
-      </div>
-    </div>
   );
 }

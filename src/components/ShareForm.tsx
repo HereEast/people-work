@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { Card } from "./Card";
-import { Button } from "./ui/Button";
-import { Input } from "./ui/Input";
-import { ArrowRightFull } from "./icons/ArrowRightFull";
+import { ArrowRightFull } from "~/components/icons";
+import { Card } from "~/components/Card";
+import { Button } from "~/components/Button";
+import { Input } from "~/components/Input";
 
-import { createName } from "~/api-client/names";
+import { submitName } from "~/api-client/names";
 import { cn } from "~/utils/handlers";
 
 // Form Inputs
@@ -33,7 +33,7 @@ export function ShareForm({ className = "" }: ShareFormCardProps) {
 
   // Handle submit
   async function onSubmit(values: IShareFormInputs) {
-    const result = await createName(values);
+    const result = await submitName(values);
 
     if (result) {
       setSubmittedName(result?.name);

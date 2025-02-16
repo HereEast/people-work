@@ -1,4 +1,5 @@
-import { PersonCard } from "./PersonCard";
+import { PersonCard } from "~/components/PersonCard";
+
 import { IPerson } from "~/models/Person";
 
 interface MainCardsProps {

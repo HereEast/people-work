@@ -1,4 +1,4 @@
-import { LogoIcon } from "./icons/LogoIcon";
+import { LogoIcon } from "~/components/icons/LogoIcon";
 
 export function Logo() {
   return (
