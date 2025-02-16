@@ -33,7 +33,7 @@ export async function GET(req: Request, { params }: ReqParams) {
 
     const activeAnswers = answers.filter((answer) => {
       const question = answer.questionId as IQuestion;
-      return question.active === true;
+      return question.isActive === true;
     });
 
     const result = activeAnswers.sort((a, b) => {
