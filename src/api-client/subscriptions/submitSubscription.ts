@@ -7,7 +7,7 @@ interface SubscriptionProps {
 }
 
 // CREATE SUBSCRIPTION (ADD EMAIL)
-export async function createSubscription({ email }: SubscriptionProps) {
+export async function submitSubscription({ email }: SubscriptionProps) {
   if (!email) {
     throw new Error("Email is required.");
   }
