@@ -21,10 +21,12 @@ export async function generateMetadata({ params }: QuestionPageProps) {
     slug: params.slug,
   }).exec();
 
-  const title = SEO_DATA.question.title(question.body);
-  const description = SEO_DATA.question.description;
+  if (question) {
+    const title = SEO_DATA.question.title(question.body);
+    const description = SEO_DATA.question.description;
 
-  return getMetadata({ title, description });
+    return getMetadata({ title, description });
+  }
 }
 
 // PARAMS

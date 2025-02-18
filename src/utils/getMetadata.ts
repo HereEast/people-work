@@ -18,8 +18,8 @@ export function getMetadata(input: MetadataInput = {}): Metadata {
     description,
     metadataBase: new URL(SEO_DATA.index.url),
     openGraph: {
-      title: SEO_DATA.index.title,
-      description: SEO_DATA.index.description,
+      title,
+      description,
       url: SEO_DATA.index.url,
       siteName: "people-work.net",
       images: [
