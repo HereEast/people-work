@@ -11,7 +11,7 @@ import { Footer } from "~/components/Footer";
 import { GoogleAnalytics } from "~/components/GoogleAnalytics";
 import { CookieBanner } from "~/components/CookieBanner";
 
-import { OG } from "~/utils/constants";
+import { SEO_DATA } from "~/utils/seo-data";
 
 const InnovatorGrotesk = localFont({
   src: [
@@ -48,18 +48,19 @@ const InnovatorGrotesk = localFont({
   ],
 });
 
+// METADATA
 export const metadata: Metadata = {
-  title: OG.TITLE,
-  description: OG.DESCRIPTION,
-  metadataBase: new URL(OG.BASE_URL),
+  title: SEO_DATA.title,
+  description: SEO_DATA.description,
+  metadataBase: new URL(SEO_DATA.url),
   openGraph: {
-    title: OG.TITLE,
-    description: OG.DESCRIPTION,
-    url: OG.BASE_URL,
+    title: SEO_DATA.title,
+    description: SEO_DATA.description,
+    url: SEO_DATA.url,
     siteName: "people-work.net",
     images: [
       {
-        url: OG.IMAGE,
+        url: SEO_DATA.image,
         width: 1200,
         height: 630,
       },
@@ -67,13 +68,13 @@ export const metadata: Metadata = {
     locale: "en-EN",
   },
   twitter: {
-    title: OG.TITLE,
-    description: OG.DESCRIPTION,
+    title: SEO_DATA.title,
+    description: SEO_DATA.description,
     site: "people-work.net",
     card: "summary_large_image",
     images: [
       {
-        url: OG.IMAGE,
+        url: SEO_DATA.image,
         width: 1200,
         height: 630,
       },
