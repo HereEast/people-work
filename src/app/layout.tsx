@@ -11,7 +11,7 @@ import { Footer } from "~/components/Footer";
 import { GoogleAnalytics } from "~/components/GoogleAnalytics";
 import { CookieBanner } from "~/components/CookieBanner";
 
-import { SEO_DATA } from "~/utils/seo-data";
+import { getMetadata } from "~/utils/getMetadata";
 
 const InnovatorGrotesk = localFont({
   src: [
@@ -48,39 +48,7 @@ const InnovatorGrotesk = localFont({
   ],
 });
 
-// METADATA
-export const metadata: Metadata = {
-  title: SEO_DATA.title,
-  description: SEO_DATA.description,
-  metadataBase: new URL(SEO_DATA.url),
-  openGraph: {
-    title: SEO_DATA.title,
-    description: SEO_DATA.description,
-    url: SEO_DATA.url,
-    siteName: "people-work.net",
-    images: [
-      {
-        url: SEO_DATA.image,
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: "en-EN",
-  },
-  twitter: {
-    title: SEO_DATA.title,
-    description: SEO_DATA.description,
-    site: "people-work.net",
-    card: "summary_large_image",
-    images: [
-      {
-        url: SEO_DATA.image,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-};
+export const metadata: Metadata = getMetadata();
 
 interface LayoutProps {
   children: ReactNode;
