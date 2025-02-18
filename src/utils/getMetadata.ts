@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { SEO_DATA } from "./seo-data";
+import { SEO_DATA } from "./data/seo-data";
 
 interface MetadataInput {
   title?: string;

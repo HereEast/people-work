@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
-import { PAGE } from "~/utils/constants";
+import { ROUTE } from "~/utils/constants";
 
 export default function PeoplePage() {
-  redirect(PAGE.HOME);
+  redirect(ROUTE.index);
 }

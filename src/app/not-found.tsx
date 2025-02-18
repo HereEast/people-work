@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { PageContainer } from "~/components/PageContainer";
-import { PAGE } from "~/utils/constants";
+import { ROUTE } from "~/utils/constants";
 
 export default function NotFound() {
   return (
@@ -13,7 +13,7 @@ export default function NotFound() {
           </h2>
 
           <Link
-            href={PAGE.HOME}
+            href={ROUTE.index}
             className="flex w-full items-center justify-center rounded-full bg-stone-950 px-10 py-6 text-stone-50 transition hover:shadow-lg hover:shadow-blue-600"
           >
             <span className="font-bold">back to home</span>

@@ -5,11 +5,13 @@ export const BASE_URL =
 
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
-export const LINKEDIN = "https://www.linkedin.com/company/people-work-net";
-export const EMAIL = "heypeoplework@gmail.com";
-
-export const PAGE = {
+export const ROUTE = {
   index: "/",
   questions: "/questions",
   backlog: "/backlog",
+};
+
+export const CONTACT = {
+  linkedin: "https://www.linkedin.com/company/people-work-net",
+  email: "heypeoplework@gmail.com",
 };

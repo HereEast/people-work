@@ -1,4 +1,4 @@
-import { BACKLOG } from "~/utils/data";
+import { BACKLOG } from "~/utils/data/backlog-data";
 
 export function BacklogCountLabel() {
   const todoList = BACKLOG.items.filter((item) => !item.done);

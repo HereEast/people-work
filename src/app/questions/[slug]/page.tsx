@@ -4,7 +4,7 @@ import { getQuestions } from "~/api-client/questions";
 import { connectDB } from "~/app/lib/connectDB";
 import { IQuestion, Question } from "~/models/Question";
 
-import { SEO_DATA } from "~/utils/seo-data";
+import { SEO_DATA } from "~/utils/data/seo-data";
 import { getMetadata } from "~/utils/getMetadata";
 
 interface QuestionPageProps {
