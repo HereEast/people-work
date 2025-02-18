@@ -4,7 +4,8 @@ import { connectDB } from "~/app/lib/connectDB";
 import { Person, IPerson } from "~/models/Person";
 import { getPeople } from "~/api-client/people";
 
-import { OG } from "~/utils/constants";
+import { SEO_DATA } from "~/utils/data/seo-data";
+import { getMetadata } from "~/utils/getMetadata";
 
 interface PersonPageProps {
   params: {
@@ -12,49 +13,26 @@ interface PersonPageProps {
   };
 }
 
+// METADATA
 export async function generateMetadata({ params }: PersonPageProps) {
   await connectDB();
 
   const person: IPerson = await Person.findOne({ slug: params.slug }).exec();
 
   if (person) {
-    const title = `${person.name}, ${person.jobTitle} at ${person.company.name}`;
+    const title = SEO_DATA.person.title(
+      person.name,
+      person.jobTitle,
+      person.company.name,
+    );
 
-    return {
-      title,
-      description: OG.DESCRIPTION,
-      metadataBase: new URL(OG.BASE_URL),
-      openGraph: {
-        title,
-        description: OG.DESCRIPTION,
-        url: OG.BASE_URL,
-        siteName: "people-work.net",
-        images: [
-          {
-            url: OG.IMAGE,
-            width: 1200,
-            height: 630,
-          },
-        ],
-        locale: "en-EN",
-      },
-      twitter: {
-        title,
-        description: OG.DESCRIPTION,
-        site: "people-work.net",
-        card: "summary_large_image",
-        images: [
-          {
-            url: OG.IMAGE,
-            width: 1200,
-            height: 630,
-          },
-        ],
-      },
-    };
+    const description = SEO_DATA.person.description(person.name);
+
+    return getMetadata({ title, description });
   }
 }
 
+// PARAMS
 export async function generateStaticParams() {
   const people = await getPeople();
 

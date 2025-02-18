@@ -1,6 +1,6 @@
 import { CheckIcon } from "@heroicons/react/16/solid";
 
-import { BacklogItem } from "~/utils/data";
+import { BacklogItem } from "~/utils/data/backlog-data";
 import { cn } from "~/utils/handlers";
 
 interface ListItemProps {

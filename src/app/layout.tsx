@@ -11,7 +11,7 @@ import { Footer } from "~/components/Footer";
 import { GoogleAnalytics } from "~/components/GoogleAnalytics";
 import { CookieBanner } from "~/components/CookieBanner";
 
-import { OG } from "~/utils/constants";
+import { getMetadata } from "~/utils/getMetadata";
 
 const InnovatorGrotesk = localFont({
   src: [
@@ -48,38 +48,7 @@ const InnovatorGrotesk = localFont({
   ],
 });
 
-export const metadata: Metadata = {
-  title: OG.TITLE,
-  description: OG.DESCRIPTION,
-  metadataBase: new URL(OG.BASE_URL),
-  openGraph: {
-    title: OG.TITLE,
-    description: OG.DESCRIPTION,
-    url: OG.BASE_URL,
-    siteName: "people-work.net",
-    images: [
-      {
-        url: OG.IMAGE,
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: "en-EN",
-  },
-  twitter: {
-    title: OG.TITLE,
-    description: OG.DESCRIPTION,
-    site: "people-work.net",
-    card: "summary_large_image",
-    images: [
-      {
-        url: OG.IMAGE,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-};
+export const metadata: Metadata = getMetadata();
 
 interface LayoutProps {
   children: ReactNode;

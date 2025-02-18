@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { BacklogCountLabel } from "~/components/pages/backlog";
 
-import { PAGE } from "~/utils/constants";
+import { ROUTE } from "~/utils/constants";
 
 export function BacklogPreview() {
   return (
@@ -15,7 +15,7 @@ export function BacklogPreview() {
 
         <div className="w-fit">
           <Link
-            href={PAGE.BACKLOG}
+            href={ROUTE.backlog}
             className="group/button-link flex h-8 items-center rounded-full bg-stone-950 px-4 font-semibold text-stone-50 transition hover:shadow-lg hover:shadow-blue-600"
           >
             view backlog
