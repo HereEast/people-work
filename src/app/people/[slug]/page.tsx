@@ -4,7 +4,7 @@ import { connectDB } from "~/app/lib/connectDB";
 import { Person, IPerson } from "~/models/Person";
 import { getPeople } from "~/api-client/people";
 
-import { SEO_DATA } from "~/utils/seo-data";
+import { SEO_DATA } from "~/utils/data/seo-data";
 import { getMetadata } from "~/utils/getMetadata";
 
 interface PersonPageProps {
