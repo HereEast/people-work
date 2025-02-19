@@ -9,33 +9,37 @@ interface IOptions {
 }
 
 export async function parseMarkdown(markdown: string, options: IOptions = {}) {
-  const { targetBlank } = options;
-
-  const handleLinks = () => (tree: Root) => {
+  const handleElements = () => (tree: Root) => {
     visit(tree, "element", (node: Element) => {
+      node.properties = node.properties || {};
+
       if (node.tagName === "a") {
-        node.properties = node.properties || {};
-
-        const classNames = getClassNames(node);
-
-        node.properties.className = [...classNames, "answer"];
-
-        if (targetBlank) {
-          node.properties.target = "_blank";
-          node.properties.rel = "noopener noreferrer";
-        }
+        handleLinks(node, options);
       }
     });
   };
 
   const file = await remark()
-    .use(handleLinks)
     .use(remarkRehype)
+    .use(handleElements)
     .use(rehypeStringify)
     .process(markdown);
 
   return String(file.value);
 }
+
+// Handle links
+function handleLinks(node: Element, options: IOptions = {}) {
+  const { targetBlank } = options;
+
+  if (targetBlank) {
+    node.properties.target = "_blank";
+    node.properties.rel = "noopener noreferrer";
+  }
+}
+
+// const classNames = getClassNames(node);
+// node.properties.className = [...classNames, "answer"];
 
 // Get classNames
 function getClassNames(node: Element) {
