@@ -16,6 +16,26 @@ body {
   text-decoration: none;
 }
 
+.answer p:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.answer ul:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.answer ul li {
+  position: relative;
+  padding: 0px 0px 0px 24px;
+}
+
+.answer ul li::before {
+  content: "▶";
+  position: absolute;
+  font-size: 20px;
+  left: 0;
+}
+
 @layer base {
   :root {
     --gradient-color-1: #ffc814;
