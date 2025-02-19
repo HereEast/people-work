@@ -4,8 +4,14 @@ import { remark } from "remark";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 
-export async function parseMarkdown(markdown: string) {
-  const addAnswerClassToLinks = () => (tree: Root) => {
+interface IOptions {
+  targetBlank?: boolean;
+}
+
+export async function parseMarkdown(markdown: string, options: IOptions = {}) {
+  const { targetBlank } = options;
+
+  const handleLinks = () => (tree: Root) => {
     visit(tree, "element", (node: Element) => {
       if (node.tagName === "a") {
         node.properties = node.properties || {};
@@ -13,12 +19,17 @@ export async function parseMarkdown(markdown: string) {
         const classNames = getClassNames(node);
 
         node.properties.className = [...classNames, "answer"];
+
+        if (targetBlank) {
+          node.properties.target = "_blank";
+          node.properties.rel = "noopener noreferrer";
+        }
       }
     });
   };
 
   const file = await remark()
-    .use(addAnswerClassToLinks)
+    .use(handleLinks)
     .use(remarkRehype)
     .use(rehypeStringify)
     .process(markdown);
