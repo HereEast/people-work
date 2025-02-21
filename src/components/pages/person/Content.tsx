@@ -2,11 +2,10 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { ParsedParagraph } from "./ParsedParagraph";
-
 import { IAnswer, IAnswerLink } from "~/models/Answer";
 import { AnswerViewType, IQuestion } from "~/models/Question";
 import { isOuterURL } from "~/utils/handlers";
+import { parseMarkdown } from "~/utils/parseMarkdown";
 
 interface ContentProps {
   data: IAnswer[];
@@ -37,13 +36,20 @@ interface AnswersProps {
   view?: AnswerViewType;
 }
 
-export function Answer({ answerData, view = "text" }: AnswersProps) {
+export async function Answer({ answerData, view = "text" }: AnswersProps) {
+  const parsedHTML = await parseMarkdown(answerData.answer, {
+    targetBlank: true,
+  });
+
   return (
     <>
       {view === "text" && (
-        <div className="answer text-xl leading-tight sm:text-xl lg:text-2xl">
-          <ParsedParagraph>{answerData.answer}</ParsedParagraph>
-        </div>
+        <div
+          className="answer text-xl leading-tight sm:text-xl lg:text-2xl"
+          dangerouslySetInnerHTML={{
+            __html: parsedHTML,
+          }}
+        />
       )}
 
       {view === "links" && (
