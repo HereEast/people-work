@@ -25,7 +25,7 @@ export async function PersonQAPage({ slug }: QAPageProps) {
         <>
           <div className="space-y-16">
             <div className="max-w-7xl">
-              <div className="grid gap-6 md:grid-cols-[300px_auto]">
+              <div className="grid gap-6 lg:grid-cols-[300px_auto]">
                 <PersonPreview person={person} />
 
                 <div className="space-y-16">

@@ -19,7 +19,7 @@ import { LogoIcon } from "~/components/icons/LogoIcon";
 export function Logo() {
   return (
     <div className="flex h-8 items-center justify-between overflow-hidden rounded-full bg-stone-950 pl-3 pr-2 transition hover:shadow-lg hover:shadow-blue-600 sm:gap-10">
-      <h1 className="text-nowrap text-2xl font-extrabold uppercase text-stone-50">
+      <h1 className="text-nowrap text-[22px] font-extrabold uppercase text-stone-50">
         people—work.net
       </h1>
 

@@ -51,7 +51,7 @@ body {
 
 .answer ul li {
   position: relative;
-  padding: 0px 0px 0px 32px;
+  padding: 0px 0px 0px 28px;
 }
 
 .answer ul li:not(:last-child) {
@@ -61,10 +61,15 @@ body {
 .answer ul li::before {
   content: "✅";
   position: absolute;
-  font-size: 18px;
+  font-size: 20px;
   left: 0;
-  top: 3px;
   z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .answer ul li:not(:last-child) {
+    margin-bottom: 0px;
+  }
 }
 
 /* Lists headings */

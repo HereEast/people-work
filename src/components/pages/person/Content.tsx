@@ -48,7 +48,7 @@ export async function Answer({ answerData, view = "text" }: AnswersProps) {
     <>
       {view === "text" && (
         <div
-          className="answer text-xl leading-tight sm:text-xl lg:text-2xl"
+          className="answer text-xl leading-tight sm:text-xl md:text-2xl"
           dangerouslySetInnerHTML={{
             __html: parsedHTML,
           }}
