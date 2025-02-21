@@ -51,17 +51,25 @@ body {
 
 .answer ul li {
   position: relative;
-  padding: 0px 0px 0px 24px;
+  padding: 0px 0px 0px 32px;
+}
+
+.answer ul li:not(:last-child) {
+  margin-bottom: 2px;
 }
 
 .answer ul li::before {
-  content: "⏺";
+  content: "✅";
   position: absolute;
-  font-size: 20px;
+  font-size: 18px;
   left: 0;
+  top: 3px;
+  z-index: 2;
 }
 
 /* Lists headings */
 .answer h6:has(+ ul) {
   margin-bottom: 8px;
+  font-weight: 600;
+  text-decoration: underline;
 }

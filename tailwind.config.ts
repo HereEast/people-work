@@ -45,6 +45,7 @@ const config: Config = {
         "2xl": "40px",
         xxl: "30px",
         xl: "25px",
+        lg: "10px",
       },
       backgroundSize: {
         "600%": "600%",

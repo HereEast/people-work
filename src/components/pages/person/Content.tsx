@@ -13,13 +13,16 @@ interface ContentProps {
 
 export function Content({ data }: ContentProps) {
   return (
-    <div className="space-y-12 rounded-4xl bg-stone-200/50 p-4 text-xl sm:p-10 md:rounded-6xl">
+    <div className="space-y-12 rounded-3xl bg-stone-200/50 p-4 text-xl sm:p-10 md:rounded-6xl">
       <div className="flex flex-col gap-2">
         {data?.map((item, index) => {
           const question = item.questionId as IQuestion;
 
           return (
-            <div key={index} className="space-y-5 rounded-3xl bg-white p-8">
+            <div
+              key={index}
+              className="space-y-6 rounded-2xl bg-white p-6 pb-8"
+            >
               <Question>{question.body}</Question>
               <Answer answerData={item} view={question.answerView || "text"} />
             </div>
