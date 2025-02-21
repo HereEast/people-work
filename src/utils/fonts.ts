@@ -1,4 +1,10 @@
 import localFont from "next/font/local";
+import { Inter as InterFont } from "next/font/google";
+
+export const Inter = InterFont({
+  variable: "--font-secondary",
+  subsets: ["latin", "cyrillic"],
+});
 
 export const InnovatorGrotesk = localFont({
   src: [
@@ -33,4 +39,5 @@ export const InnovatorGrotesk = localFont({
       style: "normal",
     },
   ],
+  variable: "--font-primary",
 });
