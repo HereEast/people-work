@@ -7,35 +7,6 @@ body {
   box-sizing: border-box;
 }
 
-.answer a {
-  text-decoration: underline;
-}
-
-.answer a:hover {
-  opacity: 50%;
-  text-decoration: none;
-}
-
-.answer p:not(:last-child) {
-  margin-bottom: 24px;
-}
-
-.answer ul:not(:last-child) {
-  margin-bottom: 16px;
-}
-
-.answer ul li {
-  position: relative;
-  padding: 0px 0px 0px 24px;
-}
-
-.answer ul li::before {
-  content: "▶";
-  position: absolute;
-  font-size: 20px;
-  left: 0;
-}
-
 @layer base {
   :root {
     --gradient-color-1: #ffc814;
@@ -56,4 +27,41 @@ body {
     background-clip: text;
     color: transparent;
   }
+}
+
+/* Answer */
+
+.answer a {
+  text-decoration: underline;
+}
+
+.answer a:hover {
+  opacity: 50%;
+  text-decoration: none;
+}
+
+.answer p:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+/* Lists */
+.answer ul:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+.answer ul li {
+  position: relative;
+  padding: 0px 0px 0px 24px;
+}
+
+.answer ul li::before {
+  content: "⏺";
+  position: absolute;
+  font-size: 20px;
+  left: 0;
+}
+
+/* Lists headings */
+.answer h6:has(+ ul) {
+  margin-bottom: 8px;
 }
