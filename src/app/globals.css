@@ -17,7 +17,7 @@ body {
 }
 
 .answer p:not(:last-child) {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .answer ul:not(:last-child) {
