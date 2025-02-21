@@ -9,7 +9,7 @@ export interface BacklogItem {
 }
 
 export const BACKLOG: Backlog = {
-  lastUpdate: "Feb 11",
+  lastUpdate: "Feb 21",
   items: [
     {
       title:
@@ -22,7 +22,7 @@ export const BACKLOG: Backlog = {
     },
     {
       title: "Decide on the font",
-      done: false,
+      done: true,
     },
     {
       title:
