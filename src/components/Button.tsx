@@ -11,47 +11,61 @@ import { cn } from "~/utils/handlers";
 // }
 
 const styles = {
-  transition: "transition-colors duration-300",
-  base: "group inline-flex items-center outline-none relative justify-center tracking-tight leading-none focus:outline-white focus:outline-1 focus:outline-offset-4",
+  base: "group/button inline-flex items-center outline-none relative justify-center leading-none bg-stone-950 text-stone-50 rounded-full",
   size: {
     md: "h-10 text-15 px-6 rounded-full md:h-9",
-    sm: "h-[34px] text-15 px-[18px] rounded-full",
+    sm: "h-8 px-3 rounded-full",
+    xs: "",
   },
+  link: "transition hover:shadow-lg hover:shadow-blue-600 bg-stone-950",
 };
 
 type ButtonProps = {
   href?: string | URL;
-  target?: string;
+  target?: "_blank" | "_self";
   rel?: string;
   size?: keyof typeof styles.size;
   children: ReactNode;
   className?: string;
   isDisabled?: boolean;
-  onClick?: (
-    event: MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>,
-  ) => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  type?: "link";
 };
 
 export function Button({
   className = "",
   size,
-  href = undefined,
+  href = "",
+  target = "_self",
   children,
   isDisabled,
+  onClick,
+  type,
   ...props
 }: ButtonProps) {
-  const classes = cn(styles.transition, size && styles.size[size], className);
+  const classes = cn(
+    styles.base,
+    href && styles.link && styles.size.sm,
+    size && styles.size[size],
+    type && styles[type],
+    className,
+  );
 
   if (href) {
     return (
-      <Link className={classes} href={href} {...props}>
+      <Link href={href} target={target} className={classes} {...props}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button className={classes} disabled={isDisabled} {...props}>
+    <button
+      disabled={isDisabled}
+      onClick={(e: MouseEvent<HTMLButtonElement>) => onClick?.(e)}
+      className={classes}
+      {...props}
+    >
       {children}
     </button>
   );
