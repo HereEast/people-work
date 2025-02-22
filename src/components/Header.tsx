@@ -17,7 +17,7 @@ export function Header() {
         <div className="flex gap-2 text-2xl font-bold">
           <span className="hidden sm:inline-block">follow:</span>
 
-          <Button href={CONTACT.linkedin} className="px-3">
+          <Button href={CONTACT.linkedin} target="_blank" className="px-3">
             <div className="flex gap-2">
               <span>li</span>
               <ArrowTopRightSquare className="mt-0.5 w-2.5 text-stone-50" />

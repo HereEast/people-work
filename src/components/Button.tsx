@@ -3,57 +3,60 @@ import { MouseEvent, ReactNode } from "react";
 
 import { cn } from "~/utils/handlers";
 
-// interface ButtonProps {
-//   children: string | ReactNode;
-//   disabled?: boolean;
-//   className?: string;
-//   isAnimated?: boolean;
-// }
-
 const styles = {
-  base: "group/button inline-flex items-center outline-none relative justify-center leading-none font-semibold lowercase bg-stone-950 text-stone-50 rounded-full w-fit",
+  base: "group/button inline-flex items-center outline-none relative justify-center leading-none font-semibold lowercase bg-stone-950 text-stone-50 rounded-full w-fit h-8 px-4 transition",
   size: {
-    md: "h-10 text-15 px-6 rounded-full md:h-9",
+    md: "h-12 px-10",
     sm: "h-8 px-4 rounded-full",
     xs: "",
   },
-  link: "transition hover:shadow-lg hover:shadow-blue-600 bg-stone-950",
+  view: {
+    link: "hover:shadow-lg hover:shadow-blue-600 bg-stone-950",
+    inverted: "bg-stone-50 text-stone-960",
+  },
+  animated: {
+    base: "animate-anime hover:[animation-play-state:paused] bg-gradient-base bg-[length:600%] text-stone-50",
+    hover:
+      "animate-anime hover:bg-gradient-base bg-[length:600%] hover:text-stone-50",
+  },
 };
 
 type ButtonProps = {
+  children: ReactNode;
   href?: string | URL;
   target?: "_blank" | "_self";
-  rel?: string;
-  children: ReactNode;
-  className?: string;
   isDisabled?: boolean;
-  onClick?: (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   size?: keyof typeof styles.size;
-  type?: "link";
+  view?: keyof typeof styles.view;
+  animated?: keyof typeof styles.animated;
+  rel?: string;
+  className?: string;
+  onClick?: (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
 };
 
 export function Button({
   className = "",
   size,
-  href = "",
-  target = "_self",
+  href,
   children,
   isDisabled,
   onClick,
-  type,
+  view,
+  animated,
   ...props
 }: ButtonProps) {
   const classes = cn(
     styles.base,
-    href && `${styles.link} ${styles.size.sm}`,
+    href && `${styles.view.link} ${styles.size.sm}`,
     size && styles.size[size],
-    type && styles[type],
+    view && styles.view[view],
+    animated && styles.animated[animated],
     className,
   );
 
   if (href) {
     return (
-      <Link href={href} target={target} className={classes} {...props}>
+      <Link href={href} className={classes} {...props}>
         {children}
       </Link>
     );
@@ -70,34 +73,3 @@ export function Button({
     </button>
   );
 }
-
-// export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-//   (
-//     {
-//       children,
-//       disabled = false,
-//       isAnimated = false,
-//       className = "",
-//       ...props
-//     },
-//     ref,
-//   ) => {
-//     return (
-//       <button
-//         className={cn(
-//           "group/button relative z-10 flex h-14 w-full items-center justify-center rounded-full bg-white text-lg font-bold",
-//           isAnimated && "animate-anime bg-gradient-base bg-[length:600%]",
-//           disabled && "opacity-50",
-//           className,
-//         )}
-//         disabled={disabled}
-//         ref={ref}
-//         {...props}
-//       >
-//         {children}
-//       </button>
-//     );
-//   },
-// );
-
-// Button.displayName = "Button";
