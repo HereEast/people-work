@@ -9,7 +9,7 @@ export function Header() {
     <header className="fixed z-50 w-full bg-white px-2 py-3 sm:px-4">
       <nav className="flex w-full items-center justify-between gap-1">
         <div className="w-full sm:w-fit">
-          <Button href={ROUTE.index}>
+          <Button href={ROUTE.index} className="pl-3 pr-2">
             <Logo />
           </Button>
         </div>
@@ -17,7 +17,7 @@ export function Header() {
         <div className="flex gap-2 text-2xl font-bold">
           <span className="hidden sm:inline-block">follow:</span>
 
-          <Button href={CONTACT.linkedin}>
+          <Button href={CONTACT.linkedin} className="px-3">
             <div className="flex gap-2">
               <span>li</span>
               <ArrowTopRightSquare className="mt-0.5 w-2.5 text-stone-50" />

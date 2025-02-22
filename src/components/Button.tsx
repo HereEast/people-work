@@ -11,10 +11,10 @@ import { cn } from "~/utils/handlers";
 // }
 
 const styles = {
-  base: "group/button inline-flex items-center outline-none relative justify-center leading-none bg-stone-950 text-stone-50 rounded-full",
+  base: "group/button inline-flex items-center outline-none relative justify-center leading-none font-semibold lowercase bg-stone-950 text-stone-50 rounded-full w-fit",
   size: {
     md: "h-10 text-15 px-6 rounded-full md:h-9",
-    sm: "h-8 px-3 rounded-full",
+    sm: "h-8 px-4 rounded-full",
     xs: "",
   },
   link: "transition hover:shadow-lg hover:shadow-blue-600 bg-stone-950",
@@ -24,11 +24,11 @@ type ButtonProps = {
   href?: string | URL;
   target?: "_blank" | "_self";
   rel?: string;
-  size?: keyof typeof styles.size;
   children: ReactNode;
   className?: string;
   isDisabled?: boolean;
   onClick?: (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  size?: keyof typeof styles.size;
   type?: "link";
 };
 
@@ -45,7 +45,7 @@ export function Button({
 }: ButtonProps) {
   const classes = cn(
     styles.base,
-    href && styles.link && styles.size.sm,
+    href && `${styles.link} ${styles.size.sm}`,
     size && styles.size[size],
     type && styles[type],
     className,
