@@ -109,14 +109,9 @@ interface QuestionProps {
 }
 
 async function Question({ children }: QuestionProps) {
-  const parsedHTML = await parseMarkdown(children);
-
   return (
-    <div
-      className="text-base leading-tight text-stone-400/75 [&>p>em]:not-italic"
-      dangerouslySetInnerHTML={{
-        __html: parsedHTML,
-      }}
-    />
+    <div className="text-base leading-tight text-stone-400/75">
+      <h5>{children}</h5>
+    </div>
   );
 }
