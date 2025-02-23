@@ -4,18 +4,21 @@ import { MouseEvent, ReactNode } from "react";
 import { cn } from "~/utils/handlers";
 
 const styles = {
-  base: "group/button inline-flex items-center outline-none relative justify-center leading-none font-semibold lowercase bg-stone-950 text-stone-50 rounded-full w-fit h-8 px-4 transition",
+  base: "group/button inline-flex items-center outline-none relative justify-center leading-none font-semibold lowercase bg-stone-950 text-stone-50 rounded-full w-fit h-8 px-4 transition text-lg",
   size: {
     md: "h-12 px-10",
     sm: "h-8 px-4 rounded-full",
     xs: "",
   },
   view: {
-    link: "hover:shadow-lg hover:shadow-blue-600 bg-stone-950",
+    primary: "hover:shadow-none",
     inverted: "bg-stone-50 text-stone-960",
+    link: "hover:shadow-lg hover:shadow-blue-600",
+    animated: "animate-anime bg-gradient-base bg-[length:600%] text-stone-50",
+    tile: "hover:shadow-none overflow-hidden size-20 p-0 rounded-xl",
   },
   animated: {
-    base: "animate-anime hover:[animation-play-state:paused] bg-gradient-base bg-[length:600%] text-stone-50",
+    // base: "animate-anime hover:[animation-play-state:paused] bg-gradient-base bg-[length:600%] text-stone-50",
     hover:
       "animate-anime hover:bg-gradient-base bg-[length:600%] hover:text-stone-50",
   },
@@ -50,6 +53,7 @@ export function Button({
     href && `${styles.view.link} ${styles.size.sm}`,
     size && styles.size[size],
     view && styles.view[view],
+    (view === "primary" || view === "inverted") && styles.animated.hover,
     animated && styles.animated[animated],
     className,
   );

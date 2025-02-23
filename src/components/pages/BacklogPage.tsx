@@ -1,10 +1,9 @@
-import Link from "next/link";
-
 import { PageContainer } from "~/components/PageContainer";
 import { BacklogListItem, BacklogCountLabel } from "./backlog";
 
 import { CONTACT } from "~/utils/constants";
 import { BACKLOG } from "~/utils/data/backlog-data";
+import { Button } from "../Button";
 
 export function BacklogPage() {
   const todoList = BACKLOG.items.filter((item) => !item.done);
@@ -45,14 +44,9 @@ export function BacklogPage() {
             Open to any feedback and decent suggestions 24/7.
           </span>
 
-          <div className="w-full sm:w-fit">
-            <Link
-              href={`mailto:${CONTACT.email}`}
-              className="group/button-link flex h-8 items-center justify-center rounded-full bg-stone-950 px-4 font-semibold text-stone-50 transition hover:shadow-lg hover:shadow-blue-600"
-            >
-              drop an email
-            </Link>
-          </div>
+          <Button href={`mailto:${CONTACT.email}`} view="primary">
+            Drop an email
+          </Button>
         </div>
       </div>
     </PageContainer>

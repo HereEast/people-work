@@ -64,12 +64,7 @@ export function SubscribeForm() {
                 })}
               />
 
-              <Button
-                isDisabled={isSubmitting}
-                view="inverted"
-                size="md"
-                animated="hover"
-              >
+              <Button isDisabled={isSubmitting} view="inverted" size="md">
                 subscribe
               </Button>
             </div>

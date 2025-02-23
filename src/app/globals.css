@@ -7,6 +7,13 @@ body {
   box-sizing: border-box;
 }
 
+li {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+}
+
 @layer base {
   :root {
     --gradient-color-1: #ffc814;

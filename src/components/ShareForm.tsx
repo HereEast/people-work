@@ -74,10 +74,10 @@ export function ShareForm({ className = "" }: ShareFormCardProps) {
 
           <Button
             isDisabled={isSubmitting}
-            animated="base"
+            view="animated"
             className="flex h-20 w-full items-center gap-1.5"
           >
-            <span className="text-white transition duration-300 group-hover/button:-translate-x-0.5">
+            <span className="transition duration-300 group-hover/button:-translate-x-0.5">
               share the name
             </span>
             <ArrowRightFull className="w-4 text-white transition duration-200 group-hover/button:translate-x-0.5" />
