@@ -20,7 +20,7 @@ export async function SidePeoplePanel({ slug }: SidePeoplePanelProps) {
       <ul className="flex flex-wrap justify-center gap-3 lg:flex-col lg:gap-2">
         {sidePanelPeople?.map((person, index) => (
           <li
-            className="group/side-tile relative transition hover:-translate-y-1 lg:hover:-translate-x-1 lg:hover:translate-y-0"
+            className="group/side-tile relative text-[0px] leading-none transition hover:-translate-y-1 lg:hover:-translate-x-1 lg:hover:translate-y-0"
             key={index}
           >
             <Tooltip>
