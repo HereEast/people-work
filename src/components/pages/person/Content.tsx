@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -106,13 +105,18 @@ function LinkItem({ link }: LinkItemProps) {
 
 // Question
 interface QuestionProps {
-  children: ReactNode;
+  children: string;
 }
 
-function Question({ children }: QuestionProps) {
+async function Question({ children }: QuestionProps) {
+  const parsedHTML = await parseMarkdown(children);
+
   return (
-    <div className="text-base leading-tight text-stone-400/75">
-      <h5>{children}</h5>
-    </div>
+    <div
+      className="text-base leading-tight text-stone-400/75 [&>p>em]:not-italic"
+      dangerouslySetInnerHTML={{
+        __html: parsedHTML,
+      }}
+    />
   );
 }
