@@ -14,12 +14,11 @@ export function Header() {
           </Button>
         </div>
 
-        <div className="flex gap-2 text-2xl font-bold">
-          <span className="hidden sm:inline-block">follow:</span>
-
+        <div>
           <Button href={CONTACT.linkedin} target="_blank" className="px-3">
             <div className="flex gap-2">
-              <span>li</span>
+              <span className="sm:hidden">li</span>
+              <span className="hidden sm:block">linkedin</span>
               <ArrowTopRightSquare className="mt-0.5 w-2.5 text-stone-50" />
             </div>
           </Button>

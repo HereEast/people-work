@@ -13,7 +13,7 @@ interface ContentProps {
 
 export function Content({ data }: ContentProps) {
   return (
-    <div className="space-y-12 rounded-3xl bg-stone-200/50 p-3 text-xl xs:p-4 md:rounded-4xl md:p-6">
+    <div className="space-y-12 rounded-2xl bg-stone-200/50 p-3 text-xl xs:p-4 md:rounded-4xl md:p-6 lg:p-10">
       <div className="flex flex-col gap-2">
         {data?.map((item, index) => {
           const question = item.questionId as IQuestion;
@@ -21,7 +21,7 @@ export function Content({ data }: ContentProps) {
           return (
             <div
               key={index}
-              className="space-y-6 rounded-2xl bg-white p-6 pb-8 sm:p-8"
+              className="space-y-6 rounded-xxl bg-white p-6 pb-8 sm:p-8"
             >
               <Question>{question.body}</Question>
               <Answer answerData={item} view={question.answerView || "text"} />
@@ -48,7 +48,7 @@ export async function Answer({ answerData, view = "text" }: AnswersProps) {
     <>
       {view === "text" && (
         <div
-          className="answer text-xl leading-tight sm:text-xl md:text-2xl"
+          className="answer text-xl leading-tight md:text-2xl"
           dangerouslySetInnerHTML={{
             __html: parsedHTML,
           }}
@@ -77,7 +77,7 @@ function LinkItem({ link }: LinkItemProps) {
   const resolvedUrl = isOuterURL(url) ? url : `/${url}`;
 
   return (
-    <div className="w-fit text-xl leading-tight sm:text-xl lg:text-2xl">
+    <div className="w-fit text-xl leading-tight md:text-2xl">
       <Link
         href={resolvedUrl}
         target={isOuterURL(url) ? "_blank" : "_self"}

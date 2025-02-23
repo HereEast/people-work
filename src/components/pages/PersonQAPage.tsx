@@ -28,7 +28,7 @@ export async function PersonQAPage({ slug }: QAPageProps) {
               <div className="grid gap-6 lg:grid-cols-[300px_auto]">
                 <PersonPreview person={person} />
 
-                <div className="max-w-3xl space-y-16">
+                <div className="space-y-16 lg:max-w-3xl">
                   <Content data={answers} />
                 </div>
               </div>
@@ -45,7 +45,7 @@ export async function PersonQAPage({ slug }: QAPageProps) {
 
             {/* Form */}
             <div className="mb-10 max-w-7xl grid-cols-[300px_auto] gap-6 lg:grid">
-              <div className="max-w-3xl md:col-start-2">
+              <div className="md:col-start-2 lg:max-w-3xl">
                 <ShareForm />
               </div>
             </div>

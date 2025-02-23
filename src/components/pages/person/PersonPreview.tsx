@@ -19,10 +19,10 @@ export function PersonPreview({ person }: PersonCardProps) {
 // Mobile
 export function MobilePersonPreview({ person }: PersonCardProps) {
   return (
-    <div className="sticky top-[56px] z-10 w-full overflow-hidden rounded-b-[35px] bg-white xs:rounded-b-2xl lg:hidden">
-      <div className="relative rounded-[35px] bg-stone-950 xs:rounded-2xl">
+    <div className="sticky top-[56px] z-10 w-full overflow-hidden rounded-b-xxl bg-white lg:hidden">
+      <div className="relative rounded-xxl bg-stone-950">
         <div className="flex gap-4 p-3 xs:p-4">
-          <div className="size-[72px] shrink-0 overflow-hidden rounded-xl">
+          <div className="size-[72px] shrink-0 overflow-hidden rounded-md">
             <PersonImage person={person} />
           </div>
 
