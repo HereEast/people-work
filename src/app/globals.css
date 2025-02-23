@@ -66,12 +66,13 @@ li {
 .answer ul li::before {
   content: "✅";
   position: absolute;
-  font-size: 20px;
+  font-size: 18px;
+  top: 2px;
   left: 0;
   z-index: 2;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .answer ul li:not(:last-child) {
     margin-bottom: 0px;
   }

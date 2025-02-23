@@ -20,15 +20,15 @@ export async function PersonQAPage({ slug }: QAPageProps) {
   }
 
   return (
-    <PageContainer className="min-h-screen max-w-full gap-10 pt-4 sm:pt-10 lg:grid lg:grid-cols-[auto_80px]">
+    <PageContainer className="min-h-screen w-full max-w-full justify-between gap-10 pt-4 sm:pt-10 lg:flex">
       {answers && person && (
         <>
-          <div className="space-y-16">
-            <div className="max-w-7xl">
+          <div className="w-full space-y-16">
+            <div>
               <div className="grid gap-6 lg:grid-cols-[300px_auto]">
                 <PersonPreview person={person} />
 
-                <div className="space-y-16">
+                <div className="max-w-3xl space-y-16">
                   <Content data={answers} />
                 </div>
               </div>
@@ -45,7 +45,7 @@ export async function PersonQAPage({ slug }: QAPageProps) {
 
             {/* Form */}
             <div className="mb-10 max-w-7xl grid-cols-[300px_auto] gap-6 lg:grid">
-              <div className="md:col-start-2">
+              <div className="max-w-3xl md:col-start-2">
                 <ShareForm />
               </div>
             </div>
