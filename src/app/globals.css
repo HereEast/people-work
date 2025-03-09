@@ -76,6 +76,11 @@ li {
   .answer ul li:not(:last-child) {
     margin-bottom: 0px;
   }
+
+  .answer ul li::before {
+    font-size: 20px;
+    top: 1px;
+  }
 }
 
 /* Lists headings */
@@ -84,11 +89,3 @@ li {
   font-weight: 600;
   text-decoration: underline;
 }
-
-/* .question em {
-  display: inline-block;
-  font-style: normal;
-  padding: 0 6px;
-  background-color: #ffc814;
-  border-radius: 10px;
-} */
