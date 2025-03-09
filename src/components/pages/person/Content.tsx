@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -13,13 +12,16 @@ interface ContentProps {
 
 export function Content({ data }: ContentProps) {
   return (
-    <div className="space-y-12 rounded-4xl bg-stone-200/50 p-4 text-xl sm:p-10 md:rounded-6xl">
+    <div className="space-y-12 rounded-2xl bg-stone-200/50 p-3 text-xl xs:p-4 md:rounded-4xl md:p-6 lg:p-10">
       <div className="flex flex-col gap-2">
         {data?.map((item, index) => {
           const question = item.questionId as IQuestion;
 
           return (
-            <div key={index} className="space-y-5 rounded-3xl bg-white p-8">
+            <div
+              key={index}
+              className="space-y-6 rounded-xxl bg-white p-6 pb-8 sm:p-8"
+            >
               <Question>{question.body}</Question>
               <Answer answerData={item} view={question.answerView || "text"} />
             </div>
@@ -45,7 +47,7 @@ export async function Answer({ answerData, view = "text" }: AnswersProps) {
     <>
       {view === "text" && (
         <div
-          className="answer text-xl leading-tight sm:text-xl lg:text-2xl"
+          className="answer text-xl leading-tight md:text-2xl"
           dangerouslySetInnerHTML={{
             __html: parsedHTML,
           }}
@@ -74,7 +76,7 @@ function LinkItem({ link }: LinkItemProps) {
   const resolvedUrl = isOuterURL(url) ? url : `/${url}`;
 
   return (
-    <div className="w-fit text-xl leading-tight sm:text-xl lg:text-2xl">
+    <div className="w-fit text-xl leading-tight md:text-2xl">
       <Link
         href={resolvedUrl}
         target={isOuterURL(url) ? "_blank" : "_self"}
@@ -103,10 +105,10 @@ function LinkItem({ link }: LinkItemProps) {
 
 // Question
 interface QuestionProps {
-  children: ReactNode;
+  children: string;
 }
 
-function Question({ children }: QuestionProps) {
+async function Question({ children }: QuestionProps) {
   return (
     <div className="text-base leading-tight text-stone-400/75">
       <h5>{children}</h5>

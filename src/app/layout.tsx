@@ -11,7 +11,7 @@ import { GoogleAnalytics } from "~/components/GoogleAnalytics";
 import { CookieBanner } from "~/components/CookieBanner";
 
 import { getMetadata } from "~/utils/getMetadata";
-import { InnovatorGrotesk } from "~/utils/fonts";
+import { InnovatorGrotesk, Inter } from "~/utils/fonts";
 
 export const metadata: Metadata = getMetadata();
 
@@ -21,7 +21,10 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <html lang="en" className={`${InnovatorGrotesk.className} scroll-smooth`}>
+    <html
+      lang="en"
+      className={`${InnovatorGrotesk.variable} ${Inter.variable} scroll-smooth`}
+    >
       <GoogleAnalytics />
 
       <body

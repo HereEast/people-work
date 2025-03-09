@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 import { PersonImage } from "~/components/PersonImage";
 import { Name, Job } from "~/components/PersonCard";
 
@@ -11,15 +9,46 @@ interface PersonCardProps {
 
 export function PersonPreview({ person }: PersonCardProps) {
   return (
-    <StickyContainer>
-      <div className="relative rounded-4xl bg-stone-950 md:rounded-6xl">
-        {/* Label */}
-        <div className="absolute right-14 top-[-15px] z-50 md:top-[264px]">
-          <Label>👋 Hey!</Label>
-        </div>
+    <>
+      <MobilePersonPreview person={person} />
+      <DesktopPersonPreview person={person} />
+    </>
+  );
+}
 
-        <div className="flex w-full items-center gap-5 p-5 md:flex-col md:pb-8">
-          <div className="size-[68px] shrink-0 overflow-hidden rounded-4xl md:size-full">
+// Mobile
+export function MobilePersonPreview({ person }: PersonCardProps) {
+  return (
+    <div className="sticky top-[56px] z-10 w-full overflow-hidden rounded-b-xxl bg-white lg:hidden">
+      <div className="relative rounded-xxl bg-stone-950">
+        <div className="flex gap-4 p-3 xs:p-4">
+          <div className="size-[72px] shrink-0 overflow-hidden rounded-md">
+            <PersonImage person={person} />
+          </div>
+
+          <div className="space-y-1 overflow-hidden text-stone-50">
+            <h2 className="truncate text-2xl font-extrabold tracking-tighter">
+              {person.name}
+            </h2>
+
+            <div className="truncate text-left text-lg leading-none tracking-tight">
+              <h3 className="truncate">{person.company.name}</h3>
+              <h3 className="truncate">{person.jobTitle}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Desktop
+export function DesktopPersonPreview({ person }: PersonCardProps) {
+  return (
+    <div className="hidden grow flex-col lg:flex">
+      <div className="sticky top-[56px] rounded-6xl bg-stone-950">
+        <div className="flex w-full items-center gap-4 p-5 md:flex-col md:pb-8">
+          <div className="size-[68px] shrink-0 overflow-hidden rounded-xl md:size-full md:rounded-4xl">
             <PersonImage person={person} />
           </div>
 
@@ -31,28 +60,6 @@ export function PersonPreview({ person }: PersonCardProps) {
           </div>
         </div>
       </div>
-    </StickyContainer>
-  );
-}
-
-// Label
-interface LabelProps {
-  children: string;
-}
-
-function Label({ children }: LabelProps) {
-  return (
-    <div className="flex w-fit items-center justify-center rounded-full bg-brand-blue-600 py-0.5 pl-1.5 pr-2 text-base font-medium text-stone-50">
-      {children}
-    </div>
-  );
-}
-
-// Sticky
-function StickyContainer({ children }: { children: ReactNode }) {
-  return (
-    <div className="sticky top-[56px] rounded-b-4xl bg-white pt-[15px] md:static md:rounded-4xl md:pt-0">
-      <div className="md:sticky md:top-[56px]">{children}</div>
     </div>
   );
 }

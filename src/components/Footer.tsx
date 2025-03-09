@@ -26,7 +26,7 @@ export function Footer() {
               className="absolute inset-0 m-auto object-contain"
             />
           </div>
-          <span className="leading-none">this website in a wip</span>
+          <span className="leading-none">this website is a wip</span>
         </div>
       </div>
     </footer>

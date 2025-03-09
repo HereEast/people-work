@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { ReactNode } from "react";
 
+import { Button } from "~/components/Button";
 import { PlusIcon } from "~/components/icons";
 import { PersonImage } from "~/components/PersonImage";
 
@@ -20,7 +20,7 @@ export async function SidePeoplePanel({ slug }: SidePeoplePanelProps) {
       <ul className="flex flex-wrap justify-center gap-3 lg:flex-col lg:gap-2">
         {sidePanelPeople?.map((person, index) => (
           <li
-            className="group/side-tile relative w-20 transition hover:-translate-y-1 lg:hover:-translate-x-1 lg:hover:translate-y-0"
+            className="group/side-tile relative text-[0px] leading-none transition hover:-translate-y-1 lg:hover:-translate-x-1 lg:hover:translate-y-0"
             key={index}
           >
             <Tooltip>
@@ -28,33 +28,19 @@ export async function SidePeoplePanel({ slug }: SidePeoplePanelProps) {
               <span className="inline-block opacity-90">{`${person.jobTitle} @ ${person.company.name}`}</span>
             </Tooltip>
 
-            <Link href={`/people/${person.slug}`}>
-              <div className="overflow-hidden rounded-xl">
-                <PersonImage person={person} />
-              </div>
-            </Link>
+            <Button href={`/people/${person.slug}`} view="tile">
+              <PersonImage person={person} />
+            </Button>
           </li>
         ))}
 
         <li className="hidden lg:block">
-          <AddButton />
+          <Button href="#share" view="primary" className="size-20 rounded-xl">
+            <PlusIcon className="size-8" />
+          </Button>
         </li>
       </ul>
     </nav>
-  );
-}
-
-// Add button
-function AddButton() {
-  return (
-    <div className="flex aspect-square size-20 items-center justify-center overflow-hidden rounded-xl bg-slate-950 text-slate-50 transition hover:-translate-y-1 hover:animate-anime hover:bg-gradient-base-diagonal hover:bg-[length:400%] lg:hover:-translate-x-1 lg:hover:translate-y-0">
-      <Link
-        href="#share"
-        className="flex size-full items-center justify-center"
-      >
-        <PlusIcon className="size-8" />
-      </Link>
-    </div>
   );
 }
 

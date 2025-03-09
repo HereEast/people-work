@@ -3,37 +3,13 @@
 @tailwind utilities;
 
 body {
-  font-family: inherit;
+  font-family: var(--font-primary), var(--font-secondary), sans-serif;
   box-sizing: border-box;
 }
 
-.answer a {
-  text-decoration: underline;
-}
-
-.answer a:hover {
-  opacity: 50%;
-  text-decoration: none;
-}
-
-.answer p:not(:last-child) {
-  margin-bottom: 24px;
-}
-
-.answer ul:not(:last-child) {
-  margin-bottom: 16px;
-}
-
-.answer ul li {
-  position: relative;
-  padding: 0px 0px 0px 24px;
-}
-
-.answer ul li::before {
-  content: "▶";
-  position: absolute;
-  font-size: 20px;
-  left: 0;
+li {
+  margin: 0;
+  padding: 0;
 }
 
 @layer base {
@@ -56,4 +32,60 @@ body {
     background-clip: text;
     color: transparent;
   }
+}
+
+/* Answer */
+
+.answer a {
+  text-decoration: underline;
+}
+
+.answer a:hover {
+  opacity: 50%;
+  text-decoration: none;
+}
+
+.answer p:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+/* Lists */
+.answer ul:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+.answer ul li {
+  position: relative;
+  padding: 0px 0px 0px 28px;
+}
+
+.answer ul li:not(:last-child) {
+  margin-bottom: 2px;
+}
+
+.answer ul li::before {
+  content: "✅";
+  position: absolute;
+  font-size: 18px;
+  top: 2px;
+  left: 0;
+  z-index: 2;
+}
+
+@media (min-width: 640px) {
+  .answer ul li:not(:last-child) {
+    margin-bottom: 0px;
+  }
+
+  .answer ul li::before {
+    font-size: 20px;
+    top: 1px;
+  }
+}
+
+/* Lists headings */
+.answer h6:has(+ ul) {
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-decoration: underline;
 }
