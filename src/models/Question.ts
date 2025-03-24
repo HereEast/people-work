@@ -1,8 +1,11 @@
-import mongoose, { Schema, Document, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
+
+import { ID } from "~/utils/types";
 
 export type AnswerViewType = "all" | "links" | "text";
 
-export interface IQuestion extends Document {
+export interface IQuestion {
+  _id: ID;
   slug: string;
   body: string;
   description: string;

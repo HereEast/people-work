@@ -1,6 +1,9 @@
-import mongoose, { Schema, Document, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 
-export interface IPerson extends Document {
+import { ID } from "~/utils/types";
+
+export interface IPerson {
+  _id: ID;
   name: string;
   email: string;
   company: ICompany;
