@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import { HydratedDocument } from "mongoose";
 import { NextResponse } from "next/server";
 
@@ -19,7 +21,10 @@ export async function GET(req: Request, { params }: ReqParams) {
       slug,
     }).exec();
 
-    const person: IPerson = doc.toObject();
+    const person: IPerson = {
+      ...doc.toObject(),
+      _id: doc.toObject()._id.toString(),
+    };
 
     return NextResponse.json(person);
   } catch (err) {
