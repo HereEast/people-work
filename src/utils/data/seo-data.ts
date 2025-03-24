@@ -3,7 +3,7 @@ import { BASE_URL } from "../constants";
 export const SEO_DATA = {
   index: {
     url: BASE_URL,
-    imageUrl: "/opengraph-image.jpg",
+    imageUrl: "/og-image.jpg",
     title: "Job titles decoded. In a simple Q&A format.",
     description:
       "A small web hustle on a mission to demystify job titles and show real people behind them.",
