@@ -19,6 +19,14 @@ export function parseAnswer(text: string) {
   return element.body.innerHTML;
 }
 
+// Handle errors
+export function handleError(error: unknown) {
+  if (error instanceof Error) {
+    console.error(`🔴 Error fetching data:`, error.message);
+    throw new Error(error.message);
+  }
+}
+
 // Tw
 export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));

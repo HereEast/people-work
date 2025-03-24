@@ -1,4 +1,4 @@
-import { Button } from "~/components/Button";
+import { Button } from "~/components/ui/Button";
 import { BacklogCountLabel } from "~/components/pages/backlog";
 
 import { ROUTE } from "~/utils/constants";

@@ -1,3 +1,4 @@
+import { HydratedDocument } from "mongoose";
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/app/lib/connectDB";
@@ -14,7 +15,11 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const person: IPerson = await Person.findOne({ slug }).exec();
+    const doc: HydratedDocument<IPerson> = await Person.findOne({
+      slug,
+    }).exec();
+
+    const person: IPerson = doc.toObject();
 
     return NextResponse.json(person);
   } catch (err) {

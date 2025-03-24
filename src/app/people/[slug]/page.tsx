@@ -1,8 +1,7 @@
 import { PersonQAPage } from "~/components/pages/PersonQAPage";
 
 import { connectDB } from "~/app/lib/connectDB";
-import { Person, IPerson } from "~/models/Person";
-import { getPeople } from "~/api-client/people";
+import { getPeople, getPerson } from "~/api-client/people";
 
 import { SEO_DATA } from "~/utils/data/seo-data";
 import { getMetadata } from "~/utils/getMetadata";
@@ -17,7 +16,7 @@ interface PersonPageProps {
 export async function generateMetadata({ params }: PersonPageProps) {
   await connectDB();
 
-  const person: IPerson = await Person.findOne({ slug: params.slug }).exec();
+  const person = await getPerson(params.slug);
 
   if (person) {
     const title = SEO_DATA.person.title(

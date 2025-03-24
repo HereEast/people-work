@@ -1,8 +1,9 @@
 import { IPerson } from "~/models/Person";
 import { BASE_URL } from "~/utils/constants";
+import { handleError } from "~/utils/handlers";
 
 // GET PERSON BY SLUG
-export async function getPerson(slug: string) {
+export async function getPerson(slug: string): Promise<IPerson | null> {
   try {
     const response = await fetch(`${BASE_URL}/api/people/${slug}`);
 
@@ -10,17 +11,18 @@ export async function getPerson(slug: string) {
       throw new Error("🔴 Data fetch failed");
     }
 
-    const person: IPerson = await response.json();
+    const person = await response.json();
 
     return person;
   } catch (error) {
-    console.error("Error fetching data:", error);
+    handleError(error);
+
     return null;
   }
 }
 
 // GET ALL PEOPLE
-export async function getPeople() {
+export async function getPeople(): Promise<IPerson[] | null> {
   try {
     const response = await fetch(`${BASE_URL}/api/people`);
 
@@ -28,13 +30,11 @@ export async function getPeople() {
       throw new Error("🔴 Data fetch failed");
     }
 
-    const people: IPerson[] = await response.json();
+    const people = await response.json();
 
     return people;
   } catch (err) {
-    if (err instanceof Error) {
-      console.log("🔴 Error:", err.message);
-    }
+    handleError(err);
 
     return null;
   }

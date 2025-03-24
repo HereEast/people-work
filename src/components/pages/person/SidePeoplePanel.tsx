@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { Button } from "~/components/Button";
+import { Button } from "~/components/ui/Button";
 import { PlusIcon } from "~/components/icons";
 import { PersonImage } from "~/components/PersonImage";
 
