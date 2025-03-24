@@ -1,5 +1,5 @@
-import { HomePage } from "~/components/pages/HomePage";
+import { Home } from "~/components/pages/Home";
 
-export default async function Home() {
-  return <HomePage />;
+export default async function HomePage() {
+  return <Home />;
 }

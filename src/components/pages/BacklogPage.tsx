@@ -3,7 +3,7 @@ import { BacklogListItem, BacklogCountLabel } from "./backlog";
 
 import { CONTACT } from "~/utils/constants";
 import { BACKLOG } from "~/utils/data/backlog-data";
-import { Button } from "../Button";
+import { Button } from "../ui/Button";
 
 export function BacklogPage() {
   const todoList = BACKLOG.items.filter((item) => !item.done);

@@ -1,11 +1,11 @@
-import { MainCards, About, BacklogPreview } from "./home";
 import { PageContainer } from "~/components/PageContainer";
 import { ShareForm } from "~/components/ShareForm";
 import { SubscribeForm } from "~/components/SubscribeForm";
+import { MainCards, About, BacklogPreview } from "./homepage";
 
 import { getPeople } from "~/api-client/people";
 
-export async function HomePage() {
+export async function Home() {
   const people = await getPeople();
 
   return (

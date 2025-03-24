@@ -15,11 +15,11 @@ import { InnovatorGrotesk, Inter } from "~/utils/fonts";
 
 export const metadata: Metadata = getMetadata();
 
-interface LayoutProps {
+interface RootLayoutProps {
   children: ReactNode;
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
