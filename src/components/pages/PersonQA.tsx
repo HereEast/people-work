@@ -11,7 +11,7 @@ interface QAPageProps {
   slug: string;
 }
 
-export async function PersonQAPage({ slug }: QAPageProps) {
+export async function PersonQA({ slug }: QAPageProps) {
   const person = await getPerson(slug);
   const answers = await getAnswersByPersonSlug(slug);
 
@@ -20,17 +20,17 @@ export async function PersonQAPage({ slug }: QAPageProps) {
   }
 
   return (
-    <PageContainer className="min-h-screen w-full max-w-full justify-between gap-10 pt-4 sm:pt-10 lg:flex">
+    <PageContainer className="min-h-screen w-full max-w-full justify-between gap-10 px-0 pt-4 sm:pt-10 lg:flex">
       {answers && person && (
         <>
           <div className="w-full space-y-16">
-            <div>
-              <div className="grid gap-6 lg:grid-cols-[300px_auto]">
+            <div className="grid gap-6 bg-stone-100 px-2 lg:grid-cols-[300px_auto]">
+              <div className="sticky top-[56px] z-10 w-full overflow-hidden rounded-b-xxl bg-stone-100">
                 <PersonPreview person={person} />
+              </div>
 
-                <div className="space-y-16 lg:max-w-3xl">
-                  <Content data={answers} />
-                </div>
+              <div className="lg:max-w-3xl">
+                <Content data={answers} />
               </div>
             </div>
 

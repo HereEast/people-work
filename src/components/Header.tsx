@@ -1,6 +1,8 @@
+"use client";
+
 import { Button } from "./ui/Button";
 import { Logo } from "./Logo";
-import { ArrowTopRightSquare } from "~/components/icons";
+// import { ArrowTopRightSquare } from "~/components/icons";
 
 import { ROUTE, CONTACT } from "~/utils/constants";
 
@@ -15,13 +17,24 @@ export function Header() {
         </div>
 
         <div>
-          <Button href={CONTACT.linkedin} target="_blank" className="px-3">
+          <Button
+            onClick={() => console.log("Open mobile menu")}
+            className="px-4"
+          >
+            <div className="space-y-1">
+              <span className="block h-[2px] w-6 bg-stone-50" />
+              <span className="block h-[2px] w-6 bg-stone-50" />
+              <span className="block h-[2px] w-6 bg-stone-50" />
+            </div>
+          </Button>
+
+          {/* <Button href={CONTACT.linkedin} target="_blank" className="px-3">
             <div className="flex gap-2">
               <span className="sm:hidden">li</span>
               <span className="hidden sm:block">linkedin</span>
               <ArrowTopRightSquare className="mt-0.5 w-2.5 text-stone-50" />
             </div>
-          </Button>
+          </Button> */}
         </div>
       </nav>
     </header>

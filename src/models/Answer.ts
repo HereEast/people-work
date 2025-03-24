@@ -10,11 +10,7 @@ export interface IAnswer {
   name: string;
   question: string;
   answer: string;
-  links?: {
-    body: string;
-    url: string;
-    image?: string;
-  }[];
+  links?: IAnswerLink[];
 }
 
 export interface IAnswerLink {

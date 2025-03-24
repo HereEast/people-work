@@ -5,6 +5,7 @@ import { IAnswer, IAnswerLink } from "~/models/Answer";
 import { AnswerViewType, IQuestion } from "~/models/Question";
 import { isOuterURL } from "~/utils/handlers";
 import { parseMarkdown } from "~/utils/parseMarkdown";
+import { Button } from "~/components/ui/Button";
 
 interface ContentProps {
   data: IAnswer[];
@@ -12,7 +13,7 @@ interface ContentProps {
 
 export function Content({ data }: ContentProps) {
   return (
-    <div className="space-y-12 rounded-2xl bg-stone-200/50 p-3 text-xl xs:p-4 md:rounded-4xl md:p-6 lg:p-10">
+    <div className="space-y-12 text-xl md:rounded-4xl md:p-6 lg:p-10">
       <div className="flex flex-col gap-2">
         {data?.map((item, index) => {
           const question = item.questionId as IQuestion;
@@ -20,9 +21,9 @@ export function Content({ data }: ContentProps) {
           return (
             <div
               key={index}
-              className="space-y-6 rounded-xxl bg-white p-6 pb-8 sm:p-8"
+              className="relative space-y-6 rounded-xxl border border-stone-200/50 bg-white p-6 px-5 pb-8"
             >
-              <Question>{question.body}</Question>
+              <Question>{question}</Question>
               <Answer answerData={item} view={question.answerView || "text"} />
             </div>
           );
@@ -47,7 +48,7 @@ export async function Answer({ answerData, view = "text" }: AnswersProps) {
     <>
       {view === "text" && (
         <div
-          className="answer text-xl leading-tight md:text-2xl"
+          className="answer text-[22px] leading-tight md:text-2xl"
           dangerouslySetInnerHTML={{
             __html: parsedHTML,
           }}
@@ -76,7 +77,7 @@ function LinkItem({ link }: LinkItemProps) {
   const resolvedUrl = isOuterURL(url) ? url : `/${url}`;
 
   return (
-    <div className="w-fit text-xl leading-tight md:text-2xl">
+    <div className="w-fit text-[22px] leading-tight md:text-2xl">
       <Link
         href={resolvedUrl}
         target={isOuterURL(url) ? "_blank" : "_self"}
@@ -105,13 +106,22 @@ function LinkItem({ link }: LinkItemProps) {
 
 // Question
 interface QuestionProps {
-  children: string;
+  children: IQuestion;
 }
 
 async function Question({ children }: QuestionProps) {
   return (
-    <div className="text-base leading-tight text-stone-400/75">
-      <h5>{children}</h5>
+    <div className="flex justify-between gap-6">
+      <h5 className="pr-16 text-lg leading-tight text-stone-400/60">
+        {children.body}
+      </h5>
+
+      <Button
+        href={`/questions/${children.slug}`}
+        className="absolute right-5 top-5 font-thin"
+      >
+        <div>→</div>
+      </Button>
     </div>
   );
 }
