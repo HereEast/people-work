@@ -1,5 +1,4 @@
-import { Button } from "~/components/ui/Button";
-import { Answer } from "~/components/(personQA)/Answer";
+import { Question, Answer } from "~/components/(personQA)";
 
 import { IAnswer } from "~/models/Answer";
 import { IQuestion } from "~/models/Question";
@@ -26,28 +25,6 @@ export function Content({ data }: ContentProps) {
           );
         })}
       </div>
-    </div>
-  );
-}
-
-// Question
-interface QuestionProps {
-  children: IQuestion;
-}
-
-async function Question({ children }: QuestionProps) {
-  return (
-    <div className="flex w-full cursor-default justify-between gap-6 rounded-md p-3 hover:bg-stone-100/50">
-      <h5 className="pr-14 text-base leading-[120%] text-stone-400/60">
-        {children.body}
-      </h5>
-
-      <Button
-        href={`/questions/${children.slug}`}
-        className="absolute right-4 top-4 h-7 text-sm font-light"
-      >
-        <div>→</div>
-      </Button>
     </div>
   );
 }

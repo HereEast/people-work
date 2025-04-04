@@ -10,7 +10,7 @@ export async function Answer({ children }: AnswersProps) {
   const parsedHTML = await parseMarkdown(children.answer);
 
   return (
-    <div className="px-2.5">
+    <div className="cursor-default px-2.5">
       <div
         className="answer md:text-2xl"
         dangerouslySetInnerHTML={{
