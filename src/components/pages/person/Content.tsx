@@ -21,7 +21,7 @@ export function Content({ data }: ContentProps) {
           return (
             <div
               key={index}
-              className="relative space-y-6 rounded-xxl border border-stone-200/50 bg-white p-6 px-5 pb-8"
+              className="relative space-y-4 rounded-xxl border border-stone-200/50 bg-white px-2 pb-8 pt-2"
             >
               <Question>{question}</Question>
               <Answer answerData={item} view={question.answerView || "text"} />
@@ -45,10 +45,10 @@ export async function Answer({ answerData, view = "text" }: AnswersProps) {
   });
 
   return (
-    <>
+    <div className="px-2.5">
       {view === "text" && (
         <div
-          className="answer text-[22px] leading-tight md:text-2xl"
+          className="answer md:text-2xl"
           dangerouslySetInnerHTML={{
             __html: parsedHTML,
           }}
@@ -62,7 +62,7 @@ export async function Answer({ answerData, view = "text" }: AnswersProps) {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 }
 
@@ -111,14 +111,14 @@ interface QuestionProps {
 
 async function Question({ children }: QuestionProps) {
   return (
-    <div className="flex justify-between gap-6">
-      <h5 className="pr-16 text-lg leading-tight text-stone-400/60">
+    <div className="flex w-full cursor-default justify-between gap-6 rounded-md p-3 hover:bg-stone-100/50">
+      <h5 className="pr-14 text-base leading-[120%] text-stone-400/60">
         {children.body}
       </h5>
 
       <Button
         href={`/questions/${children.slug}`}
-        className="absolute right-5 top-5 font-thin"
+        className="absolute right-4 top-4 h-7 text-sm font-light"
       >
         <div>→</div>
       </Button>

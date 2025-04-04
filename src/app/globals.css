@@ -36,6 +36,11 @@ li {
 
 /* Answer */
 
+.answer {
+  font-size: 22px;
+  line-height: 120%;
+}
+
 .answer a {
   text-decoration: underline;
 }
@@ -64,11 +69,14 @@ li {
 }
 
 .answer ul li::before {
-  content: "✅";
+  content: "";
   position: absolute;
-  font-size: 18px;
-  top: 2px;
-  left: 0;
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 100%;
+  top: 9px;
+  left: 8px;
   z-index: 2;
 }
 
