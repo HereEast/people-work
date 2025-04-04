@@ -57,7 +57,7 @@ export async function QuestionPage({ slug }: QuestionPageProps) {
                   key={index}
                 >
                   <div className="space-y-8">
-                    <Answer answerData={answer} view={question.answerView} />
+                    <Answer>{answer}</Answer>
                     <PersonDetails person={person} />
                   </div>
                 </li>
