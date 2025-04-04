@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { BASE_URL } from "~/utils/constants";
-import { connectDB } from "./lib/connectDB";
+import { connectDB } from "../lib/connectDB";
 import { IPerson, Person } from "~/models/Person";
 import { IQuestion, Question } from "~/models/Question";
 

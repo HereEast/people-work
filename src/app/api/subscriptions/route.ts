@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { connectDB } from "~/app/lib/connectDB";
+import { connectDB } from "~/lib/connectDB";
 import { ISubscription, Subscription } from "~/models/Subscription";
 
 // CREATE NEW SUBSCRIPTION (ADD EMAIL)

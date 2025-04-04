@@ -10,7 +10,7 @@ import { Footer } from "~/components/Footer";
 import { GoogleAnalytics } from "~/components/GoogleAnalytics";
 import { CookieBanner } from "~/components/CookieBanner";
 
-import { getMetadata } from "~/utils/getMetadata";
+import { getMetadata } from "~/utils/metadata";
 import { InnovatorGrotesk, Inter } from "~/utils/fonts";
 
 export const metadata: Metadata = getMetadata();

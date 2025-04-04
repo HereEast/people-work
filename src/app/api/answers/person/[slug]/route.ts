@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { connectDB } from "~/app/lib/connectDB";
+import { connectDB } from "~/lib/connectDB";
 import { IQuestion, Question } from "~/models/Question";
 import { Answer, IAnswer } from "~/models/Answer";
 import { IPerson, Person } from "~/models/Person";

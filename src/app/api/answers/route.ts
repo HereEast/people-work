@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import { IFormDataProps } from "~/api-client/answers";
 
-import { connectDB } from "~/app/lib/connectDB";
+import { connectDB } from "~/lib/connectDB";
 import { Answer } from "~/models/Answer";
 import { Person, IPerson } from "~/models/Person";
 

@@ -1,7 +1,29 @@
 import { Metadata } from "next";
 
 import { SEO_DATA } from "./data/seo-data";
+import { connectDB } from "~/lib/connectDB";
+import { getPerson } from "~/api-client/people";
 
+// Generate Person metadata
+export async function generatePersonMetadata(slug: string) {
+  await connectDB();
+
+  const person = await getPerson(slug);
+
+  if (person) {
+    const title = SEO_DATA.person.title(
+      person.name,
+      person.jobTitle,
+      person.company.name,
+    );
+
+    const description = SEO_DATA.person.description(person.name);
+
+    return getMetadata({ title, description });
+  }
+}
+
+// Get metadata
 interface MetadataInput {
   title?: string;
   description?: string;

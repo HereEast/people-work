@@ -3,7 +3,7 @@ export const runtime = "nodejs";
 import { HydratedDocument } from "mongoose";
 import { NextResponse } from "next/server";
 
-import { connectDB } from "~/app/lib/connectDB";
+import { connectDB } from "~/lib/connectDB";
 import { Person, IPerson } from "~/models/Person";
 
 // GET ALL PEOPLE

@@ -2,11 +2,11 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 
 import { getQuestions } from "~/api-client/questions";
-import { connectDB } from "~/app/lib/connectDB";
+import { connectDB } from "~/lib/connectDB";
 import { IQuestion, Question } from "~/models/Question";
 
 import { SEO_DATA } from "~/utils/data/seo-data";
-import { getMetadata } from "~/utils/getMetadata";
+import { getMetadata } from "~/utils/metadata";
 import { getAnswersByQuestionSlug } from "~/api-client/answers";
 import { PageContainer } from "~/components/PageContainer";
 import { BASE_URL } from "~/utils/constants";
