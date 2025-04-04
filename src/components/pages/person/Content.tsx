@@ -6,6 +6,7 @@ import { AnswerViewType, IQuestion } from "~/models/Question";
 import { isOuterURL } from "~/utils/handlers";
 import { parseMarkdown } from "~/utils/parseMarkdown";
 import { Button } from "~/components/ui/Button";
+import { ReactNode } from "react";
 
 interface ContentProps {
   data: IAnswer[];
@@ -15,8 +16,8 @@ export function Content({ data }: ContentProps) {
   return (
     <div className="space-y-12 text-xl md:rounded-4xl md:p-6 lg:p-10">
       <div className="flex flex-col gap-2">
-        {data?.map((item, index) => {
-          const question = item.questionId as IQuestion;
+        {data?.map((answer, index) => {
+          const question = answer.questionId as IQuestion;
 
           return (
             <div
@@ -24,7 +25,7 @@ export function Content({ data }: ContentProps) {
               className="relative space-y-4 rounded-xxl border border-stone-200/50 bg-white px-2 pb-8 pt-2"
             >
               <Question>{question}</Question>
-              <Answer answerData={item} view={question.answerView || "text"} />
+              <Answer>{answer}</Answer>
             </div>
           );
         })}
@@ -35,33 +36,20 @@ export function Content({ data }: ContentProps) {
 
 // Answer
 interface AnswersProps {
-  answerData: IAnswer;
-  view?: AnswerViewType;
+  children: IAnswer;
 }
 
-export async function Answer({ answerData, view = "text" }: AnswersProps) {
-  const parsedHTML = await parseMarkdown(answerData.answer, {
-    targetBlank: true,
-  });
+export async function Answer({ children }: AnswersProps) {
+  const parsedHTML = await parseMarkdown(children.answer);
 
   return (
     <div className="px-2.5">
-      {view === "text" && (
-        <div
-          className="answer md:text-2xl"
-          dangerouslySetInnerHTML={{
-            __html: parsedHTML,
-          }}
-        />
-      )}
-
-      {view === "links" && (
-        <div className="space-y-0.5">
-          {answerData.links?.map((link, index) => (
-            <LinkItem link={link} key={index} />
-          ))}
-        </div>
-      )}
+      <div
+        className="answer md:text-2xl"
+        dangerouslySetInnerHTML={{
+          __html: parsedHTML,
+        }}
+      />
     </div>
   );
 }
@@ -84,7 +72,7 @@ function LinkItem({ link }: LinkItemProps) {
         scroll={false}
         className="group/text-link flex items-center gap-2"
       >
-        <span className="w-fit underline underline-offset-2 group-hover/text-link:no-underline group-hover/text-link:opacity-50">
+        <span className="w-fit underline underline-offset-2 group-hover/text-link:no-underline group-hover/text-link:opacity-40">
           {body}
         </span>
 

@@ -43,10 +43,13 @@ li {
 
 .answer a {
   text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
 }
 
 .answer a:hover {
-  opacity: 50%;
+  opacity: 40%;
   text-decoration: none;
 }
 
@@ -93,7 +96,9 @@ li {
 
 /* Lists headings */
 .answer h6:has(+ ul) {
-  margin-bottom: 8px;
-  font-weight: 600;
+  margin-bottom: 12px;
   text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 2px;
 }
