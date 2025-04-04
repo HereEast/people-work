@@ -1,7 +1,7 @@
 import { Button } from "~/components/ui/Button";
-import { BacklogCountLabel } from "~/components/pages/backlog";
 
 import { ROUTE } from "~/utils/constants";
+import { BacklogCountLabel } from "./BacklogCountLabel";
 
 export function BacklogPreview() {
   return (
