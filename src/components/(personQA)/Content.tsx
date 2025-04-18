@@ -17,7 +17,7 @@ export function Content({ data }: ContentProps) {
           return (
             <div
               key={index}
-              className="flex flex-col gap-8 rounded-xxl border border-stone-200/50 bg-white p-6 pb-7"
+              className="flex flex-col gap-8 rounded-xxl border border-stone-200/50 bg-white p-5 pb-6"
             >
               <Question>{question}</Question>
               <Answer>{answer}</Answer>

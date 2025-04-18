@@ -17,6 +17,8 @@ li {
     --gradient-color-1: #ffc814;
     --gradient-color-2: #ff185d;
     --gradient-color-3: #1e7fff;
+
+    --answer-space-y: 32px;
   }
 }
 
@@ -49,17 +51,17 @@ li {
 }
 
 .answer p:not(:last-child) {
-  margin-bottom: 24px;
+  margin-bottom: var(--answer-space-y);
 }
 
 /* Lists */
 .answer ul:not(:last-child) {
-  margin-bottom: 32px;
+  margin-bottom: var(--answer-space-y);
 }
 
 .answer ul li {
   position: relative;
-  padding: 0px 0px 0px 28px;
+  padding: 0px 0px 0px 24px;
 }
 
 .answer ul li:not(:last-child) {
@@ -73,12 +75,12 @@ li {
   height: 10px;
   background-color: black;
   border-radius: 100%;
-  top: 9px;
-  left: 8px;
+  top: 8.5px;
+  left: 2px;
   z-index: 2;
 }
 
-@media (min-width: 640px) {
+/* @media (min-width: 640px) {
   .answer ul li:not(:last-child) {
     margin-bottom: 0px;
   }
@@ -87,7 +89,7 @@ li {
     font-size: 20px;
     top: 1px;
   }
-}
+} */
 
 /* Lists headings */
 .answer h6:has(+ ul) {
