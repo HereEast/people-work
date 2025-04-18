@@ -36,11 +36,6 @@ li {
 
 /* Answer */
 
-.answer {
-  font-size: 22px;
-  line-height: 120%;
-}
-
 .answer a {
   text-decoration: underline;
   text-decoration-skip-ink: none;
