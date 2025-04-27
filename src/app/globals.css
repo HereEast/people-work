@@ -12,6 +12,10 @@ li {
   padding: 0;
 }
 
+a {
+  text-decoration-skip-ink: none;
+}
+
 @layer base {
   :root {
     --gradient-color-1: #ffc814;
@@ -40,7 +44,6 @@ li {
 
 .answer a {
   text-decoration: underline;
-  text-decoration-skip-ink: none;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }

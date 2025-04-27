@@ -3,6 +3,7 @@ import { PersonImage } from "~/components/PersonImage";
 
 import { IPerson } from "~/models/Person";
 import Link from "next/link";
+import Image from "next/image";
 
 interface PersonCardProps {
   person: IPerson;
@@ -21,19 +22,54 @@ export function PersonPreview({ person }: PersonCardProps) {
             {person.name}
           </h2>
 
-          <div className="truncate text-left text-lg leading-none">
+          <div className="text-left text-lg leading-none">
             <h3 className="mb-0.5 truncate">{person.jobTitle}</h3>
-            <Link
-              href={person.company.url}
-              target="_blank"
-              className="relative underline underline-offset-2 transition hover:no-underline hover:opacity-50"
-            >
-              {person.company.name}
-              <span className="absolute right-0 hidden size-10 bg-red-500">
-                A
-              </span>
-            </Link>
+            <div className="group relative w-fit">
+              <Link
+                href={person.company.url}
+                target="_blank"
+                className="underline decoration-1 underline-offset-2 transition hover:no-underline hover:opacity-50"
+              >
+                {person.company.name}g
+              </Link>
+
+              {/* Hover Icon */}
+              <div className="absolute -top-2.5 left-[105%] hidden size-6 rotate-[40deg] group-hover:block">
+                <Image
+                  src="/images/emojis/pointing-finger.png"
+                  alt="Link"
+                  width={28}
+                  height={28}
+                  className="absolute top-0.5 object-cover"
+                  priority
+                />
+              </div>
+            </div>
           </div>
+
+          {/* <div className="truncate text-left text-lg leading-none">
+            <h3 className="mb-0.5 truncate">{person.jobTitle}</h3>
+            <div className="group relative w-fit">
+              <Link
+                href={person.company.url}
+                target="_blank"
+                className="underline underline-offset-2 transition hover:no-underline hover:opacity-50"
+              >
+                {person.company.name}
+              </Link>
+
+              <div className="absolute -top-2.5 left-[105%] hidden size-6 rotate-[40deg] group-hover:block">
+                <Image
+                  src="/images/emojis/pointing-finger.png"
+                  alt="Link"
+                  width={28}
+                  height={28}
+                  className="absolute top-0.5 object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          </div> */}
         </div>
       </div>
     </div>
