@@ -9,15 +9,15 @@ interface ContentProps {
 
 export function Content({ data }: ContentProps) {
   return (
-    <div className="space-y-12 text-xl md:rounded-4xl md:p-6 lg:p-10">
-      <div className="flex flex-col gap-2">
+    <div className="space-y-12 text-xl md:rounded-4xl">
+      <div className="flex flex-col gap-1">
         {data?.map((answer, index) => {
           const question = answer.questionId as IQuestion;
 
           return (
             <div
               key={index}
-              className="flex flex-col gap-8 rounded-xxl border border-stone-200/50 bg-white p-5 pb-6"
+              className="flex grid-cols-[1.2fr_2fr] flex-col gap-10 rounded-xxl bg-white p-6 md:grid md:gap-20 md:p-10"
             >
               <Question>{question}</Question>
               <Answer>{answer}</Answer>
@@ -28,6 +28,28 @@ export function Content({ data }: ContentProps) {
     </div>
   );
 }
+
+// export function Content({ data }: ContentProps) {
+//   return (
+//     <div className="space-y-12 text-xl md:rounded-4xl">
+//       <div className="flex flex-col gap-2">
+//         {data?.map((answer, index) => {
+//           const question = answer.questionId as IQuestion;
+
+//           return (
+//             <div
+//               key={index}
+//               className="flex flex-col gap-8 rounded-2xl border border-stone-200/50 bg-white p-10"
+//             >
+//               <Question>{question}</Question>
+//               <Answer>{answer}</Answer>
+//             </div>
+//           );
+//         })}
+//       </div>
+//     </div>
+//   );
+// }
 
 // Link Item
 // interface LinkItemProps {

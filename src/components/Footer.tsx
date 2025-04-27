@@ -17,7 +17,7 @@ export function Footer() {
         </div>
 
         <div className="flex items-center justify-end gap-1">
-          <div className="relative h-8 w-20">
+          {/* <div className="relative h-8 w-20">
             <Image
               src="/gifs/rat.gif"
               width={400}
@@ -25,8 +25,8 @@ export function Footer() {
               alt="A running rat"
               className="absolute inset-0 m-auto object-contain"
             />
-          </div>
-          <span className="leading-none">this website is a wip</span>
+          </div> */}
+          <span className="leading-none">this website is wip</span>
         </div>
       </div>
     </footer>

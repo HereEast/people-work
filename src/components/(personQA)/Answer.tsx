@@ -11,7 +11,7 @@ export async function Answer({ children }: AnswersProps) {
 
   return (
     <div
-      className="answer text-2xl font-medium leading-[115%]"
+      className="answer text-2xl leading-[120%] md:text-3xl"
       dangerouslySetInnerHTML={{
         __html: parsedHTML,
       }}

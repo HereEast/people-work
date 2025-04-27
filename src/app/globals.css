@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: var(--font-primary), var(--font-secondary), sans-serif;
+  /* font-family: var(--font-primary), var(--font-secondary), sans-serif; */
   box-sizing: border-box;
 }
 
@@ -41,8 +41,8 @@ li {
 .answer a {
   text-decoration: underline;
   text-decoration-skip-ink: none;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
 .answer a:hover {
@@ -61,7 +61,7 @@ li {
 
 .answer ul li {
   position: relative;
-  padding: 0px 0px 0px 24px;
+  padding: 0px 0px 0px 32px;
 }
 
 .answer ul li:not(:last-child) {
@@ -71,12 +71,12 @@ li {
 .answer ul li::before {
   content: "";
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   background-color: black;
   border-radius: 100%;
-  top: 8.5px;
-  left: 2px;
+  top: 18px;
+  left: 8px;
   z-index: 2;
 }
 
@@ -93,10 +93,10 @@ li {
 
 /* Lists headings */
 .answer h6:has(+ ul) {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   text-decoration: underline;
   text-decoration-style: wavy;
-  text-decoration-thickness: 1.5px;
+  text-decoration-thickness: 2px;
   text-decoration-skip-ink: none;
-  text-underline-offset: 2px;
+  text-underline-offset: 4px;
 }

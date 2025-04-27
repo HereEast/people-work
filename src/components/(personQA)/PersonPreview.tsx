@@ -12,23 +12,26 @@ export function PersonPreview({ person }: PersonCardProps) {
   return (
     <div className="relative rounded-xxl bg-stone-950">
       <div className="flex gap-4 p-3 xs:p-4">
-        <div className="size-[72px] shrink-0 overflow-hidden rounded-md">
+        <div className="size-20 shrink-0 overflow-hidden rounded-md">
           <PersonImage person={person} />
         </div>
 
-        <div className="space-y-1.5 overflow-hidden text-stone-50">
-          <h2 className="-mt-1 truncate text-2xl font-extrabold tracking-tighter">
+        <div className="space-y-2 overflow-hidden text-stone-50">
+          <h2 className="-mt-1 truncate text-3xl font-extrabold tracking-tighter">
             {person.name}
           </h2>
 
           <div className="truncate text-left text-lg leading-none">
-            <h3 className="truncate">{person.jobTitle}</h3>
+            <h3 className="mb-0.5 truncate">{person.jobTitle}</h3>
             <Link
               href={person.company.url}
               target="_blank"
-              className="underline underline-offset-2 transition hover:no-underline hover:opacity-50"
+              className="relative underline underline-offset-2 transition hover:no-underline hover:opacity-50"
             >
               {person.company.name}
+              <span className="absolute right-0 hidden size-10 bg-red-500">
+                A
+              </span>
             </Link>
           </div>
         </div>
