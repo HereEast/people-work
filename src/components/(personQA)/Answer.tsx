@@ -1,4 +1,5 @@
 import { IAnswer } from "~/models/Answer";
+// import { RobotoMono } from "~/utils/fonts";
 
 import { parseMarkdown } from "~/utils/parseMarkdown";
 
@@ -11,7 +12,7 @@ export async function Answer({ children }: AnswersProps) {
 
   return (
     <div
-      className="answer text-2xl leading-[120%] md:text-3xl"
+      className={`answer text-[22px] leading-[120%] md:text-3xl`}
       dangerouslySetInnerHTML={{
         __html: parsedHTML,
       }}

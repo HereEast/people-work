@@ -45,7 +45,7 @@ export default async function PersonQAPage({ params }: PersonPageProps) {
   }
 
   return (
-    <PageContainer className="min-h-screen w-full max-w-full justify-between gap-10 bg-stone-100 px-0 pt-4 sm:pt-10 lg:flex">
+    <PageContainer className="min-h-screen w-full max-w-full justify-between gap-10 bg-stone-200 px-0 pt-4 sm:pt-10 lg:flex">
       {answers && person && (
         <>
           <div className="mx-auto w-full space-y-16 lg:max-w-6xl">

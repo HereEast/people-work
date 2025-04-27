@@ -19,11 +19,9 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
-// ${InnovatorGrotesk.variable}
-
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={`${Inter.variable} scroll-smooth`}>
+    <html lang="en" className={`${Inter.className} scroll-smooth`}>
       <GoogleAnalytics />
 
       <body

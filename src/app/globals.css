@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 body {
-  /* font-family: var(--font-primary), var(--font-secondary), sans-serif; */
   box-sizing: border-box;
 }
 
@@ -64,7 +63,7 @@ a {
 
 .answer ul li {
   position: relative;
-  padding: 0px 0px 0px 32px;
+  padding: 0px 0px 0px 28px;
 }
 
 .answer ul li:not(:last-child) {
@@ -78,7 +77,7 @@ a {
   height: 12px;
   background-color: black;
   border-radius: 100%;
-  top: 18px;
+  top: 10px;
   left: 8px;
   z-index: 2;
 }
@@ -96,10 +95,10 @@ a {
 
 /* Lists headings */
 .answer h6:has(+ ul) {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-thickness: 2px;
   text-decoration-skip-ink: none;
-  text-underline-offset: 4px;
+  text-underline-offset: 3px;
 }
