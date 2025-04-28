@@ -1,4 +1,7 @@
-import { BacklogCountLabel, BacklogListItem } from "~/components/(backlog)";
+import {
+  BacklogCountLabel,
+  BacklogListItem,
+} from "~/components/(pages)/(backlog)";
 import { PageContainer } from "~/components/PageContainer";
 import { Button } from "~/components/ui/Button";
 

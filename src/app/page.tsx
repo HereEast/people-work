@@ -1,5 +1,5 @@
-import { MainCards, About } from "~/components/(home)";
-import { BacklogPreview } from "~/components/(backlog)";
+import { MainCards, About } from "~/components/(pages)/(home)";
+import { BacklogPreview } from "~/components/(pages)/(backlog)";
 
 import { PageContainer } from "~/components/PageContainer";
 import { ShareForm } from "~/components/ShareForm";

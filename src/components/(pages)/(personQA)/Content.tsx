@@ -1,4 +1,4 @@
-import { Question, Answer } from "~/components/(personQA)";
+import { Question, Answer } from "~/components/(pages)/(personQA)";
 
 import { IAnswer } from "~/models/Answer";
 import { IQuestion } from "~/models/Question";

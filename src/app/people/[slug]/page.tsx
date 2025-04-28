@@ -6,7 +6,7 @@ import {
   PersonPreview,
   Content,
   SidePeoplePanel,
-} from "~/components/(personQA)";
+} from "~/components/(pages)/(personQA)";
 
 import { getPeople, getPerson } from "~/api-client/people";
 import { getAnswersByPersonSlug } from "~/api-client/answers";

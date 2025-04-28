@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { QuestionItem } from "~/components/(questions)";
+import { QuestionItem } from "~/components/(pages)/(questions)";
 import { PageContainer } from "~/components/PageContainer";
 
 import { getQuestions } from "~/api-client/questions";

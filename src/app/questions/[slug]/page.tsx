@@ -11,8 +11,11 @@ import { getAnswersByQuestionSlug } from "~/api-client/answers";
 import { PageContainer } from "~/components/PageContainer";
 import { BASE_URL } from "~/utils/constants";
 import { IPerson } from "~/models/Person";
-import { PersonDetails, QuestionsNavigation } from "~/components/(questions)";
-import { Answer } from "~/components/(personQA)/Answer";
+import {
+  PersonDetails,
+  QuestionsNavigation,
+} from "~/components/(pages)/(questions)";
+import { Answer } from "~/components/(pages)/(personQA)";
 
 interface QuestionPageProps {
   params: {
