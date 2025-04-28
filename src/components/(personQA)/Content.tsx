@@ -17,7 +17,7 @@ export function Content({ data }: ContentProps) {
           return (
             <div
               key={index}
-              className="flex grid-cols-[1.2fr_2fr] flex-col gap-10 rounded-xxl bg-white p-6 md:grid md:gap-20 md:p-10"
+              className="flex grid-cols-[1.2fr_2fr] flex-col gap-10 rounded-xl bg-white p-5 py-6 md:grid md:gap-20 md:p-10"
             >
               <Question>{question}</Question>
               <Answer>{answer}</Answer>

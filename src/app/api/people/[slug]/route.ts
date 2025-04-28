@@ -21,9 +21,11 @@ export async function GET(req: Request, { params }: ReqParams) {
       slug,
     }).exec();
 
+    const data = doc.toObject();
+
     const person: IPerson = {
-      ...doc.toObject(),
-      _id: doc.toObject()._id.toString(),
+      ...data,
+      _id: data._id.toString(),
     };
 
     return NextResponse.json(person);

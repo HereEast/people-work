@@ -37,18 +37,20 @@ export async function generateStaticParams() {
 export default async function PersonQAPage({ params }: PersonPageProps) {
   const { slug } = params;
 
-  const person = await getPerson(slug);
-  const answers = await getAnswersByPersonSlug(slug);
+  const [person, answers] = await Promise.all([
+    getPerson(slug),
+    getAnswersByPersonSlug(slug),
+  ]);
 
   if (!person || !answers) {
     notFound();
   }
 
   return (
-    <PageContainer className="min-h-screen w-full max-w-full justify-between gap-10 bg-stone-200 px-0 pt-4 sm:pt-10 lg:flex">
+    <PageContainer className="min-h-screen w-full max-w-full justify-between gap-10 bg-stone-200/75 px-0 pt-4 sm:pt-10 lg:flex">
       {answers && person && (
         <>
-          <div className="mx-auto w-full space-y-16 lg:max-w-6xl">
+          <div className="mx-auto w-full space-y-16 lg:max-w-4xl">
             <div className="grid gap-6 px-2">
               <div className="sticky top-[56px] z-10 w-full overflow-hidden rounded-b-xxl bg-stone-100">
                 <PersonPreview person={person} />

@@ -26,7 +26,7 @@ export async function POST(req: Request) {
     const newSubscription: ISubscription = new Subscription({ email });
     await newSubscription.save();
 
-    return NextResponse.json(newSubscription);
+    return NextResponse.json(newSubscription); // Format return response everywhere
   } catch (err) {
     console.log(err);
 

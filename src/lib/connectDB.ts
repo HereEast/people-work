@@ -8,7 +8,7 @@ export async function connectDB() {
     return connection;
   }
   try {
-    const cnx = await mongoose.connect(process.env.MONGODB_URI || "");
+    const cnx = await mongoose.connect(process.env.MONGODB_URI!);
 
     connection = cnx.connection;
     console.log("✅ New DB connected.");
