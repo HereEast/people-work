@@ -23,7 +23,4 @@ export const SEO_DATA = {
     description:
       "Explore diverse perspectives on this topic from professionals across industries.",
   },
-  backlog: {
-    title: "Backlog | Job titles decoded. In a simple Q&A format.",
-  },
 };

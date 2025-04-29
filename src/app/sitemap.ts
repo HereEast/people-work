@@ -33,10 +33,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     {
-      url: "/backlog",
-      lastModified: new Date(),
-    },
-    {
       url: "/questions",
       lastModified: new Date(),
     },

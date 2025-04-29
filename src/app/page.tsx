@@ -1,5 +1,4 @@
 import { MainCards, About } from "~/components/(pages)/(home)";
-import { BacklogPreview } from "~/components/(pages)/(backlog)";
 
 import { PageContainer } from "~/components/PageContainer";
 import { ShareForm } from "~/components/ShareForm";
@@ -35,10 +34,6 @@ export default async function HomePage() {
             <div className="mx-auto w-full max-w-4xl">
               <SubscribeForm />
             </div>
-          </div>
-
-          <div className="mx-auto w-full max-w-4xl">
-            <BacklogPreview />
           </div>
         </>
       )}
