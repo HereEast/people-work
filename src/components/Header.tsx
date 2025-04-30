@@ -2,9 +2,8 @@
 
 import { Button } from "./ui/Button";
 import { Logo } from "./Logo";
-// import { ArrowTopRightSquare } from "~/components/icons";
 
-import { ROUTE, CONTACT } from "~/utils/constants";
+import { ROUTE } from "~/utils/constants";
 
 export function Header() {
   return (

@@ -14,7 +14,6 @@ import {
   QuestionsNavigation,
 } from "~/components/(pages)/(questions)";
 import { Answer } from "~/components/(pages)/(personQA)";
-import { QuestionData } from "~/schemas";
 import { QuestionDB } from "~/models/Question";
 
 interface QuestionPageProps {
@@ -92,7 +91,7 @@ export default async function QuestionAnswersPage({
               <li className="rounded-2xl bg-stone-100 p-8 text-xl" key={index}>
                 <div className="space-y-8">
                   <Answer>{answer}</Answer>
-                  <PersonDetails person={answer.person} />
+                  {answer.person && <PersonDetails person={answer.person} />}
                 </div>
               </li>
             ))}

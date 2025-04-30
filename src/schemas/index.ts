@@ -10,25 +10,6 @@ export const QuestionApiSchema = z.object({
 
 export type QuestionData = z.infer<typeof QuestionApiSchema>;
 
-// Answer
-export const AnswerApiSchema = z.object({
-  id: z.string(),
-  question: QuestionApiSchema,
-  answer: z.string(),
-  person: z.object({
-    id: z.string(),
-    name: z.string(),
-    company: z.object({
-      name: z.string(),
-      url: z.string(),
-    }),
-    jobTitle: z.string(),
-    slug: z.string(),
-  }),
-});
-
-export type AnswerData = z.infer<typeof AnswerApiSchema>;
-
 // Company
 export const CompanyApiSchema = z.object({
   name: z.string(),
@@ -60,6 +41,16 @@ export const PersonApiSchema = z.object({
 });
 
 export type PersonData = z.infer<typeof PersonApiSchema>;
+
+// Answer
+export const AnswerApiSchema = z.object({
+  id: z.string(),
+  question: QuestionApiSchema,
+  answer: z.string(),
+  person: PersonApiSchema,
+});
+
+export type AnswerData = z.infer<typeof AnswerApiSchema>;
 
 // Subscription
 export const SubscriptionApiSchema = z.object({

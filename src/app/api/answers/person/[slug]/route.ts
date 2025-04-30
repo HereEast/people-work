@@ -55,20 +55,12 @@ export async function GET(req: Request, { params }: ReqParams) {
         id: String(data._id),
         answer: data.answer,
         question: {
+          ...question,
           id: String(question._id),
-          body: question.body,
-          slug: question.slug,
-          order: question.order,
         },
         person: {
+          ...person,
           id: String(person._id),
-          name: person.name,
-          company: {
-            name: person.company.name,
-            url: person.company.url,
-          },
-          jobTitle: person.jobTitle,
-          slug: person.slug,
         },
       };
     });
