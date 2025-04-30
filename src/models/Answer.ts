@@ -3,12 +3,10 @@ import mongoose, { Schema, model } from "mongoose";
 import { IQuestionDB } from "./Question";
 import { IPersonDB } from "./Person";
 
-import { ID } from "~/utils/types";
-
 export interface IAnswerDB {
   _id: mongoose.Types.ObjectId;
-  personId: ID<IPersonDB>;
-  questionId: ID<IQuestionDB>;
+  personId: mongoose.Types.ObjectId | IPersonDB;
+  questionId: mongoose.Types.ObjectId | IQuestionDB;
   name: string;
   question: string;
   answer: string;
