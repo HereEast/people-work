@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import { IQuestion } from "~/models/Question";
+import { QuestionData } from "~/schemas";
 import { BASE_URL } from "~/utils/constants";
 
 interface QuestionItemProps {
-  question: IQuestion;
+  question: QuestionData;
 }
 
 export function QuestionItem({ question }: QuestionItemProps) {

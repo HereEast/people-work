@@ -2,14 +2,16 @@ import type { MetadataRoute } from "next";
 
 import { BASE_URL } from "~/utils/constants";
 import { connectDB } from "../lib/connectDB";
-import { IPerson, Person } from "~/models/Person";
-import { IQuestion, Question } from "~/models/Question";
+import { PersonDB } from "~/models/Person";
+import { QuestionDB } from "~/models/Question";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   await connectDB();
 
-  const people: IPerson[] = await Person.find({ isActive: true }).exec();
-  const questions: IQuestion[] = await Question.find({ isActive: true }).exec();
+  const people = await PersonDB.find({ isActive: true }).exec();
+  const questions = await QuestionDB.find({
+    isActive: true,
+  }).exec();
 
   const peopleSitemapData =
     people?.map((person) => {

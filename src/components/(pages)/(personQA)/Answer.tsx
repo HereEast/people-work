@@ -1,10 +1,8 @@
-import { IAnswer } from "~/models/Answer";
-// import { RobotoMono } from "~/utils/fonts";
-
+import { AnswerData } from "~/schemas";
 import { parseMarkdown } from "~/utils/parseMarkdown";
 
 interface AnswersProps {
-  children: IAnswer;
+  children: AnswerData;
 }
 
 export async function Answer({ children }: AnswersProps) {

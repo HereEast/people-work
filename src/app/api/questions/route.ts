@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/lib/connectDB";
-import { QuestionDocument } from "~/models/Question";
+import { QuestionDB } from "~/models/Question";
 import { QuestionApiSchema } from "~/schemas";
 
 // GET ALL QUESTIONS
@@ -9,7 +9,7 @@ export async function GET() {
   try {
     await connectDB();
 
-    const data = await QuestionDocument.find({
+    const data = await QuestionDB.find({
       isActive: true,
     })
       .sort({ order: 1 })

@@ -1,9 +1,9 @@
 import { PersonCard } from "~/components/PersonCard";
 
-import { IPerson } from "~/models/Person";
+import { PersonData } from "~/schemas";
 
 interface MainCardsProps {
-  people: IPerson[];
+  people: PersonData[];
 }
 
 export function MainCards({ people }: MainCardsProps) {

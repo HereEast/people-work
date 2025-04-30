@@ -29,7 +29,7 @@ export async function SidePeoplePanel({ slug }: SidePeoplePanelProps) {
             </Tooltip>
 
             <Button href={`/people/${person.slug}`} view="tile">
-              <PersonImage person={person} />
+              <PersonImage name={person.name} slug={person.slug} />
             </Button>
           </li>
         ))}

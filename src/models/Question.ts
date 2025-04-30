@@ -1,6 +1,7 @@
 import mongoose, { Schema, model } from "mongoose";
 
-interface IQuestionDB {
+export interface IQuestionDB {
+  _id: mongoose.Types.ObjectId;
   slug: string;
   body: string;
   description: string;
@@ -8,7 +9,7 @@ interface IQuestionDB {
   isActive: boolean;
 }
 
-const QuestionDbSchema = new Schema({
+const QuestionDBSchema = new Schema({
   slug: { type: String, required: true, unique: true },
   body: { type: String, required: true, unique: true },
   description: { type: String },
@@ -16,8 +17,8 @@ const QuestionDbSchema = new Schema({
   isActive: { type: Boolean, required: true, default: true },
 });
 
-export type QuestionDocumentType = IQuestionDB & Document;
+export type QuestionDBType = IQuestionDB & Document;
 
-export const QuestionDocument =
+export const QuestionDB =
   mongoose.models.Question ||
-  model<QuestionDocumentType>("Question", QuestionDbSchema, "questions");
+  model<QuestionDBType>("Question", QuestionDBSchema, "questions");

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { ISubscription } from "~/models/Subscription";
+import { SubscriptionData } from "~/schemas";
 
 interface SubscriptionProps {
   email: string;
@@ -13,7 +13,7 @@ export async function submitSubscription({ email }: SubscriptionProps) {
   }
 
   try {
-    const response = await axios.post<ISubscription>(
+    const response = await axios.post<SubscriptionData>(
       "api/subscriptions",
       {
         email,

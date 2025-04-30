@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 import { IFormDataProps } from "~/api-client/answers";
 
 import { connectDB } from "~/lib/connectDB";
-import { Answer } from "~/models/Answer";
-import { Person, IPerson } from "~/models/Person";
+import { AnswerDB } from "~/models/Answer";
+import { PersonDB } from "~/models/Person";
 
 // SUBMIT ANSWERS
 const ID = "";
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
   try {
     await connectDB();
 
-    const person: IPerson | null = await Person.findOne({ _id: ID });
+    const person = await PersonDB.findOne({ _id: ID });
 
     if (!person) {
       return NextResponse.json("🔴 Error: Failed to fetch a Person.", {
@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     }
 
     for (const input of inputData) {
-      const answerItem = new Answer({
+      const answer = new AnswerDB({
         questionId: input.questionId,
         personId: person._id,
         name: person?.name,
@@ -43,7 +43,7 @@ export async function POST(req: Request) {
         answer: input.answer,
       });
 
-      await answerItem.save();
+      await answer.save();
     }
 
     return NextResponse.json(

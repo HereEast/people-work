@@ -1,5 +1,5 @@
-import { IQuestion } from "~/models/Question";
 import { BASE_URL } from "~/utils/constants";
+import { QuestionData } from "~/schemas";
 
 // GET ALL QUESTIONS
 export async function getQuestions() {
@@ -10,7 +10,7 @@ export async function getQuestions() {
       throw new Error("🔴 Data fetch failed (questions)");
     }
 
-    const people: IQuestion[] = await response.json();
+    const people: QuestionData[] = await response.json();
 
     return people;
   } catch (err) {

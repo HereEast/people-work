@@ -3,19 +3,19 @@ import Link from "next/link";
 
 import { getQuestions } from "~/api-client/questions";
 import { connectDB } from "~/lib/connectDB";
-import { IQuestion, Question } from "~/models/Question";
 
 import { SEO_DATA } from "~/utils/data/seo-data";
 import { getMetadata } from "~/utils/metadata";
 import { getAnswersByQuestionSlug } from "~/api-client/answers";
 import { PageContainer } from "~/components/PageContainer";
 import { BASE_URL } from "~/utils/constants";
-import { IPerson } from "~/models/Person";
 import {
   PersonDetails,
   QuestionsNavigation,
 } from "~/components/(pages)/(questions)";
 import { Answer } from "~/components/(pages)/(personQA)";
+import { QuestionData } from "~/schemas";
+import { QuestionDB } from "~/models/Question";
 
 interface QuestionPageProps {
   params: {
@@ -27,7 +27,8 @@ interface QuestionPageProps {
 export async function generateMetadata({ params }: QuestionPageProps) {
   await connectDB();
 
-  const question: IQuestion = await Question.findOne({
+  // Handle here
+  const question = await QuestionDB.findOne({
     slug: params.slug,
   }).exec();
 
@@ -87,21 +88,14 @@ export default async function QuestionAnswersPage({
           </div>
 
           <ul className="mb-6 space-y-2">
-            {answers.map((answer, index) => {
-              const person = answer.personId as IPerson;
-
-              return (
-                <li
-                  className="rounded-2xl bg-stone-100 p-8 text-xl"
-                  key={index}
-                >
-                  <div className="space-y-8">
-                    <Answer>{answer}</Answer>
-                    <PersonDetails person={person} />
-                  </div>
-                </li>
-              );
-            })}
+            {answers.map((answer, index) => (
+              <li className="rounded-2xl bg-stone-100 p-8 text-xl" key={index}>
+                <div className="space-y-8">
+                  <Answer>{answer}</Answer>
+                  <PersonDetails person={answer.person} />
+                </div>
+              </li>
+            ))}
           </ul>
 
           <QuestionsNavigation

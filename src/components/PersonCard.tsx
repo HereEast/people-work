@@ -4,11 +4,11 @@ import { ArrowRightFull } from "~/components/icons";
 import { Card } from "~/components/Card";
 import { PersonImage } from "~/components/PersonImage";
 
-import { IPerson, ICompany } from "~/models/Person";
 import { cn } from "~/utils/handlers";
+import { PersonData, CompanyData } from "~/schemas";
 
 interface PersonCardProps {
-  person: IPerson;
+  person: PersonData;
 }
 
 export function PersonCard({ person }: PersonCardProps) {
@@ -22,7 +22,7 @@ export function PersonCard({ person }: PersonCardProps) {
 
         <div className="flex flex-col items-center gap-5 p-5 pb-8 text-stone-50">
           <div className="overflow-hidden rounded-4xl">
-            <PersonImage person={person} />
+            <PersonImage name={person.name} slug={person.slug} />
           </div>
 
           <div className="w-full space-y-4">
@@ -61,7 +61,7 @@ export function Name({ children, className = "" }: NameProps) {
 
 // Job
 interface JobProps {
-  company: ICompany;
+  company: CompanyData;
   title: string;
 }
 

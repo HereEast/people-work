@@ -2,11 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { PersonImage } from "~/components/PersonImage";
-
-import { IPerson } from "~/models/Person";
+import { PersonData } from "~/schemas";
 
 interface PersonCardProps {
-  person: IPerson;
+  person: PersonData;
 }
 
 export function PersonPreview({ person }: PersonCardProps) {
@@ -14,7 +13,7 @@ export function PersonPreview({ person }: PersonCardProps) {
     <div className="relative rounded-xxl bg-stone-950">
       <div className="flex gap-4 p-3 xs:p-4">
         <div className="size-20 shrink-0 overflow-hidden rounded-md">
-          <PersonImage person={person} />
+          <PersonImage name={person.name} slug={person.slug} />
         </div>
 
         <div className="space-y-2 overflow-hidden text-stone-50">

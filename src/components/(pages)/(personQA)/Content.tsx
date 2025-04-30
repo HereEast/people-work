@@ -1,10 +1,9 @@
 import { Question, Answer } from "~/components/(pages)/(personQA)";
 
-import { IAnswer } from "~/models/Answer";
-import { IQuestion } from "~/models/Question";
+import { AnswerData } from "~/schemas";
 
 interface ContentProps {
-  data: IAnswer[];
+  data: AnswerData[];
 }
 
 export function Content({ data }: ContentProps) {
@@ -12,7 +11,7 @@ export function Content({ data }: ContentProps) {
     <div className="space-y-12 text-xl md:rounded-4xl">
       <div className="flex flex-col gap-1">
         {data?.map((answer, index) => {
-          const question = answer.questionId as IQuestion;
+          const question = answer.question;
 
           return (
             <div

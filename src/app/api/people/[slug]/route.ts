@@ -1,10 +1,8 @@
-export const runtime = "nodejs";
-
-import { HydratedDocument } from "mongoose";
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/lib/connectDB";
-import { Person, IPerson } from "~/models/Person";
+import { IPersonDB, PersonDB } from "~/models/Person";
+import { PersonApiSchema } from "~/schemas";
 
 interface ReqParams {
   params: { slug: string };
@@ -17,16 +15,21 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const doc: HydratedDocument<IPerson> = await Person.findOne({
-      slug,
-    }).exec();
+    const data = (await PersonDB.findOne({ slug })
+      .lean()
+      .exec()) as IPersonDB | null;
 
-    const data = doc.toObject();
+    if (!data) {
+      return NextResponse.json(null);
+    }
 
-    const person: IPerson = {
+    const mappedData = {
       ...data,
-      _id: data._id.toString(),
+      id: String(data?._id),
+      createdAt: new Date(data?.createdAt),
     };
+
+    const person = PersonApiSchema.parse(mappedData);
 
     return NextResponse.json(person);
   } catch (err) {

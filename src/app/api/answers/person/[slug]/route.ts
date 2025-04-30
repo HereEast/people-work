@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/lib/connectDB";
-import { IQuestion, Question } from "~/models/Question";
-import { Answer, IAnswer } from "~/models/Answer";
-import { IPerson, Person } from "~/models/Person";
+import { AnswerDB } from "~/models/Answer";
+import { IQuestionDB, QuestionDB } from "~/models/Question";
+import { IPersonDB, PersonDB } from "~/models/Person";
+import { AnswerApiSchema } from "~/schemas";
 
 interface ReqParams {
   params: { slug: string };
@@ -16,7 +17,9 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const person: IPerson | null = await Person.findOne({ slug });
+    const person = (await PersonDB.findOne({ slug, isActive: true })
+      .lean()
+      .exec()) as IPersonDB | null;
 
     if (!person) {
       return NextResponse.json("🔴 Failed to fetch a person by slug.", {
@@ -24,25 +27,55 @@ export async function GET(req: Request, { params }: ReqParams) {
       });
     }
 
-    // Remove later (make sure Questions are available before populate)
-    const questions: IQuestion[] = await Question.find({}).exec();
+    // To make populate work
+    const questions = await QuestionDB.find({}).exec();
 
-    const answers: IAnswer[] = await Answer.find({ personId: person._id })
+    const data = await AnswerDB.find({ personId: person._id })
       .populate("questionId")
+      .populate("personId")
+      .lean()
       .exec();
 
-    const activeAnswers = answers.filter((answer) => {
-      const question = answer.questionId as IQuestion;
+    const activeAnswers = data.filter((answer) => {
+      const question = answer.questionId;
       return question.isActive === true;
     });
 
-    const result = activeAnswers.sort((a, b) => {
-      const questionA = a.questionId as IQuestion;
-      const questionB = b.questionId as IQuestion;
+    const orderedAnswers = activeAnswers.sort((a, b) => {
+      const questionA = a.questionId;
+      const questionB = b.questionId;
       return questionA.order - questionB.order;
     });
 
-    return NextResponse.json(result, { status: 200 });
+    const mappedData = orderedAnswers.map((data) => {
+      const question = data.questionId as IQuestionDB;
+      const person = data.personId as IPersonDB;
+
+      return {
+        id: String(data._id),
+        answer: data.answer,
+        question: {
+          id: String(question._id),
+          body: question.body,
+          slug: question.slug,
+          order: question.order,
+        },
+        person: {
+          id: String(person._id),
+          name: person.name,
+          company: {
+            name: person.company.name,
+            url: person.company.url,
+          },
+          jobTitle: person.jobTitle,
+          slug: person.slug,
+        },
+      };
+    });
+
+    const answers = AnswerApiSchema.array().parse(mappedData);
+
+    return NextResponse.json(answers);
   } catch (err) {
     console.log(err);
 

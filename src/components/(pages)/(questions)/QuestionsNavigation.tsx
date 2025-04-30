@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-import { IQuestion } from "~/models/Question";
+import { QuestionData } from "~/schemas";
 import { BASE_URL } from "~/utils/constants";
 import { cn } from "~/utils/handlers";
 
 interface QuestionsNavProps {
   currentIndex: number;
-  questions: IQuestion[];
+  questions: QuestionData[];
 }
 
 export function QuestionsNavigation({

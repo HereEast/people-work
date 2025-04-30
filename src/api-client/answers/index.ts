@@ -1,7 +1,7 @@
 import axios from "axios";
 
-import { IAnswer } from "~/models/Answer";
 import { BASE_URL } from "~/utils/constants";
+import { AnswerData } from "~/schemas";
 
 // GET ANSWERS BY PERSON SLUG
 export async function getAnswersByPersonSlug(slug: string) {
@@ -12,7 +12,7 @@ export async function getAnswersByPersonSlug(slug: string) {
       throw new Error("🔴 Data fetch failed");
     }
 
-    const answers: IAnswer[] = await response.json();
+    const answers: AnswerData[] = await response.json();
 
     return answers;
   } catch (error) {
@@ -30,7 +30,7 @@ export async function getAnswersByQuestionSlug(slug: string) {
       throw new Error("🔴 Data fetch failed");
     }
 
-    const answers: IAnswer[] = await response.json();
+    const answers: AnswerData[] = await response.json();
 
     return answers;
   } catch (error) {

@@ -1,21 +1,27 @@
-export const runtime = "nodejs";
-
-import { HydratedDocument } from "mongoose";
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/lib/connectDB";
-import { Person, IPerson } from "~/models/Person";
+import { PersonDB } from "~/models/Person";
+import { PersonApiSchema } from "~/schemas";
 
 // GET ALL PEOPLE
 export async function GET() {
   try {
     await connectDB();
 
-    const docs: HydratedDocument<IPerson>[] = await Person.find({
+    const data = await PersonDB.find({
       isActive: true,
-    }).exec();
+    })
+      .lean()
+      .exec();
 
-    const people: IPerson[] = docs.map((doc) => doc.toObject());
+    const mappedData = data.map(({ _id, ...rest }) => ({
+      ...rest,
+      id: String(_id),
+      createdAt: new Date(rest.createdAt),
+    }));
+
+    const people = PersonApiSchema.array().parse(mappedData);
 
     return NextResponse.json(people);
   } catch (err) {

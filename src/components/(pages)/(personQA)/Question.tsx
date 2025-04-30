@@ -1,8 +1,8 @@
-import { IQuestion } from "~/models/Question";
+import { QuestionData } from "~/schemas";
 import { Inter } from "~/utils/fonts";
 
 interface QuestionProps {
-  children: IQuestion;
+  children: QuestionData;
 }
 
 export function Question({ children }: QuestionProps) {

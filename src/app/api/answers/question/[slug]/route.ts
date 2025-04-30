@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/lib/connectDB";
-import { IQuestion, Question } from "~/models/Question";
-import { IPerson, Person } from "~/models/Person";
-import { Answer, IAnswer } from "~/models/Answer";
+import { IQuestionDB, QuestionDB } from "~/models/Question";
+import { IPersonDB, PersonDB } from "~/models/Person";
+import { AnswerDB } from "~/models/Answer";
+import { AnswerApiSchema } from "~/schemas";
 
 interface ReqParams {
   params: { slug: string };
@@ -16,9 +17,12 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const question: IQuestion | null = await Question.findOne({
+    const question = (await QuestionDB.findOne({
       slug: slug,
-    });
+      isActive: true,
+    })
+      .lean()
+      .exec()) as IQuestionDB | null;
 
     if (!question) {
       return NextResponse.json("🔴 Failed to fetch a question by slug.", {
@@ -26,21 +30,53 @@ export async function GET(req: Request, { params }: ReqParams) {
       });
     }
 
-    // Remove later (make sure Questions are available before populate)
-    const people: IPerson[] = await Person.find({}).exec();
+    // To make populate work
+    await PersonDB.find({}).exec();
 
-    const answers: IAnswer[] = await Answer.find({
+    const data = await AnswerDB.find({
       questionId: question._id,
     })
+      .populate("questionId")
       .populate("personId")
+      .lean()
       .exec();
 
-    const activeAnswers = answers.filter((answer) => {
-      const person = answer.personId as IPerson;
-      return person.isActive === true;
+    const activeAnswers = data.filter((answer) => {
+      const person = answer.personId as IPersonDB;
+      const question = answer.questionId as IQuestionDB;
+
+      return person.isActive && question.isActive;
     });
 
-    return NextResponse.json(activeAnswers, { status: 200 });
+    const mappedData = activeAnswers.map((data) => {
+      const question = data.questionId as IQuestionDB;
+      const person = data.personId as IPersonDB;
+
+      return {
+        id: String(data._id),
+        answer: data.answer,
+        question: {
+          id: String(question._id),
+          body: question.body,
+          slug: question.slug,
+          order: question.order,
+        },
+        person: {
+          id: String(person._id),
+          name: person.name,
+          company: {
+            name: person.company.name,
+            url: person.company.url,
+          },
+          jobTitle: person.jobTitle,
+          slug: person.slug,
+        },
+      };
+    });
+
+    const answers = AnswerApiSchema.array().parse(mappedData);
+
+    return NextResponse.json(answers);
   } catch (err) {
     console.log(err);
 
