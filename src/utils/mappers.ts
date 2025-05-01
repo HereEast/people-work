@@ -16,20 +16,29 @@ import { IAnswerDB } from "~/models/Answer";
 import { DBDoc } from "./types";
 
 // Questions
-export function mapQuestionsData(docs: DBDoc<IQuestionDB>[]): QuestionData[] {
-  const mappedData = docs.map((doc) => ({
+function mapQuestionDoc(doc: DBDoc<IQuestionDB>) {
+  return {
     ...doc.toObject(),
     id: doc._id.toString(),
-  }));
+  };
+}
 
-  const result = QuestionApiSchema.array().parse(mappedData);
+export function mapQuestionsData(
+  data: DBDoc<IQuestionDB>[] | DBDoc<IQuestionDB>,
+): QuestionData[] | QuestionData {
+  if (Array.isArray(data)) {
+    const mapped = data.map((doc) => mapQuestionDoc(doc));
+    return QuestionApiSchema.array().parse(mapped);
+  }
 
-  return result;
+  const mapped = mapQuestionDoc(data);
+
+  return QuestionApiSchema.parse(mapped);
 }
 
 // Answers
 export function mapAnswersData(docs: DBDoc<IAnswerDB>[]): AnswerData[] {
-  const mappedData = docs
+  const mapped = docs
     .map((doc) => doc.toObject())
     .map((data) => {
       const question = data.questionId as IQuestionDB;
@@ -49,9 +58,7 @@ export function mapAnswersData(docs: DBDoc<IAnswerDB>[]): AnswerData[] {
       };
     });
 
-  const result = AnswerApiSchema.array().parse(mappedData);
-
-  return result;
+  return AnswerApiSchema.array().parse(mapped);
 }
 
 // People
@@ -66,13 +73,13 @@ export function mapPeopleData(
   data: DBDoc<IPersonDB>[] | DBDoc<IPersonDB>,
 ): PersonData[] | PersonData {
   if (Array.isArray(data)) {
-    const mappedData = data.map((doc) => mapPersonDoc(doc));
-    return PersonApiSchema.array().parse(mappedData);
+    const mapped = data.map((doc) => mapPersonDoc(doc));
+    return PersonApiSchema.array().parse(mapped);
   }
 
-  const mappedData = mapPersonDoc(data);
+  const mapped = mapPersonDoc(data);
 
-  return PersonApiSchema.parse(mappedData);
+  return PersonApiSchema.parse(mapped);
 }
 
 // Subscription

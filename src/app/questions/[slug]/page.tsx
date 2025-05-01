@@ -2,19 +2,17 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 
 import { getQuestions } from "~/api-client/questions";
-import { connectDB } from "~/lib/connectDB";
-
-import { SEO_DATA } from "~/utils/data/seo-data";
-import { getMetadata } from "~/utils/metadata";
 import { getAnswersByQuestionSlug } from "~/api-client/answers";
+
 import { PageContainer } from "~/components/PageContainer";
-import { BASE_URL } from "~/utils/constants";
+import { generateQuestionMetadata } from "~/utils/metadata";
 import {
   PersonDetails,
   QuestionsNavigation,
 } from "~/components/(pages)/(questions)";
 import { Answer } from "~/components/(pages)/(personQA)";
-import { QuestionDB } from "~/models/Question";
+
+import { BASE_URL } from "~/utils/constants";
 
 interface QuestionPageProps {
   params: {
@@ -22,41 +20,30 @@ interface QuestionPageProps {
   };
 }
 
-// METADATA
 export async function generateMetadata({ params }: QuestionPageProps) {
-  await connectDB();
-
-  // Handle here
-  const question = await QuestionDB.findOne({
-    slug: params.slug,
-  }).exec();
-
-  if (question) {
-    const title = SEO_DATA.question.title(question.body);
-    const description = SEO_DATA.question.description;
-
-    return getMetadata({ title, description });
-  }
+  return generateQuestionMetadata(params.slug);
 }
 
-// PARAMS
 export async function generateStaticParams() {
   const questions = await getQuestions();
 
   return (
-    questions?.map((question) => ({
-      slug: question.slug,
+    questions?.map((q) => ({
+      slug: q.slug,
     })) || []
   );
 }
 
+// PAGE
 export default async function QuestionAnswersPage({
   params,
 }: QuestionPageProps) {
   const { slug } = params;
 
-  const questions = await getQuestions();
-  const answers = await getAnswersByQuestionSlug(slug);
+  const [questions, answers] = await Promise.all([
+    getQuestions(),
+    getAnswersByQuestionSlug(slug),
+  ]);
 
   if (!answers || !questions) {
     notFound();

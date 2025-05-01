@@ -3,8 +3,9 @@ import { Metadata } from "next";
 import { SEO_DATA } from "./data/seo-data";
 import { connectDB } from "~/lib/connectDB";
 import { getPerson } from "~/api-client/people";
+import { getQuestion } from "~/api-client/questions";
 
-// Generate Person metadata
+// Person metadata
 export async function generatePersonMetadata(slug: string) {
   await connectDB();
 
@@ -18,6 +19,20 @@ export async function generatePersonMetadata(slug: string) {
     );
 
     const description = SEO_DATA.person.description(person.name);
+
+    return getMetadata({ title, description });
+  }
+}
+
+// Question metadata
+export async function generateQuestionMetadata(slug: string) {
+  await connectDB();
+
+  const question = await getQuestion(slug);
+
+  if (question) {
+    const title = SEO_DATA.question.title(question.body);
+    const description = SEO_DATA.question.description;
 
     return getMetadata({ title, description });
   }
