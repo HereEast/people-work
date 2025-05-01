@@ -70,14 +70,18 @@ export default async function QuestionAnswersPage({
       </div>
 
       <ul className="mb-6 space-y-2">
-        {answers.map((answer, index) => (
-          <li className="rounded-2xl bg-stone-100 p-8 text-xl" key={index}>
-            <div className="space-y-8">
-              <Answer>{answer}</Answer>
-              <PersonDetails person={answer.person} />
-            </div>
-          </li>
-        ))}
+        {answers.map((answer, index) => {
+          const person = answer.person;
+
+          return (
+            <li className="rounded-2xl bg-stone-100 p-8 text-xl" key={index}>
+              <div className="space-y-8">
+                <Answer>{answer}</Answer>
+                {person && <PersonDetails person={person} />}
+              </div>
+            </li>
+          );
+        })}
       </ul>
 
       <QuestionsNav questions={questions} currentIndex={currentIndex} />
