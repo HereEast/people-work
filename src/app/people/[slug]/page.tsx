@@ -29,6 +29,7 @@ export async function generateStaticParams() {
   );
 }
 
+// PAGE
 export default async function PersonQAPage({ params }: PersonPageProps) {
   const { slug } = params;
 

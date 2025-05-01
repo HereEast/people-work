@@ -20,10 +20,12 @@ interface QuestionPageProps {
   };
 }
 
+// METADATA
 export async function generateMetadata({ params }: QuestionPageProps) {
   return generateQuestionMetadata(params.slug);
 }
 
+// PARAMS
 export async function generateStaticParams() {
   const questions = await getQuestions();
 
@@ -50,7 +52,6 @@ export default async function QuestionAnswersPage({
   }
 
   const currentIndex = questions?.findIndex((item) => item.slug === slug);
-
   const question = questions?.[currentIndex];
 
   return (
