@@ -21,17 +21,17 @@ interface QuestionPageProps {
 }
 
 // METADATA
-// export async function generateMetadata({ params }: QuestionPageProps) {
-//   return generateQuestionMetadata(params.slug);
-// }
+export async function generateMetadata({ params }: QuestionPageProps) {
+  return generateQuestionMetadata(params.slug);
+}
 
 // PARAMS
 export async function generateStaticParams() {
   const questions = await getQuestions();
 
   return (
-    questions?.map((q) => ({
-      slug: q.slug,
+    questions?.map((question) => ({
+      slug: question.slug,
     })) || []
   );
 }

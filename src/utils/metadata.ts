@@ -2,14 +2,14 @@ import { Metadata } from "next";
 
 import { SEO_DATA } from "./data/seo-data";
 import { connectDB } from "~/lib/connectDB";
-import { getPerson } from "~/api-client/people";
-import { getQuestion } from "~/api-client/questions";
+import { QuestionDB } from "~/models/Question";
+import { PersonDB } from "~/models/Person";
 
 // Person metadata
 export async function generatePersonMetadata(slug: string) {
   await connectDB();
 
-  const person = await getPerson(slug);
+  const person = await PersonDB.findOne({ slug }).exec();
 
   if (person) {
     const title = SEO_DATA.person.title(
@@ -28,7 +28,7 @@ export async function generatePersonMetadata(slug: string) {
 export async function generateQuestionMetadata(slug: string) {
   await connectDB();
 
-  const question = await getQuestion(slug);
+  const question = await QuestionDB.findOne({ slug, isActive: true }).exec();
 
   if (question) {
     const title = SEO_DATA.question.title(question.body);
