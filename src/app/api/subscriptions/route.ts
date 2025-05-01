@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 
-import { connectDB } from "~/app/lib/connectDB";
-import { ISubscription, Subscription } from "~/models/Subscription";
+import { connectDB } from "~/lib/connectDB";
+import { ISubscriptionDB, SubscriptionDB } from "~/models/Subscription";
+import { mapSubscriptionData } from "~/utils/mappers";
+import { DBDoc } from "~/utils/types";
 
 // CREATE NEW SUBSCRIPTION (ADD EMAIL)
 export async function POST(req: Request) {
@@ -17,13 +19,16 @@ export async function POST(req: Request) {
   try {
     await connectDB();
 
-    const existingEmail = await Subscription.findOne({ email }).exec();
+    const data: DBDoc<ISubscriptionDB> = await SubscriptionDB.findOne({
+      email,
+    }).exec();
 
-    if (existingEmail) {
-      return NextResponse.json(existingEmail);
+    if (data) {
+      const subscription = mapSubscriptionData(data);
+      return NextResponse.json(subscription);
     }
 
-    const newSubscription: ISubscription = new Subscription({ email });
+    const newSubscription = new SubscriptionDB({ email });
     await newSubscription.save();
 
     return NextResponse.json(newSubscription);

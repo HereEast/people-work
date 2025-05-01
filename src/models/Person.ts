@@ -1,16 +1,16 @@
-import mongoose, { Schema, Document, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 
-export interface IPerson extends Document {
+export interface IPersonDB {
+  _id: mongoose.Types.ObjectId;
   name: string;
   email: string;
   company: ICompany;
   jobTitle: string;
   country: string;
   links: ILinks;
-  keyWords?: string[];
   slug: string;
   isActive: boolean;
-  updatedAt: Date;
+  keyWords?: string[];
   createdAt: Date;
 }
 
@@ -42,7 +42,7 @@ const CompanySchema = new Schema(
   { _id: false },
 );
 
-const PersonSchema = new Schema(
+const PersonDBSchema = new Schema(
   {
     name: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
@@ -57,5 +57,8 @@ const PersonSchema = new Schema(
   { timestamps: true },
 );
 
-export const Person =
-  mongoose.models.Person || model<IPerson>("Person", PersonSchema, "persons");
+export type PersonDBType = IPersonDB & Document;
+
+export const PersonDB =
+  mongoose.models.Person ||
+  model<PersonDBType>("Person", PersonDBSchema, "persons");

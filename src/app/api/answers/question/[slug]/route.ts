@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
 
-import { connectDB } from "~/app/lib/connectDB";
-import { IQuestion, Question } from "~/models/Question";
-import { IPerson, Person } from "~/models/Person";
-import { Answer, IAnswer } from "~/models/Answer";
+import { connectDB } from "~/lib/connectDB";
+import { IQuestionDB, QuestionDB } from "~/models/Question";
+import { IPersonDB, PersonDB } from "~/models/Person";
+import { AnswerDB, IAnswerDB } from "~/models/Answer";
+import { AnswerApiSchema } from "~/schemas";
+import { DBDoc } from "~/utils/types";
+import { mapAnswersData } from "~/utils/mappers";
 
 interface ReqParams {
   params: { slug: string };
@@ -16,9 +19,10 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const question: IQuestion | null = await Question.findOne({
+    const question: DBDoc<IQuestionDB> = await QuestionDB.findOne({
       slug: slug,
-    });
+      isActive: true,
+    }).exec();
 
     if (!question) {
       return NextResponse.json("🔴 Failed to fetch a question by slug.", {
@@ -26,21 +30,26 @@ export async function GET(req: Request, { params }: ReqParams) {
       });
     }
 
-    // Remove later (make sure Questions are available before populate)
-    const people: IPerson[] = await Person.find({}).exec();
+    // To make populate work
+    const p = await PersonDB.find({}).exec();
 
-    const answers: IAnswer[] = await Answer.find({
+    const docs: DBDoc<IAnswerDB>[] = await AnswerDB.find({
       questionId: question._id,
     })
+      .populate("questionId")
       .populate("personId")
       .exec();
 
-    const activeAnswers = answers.filter((answer) => {
-      const person = answer.personId as IPerson;
-      return person.isActive === true;
+    const answersByActivePeople = docs.filter((answer) => {
+      const person = answer.personId as IPersonDB;
+      return person.isActive;
     });
 
-    return NextResponse.json(activeAnswers, { status: 200 });
+    // sort by Person createAt
+
+    const answers = mapAnswersData(answersByActivePeople);
+
+    return NextResponse.json(answers);
   } catch (err) {
     console.log(err);
 

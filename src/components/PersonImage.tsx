@@ -1,16 +1,15 @@
 import Image from "next/image";
 
-import { IPerson } from "~/models/Person";
-
 interface PersonImageProps {
-  person: IPerson;
+  slug: string;
+  name: string;
 }
 
-export function PersonImage({ person }: PersonImageProps) {
+export function PersonImage({ name, slug }: PersonImageProps) {
   return (
     <Image
-      src={`/images/people/${person?.slug}.jpg`}
-      alt={`Image of ${person?.name}`}
+      src={`/images/people/${slug}.jpg`}
+      alt={`Image of ${name}`}
       width={600}
       height={600}
       className="object-cover"

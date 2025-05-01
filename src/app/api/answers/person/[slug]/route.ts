@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 
-import { connectDB } from "~/app/lib/connectDB";
-import { IQuestion, Question } from "~/models/Question";
-import { Answer, IAnswer } from "~/models/Answer";
-import { IPerson, Person } from "~/models/Person";
+import { connectDB } from "~/lib/connectDB";
+import { AnswerDB, IAnswerDB } from "~/models/Answer";
+import { IQuestionDB, QuestionDB } from "~/models/Question";
+import { IPersonDB, PersonDB } from "~/models/Person";
+import { DBDoc } from "~/utils/types";
+import { mapAnswersData } from "~/utils/mappers";
 
 interface ReqParams {
   params: { slug: string };
@@ -16,7 +18,10 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const person: IPerson | null = await Person.findOne({ slug });
+    const person: DBDoc<IPersonDB> = await PersonDB.findOne({
+      slug,
+      isActive: true,
+    }).exec();
 
     if (!person) {
       return NextResponse.json("🔴 Failed to fetch a person by slug.", {
@@ -24,25 +29,30 @@ export async function GET(req: Request, { params }: ReqParams) {
       });
     }
 
-    // Remove later (make sure Questions are available before populate)
-    const questions: IQuestion[] = await Question.find({}).exec();
+    // To make populate work
+    const q = await QuestionDB.find({}).exec();
 
-    const answers: IAnswer[] = await Answer.find({ personId: person._id })
+    const data: DBDoc<IAnswerDB>[] = await AnswerDB.find({
+      personId: person._id,
+    })
       .populate("questionId")
+      .populate("personId")
       .exec();
 
-    const activeAnswers = answers.filter((answer) => {
-      const question = answer.questionId as IQuestion;
+    const activeAnswers = data.filter((answer) => {
+      const question = answer.questionId as IQuestionDB;
       return question.isActive === true;
     });
 
-    const result = activeAnswers.sort((a, b) => {
-      const questionA = a.questionId as IQuestion;
-      const questionB = b.questionId as IQuestion;
+    const orderedAnswers = activeAnswers.sort((a, b) => {
+      const questionA = a.questionId as IQuestionDB;
+      const questionB = b.questionId as IQuestionDB;
       return questionA.order - questionB.order;
     });
 
-    return NextResponse.json(result, { status: 200 });
+    const answers = mapAnswersData(orderedAnswers);
+
+    return NextResponse.json(answers);
   } catch (err) {
     console.log(err);
 

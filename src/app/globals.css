@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 body {
-  font-family: var(--font-primary), var(--font-secondary), sans-serif;
   box-sizing: border-box;
 }
 
@@ -12,11 +11,17 @@ li {
   padding: 0;
 }
 
+a {
+  text-decoration-skip-ink: none;
+}
+
 @layer base {
   :root {
     --gradient-color-1: #ffc814;
     --gradient-color-2: #ff185d;
     --gradient-color-3: #1e7fff;
+
+    --answer-space-y: 32px;
   }
 }
 
@@ -38,25 +43,27 @@ li {
 
 .answer a {
   text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
 .answer a:hover {
-  opacity: 50%;
+  opacity: 40%;
   text-decoration: none;
 }
 
 .answer p:not(:last-child) {
-  margin-bottom: 24px;
+  margin-bottom: var(--answer-space-y);
 }
 
 /* Lists */
 .answer ul:not(:last-child) {
-  margin-bottom: 32px;
+  margin-bottom: var(--answer-space-y);
 }
 
 .answer ul li {
   position: relative;
-  padding: 0px 0px 0px 28px;
+  padding: 0px 0px 0px 24px;
 }
 
 .answer ul li:not(:last-child) {
@@ -64,11 +71,14 @@ li {
 }
 
 .answer ul li::before {
-  content: "✅";
+  content: "";
   position: absolute;
-  font-size: 18px;
-  top: 2px;
-  left: 0;
+  width: 12px;
+  height: 12px;
+  background-color: black;
+  border-radius: 100%;
+  top: 8px;
+  left: 2px;
   z-index: 2;
 }
 
@@ -78,14 +88,16 @@ li {
   }
 
   .answer ul li::before {
-    font-size: 20px;
-    top: 1px;
+    top: 12px;
   }
 }
 
 /* Lists headings */
 .answer h6:has(+ ul) {
-  margin-bottom: 8px;
-  font-weight: 600;
+  margin-bottom: 12px;
   text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-thickness: 2px;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 3px;
 }

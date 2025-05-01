@@ -1,16 +1,22 @@
 import { NextResponse } from "next/server";
 
-import { connectDB } from "~/app/lib/connectDB";
-import { IQuestion, Question } from "~/models/Question";
+import { connectDB } from "~/lib/connectDB";
+import { IQuestionDB, QuestionDB } from "~/models/Question";
+import { mapQuestionsData } from "~/utils/mappers";
+import { DBDoc } from "~/utils/types";
 
 // GET ALL QUESTIONS
 export async function GET() {
   try {
     await connectDB();
 
-    const questions: IQuestion[] = await Question.find({ isActive: true })
+    const docs: DBDoc<IQuestionDB>[] = await QuestionDB.find({
+      isActive: true,
+    })
       .sort({ order: 1 })
       .exec();
+
+    const questions = mapQuestionsData(docs);
 
     return NextResponse.json(questions);
   } catch (err) {

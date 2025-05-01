@@ -1,16 +1,22 @@
 import mongoose, { Schema, Document, model } from "mongoose";
 
-export interface ISubscription extends Document {
+export interface ISubscriptionDB {
   email: string;
 }
 
-const SubscriptionSchema = new Schema(
+const SubscriptionDBSchema = new Schema(
   {
     email: { type: String, required: true },
   },
   { timestamps: true },
 );
 
-export const Subscription =
+export type SubscriptionDBType = ISubscriptionDB & Document;
+
+export const SubscriptionDB =
   mongoose.models.Subscription ||
-  model<ISubscription>("Subscription", SubscriptionSchema, "subscriptions");
+  model<SubscriptionDBType>(
+    "Subscription",
+    SubscriptionDBSchema,
+    "subscriptions",
+  );

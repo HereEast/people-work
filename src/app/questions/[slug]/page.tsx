@@ -1,11 +1,15 @@
-import { QuestionPage } from "~/components/pages/QuestionPage";
+import { notFound } from "next/navigation";
+import Link from "next/link";
 
 import { getQuestions } from "~/api-client/questions";
-import { connectDB } from "~/app/lib/connectDB";
-import { IQuestion, Question } from "~/models/Question";
+import { getAnswersByQuestionSlug } from "~/api-client/answers";
 
-import { SEO_DATA } from "~/utils/data/seo-data";
-import { getMetadata } from "~/utils/getMetadata";
+import { PageContainer } from "~/components/PageContainer";
+import { generateQuestionMetadata } from "~/utils/metadata";
+import { PersonDetails, QuestionsNav } from "~/components/(pages)/(questions)";
+import { Answer } from "~/components/(pages)/(personQA)";
+
+import { BASE_URL } from "~/utils/constants";
 
 interface QuestionPageProps {
   params: {
@@ -15,18 +19,7 @@ interface QuestionPageProps {
 
 // METADATA
 export async function generateMetadata({ params }: QuestionPageProps) {
-  await connectDB();
-
-  const question: IQuestion = await Question.findOne({
-    slug: params.slug,
-  }).exec();
-
-  if (question) {
-    const title = SEO_DATA.question.title(question.body);
-    const description = SEO_DATA.question.description;
-
-    return getMetadata({ title, description });
-  }
+  return generateQuestionMetadata(params.slug);
 }
 
 // PARAMS
@@ -40,6 +33,58 @@ export async function generateStaticParams() {
   );
 }
 
-export default async function QuestionAnswers({ params }: QuestionPageProps) {
-  return <QuestionPage slug={params.slug} />;
+// PAGE
+export default async function QuestionAnswersPage({
+  params,
+}: QuestionPageProps) {
+  const { slug } = params;
+
+  const [questions, answers] = await Promise.all([
+    getQuestions(),
+    getAnswersByQuestionSlug(slug),
+  ]);
+
+  if (!answers || !questions) {
+    notFound();
+  }
+
+  const currentIndex = questions?.findIndex((item) => item.slug === slug);
+  const question = questions?.[currentIndex];
+
+  return (
+    <PageContainer className="max-w-4xl">
+      <div className="mb-4">
+        <Link
+          href={`${BASE_URL}/questions`}
+          className="underline hover:no-underline hover:opacity-50"
+          scroll={false}
+        >
+          All Questions
+        </Link>
+      </div>
+
+      <div className="mb-10">
+        <h2 className="text-4xl font-extrabold tracking-header">
+          {question.body}
+        </h2>
+      </div>
+
+      <ul className="mb-6 space-y-2">
+        {answers.map((answer, index) => {
+          const person = answer.person;
+
+          return (
+            <li className="rounded-2xl bg-stone-100 p-8 text-xl" key={index}>
+              <div className="space-y-8">
+                <Answer>{answer}</Answer>
+                {person && <PersonDetails person={person} />}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+
+      <QuestionsNav questions={questions} currentIndex={currentIndex} />
+    </PageContainer>
+  );
 }

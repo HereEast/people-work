@@ -4,17 +4,13 @@ import { remark } from "remark";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 
-interface IOptions {
-  targetBlank?: boolean;
-}
-
-export async function parseMarkdown(markdown: string, options: IOptions = {}) {
+export async function parseMarkdown(markdown: string) {
   const handleElements = () => (tree: Root) => {
     visit(tree, "element", (node: Element) => {
       node.properties = node.properties || {};
 
       if (node.tagName === "a") {
-        handleLinks(node, options);
+        handleLinks(node);
       }
     });
   };
@@ -29,10 +25,10 @@ export async function parseMarkdown(markdown: string, options: IOptions = {}) {
 }
 
 // Handle links
-function handleLinks(node: Element, options: IOptions = {}) {
-  const { targetBlank } = options;
+function handleLinks(node: Element) {
+  const isTargetBlank = (node.properties.href as string).includes("https");
 
-  if (targetBlank) {
+  if (isTargetBlank) {
     node.properties.target = "_blank";
     node.properties.rel = "noopener noreferrer";
   }
@@ -42,18 +38,18 @@ function handleLinks(node: Element, options: IOptions = {}) {
 // node.properties.className = [...classNames, "answer"];
 
 // Get classNames
-function getClassNames(node: Element) {
-  const currentClassName = node.properties.className;
+// function getClassNames(node: Element) {
+//   const currentClassName = node.properties.className;
 
-  let classNames: string[] = [];
+//   let classNames: string[] = [];
 
-  if (typeof currentClassName === "string") {
-    classNames = [currentClassName];
-  }
+//   if (typeof currentClassName === "string") {
+//     classNames = [currentClassName];
+//   }
 
-  if (Array.isArray(currentClassName)) {
-    classNames = currentClassName.filter((item) => typeof item === "string");
-  }
+//   if (Array.isArray(currentClassName)) {
+//     classNames = currentClassName.filter((item) => typeof item === "string");
+//   }
 
-  return classNames;
-}
+//   return classNames;
+// }

@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Card } from "~/components/Card";
-import { Button } from "~/components/Button";
-import { Input } from "~/components/Input";
+import { Button } from "~/components/ui/Button";
+import { Input } from "~/components/ui/Input";
 
 import { submitSubscription } from "~/api-client/subscriptions";
 
@@ -26,7 +26,7 @@ export function SubscribeForm() {
   async function onSubmit(values: IFormInputs) {
     const result = await submitSubscription(values);
 
-    if (result?.email) {
+    if (result) {
       setIsSubscribed(true);
       reset();
     }
