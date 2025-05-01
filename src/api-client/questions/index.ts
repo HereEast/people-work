@@ -2,7 +2,7 @@ import { BASE_URL } from "~/utils/constants";
 import { QuestionData } from "~/schemas";
 
 // GET ALL QUESTIONS
-export async function getQuestions() {
+export async function getQuestions(): Promise<QuestionData[] | null> {
   try {
     const response = await fetch(`${BASE_URL}/api/questions`);
 
@@ -10,9 +10,9 @@ export async function getQuestions() {
       throw new Error("🔴 Data fetch failed (questions)");
     }
 
-    const people: QuestionData[] = await response.json();
+    const data: QuestionData[] = await response.json();
 
-    return people;
+    return data;
   } catch (err) {
     if (err instanceof Error) {
       console.log("🔴 Error:", err.message);

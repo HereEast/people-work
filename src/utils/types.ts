@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+import mongoose, { HydratedDocument } from "mongoose";
 
 export interface IconProps {
   className?: string;
 }
 
-export type ID<T = string> = T | mongoose.Types.ObjectId | string;
+export type DBDoc<T> = HydratedDocument<T & { _id: mongoose.Types.ObjectId }>;

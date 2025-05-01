@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document, model } from "mongoose";
 
-interface ISubscriptionDB {
+export interface ISubscriptionDB {
   email: string;
 }
 

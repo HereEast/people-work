@@ -1,10 +1,10 @@
-import axios from "axios";
-
 import { BASE_URL } from "~/utils/constants";
 import { AnswerData } from "~/schemas";
 
 // GET ANSWERS BY PERSON SLUG
-export async function getAnswersByPersonSlug(slug: string) {
+export async function getAnswersByPersonSlug(
+  slug: string,
+): Promise<AnswerData[] | null> {
   try {
     const response = await fetch(`${BASE_URL}/api/answers/person/${slug}`);
 
@@ -22,7 +22,9 @@ export async function getAnswersByPersonSlug(slug: string) {
 }
 
 // GET ANSWERS BY QUESTION SLUG
-export async function getAnswersByQuestionSlug(slug: string) {
+export async function getAnswersByQuestionSlug(
+  slug: string,
+): Promise<AnswerData[] | null> {
   try {
     const response = await fetch(`${BASE_URL}/api/answers/question/${slug}`);
 
@@ -46,30 +48,34 @@ export interface IFormDataProps {
   answer: string;
 }
 
-export async function submitAnswers(formData: IFormDataProps[]) {
+export async function submitAnswers(
+  formData: IFormDataProps[],
+): Promise<AnswerData[] | null> {
   if (!formData.length) {
     throw new Error("Input data length is 0.");
   }
 
   try {
-    const response = await axios.post<IFormDataProps[]>(
-      "/api/answers",
-      {
-        formData,
+    const response = await fetch("/api/answers", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    );
+      body: JSON.stringify({ formData }),
+    });
 
-    const data = response.data;
+    if (!response.ok) {
+      throw new Error("Failed to submit answers.");
+    }
+
+    const data: AnswerData[] = await response.json();
 
     return data;
   } catch (err) {
     if (err instanceof Error) {
       console.log(err.message);
     }
+
+    return null;
   }
 }

@@ -26,7 +26,7 @@ export function SubscribeForm() {
   async function onSubmit(values: IFormInputs) {
     const result = await submitSubscription(values);
 
-    if (result?.email) {
+    if (result) {
       setIsSubscribed(true);
       reset();
     }

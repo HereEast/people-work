@@ -3,8 +3,10 @@ import { NextResponse } from "next/server";
 import { connectDB } from "~/lib/connectDB";
 import { IQuestionDB, QuestionDB } from "~/models/Question";
 import { IPersonDB, PersonDB } from "~/models/Person";
-import { AnswerDB } from "~/models/Answer";
+import { AnswerDB, IAnswerDB } from "~/models/Answer";
 import { AnswerApiSchema } from "~/schemas";
+import { DBDoc } from "~/utils/types";
+import { mapAnswersData } from "~/utils/mappers";
 
 interface ReqParams {
   params: { slug: string };
@@ -17,12 +19,10 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const question = (await QuestionDB.findOne({
+    const question: DBDoc<IQuestionDB> = await QuestionDB.findOne({
       slug: slug,
       isActive: true,
-    })
-      .lean()
-      .exec()) as IQuestionDB | null;
+    }).exec();
 
     if (!question) {
       return NextResponse.json("🔴 Failed to fetch a question by slug.", {
@@ -31,42 +31,21 @@ export async function GET(req: Request, { params }: ReqParams) {
     }
 
     // To make populate work
-    await PersonDB.find({}).exec();
+    const p = await PersonDB.find({}).exec();
 
-    const data = await AnswerDB.find({
+    const docs: DBDoc<IAnswerDB>[] = await AnswerDB.find({
       questionId: question._id,
     })
       .populate("questionId")
       .populate("personId")
-      .lean()
       .exec();
 
-    const activeAnswers = data.filter((answer) => {
+    const answersByActivePeople = docs.filter((answer) => {
       const person = answer.personId as IPersonDB;
-      const question = answer.questionId as IQuestionDB;
-
-      return person.isActive && question.isActive;
+      return person.isActive;
     });
 
-    const mappedData = activeAnswers.map((data) => {
-      const question = data.questionId as IQuestionDB;
-      const person = data.personId as IPersonDB;
-
-      return {
-        id: String(data._id),
-        answer: data.answer,
-        question: {
-          ...question,
-          id: String(question._id),
-        },
-        person: {
-          ...person,
-          id: String(person._id),
-        },
-      };
-    });
-
-    const answers = AnswerApiSchema.array().parse(mappedData);
+    const answers = mapAnswersData(answersByActivePeople);
 
     return NextResponse.json(answers);
   } catch (err) {

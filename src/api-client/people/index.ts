@@ -11,7 +11,7 @@ export async function getPerson(slug: string): Promise<PersonData | null> {
       throw new Error("🔴 Data fetch failed");
     }
 
-    const person = await response.json();
+    const person: PersonData = await response.json();
 
     return person;
   } catch (error) {
@@ -30,7 +30,7 @@ export async function getPeople(): Promise<PersonData[] | null> {
       throw new Error("🔴 Data fetch failed");
     }
 
-    const people = await response.json();
+    const people: PersonData[] = await response.json();
 
     return people;
   } catch (err) {

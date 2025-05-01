@@ -1,27 +1,20 @@
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/lib/connectDB";
-import { PersonDB } from "~/models/Person";
-import { PersonApiSchema } from "~/schemas";
+import { IPersonDB, PersonDB } from "~/models/Person";
+import { mapPeopleData } from "~/utils/mappers";
+import { DBDoc } from "~/utils/types";
 
 // GET ALL PEOPLE
 export async function GET() {
   try {
     await connectDB();
 
-    const data = await PersonDB.find({
+    const docs: DBDoc<IPersonDB>[] = await PersonDB.find({
       isActive: true,
-    })
-      .lean()
-      .exec();
+    }).exec();
 
-    const mappedData = data.map(({ _id, ...rest }) => ({
-      ...rest,
-      id: String(_id),
-      createdAt: new Date(rest.createdAt),
-    }));
-
-    const people = PersonApiSchema.array().parse(mappedData);
+    const people = mapPeopleData(docs);
 
     return NextResponse.json(people);
   } catch (err) {

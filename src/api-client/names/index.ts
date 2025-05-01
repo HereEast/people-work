@@ -1,7 +1,3 @@
-import axios from "axios";
-
-import { IName } from "~/models/Name";
-
 interface INameProps {
   name: string;
   link: string;
@@ -14,20 +10,22 @@ export async function submitName({ name, link }: INameProps) {
   }
 
   try {
-    const response = await axios.post<IName>(
-      "api/names",
-      {
+    const response = await fetch("api/names", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
         name,
         link,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    );
+      }),
+    });
 
-    const data = response.data;
+    if (!response.ok) {
+      throw new Error("Failed to submit answers.");
+    }
+
+    const data = await response.json();
 
     return data;
   } catch (err) {

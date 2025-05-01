@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 
 import { connectDB } from "~/lib/connectDB";
 import { IPersonDB, PersonDB } from "~/models/Person";
-import { PersonApiSchema } from "~/schemas";
+import { mapPeopleData } from "~/utils/mappers";
+import { DBDoc } from "~/utils/types";
 
 interface ReqParams {
   params: { slug: string };
@@ -15,21 +16,13 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const data = (await PersonDB.findOne({ slug })
-      .lean()
-      .exec()) as IPersonDB | null;
+    const data: DBDoc<IPersonDB> = await PersonDB.findOne({ slug }).exec();
 
     if (!data) {
       return NextResponse.json(null);
     }
 
-    const mappedData = {
-      ...data,
-      id: String(data?._id),
-      createdAt: new Date(data?.createdAt),
-    };
-
-    const person = PersonApiSchema.parse(mappedData);
+    const person = mapPeopleData(data);
 
     return NextResponse.json(person);
   } catch (err) {
