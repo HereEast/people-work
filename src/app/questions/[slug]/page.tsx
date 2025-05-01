@@ -21,9 +21,9 @@ interface QuestionPageProps {
 }
 
 // METADATA
-export async function generateMetadata({ params }: QuestionPageProps) {
-  return generateQuestionMetadata(params.slug);
-}
+// export async function generateMetadata({ params }: QuestionPageProps) {
+//   return generateQuestionMetadata(params.slug);
+// }
 
 // PARAMS
 export async function generateStaticParams() {
