@@ -45,6 +45,8 @@ export async function GET(req: Request, { params }: ReqParams) {
       return person.isActive;
     });
 
+    // sort by Person createAt
+
     const answers = mapAnswersData(answersByActivePeople);
 
     return NextResponse.json(answers);

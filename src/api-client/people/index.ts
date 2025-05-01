@@ -8,7 +8,7 @@ export async function getPerson(slug: string): Promise<PersonData | null> {
     const response = await fetch(`${BASE_URL}/api/people/${slug}`);
 
     if (!response.ok) {
-      throw new Error("🔴 Data fetch failed");
+      throw new Error("🔴 Failed to fetch a person by slug.");
     }
 
     const person: PersonData = await response.json();
@@ -27,7 +27,7 @@ export async function getPeople(): Promise<PersonData[] | null> {
     const response = await fetch(`${BASE_URL}/api/people`);
 
     if (!response.ok) {
-      throw new Error("🔴 Data fetch failed");
+      throw new Error("🔴 failed to fetch all people.");
     }
 
     const people: PersonData[] = await response.json();

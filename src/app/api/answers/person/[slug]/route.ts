@@ -30,7 +30,7 @@ export async function GET(req: Request, { params }: ReqParams) {
     }
 
     // To make populate work
-    const questions = await QuestionDB.find({}).exec();
+    const q = await QuestionDB.find({}).exec();
 
     const data: DBDoc<IAnswerDB>[] = await AnswerDB.find({
       personId: person._id,

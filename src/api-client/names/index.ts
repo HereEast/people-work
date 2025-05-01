@@ -1,3 +1,5 @@
+import { handleError } from "~/utils/handlers";
+
 interface INameProps {
   name: string;
   link: string;
@@ -29,8 +31,6 @@ export async function submitName({ name, link }: INameProps) {
 
     return data;
   } catch (err) {
-    if (err instanceof Error) {
-      console.log(err);
-    }
+    handleError(err);
   }
 }

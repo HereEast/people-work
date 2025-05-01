@@ -1,4 +1,3 @@
-import { IQuestionDB } from "~/models/Question";
 import {
   AnswerApiSchema,
   AnswerData,
@@ -10,10 +9,11 @@ import {
   SubscriptionData,
 } from "~/schemas";
 
-import { DBDoc } from "./types";
+import { IQuestionDB } from "~/models/Question";
 import { ISubscriptionDB } from "~/models/Subscription";
 import { IPersonDB } from "~/models/Person";
 import { IAnswerDB } from "~/models/Answer";
+import { DBDoc } from "./types";
 
 // Questions
 export function mapQuestionsData(docs: DBDoc<IQuestionDB>[]): QuestionData[] {

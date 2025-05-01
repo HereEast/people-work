@@ -1,4 +1,5 @@
 import { SubscriptionData } from "~/schemas";
+import { handleError } from "~/utils/handlers";
 
 interface SubscriptionProps {
   email: string;
@@ -22,16 +23,14 @@ export async function submitSubscription({
     });
 
     if (!response.ok) {
-      throw new Error("🔴 Failed to (subscribe)");
+      throw new Error("🔴 Failed to subscribe.");
     }
 
     const data: SubscriptionData = await response.json();
 
     return data;
   } catch (err) {
-    if (err instanceof Error) {
-      console.log(err);
-    }
+    handleError(err);
 
     return null;
   }

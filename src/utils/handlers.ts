@@ -22,7 +22,7 @@ export function parseAnswer(text: string) {
 // Handle errors
 export function handleError(error: unknown) {
   if (error instanceof Error) {
-    console.error(`🔴 Error fetching data:`, error.message);
+    console.error(`🔴 Error:`, error.message);
     throw new Error(error.message);
   }
 }

@@ -1,5 +1,6 @@
 import { BASE_URL } from "~/utils/constants";
 import { AnswerData } from "~/schemas";
+import { handleError } from "~/utils/handlers";
 
 // GET ANSWERS BY PERSON SLUG
 export async function getAnswersByPersonSlug(
@@ -15,8 +16,9 @@ export async function getAnswersByPersonSlug(
     const answers: AnswerData[] = await response.json();
 
     return answers;
-  } catch (error) {
-    console.error("Error fetching data:", error);
+  } catch (err) {
+    handleError(err);
+
     return null;
   }
 }
@@ -35,8 +37,9 @@ export async function getAnswersByQuestionSlug(
     const answers: AnswerData[] = await response.json();
 
     return answers;
-  } catch (error) {
-    console.error("Error fetching data:", error);
+  } catch (err) {
+    handleError(err);
+
     return null;
   }
 }
@@ -72,9 +75,7 @@ export async function submitAnswers(
 
     return data;
   } catch (err) {
-    if (err instanceof Error) {
-      console.log(err.message);
-    }
+    handleError(err);
 
     return null;
   }
