@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ReactNode } from "react";
 
 import { QuestionData } from "~/schemas";
 import { BASE_URL } from "~/utils/constants";
@@ -9,10 +10,7 @@ interface QuestionsNavProps {
   questions: QuestionData[];
 }
 
-export function QuestionsNavigation({
-  questions,
-  currentIndex,
-}: QuestionsNavProps) {
+export function QuestionsNav({ questions, currentIndex }: QuestionsNavProps) {
   const lastIndex = questions.length - 1;
 
   const prevQuestion =
@@ -24,15 +22,17 @@ export function QuestionsNavigation({
     <div className="grid grid-cols-2 justify-between gap-6">
       <NavLink
         url={`${BASE_URL}/questions/${prevQuestion.slug}`}
-        question={prevQuestion.body}
         direction="prev"
-      />
+      >
+        {prevQuestion.body}
+      </NavLink>
 
       <NavLink
         url={`${BASE_URL}/questions/${nextQuestion.slug}`}
-        question={nextQuestion.body}
         direction="next"
-      />
+      >
+        {nextQuestion.body}
+      </NavLink>
     </div>
   );
 }
@@ -40,10 +40,10 @@ export function QuestionsNavigation({
 interface NavLinkProps {
   url: string;
   direction: "prev" | "next";
-  question: string;
+  children: ReactNode;
 }
 
-function NavLink({ url, direction, question }: NavLinkProps) {
+function NavLink({ url, direction, children }: NavLinkProps) {
   return (
     <Link
       href={url}
@@ -59,8 +59,9 @@ function NavLink({ url, direction, question }: NavLinkProps) {
         <span className="text-xs uppercase text-stone-400">
           {direction === "prev" ? "Prev" : "Next"}
         </span>
+
         <span className="text-base leading-tight underline group-hover/questions-nav:no-underline group-hover/questions-nav:opacity-50">
-          {question}
+          {children}
         </span>
       </span>
     </Link>

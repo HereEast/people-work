@@ -6,10 +6,7 @@ import { getAnswersByQuestionSlug } from "~/api-client/answers";
 
 import { PageContainer } from "~/components/PageContainer";
 import { generateQuestionMetadata } from "~/utils/metadata";
-import {
-  PersonDetails,
-  QuestionsNavigation,
-} from "~/components/(pages)/(questions)";
+import { PersonDetails, QuestionsNav } from "~/components/(pages)/(questions)";
 import { Answer } from "~/components/(pages)/(personQA)";
 
 import { BASE_URL } from "~/utils/constants";
@@ -56,41 +53,34 @@ export default async function QuestionAnswersPage({
 
   return (
     <PageContainer className="max-w-4xl">
-      {answers && question && (
-        <>
-          <div className="mb-4">
-            <Link
-              href={`${BASE_URL}/questions`}
-              className="underline hover:no-underline hover:opacity-50"
-              scroll={false}
-            >
-              All Questions
-            </Link>
-          </div>
+      <div className="mb-4">
+        <Link
+          href={`${BASE_URL}/questions`}
+          className="underline hover:no-underline hover:opacity-50"
+          scroll={false}
+        >
+          All Questions
+        </Link>
+      </div>
 
-          <div className="mb-10">
-            <h2 className="text-4xl font-extrabold tracking-header">
-              {question.body}
-            </h2>
-          </div>
+      <div className="mb-10">
+        <h2 className="text-4xl font-extrabold tracking-header">
+          {question.body}
+        </h2>
+      </div>
 
-          <ul className="mb-6 space-y-2">
-            {answers.map((answer, index) => (
-              <li className="rounded-2xl bg-stone-100 p-8 text-xl" key={index}>
-                <div className="space-y-8">
-                  <Answer>{answer}</Answer>
-                  {answer.person && <PersonDetails person={answer.person} />}
-                </div>
-              </li>
-            ))}
-          </ul>
+      <ul className="mb-6 space-y-2">
+        {answers.map((answer, index) => (
+          <li className="rounded-2xl bg-stone-100 p-8 text-xl" key={index}>
+            <div className="space-y-8">
+              <Answer>{answer}</Answer>
+              <PersonDetails person={answer.person} />
+            </div>
+          </li>
+        ))}
+      </ul>
 
-          <QuestionsNavigation
-            questions={questions}
-            currentIndex={currentIndex}
-          />
-        </>
-      )}
+      <QuestionsNav questions={questions} currentIndex={currentIndex} />
     </PageContainer>
   );
 }
