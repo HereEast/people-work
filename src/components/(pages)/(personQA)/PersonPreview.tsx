@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 
+import { LinkHoverIcon } from "~/components/icons/LinkHoverIcon";
 import { PersonImage } from "~/components/PersonImage";
 import { PersonData } from "~/schemas";
 
@@ -17,7 +17,7 @@ export function PersonPreview({ person }: PersonCardProps) {
         </div>
 
         <div className="space-y-2 overflow-hidden text-stone-50">
-          <h2 className="-mt-1 truncate text-3xl font-extrabold tracking-tighter">
+          <h2 className="-mt-1 truncate pr-1 text-3xl font-extrabold tracking-tighter">
             {person.name}
           </h2>
 
@@ -32,17 +32,7 @@ export function PersonPreview({ person }: PersonCardProps) {
                 {person.company.name}
               </Link>
 
-              {/* Hover Icon */}
-              <div className="absolute -top-2.5 left-[105%] hidden size-6 rotate-[40deg] group-hover:block">
-                <Image
-                  src="/images/emojis/pointing-finger.png"
-                  alt="Link"
-                  width={28}
-                  height={28}
-                  className="absolute top-0.5 object-cover"
-                  priority
-                />
-              </div>
+              <LinkHoverIcon />
             </div>
           </div>
         </div>

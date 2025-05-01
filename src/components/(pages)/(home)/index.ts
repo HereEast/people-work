@@ -1,2 +1,2 @@
 export * from "./About";
-export * from "./MainCards";
+export * from "./PersonCard";

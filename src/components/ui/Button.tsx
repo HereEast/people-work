@@ -13,7 +13,8 @@ const styles = {
   view: {
     primary: "hover:shadow-none",
     inverted: "bg-stone-50 text-stone-960",
-    link: "hover:shadow-lg hover:shadow-blue-600",
+    // link: "hover:shadow-lg hover:shadow-blue-600",
+    link: "hover:opacity-90",
     animated: "animate-anime bg-gradient-base bg-[length:600%] text-stone-50",
     tile: "hover:shadow-none overflow-hidden size-20 p-0 rounded-xl",
   },
