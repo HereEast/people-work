@@ -39,10 +39,8 @@ export default async function QuestionAnswersPage({
 }: QuestionPageProps) {
   const { slug } = params;
 
-  const [questions, answers] = await Promise.all([
-    getQuestions(),
-    getAnswersByQuestionSlug(slug),
-  ]);
+  const questions = await getQuestions();
+  const answers = await getAnswersByQuestionSlug(slug);
 
   if (!answers || !questions) {
     notFound();
