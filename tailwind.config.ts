@@ -17,6 +17,10 @@ const config: Config = {
       maxWidth: {
         "8xl": "1440px",
       },
+      fontFamily: {
+        base: ["var(--font-base)"],
+        accent: ["var(--font-accent)"],
+      },
       colors: {
         "brand-blue": {
           "600": "#0047FF",

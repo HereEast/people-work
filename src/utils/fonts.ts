@@ -1,14 +1,4 @@
 import localFont from "next/font/local";
-import { Inter as InterFont } from "next/font/google";
-import { Roboto_Mono as RobotoMonoFont } from "next/font/google";
-
-export const Inter = InterFont({
-  subsets: ["latin", "cyrillic"],
-});
-
-export const RobotoMono = RobotoMonoFont({
-  subsets: ["latin", "cyrillic"],
-});
 
 export const InnovatorGrotesk = localFont({
   src: [
@@ -43,5 +33,16 @@ export const InnovatorGrotesk = localFont({
       style: "normal",
     },
   ],
-  variable: "--font-primary",
+  variable: "--font-base",
+});
+
+export const Mondwest = localFont({
+  src: [
+    {
+      path: "../../public/fonts/mondwest-regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-accent",
 });

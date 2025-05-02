@@ -1,5 +1,4 @@
 import { QuestionData } from "~/schemas";
-import { Inter } from "~/utils/fonts";
 
 interface QuestionProps {
   children: QuestionData;
@@ -8,9 +7,7 @@ interface QuestionProps {
 export function Question({ children }: QuestionProps) {
   return (
     <div className="cursor-default rounded-md">
-      <h5
-        className={`${Inter.className} text-base font-extrabold leading-[110%]`}
-      >
+      <h5 className="text-base font-extrabold leading-[110%]">
         {children.body}
       </h5>
     </div>

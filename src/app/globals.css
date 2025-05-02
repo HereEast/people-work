@@ -20,8 +20,6 @@ a {
     --gradient-color-1: #ffc814;
     --gradient-color-2: #ff185d;
     --gradient-color-3: #1e7fff;
-
-    --answer-space-y: 32px;
   }
 }
 
@@ -101,3 +99,7 @@ a {
   text-decoration-skip-ink: none;
   text-underline-offset: 3px;
 }
+
+/* .accent {
+  font-family: var(--font-accent);
+} */
