@@ -33,10 +33,16 @@ export async function generateStaticParams() {
 export default async function PersonQAPage({ params }: PersonPageProps) {
   const { slug } = params;
 
-  const [person, answers] = await Promise.all([
-    getPerson(slug),
-    getAnswersByPersonSlug(slug),
-  ]);
+  // const [person, answers] = await Promise.all([
+  //   getPerson(slug),
+  //   getAnswersByPersonSlug(slug),
+  // ]);
+
+  const person = await getPerson(slug);
+  const answers = await getAnswersByPersonSlug(slug);
+
+  console.log({ person });
+  console.log({ answers });
 
   if (!person || !answers) {
     notFound();
