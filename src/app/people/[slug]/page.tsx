@@ -44,7 +44,7 @@ export default async function PersonQAPage({ params }: PersonPageProps) {
     <PageContainer className="min-h-screen w-full max-w-full justify-between gap-10 bg-stone-200/75 px-0 pt-4 sm:pt-10 lg:flex">
       <div className="mx-auto w-full space-y-16 lg:max-w-4xl">
         <div className="grid gap-6 px-2">
-          <div className="sticky top-[56px] z-10 w-full overflow-hidden rounded-b-xxl bg-stone-100">
+          <div className="rounded-b-xxl sticky top-[56px] z-10 w-full overflow-hidden bg-stone-100">
             <PersonPreview person={person} />
           </div>
 

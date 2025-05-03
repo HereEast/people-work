@@ -10,7 +10,7 @@ interface PersonCardProps {
 
 export function PersonPreview({ person }: PersonCardProps) {
   return (
-    <div className="relative rounded-xxl bg-stone-950">
+    <div className="rounded-xxl relative bg-stone-950">
       <div className="flex gap-4 p-3 xs:p-4">
         <div className="size-20 shrink-0 overflow-hidden rounded-md">
           <PersonImage name={person.name} slug={person.slug} />

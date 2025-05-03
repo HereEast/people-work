@@ -62,7 +62,7 @@ export default async function QuestionAnswersPage({
       </div>
 
       <div className="mb-10">
-        <h2 className="text-4xl font-extrabold tracking-header">
+        <h2 className="tracking-header text-4xl font-extrabold">
           {question.body}
         </h2>
       </div>

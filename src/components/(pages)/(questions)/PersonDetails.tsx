@@ -19,7 +19,7 @@ export function PersonDetails({ person }: PersonDetailsProps) {
       <div className="flex flex-col gap-1.5">
         <Link
           href={`${BASE_URL}/people/${person.slug}`}
-          className="w-fit font-semibold tracking-header underline underline-offset-1 hover:no-underline hover:opacity-50"
+          className="tracking-header w-fit font-semibold underline underline-offset-1 hover:no-underline hover:opacity-50"
         >
           {person.name}
         </Link>
