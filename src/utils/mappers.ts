@@ -50,25 +50,25 @@ export function mapAnswerBasicData(doc: DBDoc<IAnswerDB>) {
 }
 
 export function mapAnswersData(docs: DBDoc<IAnswerDB>[]): AnswerData[] {
-  const mapped = docs
-    .map((doc) => doc.toObject())
-    .map((data) => {
-      const question = data.questionId as IQuestionDB;
-      const person = data.personId as IPersonDB;
+  const mapped = docs.map((doc) => {
+    const data = doc.toObject();
 
-      return {
-        id: String(data._id),
-        answer: data.answer,
-        question: {
-          ...question,
-          id: question._id.toString(),
-        },
-        person: {
-          ...person,
-          id: person._id.toString(),
-        },
-      };
-    });
+    const question = data.questionId as IQuestionDB;
+    const person = data.personId as IPersonDB;
+
+    return {
+      id: String(data._id),
+      answer: data.answer,
+      question: {
+        ...question,
+        id: question._id.toString(),
+      },
+      person: {
+        ...person,
+        id: person._id.toString(),
+      },
+    };
+  });
 
   return AnswerApiSchema.array().parse(mapped);
 }
