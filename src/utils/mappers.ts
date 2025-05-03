@@ -77,14 +77,17 @@ export function mapAnswersData(docs: DBDoc<IAnswerDB>[]): AnswerData[] {
 function mapPersonDoc(doc: DBDoc<IPersonDB>) {
   const obj = doc.toObject();
 
+  const featured = obj.contentMeta.answers.featured;
+  const marked = obj.contentMeta.answers.marked;
+
   return {
     ...obj,
-    id: obj._id.toString(),
+    id: doc._id.toString(),
     contentMeta: {
       ...obj.contentMeta,
       answers: {
-        featured: obj.contentMeta.answers.featured.toString(),
-        marked: obj.contentMeta.answers.marked.map((id) => id.toString()),
+        featured: featured?.toString(),
+        marked: marked.map((id) => id.toString()),
       },
     },
   };

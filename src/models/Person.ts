@@ -79,7 +79,7 @@ const PersonDBSchema = new Schema(
     slug: { type: String, required: true, unique: true },
     keyWords: { type: [String], default: [] },
     isActive: { type: Boolean, required: true },
-    contentMeta: { type: ContentMetaSchema }, // Add required
+    contentMeta: { type: ContentMetaSchema, required: true },
   },
   { timestamps: true },
 );

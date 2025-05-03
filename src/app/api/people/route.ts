@@ -16,8 +16,6 @@ export async function GET() {
 
     const people = mapPeopleData(docs);
 
-    console.log({ people });
-
     return NextResponse.json(people);
   } catch (err) {
     console.log(err);
