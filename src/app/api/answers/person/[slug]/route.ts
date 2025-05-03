@@ -15,6 +15,8 @@ interface ReqParams {
 export async function GET(req: Request, { params }: ReqParams) {
   const { slug } = params;
 
+  console.log({ slug });
+
   try {
     await connectDB();
 
@@ -57,7 +59,7 @@ export async function GET(req: Request, { params }: ReqParams) {
     console.log(err);
 
     return NextResponse.json(
-      { message: "🔴 Error fetching answers by personId." },
+      { message: "🔴 Error fetching answers by person slug." },
       {
         status: 500,
       },
