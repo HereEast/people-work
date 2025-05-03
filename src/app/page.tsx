@@ -22,13 +22,13 @@ export default async function HomePage() {
         <About />
       </div>
 
-      <div className="mb-24 columns-2 gap-6">
+      {/* <div className="mb-24 columns-2 gap-6">
         {people.map((person, index) => (
           <div className="mb-6 break-inside-avoid" key={index}>
             <FeaturedCard person={person} />
           </div>
         ))}
-      </div>
+      </div> */}
 
       <div className="mb-20">
         <Subscribe />
