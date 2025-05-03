@@ -8,6 +8,8 @@ export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 export const ROUTE = {
   index: "/",
   questions: "/questions",
+  people: "/people",
+  about: "/about",
 };
 
 export const CONTACT = {

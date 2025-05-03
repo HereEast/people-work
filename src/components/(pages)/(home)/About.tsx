@@ -1,56 +1,32 @@
-import { SmileIconSolid } from "~/components/icons";
+"use client";
 
-import { cn } from "~/utils/handlers";
+import Image from "next/image";
+
+import { Button } from "~/components/ui/Button";
+import { AccentText } from "~/components/AccentText";
 
 export function About() {
-  const array = new Array(6).fill(0);
-
   return (
-    <div className="w-full space-y-16">
-      <div className="space-y-6">
-        <p
-          className="text-center text-3xl font-medium sm:text-4xl"
-          style={{
-            lineHeight: "110%",
-          }}
-        >
-          This project is for anyone curious about the different paths people
-          take in their careers. It demystifies job titles, shares daily
-          routines, highlights and aspirations in a{" "}
-          <span className="text-gradient bg-[length:200%]">
-            simple Q&A format.
-          </span>
-        </p>
-      </div>
-
-      {/* Icons */}
-      <div className="space-y-6">
-        <div className="flex flex-wrap justify-center gap-3">
-          {array.map((_, index) => (
-            <div className={cn(index > 3 && "hidden sm:block")} key={index}>
-              <IconTile />
-            </div>
-          ))}
-        </div>
-
-        <div className="flex justify-center">
-          <p className="text-gradient w-fit text-center font-medium leading-tight">
-            More awesome people are coming!
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// Icon Tile
-function IconTile() {
-  return (
-    <div className="group/icon relative flex size-20 shrink-0 items-center justify-center rounded-xl bg-stone-950 bg-[length:200%] transition hover:-translate-y-1 hover:animate-anime-sm hover:bg-gradient-base-diagonal">
-      <span className="absolute -top-10 flex h-8 w-6 items-center justify-center rounded-full bg-stone-200 text-base font-semibold text-stone-950 opacity-0 group-hover/icon:opacity-100">
-        ?
+    <div className="w-full font-medium leading-[105%]">
+      <span className="text-6xl">
+        This project is for anyone curious about the different paths people take
+        in their careers. It demystifies job titles, shares daily routines,
+        highlights and aspirations in a{" "}
+        <AccentText size="xl">simple Q&A format.</AccentText>
+        <Image
+          src="/images/emojis/cat-01.png"
+          alt="Emoji of a red cat"
+          width={600}
+          height={600}
+          className="relative -top-1 inline-block size-[70px] object-contain px-2"
+          priority
+        />
+        <Button onClick={() => console.log("Subscribe.")}>
+          <AccentText size="xl" underline>
+            Subscribe
+          </AccentText>
+        </Button>
       </span>
-      <SmileIconSolid className="w-8 fill-stone-50" />
     </div>
   );
 }

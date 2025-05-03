@@ -1,8 +1,14 @@
+import { Button } from "./ui/Button";
+import { ROUTE } from "~/utils/constants";
+
 export function Footer() {
   return (
-    <footer className="w-full p-4 text-2xl font-bold">
-      <div className="w-full items-center sm:flex sm:justify-between">
-        <p className="leading-none">this website is a wip</p>
+    <footer className="w-full p-6">
+      <div className="flex w-full items-center justify-between text-4xl font-medium">
+        <p className="leading-none">people-work.net / 2025</p>
+        <Button href={ROUTE.about} view="base-link">
+          About
+        </Button>
       </div>
     </footer>
   );

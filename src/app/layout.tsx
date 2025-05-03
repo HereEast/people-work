@@ -11,7 +11,7 @@ import { GoogleAnalytics } from "~/components/GoogleAnalytics";
 import { CookieBanner } from "~/components/CookieBanner";
 
 import { getMetadata } from "~/utils/metadata";
-import { InnovatorGrotesk, Mondwest } from "~/utils/fonts";
+import { InnovatorGrotesk, Mondwest, Rubik } from "~/utils/fonts";
 
 export const metadata: Metadata = getMetadata();
 
@@ -23,13 +23,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
-      className={`${InnovatorGrotesk.variable} ${Mondwest.variable} scroll-smooth`}
+      className={`${InnovatorGrotesk.className} ${Mondwest.variable} scroll-smooth`}
     >
       <GoogleAnalytics />
 
       <body
         suppressHydrationWarning={true}
-        className="flex min-h-screen flex-col text-lg"
+        className="flex min-h-screen flex-col bg-stone-200 text-lg tracking-tight"
       >
         <ClientProvider>
           <Header />
