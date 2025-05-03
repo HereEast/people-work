@@ -28,7 +28,7 @@ export async function SidePeoplePanel({ slug }: SidePeoplePanelProps) {
               <span className="inline-block opacity-90">{`${person.jobTitle} @ ${person.company.name}`}</span>
             </Tooltip>
 
-            <Button href={`/people/${person.slug}`} view="tile">
+            <Button href={`/people/${person.slug}`}>
               <PersonImage name={person.name} slug={person.slug} />
             </Button>
           </li>
@@ -51,7 +51,7 @@ interface TooltipProps {
 
 function Tooltip({ children }: TooltipProps) {
   return (
-    <div className="invisible absolute bottom-[110%] flex h-fit w-36 flex-col truncate rounded-[12px] bg-brand-blue-600 p-2 px-2.5 text-sm leading-none text-stone-50 group-hover/side-tile:visible lg:bottom-2 lg:right-[110%] lg:w-36">
+    <div className="bg-brand-blue-600 invisible absolute bottom-[110%] flex h-fit w-36 flex-col truncate rounded-[12px] p-2 px-2.5 text-sm leading-none text-stone-50 group-hover/side-tile:visible lg:bottom-2 lg:right-[110%] lg:w-36">
       <div className="inline-block w-full truncate text-wrap">{children}</div>
     </div>
   );
