@@ -10,6 +10,7 @@ export interface IPersonDB {
   links: ILinks;
   slug: string;
   isActive: boolean;
+  contentMeta: IContentMeta;
   keyWords?: string[];
   createdAt: Date;
 }
@@ -23,6 +24,13 @@ export interface ILinks {
   linkedin?: string;
   twitter?: string;
   instagram?: string;
+}
+
+export interface IContentMeta {
+  answers: {
+    featured: mongoose.Types.ObjectId;
+    marked: mongoose.Types.ObjectId[];
+  };
 }
 
 const LinksSchema = new Schema(
@@ -42,6 +50,24 @@ const CompanySchema = new Schema(
   { _id: false },
 );
 
+const ContentMetaSchema = new Schema(
+  {
+    answers: {
+      featured: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Answer",
+        required: true,
+      },
+      marked: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: "Answer",
+        required: true,
+      },
+    },
+  },
+  { _id: false },
+);
+
 const PersonDBSchema = new Schema(
   {
     name: { type: String, required: true, unique: true },
@@ -51,8 +77,9 @@ const PersonDBSchema = new Schema(
     country: { type: String, required: true },
     links: { type: LinksSchema },
     slug: { type: String, required: true, unique: true },
-    keyWords: { type: [String] },
+    keyWords: { type: [String], default: [] },
     isActive: { type: Boolean, required: true },
+    contentMeta: { type: ContentMetaSchema }, // Add required
   },
   { timestamps: true },
 );

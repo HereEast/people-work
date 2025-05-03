@@ -35,6 +35,13 @@ export const PersonApiSchema = z.object({
     instagram: z.string().optional(),
   }),
   keyWords: z.array(z.string()).optional(),
+  // Content meta
+  contentMeta: z.object({
+    answers: z.object({
+      featured: z.string(),
+      marked: z.array(z.string()),
+    }),
+  }),
   slug: z.string(),
   isActive: z.boolean(),
   createdAt: z.date(),
