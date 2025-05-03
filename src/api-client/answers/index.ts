@@ -44,6 +44,36 @@ export async function getAnswersByQuestionSlug(
   }
 }
 
+// GET FEATURED ANSWER
+interface FeaturedAnswerInput {
+  questionId: string;
+  personId: string;
+}
+export async function getFeaturedAnswer(
+  input: FeaturedAnswerInput,
+): Promise<AnswerData | null> {
+  const url = new URL(`${BASE_URL}/api/answers/featured`);
+
+  url.searchParams.append("questionId", input.questionId);
+  url.searchParams.append("personId", input.personId);
+
+  try {
+    const response = await fetch(url.toString());
+
+    if (!response.ok) {
+      throw new Error("🔴 Data fetch failed");
+    }
+
+    const answers: AnswerData = await response.json();
+
+    return answers;
+  } catch (err) {
+    handleError(err);
+
+    return null;
+  }
+}
+
 // SUBMIT ANSWERS
 export interface IFormDataProps {
   questionId: string;
