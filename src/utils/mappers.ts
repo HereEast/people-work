@@ -1,5 +1,6 @@
 import {
   AnswerApiSchema,
+  AnswerBasicApiSchema,
   AnswerData,
   PersonApiSchema,
   PersonData,
@@ -37,6 +38,17 @@ export function mapQuestionsData(
 }
 
 // Answers
+export function mapAnswerBasicData(doc: DBDoc<IAnswerDB>) {
+  const mapped = {
+    id: doc._id.toString(),
+    name: doc.name,
+    question: doc.question,
+    answer: doc.answer,
+  };
+
+  return AnswerBasicApiSchema.parse(mapped);
+}
+
 export function mapAnswersData(docs: DBDoc<IAnswerDB>[]): AnswerData[] {
   const mapped = docs
     .map((doc) => doc.toObject())
@@ -66,6 +78,13 @@ function mapPersonDoc(doc: DBDoc<IPersonDB>) {
   return {
     ...doc.toObject(),
     id: doc._id.toString(),
+    contentMeta: {
+      ...doc.contentMeta,
+      answers: {
+        featured: doc.contentMeta.answers.featured.toString(),
+        marked: doc.contentMeta.answers.marked.map((id) => id.toString()),
+      },
+    },
   };
 }
 
