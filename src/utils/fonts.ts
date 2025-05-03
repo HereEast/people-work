@@ -1,9 +1,5 @@
 import localFont from "next/font/local";
 
-import { Rubik as RubikFont } from "next/font/google";
-
-export const Rubik = RubikFont({ subsets: ["latin"] });
-
 export const InnovatorGrotesk = localFont({
   src: [
     {

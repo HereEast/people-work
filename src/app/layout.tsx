@@ -11,7 +11,7 @@ import { GoogleAnalytics } from "~/components/GoogleAnalytics";
 import { CookieBanner } from "~/components/CookieBanner";
 
 import { getMetadata } from "~/utils/metadata";
-import { InnovatorGrotesk, Mondwest, Rubik } from "~/utils/fonts";
+import { InnovatorGrotesk, Mondwest } from "~/utils/fonts";
 
 export const metadata: Metadata = getMetadata();
 

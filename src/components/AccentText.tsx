@@ -18,10 +18,14 @@ export function AccentText({
   return (
     <span
       className={cn(
-        "font-accent",
+        "font-accent text-[40px]",
         size === "xl" && "text-[74px] leading-[90%]",
-        underline &&
+        size === "xl" &&
+          underline &&
           "offset underline decoration-2 underline-offset-4 hover:no-underline hover:opacity-30",
+        size === "base" &&
+          underline &&
+          "offset underline decoration-2 underline-offset-[3px] hover:no-underline hover:opacity-30",
         classname,
       )}
     >

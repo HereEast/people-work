@@ -27,7 +27,7 @@ export async function getPeople(): Promise<PersonData[] | null> {
     const response = await fetch(`${BASE_URL}/api/people`);
 
     if (!response.ok) {
-      throw new Error("🔴 failed to fetch all people.");
+      throw new Error("🔴 Failed to fetch all people.");
     }
 
     const people: PersonData[] = await response.json();

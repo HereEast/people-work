@@ -35,7 +35,6 @@ export const PersonApiSchema = z.object({
     instagram: z.string().optional(),
   }),
   keyWords: z.array(z.string()).optional(),
-  // Content meta
   contentMeta: z.object({
     answers: z.object({
       featured: z.string(),
@@ -58,6 +57,15 @@ export const AnswerApiSchema = z.object({
 });
 
 export type AnswerData = z.infer<typeof AnswerApiSchema>;
+
+export const AnswerBasicApiSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  question: z.string(),
+  answer: z.string(),
+});
+
+export type AnswerBasicData = z.infer<typeof AnswerBasicApiSchema>;
 
 // Subscription
 export const SubscriptionApiSchema = z.object({
