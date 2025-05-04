@@ -5,25 +5,12 @@ import { PageContainer } from "~/components/PageContainer";
 import { FeaturedCard } from "~/components/FeaturedCard";
 import { Subscribe } from "~/components/Subscribe";
 
-import { getPerson } from "~/api-client/people";
+import { getPeople } from "~/api-client/people";
 
-const featured = [
-  "margo-laz",
-  "dennis-lazard",
-  "ivan-baranov",
-  "lara-simonova",
-];
+// Get people who are currently featured by ids/slugs
 
 export default async function HomePage() {
-  // const featuredPeople = await getPeople();
-
-  const featuredPeople = await Promise.all(
-    featured.map((slug) => getPerson(slug)),
-  );
-
-  if (!featuredPeople.length) {
-    notFound();
-  }
+  const featuredPeople = await getPeople();
 
   return (
     <PageContainer>
@@ -31,13 +18,15 @@ export default async function HomePage() {
         <About />
       </div>
 
-      <div className="mb-24 columns-2 gap-6">
-        {featuredPeople.map((data, index) => (
-          <div className="mb-6 break-inside-avoid" key={index}>
-            <FeaturedCard data={data} />
-          </div>
-        ))}
-      </div>
+      {featuredPeople && (
+        <div className="mb-24 columns-2 gap-6">
+          {featuredPeople.map((person, index) => (
+            <div className="mb-6 break-inside-avoid" key={index}>
+              <FeaturedCard person={person} />
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="mb-20">
         <Subscribe />

@@ -1,14 +1,9 @@
 import { BASE_URL } from "~/utils/constants";
 import { handleError } from "~/utils/handlers";
-import { AnswerBasicData, PersonData } from "~/schemas";
+import { PersonData } from "~/schemas";
 
 // GET PERSON BY SLUG
-interface PersonInfo {
-  person: PersonData;
-  featuredAnswer: AnswerBasicData;
-}
-
-export async function getPerson(slug: string): Promise<PersonInfo | null> {
+export async function getPerson(slug: string): Promise<PersonData | null> {
   try {
     const response = await fetch(`${BASE_URL}/api/people/${slug}`);
 
@@ -16,7 +11,7 @@ export async function getPerson(slug: string): Promise<PersonInfo | null> {
       throw new Error("🔴 Failed to fetch a person by slug.");
     }
 
-    const person: PersonInfo = await response.json();
+    const person: PersonData = await response.json();
 
     return person;
   } catch (error) {

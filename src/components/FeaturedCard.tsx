@@ -3,29 +3,25 @@ import Link from "next/link";
 import { PersonImage } from "./PersonImage";
 import { QuoteIcon } from "./icons/QuoteIcon";
 
-import { AnswerBasicData, PersonData } from "~/schemas";
+import { PersonData } from "~/schemas";
 import {
   getAnswersByPersonSlug,
   getFeaturedAnswer,
 } from "~/api-client/answers";
 
 interface FeaturedCardProps {
-  data: {
-    person: PersonData;
-    featuredAnswer: AnswerBasicData;
-  } | null;
+  person: PersonData;
 }
 
-export async function FeaturedCard({ data }: FeaturedCardProps) {
+export async function FeaturedCard({ person }: FeaturedCardProps) {
   // const featuredAnswer = await getFeaturedAnswer(person.id);
 
-  // const answers = await getAnswersByPersonSlug(person.slug);
-  // const featuredAnswer = answers?.find((a) => a.featured);
-  if (!data) {
+  const answers = await getAnswersByPersonSlug(person.slug);
+  const featuredAnswer = answers?.find((a) => a.featured);
+
+  if (!featuredAnswer) {
     return null;
   }
-
-  const { person, featuredAnswer } = data;
 
   return (
     <div className="rounded-[40px] bg-stone-100 p-8 transition hover:bg-stone-100/50">
