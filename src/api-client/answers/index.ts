@@ -45,38 +45,6 @@ export async function getAnswersByQuestionSlug(
 }
 
 // GET FEATURED ANSWER
-export async function getFeaturedAnswer(
-  personId: string,
-): Promise<AnswerBasicData | null> {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/api/answers/featured/${personId}`,
-    );
-
-    // if (!response.ok) {
-    //   throw new Error("🔴 Fetching a featured answer failed.");
-    // }
-
-    if (!response.ok) {
-      const errorBody = await response.json();
-
-      const errorMessage =
-        typeof errorBody === "object" && errorBody.message
-          ? errorBody.message
-          : "Unknown error";
-
-      throw new Error(`🔴 Failed to fetch featured answer: ${errorMessage}`);
-    }
-
-    const answer: AnswerBasicData = await response.json();
-
-    return answer;
-  } catch (err) {
-    handleError(err);
-
-    return null;
-  }
-}
 
 // SUBMIT ANSWERS
 export interface IFormDataProps {
