@@ -54,7 +54,7 @@ export async function getFeaturedAnswer(
     );
 
     if (!response.ok) {
-      throw new Error("🔴 Data fetch failed");
+      throw new Error("🔴 Fetching a featured answer failed.");
     }
 
     const answer: AnswerData = await response.json();
