@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import mongoose from "mongoose";
 
 import { connectDB } from "~/lib/connectDB";
 import { AnswerDB, IAnswerDB } from "~/models/Answer";
 import { DBDoc } from "~/utils/types";
-import { mapAnswerBasicData } from "~/utils/mappers";
+import { mapAnswerBasicData, mapAnswersData } from "~/utils/mappers";
+import { IPersonDB, PersonDB } from "~/models/Person";
 
 interface ReqParams {
   params: { personId: string };
@@ -17,23 +17,37 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
-      personId: new mongoose.Types.ObjectId(personId),
-      // featured: true,
+    const person: DBDoc<IPersonDB> = await PersonDB.findOne({
+      slug: personId,
+      isActive: true,
     }).exec();
 
-    if (!doc) {
-      return NextResponse.json(
-        { message: `🔴 Featured answer is not found for ID: ${personId}.` },
-        {
-          status: 404,
-        },
-      );
-    }
+    const data: DBDoc<IAnswerDB>[] = await AnswerDB.find({
+      personId: person._id,
+      featured: true,
+    }).exec();
 
-    const answer = mapAnswerBasicData(doc);
+    // const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
+    //   personId,
+    //   featured: true,
+    // }).exec();
 
-    return NextResponse.json(answer);
+    // if (!doc) {
+    //   return NextResponse.json(
+    //     { message: `🔴 Featured answer is not found for ID: ${personId}.` },
+    //     {
+    //       status: 404,
+    //     },
+    //   );
+    // }
+
+    const answers = mapAnswersData(data);
+
+    return NextResponse.json(answers);
+
+    // const answer = mapAnswerBasicData(doc);
+
+    // return NextResponse.json(answer);
   } catch (err) {
     console.log(err);
 

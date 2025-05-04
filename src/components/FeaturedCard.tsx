@@ -14,14 +14,16 @@ interface FeaturedCardProps {
 }
 
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  const featuredAnswer = await getFeaturedAnswer(person.id);
+  const data = await getFeaturedAnswer(person.slug);
 
   // const answers = await getAnswersByPersonSlug(person.slug);
   // const featuredAnswer = answers?.find((a) => a.featured);
 
-  if (!featuredAnswer) {
+  if (!data) {
     return null;
   }
+
+  const featuredAnswer = data[0];
 
   return (
     <div className="rounded-2xl bg-stone-100 p-8 transition hover:bg-stone-100/50">
