@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import mongoose from "mongoose";
 
 import { connectDB } from "~/lib/connectDB";
 import { AnswerDB, IAnswerDB } from "~/models/Answer";
@@ -17,7 +18,7 @@ export async function GET(req: Request, { params }: ReqParams) {
     await connectDB();
 
     const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
-      personId,
+      personId: new mongoose.Types.ObjectId(personId),
       featured: true,
     }).exec();
 

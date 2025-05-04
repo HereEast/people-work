@@ -14,11 +14,11 @@ interface FeaturedCardProps {
 }
 
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  // const featuredAnswer = await getFeaturedAnswer(person.id);
+  const featuredAnswer = await getFeaturedAnswer(person.id);
 
   // console.log(featuredAnswer);
 
-  const answers = await getAnswersByPersonSlug(person.slug);
+  // const answers = await getAnswersByPersonSlug(person.slug);
 
   return (
     <div className="rounded-[40px] bg-stone-100 p-8 transition hover:bg-stone-100/50">
@@ -28,7 +28,7 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
             <QuoteIcon />
           </div>
           <p className="text-4xl font-medium leading-[120%]">
-            {answers?.[10].answer}
+            {featuredAnswer?.answer}
           </p>
         </div>
 
