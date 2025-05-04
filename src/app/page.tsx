@@ -5,14 +5,23 @@ import { PageContainer } from "~/components/PageContainer";
 import { FeaturedCard } from "~/components/FeaturedCard";
 import { Subscribe } from "~/components/Subscribe";
 
-import { getPeople } from "~/api-client/people";
+import { getPerson } from "~/api-client/people";
 
-// Get people who are currently featured by ids/slugs
+const featured = [
+  "margo-laz",
+  "dennis-lazard",
+  "ivan-baranov",
+  "lara-simonova",
+];
 
 export default async function HomePage() {
-  const featuredPeople = await getPeople();
+  // const featuredPeople = await getPeople();
 
-  if (!featuredPeople) {
+  const featuredPeople = await Promise.all(
+    featured.map((slug) => getPerson(slug)),
+  );
+
+  if (!featuredPeople.length) {
     notFound();
   }
 
@@ -23,9 +32,9 @@ export default async function HomePage() {
       </div>
 
       <div className="mb-24 columns-2 gap-6">
-        {featuredPeople.map((person, index) => (
+        {featuredPeople.map((data, index) => (
           <div className="mb-6 break-inside-avoid" key={index}>
-            <FeaturedCard person={person} />
+            <FeaturedCard data={data} />
           </div>
         ))}
       </div>

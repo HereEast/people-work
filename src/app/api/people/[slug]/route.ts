@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/lib/connectDB";
+import { AnswerDB, IAnswerDB } from "~/models/Answer";
 import { IPersonDB, PersonDB } from "~/models/Person";
-import { mapPeopleData } from "~/utils/mappers";
+import { mapAnswerBasicData, mapPeopleData } from "~/utils/mappers";
 import { DBDoc } from "~/utils/types";
 
 interface ReqParams {
@@ -16,15 +17,21 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const data: DBDoc<IPersonDB> = await PersonDB.findOne({ slug }).exec();
+    const doc: DBDoc<IPersonDB> = await PersonDB.findOne({ slug }).exec();
 
-    if (!data) {
+    if (!doc) {
       return NextResponse.json(null);
     }
 
-    const person = mapPeopleData(data);
+    const featuredAnswerDoc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
+      personId: doc._id,
+      featured: true,
+    }).exec();
 
-    return NextResponse.json(person);
+    const person = mapPeopleData(doc);
+    const featuredAnswer = mapAnswerBasicData(featuredAnswerDoc);
+
+    return NextResponse.json({ person, featuredAnswer });
   } catch (err) {
     console.log(err);
 
