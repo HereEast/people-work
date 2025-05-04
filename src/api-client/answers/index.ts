@@ -59,6 +59,7 @@ export async function getFeaturedAnswer(
 
     if (!response.ok) {
       const errorBody = await response.json();
+
       const errorMessage =
         typeof errorBody === "object" && errorBody.message
           ? errorBody.message
