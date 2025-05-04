@@ -6,7 +6,6 @@ import { FeaturedCard } from "~/components/FeaturedCard";
 import { Subscribe } from "~/components/Subscribe";
 
 import { getPeople } from "~/api-client/people";
-import { getFeaturedAnswer } from "~/api-client/answers";
 
 // Get people who are currently featured by ids/slugs
 
@@ -17,14 +16,6 @@ export default async function HomePage() {
     notFound();
   }
 
-  const data = await Promise.all(
-    featuredPeople.map(async (person) => {
-      const featuredAnswer = await getFeaturedAnswer(person.id);
-
-      return { person, featuredAnswer };
-    }),
-  );
-
   return (
     <PageContainer>
       <div className="my-20">
@@ -32,9 +23,9 @@ export default async function HomePage() {
       </div>
 
       <div className="mb-24 columns-2 gap-6">
-        {data.map(({ person, featuredAnswer }, index) => (
+        {featuredPeople.map((person, index) => (
           <div className="mb-6 break-inside-avoid" key={index}>
-            <FeaturedCard person={person} featuredAnswer={featuredAnswer} />
+            <FeaturedCard person={person} />
           </div>
         ))}
       </div>

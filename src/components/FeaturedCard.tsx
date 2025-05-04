@@ -3,17 +3,23 @@ import Link from "next/link";
 import { PersonImage } from "./PersonImage";
 import { QuoteIcon } from "./icons/QuoteIcon";
 
-import { AnswerBasicData, PersonData } from "~/schemas";
+import { PersonData } from "~/schemas";
+import {
+  getAnswersByPersonSlug,
+  getFeaturedAnswer,
+} from "~/api-client/answers";
 
 interface FeaturedCardProps {
   person: PersonData;
-  featuredAnswer: AnswerBasicData | null;
 }
 
-export async function FeaturedCard({
-  person,
-  featuredAnswer,
-}: FeaturedCardProps) {
+export async function FeaturedCard({ person }: FeaturedCardProps) {
+  // const featuredAnswer = await getFeaturedAnswer(person.id);
+
+  // console.log(featuredAnswer);
+
+  const answers = await getAnswersByPersonSlug(person.slug);
+
   return (
     <div className="rounded-[40px] bg-stone-100 p-8 transition hover:bg-stone-100/50">
       <Link href={`/people/${person.slug}`}>
@@ -22,7 +28,7 @@ export async function FeaturedCard({
             <QuoteIcon />
           </div>
           <p className="text-4xl font-medium leading-[120%]">
-            {featuredAnswer?.answer}
+            {answers?.[10].answer}
           </p>
         </div>
 
