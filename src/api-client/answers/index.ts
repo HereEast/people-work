@@ -47,7 +47,7 @@ export async function getAnswersByQuestionSlug(
 // GET FEATURED ANSWER
 export async function getFeaturedAnswer(
   personId: string,
-): Promise<AnswerBasicData | null> {
+): Promise<AnswerData | null> {
   try {
     const response = await fetch(
       `${BASE_URL}/api/answers/featured/${personId}`,
@@ -57,7 +57,7 @@ export async function getFeaturedAnswer(
       throw new Error("🔴 Fetching a featured answer failed.");
     }
 
-    const answer = await response.json();
+    const answer: AnswerData = await response.json();
 
     return answer;
   } catch (err) {

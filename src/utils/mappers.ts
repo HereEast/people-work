@@ -77,41 +77,6 @@ export function mapAnswersData(docs: DBDoc<IAnswerDB>[]): AnswerData[] {
   return AnswerApiSchema.array().parse(mapped);
 }
 
-// function mapAnswerDoc(doc: DBDoc<IAnswerDB>) {
-//   const data = doc.toObject();
-
-//   const question = data.questionId as IQuestionDB;
-//   const person = data.personId as IPersonDB;
-
-//   return {
-//     id: String(data._id),
-//     answer: data.answer,
-//     featured: data.featured || false,
-//     marked: data.marked || false,
-//     question: {
-//       ...question,
-//       id: question._id.toString(),
-//     },
-//     person: {
-//       ...person,
-//       id: person._id.toString(),
-//     },
-//   };
-// }
-
-// export function mapAnswersData(
-//   data: DBDoc<IAnswerDB>[] | DBDoc<IAnswerDB>,
-// ): AnswerData[] | AnswerData {
-//   if (Array.isArray(data)) {
-//     const mapped = data.map((doc) => mapAnswerDoc(doc));
-//     return AnswerApiSchema.array().parse(mapped);
-//   }
-
-//   const mapped = mapAnswerDoc(data);
-
-//   return AnswerApiSchema.parse(mapped);
-// }
-
 // People
 function mapPersonDoc(doc: DBDoc<IPersonDB>) {
   const obj = doc.toObject();

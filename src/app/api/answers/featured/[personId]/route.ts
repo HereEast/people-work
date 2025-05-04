@@ -5,7 +5,7 @@ import { AnswerDB, IAnswerDB } from "~/models/Answer";
 import { IQuestionDB, QuestionDB } from "~/models/Question";
 import { IPersonDB, PersonDB } from "~/models/Person";
 import { DBDoc } from "~/utils/types";
-import { mapAnswerBasicData, mapAnswersData } from "~/utils/mappers";
+import { mapAnswersData } from "~/utils/mappers";
 
 interface ReqParams {
   params: { personId: string };
@@ -18,23 +18,27 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
+    const docs: DBDoc<IAnswerDB>[] = await AnswerDB.find({
       personId,
       featured: true,
-    }).exec();
+    })
+      .populate("questionId")
+      .populate("personId")
+      .exec();
 
-    if (!doc) {
-      return NextResponse.json(
-        { message: `🔴 Featured answer is not found for ID: ${personId}.` },
-        {
-          status: 404,
-        },
-      );
-    }
+    // if (!doc) {
+    //   return NextResponse.json(
+    //     { message: `🔴 Featured answer is not found for ID: ${personId}.` },
+    //     {
+    //       status: 404,
+    //     },
+    //   );
+    // }
 
-    const featuredAnswer = mapAnswerBasicData(doc);
+    const answers = mapAnswersData(docs);
+    // const featuredAnswer = answers.find((item) => item.featured);
 
-    return NextResponse.json(featuredAnswer);
+    return NextResponse.json(answers[0]);
   } catch (err) {
     console.log(err);
 
