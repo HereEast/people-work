@@ -6,7 +6,7 @@ import { QuoteIcon } from "./icons/QuoteIcon";
 import { PersonData } from "~/schemas";
 import {
   getAnswersByPersonSlug,
-  // getFeaturedAnswer,
+  getFeaturedAnswer,
 } from "~/api-client/answers";
 
 interface FeaturedCardProps {
@@ -14,14 +14,14 @@ interface FeaturedCardProps {
 }
 
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  // const featuredAnswer = await getFeaturedAnswer(person.id);
+  const featuredAnswer = await getFeaturedAnswer(person.id);
 
   // const answers = await getAnswersByPersonSlug(person.slug);
   // const featuredAnswer = answers?.find((a) => a.featured);
 
-  // if (!featuredAnswer) {
-  //   return null;
-  // }
+  if (!featuredAnswer) {
+    return null;
+  }
 
   return (
     <div className="rounded-[40px] bg-stone-100 p-8 transition hover:bg-stone-100/50">
@@ -30,9 +30,9 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
           <div className="size-8">
             <QuoteIcon />
           </div>
-          {/* <p className="text-4xl font-medium leading-[120%]">
+          <p className="text-4xl font-medium leading-[120%]">
             {featuredAnswer?.answer}
-          </p> */}
+          </p>
         </div>
 
         <div className="flex items-end gap-6">
