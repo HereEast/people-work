@@ -24,7 +24,7 @@ export async function GET(req: Request, { params }: ReqParams) {
 
     const data: DBDoc<IAnswerDB>[] = await AnswerDB.find({
       personId: person._id,
-      featured: true,
+      // featured: true,
     })
       .populate("questionId")
       .populate("personId")
@@ -45,8 +45,9 @@ export async function GET(req: Request, { params }: ReqParams) {
     // }
 
     const answers = mapAnswersData(data);
+    const filtered = answers.filter((a) => a.featured);
 
-    return NextResponse.json(answers);
+    return NextResponse.json(filtered);
 
     // const answer = mapAnswerBasicData(doc);
 
