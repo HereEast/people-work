@@ -45,9 +45,8 @@ export async function GET(req: Request, { params }: ReqParams) {
     // }
 
     const answers = mapAnswersData(data);
-    const filtered = answers.filter((a) => a.featured);
 
-    return NextResponse.json(filtered);
+    return NextResponse.json(answers);
 
     // const answer = mapAnswerBasicData(doc);
 
