@@ -13,6 +13,8 @@ interface FeaturedCardProps {
 export async function FeaturedCard({ person }: FeaturedCardProps) {
   const featuredId = person?.contentMeta?.answers?.featured;
 
+  console.log({ person });
+
   if (!featuredId) {
     return null;
   }
