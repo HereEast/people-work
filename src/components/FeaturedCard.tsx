@@ -11,8 +11,10 @@ interface FeaturedCardProps {
 }
 
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  if (!person) {
-    return;
+  const featuredId = person?.contentMeta?.answers?.featured;
+
+  if (!featuredId) {
+    return null;
   }
 
   const featuredAnswer = await getFeaturedAnswer({
