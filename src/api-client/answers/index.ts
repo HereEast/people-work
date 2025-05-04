@@ -1,5 +1,5 @@
 import { BASE_URL } from "~/utils/constants";
-import { AnswerBasicData, AnswerData } from "~/schemas";
+import { AnswerData } from "~/schemas";
 import { handleError } from "~/utils/handlers";
 
 // GET ANSWERS BY PERSON SLUG
@@ -45,27 +45,27 @@ export async function getAnswersByQuestionSlug(
 }
 
 // GET FEATURED ANSWER
-// export async function getFeaturedAnswer(
-//   personSlug: string,
-// ): Promise<AnswerBasicData | null> {
-//   try {
-//     const response = await fetch(
-//       `${BASE_URL}/api/answers/featured/${personSlug}`,
-//     );
+export async function getFeaturedAnswer(
+  personId: string,
+): Promise<AnswerData | null> {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/answers/featured/${personId}`,
+    );
 
-//     if (!response.ok) {
-//       throw new Error("🔴 Fetching a featured answer failed.");
-//     }
+    if (!response.ok) {
+      throw new Error("🔴 Fetching a featured answer failed.");
+    }
 
-//     const answer: AnswerBasicData = await response.json();
+    const answer: AnswerData = await response.json();
 
-//     return answer;
-//   } catch (err) {
-//     handleError(err);
+    return answer;
+  } catch (err) {
+    handleError(err);
 
-//     return null;
-//   }
-// }
+    return null;
+  }
+}
 
 // SUBMIT ANSWERS
 export interface IFormDataProps {
