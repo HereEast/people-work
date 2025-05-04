@@ -25,7 +25,10 @@ export async function GET(req: Request, { params }: ReqParams) {
     const data: DBDoc<IAnswerDB>[] = await AnswerDB.find({
       personId: person._id,
       featured: true,
-    }).exec();
+    })
+      .populate("questionId")
+      .populate("personId")
+      .exec();
 
     // const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
     //   personId,
