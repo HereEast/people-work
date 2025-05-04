@@ -39,11 +39,13 @@ export function mapQuestionsData(
 
 // Answers
 export function mapAnswerBasicData(doc: DBDoc<IAnswerDB>) {
+  const data = doc.toObject();
+
   const mapped = {
-    id: doc._id.toString(),
-    name: doc.name,
-    question: doc.question,
-    answer: doc.answer,
+    id: data._id.toString(),
+    name: data.name,
+    question: data.question,
+    answer: data.answer,
   };
 
   return AnswerBasicApiSchema.parse(mapped);
