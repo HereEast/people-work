@@ -19,14 +19,14 @@ export async function GET(req: Request, { params }: ReqParams) {
 
     const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
       personId: new mongoose.Types.ObjectId(personId),
-      featured: true,
+      // featured: true,
     }).exec();
 
     if (!doc) {
       return NextResponse.json(
         { message: `🔴 Featured answer is not found for ID: ${personId}.` },
         {
-          status: 900,
+          status: 404,
         },
       );
     }
