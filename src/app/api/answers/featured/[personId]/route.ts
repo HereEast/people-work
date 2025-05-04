@@ -26,14 +26,14 @@ export async function GET(req: Request, { params }: ReqParams) {
       return NextResponse.json(
         { message: `🔴 Featured answer is not found for ID: ${personId}.` },
         {
-          status: 404,
+          status: 900,
         },
       );
     }
 
     const answer = mapAnswerBasicData(doc);
 
-    return NextResponse.json(doc);
+    return NextResponse.json(answer);
   } catch (err) {
     console.log(err);
 

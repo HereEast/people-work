@@ -14,17 +14,17 @@ interface FeaturedCardProps {
 }
 
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  // const featuredAnswer = await getFeaturedAnswer(person.id);
+  const featuredAnswer = await getFeaturedAnswer(person.id);
 
-  const answers = await getAnswersByPersonSlug(person.slug);
-  const featuredAnswer = answers?.find((a) => a.featured);
+  // const answers = await getAnswersByPersonSlug(person.slug);
+  // const featuredAnswer = answers?.find((a) => a.featured);
 
   if (!featuredAnswer) {
     return null;
   }
 
   return (
-    <div className="rounded-[40px] bg-stone-100 p-8 transition hover:bg-stone-100/50">
+    <div className="rounded-2xl bg-stone-100 p-8 transition hover:bg-stone-100/50">
       <Link href={`/people/${person.slug}`}>
         <div className="mb-10 space-y-5">
           <div className="size-8">
@@ -36,7 +36,7 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
         </div>
 
         <div className="flex items-end gap-6">
-          <div className="size-24 overflow-hidden rounded-[20px]">
+          <div className="size-24 overflow-hidden rounded-md">
             <PersonImage name={person.name} slug={person.slug} />
           </div>
 
