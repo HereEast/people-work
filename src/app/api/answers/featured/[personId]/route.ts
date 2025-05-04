@@ -4,6 +4,7 @@ import { connectDB } from "~/lib/connectDB";
 import { AnswerDB, IAnswerDB } from "~/models/Answer";
 import { DBDoc } from "~/utils/types";
 import { mapAnswerBasicData } from "~/utils/mappers";
+import mongoose from "mongoose";
 
 interface ReqParams {
   params: { personId: string };
@@ -17,7 +18,7 @@ export async function GET(req: Request, { params }: ReqParams) {
     await connectDB();
 
     const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
-      personId,
+      personId: new mongoose.Types.ObjectId(personId),
       featured: true,
     }).exec();
 

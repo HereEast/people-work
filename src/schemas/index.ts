@@ -47,7 +47,7 @@ export const AnswerApiSchema = z.object({
   answer: z.string(),
   question: QuestionApiSchema,
   person: PersonApiSchema,
-  featured: z.boolean().optional(),
+  featured: z.boolean(),
   marked: z.boolean().optional(),
 });
 
@@ -58,6 +58,7 @@ export const AnswerBasicApiSchema = z.object({
   name: z.string(),
   question: z.string(),
   answer: z.string(),
+  featured: z.boolean(),
 });
 
 export type AnswerBasicData = z.infer<typeof AnswerBasicApiSchema>;

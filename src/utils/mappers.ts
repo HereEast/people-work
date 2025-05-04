@@ -46,6 +46,7 @@ export function mapAnswerBasicData(doc: DBDoc<IAnswerDB>) {
     name: data.name,
     question: data.question,
     answer: data.answer,
+    featured: data.featured || false,
   };
 
   return AnswerBasicApiSchema.parse(mapped);

@@ -6,7 +6,7 @@ import { QuoteIcon } from "./icons/QuoteIcon";
 import { PersonData } from "~/schemas";
 import {
   getAnswersByPersonSlug,
-  // getFeaturedAnswer,
+  getFeaturedAnswer,
 } from "~/api-client/answers";
 
 interface FeaturedCardProps {
@@ -14,10 +14,10 @@ interface FeaturedCardProps {
 }
 
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  // const featuredAnswer = await getFeaturedAnswer(person.id);
+  const featuredAnswer = await getFeaturedAnswer(person.id);
 
-  const answers = await getAnswersByPersonSlug(person.slug);
-  const featuredAnswer = answers?.find((a) => a.featured);
+  // const answers = await getAnswersByPersonSlug(person.slug);
+  // const featuredAnswer = answers?.find((a) => a.featured);
 
   if (!featuredAnswer) {
     return null;
