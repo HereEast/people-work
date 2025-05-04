@@ -50,23 +50,23 @@ const CompanySchema = new Schema(
   { _id: false },
 );
 
-const ContentMetaSchema = new Schema(
-  {
-    answers: {
-      featured: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Answer",
-        required: true,
-      },
-      marked: {
-        type: [mongoose.Schema.Types.ObjectId],
-        ref: "Answer",
-        required: true,
-      },
-    },
-  },
-  { _id: false },
-);
+// const ContentMetaSchema = new Schema(
+//   {
+//     answers: {
+//       featured: {
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: "Answer",
+//         required: true,
+//       },
+//       marked: {
+//         type: [mongoose.Schema.Types.ObjectId],
+//         ref: "Answer",
+//         required: true,
+//       },
+//     },
+//   },
+//   { _id: false },
+// );
 
 const PersonDBSchema = new Schema(
   {
@@ -79,7 +79,13 @@ const PersonDBSchema = new Schema(
     slug: { type: String, required: true, unique: true },
     keyWords: { type: [String], default: [] },
     isActive: { type: Boolean, required: true },
-    contentMeta: { type: ContentMetaSchema, required: true },
+    // featuredAnswer: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "Answer",
+    //   required: true,
+    // },
+    // markedAnswers
+    // contentMeta: { type: ContentMetaSchema, required: true },
   },
   { timestamps: true },
 );

@@ -34,12 +34,12 @@ export const PersonApiSchema = z.object({
     instagram: z.string().optional(),
   }),
   keyWords: z.array(z.string()).optional(),
-  contentMeta: z.object({
-    answers: z.object({
-      featured: z.string(),
-      marked: z.array(z.string()),
-    }),
-  }),
+  // contentMeta: z.object({
+  //   answers: z.object({
+  //     featured: z.string(),
+  //     marked: z.array(z.string()),
+  //   }),
+  // }),
   slug: z.string(),
   isActive: z.boolean(),
   createdAt: z.date(),
@@ -67,6 +67,8 @@ export const AnswerApiSchema = z.object({
   answer: z.string(),
   question: QuestionApiSchema,
   person: PersonApiSchema,
+  featured: z.boolean().optional(),
+  marked: z.boolean().optional(),
 });
 
 export type AnswerData = z.infer<typeof AnswerApiSchema>;
