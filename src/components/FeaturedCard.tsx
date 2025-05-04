@@ -14,7 +14,7 @@ interface FeaturedCardProps {
 }
 
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  const featuredAnswer = await getFeaturedAnswer(person.id);
+  const featuredAnswer = await getFeaturedAnswer(person.slug);
 
   // console.log(featuredAnswer);
 

@@ -4,20 +4,32 @@ import { connectDB } from "~/lib/connectDB";
 import { AnswerDB, IAnswerDB } from "~/models/Answer";
 import { DBDoc } from "~/utils/types";
 import { mapAnswerBasicData } from "~/utils/mappers";
+import { IPersonDB, PersonDB } from "~/models/Person";
 
 // GET FEATURED ANSWER
 interface ReqParams {
-  params: { personId: string };
+  params: { personSlug: string };
 }
 
 export async function GET(req: Request, { params }: ReqParams) {
-  const { personId } = params;
+  const { personSlug } = params;
 
   try {
     await connectDB();
 
+    const person: DBDoc<IPersonDB> = await PersonDB.findOne({
+      slug: personSlug,
+      isActive: true,
+    }).exec();
+
+    if (!person) {
+      return NextResponse.json("🔴 Failed to fetch a person.", {
+        status: 400,
+      });
+    }
+
     const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
-      personId,
+      personId: person._id,
       featured: true,
     }).exec();
 

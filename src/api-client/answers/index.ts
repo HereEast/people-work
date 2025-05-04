@@ -46,11 +46,11 @@ export async function getAnswersByQuestionSlug(
 
 // GET FEATURED ANSWER
 export async function getFeaturedAnswer(
-  personId: string,
+  personSlug: string,
 ): Promise<AnswerBasicData | null> {
   try {
     const response = await fetch(
-      `${BASE_URL}/api/answers/featured/${personId}`,
+      `${BASE_URL}/api/answers/featured/${personSlug}`,
     );
 
     if (!response.ok) {
