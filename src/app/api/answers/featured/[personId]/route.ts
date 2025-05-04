@@ -5,19 +5,20 @@ import { AnswerDB, IAnswerDB } from "~/models/Answer";
 import { DBDoc } from "~/utils/types";
 import { mapAnswerBasicData } from "~/utils/mappers";
 
-// GET ANSWER BY QUESTION ID and PERSON SLUG
-export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
+// GET FEATURED ANSWER
+interface ReqParams {
+  params: { personId: string };
+}
 
-  const questionId = searchParams.get("questionId");
-  const personId = searchParams.get("personId");
+export async function GET(req: Request, { params }: ReqParams) {
+  const { personId } = params;
 
   try {
     await connectDB();
 
     const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
-      questionId,
       personId,
+      featured: true,
     }).exec();
 
     if (!doc) {

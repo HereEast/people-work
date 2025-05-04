@@ -45,28 +45,21 @@ export async function getAnswersByQuestionSlug(
 }
 
 // GET FEATURED ANSWER
-interface FeaturedAnswerInput {
-  questionId: string;
-  personId: string;
-}
 export async function getFeaturedAnswer(
-  input: FeaturedAnswerInput,
+  personId: string,
 ): Promise<AnswerData | null> {
-  const url = new URL(`${BASE_URL}/api/answers/featured`);
-
-  url.searchParams.append("questionId", input.questionId);
-  url.searchParams.append("personId", input.personId);
-
   try {
-    const response = await fetch(url.toString());
+    const response = await fetch(
+      `${BASE_URL}/api/answers/featured/${personId}`,
+    );
 
     if (!response.ok) {
       throw new Error("🔴 Data fetch failed");
     }
 
-    const answers: AnswerData = await response.json();
+    const answer: AnswerData = await response.json();
 
-    return answers;
+    return answer;
   } catch (err) {
     handleError(err);
 

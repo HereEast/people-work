@@ -4,25 +4,14 @@ import { PersonImage } from "./PersonImage";
 import { QuoteIcon } from "./icons/QuoteIcon";
 
 import { PersonData } from "~/schemas";
-// import { getFeaturedAnswer } from "~/api-client/answers";
+import { getFeaturedAnswer } from "~/api-client/answers";
 
 interface FeaturedCardProps {
   person: PersonData;
 }
 
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  // const featuredId = person?.contentMeta?.answers?.featured;
-
-  // console.log({ person });
-
-  // if (!featuredId) {
-  //   return null;
-  // }
-
-  // const featuredAnswer = await getFeaturedAnswer({
-  //   personId: person.id,
-  //   questionId: person.contentMeta.answers.featured,
-  // });
+  const featuredAnswer = await getFeaturedAnswer(person.id);
 
   return (
     <div className="rounded-[40px] bg-stone-100 p-8 transition hover:bg-stone-100/50">
@@ -31,9 +20,9 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
           <div className="size-8">
             <QuoteIcon />
           </div>
-          {/* <p className="text-4xl font-medium leading-[120%]">
+          <p className="text-4xl font-medium leading-[120%]">
             {featuredAnswer?.answer}
-          </p> */}
+          </p>
         </div>
 
         <div className="flex items-end gap-6">

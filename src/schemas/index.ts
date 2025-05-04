@@ -34,32 +34,12 @@ export const PersonApiSchema = z.object({
     instagram: z.string().optional(),
   }),
   keyWords: z.array(z.string()).optional(),
-  // contentMeta: z.object({
-  //   answers: z.object({
-  //     featured: z.string(),
-  //     marked: z.array(z.string()),
-  //   }),
-  // }),
   slug: z.string(),
   isActive: z.boolean(),
   createdAt: z.date(),
 });
 
 export type PersonData = z.infer<typeof PersonApiSchema>;
-
-// export const PersonBasicApiSchema = z.object({
-//   id: z.string(),
-//   name: z.string(),
-//   company: z.object({
-//     name: z.string(),
-//     url: z.string(),
-//   }),
-//   jobTitle: z.string(),
-//   country: z.string(),
-//   slug: z.string(),
-// });
-
-// export type PersonBasicData = z.infer<typeof PersonBasicApiSchema>;
 
 // Answer
 export const AnswerApiSchema = z.object({

@@ -15,8 +15,6 @@ interface ReqParams {
 export async function GET(req: Request, { params }: ReqParams) {
   const { slug } = params;
 
-  console.log({ slug });
-
   try {
     await connectDB();
 

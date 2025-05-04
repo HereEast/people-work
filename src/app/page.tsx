@@ -16,8 +16,6 @@ export default async function HomePage() {
     notFound();
   }
 
-  console.log({ people });
-
   return (
     <PageContainer>
       <div className="my-20">
