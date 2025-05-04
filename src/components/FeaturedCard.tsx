@@ -4,26 +4,19 @@ import { PersonImage } from "./PersonImage";
 import { QuoteIcon } from "./icons/QuoteIcon";
 
 import { PersonData } from "~/schemas";
-import {
-  getAnswersByPersonSlug,
-  getFeaturedAnswer,
-} from "~/api-client/answers";
+import { getAnswersByPersonSlug } from "~/api-client/answers";
 
 interface FeaturedCardProps {
   person: PersonData;
 }
 
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  const data = await getFeaturedAnswer(person.slug);
+  const answers = await getAnswersByPersonSlug(person.slug);
+  const featuredAnswer = answers?.find((a) => a.featured);
 
-  // const answers = await getAnswersByPersonSlug(person.slug);
-  // const featuredAnswer = answers?.find((a) => a.featured);
-
-  if (!data) {
+  if (!featuredAnswer) {
     return null;
   }
-
-  const featuredAnswer = data[0];
 
   return (
     <div className="rounded-2xl bg-stone-100 p-8 transition hover:bg-stone-100/50">
