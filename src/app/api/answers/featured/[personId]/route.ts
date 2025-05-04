@@ -2,10 +2,8 @@ import { NextResponse } from "next/server";
 
 import { connectDB } from "~/lib/connectDB";
 import { AnswerDB, IAnswerDB } from "~/models/Answer";
-import { IQuestionDB, QuestionDB } from "~/models/Question";
-import { IPersonDB, PersonDB } from "~/models/Person";
 import { DBDoc } from "~/utils/types";
-import { mapAnswersData } from "~/utils/mappers";
+import { mapAnswerBasicData } from "~/utils/mappers";
 
 interface ReqParams {
   params: { personId: string };
@@ -18,27 +16,23 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const docs: DBDoc<IAnswerDB>[] = await AnswerDB.find({
+    const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
       personId,
       featured: true,
-    })
-      .populate("questionId")
-      .populate("personId")
-      .exec();
+    }).exec();
 
-    // if (!doc) {
-    //   return NextResponse.json(
-    //     { message: `🔴 Featured answer is not found for ID: ${personId}.` },
-    //     {
-    //       status: 404,
-    //     },
-    //   );
-    // }
+    if (!doc) {
+      return NextResponse.json(
+        { message: `🔴 Featured answer is not found for ID: ${personId}.` },
+        {
+          status: 404,
+        },
+      );
+    }
 
-    const answers = mapAnswersData(docs);
-    // const featuredAnswer = answers.find((item) => item.featured);
+    const answer = mapAnswerBasicData(doc);
 
-    return NextResponse.json(answers[0]);
+    return NextResponse.json(answer);
   } catch (err) {
     console.log(err);
 
