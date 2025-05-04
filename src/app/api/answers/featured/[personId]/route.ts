@@ -24,7 +24,12 @@ export async function GET(req: Request, { params }: ReqParams) {
     }).exec();
 
     if (!doc) {
-      return null;
+      return NextResponse.json(
+        { message: `🔴 Featured answer is not found for ID: ${personId}.` },
+        {
+          status: 404,
+        },
+      );
     }
 
     const featuredAnswer = mapAnswerBasicData(doc);
