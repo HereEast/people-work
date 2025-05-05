@@ -1,6 +1,6 @@
 import { PageContainer } from "~/components/PageContainer";
 import { Hero } from "~/components/(pages)/(home)";
-import { FeaturedCardList } from "~/components/FeaturedCard";
+// import { FeaturedCardList } from "~/components/FeaturedCard";
 import { Subscribe } from "~/components/Subscribe";
 
 import { getPeople } from "~/api-client/people";
@@ -21,11 +21,11 @@ export default async function HomePage() {
     <PageContainer>
       <Hero />
 
-      {featuredPeople && (
+      {/* {featuredPeople && (
         <div className="my-20">
           <FeaturedCardList people={featuredPeople} />
         </div>
-      )}
+      )} */}
 
       <div className="my-20">
         <Subscribe />

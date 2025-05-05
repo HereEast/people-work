@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { PageContainer } from "~/components/PageContainer";
 import { Content, PersonView } from "~/components/(pages)/(personQA)";
-import { FeaturedCardList } from "~/components/FeaturedCard";
+// import { FeaturedCardList } from "~/components/FeaturedCard";
 
 import { getPeople, getPerson } from "~/api-client/people";
 import { getAnswersByPersonSlug } from "~/api-client/answers";
@@ -62,7 +62,7 @@ export default async function PersonQAPage({ params }: PersonPageProps) {
           </h2>
         </div>
 
-        {recommendedPeople && <FeaturedCardList people={recommendedPeople} />}
+        {/* {recommendedPeople && <FeaturedCardList people={recommendedPeople} />} */}
       </div>
     </PageContainer>
   );
