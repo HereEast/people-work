@@ -44,29 +44,6 @@ export async function getAnswersByQuestionSlug(
   }
 }
 
-// GET FEATURED ANSWER
-export async function getFeaturedAnswer(
-  personId: string,
-): Promise<string | null> {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/api/answers/featured/${personId}`,
-    );
-
-    if (!response.ok) {
-      throw new Error("🔴 Fetching featured answer failed.");
-    }
-
-    const answers: string = await response.json();
-
-    return answers;
-  } catch (err) {
-    handleError(err);
-
-    return null;
-  }
-}
-
 // SUBMIT ANSWERS
 export interface IFormDataProps {
   questionId: string;

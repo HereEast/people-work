@@ -4,10 +4,7 @@ import { PersonImage } from "./PersonImage";
 import { QuoteIcon } from "./icons/QuoteIcon";
 
 import { PersonData } from "~/schemas";
-import {
-  getAnswersByPersonSlug,
-  getFeaturedAnswer,
-} from "~/api-client/answers";
+import { getAnswersByPersonSlug } from "~/api-client/answers";
 import { AccentText } from "./AccentText";
 
 // Featured list
@@ -33,11 +30,8 @@ interface FeaturedCardProps {
 }
 
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  // const answers = await getAnswersByPersonSlug(person.slug);
-  // const featuredAnswer = answers?.find((a) => a.featured);
-  const featuredAnswer = await getFeaturedAnswer(person.id);
-
-  console.log(featuredAnswer);
+  const answers = await getAnswersByPersonSlug(person.slug);
+  const featuredAnswer = answers?.find((a) => a.featured);
 
   if (!featuredAnswer) {
     return null;
@@ -51,8 +45,7 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
             <QuoteIcon />
           </div>
           <p className="text-2xl font-medium leading-[115%] md:text-4xl md:leading-[115%]">
-            {/* {featuredAnswer?.answer} */}
-            {featuredAnswer}
+            {featuredAnswer?.answer}
           </p>
         </div>
 
