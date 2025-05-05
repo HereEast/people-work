@@ -33,9 +33,9 @@ interface FeaturedCardProps {
 }
 
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  const answers = await getAnswersByPersonSlug(person.slug);
-  const featuredAnswer = answers?.find((a) => a.featured);
-  // const featuredAnswer = await getFeaturedAnswer(person.slug);
+  // const answers = await getAnswersByPersonSlug(person.slug);
+  // const featuredAnswer = answers?.find((a) => a.featured);
+  const featuredAnswer = await getFeaturedAnswer(person.id);
 
   if (!featuredAnswer) {
     return null;

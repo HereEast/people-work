@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/lib/connectDB";
@@ -18,10 +16,21 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
+    const doc: DBDoc<IAnswerDB> | null = await AnswerDB.findOne({
       personId,
       featured: true,
     }).exec();
+
+    if (!doc) {
+      return NextResponse.json(
+        {
+          message: `🔴 Featured answer for Person ID ${personId} is not found.`,
+        },
+        {
+          status: 404,
+        },
+      );
+    }
 
     const answer = mapAnswerBasicData(doc);
 
