@@ -51,9 +51,9 @@ interface QuestionProps {
 export function Question({ children }: QuestionProps) {
   return (
     <div>
-      <h5 className="text-4xl leading-[115%] text-stone-400/75">
+      <h3 className="text-4xl leading-[115%] text-stone-400/75">
         {children.body}
-      </h5>
+      </h3>
     </div>
   );
 }

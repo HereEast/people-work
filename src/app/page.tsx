@@ -1,8 +1,6 @@
-import { notFound } from "next/navigation";
-
-import { About } from "~/components/(pages)/(home)";
 import { PageContainer } from "~/components/PageContainer";
-import { FeaturedCard } from "~/components/FeaturedCard";
+import { Hero } from "~/components/(pages)/(home)";
+import { FeaturedCardList } from "~/components/FeaturedCard";
 import { Subscribe } from "~/components/Subscribe";
 
 import { getPeople } from "~/api-client/people";
@@ -14,21 +12,15 @@ export default async function HomePage() {
 
   return (
     <PageContainer>
-      <div className="mb-20 mt-10 sm:my-20">
-        <About />
-      </div>
+      <Hero />
 
       {featuredPeople && (
-        <div className="mb-20 gap-2 sm:columns-2 md:gap-6">
-          {featuredPeople.map((person, index) => (
-            <div className="mb-2 break-inside-avoid md:mb-6" key={index}>
-              <FeaturedCard person={person} />
-            </div>
-          ))}
+        <div className="my-20">
+          <FeaturedCardList people={featuredPeople} />
         </div>
       )}
 
-      <div className="mb-20">
+      <div className="my-20">
         <Subscribe />
       </div>
     </PageContainer>

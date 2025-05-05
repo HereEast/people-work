@@ -9,6 +9,7 @@ import { getAnswersByPersonSlug } from "~/api-client/answers";
 import { generatePersonMetadata } from "~/utils/metadata";
 import { PersonData } from "~/schemas";
 import { AccentText } from "~/components/AccentText";
+import { FeaturedCardList } from "~/components/FeaturedCard";
 
 interface PersonPageProps {
   params: {
@@ -39,6 +40,10 @@ export default async function PersonQAPage({ params }: PersonPageProps) {
   const person = await getPerson(slug);
   const answers = await getAnswersByPersonSlug(slug);
 
+  const people = await getPeople();
+  const filtered = people?.filter((p) => p.slug !== person?.slug);
+  const recommended = filtered?.slice(0, 2);
+
   if (!person || !answers) {
     notFound();
   }
@@ -53,7 +58,15 @@ export default async function PersonQAPage({ params }: PersonPageProps) {
         <Content data={answers} />
       </div>
 
-      <div className="py-20">Recommended</div>
+      <div className="mb-20 mt-24">
+        <div className="mb-6">
+          <h2 className="text-center text-4xl font-medium">
+            Check other cool people
+          </h2>
+        </div>
+
+        {recommended && <FeaturedCardList people={recommended} />}
+      </div>
     </PageContainer>
   );
 }
@@ -71,11 +84,11 @@ export function PersonView({ person }: PersonCardProps) {
       </div>
 
       <div className="space-y-1">
-        <h2 className="text-center">
+        <h1 className="text-center">
           <AccentText>{person.name}</AccentText>
-        </h2>
+        </h1>
 
-        <h3 className="text-4xl font-medium">{`${person.jobTitle} at ${person.company.name}`}</h3>
+        <h2 className="text-4xl font-medium">{`${person.jobTitle} at ${person.company.name}`}</h2>
       </div>
     </div>
   );

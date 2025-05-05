@@ -7,6 +7,24 @@ import { PersonData } from "~/schemas";
 import { getAnswersByPersonSlug } from "~/api-client/answers";
 import { AccentText } from "./AccentText";
 
+// Featured list
+interface FeaturedCardListProps {
+  people: PersonData[];
+}
+
+export async function FeaturedCardList({ people }: FeaturedCardListProps) {
+  return (
+    <div className="gap-2 sm:columns-2 md:gap-6">
+      {people.map((person, index) => (
+        <div className="mb-2 break-inside-avoid md:mb-6" key={index}>
+          <FeaturedCard person={person} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Featured card
 interface FeaturedCardProps {
   person: PersonData;
 }
