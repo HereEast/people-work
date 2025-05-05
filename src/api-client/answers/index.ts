@@ -7,7 +7,7 @@ export async function getAnswersByPersonSlug(
   slug: string,
 ): Promise<AnswerData[] | null> {
   try {
-    const response = await fetch(`${BASE_URL}/api/answers/test/${slug}`);
+    const response = await fetch(`${BASE_URL}/api/answers/person/${slug}`);
 
     if (!response.ok) {
       throw new Error("🔴 Fetching answers by Person slug failed.");
