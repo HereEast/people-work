@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { FilterQuery } from "mongoose";
 import { NextResponse } from "next/server";
 
