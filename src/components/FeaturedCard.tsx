@@ -34,7 +34,7 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
   const featuredAnswer = answers?.find((a) => a.featured);
 
   if (!featuredAnswer) {
-    return null;
+    return <div>Featured answer not found.</div>;
   }
 
   return (
