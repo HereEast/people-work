@@ -38,8 +38,8 @@ export default async function PersonQAPage({ params }: PersonPageProps) {
   const person = await getPerson(slug);
   const answers = await getAnswersByPersonSlug(slug);
 
-  const recommendedSlugs = getRandomSlugs();
-  const recommendedPeople = await getPeople(recommendedSlugs);
+  // const recommendedSlugs = getRandomSlugs();
+  const recommendedPeople = await getPeople();
 
   if (!person || !answers) {
     notFound();

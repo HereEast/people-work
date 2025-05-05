@@ -23,8 +23,6 @@ export default async function HomePage() {
   //   }),
   // );
 
-  console.log({ featuredPeople });
-
   return (
     <PageContainer>
       <Hero />
