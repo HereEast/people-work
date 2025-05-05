@@ -37,6 +37,8 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
   // const featuredAnswer = answers?.find((a) => a.featured);
   const featuredAnswer = await getFeaturedAnswer(person.id);
 
+  console.log(featuredAnswer);
+
   if (!featuredAnswer) {
     return null;
   }

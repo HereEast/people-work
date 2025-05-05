@@ -17,12 +17,12 @@ export async function GET(req: Request, { params }: ReqParams) {
   try {
     await connectDB();
 
-    const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
-      personId: new mongoose.Types.ObjectId(personId),
-      featured: true,
-    }).exec();
+    // const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
+    //   personId: new mongoose.Types.ObjectId(personId),
+    //   featured: true,
+    // }).exec();
 
-    const answer = mapAnswerBasicData(doc);
+    // const answer = mapAnswerBasicData(doc);
 
     return NextResponse.json("Hello");
   } catch (err) {
