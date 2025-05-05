@@ -53,8 +53,17 @@ export async function getFeaturedAnswer(
       `${BASE_URL}/api/answers/featured/${personId}`,
     );
 
+    // if (!response.ok) {
+    //   throw new Error("🔴 Fetching featured answer failed.");
+    // }
+
     if (!response.ok) {
-      throw new Error("🔴 Fetching featured answer failed.");
+      const errorJson = await response.json();
+
+      throw new Error(
+        `${errorJson.message}. Status: ${response.status}` ||
+          "🔴 Unknown error occurred.",
+      );
     }
 
     const answer: AnswerBasicData = await response.json();
