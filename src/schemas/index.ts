@@ -47,7 +47,7 @@ export const AnswerApiSchema = z.object({
   answer: z.string(),
   question: QuestionApiSchema,
   person: PersonApiSchema,
-  featured: z.boolean(),
+  featured: z.boolean().optional(),
   marked: z.boolean().optional(),
 });
 

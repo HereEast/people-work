@@ -39,9 +39,14 @@ export function mapQuestionsData(
 
 // Answers
 export function mapAnswerBasicData(doc: DBDoc<IAnswerDB>) {
+  const data = doc.toObject();
+
   const mapped = {
-    ...doc.toObject(),
-    id: doc._id.toString(),
+    id: data._id.toString(),
+    question: data.question,
+    answer: data.answer,
+    name: data.name,
+    featured: data.featured === true,
   };
 
   return AnswerBasicApiSchema.parse(mapped);
