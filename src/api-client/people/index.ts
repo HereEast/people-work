@@ -21,10 +21,16 @@ export async function getPerson(slug: string): Promise<PersonData | null> {
   }
 }
 
-// GET ALL PEOPLE
-export async function getPeople(): Promise<PersonData[] | null> {
+// GET PEOPLE
+export async function getPeople(
+  slugs?: string[],
+): Promise<PersonData[] | null> {
   try {
-    const response = await fetch(`${BASE_URL}/api/people`);
+    const searchParams = slugs
+      ? slugs.map((slug) => `slug=${encodeURIComponent(slug)}`).join("&")
+      : "";
+
+    const response = await fetch(`${BASE_URL}/api/people?${searchParams}`);
 
     if (!response.ok) {
       throw new Error("🔴 Failed to fetch all people.");

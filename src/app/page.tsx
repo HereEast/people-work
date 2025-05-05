@@ -7,8 +7,15 @@ import { getPeople } from "~/api-client/people";
 
 // Get people who are currently featured by ids/slugs
 
+export const featuredSlugs = [
+  "margo-laz",
+  "dennis-lazard",
+  "ivan-baranov",
+  "lara-simonova",
+];
+
 export default async function HomePage() {
-  const featuredPeople = await getPeople();
+  const featuredPeople = await getPeople(featuredSlugs);
 
   return (
     <PageContainer>
