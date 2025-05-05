@@ -38,15 +38,24 @@ export function mapQuestionsData(
 }
 
 // Answers
-export function mapAnswerBasicData(doc: DBDoc<IAnswerDB>) {
-  const data = doc.toObject();
+// export function mapAnswerBasicData(doc: DBDoc<IAnswerDB>) {
+//   const data = doc.toObject();
 
+//   const mapped = {
+//     id: data._id.toString(),
+//     name: data.name,
+//     question: data.question,
+//     answer: data.answer,
+//     featured: data.featured || false,
+//   };
+
+//   return AnswerBasicApiSchema.parse(mapped);
+// }
+
+export function mapAnswerBasicData(doc: DBDoc<IAnswerDB>) {
   const mapped = {
-    id: data._id.toString(),
-    name: data.name,
-    question: data.question,
-    answer: data.answer,
-    featured: data.featured || false,
+    ...doc.toObject(),
+    id: doc._id.toString(),
   };
 
   return AnswerBasicApiSchema.parse(mapped);
