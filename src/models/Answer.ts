@@ -37,6 +37,12 @@ const AnswerDBSchema = new Schema(
 
 export type AnswerDBType = IAnswerDB & Document;
 
-export const AnswerDB =
-  mongoose.models.Answer ||
-  model<AnswerDBType>("Answer", AnswerDBSchema, "answers");
+// export const AnswerDB =
+//   mongoose.models.Answer ||
+//   model<AnswerDBType>("Answer", AnswerDBSchema, "answers");
+
+export const AnswerDB = model<AnswerDBType>(
+  "Answer",
+  AnswerDBSchema,
+  "answers",
+);
