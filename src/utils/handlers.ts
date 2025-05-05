@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { ClassValue, clsx } from "clsx";
 
-import { featuredSlugs } from "~/app/page";
+import { featuredSlugs } from "./data/featured";
 
 // Get random slugs
 export function getRandomSlugs() {
