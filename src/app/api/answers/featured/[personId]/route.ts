@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
 import { connectDB } from "~/lib/connectDB";
@@ -9,7 +10,7 @@ interface ReqParams {
   params: { personId: string };
 }
 
-// GET ANSWERS BY SLUG
+// GET FEATURED ANSWER
 export async function GET(req: Request, { params }: ReqParams) {
   const { personId } = params;
 
@@ -17,13 +18,13 @@ export async function GET(req: Request, { params }: ReqParams) {
     await connectDB();
 
     const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne({
-      personId,
+      personId: new mongoose.Types.ObjectId(personId),
       featured: true,
     }).exec();
 
     const answer = mapAnswerBasicData(doc);
 
-    return NextResponse.json(answer);
+    return NextResponse.json("Hello");
   } catch (err) {
     console.log(err);
 

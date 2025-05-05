@@ -49,7 +49,8 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
             <QuoteIcon />
           </div>
           <p className="text-2xl font-medium leading-[115%] md:text-4xl md:leading-[115%]">
-            {featuredAnswer?.answer}
+            {/* {featuredAnswer?.answer} */}
+            {featuredAnswer}
           </p>
         </div>
 

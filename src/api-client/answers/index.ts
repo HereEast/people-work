@@ -47,17 +47,17 @@ export async function getAnswersByQuestionSlug(
 // GET FEATURED ANSWER
 export async function getFeaturedAnswer(
   personId: string,
-): Promise<AnswerBasicData | null> {
+): Promise<string | null> {
   try {
     const response = await fetch(
       `${BASE_URL}/api/answers/featured/${personId}`,
     );
 
     if (!response.ok) {
-      throw new Error("🔴 Fetching answers by Person slug failed.");
+      throw new Error("🔴 Fetching featured answer failed.");
     }
 
-    const answers: AnswerBasicData = await response.json();
+    const answers: string = await response.json();
 
     return answers;
   } catch (err) {
