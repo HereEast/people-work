@@ -32,7 +32,14 @@ export async function GET(req: Request, { params }: ReqParams) {
       );
     }
 
-    const answer = mapAnswerBasicData(doc);
+    // const answer = mapAnswerBasicData(doc);
+    const answer = {
+      id: "12345",
+      name: "John Snow",
+      question: "How are you?",
+      answer: "Good",
+      featured: true,
+    };
 
     return NextResponse.json(answer);
   } catch (err) {
