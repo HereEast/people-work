@@ -14,14 +14,14 @@ export default async function HomePage() {
 
   return (
     <PageContainer>
-      <div className="my-20">
+      <div className="mb-20 mt-10 sm:my-20">
         <About />
       </div>
 
       {featuredPeople && (
-        <div className="mb-24 columns-2 gap-6">
+        <div className="mb-20 gap-2 sm:columns-2 md:gap-6">
           {featuredPeople.map((person, index) => (
-            <div className="mb-6 break-inside-avoid" key={index}>
+            <div className="mb-2 break-inside-avoid md:mb-6" key={index}>
               <FeaturedCard person={person} />
             </div>
           ))}

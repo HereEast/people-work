@@ -5,9 +5,9 @@ import { ROUTE } from "~/utils/constants";
 
 export function Header() {
   return (
-    <header className="fixed z-50 w-full bg-stone-200 px-2 py-4 text-4xl font-medium sm:px-4">
+    <header className="fixed z-50 w-full bg-stone-200 p-2 text-lg font-medium sm:p-3 sm:text-2xl md:text-4xl">
       <nav className="flex w-full items-center justify-between gap-1">
-        <Button href={ROUTE.index} view="base-link" className="w-12">
+        <Button href={ROUTE.index} view="base-link" className="w-10 sm:w-12">
           <LogoIcon />
         </Button>
 

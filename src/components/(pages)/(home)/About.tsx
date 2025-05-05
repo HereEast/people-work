@@ -12,7 +12,7 @@ import { AccentText } from "~/components/AccentText";
 export function About() {
   return (
     <div className="w-full font-medium">
-      <span className="text-6xl leading-[110%]">
+      <span className="text-[36px] leading-[115%] md:text-6xl">
         Real people, <AccentText size="xl">real jobs</AccentText>. Brief Q&As
         that <AccentText size="xl">demystify titles</AccentText>, share
         routines, and explore what keeps them going.
@@ -21,7 +21,7 @@ export function About() {
           alt="Emoji of a red cat"
           width={600}
           height={600}
-          className="relative -top-1 inline-block size-[74px] object-contain pl-2 pr-2.5"
+          className="relative -top-0.5 ml-1 mr-2 inline-block size-10 object-contain leading-none md:size-[74px]"
           priority
         />
         <Button onClick={() => console.log("Subscribe.")}>

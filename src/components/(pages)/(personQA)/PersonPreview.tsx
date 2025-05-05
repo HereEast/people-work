@@ -10,7 +10,7 @@ interface PersonCardProps {
 
 export function PersonPreview({ person }: PersonCardProps) {
   return (
-    <div className="rounded-xxl relative bg-stone-950">
+    <div className="relative bg-stone-950">
       <div className="flex gap-4 p-3 xs:p-4">
         <div className="size-20 shrink-0 overflow-hidden rounded-md">
           <PersonImage name={person.name} slug={person.slug} />
@@ -24,13 +24,13 @@ export function PersonPreview({ person }: PersonCardProps) {
           <div className="text-left text-lg leading-none">
             <h3 className="mb-0.5 truncate">{person.jobTitle}</h3>
             <div className="group relative w-fit">
-              <Link
+              {/* <Link
                 href={person.company.url}
                 target="_blank"
                 className="underline decoration-1 underline-offset-2 transition hover:no-underline hover:opacity-50"
               >
                 {person.company.name}
-              </Link>
+              </Link> */}
 
               <LinkHoverIcon />
             </div>

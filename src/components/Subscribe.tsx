@@ -6,7 +6,7 @@ import { AccentText } from "./AccentText";
 
 export function Subscribe() {
   return (
-    <div className="flex flex-col items-center gap-6 text-4xl font-medium">
+    <div className="flex flex-col items-center gap-6 text-2xl font-medium md:text-4xl">
       <Image
         src="/images/emojis/cat-01.png"
         alt="Emoji of a red cat"
@@ -16,7 +16,7 @@ export function Subscribe() {
         priority
       />
 
-      <div className="flex flex-col items-center gap-1">
+      <div className="flex flex-col items-center leading-[120%]">
         <span>More people are coming!</span>
 
         <span>
