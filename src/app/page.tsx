@@ -15,7 +15,7 @@ export const featuredSlugs = [
 ];
 
 export default async function HomePage() {
-  const featuredPeople = await getPeople(featuredSlugs);
+  const featuredPeople = await getPeople();
   // const featuredPeople = await Promise.all(
   //   featuredSlugs.map(async (slug) => {
   //     const person = await getPerson(slug);
