@@ -46,10 +46,10 @@ export async function getAnswersByQuestionSlug(
 
 // GET FEATURED ANSWER
 export async function getFeaturedAnswer(
-  personSlug: string,
+  personId: string,
 ): Promise<AnswerBasicData | null> {
   try {
-    const response = await fetch(`${BASE_URL}/api/featured/${personSlug}`);
+    const response = await fetch(`${BASE_URL}/api/featured/${personId}`);
 
     if (!response.ok) {
       throw new Error("🔴 Fetching featured answer failed.");
