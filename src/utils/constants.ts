@@ -1,7 +1,7 @@
 export const BASE_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://people-work.net"
-    : "http://localhost:3000";
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://people-work.net";
 
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
