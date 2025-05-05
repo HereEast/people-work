@@ -1,4 +1,6 @@
-import { NextResponse } from "next/server";
+export const dynamic = "force-dynamic";
+
+import { NextResponse, NextRequest } from "next/server";
 
 import { connectDB } from "~/lib/connectDB";
 import { AnswerDB, IAnswerDB } from "~/models/Answer";
@@ -10,7 +12,7 @@ interface ReqParams {
 }
 
 // GET ANSWERS BY SLUG
-export async function GET(req: Request, { params }: ReqParams) {
+export async function GET(req: NextRequest, { params }: ReqParams) {
   const { id } = params;
 
   try {
@@ -32,14 +34,7 @@ export async function GET(req: Request, { params }: ReqParams) {
       );
     }
 
-    // const answer = mapAnswerBasicData(doc);
-    const answer = {
-      id: "12345",
-      name: "John Snow",
-      question: "How are you?",
-      answer: "Good",
-      featured: true,
-    };
+    const answer = mapAnswerBasicData(doc);
 
     return NextResponse.json(answer);
   } catch (err) {

@@ -15,7 +15,7 @@ interface FeaturedCardListProps {
   people: PersonData[];
 }
 
-export async function FeaturedCardList({ people }: FeaturedCardListProps) {
+export function FeaturedCardList({ people }: FeaturedCardListProps) {
   return (
     <div className="gap-2 sm:columns-2 md:gap-6">
       {people.map((person, index) => (
@@ -32,9 +32,10 @@ interface FeaturedCardProps {
   person: PersonData;
 }
 
+// const answers = await getAnswersByPersonSlug(person.slug);
+// const featuredAnswer = answers?.find((a) => a.featured);
+
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  // const answers = await getAnswersByPersonSlug(person.slug);
-  // const featuredAnswer = answers?.find((a) => a.featured);
   const featuredAnswer = await getFeaturedAnswer(person.id);
 
   if (!featuredAnswer) {
