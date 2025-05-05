@@ -3,13 +3,14 @@ import { notFound } from "next/navigation";
 import { PageContainer } from "~/components/PageContainer";
 import { PersonImage } from "~/components/PersonImage";
 import { Content } from "~/components/(pages)/(personQA)";
+import { AccentText } from "~/components/AccentText";
+import { FeaturedCardList } from "~/components/FeaturedCard";
 
 import { getPeople, getPerson } from "~/api-client/people";
 import { getAnswersByPersonSlug } from "~/api-client/answers";
 import { generatePersonMetadata } from "~/utils/metadata";
+import { getRandomSlugs } from "~/utils/handlers";
 import { PersonData } from "~/schemas";
-import { AccentText } from "~/components/AccentText";
-import { FeaturedCardList } from "~/components/FeaturedCard";
 
 interface PersonPageProps {
   params: {
@@ -40,9 +41,8 @@ export default async function PersonQAPage({ params }: PersonPageProps) {
   const person = await getPerson(slug);
   const answers = await getAnswersByPersonSlug(slug);
 
-  const people = await getPeople();
-  const filtered = people?.filter((p) => p.slug !== person?.slug);
-  const recommended = filtered?.slice(0, 2);
+  const recommendedSlugs = getRandomSlugs();
+  const recommendedPeople = await getPeople(recommendedSlugs);
 
   if (!person || !answers) {
     notFound();
@@ -65,7 +65,7 @@ export default async function PersonQAPage({ params }: PersonPageProps) {
           </h2>
         </div>
 
-        {recommended && <FeaturedCardList people={recommended} />}
+        {recommendedPeople && <FeaturedCardList people={recommendedPeople} />}
       </div>
     </PageContainer>
   );

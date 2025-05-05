@@ -1,6 +1,22 @@
 import { twMerge } from "tailwind-merge";
 import { ClassValue, clsx } from "clsx";
 
+import { featuredSlugs } from "~/app/page";
+
+// Get random slugs
+export function getRandomSlugs() {
+  if (featuredSlugs.length < 2) return [];
+
+  const first = Math.floor(Math.random() * featuredSlugs.length);
+  let second;
+
+  do {
+    second = Math.floor(Math.random() * featuredSlugs.length);
+  } while (second === first);
+
+  return [featuredSlugs[first], featuredSlugs[second]];
+}
+
 // Outer URL
 export function isOuterURL(url: string) {
   return url.startsWith("https");
