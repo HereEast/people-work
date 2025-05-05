@@ -4,7 +4,7 @@ import { cn } from "~/utils/handlers";
 
 interface AccentTextProps {
   children: ReactNode;
-  size: "xl" | "base" | "s";
+  size?: "xl" | "base" | "s";
   underline?: boolean;
   classname?: string;
 }

@@ -1,11 +1,16 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageContainer } from "~/components/PageContainer";
-import { PersonPreview, Content } from "~/components/(pages)/(personQA)";
+import { PersonImage } from "~/components/PersonImage";
+import { Content } from "~/components/(pages)/(personQA)";
+import { LinkHoverIcon } from "~/components/icons/LinkHoverIcon";
 
 import { getPeople, getPerson } from "~/api-client/people";
 import { getAnswersByPersonSlug } from "~/api-client/answers";
 import { generatePersonMetadata } from "~/utils/metadata";
+import { PersonData } from "~/schemas";
+import { AccentText } from "~/components/AccentText";
 
 interface PersonPageProps {
   params: {
@@ -41,16 +46,37 @@ export default async function PersonQAPage({ params }: PersonPageProps) {
   }
 
   return (
-    <PageContainer className="min-h-screen w-full max-w-full justify-between gap-10 bg-stone-200/75 px-0 pt-4 sm:pt-10 lg:flex">
-      <div className="mx-auto w-full space-y-16 lg:max-w-4xl">
-        <div className="grid gap-6 px-2">
-          <div className="rounded-b-xxl sticky top-[56px] z-10 w-full overflow-hidden bg-stone-100">
-            <PersonPreview person={person} />
-          </div>
-
-          <Content data={answers} />
+    <PageContainer>
+      <div className="grid grid-cols-2 gap-6">
+        <div className="sticky top-1/2 -translate-y-1/2 self-start">
+          <PersonView person={person} />
         </div>
+
+        <Content data={answers} />
       </div>
     </PageContainer>
+  );
+}
+
+// Person Preview
+interface PersonCardProps {
+  person: PersonData;
+}
+
+export function PersonView({ person }: PersonCardProps) {
+  return (
+    <div className="flex flex-col items-center gap-10">
+      <div className="size-[320px] overflow-hidden rounded-xl">
+        <PersonImage name={person.name} slug={person.slug} />
+      </div>
+
+      <div className="space-y-1">
+        <h2 className="text-center">
+          <AccentText>{person.name}</AccentText>
+        </h2>
+
+        <h3 className="text-4xl">{`${person.jobTitle} at ${person.company.name}`}</h3>
+      </div>
+    </div>
   );
 }
