@@ -13,7 +13,7 @@ export function Content({ data }: ContentProps) {
 
         return (
           <div
-            className="flex flex-col gap-10 border-b border-stone-400/50 py-10"
+            className="flex flex-col gap-6 border-b border-stone-400/45 py-10"
             key={index}
           >
             <Question>{question}</Question>
