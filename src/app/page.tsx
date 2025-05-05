@@ -15,7 +15,7 @@ export const featuredSlugs = [
 ];
 
 export default async function HomePage() {
-  const featuredPeople = await getPeople();
+  const featuredPeople = await getPeople(featuredSlugs);
 
   return (
     <PageContainer>

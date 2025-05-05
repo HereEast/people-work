@@ -12,26 +12,24 @@ export async function GET(req: Request) {
   try {
     await connectDB();
 
-    // const { searchParams } = new URL(req.url);
-    // const slugs = searchParams.getAll("slug");
+    const { searchParams } = new URL(req.url);
+    const slugs = searchParams.getAll("slug");
 
-    // const query: FilterQuery<IPersonDB> = { isActive: true };
+    const query: FilterQuery<IPersonDB> = { isActive: true };
 
-    // if (slugs.length > 0) {
-    //   query.slug = { $in: slugs };
-    // }
+    if (slugs.length > 0) {
+      query.slug = { $in: slugs };
+    }
 
-    const docs: DBDoc<IPersonDB>[] = await PersonDB.find({
-      isActive: true,
-    }).exec();
+    const docs: DBDoc<IPersonDB>[] = await PersonDB.find(query).exec();
 
     const people = mapPeopleData(docs) as PersonData[];
-    // const result =
-    //   slugs.length > 0
-    //     ? slugs.map((slug) => people.find((p) => p.slug === slug))
-    //     : people;
+    const result =
+      slugs.length > 0
+        ? slugs.map((slug) => people.find((p) => p.slug === slug))
+        : people;
 
-    return NextResponse.json(people);
+    return NextResponse.json(result);
   } catch (err) {
     console.log(err);
 

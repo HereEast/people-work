@@ -4,7 +4,10 @@ import { PersonImage } from "./PersonImage";
 import { QuoteIcon } from "./icons/QuoteIcon";
 
 import { PersonData } from "~/schemas";
-import { getAnswersByPersonSlug } from "~/api-client/answers";
+import {
+  getAnswersByPersonSlug,
+  getFeaturedAnswer,
+} from "~/api-client/answers";
 import { AccentText } from "./AccentText";
 
 // Featured list
@@ -30,11 +33,12 @@ interface FeaturedCardProps {
 }
 
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  const answers = await getAnswersByPersonSlug(person.slug);
-  const featuredAnswer = answers?.find((a) => a.featured);
+  // const answers = await getAnswersByPersonSlug(person.slug);
+  // const featuredAnswer = answers?.find((a) => a.featured);
+  const featuredAnswer = await getFeaturedAnswer(person.id);
 
   if (!featuredAnswer) {
-    return <div>Featured answer not found.</div>;
+    return null;
   }
 
   return (
