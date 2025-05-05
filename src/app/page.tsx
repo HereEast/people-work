@@ -24,17 +24,15 @@ export default async function HomePage() {
   //   }),
   // );
 
-  if (!featuredPeople) {
-    notFound();
-  }
-
   return (
     <PageContainer>
       <Hero />
 
-      <div className="my-20">
-        <FeaturedCardList people={featuredPeople} />
-      </div>
+      {featuredPeople && (
+        <div className="my-20">
+          <FeaturedCardList people={featuredPeople} />
+        </div>
+      )}
 
       <div className="my-20">
         <Subscribe />
