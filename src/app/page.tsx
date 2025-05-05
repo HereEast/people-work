@@ -4,6 +4,7 @@ import { FeaturedCardList } from "~/components/FeaturedCard";
 import { Subscribe } from "~/components/Subscribe";
 
 import { getPeople, getPerson } from "~/api-client/people";
+import { notFound } from "next/navigation";
 
 // Get people who are currently featured by ids/slugs
 
@@ -23,15 +24,17 @@ export default async function HomePage() {
   //   }),
   // );
 
+  if (!featuredPeople) {
+    notFound();
+  }
+
   return (
     <PageContainer>
       <Hero />
 
-      {featuredPeople && (
-        <div className="my-20">
-          <FeaturedCardList people={featuredPeople} />
-        </div>
-      )}
+      <div className="my-20">
+        <FeaturedCardList people={featuredPeople} />
+      </div>
 
       <div className="my-20">
         <Subscribe />
