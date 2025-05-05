@@ -34,9 +34,9 @@ export async function GET(req: Request, { params }: ReqParams) {
       featured: true,
     }).exec();
 
-    const answer = mapAnswerBasicData(doc);
+    // const answer = mapAnswerBasicData(doc);
 
-    return NextResponse.json(answer);
+    return NextResponse.json(doc);
   } catch (err) {
     console.log(err);
 
