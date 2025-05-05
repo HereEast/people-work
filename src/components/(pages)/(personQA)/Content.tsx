@@ -35,7 +35,7 @@ export async function Answer({ children }: AnswersProps) {
 
   return (
     <div
-      className="answer text-4xl font-medium leading-[125%]"
+      className="answer text-2xl font-medium leading-[125%] md:text-4xl"
       dangerouslySetInnerHTML={{
         __html: parsedHTML,
       }}
@@ -51,7 +51,7 @@ interface QuestionProps {
 export function Question({ children }: QuestionProps) {
   return (
     <div>
-      <h3 className="text-4xl leading-[115%] text-stone-400/75">
+      <h3 className="text-2xl font-medium leading-[115%] text-stone-400/75 md:text-4xl">
         {children.body}
       </h3>
     </div>
