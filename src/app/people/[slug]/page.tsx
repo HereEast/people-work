@@ -1,10 +1,8 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageContainer } from "~/components/PageContainer";
 import { PersonImage } from "~/components/PersonImage";
 import { Content } from "~/components/(pages)/(personQA)";
-import { LinkHoverIcon } from "~/components/icons/LinkHoverIcon";
 
 import { getPeople, getPerson } from "~/api-client/people";
 import { getAnswersByPersonSlug } from "~/api-client/answers";
@@ -47,13 +45,15 @@ export default async function PersonQAPage({ params }: PersonPageProps) {
 
   return (
     <PageContainer>
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid w-full grid-cols-2 gap-6">
         <div className="sticky top-1/2 -translate-y-1/2 self-start">
           <PersonView person={person} />
         </div>
 
         <Content data={answers} />
       </div>
+
+      <div className="py-20">Recommended</div>
     </PageContainer>
   );
 }
@@ -75,7 +75,7 @@ export function PersonView({ person }: PersonCardProps) {
           <AccentText>{person.name}</AccentText>
         </h2>
 
-        <h3 className="text-4xl">{`${person.jobTitle} at ${person.company.name}`}</h3>
+        <h3 className="text-4xl font-medium">{`${person.jobTitle} at ${person.company.name}`}</h3>
       </div>
     </div>
   );

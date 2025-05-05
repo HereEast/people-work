@@ -1,6 +1,5 @@
-import { Question, Answer } from "~/components/(pages)/(personQA)";
-
-import { AnswerData } from "~/schemas";
+import { AnswerData, QuestionData } from "~/schemas";
+import { parseMarkdown } from "~/utils/parseMarkdown";
 
 interface ContentProps {
   data: AnswerData[];
@@ -8,22 +7,53 @@ interface ContentProps {
 
 export function Content({ data }: ContentProps) {
   return (
-    <div className="space-y-12 text-xl md:rounded-4xl">
-      <div className="flex flex-col gap-1">
-        {data?.map((answer, index) => {
-          const question = answer.question;
+    <div className="flex flex-col">
+      {data?.map((answer, index) => {
+        const question = answer.question;
 
-          return (
-            <div
-              key={index}
-              className="flex grid-cols-[1.2fr_2fr] flex-col gap-10 rounded-xl bg-white p-5 py-6 md:grid md:gap-20 md:p-10"
-            >
-              <Question>{question}</Question>
-              <Answer>{answer}</Answer>
-            </div>
-          );
-        })}
-      </div>
+        return (
+          <div
+            className="flex flex-col gap-10 border-b border-stone-400/50 py-10"
+            key={index}
+          >
+            <Question>{question}</Question>
+            <Answer>{answer}</Answer>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// Answer
+interface AnswersProps {
+  children: AnswerData;
+}
+
+export async function Answer({ children }: AnswersProps) {
+  const parsedHTML = await parseMarkdown(children.answer);
+
+  return (
+    <div
+      className="answer text-4xl font-medium leading-[125%]"
+      dangerouslySetInnerHTML={{
+        __html: parsedHTML,
+      }}
+    />
+  );
+}
+
+// Question
+interface QuestionProps {
+  children: QuestionData;
+}
+
+export function Question({ children }: QuestionProps) {
+  return (
+    <div>
+      <h5 className="text-4xl leading-[115%] text-stone-400/75">
+        {children.body}
+      </h5>
     </div>
   );
 }

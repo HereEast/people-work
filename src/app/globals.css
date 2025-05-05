@@ -21,8 +21,6 @@ a {
     --gradient-color-1: #ffc814;
     --gradient-color-2: #ff185d;
     --gradient-color-3: #1e7fff;
-
-    /* --accent-font: "Mondwest"; */
   }
 }
 
@@ -38,12 +36,6 @@ a {
     background-clip: text;
     color: transparent;
   } */
-
-  .accent-xl {
-    font-family: "Mondwest";
-    font-size: 70px;
-    line-height: 50%;
-  }
 }
 
 /* Answer */
@@ -108,7 +100,3 @@ a {
   text-decoration-skip-ink: none;
   text-underline-offset: 3px;
 }
-
-/* .accent {
-  font-family: var(--font-accent);
-} */
