@@ -18,20 +18,20 @@ interface QuestionPageProps {
 }
 
 // METADATA
-export async function generateMetadata({ params }: QuestionPageProps) {
-  return generateQuestionMetadata(params.slug);
-}
+// export async function generateMetadata({ params }: QuestionPageProps) {
+//   return generateQuestionMetadata(params.slug);
+// }
 
 // PARAMS
-export async function generateStaticParams() {
-  const questions = await getQuestions();
+// export async function generateStaticParams() {
+//   const questions = await getQuestions();
 
-  return (
-    questions?.map((question) => ({
-      slug: question.slug,
-    })) || []
-  );
-}
+//   return (
+//     questions?.map((question) => ({
+//       slug: question.slug,
+//     })) || []
+//   );
+// }
 
 // PAGE
 export default async function QuestionAnswersPage({
@@ -39,19 +39,20 @@ export default async function QuestionAnswersPage({
 }: QuestionPageProps) {
   const { slug } = params;
 
-  const questions = await getQuestions();
-  const answers = await getAnswersByQuestionSlug(slug);
+  // const questions = await getQuestions();
+  // const answers = await getAnswersByQuestionSlug(slug);
 
-  if (!answers || !questions) {
-    notFound();
-  }
+  // if (!answers || !questions) {
+  //   notFound();
+  // }
 
-  const currentIndex = questions?.findIndex((item) => item.slug === slug);
-  const question = questions?.[currentIndex];
+  // const currentIndex = questions?.findIndex((item) => item.slug === slug);
+  // const question = questions?.[currentIndex];
 
   return (
     <PageContainer className="max-w-4xl">
-      <div className="mb-4">
+      {slug}
+      {/* <div className="mb-4">
         <Link
           href={`${BASE_URL}/questions`}
           className="underline hover:no-underline hover:opacity-50"
@@ -82,7 +83,7 @@ export default async function QuestionAnswersPage({
         })}
       </ul>
 
-      <QuestionsNav questions={questions} currentIndex={currentIndex} />
+      <QuestionsNav questions={questions} currentIndex={currentIndex} /> */}
     </PageContainer>
   );
 }
