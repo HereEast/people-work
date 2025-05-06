@@ -64,7 +64,7 @@ export default async function PersonQAPage({ params }: PersonPageProps) {
           </h2>
         </div>
 
-        {recommendedPeople && <FeaturedCardList people={recommendedPeople} />}
+        {/* {recommendedPeople && <FeaturedCardList people={recommendedPeople} />} */}
       </div>
     </PageContainer>
   );
