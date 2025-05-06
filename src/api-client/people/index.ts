@@ -5,7 +5,7 @@ import { PersonData } from "~/schemas";
 // GET PERSON BY SLUG
 export async function getPerson(slug: string): Promise<PersonData | null> {
   try {
-    const response = await fetch(`${BASE_URL}/api/people/${slug}`);
+    const response = await fetch(`${BASE_URL}/api/ppp/${slug}`);
 
     if (!response.ok) {
       throw new Error("🔴 Failed to fetch a person by slug.");
@@ -30,7 +30,7 @@ export async function getPeople(
       ? slugs.map((slug) => `slug=${encodeURIComponent(slug)}`).join("&")
       : "";
 
-    const response = await fetch(`${BASE_URL}/api/people?${searchParams}`);
+    const response = await fetch(`${BASE_URL}/api/ppp?${searchParams}`);
 
     if (!response.ok) {
       throw new Error("🔴 Failed to fetch all people.");

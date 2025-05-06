@@ -17,12 +17,12 @@ export function PersonDetails({ person }: PersonDetailsProps) {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <Link
+        {/* <Link
           href={`${BASE_URL}/people/${person.slug}`}
-          className="tracking-header w-fit font-semibold underline underline-offset-1 hover:no-underline hover:opacity-50"
+          className="w-fit font-semibold underline underline-offset-1 hover:no-underline hover:opacity-50"
         >
           {person.name}
-        </Link>
+        </Link> */}
         <span>{`${person.jobTitle}, ${person.company.name}`}</span>
       </div>
     </div>
