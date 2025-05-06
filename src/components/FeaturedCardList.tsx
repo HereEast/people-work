@@ -5,7 +5,7 @@ import { QuoteIcon } from "./icons/QuoteIcon";
 
 import { PersonData } from "~/schemas";
 import {
-  getAnswersByPersonSlug,
+  // getAnswersByPersonSlug,
   getFeaturedAnswer,
 } from "~/api-client/answers";
 import { AccentText } from "./AccentText";
