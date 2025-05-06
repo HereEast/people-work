@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 
 import { PageContainer } from "~/components/PageContainer";
-import { FeaturedCardList } from "~/components/FeaturedCardList";
+// import { FeaturedCardList } from "~/components/FeaturedCardList";
 import { Content, PersonView } from "~/components/(pages)/(personQA)";
 
 import { getPeople, getPerson } from "~/api-client/people";

@@ -2,7 +2,7 @@
 
 import { PageContainer } from "~/components/PageContainer";
 import { Hero } from "~/components/(pages)/(home)";
-import { FeaturedCardList } from "~/components/FeaturedCardList";
+// import { FeaturedCardList } from "~/components/FeaturedCardList";
 import { Subscribe } from "~/components/Subscribe";
 
 import { featuredSlugs } from "~/utils/data/featured";
@@ -15,11 +15,13 @@ export default async function HomePage() {
     <PageContainer>
       <Hero />
 
-      {featuredPeople && (
+      {featuredPeople?.map((p) => <div key={p.id}>{p.name}</div>)}
+
+      {/* {featuredPeople && (
         <div className="my-20">
           <FeaturedCardList people={featuredPeople} />
         </div>
-      )}
+      )} */}
 
       <div className="my-20">
         <Subscribe />
