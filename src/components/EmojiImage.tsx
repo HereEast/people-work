@@ -4,24 +4,20 @@ import { cn } from "~/utils/handlers";
 
 interface EmojiImageProps {
   name: string;
-  size: string;
-  description?: string;
+  classname?: string;
 }
 
-export function EmojiImage({ name, size, description }: EmojiImageProps) {
+export function EmojiImage({ name, classname }: EmojiImageProps) {
   const str = name.split("-").join(" ");
-  const alt = `${str[0].toUpperCase() + str.slice(1)}`;
+  const description = `${str[0].toUpperCase() + str.slice(1)}`;
 
   return (
     <Image
       src={`/images/emojis/${name}.png`}
-      alt={description || alt}
-      width={600}
-      height={600}
-      className={cn(
-        "object-contain",
-        isFinite(Number(size)) ? `size-${size}` : `size-[${size}]`,
-      )}
+      alt={description}
+      width={400}
+      height={400}
+      className={cn("object-contain", classname)}
       priority
     />
   );

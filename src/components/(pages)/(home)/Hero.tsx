@@ -1,12 +1,8 @@
 "use client";
 
-import Image from "next/image";
-
-import { AccentText } from "~/components/AccentText";
 import { Button } from "~/components/ui/Button";
-
-// Real people, real jobs. Brief Q&As that demystify titles, share routines, and explore what keeps them going.
-// Brief Q&As on roles, routines, and what keeps them going.
+import { AccentText } from "~/components/AccentText";
+import { EmojiImage } from "~/components/EmojiImage";
 
 export function Hero() {
   return (
@@ -16,13 +12,9 @@ export function Hero() {
           Real people, <AccentText size="xl">real jobs</AccentText>. Brief Q&As
           that <AccentText size="xl">demystify titles</AccentText>, share
           routines, and explore what keeps them going.
-          <Image
-            src="/images/emojis/cat-01.png"
-            alt="Emoji of a red cat"
-            width={600}
-            height={600}
-            className="relative -top-0.5 ml-1 mr-2 inline-block size-10 object-contain leading-none md:ml-2 md:mr-3 md:size-[74px]"
-            priority
+          <EmojiImage
+            name="red-cat-face"
+            classname="relative -top-0.5 ml-1 mr-2 inline-block size-10 object-contain leading-none md:ml-2 md:mr-3 md:size-[74px]"
           />
           <Button onClick={() => console.log("Subscribe.")}>
             <AccentText size="xl" underline>

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Button } from "./ui/Button";
 import { AccentText } from "./AccentText";
 import { EmojiImage } from "./EmojiImage";
@@ -8,7 +7,7 @@ import { EmojiImage } from "./EmojiImage";
 export function Subscribe() {
   return (
     <div className="flex flex-col items-center gap-6 text-2xl font-medium md:text-4xl">
-      <EmojiImage name="red-cat-face" size="20" />
+      <EmojiImage name="cool-goat" classname="size-40" />
 
       <div className="flex flex-col items-center leading-[120%]">
         <span>More people are coming!</span>
