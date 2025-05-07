@@ -1,9 +1,7 @@
-// export const dynamic = "force-dynamic";
-
 import { notFound } from "next/navigation";
 
 import { PageContainer } from "~/components/PageContainer";
-// import { FeaturedCardList } from "~/components/FeaturedCardList";
+import { FeaturedCardList } from "~/components/FeaturedCardList";
 import { Content, PersonView } from "~/components/(pages)/(personQA)";
 
 import { getPeople, getPerson } from "~/api-client/people";
@@ -66,7 +64,7 @@ export default async function PersonQAPage(props: PersonPageProps) {
           </h2>
         </div>
 
-        {/* {recommendedPeople && <FeaturedCardList people={recommendedPeople} />} */}
+        {recommendedPeople && <FeaturedCardList people={recommendedPeople} />}
       </div>
     </PageContainer>
   );
