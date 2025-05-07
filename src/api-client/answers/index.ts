@@ -1,5 +1,5 @@
+import { AnswerBasicData, AnswerData } from "~/schemas";
 import { BASE_URL } from "~/utils/constants";
-import { AnswerData } from "~/schemas";
 import { handleError } from "~/utils/handlers";
 
 // GET ANSWERS BY PERSON SLUG
@@ -37,6 +37,29 @@ export async function getAnswersByQuestionSlug(
     const answers: AnswerData[] = await response.json();
 
     return answers;
+  } catch (err) {
+    handleError(err);
+
+    return null;
+  }
+}
+
+// GET FEATURED ANSWER
+export async function getFeaturedAnswer(
+  personId: string,
+): Promise<AnswerBasicData | null> {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/answers/featured/${personId}`,
+    );
+
+    if (!response.ok) {
+      throw new Error("🔴 Fetching featured answer failed.");
+    }
+
+    const answer: AnswerBasicData = await response.json();
+
+    return answer;
   } catch (err) {
     handleError(err);
 
