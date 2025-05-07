@@ -15,7 +15,7 @@ export function Header() {
           All interviews
         </Button>
 
-        <Button href={ROUTE.people} view="base-link">
+        <Button href={ROUTE.about} view="base-link">
           About
         </Button>
       </nav>

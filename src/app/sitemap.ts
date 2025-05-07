@@ -8,13 +8,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const people = await getPeople();
   const questions = await getQuestions();
 
-  // const peopleSitemapData =
-  //   people?.map((person) => {
-  //     return {
-  //       url: `${BASE_URL}/people/${person.slug}`,
-  //       lastModified: new Date(),
-  //     };
-  //   }) || [];
+  const peopleSitemapData =
+    people?.map((person) => {
+      return {
+        url: `${BASE_URL}/people/${person.slug}`,
+        lastModified: new Date(),
+      };
+    }) || [];
 
   const questionsSitemapData =
     questions?.map((question) => {
@@ -30,10 +30,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     {
+      url: `${BASE_URL}/about`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${BASE_URL}/people`,
+      lastModified: new Date(),
+    },
+    {
       url: `${BASE_URL}/questions`,
       lastModified: new Date(),
     },
-    // ...peopleSitemapData,
+    ...peopleSitemapData,
     ...questionsSitemapData,
   ];
 }
