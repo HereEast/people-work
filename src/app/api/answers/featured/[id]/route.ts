@@ -6,11 +6,12 @@ import { DBDoc } from "~/utils/types";
 import { mapAnswerBasicData } from "~/utils/mappers";
 
 interface ReqParams {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 // GET ANSWERS BY SLUG
-export async function GET(req: NextRequest, { params }: ReqParams) {
+export async function GET(req: NextRequest, props: ReqParams) {
+  const params = await props.params;
   const { id } = params;
 
   try {
