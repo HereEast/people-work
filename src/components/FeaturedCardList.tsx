@@ -1,12 +1,12 @@
 import Link from "next/link";
 
+import { FeaturedCardWrapper } from "./FeaturedCardWrapper";
 import { PersonImage } from "./PersonImage";
 import { AccentText } from "./AccentText";
 import { QuoteIcon } from "./icons/QuoteIcon";
 
 import { PersonData } from "~/schemas";
 import { getFeaturedAnswer } from "~/api-client/answers";
-import { getFeaturedColor } from "~/utils/handlers";
 
 // Featured list
 interface FeaturedCardListProps {
@@ -37,13 +37,8 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
     return null;
   }
 
-  const featuredColor = getFeaturedColor(person.slug);
-
   return (
-    <div
-      className="featured-card rounded-2xl transition"
-      style={{ "--bg-color": featuredColor } as React.CSSProperties}
-    >
+    <FeaturedCardWrapper slug={person.slug}>
       <Link href={`/people/${person.slug}`} className="block p-6 md:p-8">
         <div className="mb-10 space-y-5">
           <div className="size-8">
@@ -67,6 +62,6 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
           </div>
         </div>
       </Link>
-    </div>
+    </FeaturedCardWrapper>
   );
 }

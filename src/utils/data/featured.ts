@@ -1,18 +1,18 @@
 export const FEATURED = [
   {
+    id: 0,
     slug: "margo-laz",
-    color: "#D1DCED",
   },
   {
+    id: 1,
     slug: "dennis-lazard",
-    color: "#CFF0EF",
   },
   {
+    id: 2,
     slug: "ivan-baranov",
-    color: "#DFE59A",
   },
   {
+    id: 3,
     slug: "lara-simonova",
-    color: "#F2D0D0",
   },
 ];

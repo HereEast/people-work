@@ -21,6 +21,15 @@ a {
     --gradient-color-1: #ffc814;
     --gradient-color-2: #ff185d;
     --gradient-color-3: #1e7fff;
+
+    --featured-0: #D1DCED;
+    --featured-1: #CFF0EF;
+    --featured-2: #DFE59A;
+    --featured-3: #F2D0D0;
+    --featured-hover-0: #c3d4ef;
+    --featured-hover-1: #b9ecea;
+    --featured-hover-2: #dee77c;
+    --featured-hover-3: #f0c2c2;
   }
 }
 
@@ -99,14 +108,4 @@ a {
   text-decoration-thickness: 2px;
   text-decoration-skip-ink: none;
   text-underline-offset: 3px;
-}
-
-/* Featured */
-.featured-card {
-  background-color: var(--bg-color);
-  transition: background-color 0.3s ease;
-}
-
-.featured-card:hover {
-  background-color: color-mix(in srgb, var(--bg-color) 5%, white);
 }
