@@ -1,5 +1,5 @@
-import { BASE_URL } from "~/utils/constants";
 import { AnswerBasicData, AnswerData } from "~/schemas";
+import { BASE_URL } from "~/utils/constants";
 import { handleError } from "~/utils/handlers";
 
 // GET ANSWERS BY PERSON SLUG

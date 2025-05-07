@@ -12,13 +12,14 @@ import { generatePersonMetadata } from "~/utils/metadata";
 import { getRandomSlugs } from "~/utils/handlers";
 
 interface PersonPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // METADATA
-export async function generateMetadata({ params }: PersonPageProps) {
+export async function generateMetadata(props: PersonPageProps) {
+  const params = await props.params;
   return generatePersonMetadata(params.slug);
 }
 
@@ -34,7 +35,8 @@ export async function generateStaticParams() {
 }
 
 // PAGE
-export default async function PersonQAPage({ params }: PersonPageProps) {
+export default async function PersonQAPage(props: PersonPageProps) {
+  const params = await props.params;
   const { slug } = params;
 
   const person = await getPerson(slug);

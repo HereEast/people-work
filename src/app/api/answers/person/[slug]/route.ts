@@ -8,11 +8,12 @@ import { DBDoc } from "~/utils/types";
 import { mapAnswersData } from "~/utils/mappers";
 
 interface ReqParams {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 // GET ANSWERS BY SLUG
-export async function GET(req: Request, { params }: ReqParams) {
+export async function GET(req: Request, props: ReqParams) {
+  const params = await props.params;
   const { slug } = params;
 
   try {

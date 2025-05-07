@@ -6,11 +6,12 @@ import { mapPeopleData } from "~/utils/mappers";
 import { DBDoc } from "~/utils/types";
 
 interface ReqParams {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 // GET PERSON BY SLUG
-export async function GET(req: Request, { params }: ReqParams) {
+export async function GET(req: Request, props: ReqParams) {
+  const params = await props.params;
   const slug = params.slug;
 
   try {

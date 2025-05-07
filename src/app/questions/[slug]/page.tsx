@@ -12,15 +12,16 @@ import { Answer } from "~/components/(pages)/(personQA)";
 import { BASE_URL } from "~/utils/constants";
 
 interface QuestionPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // METADATA
-// export async function generateMetadata({ params }: QuestionPageProps) {
-//   return generateQuestionMetadata(params.slug);
-// }
+export async function generateMetadata(props: QuestionPageProps) {
+  const params = await props.params;
+  return generateQuestionMetadata(params.slug);
+}
 
 // PARAMS
 // export async function generateStaticParams() {
@@ -34,9 +35,8 @@ interface QuestionPageProps {
 // }
 
 // PAGE
-export default async function QuestionAnswersPage({
-  params,
-}: QuestionPageProps) {
+export default async function QuestionAnswersPage(props: QuestionPageProps) {
+  const params = await props.params;
   const { slug } = params;
 
   // const questions = await getQuestions();
