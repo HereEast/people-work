@@ -1,6 +1,6 @@
 import { BASE_URL } from "~/utils/constants";
 import { AnswerBasicData, AnswerData } from "~/schemas";
-import { handleError } from "~/utils/handlers";
+import { getBaseUrl, handleError } from "~/utils/handlers";
 
 // GET ANSWERS BY PERSON SLUG
 export async function getAnswersByPersonSlug(
@@ -50,7 +50,7 @@ export async function getFeaturedAnswer(
 ): Promise<AnswerBasicData | null> {
   try {
     const response = await fetch(
-      `${BASE_URL}/api/answers/featured/${personId}`,
+      `${getBaseUrl()}/api/answers/featured/${personId}`,
     );
 
     if (!response.ok) {

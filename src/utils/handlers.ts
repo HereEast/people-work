@@ -3,6 +3,18 @@ import { ClassValue, clsx } from "clsx";
 
 import { featuredSlugs } from "./data/featured";
 
+// Base URL
+export function getBaseUrl() {
+  if (typeof window !== "undefined") return "";
+
+  if (process.env.VERCEL_URL) {
+    const url = process.env.VERCEL_URL;
+    return url.startsWith("localhost") ? `http://${url}` : `https://${url}`;
+  }
+
+  return "http://localhost:3000";
+}
+
 // Get random slugs
 export function getRandomSlugs() {
   if (featuredSlugs.length < 2) return [];
