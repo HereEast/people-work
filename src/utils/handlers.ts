@@ -4,28 +4,21 @@ import { ClassValue, clsx } from "clsx";
 import { FEATURED } from "./data/featured";
 
 // Featured slugs
-export function getFeaturedSlugs() {
-  return FEATURED.map((item) => item.slug);
-}
+export function getFeaturedSlugs(count?: number): string[] {
+  const slugs = FEATURED.map((item) => item.slug);
 
-// Featured color
-export function getFeaturedColor(slug: string) {
-  const featuredItem = FEATURED.find((item) => item.slug === slug);
-  return featuredItem?.color;
-}
+  if (!count || count >= slugs.length) {
+    return [...slugs];
+  }
 
-// Random 2 slugs
-export function getRandomSlugs() {
-  const slugs = getFeaturedSlugs();
+  const selected = new Set<string>();
 
-  const first = Math.floor(Math.random() * slugs.length);
-  let second;
+  while (selected.size < count) {
+    const randomSlug = slugs[Math.floor(Math.random() * slugs.length)];
+    selected.add(randomSlug);
+  }
 
-  do {
-    second = Math.floor(Math.random() * slugs.length);
-  } while (second === first);
-
-  return [slugs[first], slugs[second]];
+  return [...selected];
 }
 
 // Outer URL

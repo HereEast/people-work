@@ -7,7 +7,7 @@ import { Content, PersonView } from "~/components/(pages)/(personQA)";
 import { getPeople, getPerson } from "~/api-client/people";
 import { getAnswersByPersonSlug } from "~/api-client/answers";
 import { generatePersonMetadata } from "~/utils/metadata";
-import { getRandomSlugs } from "~/utils/handlers";
+import { getFeaturedSlugs } from "~/utils/handlers";
 
 interface PersonPageProps {
   params: Promise<{
@@ -40,7 +40,7 @@ export default async function PersonQAPage(props: PersonPageProps) {
   const person = await getPerson(slug);
   const answers = await getAnswersByPersonSlug(slug);
 
-  const recommendedSlugs = getRandomSlugs();
+  const recommendedSlugs = getFeaturedSlugs(2);
   const recommendedPeople = await getPeople(recommendedSlugs);
 
   if (!person || !answers) {
