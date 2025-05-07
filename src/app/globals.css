@@ -100,3 +100,13 @@ a {
   text-decoration-skip-ink: none;
   text-underline-offset: 3px;
 }
+
+/* Featured */
+.featured-card {
+  background-color: var(--bg-color);
+  transition: background-color 0.3s ease;
+}
+
+.featured-card:hover {
+  background-color: color-mix(in srgb, var(--bg-color) 5%, white);
+}

@@ -1,34 +1,31 @@
 import { twMerge } from "tailwind-merge";
 import { ClassValue, clsx } from "clsx";
 
-import { featuredSlugs } from "./data/featured";
+import { FEATURED } from "./data/featured";
 
-// Base URL
-// export function getBaseUrl() {
-//   if (typeof window !== "undefined") {
-//     return "";
-//   }
+// Featured slugs
+export function getFeaturedSlugs() {
+  return FEATURED.map((item) => item.slug);
+}
 
-//   if (process.env.VERCEL_URL) {
-//     const url = process.env.VERCEL_URL;
-//     return url.startsWith("localhost") ? `http://${url}` : `https://${url}`;
-//   }
+// Featured color
+export function getFeaturedColor(slug: string) {
+  const featuredItem = FEATURED.find((item) => item.slug === slug);
+  return featuredItem?.color;
+}
 
-//   return "http://localhost:3000";
-// }
-
-// Get random slugs
+// Random 2 slugs
 export function getRandomSlugs() {
-  if (featuredSlugs.length < 2) return [];
+  const slugs = getFeaturedSlugs();
 
-  const first = Math.floor(Math.random() * featuredSlugs.length);
+  const first = Math.floor(Math.random() * slugs.length);
   let second;
 
   do {
-    second = Math.floor(Math.random() * featuredSlugs.length);
+    second = Math.floor(Math.random() * slugs.length);
   } while (second === first);
 
-  return [featuredSlugs[first], featuredSlugs[second]];
+  return [slugs[first], slugs[second]];
 }
 
 // Outer URL
@@ -36,7 +33,7 @@ export function isOuterURL(url: string) {
   return url.startsWith("https");
 }
 
-// Get company URL
+// Company URL
 export function getCompanyURL(url: string) {
   return url?.startsWith("https") ? url : `https://${url}`;
 }
