@@ -52,11 +52,11 @@ a {
 .answer a {
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
+  text-underline-offset: 5px;
 }
 
 .answer a:hover {
-  opacity: 40%;
+  opacity: 25%;
   text-decoration: none;
 }
 

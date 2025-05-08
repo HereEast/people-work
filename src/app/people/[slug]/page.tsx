@@ -50,7 +50,7 @@ export default async function PersonQAPage(props: PersonPageProps) {
   return (
     <PageContainer>
       <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-2">
-        <div className="sticky top-11 self-start rounded-b-2xl bg-stone-200 md:top-14 lg:top-1/2 lg:-translate-y-1/2">
+        <div className="sticky top-12 self-start rounded-b-2xl bg-stone-200 md:top-14 lg:top-1/2 lg:-translate-y-1/2">
           <PersonView person={person} />
         </div>
 
@@ -58,7 +58,7 @@ export default async function PersonQAPage(props: PersonPageProps) {
       </div>
 
       <div className="mb-20 mt-24">
-        <div className="mb-6">
+        <div className="mb-10">
           <h2 className="text-center text-2xl font-medium md:text-4xl">
             Check other cool people
           </h2>

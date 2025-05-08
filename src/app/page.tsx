@@ -20,7 +20,7 @@ export default async function HomePage() {
         </div>
       )}
 
-      <div className="my-20">
+      <div className="mb-24 mt-20">
         <Subscribe />
       </div>
     </PageContainer>

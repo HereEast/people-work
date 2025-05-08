@@ -12,22 +12,18 @@ const config: Config = {
       screens: {
         xs: "420px",
         xl: "1280px",
-        "2xl": "1400px",
+        "2xl": "1440px",
       },
       maxWidth: {
         "8xl": "1440px",
+        "9xl": "1800px",
       },
       fontFamily: {
         base: ["var(--font-base)"],
         accent: ["var(--font-accent)"],
       },
       fontSize: {
-        "4xl": [
-          "32px",
-          {
-            lineHeight: "100%",
-          },
-        ],
+        "4xl": "36px",
       },
       letterSpacing: {
         text: "-0.02em",

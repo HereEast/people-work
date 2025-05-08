@@ -1,11 +1,11 @@
 import { LogoIcon } from "./icons";
 import { Button } from "./ui/Button";
 
-import { ROUTE } from "~/utils/constants";
+import { CONTACT, ROUTE } from "~/utils/constants";
 
 export function Header() {
   return (
-    <header className="fixed z-50 w-full bg-stone-200 p-2 text-lg font-medium sm:p-3 sm:text-2xl md:text-4xl">
+    <header className="fixed z-50 flex h-14 w-full items-center bg-stone-200 text-lg font-medium sm:px-6 sm:text-2xl md:text-4xl">
       <nav className="flex w-full items-center justify-between gap-1">
         <Button href={ROUTE.index} view="base-link" className="w-10 sm:w-12">
           <LogoIcon />
@@ -15,8 +15,8 @@ export function Header() {
           All interviews
         </Button>
 
-        <Button href={ROUTE.about} view="base-link">
-          About
+        <Button href={CONTACT.linkedin} target="_blank" view="base-link">
+          Linkedin
         </Button>
       </nav>
     </header>

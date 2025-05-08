@@ -47,6 +47,7 @@ export function mapAnswerBasicData(doc: DBDoc<IAnswerDB>) {
     answer: data.answer,
     name: data.name,
     featured: data.featured === true,
+    marked: data.marked === true,
   };
 
   return AnswerBasicApiSchema.parse(mapped);
@@ -62,8 +63,8 @@ export function mapAnswersData(docs: DBDoc<IAnswerDB>[]): AnswerData[] {
     return {
       id: String(data._id),
       answer: data.answer,
-      featured: data.featured || false,
-      marked: data.marked || false,
+      featured: data.featured === true,
+      marked: data.marked === true,
       question: {
         ...question,
         id: question._id.toString(),

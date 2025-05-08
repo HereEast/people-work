@@ -44,7 +44,7 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
           <div className="size-8">
             <QuoteIcon />
           </div>
-          <p className="text-2xl font-medium leading-[115%] md:text-4xl md:leading-[115%]">
+          <p className="text-xl font-medium leading-[115%] md:text-4xl md:leading-[115%]">
             {featuredAnswer?.answer}
           </p>
         </div>
@@ -54,7 +54,7 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
             <PersonImage name={person.name} slug={person.slug} />
           </div>
 
-          <div className="flex flex-col md:gap-1">
+          <div className="flex flex-col">
             <span className="text-lg font-medium leading-[110%] md:text-xl md:leading-[110%]">
               {`${person.jobTitle} at ${person.company.name}`}
             </span>

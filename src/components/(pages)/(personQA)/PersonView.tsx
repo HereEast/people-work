@@ -10,16 +10,23 @@ interface PersonViewProps {
 export function PersonView({ person }: PersonViewProps) {
   return (
     <div className="relative z-50 flex items-center gap-4 rounded-2xl bg-stone-100 p-5 lg:flex-col lg:gap-10 lg:bg-transparent">
-      <div className="size-20 shrink-0 overflow-hidden rounded-md lg:size-[320px] lg:rounded-xl">
+      <div className="size-20 shrink-0 overflow-hidden rounded-xl lg:size-[280px] lg:rounded-2xl">
         <PersonImage name={person.name} slug={person.slug} />
       </div>
 
-      <div className="lg:space-y-1">
+      <div className="text-center lg:space-y-1">
         <h1 className="lg:text-center">
           <AccentText>{person.name}</AccentText>
         </h1>
 
-        <h2 className="text-2xl font-medium leading-[100%] md:text-4xl">{`${person.jobTitle} at ${person.company.name}`}</h2>
+        <div className="space-y-1">
+          <h2 className="text-2xl font-medium leading-[100%] sm:text-4xl">
+            {person.jobTitle}
+          </h2>
+          <h3 className="text-2xl font-medium leading-[100%] sm:text-4xl">
+            {person.company.name}
+          </h3>
+        </div>
       </div>
     </div>
   );
