@@ -1,7 +1,6 @@
-import { AnswerData, QuestionData } from "~/schemas";
+import { AnswerData } from "~/schemas";
 import { parseMarkdown } from "~/utils/parseMarkdown";
 import { cn } from "~/utils/handlers";
-import { ReactNode } from "react";
 
 interface ContentProps {
   data: AnswerData[];
@@ -9,21 +8,25 @@ interface ContentProps {
 
 export function Content({ data }: ContentProps) {
   return (
-    <div className="flex flex-col gap-2">
-      {data?.map((answer, index) => {
-        const question = answer.question;
+    <div className="flex flex-col gap-1.5">
+      {data?.map((item, index) => {
+        const { question: q, answer, marked } = item;
+        const question = `—${q.body}`;
 
         return (
           <div
-            className="cursor-pointer space-y-8 rounded-lg bg-stone-50/75 p-6 transition hover:bg-stone-50 md:p-8"
+            className={cn(
+              "cursor-pointer space-y-4 rounded-lg bg-stone-50 p-4 transition hover:bg-stone-50 md:p-8",
+              marked && "space-y-8",
+            )}
             key={index}
           >
             <div className="space-y-8">
               <Question>{question}</Question>
-              <Answer>{answer}</Answer>
+              <Answer marked={marked}>{answer}</Answer>
             </div>
 
-            <QuestionTag>{question.slug}</QuestionTag>
+            {/* <QuestionTag>{q.slug}</QuestionTag> */}
           </div>
         );
       })}
@@ -33,17 +36,19 @@ export function Content({ data }: ContentProps) {
 
 // Answer
 interface AnswersProps {
-  children: AnswerData;
+  children: string;
+  marked?: boolean;
 }
 
-export async function Answer({ children }: AnswersProps) {
-  const parsedHTML = await parseMarkdown(children.answer);
+export async function Answer({ children, marked }: AnswersProps) {
+  const parsedHTML = await parseMarkdown(children);
 
   return (
     <div
       className={cn(
-        "answer text-2xl font-light leading-[120%] md:text-4xl md:leading-[120%]",
-        children.marked && "md:text-5xl",
+        "answer text-2xl leading-[125%] opacity-90 md:text-4xl md:leading-[125%]",
+        marked &&
+          "text-4xl font-medium tracking-[-0.04ch] md:text-5xl md:leading-[100%]",
       )}
       dangerouslySetInnerHTML={{
         __html: parsedHTML,
@@ -54,14 +59,14 @@ export async function Answer({ children }: AnswersProps) {
 
 // Question
 interface QuestionProps {
-  children: QuestionData;
+  children: string;
 }
 
 export function Question({ children }: QuestionProps) {
   return (
     <div>
-      <h3 className="text-2xl leading-[110%] text-stone-400/75 md:text-4xl">
-        {children.body}
+      <h3 className="text-2xl leading-[110%] text-stone-900/40 md:text-4xl md:leading-[110%]">
+        {children}
       </h3>
     </div>
   );
@@ -69,13 +74,25 @@ export function Question({ children }: QuestionProps) {
 
 // Tag
 interface QuestionTagProps {
-  children: ReactNode;
+  children: string;
 }
 
 function QuestionTag({ children }: QuestionTagProps) {
+  const tag = children?.split("-").join(" ");
+
   return (
-    <div className="w-fit rounded-[8px] bg-stone-900 px-4 py-1.5 text-xl text-stone-100">
-      {children}
+    <div className="flex h-10 w-fit items-center rounded-sm bg-stone-800 px-4 capitalize text-stone-50">
+      {tag}
     </div>
   );
 }
+
+// function QuestionTag({ children }: QuestionTagProps) {
+//   const tag = children?.split("-").join(" ");
+
+//   return (
+//     <div className="flex h-8 w-fit items-center rounded-[8px] border border-stone-800 px-3 text-stone-800 md:text-xl">
+//       {tag}
+//     </div>
+//   );
+// }

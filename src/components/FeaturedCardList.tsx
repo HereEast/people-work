@@ -15,9 +15,9 @@ interface FeaturedCardListProps {
 
 export function FeaturedCardList({ people }: FeaturedCardListProps) {
   return (
-    <div className="gap-2 sm:columns-2 md:gap-6">
+    <div className="gap-2 sm:columns-2 md:gap-4">
       {people.map((person, index) => (
-        <div className="mb-2 break-inside-avoid md:mb-6" key={index}>
+        <div className="mb-2 break-inside-avoid md:mb-4" key={index}>
           <FeaturedCard person={person} />
         </div>
       ))}

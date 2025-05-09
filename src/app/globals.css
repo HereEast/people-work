@@ -31,7 +31,7 @@ a {
     --featured-hover-2: #dee77c;
     --featured-hover-3: #f0c2c2;
 
-    --content-mb: 36px;
+    --content-mb: 28px;
   }
 }
 
@@ -54,11 +54,11 @@ a {
 .answer a {
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  text-underline-offset: 5px;
+  text-underline-offset: 4px;
 }
 
 .answer a:hover {
-  opacity: 25%;
+  opacity: 40%;
   text-decoration: none;
 }
 
@@ -73,7 +73,7 @@ a {
 
 .answer ul li {
   position: relative;
-  padding: 0px 0px 0px 24px;
+  padding: 0px 0px 0px 32px;
 }
 
 .answer ul li:not(:last-child) {
@@ -83,12 +83,12 @@ a {
 .answer ul li::before {
   content: "";
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   background-color: black;
   border-radius: 100%;
-  top: 1px;
-  left: 2px;
+  top: 15px;
+  left: 10px;
   z-index: 2;
 }
 
@@ -98,13 +98,13 @@ a {
   }
 
   .answer ul li::before {
-    top: 12px;
+    top: 14px;
   }
 }
 
 /* Lists headings */
 .answer h6:has(+ ul) {
-  margin-bottom: 12px;
+  margin-bottom: 4px;
   /* text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-thickness: 2px;

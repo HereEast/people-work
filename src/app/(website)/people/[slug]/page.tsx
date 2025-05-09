@@ -49,7 +49,7 @@ export default async function PersonQAPage(props: PersonPageProps) {
 
   return (
     <PageContainer>
-      <div className="grid w-full grid-cols-1 gap-6 pt-6 lg:grid-cols-2">
+      <div className="grid w-full grid-cols-1 gap-4 pt-6 lg:grid-cols-2">
         <PersonView person={person} />
         <Content data={answers} />
       </div>
