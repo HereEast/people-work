@@ -22,14 +22,16 @@ a {
     --gradient-color-2: #ff185d;
     --gradient-color-3: #1e7fff;
 
-    --featured-0: #D1DCED;
-    --featured-1: #CFF0EF;
-    --featured-2: #DFE59A;
-    --featured-3: #F2D0D0;
+    --featured-0: #d1dced;
+    --featured-1: #cff0ef;
+    --featured-2: #dfe59a;
+    --featured-3: #f2d0d0;
     --featured-hover-0: #c3d4ef;
     --featured-hover-1: #b9ecea;
     --featured-hover-2: #dee77c;
     --featured-hover-3: #f0c2c2;
+
+    --content-mb: 36px;
   }
 }
 
@@ -61,12 +63,12 @@ a {
 }
 
 .answer p:not(:last-child) {
-  margin-bottom: var(--answer-space-y);
+  margin-bottom: var(--content-mb);
 }
 
 /* Lists */
 .answer ul:not(:last-child) {
-  margin-bottom: var(--answer-space-y);
+  margin-bottom: var(--content-mb);
 }
 
 .answer ul li {
@@ -81,11 +83,11 @@ a {
 .answer ul li::before {
   content: "";
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   background-color: black;
   border-radius: 100%;
-  top: 8px;
+  top: 1px;
   left: 2px;
   z-index: 2;
 }
@@ -103,9 +105,9 @@ a {
 /* Lists headings */
 .answer h6:has(+ ul) {
   margin-bottom: 12px;
-  text-decoration: underline;
+  /* text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-thickness: 2px;
   text-decoration-skip-ink: none;
-  text-underline-offset: 3px;
+  text-underline-offset: 3px; */
 }

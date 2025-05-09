@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
 
-import "./globals.css";
+import "../globals.css";
 
 import { ClientProvider } from "~/providers/ClientProvider";
 
@@ -13,6 +13,9 @@ import { CookieBanner } from "~/components/CookieBanner";
 import { getMetadata } from "~/utils/metadata";
 import { InnovatorGrotesk, Mondwest } from "~/utils/fonts";
 
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+
 export const metadata: Metadata = getMetadata();
 
 interface RootLayoutProps {
@@ -23,13 +26,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
-      className={`${InnovatorGrotesk.className} ${Mondwest.variable} scroll-smooth`}
+      className={`${GeistSans.className} ${Mondwest.variable} scroll-smooth`}
     >
       <GoogleAnalytics />
 
       <body
         suppressHydrationWarning={true}
-        className="flex min-h-screen flex-col bg-stone-200 text-lg tracking-[-0.02ch]"
+        className="flex min-h-screen flex-col bg-stone-200 text-lg"
       >
         <ClientProvider>
           <Header />

@@ -14,7 +14,7 @@ export function Content({ data }: ContentProps) {
 
         return (
           <div
-            className="flex cursor-pointer flex-col gap-8 rounded-2xl bg-stone-100/75 p-8 pb-10 transition hover:bg-stone-100"
+            className="flex cursor-pointer flex-col gap-8 rounded-2xl bg-stone-100/75 p-8 transition hover:bg-stone-100"
             key={index}
           >
             <Question>{question}</Question>
@@ -75,7 +75,7 @@ interface QuestionProps {
 export function Question({ children }: QuestionProps) {
   return (
     <div>
-      <h3 className="text-2xl leading-[110%] text-stone-400 md:text-4xl">
+      <h3 className="text-lg font-medium leading-[110%] md:text-xl md:leading-[110%]">
         {children.body}
       </h3>
     </div>
