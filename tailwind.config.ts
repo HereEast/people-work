@@ -23,7 +23,8 @@ const config: Config = {
         accent: ["var(--font-accent)"],
       },
       fontSize: {
-        "4xl": "36px",
+        "4xl": ["32px", { lineHeight: "1.2" }],
+        "5xl": ["52px", { lineHeight: "1" }],
       },
       letterSpacing: {
         text: "-0.02em",

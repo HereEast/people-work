@@ -1,7 +1,6 @@
 import { AnswerData, QuestionData } from "~/schemas";
 import { parseMarkdown } from "~/utils/parseMarkdown";
 import { cn } from "~/utils/handlers";
-import { ReactNode } from "react";
 
 interface ContentProps {
   data: AnswerData[];
@@ -15,21 +14,37 @@ export function Content({ data }: ContentProps) {
 
         return (
           <div
-            className="cursor-pointer space-y-8 rounded-lg bg-stone-50/75 p-6 transition hover:bg-stone-50 md:p-8"
+            className="flex cursor-pointer flex-col gap-8 rounded-xl bg-stone-50/75 p-8 transition hover:bg-stone-50"
             key={index}
           >
-            <div className="space-y-8">
-              <Question>{question}</Question>
-              <Answer>{answer}</Answer>
-            </div>
-
-            <QuestionTag>{question.slug}</QuestionTag>
+            <Question>{question}</Question>
+            <Answer>{answer}</Answer>
           </div>
         );
       })}
     </div>
   );
 }
+
+// export function Content({ data }: ContentProps) {
+//   return (
+//     <div className="flex flex-col">
+//       {data?.map((answer, index) => {
+//         const question = answer.question;
+
+//         return (
+//           <div
+//             className="flex flex-col gap-6 border-b border-stone-400/45 py-10"
+//             key={index}
+//           >
+//             <Question>{question}</Question>
+//             <Answer>{answer}</Answer>
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// }
 
 // Answer
 interface AnswersProps {
@@ -60,22 +75,7 @@ interface QuestionProps {
 export function Question({ children }: QuestionProps) {
   return (
     <div>
-      <h3 className="text-2xl leading-[110%] text-stone-400/75 md:text-4xl">
-        {children.body}
-      </h3>
-    </div>
-  );
-}
-
-// Tag
-interface QuestionTagProps {
-  children: ReactNode;
-}
-
-function QuestionTag({ children }: QuestionTagProps) {
-  return (
-    <div className="w-fit rounded-[8px] bg-stone-900 px-4 py-1.5 text-xl text-stone-100">
-      {children}
+      <h3 className="text-4xl font-medium">{children.body}</h3>
     </div>
   );
 }

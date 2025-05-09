@@ -50,9 +50,11 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
         </div>
 
         <div className="flex items-end gap-3 sm:gap-6">
-          <div className="size-[70px] shrink-0 overflow-hidden rounded-md md:size-24">
-            <PersonImage name={person.name} slug={person.slug} />
-          </div>
+          <PersonImage
+            name={person.name}
+            slug={person.slug}
+            classname="size-[70px] md:size-24"
+          />
 
           <div className="flex flex-col">
             <span className="text-lg font-medium leading-[110%] md:text-xl md:leading-[110%]">

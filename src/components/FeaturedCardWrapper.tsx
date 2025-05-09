@@ -18,7 +18,7 @@ export function FeaturedCardWrapper({
 
   return (
     <div
-      className="rounded-2xl transition"
+      className="rounded-xl transition"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{

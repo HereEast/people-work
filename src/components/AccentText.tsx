@@ -19,7 +19,7 @@ export function AccentText({
     <span
       className={cn(
         // Base
-        "font-accent text-3xl leading-[80%] tracking-[-0.02ch] sm:text-[46px]",
+        "font-accent text-3xl leading-[80%] tracking-[-0.02ch] sm:text-[42px]",
         underline &&
           "offset underline decoration-2 underline-offset-2 hover:no-underline hover:opacity-30 sm:underline-offset-[3px]",
         // S

@@ -26,13 +26,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
-      className={`${GeistSans.className} ${Mondwest.variable} scroll-smooth`}
+      className={`${InnovatorGrotesk.className} ${Mondwest.variable} scroll-smooth`}
     >
       <GoogleAnalytics />
 
       <body
         suppressHydrationWarning={true}
-        className="flex min-h-screen flex-col bg-stone-200 text-lg"
+        className="flex min-h-screen flex-col bg-stone-200/75 text-lg"
       >
         <ClientProvider>
           <Header />

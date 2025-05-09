@@ -49,11 +49,8 @@ export default async function PersonQAPage(props: PersonPageProps) {
 
   return (
     <PageContainer>
-      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-2">
-        <div className="sticky top-12 self-start rounded-b-2xl bg-stone-200 md:top-14 lg:top-1/2 lg:-translate-y-1/2">
-          <PersonView person={person} />
-        </div>
-
+      <div className="grid w-full grid-cols-1 gap-6 pt-6 lg:grid-cols-2">
+        <PersonView person={person} />
         <Content data={answers} />
       </div>
 
@@ -68,4 +65,10 @@ export default async function PersonQAPage(props: PersonPageProps) {
       </div>
     </PageContainer>
   );
+}
+
+{
+  /* <div className="sticky top-12 self-start md:top-14 lg:top-1/2 lg:-translate-y-1/2">
+          <PersonView person={person} />
+        </div> */
 }
