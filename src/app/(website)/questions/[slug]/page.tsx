@@ -24,34 +24,35 @@ export async function generateMetadata(props: QuestionPageProps) {
 }
 
 // PARAMS
-export async function generateStaticParams() {
-  const questions = await getQuestions();
+// export async function generateStaticParams() {
+//   const questions = await getQuestions();
 
-  return (
-    questions?.map((question) => ({
-      slug: question.slug,
-    })) || []
-  );
-}
+//   return (
+//     questions?.map((question) => ({
+//       slug: question.slug,
+//     })) || []
+//   );
+// }
 
 // PAGE
 export default async function QuestionAnswersPage(props: QuestionPageProps) {
   const params = await props.params;
   const { slug } = params;
 
-  const questions = await getQuestions();
-  const answers = await getAnswersByQuestionSlug(slug);
+  // const questions = await getQuestions();
+  // const answers = await getAnswersByQuestionSlug(slug);
 
-  if (!answers || !questions) {
-    notFound();
-  }
+  // if (!answers || !questions) {
+  //   notFound();
+  // }
 
-  const currentIndex = questions?.findIndex((item) => item.slug === slug);
-  const question = questions?.[currentIndex];
+  // const currentIndex = questions?.findIndex((item) => item.slug === slug);
+  // const question = questions?.[currentIndex];
 
   return (
     <PageContainer className="max-w-4xl">
-      <div className="mb-4">
+      {slug}
+      {/* <div className="mb-4">
         <Link
           href={`${BASE_URL}/questions`}
           className="underline hover:no-underline hover:opacity-50"
@@ -62,7 +63,7 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
       </div>
 
       <div className="mb-10">
-        <h2 className="text-4xl font-extrabold tracking-header">
+        <h2 className="tracking-header text-4xl font-extrabold">
           {question.body}
         </h2>
       </div>
@@ -82,7 +83,7 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
         })}
       </ul>
 
-      <QuestionsNav questions={questions} currentIndex={currentIndex} />
+      <QuestionsNav questions={questions} currentIndex={currentIndex} /> */}
     </PageContainer>
   );
 }

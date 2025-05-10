@@ -36,7 +36,7 @@ export function SubscribeForm() {
     <Card className="rounded-3xl p-8 sm:p-10">
       {isSubscribed && (
         <div className="flex items-center justify-center">
-          <p className="w-fit bg-gradient-base bg-[length:250%] bg-clip-text text-center text-base text-transparent">
+          <p className="bg-gradient-base w-fit bg-[length:250%] bg-clip-text text-center text-base text-transparent">
             Thaaanks!!! You've successfully subscribed!
           </p>
         </div>

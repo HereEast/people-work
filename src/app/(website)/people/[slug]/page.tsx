@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
 
 import { PageContainer } from "~/components/PageContainer";
-import { PersonPreview, Content } from "~/components/(pages)/(personQA)";
+import { FeaturedList } from "~/components/FeaturedList";
+import { Content, PersonView } from "~/components/(pages)/(personQA)";
 
 import { getPeople, getPerson } from "~/api-client/people";
 import { getAnswersByPersonSlug } from "~/api-client/answers";
 import { generatePersonMetadata } from "~/utils/metadata";
+import { getFeaturedSlugs } from "~/utils/handlers";
 
 interface PersonPageProps {
   params: Promise<{
@@ -38,20 +40,28 @@ export default async function PersonQAPage(props: PersonPageProps) {
   const person = await getPerson(slug);
   const answers = await getAnswersByPersonSlug(slug);
 
+  const recommendedSlugs = getFeaturedSlugs(2);
+  const recommendedPeople = await getPeople(recommendedSlugs);
+
   if (!person || !answers) {
     notFound();
   }
 
   return (
-    <PageContainer className="min-h-screen w-full max-w-full justify-between gap-10 bg-stone-200/75 px-0 pt-4 sm:pt-10 lg:flex">
-      <div className="mx-auto w-full space-y-16 lg:max-w-4xl">
-        <div className="grid gap-6 px-2">
-          <div className="sticky top-[56px] z-10 w-full overflow-hidden rounded-b-xxl bg-stone-100">
-            <PersonPreview person={person} />
-          </div>
+    <PageContainer>
+      <div className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
+        <PersonView person={person} />
+        <Content data={answers} />
+      </div>
 
-          <Content data={answers} />
+      <div className="mb-20 mt-24">
+        <div className="mb-10">
+          <h2 className="text-center text-2xl font-medium md:text-4xl">
+            Check other cool people
+          </h2>
         </div>
+
+        {recommendedPeople && <FeaturedList people={recommendedPeople} />}
       </div>
     </PageContainer>
   );

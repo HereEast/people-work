@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
 
-import "./globals.css";
+import "../globals.css";
 
 import { ClientProvider } from "~/providers/ClientProvider";
 
@@ -23,18 +23,18 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
-      className={`${InnovatorGrotesk.variable} ${Mondwest.variable} scroll-smooth`}
+      className={`${InnovatorGrotesk.className} ${Mondwest.variable} scroll-smooth`}
     >
       <GoogleAnalytics />
 
       <body
         suppressHydrationWarning={true}
-        className="flex min-h-screen flex-col text-lg"
+        className="flex min-h-screen flex-col bg-stone-200 text-lg"
       >
         <ClientProvider>
           <Header />
 
-          <main className="mt-[56px] flex h-full grow">{children}</main>
+          <main className="mt-12 flex h-full grow md:mt-14">{children}</main>
 
           <Footer />
         </ClientProvider>

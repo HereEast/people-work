@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { ArrowRightFull } from "~/components/icons";
 import { Card } from "~/components/Card";
 import { Button } from "~/components/ui/Button";
 import { Input } from "~/components/ui/Input";
@@ -45,7 +44,7 @@ export function ShareForm({ className = "" }: ShareFormCardProps) {
   return (
     <Card className={cn("min-h-[420px] p-8 pt-10 sm:p-10", className)}>
       <div id="share" className={cn("mb-16 grow", submittedName && "mb-10")}>
-        <h5 className="text-center text-4xl font-extrabold leading-[95%] tracking-header text-stone-50 sm:text-5xl">
+        <h5 className="tracking-header text-center text-4xl font-extrabold leading-[95%] text-stone-50 sm:text-5xl">
           Know anyone cool who does amazing work✨?
         </h5>
       </div>
@@ -74,13 +73,11 @@ export function ShareForm({ className = "" }: ShareFormCardProps) {
 
           <Button
             isDisabled={isSubmitting}
-            view="animated"
             className="flex h-20 w-full items-center gap-1.5"
           >
             <span className="transition duration-300 group-hover/button:-translate-x-0.5">
               share the name
             </span>
-            <ArrowRightFull className="w-4 text-white transition duration-200 group-hover/button:translate-x-0.5" />
           </Button>
         </div>
       </form>

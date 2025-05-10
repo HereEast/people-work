@@ -1,20 +1,14 @@
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 import { cn } from "~/utils/handlers";
 
-interface CardProps {
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-  className?: string;
 }
 
-export function Card({ children, className = "" }: CardProps) {
+export function Card({ children, className = "", ...rest }: CardProps) {
   return (
-    <div
-      className={cn(
-        "relative flex max-w-full flex-col overflow-hidden rounded-6xl bg-stone-950",
-        className,
-      )}
-    >
+    <div className={cn("rounded-xl transition", className)} {...rest}>
       {children}
     </div>
   );
