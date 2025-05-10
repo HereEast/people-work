@@ -8,22 +8,22 @@ interface ContentProps {
 
 export function Content({ data }: ContentProps) {
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-1.5 pb-10">
       {data?.map((item, index) => {
-        const { question: q, answer, marked } = item;
+        const { question: q, answer, marked, featured } = item;
         const question = `—${q.body}`;
 
         return (
           <div
             className={cn(
-              "cursor-pointer space-y-4 rounded-lg bg-stone-50 p-4 transition hover:bg-stone-50 md:p-8",
-              marked && "space-y-8",
+              "cursor-pointer space-y-4 rounded-lg bg-stone-50 p-5 transition hover:bg-stone-50 md:p-8",
+              (marked || featured) && "space-y-8",
             )}
             key={index}
           >
-            <div className="space-y-8">
+            <div className="space-y-6">
               <Question>{question}</Question>
-              <Answer marked={marked}>{answer}</Answer>
+              <Answer marked={marked || featured}>{answer}</Answer>
             </div>
 
             {/* <QuestionTag>{q.slug}</QuestionTag> */}
@@ -46,9 +46,9 @@ export async function Answer({ children, marked }: AnswersProps) {
   return (
     <div
       className={cn(
-        "answer text-2xl leading-[125%] opacity-90 md:text-4xl md:leading-[125%]",
+        "answer text-xl leading-[125%] opacity-90 md:text-4xl md:leading-[125%]",
         marked &&
-          "text-4xl font-medium tracking-[-0.04ch] md:text-5xl md:leading-[100%]",
+          "text-3xl font-medium leading-[105%] tracking-[-0.03ch] md:text-5xl md:leading-[100%] md:tracking-[-0.04ch]",
       )}
       dangerouslySetInnerHTML={{
         __html: parsedHTML,
@@ -65,7 +65,7 @@ interface QuestionProps {
 export function Question({ children }: QuestionProps) {
   return (
     <div>
-      <h3 className="text-2xl leading-[110%] text-stone-900/40 md:text-4xl md:leading-[110%]">
+      <h3 className="text-[19px] leading-[115%] text-stone-900/40 md:text-[30px] md:leading-[110%]">
         {children}
       </h3>
     </div>
@@ -86,13 +86,3 @@ function QuestionTag({ children }: QuestionTagProps) {
     </div>
   );
 }
-
-// function QuestionTag({ children }: QuestionTagProps) {
-//   const tag = children?.split("-").join(" ");
-
-//   return (
-//     <div className="flex h-8 w-fit items-center rounded-[8px] border border-stone-800 px-3 text-stone-800 md:text-xl">
-//       {tag}
-//     </div>
-//   );
-// }

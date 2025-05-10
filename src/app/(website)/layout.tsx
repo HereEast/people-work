@@ -13,9 +13,6 @@ import { CookieBanner } from "~/components/CookieBanner";
 import { getMetadata } from "~/utils/metadata";
 import { InnovatorGrotesk, Mondwest } from "~/utils/fonts";
 
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
-
 export const metadata: Metadata = getMetadata();
 
 interface RootLayoutProps {
@@ -37,7 +34,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <ClientProvider>
           <Header />
 
-          <main className="mt-14 flex h-full grow">{children}</main>
+          <main className="mt-12 flex h-full grow md:mt-14">{children}</main>
 
           <Footer />
         </ClientProvider>
