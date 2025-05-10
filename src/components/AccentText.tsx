@@ -6,14 +6,14 @@ interface AccentTextProps {
   children: ReactNode;
   size?: "xl" | "base" | "s";
   underline?: boolean;
-  classname?: string;
+  className?: string;
 }
 
 export function AccentText({
   children,
   size = "base",
   underline = false,
-  classname = "",
+  className = "",
 }: AccentTextProps) {
   return (
     <span
@@ -29,7 +29,7 @@ export function AccentText({
         size === "xl" &&
           underline &&
           "underline decoration-[3px] underline-offset-[5px] hover:no-underline hover:opacity-30",
-        classname,
+        className,
       )}
     >
       {children}

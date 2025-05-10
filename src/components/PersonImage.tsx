@@ -12,7 +12,7 @@ export function PersonImage({ name, slug, classname = "" }: PersonImageProps) {
   return (
     <div
       className={cn(
-        "inline-block size-40 shrink-0 overflow-hidden rounded-md",
+        "inline-block size-[70px] shrink-0 overflow-hidden rounded-md",
         classname,
       )}
     >

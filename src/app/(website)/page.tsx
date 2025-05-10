@@ -1,6 +1,6 @@
 import { PageContainer } from "~/components/PageContainer";
 import { Hero } from "~/components/(pages)/(home)";
-import { FeaturedCardList } from "~/components/FeaturedCardList";
+import { FeaturedList } from "~/components/FeaturedList";
 import { Subscribe } from "~/components/Subscribe";
 
 import { getFeaturedSlugs } from "~/utils/handlers";
@@ -16,7 +16,7 @@ export default async function HomePage() {
 
       {featuredPeople && (
         <div className="my-20">
-          <FeaturedCardList people={featuredPeople} />
+          <FeaturedList people={featuredPeople} />
         </div>
       )}
 

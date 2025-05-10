@@ -30,12 +30,10 @@ const config: Config = {
         text: "-0.02em",
       },
       borderRadius: {
-        "4xl": "60px",
-        "3xl": "50px",
-        "2xl": "40px",
-        xl: "30px",
-        lg: "25px",
-        md: "20px",
+        xxl: "30px",
+        xl: "25px",
+        lg: "20px",
+        md: "15px",
         sm: "10px",
       },
       colors: {

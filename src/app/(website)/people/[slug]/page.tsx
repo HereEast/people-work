@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { PageContainer } from "~/components/PageContainer";
-import { FeaturedCardList } from "~/components/FeaturedCardList";
+import { FeaturedList } from "~/components/FeaturedList";
 import { Content, PersonView } from "~/components/(pages)/(personQA)";
 
 import { getPeople, getPerson } from "~/api-client/people";
@@ -61,14 +61,8 @@ export default async function PersonQAPage(props: PersonPageProps) {
           </h2>
         </div>
 
-        {recommendedPeople && <FeaturedCardList people={recommendedPeople} />}
+        {recommendedPeople && <FeaturedList people={recommendedPeople} />}
       </div>
     </PageContainer>
   );
-}
-
-{
-  /* <div className="sticky top-12 self-start md:top-14 lg:top-1/2 lg:-translate-y-1/2">
-          <PersonView person={person} />
-        </div> */
 }
