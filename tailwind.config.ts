@@ -37,7 +37,7 @@ const config: Config = {
         sm: "10px",
       },
       colors: {
-        back: "#eaeaea",
+        // back: "#eaeaea",
       },
     },
   },

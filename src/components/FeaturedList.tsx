@@ -58,14 +58,14 @@ export async function FeaturedPersonItem({ person }: FeaturedCardProps) {
             classname="md:size-24"
           />
 
-          <div className="flex flex-col sm:gap-1">
+          <div className="flex flex-col sm:gap-0.5">
             <AccentText size="s">{person.name}</AccentText>
 
             <div className="flex flex-col">
               {data.map((item, index) => (
                 <span
                   key={index}
-                  className="text-xl font-medium leading-[105%] md:text-xl md:leading-[110%]"
+                  className="text-lg font-medium leading-[105%] md:text-xl md:leading-[110%]"
                 >
                   {item}
                 </span>

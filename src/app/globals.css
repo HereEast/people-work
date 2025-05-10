@@ -54,10 +54,11 @@ a {
 .answer a {
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
-  text-underline-offset: 1.5px;
+  text-underline-offset: 2.5px;
 }
 
-.marked a {
+.featured-answer a {
+  text-decoration-thickness: 2.5px;
   text-underline-offset: 4px;
 }
 
@@ -77,7 +78,7 @@ a {
 
 .answer ul li {
   position: relative;
-  padding: 0px 0px 0px 18px;
+  padding: 0px 0px 0px 20px;
 }
 
 .answer ul li:not(:last-child) {
@@ -87,11 +88,11 @@ a {
 .answer ul li::before {
   content: "";
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   background-color: black;
   border-radius: 100%;
-  top: 7px;
+  top: 8px;
   left: 2px;
   z-index: 2;
 }

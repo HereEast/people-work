@@ -58,10 +58,10 @@ export function PersonView({ person }: PersonViewProps) {
 
       {/* Mobile */}
       <div className="sticky top-12 z-40 -mx-2 mb-4 md:hidden">
-        <div className="flex gap-3 bg-stone-100 p-2">
+        <div className="flex gap-3 bg-stone-300 p-2">
           <PersonImage name={person.name} slug={person.slug} />
 
-          <div className="relative -top-px -space-y-1">
+          <div className="relative -top-px">
             <h1>
               <AccentText size="s">{person.name}</AccentText>
             </h1>
