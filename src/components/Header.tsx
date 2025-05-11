@@ -8,7 +8,8 @@ export function Header() {
     <header className="fixed z-50 flex h-12 w-full items-center bg-stone-200 px-2 text-lg sm:px-6 sm:text-2xl md:h-14 md:text-4xl">
       <nav className="flex w-full items-center justify-between gap-1">
         <Button href={ROUTE.index} view="base-link" className="w-10 sm:w-12">
-          <LogoIcon />
+          {/* <LogoIcon /> */}
+          PW
         </Button>
 
         <Button

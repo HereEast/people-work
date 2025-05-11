@@ -4,7 +4,7 @@
 
 body {
   box-sizing: border-box;
-  letter-spacing: -0.01ch;
+  letter-spacing: -0.001ch;
 }
 
 li {
@@ -31,7 +31,7 @@ a {
     --featured-hover-2: #dee77c;
     --featured-hover-3: #f0c2c2;
 
-    --content-mb: 24px;
+    --content-mb: 32px;
   }
 }
 
@@ -125,5 +125,11 @@ a {
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
+  }
+
+  /* Featured */
+  .featured-answer a {
+    text-decoration-thickness: 2.5px;
+    text-underline-offset: 7px;
   }
 }
