@@ -11,24 +11,24 @@ interface ContentProps {
   data: AnswerData[];
 }
 
-export function Content({ data }: ContentProps) {
+export function QAList({ data }: ContentProps) {
   return (
-    <div className="flex flex-col gap-1 pb-10 pt-6">
+    <div className="flex flex-col gap-1 pb-10">
       {data?.map((item, index) => {
         const { question: q, answer, marked, featured } = item;
         const question = `${q.body}`;
 
         return (
           <Card
-            className="mb:pb-9 cursor-default bg-stone-50 p-6 hover:bg-stone-50 md:p-8"
+            className="mb:pb-9 cursor-default bg-stone-50 p-6 hover:bg-stone-50 md:p-9"
             key={index}
           >
-            <div className="mb-8 space-y-8">
+            <div className="mb-5 space-y-8 md:mb-7">
               <Question>{question}</Question>
               <Answer marked={marked || featured}>{answer}</Answer>
             </div>
 
-            <ContentCardFooter slug={q.slug} />
+            <QACardFooter slug={q.slug} />
           </Card>
         );
       })}
@@ -37,17 +37,17 @@ export function Content({ data }: ContentProps) {
 }
 
 // Content Card Footer
-interface ContentCardFooterProps {
+interface QACardFooterProps {
   slug: string;
 }
 
-function ContentCardFooter({ slug }: ContentCardFooterProps) {
+function QACardFooter({ slug }: QACardFooterProps) {
   return (
-    <div className="flex w-full items-center justify-between gap-2">
+    <div className="flex w-full items-center justify-between gap-1">
       <div className="flex min-w-0 flex-1 gap-1">
         <Button
           href={`/questions/${slug}`}
-          className="flex h-10 max-w-full items-center rounded-full border border-stone-900 px-5 text-xl transition hover:border-stone-500 hover:bg-stone-500"
+          className="flex h-8 max-w-full items-center rounded-full border border-stone-900 px-3.5 text-lg transition hover:border-stone-500 hover:bg-stone-500 md:h-10 md:px-5 md:text-xl"
         >
           <span className="block max-w-full truncate">#{slug}</span>
         </Button>
@@ -55,7 +55,7 @@ function ContentCardFooter({ slug }: ContentCardFooterProps) {
 
       <Button
         href={`/questions/${slug}`}
-        className="flex h-10 shrink-0 items-center gap-2 rounded-full bg-stone-500/20 px-6 text-xl transition hover:bg-stone-500"
+        className="flex h-8 shrink-0 items-center gap-2 rounded-full bg-stone-500/20 px-4 text-lg transition hover:bg-stone-500 md:h-10 md:px-5 md:text-xl"
       >
         <span className="hidden md:block">All answers</span>
         <ArrowRightIcon className="w-6" />
@@ -76,9 +76,9 @@ export async function Answer({ children, marked }: AnswersProps) {
   return (
     <div
       className={cn(
-        "answer text-xl leading-[115%] opacity-90 md:text-4xl md:font-normal md:leading-[115%]",
+        "answer text-xl leading-[114%] opacity-90 md:text-4xl md:leading-[115%]",
         marked &&
-          "featured-answer text-4xl font-medium leading-[100%] tracking-[-0.04ch] md:text-5xl md:font-medium md:leading-[100%]",
+          "featured-answer text-4xl font-medium leading-[98%] tracking-[-0.04ch] md:text-5xl md:leading-[100%]",
       )}
       dangerouslySetInnerHTML={{
         __html: parsedHTML,
@@ -95,7 +95,7 @@ interface QuestionProps {
 export function Question({ children }: QuestionProps) {
   return (
     <div>
-      <h3 className="leading-[115%] text-stone-900/40 md:text-[31px] md:leading-[113%]">
+      <h3 className="text-lg leading-[112%] text-stone-900/40 md:text-[31px] md:leading-[113%]">
         {children}
       </h3>
     </div>

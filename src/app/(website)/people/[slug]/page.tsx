@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { PageContainer } from "~/components/PageContainer";
 import { FeaturedList } from "~/components/FeaturedList";
-import { Content, PersonView } from "~/components/(pages)/(personQA)";
+import { QAList, PersonView } from "~/components/(pages)/(personQA)";
 
 import { getPeople, getPerson } from "~/api-client/people";
 import { getAnswersByPersonSlug } from "~/api-client/answers";
@@ -51,7 +51,7 @@ export default async function PersonQAPage(props: PersonPageProps) {
     <PageContainer>
       <div className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
         <PersonView person={person} />
-        <Content data={answers} />
+        <QAList data={answers} />
       </div>
 
       <div className="mb-20 mt-24">

@@ -41,7 +41,7 @@ export async function FeaturedPersonItem({ person }: FeaturedCardProps) {
 
   return (
     <FeaturedCard slug={person.slug}>
-      <Link href={`/people/${person.slug}`} className="block p-6 md:p-8">
+      <Link href={`/people/${person.slug}`} className="block p-6 md:p-9">
         <div className="mb-10 space-y-5">
           <div className="size-8">
             <QuoteIcon />

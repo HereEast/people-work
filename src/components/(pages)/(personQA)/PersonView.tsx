@@ -66,7 +66,7 @@ export function PersonView({ person }: PersonViewProps) {
               <AccentText size="s">{person.name}</AccentText>
             </h1>
 
-            <div className="text-lg font-medium leading-[105%]">
+            <div className="text-xl font-medium leading-[100%]">
               <h2>{person.jobTitle}</h2>
 
               <Link
