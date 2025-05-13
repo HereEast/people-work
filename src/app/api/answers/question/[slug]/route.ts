@@ -4,14 +4,14 @@ import { connectDB } from "~/lib/connectDB";
 import { IQuestionDB, QuestionDB } from "~/models/Question";
 import { IPersonDB, PersonDB } from "~/models/Person";
 import { AnswerDB, IAnswerDB } from "~/models/Answer";
-import { DBDoc } from "~/utils/types";
 import { mapAnswersData } from "~/utils/mappers";
+import { DBDoc } from "~/utils/types";
 
 interface ReqParams {
   params: Promise<{ slug: string }>;
 }
 
-// GET ANSWERS BY QUESTION SLUG
+// GET ANSWERS BY QUESTION
 export async function GET(req: Request, props: ReqParams) {
   const params = await props.params;
   const { slug } = params;
