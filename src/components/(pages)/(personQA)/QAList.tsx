@@ -18,12 +18,26 @@ export function QAList({ data }: ContentProps) {
         const { question: q, answer, marked, featured } = item;
         const question = `${q.body}`;
 
+        // return (
+        //   <Card
+        //     className="cursor-default rounded-none border-b border-stone-500 py-5 pb-7 md:py-8 md:pb-10"
+        //     key={index}
+        //   >
+        //     <div className="mb-6 space-y-6 md:mb-8 md:space-y-6">
+        //       <Question>{question}</Question>
+        //       <Answer marked={marked || featured}>{answer}</Answer>
+        //     </div>
+
+        //     <QACardFooter slug={q.slug} />
+        //   </Card>
+        // );
+
         return (
           <Card
-            className="mb:pb-9 cursor-default bg-stone-50 p-6 hover:bg-stone-50 md:p-9"
+            className="mb:pb-9 cursor-default bg-stone-50 p-6 hover:bg-stone-50 md:p-8"
             key={index}
           >
-            <div className="mb-5 space-y-8 md:mb-7">
+            <div className="mb-5 space-y-7 md:mb-7">
               <Question>{question}</Question>
               <Answer marked={marked || featured}>{answer}</Answer>
             </div>
@@ -47,7 +61,7 @@ function QACardFooter({ slug }: QACardFooterProps) {
       <div className="flex min-w-0 flex-1 gap-1">
         <Button
           href={`/questions/${slug}`}
-          className="flex h-8 max-w-full items-center rounded-full border border-stone-900 px-3.5 text-lg transition hover:border-stone-500 hover:bg-stone-500 md:h-10 md:px-5 md:text-xl"
+          className="flex h-8 max-w-full items-center rounded-full border border-stone-900 px-3 text-lg transition hover:border-stone-500 hover:bg-stone-500 md:h-10 md:px-4 md:text-xl"
         >
           <span className="block max-w-full truncate">#{slug}</span>
         </Button>
@@ -55,7 +69,7 @@ function QACardFooter({ slug }: QACardFooterProps) {
 
       <Button
         href={`/questions/${slug}`}
-        className="flex h-8 shrink-0 items-center gap-2 rounded-full bg-stone-500/20 px-4 text-lg transition hover:bg-stone-500 md:h-10 md:px-5 md:text-xl"
+        className="flex h-8 shrink-0 items-center gap-2 rounded-full bg-stone-500/25 px-4 text-lg transition hover:bg-stone-500 md:h-10 md:px-5 md:text-xl"
       >
         <span className="hidden md:block">All answers</span>
         <ArrowRightIcon className="w-6" />
@@ -95,7 +109,7 @@ interface QuestionProps {
 export function Question({ children }: QuestionProps) {
   return (
     <div>
-      <h3 className="text-lg leading-[112%] text-stone-900/40 md:text-[31px] md:leading-[113%]">
+      <h3 className="text-[19px] leading-[112%] text-stone-900/40 md:text-[29px] md:leading-[113%]">
         {children}
       </h3>
     </div>
