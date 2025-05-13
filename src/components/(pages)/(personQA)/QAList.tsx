@@ -1,7 +1,8 @@
+import Link from "next/link";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 import { Card } from "~/components/Card";
-import { Button } from "~/components/ui/Button";
+import { RightColumn } from "~/components/Columns";
 
 import { AnswerData } from "~/schemas";
 import { parseMarkdown } from "~/utils/parseMarkdown";
@@ -13,24 +14,9 @@ interface ContentProps {
 
 export function QAList({ data }: ContentProps) {
   return (
-    <div className="flex flex-col gap-1 pb-10">
+    <RightColumn>
       {data?.map((item, index) => {
-        const { question: q, answer, marked, featured } = item;
-        const question = `${q.body}`;
-
-        // return (
-        //   <Card
-        //     className="cursor-default rounded-none border-b border-stone-500 py-5 pb-7 md:py-8 md:pb-10"
-        //     key={index}
-        //   >
-        //     <div className="mb-6 space-y-6 md:mb-8 md:space-y-6">
-        //       <Question>{question}</Question>
-        //       <Answer marked={marked || featured}>{answer}</Answer>
-        //     </div>
-
-        //     <QACardFooter slug={q.slug} />
-        //   </Card>
-        // );
+        const { question, answer, marked, featured, person } = item;
 
         return (
           <Card
@@ -38,42 +24,49 @@ export function QAList({ data }: ContentProps) {
             key={index}
           >
             <div className="mb-5 space-y-7 md:mb-7">
-              <Question>{question}</Question>
+              <Question>{question.body}</Question>
               <Answer marked={marked || featured}>{answer}</Answer>
             </div>
 
-            <QACardFooter slug={q.slug} />
+            <QACardFooter
+              questionSlug={question.slug}
+              personSlug={person.slug}
+            />
           </Card>
         );
       })}
-    </div>
+    </RightColumn>
   );
 }
 
 // Content Card Footer
 interface QACardFooterProps {
-  slug: string;
+  questionSlug: string;
+  personSlug: string;
 }
 
-function QACardFooter({ slug }: QACardFooterProps) {
+function QACardFooter({ questionSlug, personSlug }: QACardFooterProps) {
   return (
     <div className="flex w-full items-center justify-between gap-1">
       <div className="flex min-w-0 flex-1 gap-1">
-        <Button
-          href={`/questions/${slug}`}
+        <Link
+          href={`/questions/${questionSlug}`}
           className="flex h-8 max-w-full items-center rounded-full border border-stone-900 px-3 text-lg transition hover:border-stone-500 hover:bg-stone-500 md:h-10 md:px-4 md:text-xl"
         >
-          <span className="block max-w-full truncate">#{slug}</span>
-        </Button>
+          <span className="block max-w-full truncate">#{questionSlug}</span>
+        </Link>
       </div>
 
-      <Button
-        href={`/questions/${slug}`}
+      <Link
+        href={{
+          pathname: `/questions/${questionSlug}`,
+          query: { from: personSlug },
+        }}
         className="flex h-8 shrink-0 items-center gap-2 rounded-full bg-stone-500/25 px-4 text-lg transition hover:bg-stone-500 md:h-10 md:px-5 md:text-xl"
       >
         <span className="hidden md:block">All answers</span>
         <ArrowRightIcon className="w-6" />
-      </Button>
+      </Link>
     </div>
   );
 }
