@@ -4,8 +4,13 @@ import { ClassValue, clsx } from "clsx";
 import { FEATURED } from "./data/featured";
 
 // Featured slugs
-export function getFeaturedSlugs(count?: number): string[] {
-  const slugs = FEATURED.map((item) => item.slug);
+export function getFeaturedSlugs(
+  count?: number,
+  excludedSlug?: string,
+): string[] {
+  const slugs = FEATURED.map((item) => item.slug).filter(
+    (slug) => slug !== excludedSlug,
+  );
 
   if (!count || count >= slugs.length) {
     return [...slugs];

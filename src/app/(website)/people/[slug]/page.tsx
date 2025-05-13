@@ -1,13 +1,12 @@
 import { notFound } from "next/navigation";
 
 import { PageContainer } from "~/components/PageContainer";
-import { FeaturedList } from "~/components/FeaturedCard";
+import { RecommendedPeople } from "~/components/RecommendedPeople";
 import { QAList, PersonView } from "~/components/(pages)/(personQA)";
 
 import { getPeople, getPerson } from "~/api-client/people";
 import { getAnswersByPersonSlug } from "~/api-client/answers";
 import { generatePersonMetadata } from "~/utils/metadata";
-import { getFeaturedSlugs } from "~/utils/handlers";
 
 interface PersonPageProps {
   params: Promise<{
@@ -40,9 +39,6 @@ export default async function PersonQAPage(props: PersonPageProps) {
   const person = await getPerson(slug);
   const answers = await getAnswersByPersonSlug(slug);
 
-  const recommendedSlugs = getFeaturedSlugs(2);
-  const recommendedPeople = await getPeople(recommendedSlugs);
-
   if (!person || !answers) {
     notFound();
   }
@@ -54,15 +50,7 @@ export default async function PersonQAPage(props: PersonPageProps) {
         <QAList data={answers} />
       </div>
 
-      <div className="mb-20 mt-24">
-        <div className="mb-10">
-          <h2 className="text-center text-2xl font-medium md:text-4xl">
-            Check other cool people
-          </h2>
-        </div>
-
-        {recommendedPeople && <FeaturedList people={recommendedPeople} />}
-      </div>
+      <RecommendedPeople slug={slug} className="mb-12 mt-24" />
     </PageContainer>
   );
 }

@@ -1,6 +1,6 @@
 import { PageContainer } from "~/components/PageContainer";
 import { Hero } from "~/components/(pages)/(home)";
-import { FeaturedList } from "~/components/FeaturedCard";
+import { FeaturedList } from "~/components/FeaturedList";
 import { Subscribe } from "~/components/Subscribe";
 
 import { getFeaturedSlugs } from "~/utils/handlers";

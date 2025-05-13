@@ -49,7 +49,10 @@ function QACardFooter({ questionSlug, personSlug }: QACardFooterProps) {
     <div className="flex w-full items-center justify-between gap-1">
       <div className="flex min-w-0 flex-1 gap-1">
         <Link
-          href={`/questions/${questionSlug}`}
+          href={{
+            pathname: `/questions/${questionSlug}`,
+            query: { from: personSlug },
+          }}
           className="flex h-8 max-w-full items-center rounded-full border border-stone-900 px-3 text-lg transition hover:border-stone-500 hover:bg-stone-500 md:h-10 md:px-4 md:text-xl"
         >
           <span className="block max-w-full truncate">#{questionSlug}</span>

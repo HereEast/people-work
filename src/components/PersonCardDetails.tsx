@@ -25,10 +25,10 @@ export function PersonCardDetails({ person, isLink }: PersonDetailsProps) {
         </h3>
 
         <div className="flex flex-col">
-          <h4 className="text-lg leading-[100%] md:text-xl md:leading-[110%]">
+          <h4 className="text-lg font-medium leading-[100%] md:text-xl md:leading-[110%]">
             {person.jobTitle}
           </h4>
-          <h4 className="text-lg leading-[100%] md:text-xl md:leading-[110%]">
+          <h4 className="text-lg font-medium leading-[100%] md:text-xl md:leading-[110%]">
             {person.company.name}
           </h4>
         </div>
