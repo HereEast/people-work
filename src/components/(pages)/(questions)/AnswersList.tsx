@@ -22,7 +22,7 @@ export async function AnswersList({ slug }: AnswersListProps) {
           const person = data.person;
 
           return (
-            <Card className="rounded-2xl bg-stone-100 p-8 text-xl" key={index}>
+            <Card className="rounded-2xl bg-stone-50 p-8 text-xl" key={index}>
               <div className="space-y-10">
                 <Answer marked={data.marked || data.featured}>
                   {data.answer}
