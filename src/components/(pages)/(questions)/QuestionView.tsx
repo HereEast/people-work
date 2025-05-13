@@ -14,7 +14,7 @@ export function QuestionView({ question }: QuestionViewProps) {
       <div className="flex h-full flex-col justify-between">
         <div className="mb-10 space-y-6">
           <h1 className="text-5xl font-medium">{question.body}</h1>
-          <QuestionTag questionSlug={question.slug} />
+          <QuestionTag questionSlug={question.slug} isLink={false} />
         </div>
 
         <NavLinks />

@@ -66,7 +66,7 @@ function QACardFooter({ questionSlug, personSlug }: QACardFooterProps) {
         }}
         className="flex h-8 shrink-0 items-center gap-2 rounded-full bg-stone-500/25 px-4 text-lg transition hover:bg-stone-500 md:h-10 md:px-5 md:text-xl"
       >
-        <span className="hidden md:block">All answers</span>
+        <span className="hidden md:block">Question</span>
         <ArrowRightIcon className="w-6" />
       </Link>
     </div>
