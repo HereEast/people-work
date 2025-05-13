@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 
 import { getQuestions } from "~/api-client/questions";
-import { getAnswersByQuestionSlug } from "~/api-client/answers";
+// import { getAnswersByQuestionSlug } from "~/api-client/answers";
 
 import { PageContainer } from "~/components/PageContainer";
 import { generateQuestionMetadata } from "~/utils/metadata";
@@ -40,14 +40,14 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
   const { slug } = params;
 
   const questions = await getQuestions();
-  const answers = await getAnswersByQuestionSlug(slug);
+  // const answers = await getAnswersByQuestionSlug(slug);
 
-  if (!answers || !questions) {
-    notFound();
-  }
+  // if (!answers || !questions) {
+  //   notFound();
+  // }
 
-  const currentIndex = questions?.findIndex((item) => item.slug === slug);
-  const question = questions?.[currentIndex];
+  // const currentIndex = questions?.findIndex((item) => item.slug === slug);
+  // const question = questions?.[currentIndex];
 
   return (
     <PageContainer className="max-w-4xl">
@@ -61,7 +61,7 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
         </Link>
       </div>
 
-      <div className="mb-10">
+      {/* <div className="mb-10">
         <h2 className="text-4xl font-extrabold tracking-header">
           {question.body}
         </h2>
@@ -82,7 +82,7 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
         })}
       </ul>
 
-      <QuestionsNav questions={questions} currentIndex={currentIndex} />
+      <QuestionsNav questions={questions} currentIndex={currentIndex} /> */}
     </PageContainer>
   );
 }
