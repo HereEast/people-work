@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { PageContainer } from "~/components/PageContainer";
-import { FeaturedList } from "~/components/FeaturedList";
+import { FeaturedList } from "~/components/FeaturedCard";
 import { QAList, PersonView } from "~/components/(pages)/(personQA)";
 
 import { getPeople, getPerson } from "~/api-client/people";

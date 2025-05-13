@@ -9,7 +9,12 @@ interface PageLayoutProps {
 
 export function PageContainer({ children, className = "" }: PageLayoutProps) {
   return (
-    <div className={cn("relative mx-auto max-w-9xl px-2 sm:px-6", className)}>
+    <div
+      className={cn(
+        "relative mx-auto w-full max-w-9xl px-2 sm:px-6",
+        className,
+      )}
+    >
       {children}
     </div>
   );

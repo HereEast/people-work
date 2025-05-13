@@ -1,35 +1,49 @@
 import Link from "next/link";
 
 import { PersonImage } from "~/components/PersonImage";
-import { PersonData } from "~/schemas";
-
 import { AccentText } from "./AccentText";
+
+import { PersonData } from "~/schemas";
 
 interface PersonDetailsProps {
   person: PersonData;
+  isLink?: true;
 }
 
-export function PersonCardDetails({ person }: PersonDetailsProps) {
-  return (
+export function PersonCardDetails({ person, isLink }: PersonDetailsProps) {
+  const content = (
     <div className="flex items-end gap-3 sm:gap-5">
       <PersonImage
         name={person.name}
         slug={person.slug}
-        classname="md:size-24"
+        classname="md:size-20"
       />
 
-      <div className="flex flex-col sm:gap-0.5">
-        <AccentText size="s">{person.name}</AccentText>
+      <div className="flex flex-col">
+        <h3>
+          <AccentText size="s">{person.name}</AccentText>
+        </h3>
 
         <div className="flex flex-col">
-          <span className="text-lg font-medium leading-[105%] md:text-xl md:leading-[110%]">
+          <h4 className="text-lg leading-[100%] md:text-xl md:leading-[110%]">
             {person.jobTitle}
-          </span>
-          <span className="text-lg font-medium leading-[105%] md:text-xl md:leading-[110%]">
+          </h4>
+          <h4 className="text-lg leading-[100%] md:text-xl md:leading-[110%]">
             {person.company.name}
-          </span>
+          </h4>
         </div>
       </div>
     </div>
+  );
+
+  return isLink ? (
+    <Link
+      href={`/people/${person.slug}`}
+      className="transition hover:opacity-40"
+    >
+      {content}
+    </Link>
+  ) : (
+    content
   );
 }

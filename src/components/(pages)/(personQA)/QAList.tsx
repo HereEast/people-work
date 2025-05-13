@@ -2,11 +2,10 @@ import Link from "next/link";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 import { Card } from "~/components/Card";
-import { RightColumn } from "~/components/Columns";
+import { Column } from "~/components/Column";
+import { Answer } from "~/components/Answer";
 
 import { AnswerData } from "~/schemas";
-import { parseMarkdown } from "~/utils/parseMarkdown";
-import { cn } from "~/utils/handlers";
 
 interface ContentProps {
   data: AnswerData[];
@@ -14,7 +13,7 @@ interface ContentProps {
 
 export function QAList({ data }: ContentProps) {
   return (
-    <RightColumn>
+    <Column variant="right">
       {data?.map((item, index) => {
         const { question, answer, marked, featured, person } = item;
 
@@ -35,7 +34,7 @@ export function QAList({ data }: ContentProps) {
           </Card>
         );
       })}
-    </RightColumn>
+    </Column>
   );
 }
 
@@ -68,29 +67,6 @@ function QACardFooter({ questionSlug, personSlug }: QACardFooterProps) {
         <ArrowRightIcon className="w-6" />
       </Link>
     </div>
-  );
-}
-
-// Answer
-interface AnswersProps {
-  children: string;
-  marked?: boolean;
-}
-
-export async function Answer({ children, marked }: AnswersProps) {
-  const parsedHTML = await parseMarkdown(children);
-
-  return (
-    <div
-      className={cn(
-        "answer text-xl leading-[114%] opacity-90 md:text-4xl md:leading-[115%]",
-        marked &&
-          "featured-answer text-4xl font-medium leading-[98%] tracking-[-0.04ch] md:text-5xl md:leading-[100%]",
-      )}
-      dangerouslySetInnerHTML={{
-        __html: parsedHTML,
-      }}
-    />
   );
 }
 

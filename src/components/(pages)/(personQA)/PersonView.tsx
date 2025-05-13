@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { AccentText } from "~/components/AccentText";
-import { LeftColumn } from "~/components/Columns";
+import { Column } from "~/components/Column";
 import { PersonImage } from "~/components/PersonImage";
 
 import { PersonData } from "~/schemas";
@@ -16,7 +16,7 @@ export function PersonView({ person }: PersonViewProps) {
   return (
     <>
       {/* Desktop */}
-      <LeftColumn>
+      <Column variant="left">
         <div className="hidden flex-col gap-8 pb-24 md:flex">
           <PersonImage
             name={person.name}
@@ -56,7 +56,7 @@ export function PersonView({ person }: PersonViewProps) {
             </ul>
           </div>
         </div>
-      </LeftColumn>
+      </Column>
 
       {/* Mobile */}
       <div className="sticky top-12 z-40 -mx-2 mb-4 md:hidden">
