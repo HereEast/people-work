@@ -24,25 +24,25 @@ export async function getAnswersByPersonSlug(
 }
 
 // GET ANSWERS BY QUESTION SLUG
-export async function getAnswersByQuestionSlug(
-  slug: string,
-): Promise<AnswerData[] | null> {
-  try {
-    const response = await fetch(`${BASE_URL}/api/answers/question/${slug}`);
+// export async function getAnswersByQuestionSlug(
+//   slug: string,
+// ): Promise<AnswerData[] | null> {
+//   try {
+//     const response = await fetch(`${BASE_URL}/api/answers/question/${slug}`);
 
-    if (!response.ok) {
-      throw new Error("🔴 Data fetch failed");
-    }
+//     if (!response.ok) {
+//       throw new Error("🔴 Data fetch failed");
+//     }
 
-    const answers: AnswerData[] = await response.json();
+//     const answers: AnswerData[] = await response.json();
 
-    return answers;
-  } catch (err) {
-    handleError(err);
+//     return answers;
+//   } catch (err) {
+//     handleError(err);
 
-    return null;
-  }
-}
+//     return null;
+//   }
+// }
 
 // GET FEATURED ANSWER
 export async function getFeaturedAnswer(
