@@ -7,16 +7,10 @@ import { RecommendedPeople } from "~/components/RecommendedPeople";
 import { getQuestions } from "~/api-client/questions";
 import { generateQuestionMetadata } from "~/utils/metadata";
 
-// interface QuestionPageProps {
-//   params: Promise<{
-//     slug: string;
-//   }>;
-// }
-
 interface QuestionPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // METADATA
@@ -36,12 +30,10 @@ export async function generateStaticParams() {
   );
 }
 
-// const params = await props.params;
-// const { slug } = params;
-
 // PAGE
 export default async function QuestionAnswersPage(props: QuestionPageProps) {
-  const { slug } = props.params;
+  const params = await props.params;
+  const { slug } = params;
 
   const questions = await getQuestions();
 
