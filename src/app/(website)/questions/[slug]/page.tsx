@@ -47,7 +47,7 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
   return (
     <PageContainer>
       <div className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
-        <QuestionView>{question.body}</QuestionView>
+        <QuestionView question={question} />
         <AnswersList slug={slug} />
       </div>
 

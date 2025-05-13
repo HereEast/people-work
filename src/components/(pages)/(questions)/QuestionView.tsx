@@ -1,22 +1,24 @@
-import { ReactNode } from "react";
-
 import { Column } from "~/components/Column";
+import { QuestionTag } from "~/components/Tag";
 import { NavLinks } from "./NavLinks";
 
+import { QuestionData } from "~/schemas";
+
 interface QuestionViewProps {
-  children: ReactNode;
+  question: QuestionData;
 }
 
-export function QuestionView({ children }: QuestionViewProps) {
+export function QuestionView({ question }: QuestionViewProps) {
   return (
     <Column variant="left">
-      <div className="hidden flex-col gap-8 pb-10 md:flex">
-        <div className="mb-10">
-          <h1 className="text-5xl font-medium">{children}</h1>
+      <div className="flex h-full flex-col justify-between">
+        <div className="mb-10 space-y-6">
+          <h1 className="text-5xl font-medium">{question.body}</h1>
+          <QuestionTag questionSlug={question.slug} />
         </div>
-      </div>
 
-      <NavLinks />
+        <NavLinks />
+      </div>
     </Column>
   );
 }

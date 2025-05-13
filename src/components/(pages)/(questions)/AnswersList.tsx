@@ -24,7 +24,9 @@ export async function AnswersList({ slug }: AnswersListProps) {
           return (
             <Card className="rounded-2xl bg-stone-100 p-8 text-xl" key={index}>
               <div className="space-y-10">
-                <Answer marked={false}>{data.answer}</Answer>
+                <Answer marked={data.marked || data.featured}>
+                  {data.answer}
+                </Answer>
 
                 <div className="flex items-end justify-between">
                   <PersonCardDetails person={person} isLink={true} />
