@@ -1,5 +1,5 @@
-import { PageContainer } from "~/components/PageWrapper";
+import { PageWrapper } from "~/components/PageWrapper";
 
 export default async function AboutPage() {
-  return <PageContainer>About people-work.net</PageContainer>;
+  return <PageWrapper>About people-work.net</PageWrapper>;
 }
