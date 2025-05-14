@@ -64,9 +64,7 @@ export function SubscribeForm() {
                 })}
               />
 
-              <Button isDisabled={isSubmitting} view="inverted">
-                subscribe
-              </Button>
+              <Button isDisabled={isSubmitting}>subscribe</Button>
             </div>
           </form>
         </>
