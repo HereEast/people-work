@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { PageContainer } from "~/components/PageContainer";
+import { PageWrapper } from "~/components/PageWrapper";
 import { RecommendedPeople } from "~/components/RecommendedPeople";
 import { QAList, PersonView } from "~/components/(pages)/(personQA)";
 
@@ -44,13 +44,13 @@ export default async function PersonQAPage(props: PersonPageProps) {
   }
 
   return (
-    <PageContainer>
+    <PageWrapper>
       <div className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
         <PersonView person={person} />
         <QAList data={answers} />
       </div>
 
       <RecommendedPeople slug={slug} className="mb-12 mt-24" />
-    </PageContainer>
+    </PageWrapper>
   );
 }

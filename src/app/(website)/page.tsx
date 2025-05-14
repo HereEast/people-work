@@ -1,4 +1,4 @@
-import { PageContainer } from "~/components/PageContainer";
+import { PageWrapper } from "~/components/PageWrapper";
 import { Hero } from "~/components/(pages)/(home)";
 import { FeaturedList } from "~/components/FeaturedList";
 import { Subscribe } from "~/components/Subscribe";
@@ -11,7 +11,7 @@ export default async function HomePage() {
   const featuredPeople = await getPeople(featuredSlugs);
 
   return (
-    <PageContainer>
+    <PageWrapper>
       <Hero />
 
       {featuredPeople && (
@@ -23,6 +23,6 @@ export default async function HomePage() {
       <div className="my-20">
         <Subscribe />
       </div>
-    </PageContainer>
+    </PageWrapper>
   );
 }

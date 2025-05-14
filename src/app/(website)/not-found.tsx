@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { PageContainer } from "~/components/PageContainer";
+import { PageContainer } from "~/components/PageWrapper";
 import { ROUTE } from "~/utils/constants";
 
 export default function NotFound() {

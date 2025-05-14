@@ -25,12 +25,12 @@ export function PersonView({ person }: PersonViewProps) {
             classname="size-[240px] rounded-lg"
           />
 
-          <div>
+          <div className="text-2xl sm:text-3xl md:leading-[110%]">
             <h1>
               <AccentText>{person.name}</AccentText>
             </h1>
 
-            <div className="mb-16 text-2xl sm:text-3xl md:leading-[110%]">
+            <div className="mb-16">
               <h2>{person.jobTitle}</h2>
 
               <Link
@@ -48,7 +48,7 @@ export function PersonView({ person }: PersonViewProps) {
                   <Link
                     href={value}
                     target="_blank"
-                    className="text-4xl capitalize underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
+                    className="capitalize underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
                   >
                     {key}
                   </Link>

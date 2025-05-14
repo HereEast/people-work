@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { PageContainer } from "~/components/PageContainer";
+import { PageWrapper } from "~/components/PageWrapper";
 import { QuestionView, AnswersList } from "~/components/(pages)/(questions)";
 import { RecommendedPeople } from "~/components/RecommendedPeople";
 
@@ -45,14 +45,14 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
   const question = questions?.[currentIndex];
 
   return (
-    <PageContainer>
+    <PageWrapper>
       <div className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
         <QuestionView question={question} />
         <AnswersList slug={slug} />
       </div>
 
       <RecommendedPeople slug={slug} className="mb-12 mt-24" />
-    </PageContainer>
+    </PageWrapper>
   );
 }
 

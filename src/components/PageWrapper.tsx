@@ -7,7 +7,7 @@ interface PageLayoutProps {
   className?: string;
 }
 
-export function PageContainer({ children, className = "" }: PageLayoutProps) {
+export function PageWrapper({ children, className = "" }: PageLayoutProps) {
   return (
     <div
       className={cn("relative mx-auto w-full max-w-9xl px-2 sm:p-6", className)}

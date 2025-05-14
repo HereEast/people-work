@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
-import { PageContainer } from "~/components/PageContainer";
+import { PageWrapper } from "~/components/PageWrapper";
 
 import { getQuestions } from "~/api-client/questions";
 import { BASE_URL } from "~/utils/constants";
@@ -16,7 +16,7 @@ export default async function QuestionsPage() {
   }
 
   return (
-    <PageContainer>
+    <PageWrapper>
       <ul className="mb-10 pt-6">
         {questions.map((question, index) => (
           <li className="border-b border-stone-900 first:border-t" key={index}>
@@ -40,6 +40,6 @@ export default async function QuestionsPage() {
           </li>
         ))}
       </ul>
-    </PageContainer>
+    </PageWrapper>
   );
 }

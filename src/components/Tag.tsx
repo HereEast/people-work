@@ -10,7 +10,7 @@ interface TagProps {
 
 export function Tag({ children, href }: TagProps) {
   const classes = cn(
-    "flex h-8 w-fit max-w-full items-center border border-stone-300 rounded-full px-3.5 md:h-10 md:px-4 bg-stone-200/0",
+    "flex h-8 w-fit max-w-full items-center border border-stone-900 rounded-full px-3 md:h-10 md:px-5",
   );
 
   const content = (

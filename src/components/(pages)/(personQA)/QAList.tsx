@@ -20,10 +20,10 @@ export function QAList({ data }: ContentProps) {
 
         return (
           <Card
-            className="mb:pb-9 cursor-default bg-stone-50 p-5 md:p-8"
+            className="mb:pb-9 cursor-default bg-stone-50 p-5 md:p-10"
             key={index}
           >
-            <div className="mb-6 space-y-8 md:mb-7">
+            <div className="mb-6 space-y-8 md:mb-7 md:space-y-10">
               <Question>{question.body}</Question>
               <Answer marked={marked || featured}>{answer}</Answer>
             </div>
@@ -79,7 +79,7 @@ interface QuestionProps {
 export function Question({ children }: QuestionProps) {
   return (
     <div>
-      <h3 className="text-xl font-medium leading-[100%] text-stone-900/40 sm:font-medium md:text-[29px] md:leading-[113%]">
+      <h3 className="text-lg font-medium leading-[100%] tracking-normal text-stone-900/40 sm:text-2xl sm:font-normal">
         {children}
       </h3>
     </div>

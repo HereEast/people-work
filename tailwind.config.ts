@@ -24,7 +24,7 @@ const config: Config = {
       },
       fontSize: {
         "2xl": ["24px", { lineHeight: "1.1" }],
-        "3xl": ["30px", { lineHeight: "1.1" }],
+        "3xl": ["32px", { lineHeight: "1.1" }],
         // "4xl": ["32px", { lineHeight: "1.1" }],
         "5xl": ["50px", { lineHeight: "1" }],
       },
@@ -32,6 +32,7 @@ const config: Config = {
         text: "-0.02em",
       },
       borderRadius: {
+        "2xl": "40px",
         xxl: "30px",
         xl: "25px",
         lg: "20px",
