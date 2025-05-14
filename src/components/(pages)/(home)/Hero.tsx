@@ -6,9 +6,9 @@ import { EmojiImage } from "~/components/EmojiImage";
 
 export function Hero() {
   return (
-    <div className="mt-10 max-w-9xl sm:my-16">
-      <div className="w-full font-medium">
-        <p className="text-4xl leading-[110%] sm:text-7xl">
+    <div className="my-10 mb-12 max-w-9xl">
+      <div className="w-full">
+        <p className="text-3xl font-medium sm:text-5xl lg:text-7xl">
           Real people, <AccentText size="xl">real jobs</AccentText>. Brief Q&As
           that <AccentText size="xl">demystify titles</AccentText>, share
           routines, and explore what keeps them going.

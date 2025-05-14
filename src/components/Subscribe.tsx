@@ -6,10 +6,10 @@ import { EmojiImage } from "./EmojiImage";
 
 export function Subscribe() {
   return (
-    <div className="flex flex-col items-center gap-6 text-2xl font-medium md:text-4xl">
-      <EmojiImage name="popcorn" classname="size-40" />
+    <div className="flex flex-col items-center gap-6 text-2xl sm:text-3xl">
+      <EmojiImage name="popcorn" classname="size-24" />
 
-      <div className="flex flex-col items-center leading-[120%]">
+      <div className="flex flex-col items-center gap-0.5">
         <span>More people are coming!</span>
 
         <span>
@@ -21,11 +21,6 @@ export function Subscribe() {
           <span>to stay tuned.</span>
         </span>
       </div>
-
-      {/* <div>
-        <input className="w-1/2 rounded-lg bg-stone-100 p-6" />
-        <Button>Subscribe</Button>
-      </div> */}
     </div>
   );
 }

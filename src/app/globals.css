@@ -4,7 +4,7 @@
 
 body {
   box-sizing: border-box;
-  letter-spacing: -0.04ch;
+  letter-spacing: -0.02ch;
 }
 
 li {
@@ -52,7 +52,7 @@ a {
 .answer a {
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
-  text-underline-offset: 2px;
+  text-underline-offset: 2.4px;
   /* font-weight: 500; */
 }
 
@@ -121,7 +121,7 @@ a {
   height: 10px;
   background-color: black;
   border-radius: 100%;
-  top: 6.2px;
+  top: 7px;
   left: 2px;
   z-index: 2;
 }

@@ -29,7 +29,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
       <body
         suppressHydrationWarning={true}
-        className="flex min-h-screen flex-col bg-stone-200 text-lg"
+        className="flex min-h-screen flex-col bg-stone-200 text-xl"
       >
         <ClientProvider>
           <Header />

@@ -15,12 +15,12 @@ export default async function HomePage() {
       <Hero />
 
       {featuredPeople && (
-        <div className="my-20">
+        <div className="mb-20">
           <FeaturedList people={featuredPeople} />
         </div>
       )}
 
-      <div className="mb-24 mt-20">
+      <div className="my-20">
         <Subscribe />
       </div>
     </PageContainer>

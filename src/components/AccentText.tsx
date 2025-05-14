@@ -19,16 +19,17 @@ export function AccentText({
     <span
       className={cn(
         // Base
-        "font-accent text-3xl leading-[80%] tracking-[-0.02ch] sm:text-[42px]",
+        "font-accent text-3xl leading-[80%] tracking-[-0.02ch] sm:text-[40px]",
         underline &&
-          "offset underline decoration-2 underline-offset-2 hover:no-underline hover:opacity-30 sm:underline-offset-[3px]",
+          "offset underline decoration-2 underline-offset-2 hover:no-underline sm:underline-offset-[3px]",
         // S
         size === "s" && "text-[22px] md:text-2xl md:leading-[100%]",
         // Xl
-        size === "xl" && "text-[44px] leading-[80%] sm:text-[86px]",
+        size === "xl" &&
+          "text-[40px] leading-[80%] tracking-[-0.04ch] sm:text-[86px]",
         size === "xl" &&
           underline &&
-          "underline decoration-[3px] underline-offset-[5px] hover:no-underline hover:opacity-30",
+          "underline decoration-[2px] underline-offset-[3px] hover:no-underline hover:opacity-30",
         className,
       )}
     >

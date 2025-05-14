@@ -10,7 +10,9 @@ interface ColumnProps {
 export function Column({ children, variant, className = "" }: ColumnProps) {
   return variant === "left" ? (
     <div className="relative">
-      <div className={cn("sticky top-20 h-[calc(100vh-100px)]", className)}>
+      <div
+        className={cn("top-20 sm:sticky lg:h-[calc(100vh-100px)]", className)}
+      >
         {children}
       </div>
     </div>

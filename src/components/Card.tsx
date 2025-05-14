@@ -11,7 +11,10 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 export function Card({ children, className = "", ...rest }: CardProps) {
   return (
-    <div className={cn("w-full rounded-xxl transition", className)} {...rest}>
+    <div
+      className={cn("w-full rounded-xl transition sm:rounded-xxl", className)}
+      {...rest}
+    >
       {children}
     </div>
   );

@@ -36,7 +36,7 @@ export function SubscribeForm() {
     <Card className="rounded-3xl p-8 sm:p-10">
       {isSubscribed && (
         <div className="flex items-center justify-center">
-          <p className="bg-gradient-base w-fit bg-[length:250%] bg-clip-text text-center text-base text-transparent">
+          <p className="w-fit bg-[length:250%] bg-clip-text text-center text-base text-transparent">
             Thaaanks!!! You've successfully subscribed!
           </p>
         </div>
@@ -46,7 +46,7 @@ export function SubscribeForm() {
         <>
           <div className="mb-6">
             <h5 className="text-center text-base leading-tight text-stone-50">
-              <span className="bg-gradient-base bg-[length:300%] bg-clip-text text-transparent">
+              <span className="bg-[length:300%] bg-clip-text text-transparent">
                 In case you are curious
               </span>{" "}
               about the latest project updated, upcoming features and new guests
@@ -64,7 +64,7 @@ export function SubscribeForm() {
                 })}
               />
 
-              <Button isDisabled={isSubmitting} view="inverted" size="md">
+              <Button isDisabled={isSubmitting} view="inverted">
                 subscribe
               </Button>
             </div>

@@ -38,10 +38,10 @@ export async function FeaturedPersonCard({ person }: FeaturedPersonCardProps) {
 
   return (
     <FeaturedCardWrapper slug={person.slug}>
-      <Link href={`/people/${person.slug}`} className="block p-6 md:p-8">
-        <div className="mb-10 space-y-5">
-          <QuoteIcon className="size-8" />
-          <p className="text-3xl font-medium leading-[105%] md:text-4xl md:leading-[115%]">
+      <Link href={`/people/${person.slug}`} className="block p-5 md:p-8">
+        <div className="mb-8 space-y-5 sm:mb-10">
+          <QuoteIcon className="size-7 sm:size-8" />
+          <p className="text-2xl font-medium md:text-3xl">
             {featuredAnswer?.answer}
           </p>
         </div>
