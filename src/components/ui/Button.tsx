@@ -4,24 +4,11 @@ import { MouseEvent, ReactNode } from "react";
 import { cn } from "~/utils/handlers";
 
 const styles = {
-  base: "group/button inline-flex items-center outline-none relative justify-center leading-none font-semibold lowercase bg-stone-950 text-stone-50 rounded-full w-fit h-8 px-4 transition text-lg",
-  size: {
-    md: "h-12 px-10",
-    sm: "h-8 px-4 rounded-full",
-    xs: "",
-  },
   view: {
-    primary: "hover:shadow-none",
-    inverted: "bg-stone-50 text-stone-960",
-    // link: "hover:shadow-lg hover:shadow-blue-600",
-    link: "hover:opacity-90",
-    animated: "animate-anime bg-gradient-base bg-[length:600%] text-stone-50",
-    tile: "hover:shadow-none overflow-hidden size-20 p-0 rounded-xl",
-  },
-  animated: {
-    // base: "animate-anime hover:[animation-play-state:paused] bg-gradient-base bg-[length:600%] text-stone-50",
-    hover:
-      "animate-anime hover:bg-gradient-base bg-[length:600%] hover:text-stone-50",
+    base: "hover:opacity-40 transition",
+    accent: "font-accent",
+    "button-link":
+      "flex h-10 shrink-0 items-center gap-2 rounded-sm bg-stone-500/20 px-4 text-lg transition hover:bg-stone-500 sm:h-12 md:px-5 md:text-xl",
   },
 };
 
@@ -30,9 +17,8 @@ type ButtonProps = {
   href?: string | URL;
   target?: "_blank" | "_self";
   isDisabled?: boolean;
-  size?: keyof typeof styles.size;
   view?: keyof typeof styles.view;
-  animated?: keyof typeof styles.animated;
+  underline?: boolean;
   rel?: string;
   className?: string;
   onClick?: (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
@@ -40,22 +26,19 @@ type ButtonProps = {
 
 export function Button({
   className = "",
-  size,
   href,
   children,
   isDisabled,
   onClick,
-  view,
-  animated,
+  view = "base",
+  underline = false,
   ...props
 }: ButtonProps) {
   const classes = cn(
-    styles.base,
-    href && `${styles.view.link} ${styles.size.sm}`,
-    size && styles.size[size],
+    href && "w-fit",
     view && styles.view[view],
-    (view === "primary" || view === "inverted") && styles.animated.hover,
-    animated && styles.animated[animated],
+    underline &&
+      "underline decoration-2 underline-offset-[3px] hover:no-underline",
     className,
   );
 

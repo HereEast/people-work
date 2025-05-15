@@ -17,13 +17,13 @@ export async function GET(req: Request, props: ReqParams) {
   try {
     await connectDB();
 
-    const data: DBDoc<IPersonDB> = await PersonDB.findOne({ slug }).exec();
+    const doc: DBDoc<IPersonDB> = await PersonDB.findOne({ slug }).exec();
 
-    if (!data) {
+    if (!doc) {
       return NextResponse.json(null);
     }
 
-    const person = mapPeopleData(data);
+    const person = mapPeopleData(doc);
 
     return NextResponse.json(person);
   } catch (err) {
