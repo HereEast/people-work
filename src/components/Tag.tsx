@@ -14,7 +14,7 @@ export function Tag({ children, href }: TagProps) {
   );
 
   const content = (
-    <span className="block max-w-full truncate text-lg sm:text-xl">
+    <span className="block max-w-full truncate text-lg font-medium sm:text-xl">
       #{children}
     </span>
   );
@@ -24,10 +24,7 @@ export function Tag({ children, href }: TagProps) {
       {href ? (
         <Link
           href={href}
-          className={cn(
-            "transition hover:border-stone-500 hover:bg-stone-500",
-            classes,
-          )}
+          className={cn("transition hover:opacity-40", classes)}
         >
           {content}
         </Link>

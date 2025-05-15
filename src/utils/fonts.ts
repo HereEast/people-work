@@ -2,11 +2,11 @@ import localFont from "next/font/local";
 
 export const Nm = localFont({
   src: [
-    {
-      path: "../../public/fonts/nm-light.otf",
-      weight: "200",
-      style: "normal",
-    },
+    // {
+    //   path: "../../public/fonts/nm-light.otf",
+    //   weight: "200",
+    //   style: "normal",
+    // },
     {
       path: "../../public/fonts/nm-book.otf",
       weight: "300",
@@ -23,8 +23,13 @@ export const Nm = localFont({
       style: "normal",
     },
     {
-      path: "../../public/fonts/nm-bold.otf",
+      path: "../../public/fonts/nm-semibold.otf",
       weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/nm-bold.otf",
+      weight: "700",
       style: "normal",
     },
   ],

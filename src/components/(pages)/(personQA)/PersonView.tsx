@@ -60,8 +60,25 @@ export function PersonView({ person }: PersonViewProps) {
       </Column>
 
       {/* Mobile */}
-      <div className="sticky top-12 z-40 -mx-2 mb-4 bg-stone-300 p-2 md:hidden">
-        <PersonCardDetails person={person} />
+      <div className="sticky top-12 z-40 -mx-2 mb-4 bg-stone-900 p-2 text-stone-50 md:hidden">
+        <div className="flex items-end gap-3 sm:gap-5">
+          <PersonImage
+            name={person.name}
+            slug={person.slug}
+            classname="size-[62px]"
+          />
+
+          <div className="flex flex-col">
+            <h3 className="leading-[110%]">
+              <AccentText size="s">{person.name}</AccentText>
+            </h3>
+
+            <div className="flex flex-col text-lg font-medium leading-[110%]">
+              <h4>{person.jobTitle}</h4>
+              <h4>{person.company.name}</h4>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
