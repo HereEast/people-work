@@ -9,13 +9,16 @@ interface TagProps {
 }
 
 export function Tag({ children, href }: TagProps) {
+  const string = (children as string).split("-").join(" ");
+  const tag = string[0].toUpperCase() + string.slice(1);
+
   const classes = cn(
-    "flex h-8 sm:h-10 w-fit items-center justify-center sm:rounded-sm rounded-xs border border-stone-900 px-3 sm:px-4 pb-0.5",
+    "flex h-10 sm:h-12 w-fit items-center justify-center rounded-sm border-[1.5px] border-stone-900 px-4 sm:px-4",
   );
 
   const content = (
     <span className="block max-w-full truncate text-lg font-medium sm:text-xl">
-      #{children}
+      {tag}
     </span>
   );
 
