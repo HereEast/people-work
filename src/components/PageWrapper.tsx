@@ -10,7 +10,7 @@ interface PageLayoutProps {
 export function PageWrapper({ children, className = "" }: PageLayoutProps) {
   return (
     <div
-      className={cn("relative mx-auto w-full max-w-9xl px-3 sm:p-6", className)}
+      className={cn("relative mx-auto w-full max-w-9xl px-2 sm:p-6", className)}
     >
       {children}
     </div>

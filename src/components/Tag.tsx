@@ -10,11 +10,13 @@ interface TagProps {
 
 export function Tag({ children, href }: TagProps) {
   const classes = cn(
-    "flex h-10 w-fit items-center justify-center rounded-sm border border-stone-900 px-4 pb-0.5",
+    "flex h-8 sm:h-10 w-fit items-center justify-center sm:rounded-sm rounded-xs border border-stone-900 px-3 sm:px-4 pb-0.5",
   );
 
   const content = (
-    <span className="block max-w-full truncate">#{children}</span>
+    <span className="block max-w-full truncate text-lg sm:text-xl">
+      #{children}
+    </span>
   );
 
   return (
@@ -36,34 +38,30 @@ export function Tag({ children, href }: TagProps) {
   );
 }
 
-// interface QuestionTagProps {
-//   children: string;
-//   from?: string;
-//   isLink?: boolean;
-// }
+// export function Tag({ children, href }: TagProps) {
+//   const classes = cn(
+//     "flex h-8 sm:h-10 w-fit items-center justify-center sm:rounded-sm rounded-xs border border-stone-900 px-3 pb-0.5",
+//   );
 
-// export function QuestionTag({
-//   children: questionSlug,
-//   from,
-//   isLink = true,
-// }: QuestionTagProps) {
-//   const href = from
-//     ? {
-//         pathname: `/questions/${questionSlug}`,
-//         query: { from },
-//       }
-//     : `/questions/${questionSlug}`;
+//   const content = (
+//     <span className="block max-w-full truncate text-lg">#{children}</span>
+//   );
 
-//   return isLink ? (
-//     <Link
-//       href={href}
-//       className="flex h-8 w-fit max-w-full items-center rounded-full border border-stone-900 px-3 text-lg transition hover:border-stone-500 hover:bg-stone-500 md:h-10 md:px-4 md:text-xl"
-//     >
-//       <span className="block max-w-full truncate">#{questionSlug}</span>
-//     </Link>
-//   ) : (
-//     <div className="flex h-8 w-fit max-w-full cursor-default items-center rounded-full border border-stone-900 px-3 text-lg md:h-10 md:px-4 md:text-xl">
-//       <span className="block max-w-full truncate">#{questionSlug}</span>
+//   return (
+//     <div className="flex min-w-0 flex-1 gap-1">
+//       {href ? (
+//         <Link
+//           href={href}
+//           className={cn(
+//             "transition hover:border-stone-500 hover:bg-stone-500",
+//             classes,
+//           )}
+//         >
+//           {content}
+//         </Link>
+//       ) : (
+//         <div className={cn("cursor-default", classes)}>{content}</div>
+//       )}
 //     </div>
 //   );
 // }

@@ -7,7 +7,6 @@ import { Answer } from "~/components/Answer";
 import { Tag } from "~/components/Tag";
 
 import { AnswerData } from "~/schemas";
-import Link from "next/link";
 
 interface ContentProps {
   data: AnswerData[];
@@ -20,61 +19,34 @@ export function QAList({ data }: ContentProps) {
         const { question, answer, marked, featured, person } = item;
 
         return (
-          <Card className="mb:pb-9 cursor-default p-6 md:p-10" key={index}>
-            <div className="mb-6 space-y-8 md:mb-7 md:space-y-10">
-              <Question>{question.body}</Question>
-              <Answer marked={marked || featured}>{answer}</Answer>
+          <Card className="mb:pb-9 cursor-default" key={index}>
+            <div className="p-6 pb-0 sm:p-10 sm:pb-0">
+              <div className="mb-6 space-y-8 md:mb-7 md:space-y-10">
+                <Question>{question.body}</Question>
+                <Answer marked={marked || featured}>{answer}</Answer>
+              </div>
             </div>
 
-            <QACardFooter
-              questionSlug={question.slug}
-              personSlug={person.slug}
-            />
+            <div className="p-6 pt-0 sm:p-10 sm:pt-0">
+              <div className="flex w-full items-center justify-between gap-1">
+                <div className="flex min-w-0 flex-1 gap-1">
+                  <Tag href={`/questions/${question.slug}`}>
+                    {question.slug}
+                  </Tag>
+                </div>
+
+                <Button href={`/questions/${question.slug}`} view="button-link">
+                  <span className="hidden md:block">Question</span>
+                  <ArrowRightIcon className="w-6" />
+                </Button>
+              </div>
+            </div>
           </Card>
         );
       })}
     </Column>
   );
 }
-
-// Content Card Footer
-interface QACardFooterProps {
-  questionSlug: string;
-  personSlug: string;
-}
-
-function QACardFooter({ questionSlug, personSlug }: QACardFooterProps) {
-  return (
-    <div className="flex w-full items-center justify-between gap-1">
-      <div className="flex min-w-0 flex-1 gap-1">
-        <Tag href={`/questions/${questionSlug}`}>{questionSlug}</Tag>
-      </div>
-
-      <Link
-        href={`/questions/${questionSlug}`}
-        className="flex h-8 shrink-0 items-center gap-2 rounded-sm bg-stone-500/20 px-4 text-lg transition hover:bg-stone-500 md:h-10 md:px-5 md:text-xl"
-      >
-        <ArrowRightIcon className="w-6" />
-      </Link>
-
-      {/* <Button href={`/questions/${questionSlug}`} view="button-link">
-        <span className="hidden md:block">Question</span>
-        <ArrowRightIcon className="w-6" />
-      </Button> */}
-    </div>
-  );
-}
-
-// <Link
-//   href={{
-//     pathname: `/questions/${questionSlug}`,
-//     query: { from: personSlug },
-//   }}
-//   className="flex h-8 shrink-0 items-center gap-2 rounded-full bg-stone-500/25 px-4 text-lg transition hover:bg-stone-500 md:h-10 md:px-5 md:text-xl"
-// >
-//   <span className="hidden md:block">Question</span>
-//   <ArrowRightIcon className="w-6" />
-// </Link>;
 
 // Question
 interface QuestionProps {
@@ -84,7 +56,9 @@ interface QuestionProps {
 export function Question({ children }: QuestionProps) {
   return (
     <div>
-      <h3 className="leading-[100%] opacity-40 sm:text-2xl">{children}</h3>
+      <h3 className="font-medium leading-[100%] opacity-40 sm:text-2xl">
+        {children}
+      </h3>
     </div>
   );
 }

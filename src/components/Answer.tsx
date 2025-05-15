@@ -12,9 +12,9 @@ export async function Answer({ children, marked }: AnswersProps) {
   return (
     <div
       className={cn(
-        "answer text-xl font-medium leading-[100%] md:text-3xl md:leading-[110%]",
+        "answer text-xl font-medium leading-[105%] md:text-3xl md:leading-[100%]",
         marked &&
-          "featured-answer text-4xl font-bold leading-[90%] tracking-[-0.03ch] md:text-5xl md:font-medium md:leading-[90%]",
+          "featured-answer text-4xl font-bold leading-[90%] tracking-[-0.03ch] md:text-5xl md:leading-[88%]",
       )}
       dangerouslySetInnerHTML={{
         __html: parsedHTML,

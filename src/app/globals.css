@@ -88,7 +88,8 @@ a {
 
 /* Headers for h6, h5 */
 .answer h6:has(+ ul),
-.answer h5:has(+ ul) {
+.answer h5:has(+ ul),
+.answer h6 {
   text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-thickness: 1.5px;
