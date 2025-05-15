@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { PageWrapper } from "~/components/PageWrapper";
-import { RecommendedPeople } from "~/components/RecommendedPeople";
+import { RecommendedSection } from "~/components/RecommendedSection";
 import { QAList, PersonView } from "~/components/(pages)/(personQA)";
 
 import { getPeople, getPerson } from "~/api-client/people";
@@ -50,7 +50,7 @@ export default async function PersonQAPage(props: PersonPageProps) {
         <QAList data={answers} />
       </div>
 
-      <RecommendedPeople slug={slug} className="mb-12 mt-24" />
+      <RecommendedSection slug={slug} className="mb-12 mt-24" />
     </PageWrapper>
   );
 }

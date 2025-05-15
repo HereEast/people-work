@@ -26,7 +26,7 @@ const config: Config = {
         xl: ["22px", { lineHeight: "1.1" }],
         "2xl": ["24px", { lineHeight: "1.1" }],
         "3xl": ["32px", { lineHeight: "1.1" }],
-        "4xl": ["36px", { lineHeight: "1.1" }],
+        "4xl": ["40px", { lineHeight: "1.1" }],
         "5xl": ["52px", { lineHeight: "1" }],
       },
       letterSpacing: {

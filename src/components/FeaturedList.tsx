@@ -14,7 +14,7 @@ interface FeaturedCardListProps {
 
 export function FeaturedList({ people }: FeaturedCardListProps) {
   return (
-    <div className="gap-2 sm:columns-2 md:gap-4">
+    <div className="gap-2 md:columns-2 md:gap-4">
       {people.map((person, index) => (
         <div className="mb-2 break-inside-avoid md:mb-4" key={index}>
           <FeaturedPersonCard person={person} />
@@ -41,7 +41,7 @@ export async function FeaturedPersonCard({ person }: FeaturedPersonCardProps) {
       <Link href={`/people/${person.slug}`} className="block p-6 md:p-10">
         <div className="mb-8 space-y-5 sm:mb-10">
           <QuoteIcon className="size-8" />
-          <p className="text-3xl font-semibold leading-[95%] tracking-[-0.04ch] md:text-3xl">
+          <p className="text-3xl font-semibold leading-[95%] tracking-[-0.04ch] sm:text-3xl sm:leading-[100%]">
             {featuredAnswer?.answer}
           </p>
         </div>

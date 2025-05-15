@@ -21,7 +21,7 @@ export function QuestionView({ question }: QuestionViewProps) {
             <Tag>{question.slug}</Tag>
           </div>
 
-          <Button href={ROUTE.questions} underline className="text-4xl">
+          <Button href={ROUTE.questions} underline className="text-3xl">
             <span>All questions</span>
           </Button>
         </div>

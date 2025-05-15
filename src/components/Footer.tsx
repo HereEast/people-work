@@ -18,7 +18,7 @@ export function Footer() {
 
         <div className="flex flex-col gap-px sm:flex-row sm:gap-6">
           {FOOTER_LINKS.map((link, index) => (
-            <Button href={link.path} view="base" underline key={index}>
+            <Button href={link.path} view="base" key={index}>
               {link.label}
             </Button>
           ))}

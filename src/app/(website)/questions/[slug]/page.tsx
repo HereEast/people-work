@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { PageWrapper } from "~/components/PageWrapper";
 import { QuestionView, AnswersList } from "~/components/(pages)/(questions)";
-import { RecommendedPeople } from "~/components/RecommendedPeople";
+import { RecommendedSection } from "~/components/RecommendedSection";
 
 import { getQuestions } from "~/api-client/questions";
 import { generateQuestionMetadata } from "~/utils/metadata";
@@ -51,7 +51,7 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
         <AnswersList slug={slug} />
       </div>
 
-      <RecommendedPeople slug={slug} className="mb-12 mt-24" />
+      <RecommendedSection slug={slug} className="mb-12 mt-24" />
     </PageWrapper>
   );
 }

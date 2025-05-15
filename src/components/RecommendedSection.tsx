@@ -8,7 +8,7 @@ interface RecommendedPeopleProps {
   className?: string;
 }
 
-export async function RecommendedPeople({
+export async function RecommendedSection({
   slug,
   className = "",
 }: RecommendedPeopleProps) {
@@ -22,7 +22,7 @@ export async function RecommendedPeople({
   return (
     <div className={cn(className)}>
       <div className="mb-10">
-        <h2 className="text-center text-2xl font-medium md:text-4xl">
+        <h2 className="text-center text-2xl font-medium md:text-3xl">
           Check other cool people
         </h2>
       </div>
