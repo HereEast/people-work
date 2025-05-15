@@ -12,13 +12,30 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 export function Card({ children, className = "", ...rest }: CardProps) {
   return (
     <div
-      className={cn("w-full rounded-xxl transition sm:rounded-2xl", className)}
+      className={cn(
+        "w-full rounded-xxl bg-stone-50 transition sm:rounded-2xl",
+        className,
+      )}
       {...rest}
     >
       {children}
     </div>
   );
 }
+
+// export function CardFooter({ children, className = "", ...rest }: CardProps) {
+//   return (
+//     <div
+//       className={cn(
+//         "w-full rounded-xxl bg-stone-800 text-stone-50 transition sm:rounded-2xl sm:bg-stone-800/50",
+//         className,
+//       )}
+//       {...rest}
+//     >
+//       {children}
+//     </div>
+//   );
+// }
 
 // Featured card
 interface FeaturedCardWrapperProps {

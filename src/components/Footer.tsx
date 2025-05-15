@@ -10,7 +10,7 @@ const FOOTER_LINKS = [
 export function Footer() {
   return (
     <footer className="w-full px-2 py-4 sm:px-6">
-      <div className="flex w-full flex-col-reverse justify-between gap-10 text-xl font-medium leading-[120%] sm:flex-row sm:items-center sm:gap-0 sm:font-normal md:text-3xl">
+      <div className="flex w-full flex-col-reverse justify-between gap-10 text-xl leading-[120%] sm:flex-row sm:items-center sm:gap-0 md:text-3xl">
         <div className="flex justify-between">
           <Button href={ROUTE.index}>people-work.net</Button>
           <span>( 2025 )</span>

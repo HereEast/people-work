@@ -10,13 +10,11 @@ interface TagProps {
 
 export function Tag({ children, href }: TagProps) {
   const classes = cn(
-    "flex h-8 w-fit max-w-full items-center border border-stone-900 rounded-full px-3 md:h-10 md:px-5",
+    "flex h-10 w-fit items-center justify-center rounded-sm border border-stone-900 px-4 pb-0.5",
   );
 
   const content = (
-    <span className="block max-w-full truncate text-lg md:text-xl">
-      #{children}
-    </span>
+    <span className="block max-w-full truncate">#{children}</span>
   );
 
   return (

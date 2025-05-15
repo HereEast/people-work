@@ -20,11 +20,11 @@ export function PersonCardDetails({ person, isLink }: PersonDetailsProps) {
       />
 
       <div className="flex flex-col">
-        <h3 className="leading-[130%]">
+        <h3 className="leading-[125%]">
           <AccentText size="s">{person.name}</AccentText>
         </h3>
 
-        <div className="flex flex-col text-xl font-medium leading-[105%] tracking-[-0.01ch]">
+        <div className="flex flex-col leading-[110%]">
           <h4>{person.jobTitle}</h4>
           <h4>{person.company.name}</h4>
         </div>
@@ -33,12 +33,7 @@ export function PersonCardDetails({ person, isLink }: PersonDetailsProps) {
   );
 
   return isLink ? (
-    <Link
-      href={`/people/${person.slug}`}
-      className="transition hover:opacity-40"
-    >
-      {content}
-    </Link>
+    <Link href={`/people/${person.slug}`}>{content}</Link>
   ) : (
     content
   );

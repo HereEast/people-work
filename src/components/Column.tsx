@@ -11,12 +11,12 @@ export function Column({ children, variant, className = "" }: ColumnProps) {
   return variant === "left" ? (
     <div className="relative">
       <div
-        className={cn("top-20 sm:sticky lg:h-[calc(100vh-100px)]", className)}
+        className={cn("top-20 sm:sticky lg:h-[calc(100vh-105px)]", className)}
       >
         {children}
       </div>
     </div>
   ) : (
-    <div className={cn("flex flex-col gap-1", className)}>{children}</div>
+    <div className={cn("flex flex-col gap-2", className)}>{children}</div>
   );
 }

@@ -4,7 +4,8 @@
 
 body {
   box-sizing: border-box;
-  letter-spacing: -0.02ch;
+  /* letter-spacing: -0.02ch; */
+  /* font-weight: 500; */
 }
 
 li {
@@ -128,6 +129,10 @@ a {
 
 /* Desktop */
 @media (min-width: 640px) {
+  .answer p:not(:last-child) {
+    margin-bottom: 32px;
+  }
+
   .answer ul li {
     padding: 0px 0px 0px 32px;
   }
