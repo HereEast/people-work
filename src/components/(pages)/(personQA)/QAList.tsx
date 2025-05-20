@@ -39,15 +39,17 @@ export function QAList({ data }: ContentProps) {
             </div>
 
             <div className="flex w-full items-center justify-between gap-1">
-              <div className="flex gap-1">
+              <Link href={`/questions/${questionSlug}`} className="flex gap-1">
                 <Tag>{tag}</Tag>
-                <Tag className="aspect-square shrink-0 p-0">{emoji}</Tag>
-              </div>
+                <Tag className="aspect-square shrink-0 p-0 text-sm">
+                  {emoji}
+                </Tag>
+              </Link>
 
               <Button
                 href={`/questions/${questionSlug}`}
                 view="button-link"
-                className="size-9 p-0"
+                size="tile"
               >
                 <ArrowUpRightIcon className="w-6" />
               </Button>

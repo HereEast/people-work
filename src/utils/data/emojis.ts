@@ -8,13 +8,13 @@ export const EMOJIS: EmojisType = {
     value: "🤠",
   },
   "real-work": {
-    value: "⚒️",
+    value: "✅",
   },
   skills: {
     value: "💪",
   },
   "best-thing": {
-    value: "☺️",
+    value: "🥐",
   },
   "worst-thing": {
     value: "🥵",
@@ -38,7 +38,7 @@ export const EMOJIS: EmojisType = {
     value: "🦐",
   },
   "growth-skills": {
-    value: "📈",
+    value: "🥷",
   },
   "eye-opening": {
     value: "👀",
@@ -54,5 +54,32 @@ export const EMOJIS: EmojisType = {
   },
   "work-life-balance": {
     value: "🍀",
+  },
+  "true-calling": {
+    value: "🧩",
+  },
+  money: {
+    value: "💵",
+  },
+  "bad-advice": {
+    value: "💩",
+  },
+  "advice-to-younger-self": {
+    value: "🤓",
+  },
+  "career-advice": {
+    value: "✏️",
+  },
+  "excited-trends": {
+    value: "🎉",
+  },
+  "fav-products": {
+    value: "🍏",
+  },
+  recommended: {
+    value: "📚",
+  },
+  "new-people": {
+    value: "🐐",
   },
 };
