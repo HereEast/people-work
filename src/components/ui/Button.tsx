@@ -8,7 +8,7 @@ const styles = {
     base: "hover:opacity-40 transition",
     accent: "font-accent",
     "button-link":
-      "flex h-10 shrink-0 items-center gap-2 rounded-sm bg-stone-500/20 px-4 text-lg transition hover:bg-stone-500 sm:h-12 md:px-5 md:text-xl",
+      "flex h-10 shrink-0 items-center gap-2 rounded-sm bg-stone-600/15 px-4 text-lg transition hover:bg-stone-500 sm:h-12 md:px-5 md:text-xl",
   },
 };
 
@@ -35,6 +35,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
+    "flex justify-center items-center",
     href && "w-fit",
     view && styles.view[view],
     underline &&

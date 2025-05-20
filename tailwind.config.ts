@@ -23,9 +23,10 @@ const config: Config = {
         accent: ["var(--font-accent)"],
       },
       fontSize: {
-        xl: ["22px", { lineHeight: "1.1" }],
+        sm: ["16px", { lineHeight: "1.2" }],
+        xl: ["20px", { lineHeight: "1.2" }],
         "2xl": ["24px", { lineHeight: "1.1" }],
-        "3xl": ["32px", { lineHeight: "1.1" }],
+        "3xl": ["36px", { lineHeight: "1.1" }],
         "4xl": ["40px", { lineHeight: "1.1" }],
         "5xl": ["52px", { lineHeight: "1" }],
       },
@@ -38,7 +39,7 @@ const config: Config = {
         xl: "25px",
         lg: "20px",
         md: "15px",
-        sm: "12px",
+        sm: "10px",
         xs: "8px",
       },
       colors: {

@@ -2,6 +2,27 @@ import { twMerge } from "tailwind-merge";
 import { ClassValue, clsx } from "clsx";
 
 import { FEATURED } from "./data/featured";
+import { EMOJIS } from "./data/emojis";
+
+// Get question emoji
+export function getQuestionEmoji(tag?: string): string {
+  if (!tag) {
+    return "⬆️";
+  }
+
+  return EMOJIS[tag]?.value ?? "⬆️";
+}
+
+// Format tag
+export function formatTagLabel(string: string) {
+  if (typeof string !== "string") {
+    return "";
+  }
+
+  const formatted = string.split("-").join(" ");
+
+  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+}
 
 // Featured slugs
 export function getFeaturedSlugs(

@@ -1,67 +1,45 @@
-import { ReactNode } from "react";
 import Link from "next/link";
 
-import { cn } from "~/utils/handlers";
+import { cn, formatTagLabel, getQuestionEmoji } from "~/utils/handlers";
 
 interface TagProps {
-  children: ReactNode;
+  children: string;
   href?: string;
+  className?: string;
 }
 
-export function Tag({ children, href }: TagProps) {
-  const string = (children as string).split("-").join(" ");
-  const tag = string[0].toUpperCase() + string.slice(1);
-
-  const classes = cn(
-    "flex h-10 sm:h-12 w-fit items-center justify-center rounded-sm border-[1.5px] border-stone-900 px-4 sm:px-4",
-  );
+export function Tag({ children, href, className = "" }: TagProps) {
+  const tag = formatTagLabel(children);
+  const emoji = getQuestionEmoji(children);
 
   const content = (
-    <span className="block max-w-full truncate text-lg font-medium sm:text-xl">
-      {tag}
-    </span>
+    <div className="flex h-10 gap-1 sm:h-12">
+      <span
+        className={cn(
+          "flex w-fit max-w-full items-center justify-center truncate rounded-sm border border-stone-900 px-3.5 text-lg tracking-[0.004ch] sm:px-4 sm:text-xl",
+        )}
+      >
+        {tag}
+      </span>
+      <span
+        className={cn(
+          "flex aspect-square shrink-0 items-center justify-center rounded-sm border border-stone-900",
+        )}
+      >
+        {emoji}
+      </span>
+    </div>
   );
 
   return (
-    <div className="flex min-w-0 flex-1 gap-1">
+    <div className="flex flex-1 gap-1">
       {href ? (
-        <Link
-          href={href}
-          className={cn("transition hover:opacity-40", classes)}
-        >
+        <Link href={href} className={cn("transition hover:opacity-40")}>
           {content}
         </Link>
       ) : (
-        <div className={cn("cursor-default", classes)}>{content}</div>
+        <div className={cn("cursor-default")}>{content}</div>
       )}
     </div>
   );
 }
-
-// export function Tag({ children, href }: TagProps) {
-//   const classes = cn(
-//     "flex h-8 sm:h-10 w-fit items-center justify-center sm:rounded-sm rounded-xs border border-stone-900 px-3 pb-0.5",
-//   );
-
-//   const content = (
-//     <span className="block max-w-full truncate text-lg">#{children}</span>
-//   );
-
-//   return (
-//     <div className="flex min-w-0 flex-1 gap-1">
-//       {href ? (
-//         <Link
-//           href={href}
-//           className={cn(
-//             "transition hover:border-stone-500 hover:bg-stone-500",
-//             classes,
-//           )}
-//         >
-//           {content}
-//         </Link>
-//       ) : (
-//         <div className={cn("cursor-default", classes)}>{content}</div>
-//       )}
-//     </div>
-//   );
-// }

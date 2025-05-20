@@ -56,8 +56,15 @@ a {
 }
 
 .featured-answer a {
-  text-decoration-thickness: 2.5px;
+  text-decoration-thickness: 2px;
   text-underline-offset: 4px;
+}
+
+.question {
+  text-decoration: underline;
+  text-decoration-thickness: 1.2px;
+  text-underline-offset: 2.2px;
+  text-decoration-skip-ink: none;
 }
 
 .answer a:hover {
