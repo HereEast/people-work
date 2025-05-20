@@ -29,7 +29,7 @@ export const EMOJIS: EmojisType = {
     value: "🐝",
   },
   "fav-mistake": {
-    value: "🤡",
+    value: "👻",
   },
   "unique-talent": {
     value: "🍒",
@@ -39,5 +39,20 @@ export const EMOJIS: EmojisType = {
   },
   "growth-skills": {
     value: "📈",
+  },
+  "eye-opening": {
+    value: "👀",
+  },
+  tools: {
+    value: "⚒️",
+  },
+  "tips-tricks": {
+    value: "✨",
+  },
+  networking: {
+    value: "💬",
+  },
+  "work-life-balance": {
+    value: "🍀",
   },
 };

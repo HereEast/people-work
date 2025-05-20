@@ -8,7 +8,7 @@ import { Answer } from "~/components/Answer";
 import { Tag } from "~/components/Tag";
 
 import { AnswerData, QuestionData } from "~/schemas";
-import { cn } from "~/utils/handlers";
+import { cn, formatTagLabel, getQuestionEmoji } from "~/utils/handlers";
 
 interface ContentProps {
   data: AnswerData[];
@@ -21,6 +21,9 @@ export function QAList({ data }: ContentProps) {
         const { question, answer, marked, featured } = item;
 
         const questionSlug = question.slug;
+
+        const emoji = getQuestionEmoji(questionSlug);
+        const tag = formatTagLabel(questionSlug);
 
         return (
           <Card
@@ -37,17 +40,15 @@ export function QAList({ data }: ContentProps) {
 
             <div className="flex w-full items-center justify-between gap-1">
               <div className="flex gap-1">
-                <div className="flex flex-1 gap-1">
-                  <Tag>{questionSlug}</Tag>
-                </div>
+                <Tag>{tag}</Tag>
+                <Tag className="aspect-square shrink-0 p-0">{emoji}</Tag>
               </div>
 
               <Button
                 href={`/questions/${questionSlug}`}
                 view="button-link"
-                className="size-10 p-0"
+                className="size-9 p-0"
               >
-                <span className="hidden">Question</span>
                 <ArrowUpRightIcon className="w-6" />
               </Button>
             </div>
@@ -67,7 +68,7 @@ function Question({ children }: QuestionProps) {
   return (
     <Link
       href={`/questions/${children.slug}`}
-      className="question text-xl font-semibold leading-[115%] transition hover:no-underline hover:opacity-40 sm:text-3xl"
+      className="question text-xl font-semibold leading-[100%] transition hover:no-underline hover:opacity-40 sm:text-3xl"
     >
       {children.body}
     </Link>

@@ -24,7 +24,7 @@ const config: Config = {
       },
       fontSize: {
         sm: ["16px", { lineHeight: "1.2" }],
-        xl: ["20px", { lineHeight: "1.2" }],
+        xl: ["20px", { lineHeight: "1.1" }],
         "2xl": ["24px", { lineHeight: "1.1" }],
         "3xl": ["36px", { lineHeight: "1.1" }],
         "4xl": ["40px", { lineHeight: "1.1" }],
