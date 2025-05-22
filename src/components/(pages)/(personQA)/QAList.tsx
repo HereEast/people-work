@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon, ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
 import { Card } from "~/components/Card";
 import { Button } from "~/components/ui/Button";
@@ -15,7 +15,7 @@ interface ContentProps {
 
 export function QAList({ data }: ContentProps) {
   return (
-    <Column variant="right" className="pt-4 lg:pt-0">
+    <Column>
       {data?.map((item, index) => {
         const { question, answer, marked, featured } = item;
 
@@ -25,7 +25,7 @@ export function QAList({ data }: ContentProps) {
           <Card
             key={index}
             className={cn(
-              "gap-6 p-6 sm:gap-8 sm:p-8 md:p-10",
+              "gap-6 p-6 sm:gap-8 sm:p-10",
               (marked || featured) && "gap-6 bg-stone-500/60",
             )}
           >
@@ -43,7 +43,8 @@ export function QAList({ data }: ContentProps) {
               </div>
 
               <Button href={`/questions/${question.slug}`} size="tile">
-                <ArrowUpRightIcon className="w-6 shrink-0" />
+                <ArrowRightIcon className="w-6 shrink-0" />
+                {/* <ArrowUpRightIcon className="w-6 shrink-0" /> */}
               </Button>
             </div>
           </Card>

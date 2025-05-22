@@ -45,12 +45,14 @@ export default async function PersonQAPage(props: PersonPageProps) {
 
   return (
     <PageWrapper>
-      <div className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
+      <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-4">
         <PersonView person={person} />
         <QAList data={answers} />
       </div>
 
-      <RecommendedSection slug={slug} className="mb-12 mt-24" />
+      <div className="mb-12 mt-24">
+        <RecommendedSection slug={slug} />
+      </div>
     </PageWrapper>
   );
 }
