@@ -103,26 +103,25 @@ a {
 .answer h6:has(+ ul),
 .answer h5:has(+ ul),
 .answer h6 {
-  font-weight: 500;
-  /* text-decoration: underline;
+  text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-thickness: 1.5px;
   text-decoration-skip-ink: none;
-  text-underline-offset: 2px; */
+  text-underline-offset: 2px;
 }
 
 .answer h6:has(+ ul) {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .answer h5:has(+ ul) {
-  margin-bottom: 4px;
+  margin-bottom: 12px;
 }
 
 /* Margin between li in lists */
 .answer ul li:not(:last-child),
 .answer h6 + ul li:not(:last-child) {
-  margin-bottom: 1px;
+  /* margin-bottom: 1px; */
 }
 
 .answer h5 + ul li:not(:last-child) {
@@ -144,18 +143,22 @@ a {
 
 /* Desktop */
 @media (min-width: 640px) {
+  .answer ul:not(:last-child) {
+    margin-bottom: 32px;
+  }
+
   .answer p:not(:last-child) {
     margin-bottom: 32px;
   }
 
   .answer ul li {
-    padding: 0px 0px 0px 32px;
+    padding: 0px 0px 0px 30px;
   }
 
   .answer ul li::before {
-    width: 14px;
-    height: 14px;
-    top: 11px;
+    width: 12px;
+    height: 12px;
+    top: 13px;
   }
 
   .question,

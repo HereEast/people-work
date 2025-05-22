@@ -34,7 +34,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <ClientProvider>
           <Header />
 
-          <main className="mt-12 flex h-full grow md:mt-14">{children}</main>
+          <main className="mt-12 flex h-full grow sm:mt-14">{children}</main>
 
           <Footer />
         </ClientProvider>

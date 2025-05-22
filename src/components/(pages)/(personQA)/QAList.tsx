@@ -19,11 +19,13 @@ export function QAList({ data }: ContentProps) {
       {data?.map((item, index) => {
         const { question, answer, marked, featured } = item;
 
+        const emoji = getQuestionEmoji(question.slug);
+
         return (
           <Card
             key={index}
             className={cn(
-              "gap-6 p-6 sm:gap-8 sm:p-10",
+              "gap-6 p-6 sm:gap-8 sm:p-8 md:p-10",
               (marked || featured) && "gap-6 bg-stone-500/60",
             )}
           >
@@ -32,36 +34,22 @@ export function QAList({ data }: ContentProps) {
               <Answer marked={marked || featured}>{answer}</Answer>
             </div>
 
-            <QACardFooter questionSlug={question.slug} />
+            <div className="flex w-full items-center justify-between gap-1">
+              <div className="flex gap-1">
+                <Tag>#{question.slug}</Tag>
+                <Tag size="tile" className={cn(emoji.className)}>
+                  {emoji.value}
+                </Tag>
+              </div>
+
+              <Button href={`/questions/${question.slug}`} size="tile">
+                <ArrowUpRightIcon className="w-6 shrink-0" />
+              </Button>
+            </div>
           </Card>
         );
       })}
     </Column>
-  );
-}
-
-// QA Card Footer
-interface QACardFooterProps {
-  questionSlug: string;
-}
-
-function QACardFooter({ questionSlug }: QACardFooterProps) {
-  const emoji = getQuestionEmoji(questionSlug);
-
-  return (
-    <div className="flex w-full items-center justify-between gap-1">
-      <div className="flex gap-1">
-        <Tag>#{questionSlug}</Tag>
-
-        <Tag size="tile" className={cn(emoji.className)}>
-          {emoji.value}
-        </Tag>
-      </div>
-
-      <Button href={`/questions/${questionSlug}`} size="tile">
-        <ArrowUpRightIcon className="w-6 shrink-0" />
-      </Button>
-    </div>
   );
 }
 

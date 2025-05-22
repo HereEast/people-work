@@ -8,10 +8,10 @@ export const buttonClasses = {
     base: "transition hover:bg-stone-500 bg-stone-600/10",
     accent: "font-accent",
     outline: "border border-stone-900/20 bg-transparent",
-    link: "h-fit p-0 sm:p-0 bg-transparent hover:bg-transparent hover:opacity-40",
+    link: "h-fit sm:h-fit p-0 sm:p-0 bg-transparent hover:bg-transparent hover:opacity-40",
   },
   size: {
-    base: "w-fit h-10 sm:h-12 rounded-xs sm:rounded-sm px-3 sm:px-6 flex justify-center items-center",
+    base: "w-fit h-10 sm:h-12 rounded-xs sm:rounded-sm px-3 sm:px-5 flex justify-center items-center",
     tile: "size-10 sm:size-12 shrink-0 p-0 text-sm",
   },
 };
