@@ -13,7 +13,7 @@ export function Card({ children, className = "", ...rest }: CardProps) {
   return (
     <div
       className={cn(
-        "w-full rounded-xl bg-stone-50 transition sm:rounded-2xl",
+        "flex w-full flex-col rounded-xl bg-stone-50 transition sm:rounded-2xl",
         className,
       )}
       {...rest}

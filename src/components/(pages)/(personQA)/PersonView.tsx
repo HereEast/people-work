@@ -63,11 +63,7 @@ export function PersonView({ person }: PersonViewProps) {
       {/* Mobile */}
       <div className="sticky top-12 z-40 rounded-b-xl bg-bg md:hidden">
         <Card className="rounded-lg bg-stone-800 p-2.5 text-stone-50">
-          <div className="flex items-end gap-3 sm:gap-5">
-            {/* <PersonImage name={person.name} slug={person.slug} /> */}
-
-            <PersonCardDetails person={person} />
-          </div>
+          <PersonCardDetails person={person} />
         </Card>
       </div>
     </>

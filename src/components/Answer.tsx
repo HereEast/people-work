@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { QuestionData } from "~/schemas";
 import { parseMarkdown } from "~/utils/parseMarkdown";
 import { cn } from "~/utils/handlers";
 
@@ -12,13 +15,29 @@ export async function Answer({ children, marked }: AnswersProps) {
   return (
     <div
       className={cn(
-        "answer text-xl leading-[120%] tracking-[0.01ch] sm:font-normal md:text-3xl md:leading-[105%] [&_a]:transition",
+        "answer text-xl leading-[120%] tracking-[-0.00ch] sm:font-normal md:text-3xl md:leading-[105%] [&_a]:transition",
         marked &&
-          "featured-answer text-3xl font-semibold leading-[95%] tracking-[-0.02ch] md:text-5xl md:font-semibold md:leading-[95%] [&_a]:transition",
+          "featured-answer text-3xl font-semibold leading-[95%] tracking-[-0.03ch] md:text-5xl md:font-semibold md:leading-[95%] [&_a]:transition",
       )}
       dangerouslySetInnerHTML={{
         __html: parsedHTML,
       }}
     />
+  );
+}
+
+// Question
+interface QuestionProps {
+  children: QuestionData;
+}
+
+export function Question({ children }: QuestionProps) {
+  return (
+    <Link
+      href={`/questions/${children.slug}`}
+      className="question text-xl font-semibold leading-[100%] transition hover:no-underline hover:opacity-40 sm:text-3xl"
+    >
+      {children.body}
+    </Link>
   );
 }
