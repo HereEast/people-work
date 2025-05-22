@@ -41,7 +41,8 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "flex justify-center w-fit items-center rounded-sm px-3 h-9",
+    "flex justify-center font-medium w-fit items-center rounded-sm px-3 h-9",
+    href && "p-0 h-fit",
     view && styles.view[view],
     size && styles.size[size],
     underline &&

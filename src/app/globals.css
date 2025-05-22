@@ -52,7 +52,15 @@ a {
 .answer a {
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
-  text-underline-offset: 2.4px;
+  text-underline-offset: 2.2px;
+}
+
+.featured-answer em {
+  font-style: normal;
+  /* font-family: var(--font-accent);
+  font-size: 42px;
+  font-weight: 400;
+  letter-spacing: -0.06ch; */
 }
 
 .featured-answer a {
@@ -62,7 +70,7 @@ a {
 
 .question {
   text-decoration: underline;
-  text-decoration-thickness: 1.2px;
+  text-decoration-thickness: 1.5px;
   text-underline-offset: 2.2px;
   text-decoration-skip-ink: none;
 }
@@ -95,15 +103,16 @@ a {
 .answer h6:has(+ ul),
 .answer h5:has(+ ul),
 .answer h6 {
-  text-decoration: underline;
+  font-weight: 500;
+  /* text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-thickness: 1.5px;
   text-decoration-skip-ink: none;
-  text-underline-offset: 2px;
+  text-underline-offset: 2px; */
 }
 
 .answer h6:has(+ ul) {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .answer h5:has(+ ul) {
@@ -124,11 +133,11 @@ a {
 .answer ul li::before {
   content: "";
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background-color: black;
   border-radius: 100%;
-  top: 7px;
+  top: 8px;
   left: 2px;
   z-index: 2;
 }

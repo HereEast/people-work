@@ -16,7 +16,7 @@ interface ContentProps {
 
 export function QAList({ data }: ContentProps) {
   return (
-    <Column variant="right">
+    <Column variant="right" className="pt-4">
       {data?.map((item, index) => {
         const { question, answer, marked, featured } = item;
 

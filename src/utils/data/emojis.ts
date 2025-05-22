@@ -83,5 +83,6 @@ export const EMOJIS: EmojisType = {
   },
   "new-people": {
     value: "🐐",
+    className: "pb-1 text-lg",
   },
 };

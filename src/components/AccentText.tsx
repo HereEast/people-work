@@ -23,7 +23,8 @@ export function AccentText({
         underline &&
           "offset underline decoration-2 underline-offset-2 hover:no-underline sm:underline-offset-[3px]",
         // S
-        size === "s" && "text-[22px] md:text-2xl md:leading-[100%]",
+        size === "s" &&
+          "text-[22px] leading-[70%] md:text-2xl md:leading-[100%]",
         // Xl
         size === "xl" &&
           "text-[40px] leading-[80%] tracking-[-0.04ch] sm:text-[86px]",

@@ -16,9 +16,9 @@ export function Footer() {
           <span>( 2025 )</span>
         </div>
 
-        <div className="flex flex-col gap-px sm:flex-row sm:gap-6">
+        <div className="flex flex-col gap-1 text-xl sm:flex-row sm:gap-6">
           {FOOTER_LINKS.map((link, index) => (
-            <Button href={link.path} view="base" key={index}>
+            <Button href={link.path} key={index}>
               {link.label}
             </Button>
           ))}

@@ -21,8 +21,8 @@ export async function RecommendedSection({
 
   return (
     <div className={cn(className)}>
-      <div className="mb-10">
-        <h2 className="text-center text-2xl font-medium md:text-3xl">
+      <div className="mb-8">
+        <h2 className="text-center text-xl font-medium md:text-3xl">
           Check other cool people
         </h2>
       </div>
