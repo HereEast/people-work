@@ -31,7 +31,8 @@ export const EMOJIS: EmojisType = {
     value: "🦀",
   },
   "fav-mistake": {
-    value: "😶‍🌫️",
+    value: "🙈",
+    className: "pb-1",
   },
   "unique-talent": {
     value: "🤌",
@@ -58,7 +59,7 @@ export const EMOJIS: EmojisType = {
     value: "🍀",
   },
   "true-calling": {
-    value: "🏀",
+    value: "🤩",
   },
   money: {
     value: "💵",

@@ -43,7 +43,7 @@ const config: Config = {
         xs: "10px",
       },
       colors: {
-        bg: "#EFEFEF",
+        bg: "#EEEEEE",
       },
     },
   },

@@ -19,12 +19,12 @@ export function PersonCardDetails({ person, isLink }: PersonDetailsProps) {
         classname="md:size-20"
       />
 
-      <div className="flex flex-col gap-1">
-        <h3 className="leading-[90%]">
-          <AccentText size="s">{person.name}</AccentText>
+      <div className="flex flex-col gap-1.5">
+        <h3 className="font-accent text-2xl leading-[70%] tracking-[-0.04ch]">
+          {person.name}
         </h3>
 
-        <div className="flex flex-col text-xl font-medium leading-[110%]">
+        <div className="flex flex-col text-xl font-medium leading-[108%]">
           <h4>{person.jobTitle}</h4>
           <h4>{person.company.name}</h4>
         </div>
