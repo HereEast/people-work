@@ -22,7 +22,6 @@ export type CompanyData = z.infer<typeof CompanyApiSchema>;
 export const PersonApiSchema = z.object({
   id: z.string(),
   name: z.string(),
-  email: z.string().email(),
   company: z.object({
     name: z.string(),
     url: z.string(),
@@ -58,6 +57,8 @@ export const AnswerApiSchema = z.object({
   answer: z.string(),
   question: QuestionApiSchema,
   person: PersonApiSchema,
+  featured: z.boolean().optional(),
+  marked: z.boolean().optional(),
 });
 
 export type AnswerData = z.infer<typeof AnswerApiSchema>;

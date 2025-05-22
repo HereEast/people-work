@@ -3,25 +3,16 @@ import { MouseEvent, ReactNode } from "react";
 
 import { cn } from "~/utils/handlers";
 
-const styles = {
-  base: "group/button inline-flex items-center outline-none relative justify-center leading-none font-semibold lowercase bg-stone-950 text-stone-50 rounded-full w-fit h-8 px-4 transition text-lg",
-  size: {
-    md: "h-12 px-10",
-    sm: "h-8 px-4 rounded-full",
-    xs: "",
-  },
+export const buttonClasses = {
   view: {
-    primary: "hover:shadow-none",
-    inverted: "bg-stone-50 text-stone-960",
-    // link: "hover:shadow-lg hover:shadow-blue-600",
-    link: "hover:opacity-90",
-    animated: "animate-anime bg-gradient-base bg-[length:600%] text-stone-50",
-    tile: "hover:shadow-none overflow-hidden size-20 p-0 rounded-xl",
+    base: "transition hover:bg-stone-500 bg-stone-600/10",
+    accent: "font-accent",
+    outline: "border border-stone-900/20 bg-transparent",
+    link: "h-fit sm:h-fit p-0 sm:p-0 bg-transparent hover:bg-transparent hover:opacity-40",
   },
-  animated: {
-    // base: "animate-anime hover:[animation-play-state:paused] bg-gradient-base bg-[length:600%] text-stone-50",
-    hover:
-      "animate-anime hover:bg-gradient-base bg-[length:600%] hover:text-stone-50",
+  size: {
+    base: "w-fit h-10 sm:h-12 rounded-xs sm:rounded-sm px-3 sm:px-5 flex justify-center items-center",
+    tile: "size-10 sm:size-12 shrink-0 p-0 text-sm",
   },
 };
 
@@ -30,9 +21,9 @@ type ButtonProps = {
   href?: string | URL;
   target?: "_blank" | "_self";
   isDisabled?: boolean;
-  size?: keyof typeof styles.size;
-  view?: keyof typeof styles.view;
-  animated?: keyof typeof styles.animated;
+  view?: keyof typeof buttonClasses.view;
+  size?: keyof typeof buttonClasses.size;
+  underline?: boolean;
   rel?: string;
   className?: string;
   onClick?: (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
@@ -40,22 +31,22 @@ type ButtonProps = {
 
 export function Button({
   className = "",
-  size,
   href,
   children,
   isDisabled,
   onClick,
   view,
-  animated,
+  size,
+  underline = false,
   ...props
 }: ButtonProps) {
   const classes = cn(
-    styles.base,
-    href && `${styles.view.link} ${styles.size.sm}`,
-    size && styles.size[size],
-    view && styles.view[view],
-    (view === "primary" || view === "inverted") && styles.animated.hover,
-    animated && styles.animated[animated],
+    buttonClasses.view.base,
+    buttonClasses.size.base,
+    view && buttonClasses.view[view],
+    size && buttonClasses.size[size],
+    underline &&
+      "underline decoration-2 underline-offset-[3px] hover:no-underline",
     className,
   );
 

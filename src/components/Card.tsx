@@ -1,21 +1,55 @@
-import { ReactNode } from "react";
+"use client";
 
+import { HTMLAttributes, ReactNode, useState } from "react";
+
+import { FEATURED } from "~/utils/data/featured";
 import { cn } from "~/utils/handlers";
 
-interface CardProps {
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-  className?: string;
 }
 
-export function Card({ children, className = "" }: CardProps) {
+export function Card({ children, className = "", ...rest }: CardProps) {
   return (
     <div
       className={cn(
-        "relative flex max-w-full flex-col overflow-hidden rounded-6xl bg-stone-950",
+        "flex w-full flex-col rounded-xl bg-stone-50 transition sm:rounded-2xl",
         className,
       )}
+      {...rest}
     >
       {children}
     </div>
+  );
+}
+
+// Featured card
+interface FeaturedCardWrapperProps {
+  children: ReactNode;
+  slug: string;
+}
+
+export function FeaturedCardWrapper({
+  children,
+  slug,
+}: FeaturedCardWrapperProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const featuredItem = FEATURED.find((item) => item.slug === slug);
+  const featuredId = featuredItem?.id || 0;
+
+  return (
+    <Card
+      className="cursor-pointer"
+      style={{
+        backgroundColor: isHovered
+          ? `var(--featured-hover-${featuredId})`
+          : `var(--featured-${featuredId})`,
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {children}
+    </Card>
   );
 }

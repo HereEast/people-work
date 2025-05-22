@@ -4,7 +4,6 @@ import { connectDB } from "~/lib/connectDB";
 import { IQuestionDB, QuestionDB } from "~/models/Question";
 import { IPersonDB, PersonDB } from "~/models/Person";
 import { AnswerDB, IAnswerDB } from "~/models/Answer";
-
 import { mapAnswersData } from "~/utils/mappers";
 import { DBDoc } from "~/utils/types";
 
@@ -55,7 +54,7 @@ export async function GET(req: Request, props: ReqParams) {
     console.log(err);
 
     return NextResponse.json(
-      { message: "🔴 Error fetching answers by personId." },
+      { message: "🔴 Error fetching answers by person slug." },
       {
         status: 500,
       },

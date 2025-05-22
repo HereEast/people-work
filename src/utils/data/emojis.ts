@@ -1,0 +1,89 @@
+type EmojisType = { [key: string]: { value: string; className?: string } };
+
+export const EMOJIS: EmojisType = {
+  company: {
+    value: "💼",
+    className: "pb-1",
+  },
+  "role-snapshot": {
+    value: "😎",
+  },
+  "real-work": {
+    value: "📌",
+  },
+  skills: {
+    value: "💪",
+    className: "pb-1",
+  },
+  "best-thing": {
+    value: "🥐",
+  },
+  "worst-thing": {
+    value: "🥵",
+  },
+  "underrated-challenges": {
+    value: "🫠",
+  },
+  "biggest-goal": {
+    value: "🚀",
+  },
+  "closest-goal": {
+    value: "🦀",
+  },
+  "fav-mistake": {
+    value: "🙈",
+    className: "pb-1",
+  },
+  "unique-talent": {
+    value: "🤌",
+  },
+  now: {
+    value: "🦐",
+  },
+  "growth-skills": {
+    value: "🥷",
+  },
+  "eye-opening": {
+    value: "👀",
+  },
+  tools: {
+    value: "⚒️",
+  },
+  "tips-tricks": {
+    value: "🦍",
+  },
+  networking: {
+    value: "💬",
+  },
+  "work-life-balance": {
+    value: "🍀",
+  },
+  "true-calling": {
+    value: "🤩",
+  },
+  money: {
+    value: "💵",
+  },
+  "bad-advice": {
+    value: "💩",
+  },
+  "advice-to-younger-self": {
+    value: "🧐",
+  },
+  "career-advice": {
+    value: "✏️",
+  },
+  "excited-trends": {
+    value: "🎉",
+  },
+  "fav-products": {
+    value: "🍏",
+  },
+  recommended: {
+    value: "📚",
+  },
+  "new-people": {
+    value: "🐐",
+    className: "pb-1 text-lg",
+  },
+};
