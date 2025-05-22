@@ -19,7 +19,7 @@ export function PersonView({ person }: PersonViewProps) {
     <>
       {/* Desktop */}
       <Column variant="left">
-        <div className="hidden flex-col gap-8 pb-24 md:flex">
+        <div className="hidden flex-col gap-8 pb-24 lg:flex">
           <PersonImage
             name={person.name}
             slug={person.slug}
@@ -61,7 +61,7 @@ export function PersonView({ person }: PersonViewProps) {
       </Column>
 
       {/* Mobile */}
-      <div className="sticky top-12 z-40 rounded-b-xl bg-bg md:hidden">
+      <div className="sticky top-12 z-40 rounded-b-xl bg-bg lg:hidden">
         <Card className="rounded-lg bg-stone-800 p-2.5 text-stone-50">
           <PersonCardDetails person={person} />
         </Card>

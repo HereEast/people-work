@@ -39,8 +39,8 @@ const config: Config = {
         xl: "25px",
         lg: "20px",
         md: "15px",
-        sm: "10px",
-        xs: "8px",
+        sm: "12px",
+        xs: "10px",
       },
       colors: {
         bg: "#EFEFEF",

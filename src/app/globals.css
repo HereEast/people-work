@@ -144,12 +144,6 @@ a {
 
 /* Desktop */
 @media (min-width: 640px) {
-  .question em {
-    font-size: 38px;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
-  }
-
   .answer p:not(:last-child) {
     margin-bottom: 32px;
   }
@@ -164,6 +158,7 @@ a {
     top: 11px;
   }
 
+  .question,
   .answer a {
     text-decoration: underline;
     text-decoration-thickness: 2px;
@@ -172,7 +167,7 @@ a {
 
   /* Featured */
   .featured-answer a {
-    text-decoration-thickness: 2.5px;
-    text-underline-offset: 7px;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
   }
 }

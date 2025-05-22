@@ -3,15 +3,15 @@ import { MouseEvent, ReactNode } from "react";
 
 import { cn } from "~/utils/handlers";
 
-const styles = {
+export const buttonClasses = {
   view: {
-    base: "hover:opacity-40 transition",
+    base: "transition hover:bg-stone-500 bg-stone-600/10",
     accent: "font-accent",
-    outline: "border border-stone-900",
-    "button-link":
-      "flex h-10 shrink-0 items-center gap-2 rounded-sm bg-stone-600/10 px-4 text-lg transition hover:bg-stone-500 sm:h-12 md:px-5 md:text-xl",
+    outline: "border border-stone-900/20 bg-transparent",
+    link: "h-fit p-0 sm:p-0 bg-transparent hover:bg-transparent hover:opacity-40",
   },
   size: {
+    base: "w-fit h-10 sm:h-12 rounded-xs sm:rounded-sm px-3 sm:px-6 flex justify-center items-center",
     tile: "size-10 sm:size-12 shrink-0 p-0 text-sm",
   },
 };
@@ -21,8 +21,8 @@ type ButtonProps = {
   href?: string | URL;
   target?: "_blank" | "_self";
   isDisabled?: boolean;
-  view?: keyof typeof styles.view;
-  size?: keyof typeof styles.size;
+  view?: keyof typeof buttonClasses.view;
+  size?: keyof typeof buttonClasses.size;
   underline?: boolean;
   rel?: string;
   className?: string;
@@ -35,16 +35,16 @@ export function Button({
   children,
   isDisabled,
   onClick,
-  view = "base",
+  view,
   size,
   underline = false,
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "flex justify-center font-medium w-fit items-center rounded-sm px-3 h-9",
-    href && "p-0 h-fit",
-    view && styles.view[view],
-    size && styles.size[size],
+    buttonClasses.view.base,
+    buttonClasses.size.base,
+    view && buttonClasses.view[view],
+    size && buttonClasses.size[size],
     underline &&
       "underline decoration-2 underline-offset-[3px] hover:no-underline",
     className,
