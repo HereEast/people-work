@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { AccentText } from "~/components/AccentText";
+import { Card } from "~/components/Card";
 import { Column } from "~/components/Column";
 import { PersonCardDetails } from "~/components/PersonCardDetails";
 import { PersonImage } from "~/components/PersonImage";
@@ -60,25 +61,14 @@ export function PersonView({ person }: PersonViewProps) {
       </Column>
 
       {/* Mobile */}
-      <div className="sticky top-12 z-40 -mx-2.5 mb-4 bg-stone-900 p-2.5 text-stone-50 md:hidden">
-        <div className="flex items-end gap-3 sm:gap-5">
-          <PersonImage
-            name={person.name}
-            slug={person.slug}
-            classname="size-[62px]"
-          />
+      <div className="sticky top-12 z-40 mb-4 rounded-b-xl bg-bg md:hidden">
+        <Card className="rounded-lg bg-stone-800 p-2.5 text-stone-50">
+          <div className="flex items-end gap-3 sm:gap-5">
+            {/* <PersonImage name={person.name} slug={person.slug} /> */}
 
-          <div className="flex flex-col">
-            <h3 className="leading-[100%]">
-              <AccentText size="s">{person.name}</AccentText>
-            </h3>
-
-            <div className="flex flex-col text-lg font-medium leading-[110%]">
-              <h4>{person.jobTitle}</h4>
-              <h4>{person.company.name}</h4>
-            </div>
+            <PersonCardDetails person={person} />
           </div>
-        </div>
+        </Card>
       </div>
     </>
   );

@@ -5,8 +5,10 @@ import { FEATURED } from "./data/featured";
 import { EMOJIS } from "./data/emojis";
 
 // Get question emoji
-export function getQuestionEmoji(tag: string): string {
-  return EMOJIS[tag]?.value ?? "⬆️";
+export function getQuestionEmoji(tag: string) {
+  const emoji = EMOJIS[tag];
+
+  return { value: emoji.value ?? "⬆️", className: emoji.className ?? "" };
 }
 
 // Format tag

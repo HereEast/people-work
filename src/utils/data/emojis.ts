@@ -1,17 +1,19 @@
-type EmojisType = { [key: string]: { value: string } };
+type EmojisType = { [key: string]: { value: string; className?: string } };
 
 export const EMOJIS: EmojisType = {
   company: {
     value: "💼",
+    className: "pb-1",
   },
   "role-snapshot": {
-    value: "🤠",
+    value: "😎",
   },
   "real-work": {
-    value: "✅",
+    value: "📌",
   },
   skills: {
     value: "💪",
+    className: "pb-1",
   },
   "best-thing": {
     value: "🥐",
@@ -26,13 +28,13 @@ export const EMOJIS: EmojisType = {
     value: "🚀",
   },
   "closest-goal": {
-    value: "🐝",
+    value: "🦀",
   },
   "fav-mistake": {
-    value: "👻",
+    value: "😶‍🌫️",
   },
   "unique-talent": {
-    value: "🍒",
+    value: "🤌",
   },
   now: {
     value: "🦐",
@@ -47,7 +49,7 @@ export const EMOJIS: EmojisType = {
     value: "⚒️",
   },
   "tips-tricks": {
-    value: "✨",
+    value: "🦍",
   },
   networking: {
     value: "💬",
@@ -56,7 +58,7 @@ export const EMOJIS: EmojisType = {
     value: "🍀",
   },
   "true-calling": {
-    value: "🧩",
+    value: "🏀",
   },
   money: {
     value: "💵",
@@ -65,7 +67,7 @@ export const EMOJIS: EmojisType = {
     value: "💩",
   },
   "advice-to-younger-self": {
-    value: "🤓",
+    value: "🧐",
   },
   "career-advice": {
     value: "✏️",

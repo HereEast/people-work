@@ -29,7 +29,7 @@ export function QAList({ data }: ContentProps) {
           <Card
             className={cn(
               "p-6 sm:p-10",
-              (marked || featured) && "bg-stone-500/75",
+              (marked || featured) && "bg-stone-500/60",
             )}
             key={index}
           >
@@ -39,12 +39,14 @@ export function QAList({ data }: ContentProps) {
             </div>
 
             <div className="flex w-full items-center justify-between gap-1">
-              <Link href={`/questions/${questionSlug}`} className="flex gap-1">
+              <div className="flex gap-1">
                 <Tag>{tag}</Tag>
-                <Tag className="aspect-square shrink-0 p-0 text-sm">
-                  {emoji}
+                <Tag
+                  className={cn("aspect-square shrink-0 px-0", emoji.className)}
+                >
+                  {emoji.value}
                 </Tag>
-              </Link>
+              </div>
 
               <Button
                 href={`/questions/${questionSlug}`}

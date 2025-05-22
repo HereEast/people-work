@@ -9,10 +9,10 @@ const styles = {
     accent: "font-accent",
     outline: "border border-stone-900",
     "button-link":
-      "flex h-10 shrink-0 items-center gap-2 rounded-sm bg-stone-600/15 px-4 text-lg transition hover:bg-stone-500 sm:h-12 md:px-5 md:text-xl",
+      "flex h-10 shrink-0 items-center gap-2 rounded-sm bg-stone-600/10 px-4 text-lg transition hover:bg-stone-500 sm:h-12 md:px-5 md:text-xl",
   },
   size: {
-    tile: "size-9 sm:size-12 shrink-0 p-0 text-sm",
+    tile: "size-10 sm:size-12 shrink-0 p-0 text-sm",
   },
 };
 

@@ -7,7 +7,7 @@ import { PersonData } from "~/schemas";
 
 interface PersonDetailsProps {
   person: PersonData;
-  isLink?: true;
+  isLink?: boolean;
 }
 
 export function PersonCardDetails({ person, isLink }: PersonDetailsProps) {
@@ -19,8 +19,8 @@ export function PersonCardDetails({ person, isLink }: PersonDetailsProps) {
         classname="md:size-20"
       />
 
-      <div className="flex flex-col">
-        <h3 className="leading-[125%]">
+      <div className="flex flex-col gap-1">
+        <h3 className="leading-[90%]">
           <AccentText size="s">{person.name}</AccentText>
         </h3>
 
