@@ -1,2 +1,3 @@
 export * from "./LogoIcon";
-export * from "./Plus";
+export * from "./LinkHoverIcon";
+export * from "./QuoteIcon";

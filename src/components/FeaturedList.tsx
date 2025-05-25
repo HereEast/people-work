@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { FeaturedCardWrapper } from "./Card";
 import { PersonCardDetails } from "./PersonCardDetails";
-import { QuoteIcon } from "./icons/QuoteIcon";
+import { QuoteIcon } from "./icons";
 
 import { PersonData } from "~/schemas";
 import { getFeaturedAnswer } from "~/api-client/answers";
