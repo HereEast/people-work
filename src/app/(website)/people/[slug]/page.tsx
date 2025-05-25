@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { PageWrapper } from "~/components/PageWrapper";
 import { RecommendedSection } from "~/components/RecommendedSection";
-import { QAList, PersonView } from "~/components/(pages)/(personQA)";
+import { QAList, QAPersonInfo } from "~/components/(pages)/(personQA)";
 
 import { getPeople, getPerson } from "~/api-client/people";
 import { getAnswersByPersonSlug } from "~/api-client/answers";
@@ -45,7 +45,7 @@ export default async function PersonQAPage(props: PersonPageProps) {
   return (
     <PageWrapper>
       <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-4">
-        <PersonView person={person} />
+        <QAPersonInfo person={person} />
         <QAList data={answers} />
       </div>
 

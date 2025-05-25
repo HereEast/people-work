@@ -1,6 +1,6 @@
 import Link from "next/link";
-
 import { AccentText } from "~/components/AccentText";
+
 import { Card } from "~/components/Card";
 import { Column } from "~/components/Column";
 import { PersonImage } from "~/components/PersonImage";
@@ -11,7 +11,7 @@ interface PersonViewProps {
   person: PersonData;
 }
 
-export function PersonView({ person }: PersonViewProps) {
+export function QAPersonInfo({ person }: PersonViewProps) {
   const contacts = Object.entries(person.links);
 
   return (

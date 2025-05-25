@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PersonImage } from "~/components/PersonImage";
 
 import { PersonData } from "~/schemas";
+import { AccentText } from "./AccentText";
 
 interface PersonDetailsProps {
   person: PersonData;
@@ -19,8 +20,8 @@ export function PersonCardDetails({ person, isLink }: PersonDetailsProps) {
       />
 
       <div className="flex flex-col gap-1.5">
-        <h3 className="font-accent text-2xl leading-[70%] tracking-[-0.04ch]">
-          {person.name}
+        <h3>
+          <AccentText>{person.name}</AccentText>
         </h3>
 
         <div className="flex flex-col text-xl font-medium leading-[108%]">

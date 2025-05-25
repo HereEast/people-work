@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "./ui/Button";
-import { AccentText } from "./AccentText";
+// import { AccentText } from "./AccentText";
 import { EmojiImage } from "./EmojiImage";
 
 export function Subscribe() {
@@ -12,14 +12,14 @@ export function Subscribe() {
       <div className="flex flex-col items-center gap-0.5">
         <span>More people are coming!</span>
 
-        <span>
+        {/* <span>
           <Button onClick={() => console.log("Subscribe.")}>
             <AccentText size="base" underline>
               Subscribe
             </AccentText>
           </Button>{" "}
           <span>to stay tuned.</span>
-        </span>
+        </span> */}
       </div>
     </div>
   );
