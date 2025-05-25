@@ -15,7 +15,7 @@ export function Hero() {
           , share routines, and explore what keeps them going.
           <EmojiImage
             name="red-cat-face"
-            classname="relative -top-0.5 ml-1 mr-2 inline-block size-10 object-contain leading-none sm:ml-2 sm:mr-3.5 sm:size-[74px]"
+            classname="relative -top-0.5 ml-1 mr-2 inline-block size-10 object-contain leading-none sm:ml-3 sm:mr-4 sm:size-[74px]"
           />
           <Button
             view="link"

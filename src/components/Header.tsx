@@ -11,13 +11,13 @@ const HEADER_LINKS = [
 
 export function Header() {
   return (
-    <header className="fixed z-50 flex h-12 w-full items-center bg-bg px-2.5 text-xl sm:h-14 sm:text-3xl md:px-6">
+    <header className="fixed z-50 flex h-12 w-full items-center bg-bg px-2.5 text-xl sm:h-16 sm:text-3xl md:px-6">
       <nav className="flex w-full items-center justify-between gap-1">
-        <Button href={ROUTE.index} view="link" className="w-10 sm:w-12">
+        <Button href={ROUTE.index} view="link" className="w-10 sm:w-14">
           <LogoIcon />
         </Button>
 
-        <div className="font-medium lg:font-normal">
+        <div className="mb-1">
           {HEADER_LINKS.map((link, index) => (
             <>
               <Button

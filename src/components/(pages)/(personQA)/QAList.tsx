@@ -1,4 +1,4 @@
-import { ArrowRightIcon, ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
 import { Card } from "~/components/Card";
 import { Button } from "~/components/ui/Button";
@@ -19,8 +19,6 @@ export function QAList({ data }: ContentProps) {
       {data?.map((item, index) => {
         const { question, answer, marked, featured } = item;
 
-        const emoji = getQuestionEmoji(question.slug);
-
         return (
           <Card
             key={index}
@@ -34,23 +32,39 @@ export function QAList({ data }: ContentProps) {
               <Answer marked={marked || featured}>{answer}</Answer>
             </div>
 
-            <div className="flex w-full items-center justify-between gap-1">
-              <div className="flex gap-1">
-                <Button href={`/questions/${question.slug}`} view="outline">
-                  #{question.slug}
-                </Button>
-                <Tag size="tile" className={cn(emoji.className, "sm:text-2xl")}>
-                  {emoji.value}
-                </Tag>
-              </div>
-
-              <Button href={`/questions/${question.slug}`} size="tile">
-                <ArrowUpRightIcon className="w-6 shrink-0" />
-              </Button>
-            </div>
+            <QACardFooter questionSlug={question.slug} />
           </Card>
         );
       })}
     </Column>
+  );
+}
+
+// Card Footer
+interface QACardFooterProps {
+  questionSlug: string;
+}
+
+function QACardFooter({ questionSlug }: QACardFooterProps) {
+  const emoji = getQuestionEmoji(questionSlug);
+
+  return (
+    <div className="flex w-full items-center justify-between gap-1">
+      <div className="flex gap-1.5">
+        <Button href={`/questions/${questionSlug}`} view="outline">
+          #{questionSlug}
+        </Button>
+
+        <Tag size="tile">
+          <span className={cn(emoji.className, "sm:text-2xl")}>
+            {emoji.value}
+          </span>
+        </Tag>
+      </div>
+
+      <Button href={`/questions/${questionSlug}`} size="tile">
+        <ArrowUpRightIcon className="w-6 shrink-0" />
+      </Button>
+    </div>
   );
 }

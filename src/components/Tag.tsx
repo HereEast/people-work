@@ -6,10 +6,9 @@ import { buttonClasses } from "./ui/Button";
 interface TagProps {
   children: ReactNode;
   size?: "tile";
-  className?: string;
 }
 
-export function Tag({ children, size, className = "" }: TagProps) {
+export function Tag({ children, size }: TagProps) {
   return (
     <div
       className={cn(
@@ -17,7 +16,6 @@ export function Tag({ children, size, className = "" }: TagProps) {
         buttonClasses.view.outline,
         "cursor-default pb-px text-sm tracking-[0.02ch] hover:border-stone-900/20 hover:bg-transparent sm:text-xl",
         size === "tile" && buttonClasses.size.tile,
-        className,
       )}
     >
       {children}

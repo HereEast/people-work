@@ -16,6 +16,10 @@ a {
   text-decoration-skip-ink: none;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 @layer base {
   :root {
     --gradient-color-1: #ffc814;
@@ -75,8 +79,9 @@ a {
   text-decoration-skip-ink: none;
 }
 
-.answer a:hover {
-  opacity: 40%;
+.answer a:hover,
+.question:hover {
+  opacity: 30%;
   text-decoration: none;
 }
 
@@ -163,7 +168,6 @@ a {
 
   .question,
   .answer a {
-    text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
   }

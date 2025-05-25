@@ -9,7 +9,7 @@ export function AccentText({ children, className = "" }: AccentTextProps) {
   return (
     <span
       className={cn(
-        "font-accent text-[120%] tracking-[-0.04ch]",
+        "font-accent text-[122%] tracking-[-0.04ch]",
         className,
         "leading-[80%]",
       )}

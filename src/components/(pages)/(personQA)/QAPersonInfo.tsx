@@ -19,11 +19,11 @@ export function QAPersonInfo({ person }: PersonViewProps) {
       {/* Desktop */}
       <Column variant="sticky">
         <div className="flex flex-col gap-16 text-2xl sm:text-3xl md:leading-[110%]">
-          <div className="space-y-6">
+          <div className="space-y-5">
             <PersonImage
               name={person.name}
               slug={person.slug}
-              classname="size-[240px] rounded-lg"
+              classname="md:size-[240px]"
             />
 
             <div className="space-y-1">
@@ -32,7 +32,7 @@ export function QAPersonInfo({ person }: PersonViewProps) {
               </h1>
 
               <div>
-                <h2 className="leading-none">{person.jobTitle}</h2>
+                <h2>{person.jobTitle}</h2>
                 <Link
                   href={person.company.url}
                   target="_blank"
