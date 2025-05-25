@@ -13,8 +13,7 @@ interface ReqParams {
 
 // GET ANSWERS BY QUESTION
 export async function GET(req: Request, props: ReqParams) {
-  const params = await props.params;
-  const { slug } = params;
+  const { slug } = await props.params;
 
   try {
     await connectDB();

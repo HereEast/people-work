@@ -26,14 +26,13 @@ export function PersonView({ person }: PersonViewProps) {
               classname="size-[240px] rounded-lg"
             />
 
-            <div className="space-y-2">
+            <div className="space-y-1">
               <h1>
                 <AccentText>{person.name}</AccentText>
               </h1>
 
               <div>
                 <h2 className="leading-none">{person.jobTitle}</h2>
-
                 <Link
                   href={person.company.url}
                   target="_blank"

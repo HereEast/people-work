@@ -15,7 +15,7 @@ export function Tag({ children, size, className = "" }: TagProps) {
       className={cn(
         buttonClasses.size.base,
         buttonClasses.view.outline,
-        "cursor-default pb-px text-sm tracking-[0.02ch] sm:text-xl",
+        "cursor-default pb-px text-sm tracking-[0.02ch] hover:border-stone-900/20 hover:bg-transparent sm:text-xl",
         size === "tile" && buttonClasses.size.tile,
         className,
       )}

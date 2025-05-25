@@ -11,8 +11,7 @@ interface ReqParams {
 
 // GET PERSON BY SLUG
 export async function GET(req: Request, props: ReqParams) {
-  const params = await props.params;
-  const slug = params.slug;
+  const { slug } = await props.params;
 
   try {
     await connectDB();

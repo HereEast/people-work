@@ -16,7 +16,7 @@ export function Hero() {
             name="red-cat-face"
             classname="relative -top-0.5 ml-1 mr-2 inline-block size-10 object-contain leading-none sm:ml-2 sm:mr-3.5 sm:size-[74px]"
           />
-          <Button onClick={() => console.log("Subscribe.")}>
+          <Button view="link" onClick={() => console.log("Subscribe.")}>
             <AccentText size="xl" underline>
               Subscribe
             </AccentText>

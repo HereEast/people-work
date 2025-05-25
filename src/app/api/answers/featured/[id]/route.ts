@@ -11,8 +11,7 @@ interface ReqParams {
 
 // GET ANSWERS BY SLUG
 export async function GET(req: NextRequest, props: ReqParams) {
-  const params = await props.params;
-  const { id } = params;
+  const { id } = await props.params;
 
   try {
     await connectDB();

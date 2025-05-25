@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import { FilterQuery } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -12,6 +10,7 @@ import { DBDoc } from "~/utils/types";
 // GET ALL PEOPLE
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
+
   const slugs = searchParams.getAll("slug");
 
   try {

@@ -5,14 +5,15 @@ import { cn } from "~/utils/handlers";
 
 export const buttonClasses = {
   view: {
-    base: "transition hover:bg-stone-500 bg-stone-600/10",
+    base: "transition hover:bg-stone-500 bg-stone-600/10 tracking-[0.02ch]",
     accent: "font-accent",
-    outline: "border border-stone-900/20 bg-transparent",
-    link: "h-fit sm:h-fit p-0 sm:p-0 bg-transparent hover:bg-transparent hover:opacity-40",
+    outline:
+      "border border-stone-900/20 bg-transparent hover:bg-stone-600/10 hover:border-transparent",
+    link: "h-fit sm:h-fit inline-block p-0 sm:p-0 bg-transparent hover:bg-transparent hover:opacity-40",
   },
   size: {
-    base: "w-fit h-10 sm:h-12 rounded-xs sm:rounded-sm px-3 sm:px-5 flex justify-center items-center",
-    tile: "size-10 sm:size-12 shrink-0 p-0 text-sm",
+    base: "w-fit h-10 sm:h-14 rounded-xs sm:rounded-sm px-3 pb-px sm:px-5 flex justify-center items-center",
+    tile: "size-10 sm:size-14 shrink-0 p-0 text-sm px-0 sm:px-0",
   },
 };
 

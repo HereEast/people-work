@@ -51,7 +51,9 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
         <AnswersList slug={slug} />
       </div>
 
-      <RecommendedSection slug={slug} className="mb-12 mt-24" />
+      <div className="mb-12 mt-24">
+        <RecommendedSection slug={slug} />
+      </div>
     </PageWrapper>
   );
 }
