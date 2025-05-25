@@ -15,8 +15,8 @@ interface QuestionPageProps {
 
 // METADATA
 export async function generateMetadata(props: QuestionPageProps) {
-  const params = await props.params;
-  return generateQuestionMetadata(params.slug);
+  const { slug } = await props.params;
+  return generateQuestionMetadata(slug);
 }
 
 // PARAMS
@@ -32,8 +32,7 @@ export async function generateStaticParams() {
 
 // PAGE
 export default async function QuestionAnswersPage(props: QuestionPageProps) {
-  const params = await props.params;
-  const { slug } = params;
+  const { slug } = await props.params;
 
   const questions = await getQuestions();
 

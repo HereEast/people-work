@@ -49,6 +49,7 @@ export async function getFeaturedAnswer(
   personId: string,
 ): Promise<AnswerBasicData | null> {
   try {
+    // TODO: endpoint answers/personId?featured=true
     const response = await fetch(
       `${BASE_URL}/api/answers/featured/${personId}`,
     );

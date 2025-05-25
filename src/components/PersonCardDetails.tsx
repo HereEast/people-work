@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { PersonImage } from "~/components/PersonImage";
-import { AccentText } from "./AccentText";
 
 import { PersonData } from "~/schemas";
 

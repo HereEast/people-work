@@ -8,8 +8,8 @@ interface RecommendedPeopleProps {
 }
 
 export async function RecommendedSection({ slug }: RecommendedPeopleProps) {
-  const recommendedSlugs = getFeaturedSlugs(2, slug);
-  const recommendedPeople = await getPeople(recommendedSlugs);
+  const slugs = getFeaturedSlugs(2, slug);
+  const recommendedPeople = await getPeople(slugs);
 
   if (!recommendedPeople) {
     return null;

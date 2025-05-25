@@ -25,6 +25,7 @@ export async function GET(req: NextRequest) {
     const docs: DBDoc<IPersonDB>[] = await PersonDB.find(query).exec();
 
     const people = mapPeopleData(docs) as PersonData[];
+
     const result =
       slugs.length > 0
         ? slugs.map((slug) => people.find((p) => p.slug === slug))

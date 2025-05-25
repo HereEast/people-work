@@ -12,7 +12,7 @@ interface QuestionViewProps {
 export function QuestionView({ question }: QuestionViewProps) {
   return (
     <>
-      <Column variant="left" className="pr-16">
+      <Column variant="sticky" className="pr-16">
         <div className="hidden h-full flex-col justify-between gap-10 md:flex">
           <div className="mb-10 space-y-6">
             <h1 className="text-5xl font-semibold leading-[95%] tracking-[-0.03ch]">
@@ -39,22 +39,3 @@ export function QuestionView({ question }: QuestionViewProps) {
     </>
   );
 }
-
-// export function QuestionView({ question }: QuestionViewProps) {
-//   return (
-//     <Column variant="left" className="pr-10">
-//       <div className="flex h-full flex-col justify-between">
-//         <Link href={ROUTE.questions}>
-//           <span>All questions</span>
-//         </Link>
-
-//         <div className="mb-10 space-y-6">
-//           <h1 className="text-5xl font-bold leading-[95%]">{question.body}</h1>
-//           <Tag>{question.slug}</Tag>
-//         </div>
-
-//         {/* <NavLinks /> */}
-//       </div>
-//     </Column>
-//   );
-// }

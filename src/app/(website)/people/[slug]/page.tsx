@@ -16,8 +16,8 @@ interface PersonPageProps {
 
 // METADATA
 export async function generateMetadata(props: PersonPageProps) {
-  const params = await props.params;
-  return generatePersonMetadata(params.slug);
+  const { slug } = await props.params;
+  return generatePersonMetadata(slug);
 }
 
 // PARAMS
@@ -33,8 +33,7 @@ export async function generateStaticParams() {
 
 // PAGE
 export default async function PersonQAPage(props: PersonPageProps) {
-  const params = await props.params;
-  const { slug } = params;
+  const { slug } = await props.params;
 
   const person = await getPerson(slug);
   const answers = await getAnswersByPersonSlug(slug);
