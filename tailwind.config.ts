@@ -23,12 +23,12 @@ const config: Config = {
         accent: ["var(--font-accent)"],
       },
       fontSize: {
-        sm: ["16px", { lineHeight: "1.2" }],
-        xl: ["20px", { lineHeight: "1.1" }],
-        "2xl": ["24px", { lineHeight: "1.1" }],
-        "3xl": ["32px", { lineHeight: "1.1" }],
-        "4xl": ["40px", { lineHeight: "1.1" }],
-        "5xl": ["50px", { lineHeight: "1" }],
+        sm: "16px",
+        xl: "20px",
+        "2xl": "24px",
+        "3xl": "32px",
+        "4xl": "40px",
+        "5xl": "50px",
       },
       letterSpacing: {
         text: "-0.02em",

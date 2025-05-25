@@ -1,15 +1,16 @@
 import { Button } from "./ui/Button";
+
 import { ROUTE } from "~/utils/constants";
 
 const FOOTER_LINKS = [
   { path: ROUTE.about, label: "About" },
-  { path: ROUTE.questions, label: "Questions" },
-  { path: ROUTE.people, label: "People" },
+  // { path: ROUTE.questions, label: "Questions" },
+  // { path: ROUTE.people, label: "People" },
 ];
 
 export function Footer() {
   return (
-    <footer className="w-full px-2.5 py-4 font-medium md:px-6">
+    <footer className="w-full px-2.5 py-4 font-medium md:px-6 lg:font-normal">
       <div className="flex w-full flex-col-reverse justify-between gap-10 text-xl leading-[120%] sm:text-3xl md:flex-row md:items-center md:gap-0">
         <div className="flex justify-between gap-2">
           <Button href={ROUTE.index} view="link">

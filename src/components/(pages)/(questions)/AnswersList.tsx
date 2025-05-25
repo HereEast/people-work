@@ -34,7 +34,7 @@ export async function AnswersList({ slug }: AnswersListProps) {
                     href={`/people/${person.slug}`}
                     className="hover:opacity-40 hover:grayscale"
                   >
-                    <PersonCardDetails person={person} isLink={true} />
+                    <PersonCardDetails person={person} />
                   </Link>
 
                   <Button href={`/people/${person.slug}`}>
