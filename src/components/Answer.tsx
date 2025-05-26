@@ -17,7 +17,7 @@ export async function Answer({ children, marked }: AnswersProps) {
       className={cn(
         "answer text-xl leading-[120%] tracking-[0.01ch] opacity-95 sm:text-3xl sm:font-normal sm:leading-[115%] [&_a]:transition",
         marked &&
-          "featured-answer text-3xl font-semibold leading-[95%] tracking-[-0.03ch] sm:text-5xl md:font-semibold [&_a]:transition",
+          "featured-answer text-3xl font-semibold leading-[95%] tracking-[-0.04ch] sm:text-5xl sm:font-semibold md:font-semibold [&_a]:transition",
       )}
       dangerouslySetInnerHTML={{
         __html: parsedHTML,
@@ -33,11 +33,29 @@ interface QuestionProps {
 
 export function Question({ children }: QuestionProps) {
   return (
-    <Link
-      href={`/questions/${children.slug}`}
-      className="question font-semibold leading-[100%] transition sm:text-3xl"
-    >
-      {children.body}
-    </Link>
+    <div className="inline-block">
+      <Link
+        href={`/questions/${children.slug}`}
+        className="question inline-block text-xl font-semibold leading-[115%] transition sm:text-3xl sm:leading-[100%]"
+      >
+        {children.body}
+      </Link>
+    </div>
   );
 }
+
+// export function Question({ children }: QuestionProps) {
+//   const emoji = getQuestionEmoji(children.slug);
+
+//   return (
+//     <div className="inline-block">
+//       <Link
+//         href={`/questions/${children.slug}`}
+//         className="inline-block text-xl font-semibold leading-[115%] transition sm:text-3xl sm:leading-[100%]"
+//       >
+//         <span className="mr-1">{emoji.value}</span>
+//         <span className="question">{children.body}</span>
+//       </Link>
+//     </div>
+//   );
+// }

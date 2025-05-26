@@ -1,9 +1,14 @@
-type EmojisType = { [key: string]: { value: string; className?: string } };
+interface EmojiData {
+  value: string;
+  className?: string;
+}
+
+type EmojisType = Record<string, EmojiData>;
 
 export const EMOJIS: EmojisType = {
   company: {
     value: "💼",
-    className: "pb-1",
+    className: "mb-1",
   },
   "role-snapshot": {
     value: "😎",
@@ -13,7 +18,7 @@ export const EMOJIS: EmojisType = {
   },
   skills: {
     value: "💪",
-    className: "pb-1",
+    className: "mb-1",
   },
   "best-thing": {
     value: "🥐",
@@ -32,13 +37,14 @@ export const EMOJIS: EmojisType = {
   },
   "fav-mistake": {
     value: "🙈",
-    className: "pb-1",
+    className: "mb-1",
   },
   "unique-talent": {
     value: "🤌",
   },
   now: {
     value: "🐌",
+    className: "mb-1",
   },
   "growth-skills": {
     value: "🥷",
@@ -84,6 +90,6 @@ export const EMOJIS: EmojisType = {
   },
   "new-people": {
     value: "🐐",
-    className: "pb-1 text-lg",
+    className: "mb-1 text-xl",
   },
 };

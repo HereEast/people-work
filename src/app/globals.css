@@ -47,7 +47,8 @@ a:hover {
 .featured-answer em {
   font-style: normal;
   font-family: var(--font-accent);
-  font-size: 60px;
+  font-size: 118%;
+  line-height: 80%;
   font-weight: 400;
   letter-spacing: -0.06ch;
 }

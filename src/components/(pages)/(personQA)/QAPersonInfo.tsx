@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { AccentText } from "~/components/AccentText";
 
-import { Card } from "~/components/Card";
+import { Card, StickyMobileWrapper } from "~/components/Card";
 import { Column } from "~/components/Column";
 import { PersonImage } from "~/components/PersonImage";
 
@@ -12,86 +12,76 @@ interface PersonViewProps {
 }
 
 export function QAPersonInfo({ person }: PersonViewProps) {
-  const contacts = Object.entries(person.links);
-
   return (
     <>
-      {/* Desktop */}
-      <Column variant="sticky">
-        <div className="flex flex-col gap-16 text-2xl sm:text-3xl md:leading-[110%]">
-          <div className="space-y-5">
-            <PersonImage
-              name={person.name}
-              slug={person.slug}
-              classname="md:size-[240px]"
-            />
-
-            <div className="space-y-1">
-              <h1>
-                <AccentText>{person.name}</AccentText>
-              </h1>
-
-              <div>
-                <h2>{person.jobTitle}</h2>
-                <Link
-                  href={person.company.url}
-                  target="_blank"
-                  className="capitalize underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
-                >
-                  {person.company.name}
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* <div>
-            <ul>
-              {contacts.map(([source, url], index) => (
-                <li key={index}>
-                  <Link
-                    href={url}
-                    target="_blank"
-                    className="capitalize underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
-                  >
-                    {source}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div> */}
-        </div>
-      </Column>
-
-      {/* Mobile */}
+      <DesktopPersonView person={person} />
       <MobilePersonView person={person} />
     </>
+  );
+}
+
+// Desktop
+function DesktopPersonView({ person }: PersonViewProps) {
+  // const contacts = Object.entries(person.links);
+
+  return (
+    <Column variant="sticky">
+      <div className="flex flex-col gap-16 text-2xl sm:text-3xl md:leading-[110%]">
+        <div className="space-y-5">
+          <PersonImage
+            name={person.name}
+            slug={person.slug}
+            classname="lg:size-[240px] lg:rounded-md"
+          />
+
+          <div className="space-y-1">
+            <h1>
+              <AccentText>{person.name}</AccentText>
+            </h1>
+
+            <div>
+              <h2>{person.jobTitle}</h2>
+              <Link
+                href={person.company.url}
+                target="_blank"
+                className="capitalize underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
+              >
+                {person.company.name}
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Contacts */}
+      </div>
+    </Column>
   );
 }
 
 // Mobile
 function MobilePersonView({ person }: PersonViewProps) {
   return (
-    <div className="sticky top-12 z-40 mb-2.5 rounded-b-xl bg-bg sm:top-14 sm:rounded-b-2xl lg:hidden">
+    <StickyMobileWrapper>
       <Card className="bg-stone-800 p-3 text-stone-50 sm:p-5">
         <div className="flex items-end gap-3 sm:gap-5">
           <PersonImage
             name={person.name}
             slug={person.slug}
-            classname="sm:size-28 sm:rounded-lg"
+            classname="sm:size-20"
           />
 
-          <div className="flex flex-col gap-1.5">
-            <h3 className="font-accent text-2xl leading-[70%] tracking-[-0.04ch] sm:text-[34px]">
-              {person.name}
+          <div className="flex flex-col gap-0.5 text-lg sm:text-2xl">
+            <h3 className="leading-none">
+              <AccentText>{person.name}</AccentText>
             </h3>
 
-            <div className="flex flex-col text-xl leading-[108%] tracking-[0.01ch] sm:text-3xl sm:leading-[100%]">
+            <div className="flex flex-col leading-[1.1] tracking-[0.02ch]">
               <h4>{person.jobTitle}</h4>
               <h4>{person.company.name}</h4>
             </div>
           </div>
         </div>
       </Card>
-    </div>
+    </StickyMobileWrapper>
   );
 }

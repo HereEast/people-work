@@ -13,7 +13,7 @@ export function Card({ children, className = "", ...rest }: CardProps) {
   return (
     <div
       className={cn(
-        "flex w-full flex-col rounded-xl bg-stone-50 transition sm:rounded-2xl",
+        "flex w-full flex-col rounded-xl bg-stone-50 transition sm:rounded-xxl lg:rounded-2xl",
         className,
       )}
       {...rest}
@@ -51,5 +51,14 @@ export function FeaturedCardWrapper({
     >
       {children}
     </Card>
+  );
+}
+
+// Sticky Mobile Card
+export function StickyMobileWrapper({ children }: CardProps) {
+  return (
+    <div className="sticky top-12 z-40 rounded-b-xl bg-bg sm:top-16 sm:rounded-b-2xl lg:hidden">
+      {children}
+    </div>
   );
 }
