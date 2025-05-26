@@ -17,7 +17,7 @@ export async function Answer({ children, marked }: AnswersProps) {
       className={cn(
         "answer text-xl leading-[120%] tracking-[0.01ch] opacity-95 sm:text-3xl sm:font-normal sm:leading-[115%] [&_a]:transition",
         marked &&
-          "featured-answer text-3xl font-semibold leading-[95%] tracking-[-0.04ch] sm:text-5xl sm:font-semibold md:font-semibold [&_a]:transition",
+          "featured-answer text-3xl font-semibold leading-[95%] tracking-[-0.04ch] sm:text-5xl sm:font-semibold sm:tracking-[-0.06ch] md:font-semibold [&_a]:transition",
       )}
       dangerouslySetInnerHTML={{
         __html: parsedHTML,
