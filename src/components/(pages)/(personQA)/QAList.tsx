@@ -51,7 +51,11 @@ function QACardFooter({ questionSlug }: QACardFooterProps) {
   return (
     <div className="flex w-full items-center justify-between gap-1">
       <div className="flex gap-1.5">
-        <Button href={`/questions/${questionSlug}`} view="outline">
+        <Button
+          href={`/questions/${questionSlug}`}
+          view="outline"
+          className="pb-0.5 text-lg"
+        >
           #{questionSlug}
         </Button>
 

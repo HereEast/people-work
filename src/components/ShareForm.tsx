@@ -16,11 +16,7 @@ interface IShareFormInputs {
   link: string;
 }
 
-interface ShareFormCardProps {
-  className?: string;
-}
-
-export function ShareForm({ className = "" }: ShareFormCardProps) {
+export function ShareForm() {
   const [submittedName, setSubmittedName] = useState("");
 
   const {
@@ -42,7 +38,7 @@ export function ShareForm({ className = "" }: ShareFormCardProps) {
   }
 
   return (
-    <Card className={cn("min-h-[420px] p-8 pt-10 sm:p-10", className)}>
+    <Card className="min-h-[420px] p-8 pt-10 sm:p-10">
       <div id="share" className={cn("mb-16 grow", submittedName && "mb-10")}>
         <h5 className="text-center text-4xl font-extrabold leading-[95%] text-stone-50 sm:text-5xl">
           Know anyone cool who does amazing work✨?

@@ -5,7 +5,7 @@ import { ROUTE } from "~/utils/constants";
 
 export default function NotFound() {
   return (
-    <PageWrapper className="grow">
+    <PageWrapper>
       <section className="flex h-full items-center justify-center">
         <div className="space-y-6 text-center">
           <h2 className="text-2xl">

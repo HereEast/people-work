@@ -1,20 +1,12 @@
 import { ReactNode } from "react";
 
-import { cn } from "~/utils/handlers";
-
 interface PageLayoutProps {
   children: ReactNode;
-  className?: string;
 }
 
-export function PageWrapper({ children, className = "" }: PageLayoutProps) {
+export function PageWrapper({ children }: PageLayoutProps) {
   return (
-    <div
-      className={cn(
-        "relative mx-auto w-full max-w-9xl px-2.5 md:px-6",
-        className,
-      )}
-    >
+    <div className="relative mx-auto w-full max-w-9xl grow px-2.5 md:px-6">
       {children}
     </div>
   );

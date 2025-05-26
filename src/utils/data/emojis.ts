@@ -38,7 +38,7 @@ export const EMOJIS: EmojisType = {
     value: "🤌",
   },
   now: {
-    value: "🦐",
+    value: "🐌",
   },
   "growth-skills": {
     value: "🥷",

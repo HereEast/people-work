@@ -12,7 +12,7 @@ interface QuestionViewProps {
 export function QuestionView({ question }: QuestionViewProps) {
   return (
     <>
-      <Column variant="sticky" className="pr-16">
+      <Column variant="sticky">
         <div className="hidden h-full flex-col justify-between gap-10 md:flex">
           <div className="mb-10 space-y-6">
             <h1 className="text-5xl font-semibold leading-[95%] tracking-[-0.03ch]">

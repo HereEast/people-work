@@ -1,9 +1,7 @@
-import { IconProps } from "~/utils/types";
-
-export function QuoteIcon({ className = "" }: IconProps) {
+export function QuoteIcon() {
   return (
     <svg
-      className={className}
+      className="size-8"
       width="100%"
       height="100%"
       viewBox="0 0 28 28"
