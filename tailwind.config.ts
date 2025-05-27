@@ -28,7 +28,7 @@ const config: Config = {
         "2xl": "24px",
         "3xl": "32px",
         "4xl": "40px",
-        "5xl": "50px",
+        "5xl": "52px",
       },
       letterSpacing: {
         text: "-0.02em",
@@ -43,7 +43,7 @@ const config: Config = {
         xs: "10px",
       },
       colors: {
-        bg: "#EEEEEE",
+        bg: "var(--background)",
       },
     },
   },

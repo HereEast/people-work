@@ -27,7 +27,7 @@ export function QAList({ data }: ContentProps) {
               (marked || featured) && "bg-stone-500/60",
             )}
           >
-            <div className="flex flex-col gap-8 sm:gap-10">
+            <div className="flex flex-col gap-6 sm:gap-10">
               <Question>{question}</Question>
               <Answer marked={marked || featured}>{answer}</Answer>
             </div>
@@ -40,6 +40,29 @@ export function QAList({ data }: ContentProps) {
   );
 }
 
+// export function QAList({ data }: ContentProps) {
+//   return (
+//     <div>
+//       {data?.map((item, index) => {
+//         const { question, answer, marked, featured } = item;
+
+//         return (
+//           <div key={index} className="border-b border-stone-400">
+//             <div className="flex flex-col gap-6 py-6 sm:gap-10 sm:py-10">
+//               <div className="flex flex-col gap-8 sm:gap-10">
+//                 <Question>{question}</Question>
+//                 <Answer marked={marked || featured}>{answer}</Answer>
+//               </div>
+
+//               <QACardFooter questionSlug={question.slug} />
+//             </div>
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// }
+
 // Card Footer
 interface QACardFooterProps {
   questionSlug: string;
@@ -51,14 +74,7 @@ function QACardFooter({ questionSlug }: QACardFooterProps) {
   return (
     <div className="flex w-full items-center justify-between gap-1">
       <div className="flex gap-1 sm:gap-1.5">
-        <Button
-          href={`/questions/${questionSlug}`}
-          view="outline"
-          className="pb-0.5 text-sm sm:text-xl"
-        >
-          #{questionSlug}
-        </Button>
-
+        <Tag href={`/questions/${questionSlug}`}>{questionSlug}</Tag>
         <Tag size="tile">
           <span className={cn("inline-block sm:text-2xl", emoji.className)}>
             {emoji.value}

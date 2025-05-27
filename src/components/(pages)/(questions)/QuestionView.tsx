@@ -51,7 +51,7 @@ function DesktopQuestionView({ question }: QuestionViewProps) {
           </div>
 
           <div className="flex gap-1.5">
-            <Tag>#{question.slug}</Tag>
+            <Tag>{question.slug}</Tag>
             <Tag size="tile">
               <span className={cn("inline-block sm:text-2xl", emoji.className)}>
                 {emoji.value}
