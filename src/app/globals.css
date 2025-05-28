@@ -42,7 +42,8 @@ a:hover {
   text-underline-offset: 2.2px;
 }
 
-.featured-answer em {
+.featured-answer em,
+.answer em  {
   font-style: normal;
   font-family: var(--font-accent);
   font-size: 118%;

@@ -7,9 +7,10 @@ interface TagProps {
   children: ReactNode;
   href?: string;
   size?: "tile";
+  className?: string;
 }
 
-export function Tag({ children, size, href }: TagProps) {
+export function Tag({ children, size, href, className = "" }: TagProps) {
   const content = size === "tile" ? children : `#${children}`;
 
   return href ? (
@@ -21,8 +22,9 @@ export function Tag({ children, size, href }: TagProps) {
       className={cn(
         buttonClasses.size.base,
         buttonClasses.view.outline,
-        "cursor-default pb-px text-sm tracking-[0.02ch] hover:border-stone-900/20 hover:bg-transparent sm:text-xl",
+        "pb-0.5 text-sm tracking-[0.02ch] hover:border-stone-900/20 hover:bg-transparent sm:text-xl",
         size && buttonClasses.size[size],
+        className,
       )}
     >
       {content}
