@@ -2,16 +2,22 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
-import { Card } from "~/components/Card";
 import { Button } from "~/components/ui/Button";
-import { Input } from "~/components/ui/Input";
+import { Input } from "./ui/Input";
+import { AccentText } from "./AccentText";
 
 import { submitSubscription } from "~/api-client/subscriptions";
 
-interface IFormInputs {
+interface ISubscribeFormInputs {
   email: string;
 }
+
+const SubscribeFormSchema = z.object({
+  email: z.string().email(),
+});
 
 export function SubscribeForm() {
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -21,9 +27,11 @@ export function SubscribeForm() {
     handleSubmit,
     reset,
     formState: { isSubmitting },
-  } = useForm<IFormInputs>();
+  } = useForm<ISubscribeFormInputs>({
+    resolver: zodResolver(SubscribeFormSchema),
+  });
 
-  async function onSubmit(values: IFormInputs) {
+  async function onSubmit(values: ISubscribeFormInputs) {
     const result = await submitSubscription(values);
 
     if (result) {
@@ -33,42 +41,40 @@ export function SubscribeForm() {
   }
 
   return (
-    <Card className="rounded-3xl p-8 sm:p-10">
+    <div className="mx-auto w-full">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="relative space-y-2">
+          <Input
+            {...register("email", {
+              required: true,
+            })}
+            placeholder="Email"
+            disabled={isSubmitting}
+            className="sm:pl-6 sm:pr-52"
+          />
+
+          <div className="right-2 top-0 sm:absolute">
+            <Button
+              view="base"
+              isDisabled={isSubmitting}
+              className="h-16 w-full rounded-md px-5 pb-1 text-2xl sm:h-[64px] sm:text-3xl"
+            >
+              Subscribe
+            </Button>
+          </div>
+        </div>
+      </form>
+
       {isSubscribed && (
-        <div className="flex items-center justify-center">
-          <p className="w-fit bg-[length:250%] bg-clip-text text-center text-base text-transparent">
-            Thaaanks!!! You've successfully subscribed!
+        <div className="flex items-center justify-center pt-6">
+          <p className="text-center leading-[110%]">
+            Yay! You're on the list.{" "}
+            <AccentText className="text-[112%]">
+              Good things are coming.
+            </AccentText>
           </p>
         </div>
       )}
-
-      {!isSubscribed && (
-        <>
-          <div className="mb-6">
-            <h5 className="text-center text-base leading-tight text-stone-50">
-              <span className="bg-[length:300%] bg-clip-text text-transparent">
-                In case you are curious
-              </span>{" "}
-              about the latest project updated, upcoming features and new guests
-              🥐🥛.
-            </h5>
-          </div>
-
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex w-full flex-col items-center gap-3 sm:flex-row">
-              <Input
-                placeholder="Email"
-                disabled={isSubmitting}
-                {...register("email", {
-                  required: true,
-                })}
-              />
-
-              <Button isDisabled={isSubmitting}>subscribe</Button>
-            </div>
-          </form>
-        </>
-      )}
-    </Card>
+    </div>
   );
 }

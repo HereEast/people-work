@@ -10,6 +10,7 @@ import { QuestionData } from "~/schemas";
 import { Tag } from "~/components/Tag";
 import { Button } from "~/components/ui/Button";
 import { cn, getQuestionEmoji } from "~/utils/handlers";
+import { Subscribe } from "~/components/Subscribe";
 
 // PAGE
 export default async function QuestionsPage() {
@@ -26,6 +27,10 @@ export default async function QuestionsPage() {
           <QuestionItem question={question} key={index} />
         ))}
       </ul>
+
+      <section className="mx-auto my-16 max-w-[640px]">
+        <Subscribe />
+      </section>
     </PageWrapper>
   );
 }

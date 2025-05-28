@@ -12,17 +12,19 @@ export default async function HomePage() {
 
   return (
     <PageWrapper>
-      <Hero />
+      <section className="my-8 sm:my-12">
+        <Hero />
+      </section>
 
       {featuredPeople && (
-        <div className="mb-20">
+        <section className="mb-20">
           <FeaturedList people={featuredPeople} />
-        </div>
+        </section>
       )}
 
-      <div className="my-20">
+      <section className="mx-auto my-16 max-w-[640px]">
         <Subscribe />
-      </div>
+      </section>
     </PageWrapper>
   );
 }

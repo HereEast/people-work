@@ -18,7 +18,7 @@ export async function RecommendedSection({ slug }: RecommendedPeopleProps) {
   return (
     <div className="space-y-8">
       <h2 className="text-center text-xl sm:text-3xl">
-        Check other cool people 😎
+        Check some cool people
       </h2>
 
       {recommendedPeople && <FeaturedList people={recommendedPeople} />}

@@ -9,7 +9,7 @@ export const buttonClasses = {
     accent: "font-accent",
     outline:
       "border flex justify-center items-center border-stone-900/20 bg-transparent hover:bg-stone-600/10 hover:border-transparent",
-    link: "h-fit sm:h-fit inline-block p-0 sm:p-0 bg-transparent hover:bg-transparent hover:opacity-30",
+    link: "h-fit inline-block p-0 sm:p-0 bg-transparent hover:bg-transparent hover:opacity-30",
   },
   size: {
     base: "w-fit h-10 sm:h-[52px] rounded-xs sm:rounded-sm px-3 pb-px sm:px-5",
@@ -42,8 +42,8 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    buttonClasses.view.base,
-    buttonClasses.size.base,
+    // buttonClasses.view.base,
+    // buttonClasses.size.base,
     view && buttonClasses.view[view],
     size && buttonClasses.size[size],
     underline &&

@@ -45,14 +45,14 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
 
   return (
     <PageWrapper>
-      <div className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
+      <section className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
         <QuestionView question={question} />
         <AnswersList slug={slug} />
-      </div>
+      </section>
 
-      <div className="mb-12 mt-24">
+      <section className="mb-12 mt-24">
         <RecommendedSection slug={slug} />
-      </div>
+      </section>
     </PageWrapper>
   );
 }

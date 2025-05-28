@@ -44,14 +44,14 @@ export default async function PersonQAPage(props: PersonPageProps) {
 
   return (
     <PageWrapper>
-      <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-4">
+      <section className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-4">
         <QAPersonInfo person={person} />
         <QAList data={answers} />
-      </div>
+      </section>
 
-      <div className="mb-12 mt-24">
+      <section className="mb-12 mt-24">
         <RecommendedSection slug={slug} />
-      </div>
+      </section>
     </PageWrapper>
   );
 }
