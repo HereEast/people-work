@@ -17,7 +17,7 @@ export function CookieBanner() {
 
         <div className="flex w-full gap-2 sm:w-fit">
           <Button
-            view="outline"
+            variant="outline"
             onClick={() => setConsent(false)}
             className="w-full sm:w-fit"
           >

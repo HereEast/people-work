@@ -1,29 +1,37 @@
 import Link from "next/link";
 import { MouseEvent, ReactNode } from "react";
+import { cva } from "class-variance-authority";
 
 import { cn } from "~/utils/handlers";
 
-export const buttonClasses = {
-  view: {
-    base: "transition flex justify-center items-center gap-2 hover:bg-stone-500/60 bg-stone-600/10 tracking-[0.02ch]",
-    accent: "font-accent",
-    outline:
-      "border flex justify-center items-center border-stone-900/20 bg-transparent hover:bg-stone-600/10 hover:border-transparent",
-    link: "h-fit inline-block p-0 sm:p-0 bg-transparent hover:bg-transparent hover:opacity-30",
+export const buttonVariants = cva(
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md disabled:pointer-events-none disabled:opacity-50 transition",
+  {
+    variants: {
+      variant: {
+        base: "hover:bg-stone-500/60 bg-stone-600/10",
+        accent: "font-accent",
+        outline:
+          "border border-stone-900/20 bg-transparent hover:bg-stone-600/10 hover:border-transparent",
+        link: "h-fit w-fit inline-block p-0 bg-transparent hover:bg-transparent hover:opacity-30",
+        tag: "sm:text-xl text-sm tracking-[0.02ch] border border-stone-900/20 pb-0.5",
+      },
+      size: {
+        base: "w-fit h-10 sm:h-[50px] rounded-xs sm:rounded-sm px-3 pb-px sm:px-5",
+        icon: "size-10 sm:size-[50px] rounded-xs sm:rounded-sm shrink-0 p-0 sm:px-0 text-xl sm:text-2xl",
+        tag: "w-fit h-10 sm:h-[50px] rounded-xs sm:rounded-sm px-3 pb-px sm:px-4",
+      },
+    },
   },
-  size: {
-    base: "w-fit h-10 sm:h-[52px] rounded-xs sm:rounded-sm px-3 pb-px sm:px-5",
-    tile: "size-10 sm:size-[52px] shrink-0 p-0 text-sm px-0 sm:px-0 sm:text-2xl",
-  },
-};
+);
 
 type ButtonProps = {
   children: ReactNode;
   href?: string | URL;
   target?: "_blank" | "_self";
   isDisabled?: boolean;
-  view?: keyof typeof buttonClasses.view;
-  size?: keyof typeof buttonClasses.size;
+  variant?: "base" | "accent" | "outline" | "link" | "tag";
+  size?: "base" | "icon" | "tag";
   underline?: boolean;
   rel?: string;
   className?: string;
@@ -31,21 +39,18 @@ type ButtonProps = {
 };
 
 export function Button({
-  className = "",
   href,
   children,
   isDisabled,
   onClick,
-  view,
+  variant = "base",
   size,
   underline = false,
+  className = "",
   ...props
 }: ButtonProps) {
   const classes = cn(
-    // buttonClasses.view.base,
-    // buttonClasses.size.base,
-    view && buttonClasses.view[view],
-    size && buttonClasses.size[size],
+    buttonVariants({ variant, size }),
     underline &&
       "underline decoration-2 underline-offset-[3px] decoration-stone-900 hover:decoration-stone-900/0",
     className,

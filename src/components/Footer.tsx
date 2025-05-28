@@ -13,7 +13,7 @@ export function Footer() {
     <footer className="w-full px-2.5 py-4 md:px-6">
       <div className="flex w-full justify-between text-xl sm:text-3xl">
         <div className="flex gap-1 sm:gap-2">
-          <Button href={ROUTE.index} view="link">
+          <Button href={ROUTE.index} variant="link">
             people-work.net
           </Button>
           <span>( 2025 )</span>
@@ -21,7 +21,7 @@ export function Footer() {
 
         <div>
           {FOOTER_LINKS.map((link, index) => (
-            <Button href={link.path} view="link" key={index}>
+            <Button href={link.path} variant="link" key={index}>
               {link.label}
             </Button>
           ))}

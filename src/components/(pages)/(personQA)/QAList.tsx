@@ -75,14 +75,14 @@ function QACardFooter({ questionSlug }: QACardFooterProps) {
     <div className="flex w-full items-center justify-between gap-1">
       <div className="flex gap-1 sm:gap-1.5">
         <Tag href={`/questions/${questionSlug}`}>{questionSlug}</Tag>
-        <Tag size="tile">
+        <Tag size="icon">
           <span className={cn("inline-block sm:text-2xl", emoji.className)}>
             {emoji.value}
           </span>
         </Tag>
       </div>
 
-      <Button href={`/questions/${questionSlug}`} size="tile">
+      <Button href={`/questions/${questionSlug}`} size="icon">
         <ArrowUpRightIcon className="w-6 shrink-0" />
       </Button>
     </div>

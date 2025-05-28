@@ -37,7 +37,7 @@ function DesktopQuestionView({ question }: QuestionViewProps) {
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-6">
             <Button
-              view="link"
+              variant="link"
               onClick={() => router.back()}
               className="flex gap-2 text-3xl"
             >
@@ -52,7 +52,7 @@ function DesktopQuestionView({ question }: QuestionViewProps) {
 
           <div className="flex gap-1.5">
             <Tag>{question.slug}</Tag>
-            <Tag size="tile">
+            <Tag size="icon">
               <span className={cn("inline-block sm:text-2xl", emoji.className)}>
                 {emoji.value}
               </span>
@@ -62,7 +62,7 @@ function DesktopQuestionView({ question }: QuestionViewProps) {
 
         <Button
           href={ROUTE.questions}
-          view="link"
+          variant="link"
           underline
           className="text-3xl"
         >

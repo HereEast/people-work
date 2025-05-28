@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRightIcon, ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
 import { PageWrapper } from "~/components/PageWrapper";
+import { Button } from "~/components/ui/Button";
+import { Subscribe } from "~/components/Subscribe";
+import { Tag } from "~/components/Tag";
 
 import { getQuestions } from "~/api-client/questions";
 import { BASE_URL } from "~/utils/constants";
 import { QuestionData } from "~/schemas";
-import { Tag } from "~/components/Tag";
-import { Button } from "~/components/ui/Button";
 import { cn, getQuestionEmoji } from "~/utils/handlers";
-import { Subscribe } from "~/components/Subscribe";
 
 // PAGE
 export default async function QuestionsPage() {
@@ -58,13 +58,13 @@ function QuestionItem({ question }: QuestionItemProps) {
         <div className="flex justify-between lg:w-[420px] lg:gap-10">
           <div className="flex items-center gap-1 sm:gap-1.5">
             <Tag>{question.slug}</Tag>
-            <Tag size="tile">
+            <Tag size="icon">
               <span className={cn(emoji.className)}>{emoji.value}</span>
             </Tag>
           </div>
 
           <div className="flex justify-between gap-2">
-            <Button href={`/questions/${question.slug}`} size="tile">
+            <Button href={`/questions/${question.slug}`} size="icon">
               <ArrowUpRightIcon className="w-6 shrink-0" />
             </Button>
           </div>

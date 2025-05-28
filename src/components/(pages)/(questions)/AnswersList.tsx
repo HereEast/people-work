@@ -44,7 +44,7 @@ export async function AnswersList({ slug }: AnswersListProps) {
                     <PersonCardDetails person={person} />
                   </Link>
 
-                  <Button href={`/people/${person.slug}`} size="tile">
+                  <Button href={`/people/${person.slug}`} size="icon">
                     <ArrowUpRightIcon className="w-6 shrink-0" />
                   </Button>
                 </div>

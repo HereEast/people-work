@@ -16,7 +16,7 @@ export function Hero() {
         />
         <Button
           href="#subscribe-form"
-          view="link"
+          variant="link"
           underline
           className="md:decoration-4 md:underline-offset-[6px]"
         >
