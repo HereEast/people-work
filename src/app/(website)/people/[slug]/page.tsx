@@ -36,7 +36,7 @@ export default async function PersonQAPage(props: PersonPageProps) {
   const { slug } = await props.params;
 
   const person = await getPerson(slug);
-  const answers = await getAnswersByPersonSlug(slug);
+  const answers = await getAnswersByPersonSlug({ slug });
 
   if (!person || !answers) {
     notFound();
