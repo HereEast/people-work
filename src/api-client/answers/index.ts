@@ -1,13 +1,23 @@
-import { AnswerBasicData, AnswerData } from "~/schemas";
+import { AnswerData } from "~/schemas";
 import { BASE_URL } from "~/utils/constants";
 import { handleError } from "~/utils/handlers";
 
 // GET ANSWERS BY PERSON SLUG
-export async function getAnswersByPersonSlug(
-  slug: string,
-): Promise<AnswerData[] | null> {
+interface AnswersByPersonSlugProps {
+  slug: string;
+  featured?: boolean;
+}
+
+export async function getAnswersByPersonSlug({
+  slug,
+  featured,
+}: AnswersByPersonSlugProps): Promise<AnswerData[] | null> {
   try {
-    const response = await fetch(`${BASE_URL}/api/answers/person/${slug}`);
+    const URL =
+      `${BASE_URL}/api/answers/person/${slug}` +
+      (featured ? "?featured=true" : "");
+
+    const response = await fetch(URL);
 
     if (!response.ok) {
       throw new Error("🔴 Data fetch failed");
@@ -37,29 +47,6 @@ export async function getAnswersByQuestionSlug(
     const answers: AnswerData[] = await response.json();
 
     return answers;
-  } catch (err) {
-    handleError(err);
-
-    return null;
-  }
-}
-
-// GET FEATURED ANSWER
-export async function getFeaturedAnswer(
-  personId: string,
-): Promise<AnswerBasicData | null> {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/api/answers/featured/${personId}`,
-    );
-
-    if (!response.ok) {
-      throw new Error("🔴 Fetching featured answer failed.");
-    }
-
-    const answer: AnswerBasicData = await response.json();
-
-    return answer;
   } catch (err) {
     handleError(err);
 

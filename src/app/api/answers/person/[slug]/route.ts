@@ -16,6 +16,9 @@ export async function GET(req: Request, props: ReqParams) {
   const params = await props.params;
   const { slug } = params;
 
+  const { searchParams } = new URL(req.url);
+  const isFeaturedQuery = searchParams.get("featured");
+
   try {
     await connectDB();
 
@@ -30,9 +33,24 @@ export async function GET(req: Request, props: ReqParams) {
       });
     }
 
-    // To make populate work
-    const q = await QuestionDB.find({}).exec();
+    await QuestionDB.find({}).exec(); // To make populate work
 
+    // Featured
+    if (isFeaturedQuery) {
+      const data: DBDoc<IAnswerDB>[] = await AnswerDB.find({
+        personId: person._id,
+        featured: true,
+      })
+        .populate("questionId")
+        .populate("personId")
+        .exec();
+
+      const answers = mapAnswersData(data);
+
+      return NextResponse.json(answers);
+    }
+
+    // All answers
     const data: DBDoc<IAnswerDB>[] = await AnswerDB.find({
       personId: person._id,
     })
@@ -40,12 +58,12 @@ export async function GET(req: Request, props: ReqParams) {
       .populate("personId")
       .exec();
 
-    const activeAnswers = data.filter((answer) => {
+    const answersToActiveQuestions = data.filter((answer) => {
       const question = answer.questionId as IQuestionDB;
       return question.isActive === true;
     });
 
-    const orderedAnswers = activeAnswers.sort((a, b) => {
+    const orderedAnswers = answersToActiveQuestions.sort((a, b) => {
       const questionA = a.questionId as IQuestionDB;
       const questionB = b.questionId as IQuestionDB;
       return questionA.order - questionB.order;
