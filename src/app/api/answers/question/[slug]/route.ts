@@ -31,8 +31,7 @@ export async function GET(req: Request, props: ReqParams) {
       });
     }
 
-    // To make populate work
-    const p = await PersonDB.find({}).exec();
+    await PersonDB.find({}).exec(); // To make populate work
 
     const docs: DBDoc<IAnswerDB>[] = await AnswerDB.find({
       questionId: question._id,
