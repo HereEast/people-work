@@ -26,9 +26,9 @@ const config: Config = {
         sm: "16px",
         xl: "20px",
         "2xl": "24px",
-        "3xl": "32px",
+        "3xl": "30px",
         "4xl": "40px",
-        "5xl": "52px",
+        "5xl": "50px",
       },
       letterSpacing: {
         text: "-0.02em",
