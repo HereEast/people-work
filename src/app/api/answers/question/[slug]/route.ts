@@ -33,6 +33,7 @@ export async function GET(req: Request, props: ReqParams) {
 
     const docs: DBDoc<IAnswerDB>[] = await AnswerDB.find({
       questionId: question._id,
+      $or: [{ disabled: false }, { disabled: { $exists: false } }],
     })
       .populate("questionId")
       .populate("personId")
@@ -43,7 +44,15 @@ export async function GET(req: Request, props: ReqParams) {
       return person.isActive;
     });
 
-    // sort by Person createAt
+    // const sortedByDate = answersByActivePeople.sort((a, b) => {
+    //   const personA = a.personId as IPersonDB;
+    //   const personB = b.personId as IPersonDB;
+
+    //   return (
+    //     new Date(personA.createdAt).getTime() -
+    //     new Date(personB.createdAt).getTime()
+    //   );
+    // });
 
     const answers = mapAnswersData(answersByActivePeople);
 

@@ -24,12 +24,13 @@ export async function GET(req: NextRequest) {
 
     const docs: DBDoc<IPersonDB>[] = await PersonDB.find(query).exec();
 
-    const people = mapPeopleData(docs) as PersonData[];
+    const peopleData = mapPeopleData(docs) as PersonData[];
 
+    // To preserve slug order
     const result =
       slugs.length > 0
-        ? slugs.map((slug) => people.find((p) => p.slug === slug))
-        : people;
+        ? slugs.map((slug) => peopleData.find((p) => p.slug === slug))
+        : peopleData;
 
     return NextResponse.json(result);
   } catch (err) {

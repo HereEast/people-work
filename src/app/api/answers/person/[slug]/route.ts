@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { FilterQuery } from "mongoose";
 
 import { connectDB } from "~/lib/connectDB";
 import { AnswerDB, IAnswerDB } from "~/models/Answer";
@@ -34,41 +35,38 @@ export async function GET(req: Request, props: ReqParams) {
 
     await QuestionDB.find({}).exec(); // To make populate work
 
-    // Featured
+    const query: FilterQuery<IAnswerDB> = {
+      personId: person.id,
+      $or: [{ disabled: false }, { disabled: { $exists: false } }],
+    };
+
     if (isFeaturedQuery) {
-      const data: DBDoc<IAnswerDB>[] = await AnswerDB.find({
-        personId: person._id,
-        featured: true,
-      })
-        .populate("questionId")
-        .populate("personId")
-        .exec();
-
-      const answers = mapAnswersData(data);
-
-      return NextResponse.json(answers);
+      query.featured = true;
     }
 
-    // All answers
-    const data: DBDoc<IAnswerDB>[] = await AnswerDB.find({
-      personId: person._id,
-    })
+    const data: DBDoc<IAnswerDB>[] = await AnswerDB.find(query)
       .populate("questionId")
       .populate("personId")
       .exec();
 
+    // Featured answer
+    if (isFeaturedQuery) {
+      return NextResponse.json(mapAnswersData(data));
+    }
+
+    // All answers
     const answersToActiveQuestions = data.filter((answer) => {
       const question = answer.questionId as IQuestionDB;
       return question.isActive === true;
     });
 
-    const orderedAnswers = answersToActiveQuestions.sort((a, b) => {
+    const sortedAnswers = answersToActiveQuestions.sort((a, b) => {
       const questionA = a.questionId as IQuestionDB;
       const questionB = b.questionId as IQuestionDB;
       return questionA.order - questionB.order;
     });
 
-    const answers = mapAnswersData(orderedAnswers);
+    const answers = mapAnswersData(sortedAnswers);
 
     return NextResponse.json(answers);
   } catch (err) {
