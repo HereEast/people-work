@@ -5,7 +5,7 @@ import { PersonCardDetails } from "./PersonCardDetails";
 import { QuoteIcon } from "./icons";
 
 import { PersonData } from "~/schemas";
-import { getFeaturedAnswer } from "~/api-client/answers";
+import { getAnswersByPersonSlug } from "~/api-client/answers";
 
 // Featured list
 interface FeaturedCardListProps {
@@ -30,11 +30,16 @@ interface FeaturedPersonCardProps {
 }
 
 export async function FeaturedPersonCard({ person }: FeaturedPersonCardProps) {
-  const featuredAnswer = await getFeaturedAnswer(person.id);
+  const data = await getAnswersByPersonSlug({
+    slug: person.slug,
+    featured: true,
+  });
 
-  if (!featuredAnswer) {
+  if (!data) {
     return null;
   }
+
+  const featuredAnswer = data[0];
 
   return (
     <FeaturedCardWrapper slug={person.slug}>
