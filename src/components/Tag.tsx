@@ -10,8 +10,6 @@ interface TagProps {
 }
 
 export function Tag({ children, size = "tag", href }: TagProps) {
-  const content = size === "icon" ? children : `#${children}`;
-
   return href ? (
     <Button
       href={href}
@@ -19,11 +17,11 @@ export function Tag({ children, size = "tag", href }: TagProps) {
       size={size}
       className="pb-0.5 text-sm tracking-[0.02ch] sm:text-xl"
     >
-      {content}
+      {children}
     </Button>
   ) : (
     <div className={cn(buttonVariants({ size, variant: "tag" }))}>
-      {content}
+      {children}
     </div>
   );
 }

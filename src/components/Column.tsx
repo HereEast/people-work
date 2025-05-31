@@ -13,6 +13,6 @@ export function Column({ children, variant }: ColumnProps) {
       </div>
     </div>
   ) : (
-    <div className="flex flex-col gap-2.5 pt-4">{children}</div>
+    <div className="flex flex-col pt-4">{children}</div>
   );
 }

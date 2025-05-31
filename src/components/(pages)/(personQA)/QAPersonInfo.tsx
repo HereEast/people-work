@@ -39,12 +39,12 @@ function DesktopPersonView({ person }: PersonViewProps) {
               <AccentText>{person.name}</AccentText>
             </h1>
 
-            <div>
+            <div className="space-y-px">
               <h2>{person.jobTitle}</h2>
               <Link
                 href={person.company.url}
                 target="_blank"
-                className="capitalize underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
+                className="inline-block capitalize underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
               >
                 {person.company.name}
               </Link>
@@ -62,7 +62,7 @@ function DesktopPersonView({ person }: PersonViewProps) {
 function MobilePersonView({ person }: PersonViewProps) {
   return (
     <StickyMobileWrapper>
-      <Card className="bg-stone-800 p-3 text-stone-50 sm:p-5">
+      <Card className="rounded-lg bg-stone-800 p-3 text-stone-50 sm:p-5">
         <div className="flex items-end gap-3 sm:gap-5">
           <PersonImage
             name={person.name}

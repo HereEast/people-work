@@ -60,7 +60,7 @@ a:hover {
 .question {
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
-  text-underline-offset: 2.2px;
+  text-underline-offset: 2px;
   text-decoration-skip-ink: none;
 }
 
@@ -94,28 +94,28 @@ a:hover {
 .answer h5:has(+ ul),
 .answer h6 {
   text-decoration: underline;
-  text-decoration-style: wavy;
-  text-decoration-thickness: 1.5px;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 2px;
   text-decoration-skip-ink: none;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
 }
 
 .answer h6:has(+ ul) {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .answer h5:has(+ ul) {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 /* Margin between li in lists */
-.answer ul li:not(:last-child),
+/* .answer ul li:not(:last-child),
 .answer h6 + ul li:not(:last-child) {
-  /* margin-bottom: 1px; */
-}
+  margin-bottom: 2px;
+} */
 
 .answer h5 + ul li:not(:last-child) {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 /* Bullet Point */
@@ -141,19 +141,21 @@ a:hover {
     margin-bottom: 32px;
   }
 
+  /* Bullet point */
   .answer ul li {
-    padding: 0px 0px 0px 24px;
+    padding: 0px 0px 0px 26px;
   }
 
   .answer ul li::before {
     width: 10px;
     height: 10px;
-    top: 12px;
+    top: 13px;
   }
+  /**/
 
-  .answer h5 + ul li:not(:last-child) {
-    margin-bottom: 8px;
-  }
+  /* .answer h5 + ul li:not(:last-child) {
+    margin-bottom: 16px;
+  } */
 
   .question,
   .answer a {

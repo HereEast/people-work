@@ -12,7 +12,7 @@ export default async function HomePage() {
 
   return (
     <PageWrapper>
-      <section className="my-8 sm:my-12">
+      <section className="mb-10 mt-8 sm:mb-16 sm:mt-12">
         <Hero />
       </section>
 

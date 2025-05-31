@@ -29,7 +29,7 @@ export function Header() {
                 <span>
                   {link.label}
                   {index < HEADER_LINKS.length - 1 && (
-                    <span className="mr-2">,</span>
+                    <span className="mr-1 sm:mr-2">,</span>
                   )}
                 </span>
               </Button>

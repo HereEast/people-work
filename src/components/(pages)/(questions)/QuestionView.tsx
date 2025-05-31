@@ -51,7 +51,7 @@ function DesktopQuestionView({ question }: QuestionViewProps) {
           </div>
 
           <div className="flex gap-1.5">
-            <Tag>{question.slug}</Tag>
+            <Tag>#{question.slug}</Tag>
             <Tag size="icon">
               <span className={cn("inline-block sm:text-2xl", emoji.className)}>
                 {emoji.value}
@@ -77,10 +77,7 @@ function DesktopQuestionView({ question }: QuestionViewProps) {
 function MobileQuestionView({ question }: QuestionViewProps) {
   return (
     <StickyMobileWrapper>
-      <Card className="gap-2 bg-stone-800 p-3 pb-4 text-stone-50 sm:gap-3 sm:p-6 sm:pt-5">
-        <span className="inline-block text-center text-sm leading-[110%] opacity-50 sm:text-xl">
-          #{question.slug}
-        </span>
+      <Card className="gap-2 rounded-lg bg-stone-800 px-3 py-4 text-stone-50 sm:gap-3 sm:p-6 sm:pt-5">
         <h1 className="text-center text-xl font-semibold leading-[100%] sm:text-3xl">
           {question.body}
         </h1>

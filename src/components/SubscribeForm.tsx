@@ -56,7 +56,7 @@ export function SubscribeForm() {
           <div className="right-2 top-0 sm:absolute">
             <Button
               isDisabled={isSubmitting}
-              className="h-16 w-full rounded-md px-5 pb-1 text-2xl sm:h-[64px] sm:text-3xl"
+              className="h-16 w-full rounded-md px-5 pb-px text-xl font-medium sm:text-3xl sm:font-normal"
             >
               Subscribe
             </Button>

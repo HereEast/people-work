@@ -30,24 +30,23 @@ interface FeaturedPersonCardProps {
 }
 
 export async function FeaturedPersonCard({ person }: FeaturedPersonCardProps) {
-  const data = await getAnswersByPersonSlug({
-    slug: person.slug,
-    featured: true,
-  });
+  const [featuredAnswer] =
+    (await getAnswersByPersonSlug({
+      slug: person.slug,
+      featured: true,
+    })) || [];
 
-  if (!data) {
+  if (!featuredAnswer) {
     return null;
   }
-
-  const featuredAnswer = data[0];
 
   return (
     <FeaturedCardWrapper slug={person.slug}>
       <Link href={`/people/${person.slug}`} className="block p-6 sm:p-10">
-        <div className="mb-10 space-y-5">
+        <div className="mb-8 space-y-6 lg:mb-10">
           <QuoteIcon />
 
-          <p className="text-3xl font-semibold leading-[95%] tracking-[-0.02ch] sm:text-[36px] sm:leading-[105%]">
+          <p className="text-3xl font-semibold leading-[95%] tracking-[-0.02ch] sm:text-4xl sm:leading-[100%]">
             {featuredAnswer?.answer}
           </p>
         </div>
