@@ -52,21 +52,25 @@ function DesktopQuestionItemView({ question }: QuestionItemProps) {
       href={`${BASE_URL}/questions/${question.slug}`}
       className="group hidden w-full py-5 md:block"
     >
-      <div className="grid grid-cols-[2fr_1fr_auto] items-center">
-        <div className="mb-0.5 mr-24 transition group-hover:opacity-30">
-          <h2 className="text-4xl font-semibold leading-[110%]">
+      <div className="grid grid-cols-[2fr_1fr] items-center">
+        <div className="mb-0.5 mr-24 transition">
+          <h2 className="text-3xl font-semibold leading-[110%] opacity-95 group-hover:opacity-30 sm:tracking-[-0.025ch]">
             {question.body}
           </h2>
         </div>
 
-        <div className="w-[320px] lg:w-[400px]">
-          <QuestionTag
-            slug={question.slug}
+        <div className="flex justify-between">
+          <div className="w-[320px] lg:w-[400px]">
+            <QuestionTag slug={question.slug} />
+          </div>
+
+          <Button
             href={`/questions/${question.slug}`}
+            size="icon"
+            view="go-to"
+            className="group-hover:bg-stone-500/60"
           />
         </div>
-
-        <Button href={`/questions/${question.slug}`} size="icon" view="go-to" />
       </div>
     </Link>
   );

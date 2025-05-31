@@ -10,19 +10,17 @@ interface ContentProps {
   data: AnswerData[];
 }
 
+// Cards
 export function QAList({ data }: ContentProps) {
   return (
-    <div className="px-3 pt-4">
+    <div className="space-y-2 pt-4">
       {data?.map((item, index) => {
         const { question, answer, marked, featured } = item;
 
         return (
-          <div
-            key={index}
-            className="border-b border-stone-900/20 first:border-t"
-          >
-            <div className="space-y-8 pb-6 pt-5 sm:space-y-10 sm:pb-10 sm:pt-9">
-              <div className="space-y-8 sm:space-y-10">
+          <Card marked={marked || featured} key={index}>
+            <div className="space-y-8 p-6 sm:space-y-10 sm:p-10">
+              <div className="space-y-6 sm:space-y-10">
                 <Question>{question}</Question>
                 <Answer marked={marked || featured}>{answer}</Answer>
               </div>
@@ -39,26 +37,26 @@ export function QAList({ data }: ContentProps) {
                 />
               </div>
             </div>
-          </div>
+          </Card>
         );
       })}
     </div>
   );
 }
 
-// Cards
+// Borders
 // export function QAList({ data }: ContentProps) {
 //   return (
-//     <div className="space-y-2 pt-4">
+//     <div className="px-3 pt-4 sm:px-0">
 //       {data?.map((item, index) => {
 //         const { question, answer, marked, featured } = item;
 
 //         return (
-//           <Card
+//           <div
 //             key={index}
-//             className={cn((marked || featured) && "bg-stone-500/60")}
+//             className="border-b border-stone-900/20 first:border-t"
 //           >
-//             <div className="space-y-8 p-6 sm:space-y-10 sm:p-10">
+//             <div className="space-y-8 pb-6 pt-5 sm:space-y-10 sm:pb-10 sm:pt-9">
 //               <div className="space-y-8 sm:space-y-10">
 //                 <Question>{question}</Question>
 //                 <Answer marked={marked || featured}>{answer}</Answer>
@@ -76,7 +74,7 @@ export function QAList({ data }: ContentProps) {
 //                 />
 //               </div>
 //             </div>
-//           </Card>
+//           </div>
 //         );
 //       })}
 //     </div>

@@ -28,7 +28,8 @@ const config: Config = {
         "2xl": "24px",
         "3xl": "30px",
         "4xl": "40px",
-        "5xl": "56px",
+        "5xl": "50px",
+        // "5xl": "56px", // Border
         "7xl": "76px",
       },
       letterSpacing: {
