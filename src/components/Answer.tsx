@@ -31,16 +31,6 @@ interface QuestionProps {
   children: QuestionData;
 }
 
-// export function Question({ children }: QuestionProps) {
-//   return (
-//     <div>
-//       <h3 className="text-xl font-semibold leading-[115%] transition sm:text-3xl sm:leading-[115%]">
-//         {children.body}
-//       </h3>
-//     </div>
-//   );
-// }
-
 export function Question({ children }: QuestionProps) {
   return (
     <div>

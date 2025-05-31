@@ -10,7 +10,7 @@ const FOOTER_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="w-full px-2.5 py-4 md:px-6">
+    <footer className="w-full px-3 py-4 md:px-6">
       <div className="flex w-full justify-between text-xl sm:text-3xl">
         <div className="flex gap-1 sm:gap-2">
           <Button href={ROUTE.index} variant="link">

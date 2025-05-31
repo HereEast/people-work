@@ -1,16 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
 import { PageWrapper } from "~/components/PageWrapper";
 import { Button } from "~/components/ui/Button";
 import { Subscribe } from "~/components/Subscribe";
-import { Tag } from "~/components/Tag";
+import { QuestionTag } from "~/components/Tag";
 
 import { getQuestions } from "~/api-client/questions";
-import { BASE_URL } from "~/utils/constants";
 import { QuestionData } from "~/schemas";
-import { cn, getQuestionEmoji } from "~/utils/handlers";
+import { BASE_URL } from "~/utils/constants";
 
 // PAGE
 export default async function QuestionsPage() {
@@ -24,7 +22,15 @@ export default async function QuestionsPage() {
     <PageWrapper>
       <ul className="mb-10 pt-6">
         {questions.map((question, index) => (
-          <QuestionItem question={question} key={index} />
+          <li
+            className="border-t border-stone-900/20 last:border-b"
+            key={index}
+          >
+            <>
+              <MobileQuestionItemView question={question} />
+              <DesktopQuestionItemView question={question} />
+            </>
+          </li>
         ))}
       </ul>
 
@@ -40,36 +46,47 @@ interface QuestionItemProps {
   question: QuestionData;
 }
 
-function QuestionItem({ question }: QuestionItemProps) {
-  const emoji = getQuestionEmoji(question.slug);
-
+function DesktopQuestionItemView({ question }: QuestionItemProps) {
   return (
-    <li className="border-b border-stone-900 first:border-t">
-      <Link
-        href={`${BASE_URL}/questions/${question.slug}`}
-        className="group grid items-center gap-6 py-6 pt-5 lg:grid-cols-[1fr_auto] lg:gap-10 lg:py-4"
-      >
-        <div className="transition group-hover:opacity-30 sm:mb-0.5">
-          <h2 className="text-3xl font-semibold leading-[100%] tracking-[-0.03ch] sm:text-[36px] md:leading-[110%]">
+    <Link
+      href={`${BASE_URL}/questions/${question.slug}`}
+      className="group hidden w-full py-5 md:block"
+    >
+      <div className="grid grid-cols-[2fr_1fr_auto] items-center">
+        <div className="mb-0.5 mr-24 transition group-hover:opacity-30">
+          <h2 className="text-4xl font-semibold leading-[110%]">
             {question.body}
           </h2>
         </div>
 
-        <div className="flex justify-between lg:w-[420px] lg:gap-10">
-          <div className="flex items-center gap-1 sm:gap-1.5">
-            <Tag>{question.slug}</Tag>
-            <Tag size="icon">
-              <span className={cn(emoji.className)}>{emoji.value}</span>
-            </Tag>
-          </div>
-
-          <div className="flex justify-between gap-2">
-            <Button href={`/questions/${question.slug}`} size="icon">
-              <ArrowUpRightIcon className="w-6 shrink-0" />
-            </Button>
-          </div>
+        <div className="w-[320px] lg:w-[400px]">
+          <QuestionTag
+            slug={question.slug}
+            href={`/questions/${question.slug}`}
+          />
         </div>
-      </Link>
-    </li>
+
+        <Button href={`/questions/${question.slug}`} size="icon" view="go-to" />
+      </div>
+    </Link>
+  );
+}
+
+function MobileQuestionItemView({ question }: QuestionItemProps) {
+  return (
+    <Link
+      href={`${BASE_URL}/questions/${question.slug}`}
+      className="group inline-block w-full py-5 md:hidden"
+    >
+      <div className="flex w-full items-center justify-between gap-10">
+        <div className="transition group-hover:opacity-30 sm:mb-0.5">
+          <h2 className="text-xl font-semibold leading-[110%] sm:text-3xl md:leading-[110%]">
+            {question.body}
+          </h2>
+        </div>
+
+        <Button href={`/questions/${question.slug}`} size="icon" view="go-to" />
+      </div>
+    </Link>
   );
 }

@@ -1,16 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 import { Column } from "~/components/Column";
 import { Button } from "~/components/ui/Button";
-import { Tag } from "~/components/Tag";
+import { QuestionTag } from "~/components/Tag";
 import { Card, StickyMobileWrapper } from "~/components/Card";
 
 import { QuestionData } from "~/schemas";
 import { ROUTE } from "~/utils/constants";
-import { cn, getQuestionEmoji } from "~/utils/handlers";
-import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 interface QuestionViewProps {
   question: QuestionData;
@@ -28,8 +27,6 @@ export function QuestionView({ question }: QuestionViewProps) {
 // Desktop
 function DesktopQuestionView({ question }: QuestionViewProps) {
   const router = useRouter();
-
-  const emoji = getQuestionEmoji(question.slug);
 
   return (
     <Column variant="sticky">
@@ -50,14 +47,7 @@ function DesktopQuestionView({ question }: QuestionViewProps) {
             </h1>
           </div>
 
-          <div className="flex gap-1.5">
-            <Tag>#{question.slug}</Tag>
-            <Tag size="icon">
-              <span className={cn("inline-block sm:text-2xl", emoji.className)}>
-                {emoji.value}
-              </span>
-            </Tag>
-          </div>
+          <QuestionTag slug={question.slug} />
         </div>
 
         <Button

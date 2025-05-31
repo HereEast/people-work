@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { cn } from "~/utils/handlers";
+import { cn, getQuestionEmoji } from "~/utils/handlers";
 import { Button, buttonVariants } from "./ui/Button";
 
 interface TagProps {
@@ -22,6 +22,28 @@ export function Tag({ children, size = "tag", href }: TagProps) {
   ) : (
     <div className={cn(buttonVariants({ size, variant: "tag" }))}>
       {children}
+    </div>
+  );
+}
+
+// Question Tag
+interface QuestionTagProps {
+  slug: string;
+  href?: string;
+}
+
+export function QuestionTag({ href, slug }: QuestionTagProps) {
+  const emoji = getQuestionEmoji(slug);
+
+  return (
+    <div className="flex items-center gap-1 sm:gap-1.5">
+      <Tag href={href ? `/questions/${slug}` : ""} size="icon">
+        <span className={cn("inline-block sm:text-2xl", emoji.className)}>
+          {emoji.value}
+        </span>
+      </Tag>
+
+      <Tag href={href ? `/questions/${slug}` : ""}>#{slug}</Tag>
     </div>
   );
 }
