@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Card } from "~/components/Card";
-import { Button } from "~/components/ui/Button";
-import { Input } from "~/components/ui/Input";
+import { Button } from "~/components/Button";
+import { Input } from "~/components/Input";
 
 import { submitName } from "~/api-client/names";
 import { cn } from "~/utils/handlers";

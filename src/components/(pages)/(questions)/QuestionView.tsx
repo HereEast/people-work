@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 import { Column } from "~/components/Column";
-import { Button } from "~/components/ui/Button";
+import { Button } from "~/components/Button";
 import { QuestionTag } from "~/components/Tag";
 import { Card, StickyMobileWrapper } from "~/components/Card";
 

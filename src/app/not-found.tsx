@@ -2,7 +2,7 @@ import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 import { EmojiImage } from "~/components/EmojiImage";
 import { PageWrapper } from "~/components/PageWrapper";
-import { Button } from "~/components/ui/Button";
+import { Button } from "~/components/Button";
 
 import { ROUTE } from "~/utils/constants";
 

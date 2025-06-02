@@ -1,10 +1,10 @@
-import { Button } from "~/components/ui/Button";
+import { Card } from "~/components/Card";
+import { GoToButton } from "~/components/Buttons";
 import { Answer, Question } from "~/components/Answer";
 import { QuestionTag } from "~/components/Tag";
 
 import { AnswerData } from "~/schemas";
-import { Card } from "~/components/Card";
-import { cn } from "~/utils/handlers";
+// import { cn } from "~/utils/handlers";
 
 interface ContentProps {
   data: AnswerData[];
@@ -30,11 +30,7 @@ export function QAList({ data }: ContentProps) {
                   slug={question.slug}
                   href={`/questions/${question.slug}`}
                 />
-                <Button
-                  href={`/questions/${question.slug}`}
-                  size="icon"
-                  view="go-to"
-                />
+                <GoToButton href={`/questions/${question.slug}`} />
               </div>
             </div>
           </Card>

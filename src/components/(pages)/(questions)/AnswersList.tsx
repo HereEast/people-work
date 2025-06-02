@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 import { Card } from "~/components/Card";
-import { Button } from "~/components/ui/Button";
 import { Answer } from "~/components/Answer";
 import { PersonCardDetails } from "~/components/PersonCardDetails";
+import { GoToButton } from "~/components/Buttons";
 
 import { getAnswersByQuestionSlug } from "~/api-client/answers";
 import { PersonData } from "~/schemas";
@@ -82,7 +82,7 @@ function CardFooter({ person }: CardFooterProps) {
         <PersonCardDetails person={person} />
       </Link>
 
-      <Button href={`/people/${person.slug}`} size="icon" view="go-to" />
+      <GoToButton href={`/people/${person.slug}`} />
     </div>
   );
 }

@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
-import { Button } from "~/components/ui/Button";
-import { Input } from "./ui/Input";
+import { Button } from "~/components/Button";
+import { Input } from "./Input";
 import { AccentText } from "./AccentText";
 
 import { submitSubscription } from "~/api-client/subscriptions";

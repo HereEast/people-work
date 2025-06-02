@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 import { cn, getQuestionEmoji } from "~/utils/handlers";
-import { Button, buttonVariants } from "./ui/Button";
+import { Button, buttonVariants } from "./Button";
 
 interface TagProps {
   children: ReactNode;

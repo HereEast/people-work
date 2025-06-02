@@ -38,6 +38,7 @@ const LinksSchema = new Schema(
     linkedin: { type: String },
     twitter: { type: String },
     instagram: { type: String },
+    email: { type: String },
   },
   { _id: false },
 );

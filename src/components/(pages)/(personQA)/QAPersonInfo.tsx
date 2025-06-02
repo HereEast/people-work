@@ -3,9 +3,12 @@ import { AccentText } from "~/components/AccentText";
 
 import { Card, StickyMobileWrapper } from "~/components/Card";
 import { Column } from "~/components/Column";
+import { LinkedinIcon } from "~/components/icons/Linkedin";
 import { PersonImage } from "~/components/PersonImage";
+import { Button } from "~/components/Button";
 
 import { PersonData } from "~/schemas";
+import { LinkedinButton } from "~/components/Buttons";
 
 interface PersonViewProps {
   person: PersonData;
@@ -22,11 +25,11 @@ export function QAPersonInfo({ person }: PersonViewProps) {
 
 // Desktop
 function DesktopPersonView({ person }: PersonViewProps) {
-  // const contacts = Object.entries(person.links);
+  const contacts = Object.entries(person.links);
 
   return (
     <Column variant="sticky">
-      <div className="flex flex-col gap-16 text-2xl sm:text-3xl md:leading-[110%]">
+      <div className="flex flex-col gap-10 text-2xl sm:text-3xl md:leading-[110%]">
         <div className="space-y-5">
           <PersonImage
             name={person.name}
@@ -53,6 +56,15 @@ function DesktopPersonView({ person }: PersonViewProps) {
         </div>
 
         {/* Contacts */}
+        {contacts.length > 0 && (
+          <ul className="hidden lg:block">
+            {contacts.map(([name, url]) => (
+              <li key={name}>
+                {name === "linkedin" && <LinkedinButton href={url} />}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </Column>
   );

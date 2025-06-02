@@ -1,4 +1,4 @@
-import { Button } from "~/components/ui/Button";
+import { Button } from "~/components/Button";
 import { EmojiImage } from "~/components/EmojiImage";
 import { AccentText } from "~/components/AccentText";
 

@@ -3,7 +3,6 @@ import { MouseEvent, ReactNode } from "react";
 import { cva } from "class-variance-authority";
 
 import { cn } from "~/utils/handlers";
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
 export const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md disabled:pointer-events-none disabled:opacity-50 transition",
@@ -32,7 +31,6 @@ type ButtonProps = {
   target?: "_blank" | "_self";
   isDisabled?: boolean;
   variant?: "base" | "accent" | "outline" | "link" | "tag";
-  view?: "go-to";
   size?: "base" | "icon" | "tag";
   underline?: boolean;
   rel?: string;
@@ -46,7 +44,6 @@ export function Button({
   isDisabled,
   onClick,
   variant = "base",
-  view,
   size,
   underline = false,
   className = "",
@@ -60,16 +57,9 @@ export function Button({
   );
 
   if (href) {
-    const linkLabel =
-      view === "go-to" ? (
-        <ArrowUpRightIcon className="w-5 shrink-0 sm:w-6" />
-      ) : (
-        children
-      );
-
     return (
       <Link href={href} className={classes} {...props}>
-        {linkLabel}
+        {children}
       </Link>
     );
   }

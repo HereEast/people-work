@@ -46,6 +46,7 @@ const config: Config = {
       },
       colors: {
         bg: "var(--background)",
+        linkedin: "var(--linkedin)",
       },
     },
   },

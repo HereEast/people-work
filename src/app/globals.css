@@ -4,6 +4,7 @@
 
 body {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 li {
@@ -22,6 +23,7 @@ a:hover {
 @layer base {
   :root {
     --background: #e8e8e8;
+    --linkedin: #0077B7;
 
     --featured-0: #d1dced;
     --featured-1: #cff0ef;
