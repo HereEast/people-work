@@ -5,6 +5,7 @@ import { PageWrapper } from "~/components/PageWrapper";
 import { Button } from "~/components/Button";
 import { Subscribe } from "~/components/Subscribe";
 import { QuestionTag } from "~/components/Tag";
+import { GoToButton } from "~/components/Buttons";
 
 import { getQuestions } from "~/api-client/questions";
 import { QuestionData } from "~/schemas";
@@ -64,12 +65,7 @@ function DesktopQuestionItemView({ question }: QuestionItemProps) {
             <QuestionTag slug={question.slug} />
           </div>
 
-          <Button
-            href={`/questions/${question.slug}`}
-            size="icon"
-            view="go-to"
-            className="group-hover:bg-stone-500/60"
-          />
+          <GoToButton href={`/questions/${question.slug}`} />
         </div>
       </div>
     </Link>
@@ -89,7 +85,7 @@ function MobileQuestionItemView({ question }: QuestionItemProps) {
           </h2>
         </div>
 
-        <Button href={`/questions/${question.slug}`} size="icon" view="go-to" />
+        <GoToButton href={`/questions/${question.slug}`} />
       </div>
     </Link>
   );
