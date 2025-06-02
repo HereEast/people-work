@@ -1,14 +1,12 @@
 import Link from "next/link";
-import { AccentText } from "~/components/AccentText";
 
+import { AccentText } from "~/components/AccentText";
 import { Card, StickyMobileWrapper } from "~/components/Card";
 import { Column } from "~/components/Column";
-import { LinkedinIcon } from "~/components/icons/Linkedin";
+import { LinkedinButton } from "~/components/Buttons";
 import { PersonImage } from "~/components/PersonImage";
-import { Button } from "~/components/Button";
 
 import { PersonData } from "~/schemas";
-import { LinkedinButton } from "~/components/Buttons";
 
 interface PersonViewProps {
   person: PersonData;
@@ -29,42 +27,64 @@ function DesktopPersonView({ person }: PersonViewProps) {
 
   return (
     <Column variant="sticky">
-      <div className="flex flex-col gap-10 text-2xl sm:text-3xl md:leading-[110%]">
-        <div className="space-y-5">
-          <PersonImage
-            name={person.name}
-            slug={person.slug}
-            classname="lg:size-[240px] lg:rounded-md"
-          />
+      <div className="flex h-full flex-col justify-between">
+        <div className="space-y-10 text-2xl sm:text-3xl md:leading-[110%]">
+          <div className="space-y-5">
+            <PersonImage
+              name={person.name}
+              slug={person.slug}
+              classname="lg:size-[240px] lg:rounded-md"
+            />
 
-          <div className="space-y-1">
-            <h1>
-              <AccentText>{person.name}</AccentText>
-            </h1>
+            <div className="space-y-1">
+              <h1>
+                <AccentText>{person.name}</AccentText>
+              </h1>
 
-            <div className="space-y-px">
-              <h2>{person.jobTitle}</h2>
-              <Link
-                href={person.company.url}
-                target="_blank"
-                className="inline-block capitalize underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
-              >
-                {person.company.name}
-              </Link>
+              <div className="space-y-px">
+                <h2>{person.jobTitle}</h2>
+                <Link
+                  href={person.company.url}
+                  target="_blank"
+                  className="inline-block capitalize underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
+                >
+                  {person.company.name}
+                </Link>
+              </div>
             </div>
           </div>
+
+          {/* Contacts */}
+          {contacts.length > 0 && (
+            <ul className="hidden lg:block">
+              {contacts.map(([name, url]) => (
+                <li key={name}>
+                  {name === "linkedin" && <LinkedinButton href={url} />}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
-        {/* Contacts */}
-        {contacts.length > 0 && (
-          <ul className="hidden lg:block">
-            {contacts.map(([name, url]) => (
-              <li key={name}>
-                {name === "linkedin" && <LinkedinButton href={url} />}
-              </li>
-            ))}
-          </ul>
-        )}
+        {/* Details */}
+        {/* <ul className="hidden flex-col gap-2 text-3xl leading-none lg:flex">
+          <li className="flex gap-2">
+            <span>Experience:</span>
+            <span className="font-medium">11 years</span>
+          </li>
+          <li className="flex gap-2">
+            <span>Domain:</span>
+            <span className="font-medium">Virtual Production</span>
+          </li>
+          <li className="flex gap-2">
+            <span>Location:</span>
+            <span className="font-medium">Warsaw, PL</span>
+          </li>
+          <li className="flex gap-2">
+            <span>Contacts:</span>
+            <span className="font-medium">Linkedin</span>
+          </li>
+        </ul> */}
       </div>
     </Column>
   );
