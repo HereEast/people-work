@@ -12,64 +12,41 @@ const config: Config = {
       screens: {
         xs: "420px",
         xl: "1280px",
-        "2xl": "1400px",
+        "2xl": "1440px",
       },
       maxWidth: {
         "8xl": "1440px",
+        "9xl": "1800px",
       },
       fontFamily: {
         base: ["var(--font-base)"],
         accent: ["var(--font-accent)"],
       },
-      colors: {
-        "brand-blue": {
-          "600": "#0047FF",
-          DEFAULT: "#0047FF",
-        },
-        "gradient-color-1": "rgb(var(--gradient-color-1))",
-        "gradient-color-2": "rgb(var(--gradient-color-2))",
-        "gradient-color-3": "rgb(var(--gradient-color-3))",
-      },
       fontSize: {
-        "4xl": [
-          "38px",
-          {
-            lineHeight: "100%",
-          },
-        ],
+        sm: "16px",
+        xl: "20px",
+        "2xl": "24px",
+        "3xl": "30px",
+        "4xl": "40px",
+        "5xl": "50px",
+        // "5xl": "56px", // Border
+        "7xl": "76px",
       },
       letterSpacing: {
-        header: "-0.02em",
+        text: "-0.02em",
       },
       borderRadius: {
-        "6xl": "80px",
-        "5xl": "70px",
-        "4xl": "60px",
-        "3xl": "50px",
         "2xl": "40px",
         xxl: "30px",
         xl: "25px",
-        md: "20px",
+        lg: "20px",
+        md: "15px",
+        sm: "12px",
         xs: "10px",
       },
-      backgroundSize: {
-        "600%": "600%",
-      },
-      backgroundImage: {
-        "gradient-base": "linear-gradient(to right, #ffc814, #ff185d, #1e7fff)",
-        "gradient-base-diagonal":
-          "linear-gradient(to right bottom, #ffc814, #ff185d, #1e7fff)",
-      },
-      keyframes: {
-        anime: {
-          "0%": { "background-position": "0% 50%" },
-          "50%": { "background-position": "100% 50%" },
-          "100%": { "background-position": "0% 50%" },
-        },
-      },
-      animation: {
-        anime: "anime 8s linear infinite",
-        "anime-sm": "anime 5s linear infinite",
+      colors: {
+        bg: "var(--background)",
+        linkedin: "var(--linkedin)",
       },
     },
   },

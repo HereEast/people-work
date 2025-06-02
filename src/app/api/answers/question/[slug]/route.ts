@@ -4,7 +4,6 @@ import { connectDB } from "~/lib/connectDB";
 import { IQuestionDB, QuestionDB } from "~/models/Question";
 import { IPersonDB, PersonDB } from "~/models/Person";
 import { AnswerDB, IAnswerDB } from "~/models/Answer";
-
 import { mapAnswersData } from "~/utils/mappers";
 import { DBDoc } from "~/utils/types";
 
@@ -14,8 +13,7 @@ interface ReqParams {
 
 // GET ANSWERS BY QUESTION
 export async function GET(req: Request, props: ReqParams) {
-  const params = await props.params;
-  const { slug } = params;
+  const { slug } = await props.params;
 
   try {
     await connectDB();
@@ -35,6 +33,7 @@ export async function GET(req: Request, props: ReqParams) {
 
     const docs: DBDoc<IAnswerDB>[] = await AnswerDB.find({
       questionId: question._id,
+      $or: [{ disabled: false }, { disabled: { $exists: false } }],
     })
       .populate("questionId")
       .populate("personId")
@@ -45,7 +44,15 @@ export async function GET(req: Request, props: ReqParams) {
       return person.isActive;
     });
 
-    // sort by Person createAt
+    // const sortedByDate = answersByActivePeople.sort((a, b) => {
+    //   const personA = a.personId as IPersonDB;
+    //   const personB = b.personId as IPersonDB;
+
+    //   return (
+    //     new Date(personA.createdAt).getTime() -
+    //     new Date(personB.createdAt).getTime()
+    //   );
+    // });
 
     const answers = mapAnswersData(answersByActivePeople);
 
@@ -54,7 +61,7 @@ export async function GET(req: Request, props: ReqParams) {
     console.log(err);
 
     return NextResponse.json(
-      { message: "🔴 Error fetching answers by personId." },
+      { message: "🔴 Error fetching answers by person slug." },
       {
         status: 500,
       },

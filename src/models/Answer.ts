@@ -12,6 +12,7 @@ export interface IAnswerDB {
   answer: string;
   featured?: boolean;
   marked?: boolean;
+  disabled?: boolean;
 }
 
 const AnswerDBSchema = new Schema(
@@ -31,6 +32,7 @@ const AnswerDBSchema = new Schema(
     answer: { type: String, required: true },
     featured: { type: Boolean },
     marked: { type: Boolean },
+    disabled: { type: Boolean, default: false },
   },
   { timestamps: true },
 );

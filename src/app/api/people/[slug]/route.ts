@@ -11,19 +11,18 @@ interface ReqParams {
 
 // GET PERSON BY SLUG
 export async function GET(req: Request, props: ReqParams) {
-  const params = await props.params;
-  const slug = params.slug;
+  const { slug } = await props.params;
 
   try {
     await connectDB();
 
-    const data: DBDoc<IPersonDB> = await PersonDB.findOne({ slug }).exec();
+    const doc: DBDoc<IPersonDB> = await PersonDB.findOne({ slug }).exec();
 
-    if (!data) {
+    if (!doc) {
       return NextResponse.json(null);
     }
 
-    const person = mapPeopleData(data);
+    const person = mapPeopleData(doc);
 
     return NextResponse.json(person);
   } catch (err) {

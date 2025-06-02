@@ -1,42 +1,30 @@
-import { notFound } from "next/navigation";
+import { PageWrapper } from "~/components/PageWrapper";
+import { Hero } from "~/components/(pages)/(home)";
+import { FeaturedList } from "~/components/FeaturedList";
+import { Subscribe } from "~/components/Subscribe";
 
-import { About, PersonCard } from "~/components/(pages)/(home)";
-import { PageContainer } from "~/components/PageContainer";
-import { ShareForm } from "~/components/ShareForm";
-import { SubscribeForm } from "~/components/SubscribeForm";
-
+import { getFeaturedSlugs } from "~/utils/handlers";
 import { getPeople } from "~/api-client/people";
 
 export default async function HomePage() {
-  const people = await getPeople();
-
-  if (!people) {
-    notFound();
-  }
+  const featuredSlugs = getFeaturedSlugs();
+  const featuredPeople = await getPeople(featuredSlugs);
 
   return (
-    <PageContainer>
-      <div className="mb-16">
-        <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(260px,1fr))] place-content-center gap-4">
-          {people?.map((person, index) => (
-            <div key={index}>
-              <PersonCard person={person} />
-            </div>
-          ))}
-        </div>
-      </div>
+    <PageWrapper>
+      <section className="mb-10 mt-8 sm:mb-16 sm:mt-12">
+        <Hero />
+      </section>
 
-      <div id="about" className="mb-20 w-full">
-        <About />
-      </div>
+      {featuredPeople && (
+        <section className="mb-20">
+          <FeaturedList people={featuredPeople} />
+        </section>
+      )}
 
-      <div className="mx-auto mb-10 w-full max-w-4xl">
-        <ShareForm />
-      </div>
-
-      <div className="mx-auto mb-10 w-full max-w-4xl">
-        <SubscribeForm />
-      </div>
-    </PageContainer>
+      <section className="mx-auto my-16 max-w-[640px]">
+        <Subscribe />
+      </section>
+    </PageWrapper>
   );
 }

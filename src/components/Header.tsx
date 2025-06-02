@@ -1,39 +1,40 @@
-"use client";
+import { LogoIcon } from "./icons";
+import { Button } from "./Button";
 
-import { Button } from "./ui/Button";
-import { Logo } from "./Logo";
+import { CONTACT, ROUTE } from "~/utils/constants";
 
-import { ROUTE } from "~/utils/constants";
+const HEADER_LINKS = [
+  { path: ROUTE.people, label: "People" },
+  { path: ROUTE.questions, label: "Questions" },
+  { path: CONTACT.linkedin, label: "Linkedin" },
+];
 
 export function Header() {
   return (
-    <header className="fixed z-50 w-full bg-white px-2 py-3 sm:px-4">
+    <header className="fixed z-50 flex h-12 w-full items-center bg-bg px-3 text-xl sm:h-16 sm:text-3xl md:px-6">
       <nav className="flex w-full items-center justify-between gap-1">
-        <div className="w-full sm:w-fit">
-          <Button href={ROUTE.index} className="pl-3 pr-2">
-            <Logo />
-          </Button>
-        </div>
+        <Button href={ROUTE.index} variant="link" className="w-10 sm:w-14">
+          <LogoIcon />
+        </Button>
 
-        <div>
-          <Button
-            onClick={() => console.log("Open mobile menu")}
-            className="px-4"
-          >
-            <div className="space-y-1">
-              <span className="block h-[2px] w-6 bg-stone-50" />
-              <span className="block h-[2px] w-6 bg-stone-50" />
-              <span className="block h-[2px] w-6 bg-stone-50" />
-            </div>
-          </Button>
-
-          {/* <Button href={CONTACT.linkedin} target="_blank" className="px-3">
-            <div className="flex gap-2">
-              <span className="sm:hidden">li</span>
-              <span className="hidden sm:block">linkedin</span>
-              <ArrowTopRightSquare className="mt-0.5 w-2.5 text-stone-50" />
-            </div>
-          </Button> */}
+        <div className="mb-1">
+          {HEADER_LINKS.map((link, index) => (
+            <>
+              <Button
+                href={link.path}
+                variant="link"
+                target={link.label === "Linkedin" ? "_blank" : "_self"}
+                key={link.label}
+              >
+                <span>
+                  {link.label}
+                  {index < HEADER_LINKS.length - 1 && (
+                    <span className="mr-1 sm:mr-2">,</span>
+                  )}
+                </span>
+              </Button>
+            </>
+          ))}
         </div>
       </nav>
     </header>

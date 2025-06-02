@@ -1,2 +1,1 @@
-export * from "./About";
-export * from "./PersonCard";
+export * from "./Hero";

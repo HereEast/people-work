@@ -1,7 +1,48 @@
 import localFont from "next/font/local";
 
+export const Nm = localFont({
+  src: [
+    // {
+    //   path: "../../public/fonts/nm-light.otf",
+    //   weight: "200",
+    //   style: "normal",
+    // },
+    {
+      path: "../../public/fonts/nm-book.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/nm-regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/nm-medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/nm-semibold.otf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/nm-bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-base",
+});
+
 export const InnovatorGrotesk = localFont({
   src: [
+    {
+      path: "../../public/fonts/innovator-grotesk-light.woff2",
+      weight: "300",
+      style: "normal",
+    },
     {
       path: "../../public/fonts/innovator-grotesk-regular.woff2",
       weight: "400",

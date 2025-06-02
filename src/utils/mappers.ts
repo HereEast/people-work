@@ -27,14 +27,15 @@ function mapQuestionDoc(doc: DBDoc<IQuestionDB>) {
 export function mapQuestionsData(
   data: DBDoc<IQuestionDB>[] | DBDoc<IQuestionDB>,
 ): QuestionData[] | QuestionData {
-  if (Array.isArray(data)) {
-    const mapped = data.map((doc) => mapQuestionDoc(doc));
-    return QuestionApiSchema.array().parse(mapped);
-  }
+  const isArray = Array.isArray(data);
 
-  const mapped = mapQuestionDoc(data);
+  const mapped = isArray
+    ? data.map((doc) => mapQuestionDoc(doc))
+    : mapQuestionDoc(data);
 
-  return QuestionApiSchema.parse(mapped);
+  return isArray
+    ? QuestionApiSchema.array().parse(mapped)
+    : QuestionApiSchema.parse(mapped);
 }
 
 // Answers
@@ -47,39 +48,54 @@ export function mapAnswerBasicData(doc: DBDoc<IAnswerDB>) {
     answer: data.answer,
     name: data.name,
     featured: data.featured === true,
+    marked: data.marked === true,
   };
 
   return AnswerBasicApiSchema.parse(mapped);
 }
 
-export function mapAnswersData(docs: DBDoc<IAnswerDB>[]): AnswerData[] {
-  const mapped = docs
-    .map((doc) => doc.toObject())
-    .map((data) => {
-      const question = data.questionId as IQuestionDB;
-      const person = data.personId as IPersonDB;
+function mapAnswerDoc(doc: DBDoc<IAnswerDB>) {
+  const data = doc.toObject();
 
-      return {
-        id: String(data._id),
-        answer: data.answer,
-        question: {
-          ...question,
-          id: question._id.toString(),
-        },
-        person: {
-          ...person,
-          id: person._id.toString(),
-        },
-      };
-    });
+  const question = data.questionId as IQuestionDB;
+  const person = data.personId as IPersonDB;
 
-  return AnswerApiSchema.array().parse(mapped);
+  return {
+    id: String(data._id),
+    answer: data.answer,
+    featured: data.featured === true,
+    marked: data.marked === true,
+    question: {
+      ...question,
+      id: question._id.toString(),
+    },
+    person: {
+      ...person,
+      id: person._id.toString(),
+    },
+  };
+}
+
+export function mapAnswersData(
+  data: DBDoc<IAnswerDB>[] | DBDoc<IAnswerDB>,
+): AnswerData[] | AnswerData {
+  const isArray = Array.isArray(data);
+
+  const mapped = isArray
+    ? data.map((doc) => mapAnswerDoc(doc))
+    : mapAnswerDoc(data);
+
+  return isArray
+    ? AnswerApiSchema.array().parse(mapped)
+    : AnswerApiSchema.parse(mapped);
 }
 
 // People
 function mapPersonDoc(doc: DBDoc<IPersonDB>) {
+  const obj = doc.toObject();
+
   return {
-    ...doc.toObject(),
+    ...obj,
     id: doc._id.toString(),
   };
 }
@@ -87,14 +103,15 @@ function mapPersonDoc(doc: DBDoc<IPersonDB>) {
 export function mapPeopleData(
   data: DBDoc<IPersonDB>[] | DBDoc<IPersonDB>,
 ): PersonData[] | PersonData {
-  if (Array.isArray(data)) {
-    const mapped = data.map((doc) => mapPersonDoc(doc));
-    return PersonApiSchema.array().parse(mapped);
-  }
+  const isArray = Array.isArray(data);
 
-  const mapped = mapPersonDoc(data);
+  const mapped = isArray
+    ? data.map((doc) => mapPersonDoc(doc))
+    : mapPersonDoc(data);
 
-  return PersonApiSchema.parse(mapped);
+  return isArray
+    ? PersonApiSchema.array().parse(mapped)
+    : PersonApiSchema.parse(mapped);
 }
 
 // Subscription

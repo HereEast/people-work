@@ -10,6 +10,7 @@ export interface IPersonDB {
   links: ILinks;
   slug: string;
   isActive: boolean;
+  contentMeta: IContentMeta;
   keyWords?: string[];
   createdAt: Date;
 }
@@ -25,11 +26,19 @@ export interface ILinks {
   instagram?: string;
 }
 
+export interface IContentMeta {
+  answers: {
+    featured: mongoose.Types.ObjectId;
+    marked: mongoose.Types.ObjectId[];
+  };
+}
+
 const LinksSchema = new Schema(
   {
     linkedin: { type: String },
     twitter: { type: String },
     instagram: { type: String },
+    email: { type: String },
   },
   { _id: false },
 );
@@ -51,7 +60,7 @@ const PersonDBSchema = new Schema(
     country: { type: String, required: true },
     links: { type: LinksSchema },
     slug: { type: String, required: true, unique: true },
-    keyWords: { type: [String] },
+    keyWords: { type: [String], default: [] },
     isActive: { type: Boolean, required: true },
   },
   { timestamps: true },

@@ -20,7 +20,7 @@ export async function getAnswersByPersonSlug({
     const response = await fetch(URL);
 
     if (!response.ok) {
-      throw new Error("🔴 Data fetch failed");
+      throw new Error("🔴 Fetching answers by Person slug failed.");
     }
 
     const answers: AnswerData[] = await response.json();

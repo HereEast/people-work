@@ -1,25 +1,28 @@
-import Link from "next/link";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
-import { PageContainer } from "~/components/PageContainer";
+import { EmojiImage } from "~/components/EmojiImage";
+import { PageWrapper } from "~/components/PageWrapper";
+import { Button } from "~/components/Button";
+
 import { ROUTE } from "~/utils/constants";
 
 export default function NotFound() {
   return (
-    <PageContainer className="grow">
-      <section className="flex h-full items-center justify-center">
-        <div className="space-y-6 text-center">
-          <h2 className="text-2xl">
-            Oops!.. Something definitely went wrong 😬
-          </h2>
+    <PageWrapper>
+      <section className="flex h-full flex-col items-center justify-center gap-6">
+        <div className="flex w-60 flex-col items-center gap-2 sm:w-full">
+          <EmojiImage name="sad-potato" classname="w-32 sm:w-40" />
 
-          <Link
-            href={ROUTE.index}
-            className="flex w-full items-center justify-center rounded-full bg-stone-950 px-10 py-6 text-stone-50 transition hover:shadow-lg hover:shadow-blue-600"
-          >
-            <span className="font-bold">back to home</span>
-          </Link>
+          <p className="text-center leading-[120%] sm:text-3xl">
+            Oops!.. Something definitely went wrong.
+          </p>
         </div>
+
+        <Button href={ROUTE.index} className="h-12 px-5 sm:h-16 sm:text-2xl">
+          <ArrowLeftIcon className="w-7 sm:w-8" />
+          <span className="">Back to homepage</span>
+        </Button>
       </section>
-    </PageContainer>
+    </PageWrapper>
   );
 }
