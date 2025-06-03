@@ -13,12 +13,13 @@ interface AnswersListProps {
   slug: string;
 }
 
+// Uncomment
 export async function AnswersList({ slug }: AnswersListProps) {
-  const answers = await getAnswersByQuestionSlug(slug);
+  // const answers = await getAnswersByQuestionSlug(slug);
 
   return (
     <div className="space-y-2 pt-4">
-      <>
+      {/* <>
         {answers?.map((data, index) => {
           const person = data.person;
 
@@ -34,7 +35,7 @@ export async function AnswersList({ slug }: AnswersListProps) {
             </Card>
           );
         })}
-      </>
+      </> */}
     </div>
   );
 }

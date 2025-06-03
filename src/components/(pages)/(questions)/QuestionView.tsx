@@ -31,7 +31,7 @@ function DesktopQuestionView({ question }: QuestionViewProps) {
   return (
     <Column variant="sticky">
       <div className="hidden h-full flex-col justify-between gap-10 pr-10 md:flex">
-        <div className="flex flex-col gap-6">
+        {/* <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-6">
             <Button
               variant="link"
@@ -48,7 +48,7 @@ function DesktopQuestionView({ question }: QuestionViewProps) {
           </div>
 
           <QuestionTag slug={question.slug} />
-        </div>
+        </div> */}
 
         <Button
           href={ROUTE.questions}
@@ -68,9 +68,10 @@ function MobileQuestionView({ question }: QuestionViewProps) {
   return (
     <StickyMobileWrapper>
       <Card className="gap-2 rounded-lg bg-stone-800 px-3 py-4 text-stone-50 sm:gap-3 sm:p-6 sm:pt-5">
-        <h1 className="text-center text-xl font-semibold leading-[100%] sm:text-3xl">
+        Question
+        {/* <h1 className="text-center text-xl font-semibold leading-[100%] sm:text-3xl">
           {question.body}
-        </h1>
+        </h1> */}
       </Card>
     </StickyMobileWrapper>
   );
