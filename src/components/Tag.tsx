@@ -1,7 +1,9 @@
 import { ReactNode } from "react";
 
-import { cn, getQuestionEmoji } from "~/utils/handlers";
 import { Button, buttonVariants } from "./Button";
+
+import { cn } from "~/utils/handlers";
+import { EMOJIS } from "~/utils/data/emojis";
 
 interface TagProps {
   children: ReactNode;
@@ -33,7 +35,7 @@ interface QuestionTagProps {
 }
 
 export function QuestionTag({ href, slug }: QuestionTagProps) {
-  const emoji = getQuestionEmoji(slug);
+  const emoji = EMOJIS[slug];
 
   return (
     <div className="flex items-center gap-1 sm:gap-1.5">
