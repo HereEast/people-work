@@ -20,15 +20,15 @@ export async function generateMetadata(props: QuestionPageProps) {
 }
 
 // PARAMS
-export async function generateStaticParams() {
-  const questions = await getQuestions();
+// export async function generateStaticParams() {
+//   const questions = await getQuestions();
 
-  return (
-    questions?.map((question) => ({
-      slug: question.slug,
-    })) || []
-  );
-}
+//   return (
+//     questions?.map((question) => ({
+//       slug: question.slug,
+//     })) || []
+//   );
+// }
 
 // PAGE
 export default async function QuestionAnswersPage(props: QuestionPageProps) {
@@ -45,7 +45,7 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
 
   return (
     <PageWrapper>
-      Content
+      Question Page
       {/* <section className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
         <QuestionView question={question} />
         <AnswersList slug={slug} />

@@ -6,7 +6,7 @@ import { BASE_URL } from "~/utils/constants";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const people = await getPeople();
-  const questions = await getQuestions();
+  // const questions = await getQuestions();
 
   const peopleSitemapData =
     people?.map((person) => {
@@ -16,13 +16,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       };
     }) || [];
 
-  const questionsSitemapData =
-    questions?.map((question) => {
-      return {
-        url: `${BASE_URL}/questions/${question.slug}`,
-        lastModified: new Date(),
-      };
-    }) || [];
+  // const questionsSitemapData =
+  //   questions?.map((question) => {
+  //     return {
+  //       url: `${BASE_URL}/questions/${question.slug}`,
+  //       lastModified: new Date(),
+  //     };
+  //   }) || [];
 
   return [
     {
@@ -42,6 +42,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     ...peopleSitemapData,
-    ...questionsSitemapData,
+    // ...questionsSitemapData,
   ];
 }
