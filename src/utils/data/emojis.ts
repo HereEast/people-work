@@ -1,5 +1,5 @@
 interface EmojiData {
-  value: string;
+  value?: string;
   className?: string;
 }
 
@@ -14,10 +14,10 @@ export const EMOJIS: EmojisType = {
     value: "😎",
   },
   "daily-tasks": {
-    value: "📌",
+    value: "✔️",
   },
   skills: {
-    value: "💪",
+    value: "🧠",
     className: "mb-1",
   },
   "best-thing": {
@@ -33,7 +33,7 @@ export const EMOJIS: EmojisType = {
     value: "🚀",
   },
   "current-goal": {
-    value: "🦀",
+    value: "📌",
   },
   "fav-mistake": {
     value: "🙈",
@@ -56,13 +56,13 @@ export const EMOJIS: EmojisType = {
     value: "⚒️",
   },
   "efficiency-tips": {
-    value: "🦍",
+    value: "🦾",
   },
   networking: {
     value: "💬",
   },
   "work-life": {
-    value: "🍀",
+    value: "🧟‍♂️",
   },
   "dream-path": {
     value: "🤩",
