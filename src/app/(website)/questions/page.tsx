@@ -12,15 +12,15 @@ import { BASE_URL } from "~/utils/constants";
 
 // PAGE
 export default async function QuestionsPage() {
-  const questions = await getQuestions();
+  // const questions = await getQuestions();
 
-  if (!questions) {
-    notFound();
-  }
+  // if (!questions) {
+  //   notFound();
+  // }
 
   return (
     <PageWrapper>
-      <ul className="mb-10 pt-6">
+      {/* <ul className="mb-10 pt-6">
         {questions.map((question, index) => (
           <li
             className="border-t border-stone-900/20 last:border-b"
@@ -32,7 +32,7 @@ export default async function QuestionsPage() {
             </>
           </li>
         ))}
-      </ul>
+      </ul> */}
 
       <section className="mx-auto my-16 max-w-[640px]">
         <Subscribe />
@@ -52,7 +52,7 @@ function DesktopQuestionItemView({ question }: QuestionItemProps) {
       href={`${BASE_URL}/questions/${question.slug}`}
       className="group hidden w-full py-5 md:block"
     >
-      <div className="grid grid-cols-[2fr_1fr] items-center">
+      {/* <div className="grid grid-cols-[2fr_1fr] items-center">
         <div className="mb-0.5 mr-24 transition">
           <h2 className="text-3xl font-semibold leading-[110%] opacity-95 group-hover:opacity-30 sm:tracking-[-0.025ch]">
             {question.body}
@@ -66,7 +66,7 @@ function DesktopQuestionItemView({ question }: QuestionItemProps) {
 
           <GoToButton href={`/questions/${question.slug}`} />
         </div>
-      </div>
+      </div> */}
     </Link>
   );
 }
