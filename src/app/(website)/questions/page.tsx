@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageWrapper } from "~/components/PageWrapper";
-import { Button } from "~/components/Button";
 import { Subscribe } from "~/components/Subscribe";
 import { QuestionTag } from "~/components/Tag";
 import { GoToButton } from "~/components/Buttons";

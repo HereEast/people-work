@@ -8,7 +8,6 @@ export interface IAnswerDB {
   personId: mongoose.Types.ObjectId | IPersonDB;
   questionId: mongoose.Types.ObjectId | IQuestionDB;
   name: string;
-  question: string;
   answer: string;
   featured?: boolean;
   marked?: boolean;
@@ -28,7 +27,6 @@ const AnswerDBSchema = new Schema(
       required: true,
     },
     name: { type: String, required: true },
-    question: { type: String, required: true },
     answer: { type: String, required: true },
     featured: { type: Boolean },
     marked: { type: Boolean },
