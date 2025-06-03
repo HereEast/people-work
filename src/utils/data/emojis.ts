@@ -10,10 +10,10 @@ export const EMOJIS: EmojisType = {
     value: "💼",
     className: "mb-1",
   },
-  "role-snapshot": {
+  role: {
     value: "😎",
   },
-  "real-work": {
+  "daily-tasks": {
     value: "📌",
   },
   skills: {
@@ -26,13 +26,13 @@ export const EMOJIS: EmojisType = {
   "worst-thing": {
     value: "🥵",
   },
-  "underrated-challenges": {
+  "underrated-challenge": {
     value: "🫠",
   },
-  "biggest-goal": {
+  "top-goal": {
     value: "🚀",
   },
-  "closest-goal": {
+  "current-goal": {
     value: "🦀",
   },
   "fav-mistake": {
@@ -42,53 +42,53 @@ export const EMOJIS: EmojisType = {
   "unique-talent": {
     value: "🤌",
   },
-  now: {
+  "progress-check": {
     value: "🐌",
     className: "mb-1",
   },
-  "growth-skills": {
+  "grow-skills": {
     value: "🥷",
   },
   "eye-opening": {
     value: "👀",
   },
-  tools: {
+  "tools-apps": {
     value: "⚒️",
   },
-  "tips-tricks": {
+  "efficiency-tips": {
     value: "🦍",
   },
   networking: {
     value: "💬",
   },
-  "work-life-balance": {
+  "work-life": {
     value: "🍀",
   },
-  "true-calling": {
+  "dream-path": {
     value: "🤩",
   },
-  money: {
+  "comfy-income": {
     value: "💵",
   },
   "bad-advice": {
     value: "💩",
   },
-  "advice-to-younger-self": {
+  "advice-to-20s-self": {
     value: "🧐",
   },
   "career-advice": {
     value: "✏️",
   },
-  "excited-trends": {
+  "exciting-trends": {
     value: "🎉",
   },
   "fav-products": {
     value: "🍏",
   },
-  recommended: {
+  "media-picks": {
     value: "📚",
   },
-  "new-people": {
+  "guest-wishlist": {
     value: "🐐",
     className: "mb-1 text-xl",
   },
