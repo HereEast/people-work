@@ -21,15 +21,15 @@ export async function generateMetadata(props: PersonPageProps) {
 }
 
 // PARAMS
-export async function generateStaticParams() {
-  const people = await getPeople();
+// export async function generateStaticParams() {
+//   const people = await getPeople();
 
-  return (
-    people?.map((person) => ({
-      slug: person.slug,
-    })) || []
-  );
-}
+//   return (
+//     people?.map((person) => ({
+//       slug: person.slug,
+//     })) || []
+//   );
+// }
 
 // PAGE
 export default async function PersonQAPage(props: PersonPageProps) {
@@ -44,7 +44,7 @@ export default async function PersonQAPage(props: PersonPageProps) {
 
   return (
     <PageWrapper>
-      People
+      Person
       {/* <section className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-4">
         <QAPersonInfo person={person} />
         <QAList data={answers} />
