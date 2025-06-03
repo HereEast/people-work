@@ -19,8 +19,7 @@ export function QAList({ data }: ContentProps) {
 
         return (
           <Card marked={marked || featured} key={index}>
-            QA
-            {/* <div className="space-y-8 p-6 sm:space-y-10 sm:p-10">
+            <div className="space-y-8 p-6 sm:space-y-10 sm:p-10">
               <div className="space-y-6 sm:space-y-10">
                 <Question>{question}</Question>
                 <Answer marked={marked || featured}>{answer}</Answer>
@@ -33,7 +32,7 @@ export function QAList({ data }: ContentProps) {
                 />
                 <GoToButton href={`/questions/${question.slug}`} />
               </div>
-            </div> */}
+            </div>
           </Card>
         );
       })}
