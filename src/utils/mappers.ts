@@ -1,6 +1,5 @@
 import {
   AnswerApiSchema,
-  AnswerBasicApiSchema,
   AnswerData,
   PersonApiSchema,
   PersonData,
@@ -39,21 +38,6 @@ export function mapQuestionsData(
 }
 
 // Answers
-export function mapAnswerBasicData(doc: DBDoc<IAnswerDB>) {
-  const data = doc.toObject();
-
-  const mapped = {
-    id: data._id.toString(),
-    question: data.question,
-    answer: data.answer,
-    name: data.name,
-    featured: data.featured === true,
-    marked: data.marked === true,
-  };
-
-  return AnswerBasicApiSchema.parse(mapped);
-}
-
 function mapAnswerDoc(doc: DBDoc<IAnswerDB>) {
   const data = doc.toObject();
 

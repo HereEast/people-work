@@ -43,16 +43,6 @@ export const PersonApiSchema = z.object({
 export type PersonData = z.infer<typeof PersonApiSchema>;
 
 // Answer
-export const AnswerBasicApiSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  question: z.string(),
-  answer: z.string(),
-  featured: z.boolean(),
-});
-
-export type AnswerBasicData = z.infer<typeof AnswerBasicApiSchema>;
-
 export const AnswerApiSchema = z.object({
   id: z.string(),
   answer: z.string(),
