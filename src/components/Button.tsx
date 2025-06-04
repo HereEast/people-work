@@ -9,10 +9,10 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        base: "hover:bg-stone-500/60 bg-stone-600/10",
+        base: "hover:bg-stone-600/20 bg-stone-600/10",
         accent: "font-accent",
         outline:
-          "border border-stone-900/20 bg-transparent hover:bg-stone-600/10 hover:border-transparent",
+          "border border-stone-900/20 bg-transparent hover:bg-stone-600/20 hover:border-transparent",
         link: "h-fit w-fit inline-block p-0 bg-transparent hover:bg-transparent hover:opacity-30",
         tag: "sm:text-xl text-sm tracking-[0.02ch] border border-stone-900/20 pb-0.5",
       },
