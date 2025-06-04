@@ -12,7 +12,7 @@ interface PersonViewProps {
   person: PersonData;
 }
 
-export function QAPersonInfo({ person }: PersonViewProps) {
+export function QAPersonView({ person }: PersonViewProps) {
   return (
     <>
       <DesktopPersonView person={person} />
@@ -96,14 +96,14 @@ function MobilePersonView({ person }: PersonViewProps) {
 
   return (
     <StickyMobileWrapper>
-      <div className="flex items-end gap-2.5 py-3 sm:gap-5">
+      <div className="flex items-end gap-2.5 py-3 sm:gap-4 sm:py-5">
         <PersonImage
           name={person.name}
           slug={person.slug}
-          classname="size-10"
+          classname="size-10 sm:size-[68px]"
         />
 
-        <div className="flex flex-col gap-0.5 text-lg text-stone-50 sm:text-2xl">
+        <div className="flex flex-col gap-0.5 text-lg text-stone-50 sm:text-3xl">
           <h1 className="leading-none">
             <AccentText>{person.name}</AccentText>
           </h1>
@@ -114,7 +114,7 @@ function MobilePersonView({ person }: PersonViewProps) {
               <Link
                 href={person.company.url}
                 target="_blank"
-                className="inline-block capitalize underline decoration-1 underline-offset-[2.5px] transition hover:no-underline hover:opacity-30"
+                className="inline-block capitalize underline decoration-1 underline-offset-[2.5px] transition hover:no-underline hover:opacity-30 sm:decoration-[1.5px] sm:underline-offset-[3.5px]"
               >
                 {person.company.name}
               </Link>
