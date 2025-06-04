@@ -1,5 +1,5 @@
 import { PageWrapper } from "~/components/PageWrapper";
-import { Hero } from "~/components/(pages)/(home)";
+import { Hero } from "~/components/(home)";
 import { FeaturedList } from "~/components/FeaturedList";
 import { Subscribe } from "~/components/Subscribe";
 
