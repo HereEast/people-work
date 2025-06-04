@@ -1,2 +1,2 @@
 export * from "./QAList";
-export * from "./QAPersonInfo";
+export * from "./QAPersonView";

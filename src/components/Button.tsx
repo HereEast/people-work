@@ -9,17 +9,15 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        base: "hover:bg-stone-600/20 bg-stone-600/10",
+        base: "hover:bg-stone-600/25 bg-stone-600/10",
         accent: "font-accent",
         outline:
-          "border border-stone-900/20 bg-transparent hover:bg-stone-600/20 hover:border-transparent",
+          "border border-stone-900/20 bg-transparent hover:bg-stone-600/25 hover:border-transparent",
         link: "h-fit w-fit inline-block p-0 bg-transparent hover:bg-transparent hover:opacity-30",
-        tag: "sm:text-xl text-sm tracking-[0.02ch] border border-stone-900/20 pb-0.5",
       },
       size: {
         base: "w-fit h-10 sm:h-14 rounded-xs sm:rounded-sm px-3 pb-px sm:px-5",
         icon: "size-10 sm:size-14 rounded-xs sm:rounded-sm shrink-0 p-0 sm:px-0 text-xl sm:text-2xl",
-        tag: "w-fit h-10 sm:h-14 rounded-xs sm:rounded-sm px-3 pb-px sm:px-5",
       },
     },
   },
@@ -30,8 +28,8 @@ type ButtonProps = {
   href?: string | URL;
   target?: "_blank" | "_self";
   isDisabled?: boolean;
-  variant?: "base" | "accent" | "outline" | "link" | "tag";
-  size?: "base" | "icon" | "tag";
+  variant?: "base" | "accent" | "outline" | "link";
+  size?: "base" | "icon";
   underline?: boolean;
   rel?: string;
   className?: string;
@@ -42,7 +40,7 @@ export function Button({
   href,
   children,
   isDisabled,
-  onClick,
+  onClick = () => {},
   variant = "base",
   size,
   underline = false,

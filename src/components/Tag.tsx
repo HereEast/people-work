@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
+import Link from "next/link";
 
-import { Button, buttonVariants } from "./Button";
+import { buttonVariants } from "./Button";
 
 import { cn } from "~/utils/handlers";
 import { EMOJIS } from "~/utils/data/emojis";
@@ -8,44 +9,57 @@ import { EMOJIS } from "~/utils/data/emojis";
 interface TagProps {
   children: ReactNode;
   href?: string;
-  size?: "icon" | "tag";
+  size?: "icon" | "base";
+  className?: string;
 }
 
-export function Tag({ children, size = "tag", href }: TagProps) {
+export function Tag({
+  children,
+  size = "base",
+  href,
+  className = "",
+}: TagProps) {
+  const classes = cn(
+    buttonVariants({ size, variant: "outline" }),
+    "text-sm sm:text-xl tracking-[0.02ch]",
+    !href && "hover:border-stone-900/20 hover:bg-transparent",
+    size !== "icon" && "pb-0.5",
+    className,
+  );
+
   return href ? (
-    <Button
-      href={href}
-      variant="outline"
-      size={size}
-      className="pb-0.5 text-sm tracking-[0.02ch] sm:text-xl"
-    >
+    <Link href={href} className={classes}>
       {children}
-    </Button>
+    </Link>
   ) : (
-    <div className={cn(buttonVariants({ size, variant: "tag" }))}>
-      {children}
-    </div>
+    <div className={classes}>{children}</div>
   );
 }
 
-// Question Tag
 interface QuestionTagProps {
   slug: string;
   href?: string;
+  className?: string;
 }
 
-export function QuestionTag({ href, slug }: QuestionTagProps) {
+export function QuestionTag({ href, slug, className = "" }: QuestionTagProps) {
   const emoji = EMOJIS[slug];
 
   return (
     <div className="flex items-center gap-1 sm:gap-1.5">
-      <Tag href={href ? `/questions/${slug}` : ""} size="icon">
-        <span className={cn("inline-block sm:text-2xl", emoji.className)}>
+      <Tag
+        href={href ? `/questions/${slug}` : ""}
+        size="icon"
+        className={className}
+      >
+        <span className={cn("inline-block", emoji.className)}>
           {emoji.value}
         </span>
       </Tag>
 
-      <Tag href={href ? `/questions/${slug}` : ""}>#{slug}</Tag>
+      <Tag href={href ? `/questions/${slug}` : ""} className={className}>
+        #{slug}
+      </Tag>
     </div>
   );
 }

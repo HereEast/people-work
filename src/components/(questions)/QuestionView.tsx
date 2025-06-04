@@ -6,7 +6,7 @@ import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { Column } from "~/components/Column";
 import { Button } from "~/components/Button";
 import { QuestionTag } from "~/components/Tag";
-import { Card, StickyMobileWrapper } from "~/components/Card";
+import { StickyMobileWrapper } from "~/components/Card";
 
 import { QuestionData } from "~/schemas";
 import { ROUTE } from "~/utils/constants";
@@ -67,11 +67,11 @@ function DesktopQuestionView({ question }: QuestionViewProps) {
 function MobileQuestionView({ question }: QuestionViewProps) {
   return (
     <StickyMobileWrapper>
-      <Card className="gap-2 rounded-lg bg-stone-800 px-3 py-4 text-stone-50 sm:gap-3 sm:p-6 sm:pt-5">
-        <h1 className="text-center text-xl font-semibold leading-[100%] sm:text-3xl">
+      <div className="gap-2 pb-4 pt-3.5 text-stone-50 sm:py-5">
+        <h1 className="text-lg font-semibold leading-[115%] sm:text-3xl">
           {question.body}
         </h1>
-      </Card>
+      </div>
     </StickyMobileWrapper>
   );
 }

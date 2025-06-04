@@ -64,8 +64,15 @@ export function FeaturedCardWrapper({
 // Sticky Mobile Card
 export function StickyMobileWrapper({ children }: CardProps) {
   return (
-    <div className="sticky top-12 z-40 rounded-b-xl bg-bg sm:top-16 sm:rounded-b-2xl lg:hidden">
+    <div className="sticky top-12 z-40 -mx-3 bg-stone-800 px-3 sm:top-16 md:-mx-6 md:px-6 lg:hidden">
       {children}
     </div>
   );
 }
+// export function StickyMobileWrapper({ children }: CardProps) {
+//   return (
+//     <div className="sticky top-12 z-40 rounded-b-xl bg-bg sm:top-16 sm:rounded-b-2xl lg:hidden">
+//       {children}
+//     </div>
+//   );
+// }
