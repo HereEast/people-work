@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { PageWrapper } from "~/components/PageWrapper";
-import { QuestionView, AnswersList } from "~/components/(pages)/(questions)";
+import { QuestionView, AnswersList } from "~/components/(questions)";
 import { RecommendedSection } from "~/components/RecommendedSection";
 
 import { getQuestions } from "~/api-client/questions";
