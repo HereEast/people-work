@@ -66,7 +66,7 @@ interface QuestionItemProps {
 
 function DesktopQuestionItemView({ children, question }: QuestionItemProps) {
   return (
-    <div className="group hidden md:block">
+    <div className="group hidden lg:block">
       <Link href={`questions/${question.slug}`} className="inline-block py-5">
         <div className="grid grid-cols-[2fr_1fr] items-center">
           <div className="mb-0.5 mr-24">
@@ -77,7 +77,10 @@ function DesktopQuestionItemView({ children, question }: QuestionItemProps) {
 
           <div className="flex justify-between">
             <div className="flex w-[320px] items-center gap-1.5 lg:w-[400px]">
-              <QuestionTag slug={question.slug} />
+              <QuestionTag
+                slug={question.slug}
+                className="group-hover:border-transparent group-hover:bg-stone-600/25"
+              />
             </div>
 
             {children}
@@ -90,10 +93,10 @@ function DesktopQuestionItemView({ children, question }: QuestionItemProps) {
 
 function MobileQuestionItemView({ children, question }: QuestionItemProps) {
   return (
-    <div className="group md:hidden">
+    <div className="group lg:hidden">
       <Link
         href={`/questions/${question.slug}`}
-        className="group flex w-full items-center justify-between gap-10 py-4 md:hidden"
+        className="group flex w-full items-center justify-between gap-10 py-4"
       >
         <div className="sm:mb-0.5">
           <h2 className="inline-block text-xl font-semibold leading-[115%] transition group-hover:opacity-30 sm:text-3xl md:leading-[110%]">
