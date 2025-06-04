@@ -10,6 +10,7 @@ import { StickyMobileWrapper } from "~/components/Card";
 
 import { QuestionData } from "~/schemas";
 import { ROUTE } from "~/utils/constants";
+import Link from "next/link";
 
 interface QuestionViewProps {
   question: QuestionData;

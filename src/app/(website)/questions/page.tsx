@@ -77,10 +77,7 @@ function DesktopQuestionItemView({ children, question }: QuestionItemProps) {
 
           <div className="flex justify-between">
             <div className="flex w-[320px] items-center gap-1.5 lg:w-[400px]">
-              <QuestionTag
-                slug={question.slug}
-                className="group-hover:border-transparent group-hover:bg-stone-600/25"
-              />
+              <QuestionTag slug={question.slug} />
             </div>
 
             {children}

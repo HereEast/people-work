@@ -23,7 +23,7 @@ export function Tag({
       href={href}
       variant="outline"
       size={size}
-      className={(cn("pb-0.5 text-sm tracking-[0.02ch] sm:text-xl"), className)}
+      className={(cn("tracking-[0.02ch]"), className)}
     >
       {children}
     </Button>
@@ -34,14 +34,12 @@ export function Tag({
   );
 }
 
-// Question Tag
 interface QuestionTagProps {
   slug: string;
   href?: string;
-  className?: string;
 }
 
-export function QuestionTag({ href, slug, className = "" }: QuestionTagProps) {
+export function QuestionTag({ href, slug }: QuestionTagProps) {
   const emoji = EMOJIS[slug];
 
   return (
@@ -49,14 +47,17 @@ export function QuestionTag({ href, slug, className = "" }: QuestionTagProps) {
       <Tag
         href={href ? `/questions/${slug}` : ""}
         size="icon"
-        className={className}
+        className="text-sm group-hover:border-transparent group-hover:bg-stone-600/25 sm:text-2xl"
       >
-        <span className={cn("inline-block sm:text-2xl", emoji.className)}>
+        <span className={cn("inline-block", emoji.className)}>
           {emoji.value}
         </span>
       </Tag>
 
-      <Tag href={href ? `/questions/${slug}` : ""} className={className}>
+      <Tag
+        href={href ? `/questions/${slug}` : ""}
+        className="text-sm group-hover:border-transparent group-hover:bg-stone-600/25 sm:text-xl"
+      >
         #{slug}
       </Tag>
     </div>
