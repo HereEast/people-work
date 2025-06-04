@@ -9,20 +9,26 @@ interface TagProps {
   children: ReactNode;
   href?: string;
   size?: "icon" | "tag";
+  className?: string;
 }
 
-export function Tag({ children, size = "tag", href }: TagProps) {
+export function Tag({
+  children,
+  size = "tag",
+  href,
+  className = "",
+}: TagProps) {
   return href ? (
     <Button
       href={href}
       variant="outline"
       size={size}
-      className="pb-0.5 text-sm tracking-[0.02ch] sm:text-xl"
+      className={(cn("pb-0.5 text-sm tracking-[0.02ch] sm:text-xl"), className)}
     >
       {children}
     </Button>
   ) : (
-    <div className={cn(buttonVariants({ size, variant: "tag" }))}>
+    <div className={cn(buttonVariants({ size, variant: "tag" }), className)}>
       {children}
     </div>
   );
@@ -32,20 +38,27 @@ export function Tag({ children, size = "tag", href }: TagProps) {
 interface QuestionTagProps {
   slug: string;
   href?: string;
+  className?: string;
 }
 
-export function QuestionTag({ href, slug }: QuestionTagProps) {
+export function QuestionTag({ href, slug, className = "" }: QuestionTagProps) {
   const emoji = EMOJIS[slug];
 
   return (
     <div className="flex items-center gap-1 sm:gap-1.5">
-      <Tag href={href ? `/questions/${slug}` : ""} size="icon">
+      <Tag
+        href={href ? `/questions/${slug}` : ""}
+        size="icon"
+        className={className}
+      >
         <span className={cn("inline-block sm:text-2xl", emoji.className)}>
           {emoji.value}
         </span>
       </Tag>
 
-      <Tag href={href ? `/questions/${slug}` : ""}>#{slug}</Tag>
+      <Tag href={href ? `/questions/${slug}` : ""} className={className}>
+        #{slug}
+      </Tag>
     </div>
   );
 }

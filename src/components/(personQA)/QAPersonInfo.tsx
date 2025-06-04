@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { AccentText } from "~/components/AccentText";
-import { Card, StickyMobileWrapper } from "~/components/Card";
+import { StickyMobileWrapper } from "~/components/Card";
 import { Column } from "~/components/Column";
 import { LinkedinButton } from "~/components/Buttons";
 import { PersonImage } from "~/components/PersonImage";
@@ -92,28 +92,36 @@ function DesktopPersonView({ person }: PersonViewProps) {
 
 // Mobile
 function MobilePersonView({ person }: PersonViewProps) {
+  const contacts = Object.entries(person.links);
+
   return (
     <StickyMobileWrapper>
-      <Card className="rounded-lg bg-stone-800 p-3 text-stone-50 sm:p-5">
-        <div className="flex items-end gap-3 sm:gap-5">
-          <PersonImage
-            name={person.name}
-            slug={person.slug}
-            classname="sm:size-20"
-          />
+      <div className="flex items-end gap-2.5 py-3 sm:gap-5">
+        <PersonImage
+          name={person.name}
+          slug={person.slug}
+          classname="size-10"
+        />
 
-          <div className="flex flex-col gap-0.5 text-lg sm:text-2xl">
-            <h3 className="leading-none">
-              <AccentText>{person.name}</AccentText>
-            </h3>
+        <div className="flex flex-col gap-0.5 text-lg text-stone-50 sm:text-2xl">
+          <h1 className="leading-none">
+            <AccentText>{person.name}</AccentText>
+          </h1>
 
-            <div className="flex flex-col leading-[1.1] tracking-[0.02ch]">
-              <h4>{person.jobTitle}</h4>
-              <h4>{person.company.name}</h4>
-            </div>
+          <div className="flex flex-col leading-[1.1] tracking-[0.02ch]">
+            <h2>
+              {person.jobTitle},{" "}
+              <Link
+                href={person.company.url}
+                target="_blank"
+                className="inline-block capitalize underline decoration-1 underline-offset-[2.5px] transition hover:no-underline hover:opacity-30"
+              >
+                {person.company.name}
+              </Link>
+            </h2>
           </div>
         </div>
-      </Card>
+      </div>
     </StickyMobileWrapper>
   );
 }
