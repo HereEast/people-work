@@ -92,8 +92,6 @@ function DesktopPersonView({ person }: PersonViewProps) {
 
 // Mobile
 function MobilePersonView({ person }: PersonViewProps) {
-  const contacts = Object.entries(person.links);
-
   return (
     <StickyMobileWrapper>
       <div className="flex items-end gap-2.5 py-3 sm:gap-4 sm:py-5">

@@ -12,7 +12,7 @@ export function PersonImage({ name, slug, classname = "" }: PersonImageProps) {
   return (
     <div
       className={cn(
-        "inline-block aspect-square size-16 shrink-0 overflow-hidden rounded-xs sm:size-24",
+        "inline-block aspect-square size-16 shrink-0 overflow-hidden rounded-xs sm:size-[86px]",
         classname,
       )}
     >

@@ -1,7 +1,7 @@
 export function QuoteIcon() {
   return (
     <svg
-      className="size-8"
+      className="size-7 sm:size-8"
       width="100%"
       height="100%"
       viewBox="0 0 28 28"
