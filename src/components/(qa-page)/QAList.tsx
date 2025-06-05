@@ -13,7 +13,7 @@ interface ContentProps {
 // Cards
 export function QAList({ data }: ContentProps) {
   return (
-    <div className="space-y-2 pt-4">
+    <div className="space-y-1.5 pt-4">
       {data?.map((item, index) => {
         const { question, answer, marked, featured } = item;
 
