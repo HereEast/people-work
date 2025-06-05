@@ -14,7 +14,7 @@ export const EMOJIS: EmojisType = {
     value: "😎",
   },
   "daily-tasks": {
-    value: "✔️",
+    value: "📂",
   },
   skills: {
     value: "🧠",
@@ -68,7 +68,7 @@ export const EMOJIS: EmojisType = {
     value: "🤩",
   },
   "comfy-income": {
-    value: "💵",
+    value: "💰",
   },
   "bad-advice": {
     value: "💩",
@@ -89,7 +89,6 @@ export const EMOJIS: EmojisType = {
     value: "📚",
   },
   "guest-wishlist": {
-    value: "🐐",
-    className: "mb-1 text-xl",
+    value: "💜",
   },
 };
