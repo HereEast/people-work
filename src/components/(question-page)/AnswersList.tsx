@@ -23,7 +23,7 @@ export async function AnswersList({ slug }: AnswersListProps) {
 
           return (
             <Card key={index} marked={data.featured || data.marked}>
-              <div className="gap-6 space-y-8 p-6 sm:gap-8 sm:space-y-10 sm:p-10">
+              <div className="space-y-8 p-6 sm:space-y-10 sm:p-10">
                 <Answer marked={data.marked || data.featured}>
                   {data.answer}
                 </Answer>
