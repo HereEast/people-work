@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { PageWrapper } from "~/components/PageWrapper";
 import { RecommendedSection } from "~/components/RecommendedSection";
-import { QAList, QAPersonView } from "~/components/(personQA)";
+import { QAList, QAPersonView } from "~/components/(qa-page)";
 
 import { getPeople, getPerson } from "~/api-client/people";
 import { getAnswersByPersonSlug } from "~/api-client/answers";

@@ -15,7 +15,7 @@ export async function Answer({ children, marked }: AnswersProps) {
   return (
     <div
       className={cn(
-        "answer text-xl leading-[115%] tracking-[0.015ch] opacity-95 sm:text-3xl sm:leading-[120%] [&_a]:transition",
+        "answer text-xl leading-[120%] tracking-[0.025ch] opacity-95 sm:text-3xl sm:leading-[120%] [&_a]:transition",
         marked &&
           "featured-answer text-3xl font-semibold leading-[95%] tracking-[-0.02ch] sm:text-5xl sm:font-semibold sm:leading-[95%] sm:tracking-[-0.025ch] md:font-semibold [&_a]:transition",
       )}
