@@ -54,7 +54,7 @@ export function Question({ children }: QuestionProps) {
     <div>
       <Link
         href={`/questions/${children.slug}`}
-        className="question inline-block text-xl font-semibold leading-[110%] tracking-[-0.015ch] transition sm:text-3xl sm:leading-[120%]"
+        className="question inline-block text-xl font-semibold leading-[110%] tracking-[-0.015ch] transition sm:text-3xl sm:leading-[115%]"
       >
         {children.body}
       </Link>
