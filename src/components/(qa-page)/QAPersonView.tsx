@@ -7,7 +7,6 @@ import { LinkedinButton } from "~/components/Buttons";
 import { PersonImage } from "~/components/PersonImage";
 
 import { PersonData } from "~/schemas";
-import { PersonCardDetails } from "../PersonCardDetails";
 
 interface PersonViewProps {
   person: PersonData;
