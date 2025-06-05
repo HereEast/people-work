@@ -5,19 +5,19 @@ import { cva } from "class-variance-authority";
 import { cn } from "~/utils/handlers";
 
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md disabled:pointer-events-none disabled:opacity-50 transition",
+  "inline-flex h-[44px] w-fit items-center justify-center whitespace-nowrap rounded-xs px-3 pb-px transition disabled:pointer-events-none disabled:opacity-50 sm:h-14 sm:rounded-sm sm:px-5",
   {
     variants: {
       variant: {
-        base: "hover:bg-stone-600/25 bg-stone-600/10",
+        base: "bg-stone-600/10 hover:bg-stone-600/25",
         accent: "font-accent",
         outline:
-          "border border-stone-900/20 bg-transparent hover:bg-stone-600/25 hover:border-transparent",
-        link: "h-fit w-fit inline-block p-0 bg-transparent hover:bg-transparent hover:opacity-30",
+          "border border-stone-900/15 bg-transparent hover:border-stone-900/25",
+        tag: "border border-stone-900/15 bg-transparent text-sm tracking-[0.02ch] hover:border-stone-900/25 sm:text-xl",
+        link: "inline-block h-fit bg-transparent px-0 hover:bg-transparent hover:opacity-30 sm:h-fit sm:px-0",
       },
       size: {
-        base: "w-fit h-10 sm:h-14 rounded-xs sm:rounded-sm px-3 pb-px sm:px-5",
-        icon: "size-10 sm:size-14 rounded-xs sm:rounded-sm shrink-0 p-0 sm:px-0 text-xl sm:text-2xl",
+        icon: "size-[44px] shrink-0 rounded-xs p-0 text-xl sm:size-14 sm:rounded-sm sm:px-0 sm:text-2xl",
       },
     },
   },
@@ -28,8 +28,8 @@ type ButtonProps = {
   href?: string | URL;
   target?: "_blank" | "_self";
   isDisabled?: boolean;
-  variant?: "base" | "accent" | "outline" | "link";
-  size?: "base" | "icon";
+  variant?: "base" | "accent" | "outline" | "link" | "tag";
+  size?: "icon";
   underline?: boolean;
   rel?: string;
   className?: string;

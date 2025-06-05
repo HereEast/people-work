@@ -17,14 +17,14 @@ export async function AnswersList({ slug }: AnswersListProps) {
   const answers = await getAnswersByQuestionSlug(slug);
 
   return (
-    <div className="space-y-2 pt-4">
+    <div className="space-y-1.5 pt-4">
       <>
         {answers?.map((data, index) => {
           const person = data.person;
 
           return (
             <Card key={index} marked={data.featured || data.marked}>
-              <div className="gap-6 space-y-10 p-6 sm:gap-8 sm:space-y-10 sm:p-10">
+              <div className="gap-6 space-y-8 p-6 sm:gap-8 sm:space-y-10 sm:p-10">
                 <Answer marked={data.marked || data.featured}>
                   {data.answer}
                 </Answer>
@@ -44,7 +44,7 @@ export async function AnswersList({ slug }: AnswersListProps) {
 //   const answers = await getAnswersByQuestionSlug(slug);
 
 //   return (
-//     <div className="px-3 pt-4">
+//     <div className="pt-4">
 //       {answers?.map((data, index) => {
 //         const person = data.person;
 
@@ -53,7 +53,7 @@ export async function AnswersList({ slug }: AnswersListProps) {
 //             key={index}
 //             className="border-b border-stone-400/50 first:border-t"
 //           >
-//             <div className="flex flex-col gap-10 py-6 sm:gap-10 sm:py-10">
+//             <div className="flex flex-col gap-8 py-6 sm:gap-10 sm:py-10">
 //               <Answer marked={data.marked || data.featured}>
 //                 {data.answer}
 //               </Answer>
