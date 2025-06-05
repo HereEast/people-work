@@ -33,23 +33,3 @@ function handleLinks(node: Element) {
     node.properties.rel = "noopener noreferrer";
   }
 }
-
-// const classNames = getClassNames(node);
-// node.properties.className = [...classNames, "answer"];
-
-// Get classNames
-// function getClassNames(node: Element) {
-//   const currentClassName = node.properties.className;
-
-//   let classNames: string[] = [];
-
-//   if (typeof currentClassName === "string") {
-//     classNames = [currentClassName];
-//   }
-
-//   if (Array.isArray(currentClassName)) {
-//     classNames = currentClassName.filter((item) => typeof item === "string");
-//   }
-
-//   return classNames;
-// }

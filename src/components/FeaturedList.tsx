@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { FeaturedCardWrapper } from "./Card";
 import { PersonCardDetails } from "./PersonCardDetails";
+import { FeaturedCardWrapper } from "./FeaturedCardWrapper";
 import { QuoteIcon } from "./icons";
 
 import { PersonData } from "~/schemas";
