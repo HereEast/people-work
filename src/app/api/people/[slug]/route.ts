@@ -16,7 +16,10 @@ export async function GET(req: Request, props: ReqParams) {
   try {
     await connectDB();
 
-    const doc: DBDoc<IPersonDB> = await PersonDB.findOne({ slug }).exec();
+    // const doc: DBDoc<IPersonDB> = await PersonDB.findOne({
+    //   slug,
+    // }).exec();
+    const doc = await PersonDB.findOne({ slug }).exec();
 
     if (!doc) {
       return NextResponse.json(null);

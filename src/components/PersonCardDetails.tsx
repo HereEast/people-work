@@ -24,10 +24,12 @@ export function PersonCardDetails({ person }: PersonDetailsProps) {
           <AccentText>{person.name}</AccentText>
         </h3>
 
-        <div className="flex flex-col font-medium leading-[115%]">
-          <h4>{person.jobTitle}</h4>
-          <h4>{person.company.name}</h4>
-        </div>
+        {person.work.map((work, index) => (
+          <div className="flex flex-col font-medium leading-[115%]" key={index}>
+            <h4>{work.title}</h4>
+            <h4>{work.company}</h4>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -14,8 +14,8 @@ export async function generatePersonMetadata(slug: string) {
   if (person) {
     const title = SEO_DATA.person.title(
       person.name,
-      person.jobTitle,
-      person.company.name,
+      person.work[0].title,
+      person.work[0].company,
     );
 
     const description = SEO_DATA.person.description(person.name);
