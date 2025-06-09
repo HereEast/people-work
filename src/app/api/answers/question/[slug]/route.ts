@@ -36,13 +36,14 @@ export async function GET(req: Request, props: ReqParams) {
       $or: [{ disabled: false }, { disabled: { $exists: false } }],
     })
       .populate("questionId")
-      .populate("personId")
+      // .populate("personId")
       .exec();
 
-    const answersByActivePeople = docs.filter((answer) => {
-      const person = answer.personId as IPersonDB;
-      return person.isActive;
-    });
+    // commented
+    // const answersByActivePeople = docs.filter((answer) => {
+    //   const person = answer.personId as IPersonDB;
+    //   return person.isActive;
+    // });
 
     // const sortedByDate = answersByActivePeople.sort((a, b) => {
     //   const personA = a.personId as IPersonDB;
@@ -54,7 +55,7 @@ export async function GET(req: Request, props: ReqParams) {
     //   );
     // });
 
-    const answers = mapAnswersData(answersByActivePeople);
+    const answers = mapAnswersData(docs);
 
     return NextResponse.json(answers);
   } catch (err) {
