@@ -5,7 +5,7 @@
 body {
   box-sizing: border-box;
   scroll-behavior: smooth;
-  letter-spacing: 0.015ch;
+  letter-spacing: 0.02ch;
 }
 
 li {

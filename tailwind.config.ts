@@ -40,8 +40,8 @@ const config: Config = {
         xl: "25px",
         lg: "20px",
         md: "15px",
-        sm: "12px",
-        xs: "10px",
+        sm: "10px",
+        xs: "8px",
       },
       colors: {
         bg: "var(--background)",

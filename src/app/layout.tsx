@@ -11,7 +11,7 @@ import { GoogleAnalytics } from "~/components/GoogleAnalytics";
 import { CookieBanner } from "~/components/CookieBanner";
 
 import { getMetadata } from "~/utils/metadata";
-import { Mondwest, Nm } from "~/utils/fonts";
+import { InnovatorGrotesk, Mondwest, Nm } from "~/utils/fonts";
 
 export const metadata: Metadata = getMetadata();
 
