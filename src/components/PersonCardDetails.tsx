@@ -1,6 +1,6 @@
-import { PersonImage } from "~/components/PersonImage";
-import { AccentText } from "./AccentText";
+import Image from "next/image";
 
+import { AccentText } from "./AccentText";
 import { PersonData } from "~/schemas";
 
 interface PersonDetailsProps {
@@ -10,7 +10,14 @@ interface PersonDetailsProps {
 export function PersonCardDetails({ person }: PersonDetailsProps) {
   return (
     <div className="flex items-end gap-3 sm:gap-4">
-      <PersonImage name={person.name} slug={person.slug} />
+      <Image
+        src={`/images/people/${person.slug}.jpg`}
+        alt={`Image of ${person.name}`}
+        width={200}
+        height={200}
+        className="size-[70px] rounded-xs object-cover sm:size-[90px]"
+        priority
+      />
 
       <div className="flex flex-col gap-0.5 text-sm sm:text-xl">
         <h3 className="leading-none">

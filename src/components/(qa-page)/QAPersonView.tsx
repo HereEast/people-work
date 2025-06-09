@@ -4,9 +4,9 @@ import { AccentText } from "~/components/AccentText";
 import { StickyMobileWrapper } from "~/components/Card";
 import { Column } from "~/components/Column";
 import { LinkedinButton } from "~/components/Buttons";
-import { PersonImage } from "~/components/PersonImage";
 
 import { PersonData } from "~/schemas";
+import Image from "next/image";
 
 interface PersonViewProps {
   person: PersonData;
@@ -30,10 +30,13 @@ function DesktopPersonView({ person }: PersonViewProps) {
       <div className="flex h-full flex-col justify-between">
         <div className="space-y-10 text-2xl sm:text-3xl md:leading-[110%]">
           <div className="space-y-5">
-            <PersonImage
-              name={person.name}
-              slug={person.slug}
-              classname="lg:size-[240px] lg:rounded-md"
+            <Image
+              src={`/images/people/${person.slug}.jpg`}
+              alt={`Image of ${person.name}`}
+              width={600}
+              height={600}
+              className="size-60 rounded-md object-cover"
+              priority
             />
 
             <div className="space-y-1">
@@ -69,20 +72,28 @@ function DesktopPersonView({ person }: PersonViewProps) {
         {/* Details */}
         {/* <ul className="hidden flex-col gap-2 text-3xl leading-none lg:flex">
           <li className="flex gap-2">
-            <span>Experience:</span>
-            <span className="font-medium">11 years</span>
+            <span className="underline decoration-dotted decoration-2 underline-offset-4">
+              Experience:
+            </span>
+            <span className="">11 years</span>
           </li>
           <li className="flex gap-2">
-            <span>Domain:</span>
-            <span className="font-medium">Virtual Production</span>
+            <span className="underline decoration-dotted decoration-2 underline-offset-4">
+              Domain:
+            </span>
+            <span className="">Social Media Marketing</span>
           </li>
           <li className="flex gap-2">
-            <span>Location:</span>
-            <span className="font-medium">Warsaw, PL</span>
+            <span className="underline decoration-dotted decoration-2 underline-offset-4">
+              Location:
+            </span>
+            <span className="">London, UK</span>
           </li>
           <li className="flex gap-2">
-            <span>Contacts:</span>
-            <span className="font-medium">Linkedin</span>
+            <span className="underline decoration-dotted decoration-2 underline-offset-4">
+              Contacts:
+            </span>
+            <span className="">Linkedin</span>
           </li>
         </ul> */}
       </div>
@@ -95,13 +106,16 @@ function MobilePersonView({ person }: PersonViewProps) {
   return (
     <StickyMobileWrapper>
       <div className="flex items-end gap-2.5 py-3 sm:gap-4 sm:py-5">
-        <PersonImage
-          name={person.name}
-          slug={person.slug}
-          classname="size-10 sm:size-[68px]"
+        <Image
+          src={`/images/people/${person.slug}.jpg`}
+          alt={`Image of ${person.name}`}
+          width={600}
+          height={600}
+          className="mb-px size-[44px] rounded-xs object-cover sm:size-[68px]"
+          priority
         />
 
-        <div className="flex flex-col gap-0.5 text-lg text-stone-50 sm:text-3xl">
+        <div className="flex flex-col gap-px text-xl text-stone-50 sm:text-3xl">
           <h1 className="leading-none">
             <AccentText>{person.name}</AccentText>
           </h1>
