@@ -76,10 +76,6 @@ const PersonDBSchema = new Schema(
 
 export type PersonDBType = IPersonDB & Document;
 
-// if (mongoose.models.Person) {
-//   delete mongoose.connection.models["Person"];
-// }
-
 export const PersonDB =
-  // mongoose.models.Person ||
+  mongoose.models.Person ||
   model<PersonDBType>("Person", PersonDBSchema, "persons");
