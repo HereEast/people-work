@@ -77,5 +77,5 @@ const PersonDBSchema = new Schema(
 export type PersonDBType = IPersonDB & Document;
 
 export const PersonDB =
-  // mongoose.models.Person ||
+  mongoose.models.Person ||
   model<PersonDBType>("Person", PersonDBSchema, "persons");
