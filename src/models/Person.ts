@@ -4,33 +4,29 @@ export interface IPersonDB {
   _id: mongoose.Types.ObjectId;
   name: string;
   email: string;
-  company: ICompany;
-  jobTitle: string;
-  country: string;
-  links: ILinks;
   slug: string;
+  work: {
+    company: string;
+    title: string;
+    url?: string;
+  }[];
+  metadata: {
+    experience: string;
+    domain: string;
+    location: {
+      country: string;
+      city: string;
+    };
+    links: {
+      linkedin?: string;
+      instagram?: string;
+      twitter?: string;
+      email?: string;
+    };
+  };
   isActive: boolean;
-  contentMeta: IContentMeta;
   keyWords?: string[];
   createdAt: Date;
-}
-
-export interface ICompany {
-  name: string;
-  url: string;
-}
-
-export interface ILinks {
-  linkedin?: string;
-  twitter?: string;
-  instagram?: string;
-}
-
-export interface IContentMeta {
-  answers: {
-    featured: mongoose.Types.ObjectId;
-    marked: mongoose.Types.ObjectId[];
-  };
 }
 
 const LinksSchema = new Schema(
@@ -43,9 +39,23 @@ const LinksSchema = new Schema(
   { _id: false },
 );
 
-const CompanySchema = new Schema(
+const MetadataSchema = new Schema(
   {
-    name: { type: String, required: true },
+    experience: { type: String },
+    domain: { type: String },
+    location: {
+      country: { type: String },
+      city: { type: String },
+    },
+    links: { type: LinksSchema },
+  },
+  { _id: false },
+);
+
+const WorkSchema = new Schema(
+  {
+    company: { type: String, required: true },
+    title: { type: String, required: true },
     url: { type: String },
   },
   { _id: false },
@@ -55,11 +65,9 @@ const PersonDBSchema = new Schema(
   {
     name: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
-    company: { type: CompanySchema },
-    jobTitle: { type: String, required: true },
-    country: { type: String, required: true },
-    links: { type: LinksSchema },
     slug: { type: String, required: true, unique: true },
+    work: { type: [WorkSchema], required: true },
+    metadata: { type: MetadataSchema },
     keyWords: { type: [String], default: [] },
     isActive: { type: Boolean, required: true },
   },
