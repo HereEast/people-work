@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { ClassValue, clsx } from "clsx";
 
-import { FEATURED } from "./data/featured";
+import { FEATURED } from "./data";
 
 // Format tag
 export function formatTagLabel(string: string) {
