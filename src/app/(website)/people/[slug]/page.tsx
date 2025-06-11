@@ -33,7 +33,7 @@ export async function generateMetadata(props: PersonPageProps) {
 
 // PAGE
 export default async function PersonQAPage(props: PersonPageProps) {
-  const { slug } = await props.params;
+  // const { slug } = await props.params;
 
   // const person = await getPerson(slug);
   // const answers = await getAnswersByPersonSlug({ slug });
@@ -44,7 +44,6 @@ export default async function PersonQAPage(props: PersonPageProps) {
 
   return (
     <PageWrapper>
-      Q
       {/* <section className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-4">
         <QAPersonView person={person} />
         <QAList data={answers} />

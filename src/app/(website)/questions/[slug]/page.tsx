@@ -32,7 +32,7 @@ export async function generateMetadata(props: QuestionPageProps) {
 
 // PAGE
 export default async function QuestionAnswersPage(props: QuestionPageProps) {
-  const { slug } = await props.params;
+  // const { slug } = await props.params;
 
   // const questions = await getQuestions();
 
@@ -45,7 +45,6 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
 
   return (
     <PageWrapper>
-      A
       {/* <section className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
         <QuestionView question={question} />
         <AnswersList slug={slug} />

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 interface PageLayoutProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export function PageWrapper({ children }: PageLayoutProps) {

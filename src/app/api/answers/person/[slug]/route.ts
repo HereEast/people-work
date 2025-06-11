@@ -37,6 +37,7 @@ export async function GET(req: Request, props: ReqParams) {
 
     const query: FilterQuery<IAnswerDB> = {
       personId: person.id,
+      questionId: { $exists: true, $ne: null },
       $or: [{ disabled: false }, { disabled: { $exists: false } }],
     };
 
@@ -57,7 +58,7 @@ export async function GET(req: Request, props: ReqParams) {
     // All answers
     const answersToActiveQuestions = data.filter((answer) => {
       const question = answer.questionId as IQuestionDB;
-      return question.isActive === true;
+      return question && question.isActive === true;
     });
 
     const sortedAnswers = answersToActiveQuestions.sort((a, b) => {
@@ -70,8 +71,6 @@ export async function GET(req: Request, props: ReqParams) {
 
     return NextResponse.json(answers);
   } catch (err) {
-    console.log(err);
-
     return NextResponse.json(
       { message: "🔴 Error fetching answers by person slug." },
       {

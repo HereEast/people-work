@@ -15,7 +15,6 @@ export default async function QuestionsPage() {
 
   return (
     <PageWrapper>
-      P
       {/* <ul className="mb-10 pt-6">
         {questions.map((question, index) => (
           <QuestionItem question={question} key={index} />

@@ -7,7 +7,7 @@ import { getFeaturedSlugs } from "~/utils/handlers";
 import { getPeople } from "~/api-client/people";
 
 export default async function HomePage() {
-  const featuredSlugs = getFeaturedSlugs();
+  // const featuredSlugs = getFeaturedSlugs();
   // const featuredPeople = await getPeople(featuredSlugs);
 
   return (
