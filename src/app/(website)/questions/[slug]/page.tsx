@@ -20,39 +20,39 @@ export async function generateMetadata(props: QuestionPageProps) {
 }
 
 // PARAMS
-// export async function generateStaticParams() {
-//   const questions = await getQuestions();
+export async function generateStaticParams() {
+  const questions = await getQuestions();
 
-//   return (
-//     questions?.map((question) => ({
-//       slug: question.slug,
-//     })) || []
-//   );
-// }
+  return (
+    questions?.map((question) => ({
+      slug: question.slug,
+    })) || []
+  );
+}
 
 // PAGE
 export default async function QuestionAnswersPage(props: QuestionPageProps) {
-  // const { slug } = await props.params;
+  const { slug } = await props.params;
 
-  // const questions = await getQuestions();
+  const questions = await getQuestions();
 
-  // if (!questions) {
-  //   notFound();
-  // }
+  if (!questions) {
+    notFound();
+  }
 
-  // const currentIndex = questions?.findIndex((item) => item.slug === slug);
-  // const question = questions?.[currentIndex];
+  const currentIndex = questions?.findIndex((item) => item.slug === slug);
+  const question = questions?.[currentIndex];
 
   return (
     <PageWrapper>
-      {/* <section className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
+      <section className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
         <QuestionView question={question} />
         <AnswersList slug={slug} />
       </section>
 
       <section className="mb-12 mt-24">
         <RecommendedSection slug={slug} />
-      </section> */}
+      </section>
     </PageWrapper>
   );
 }
