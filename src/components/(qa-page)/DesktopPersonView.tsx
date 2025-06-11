@@ -6,22 +6,17 @@ import { AccentText } from "~/components/AccentText";
 import { Column } from "~/components/Column";
 
 import { PersonData } from "~/schemas";
-import { COUNTRY, CountryType } from "~/utils/data";
 
 export interface DesktopPersonViewProps {
   person: PersonData;
 }
 
 export function DesktopPersonView({ person }: DesktopPersonViewProps) {
-  const { experience, domain, location, links } = person.metadata;
+  const { experience, domain, links } = person.metadata;
 
   const metadataItems = [
     { label: "Experience", value: experience },
     { label: "Domain", value: domain },
-    {
-      label: "Location",
-      value: `${location.city}, ${COUNTRY[location.country as CountryType]}`,
-    },
     { label: "Contacts" },
   ];
 
@@ -99,23 +94,23 @@ function ContactLinks({ links }: ContactLinksProps) {
 
   return (
     <ul className="flex gap-2">
-      {contacts.map(([name, url], index) => {
-        const buttonLabel = name + (index < contacts.length - 1 ? "," : "");
+      {contacts.map(([name, url], index) => (
+        <li key={index} className="group">
+          <Button
+            href={url}
+            variant="link"
+            underline
+            target="_blank"
+            className="capitalize"
+          >
+            {name}
+          </Button>
 
-        return (
-          <li key={index}>
-            <Button
-              href={url}
-              variant="link"
-              underline
-              target="_blank"
-              className="capitalize"
-            >
-              {buttonLabel}
-            </Button>
-          </li>
-        );
-      })}
+          {index < contacts.length - 1 && (
+            <span className="transition group-hover:opacity-30">,</span>
+          )}
+        </li>
+      ))}
     </ul>
   );
 }
