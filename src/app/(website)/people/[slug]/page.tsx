@@ -23,32 +23,32 @@ export async function generateMetadata(props: PersonPageProps) {
 }
 
 // PARAMS
-export async function generateStaticParams() {
-  const people = await getPeople();
+// export async function generateStaticParams() {
+//   const people = await getPeople();
 
-  return (
-    people?.map((person) => ({
-      slug: person.slug,
-    })) || []
-  );
-}
+//   return (
+//     people?.map((person) => ({
+//       slug: person.slug,
+//     })) || []
+//   );
+// }
 
 // PAGE
 export default async function PersonQAPage(props: PersonPageProps) {
   const { slug } = await props.params;
 
-  const person = await getPerson(slug);
+  // const person = await getPerson(slug);
   const answers = await getAnswersByPersonSlug({ slug });
 
-  if (!person || !answers) {
-    notFound();
-  }
+  // if (!person || !answers) {
+  //   notFound();
+  // }
 
   return (
     <PageWrapper>
       <section className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-4">
-        <QAPersonView person={person} />
-        <QAList data={answers} />
+        {/* <QAPersonView person={person} /> */}
+        {/* <QAList data={answers} /> */}
       </section>
 
       <section className="mb-12 mt-24">
