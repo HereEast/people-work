@@ -16,3 +16,12 @@ export const FEATURED = [
     slug: "lara-simonova",
   },
 ];
+
+// Countries
+export type CountryType = keyof typeof COUNTRY;
+
+export const COUNTRY = {
+  Poland: "PL",
+  Netherlands: "NL",
+  "United Kingdom": "UK",
+};
