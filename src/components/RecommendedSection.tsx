@@ -9,11 +9,11 @@ interface RecommendedPeopleProps {
 
 export async function RecommendedSection({ slug }: RecommendedPeopleProps) {
   const slugs = getFeaturedSlugs(2, slug);
-  // const recommendedPeople = await getPeople(slugs);
+  const recommendedPeople = await getPeople(slugs);
 
-  // if (!recommendedPeople) {
-  //   return null;
-  // }
+  if (!recommendedPeople) {
+    return null;
+  }
 
   return (
     <div className="space-y-8">
@@ -21,7 +21,7 @@ export async function RecommendedSection({ slug }: RecommendedPeopleProps) {
         Check some cool people
       </h2>
 
-      {/* {recommendedPeople && <FeaturedList people={recommendedPeople} />} */}
+      {recommendedPeople && <FeaturedList people={recommendedPeople} />}
     </div>
   );
 }
