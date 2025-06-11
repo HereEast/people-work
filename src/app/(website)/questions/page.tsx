@@ -7,15 +7,15 @@ import { QuestionItem } from "~/components/(questions-page)";
 import { getQuestions } from "~/api-client/questions";
 
 export default async function QuestionsPage() {
-  // const questions = await getQuestions();
+  const questions = await getQuestions();
 
-  // if (!questions) {
-  //   notFound();
-  // }
+  if (!questions) {
+    notFound();
+  }
 
   return (
     <PageWrapper>
-      {/* <ul className="mb-10 pt-6">
+      <ul className="mb-10 pt-6">
         {questions.map((question, index) => (
           <QuestionItem question={question} key={index} />
         ))}
@@ -23,7 +23,7 @@ export default async function QuestionsPage() {
 
       <section className="mx-auto my-16 max-w-screen-sm">
         <Subscribe />
-      </section> */}
+      </section>
     </PageWrapper>
   );
 }
