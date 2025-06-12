@@ -4,7 +4,7 @@ import { FeaturedList } from "~/components/FeaturedList";
 import { Subscribe } from "~/components/Subscribe";
 
 import { getFeaturedSlugs } from "~/utils/handlers";
-import { getPeople } from "~/api-client/people";
+import { getPeople } from "~/_lib";
 
 export default async function HomePage() {
   const featuredSlugs = getFeaturedSlugs();

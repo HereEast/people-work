@@ -4,9 +4,8 @@ import { PageWrapper } from "~/components/PageWrapper";
 import { RecommendedSection } from "~/components/RecommendedSection";
 import { QAList, QAPersonView } from "~/components/(qa-page)";
 
-import { getPeople, getPerson } from "~/api-client/people";
-import { getAnswersByPersonSlug } from "~/api-client/answers";
 import { generatePersonMetadata } from "~/utils/metadata";
+import { getAnswersByPersonSlug, getPeople, getPerson } from "~/_lib";
 
 interface PersonPageProps {
   params: Promise<{
@@ -36,7 +35,7 @@ export default async function PersonQAPage(props: PersonPageProps) {
   const { slug } = await props.params;
 
   const person = await getPerson(slug);
-  const answers = await getAnswersByPersonSlug({ slug });
+  const answers = await getAnswersByPersonSlug(slug);
 
   if (!person || !answers) {
     notFound();

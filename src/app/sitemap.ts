@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { getQuestions } from "~/api-client/questions";
-import { getPeople } from "~/api-client/people";
+import { getPeople, getQuestions } from "~/_lib";
 import { BASE_URL } from "~/utils/constants";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

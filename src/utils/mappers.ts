@@ -16,29 +16,21 @@ import { IAnswerDB } from "~/models/Answer";
 import { DBDoc } from "./types";
 
 // Questions
-function mapQuestionDoc(doc: DBDoc<IQuestionDB>) {
+export function mapQuestionData(doc: DBDoc<IQuestionDB>): QuestionData {
   return {
     ...doc.toObject(),
     id: doc._id.toString(),
   };
 }
 
-export function mapQuestionsData(
-  data: DBDoc<IQuestionDB>[] | DBDoc<IQuestionDB>,
-): QuestionData[] | QuestionData {
-  const isArray = Array.isArray(data);
+export function mapQuestionsData(data: DBDoc<IQuestionDB>[]): QuestionData[] {
+  const mapped = data.map((doc) => mapQuestionData(doc));
 
-  const mapped = isArray
-    ? data.map((doc) => mapQuestionDoc(doc))
-    : mapQuestionDoc(data);
-
-  return isArray
-    ? QuestionApiSchema.array().parse(mapped)
-    : QuestionApiSchema.parse(mapped);
+  return QuestionApiSchema.array().parse(mapped);
 }
 
 // Answers
-function mapAnswerDoc(doc: DBDoc<IAnswerDB>) {
+export function mapAnswerData(doc: DBDoc<IAnswerDB>) {
   const data = doc.toObject();
 
   const question = data.questionId as IQuestionDB;
@@ -60,22 +52,14 @@ function mapAnswerDoc(doc: DBDoc<IAnswerDB>) {
   };
 }
 
-export function mapAnswersData(
-  data: DBDoc<IAnswerDB>[] | DBDoc<IAnswerDB>,
-): AnswerData[] | AnswerData {
-  const isArray = Array.isArray(data);
+export function mapAnswersData(docs: DBDoc<IAnswerDB>[]): AnswerData[] {
+  const mapped = docs.map((doc) => mapAnswerData(doc));
 
-  const mapped = isArray
-    ? data.map((doc) => mapAnswerDoc(doc))
-    : mapAnswerDoc(data);
-
-  return isArray
-    ? AnswerApiSchema.array().parse(mapped)
-    : AnswerApiSchema.parse(mapped);
+  return AnswerApiSchema.array().parse(mapped);
 }
 
 // People
-function mapPersonDoc(doc: DBDoc<IPersonDB>) {
+export function mapPersonData(doc: DBDoc<IPersonDB>): PersonData {
   const obj = doc.toObject();
 
   return {
@@ -84,18 +68,10 @@ function mapPersonDoc(doc: DBDoc<IPersonDB>) {
   };
 }
 
-export function mapPeopleData(
-  data: DBDoc<IPersonDB>[] | DBDoc<IPersonDB>,
-): PersonData[] | PersonData {
-  const isArray = Array.isArray(data);
+export function mapPeopleData(docs: DBDoc<IPersonDB>[]): PersonData[] {
+  const mapped = docs.map((doc) => mapPersonData(doc));
 
-  const mapped = isArray
-    ? data.map((doc) => mapPersonDoc(doc))
-    : mapPersonDoc(data);
-
-  return isArray
-    ? PersonApiSchema.array().parse(mapped)
-    : PersonApiSchema.parse(mapped);
+  return PersonApiSchema.array().parse(mapped);
 }
 
 // Subscription

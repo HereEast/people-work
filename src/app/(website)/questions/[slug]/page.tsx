@@ -4,8 +4,8 @@ import { PageWrapper } from "~/components/PageWrapper";
 import { QuestionView, AnswersList } from "~/components/(question-page)";
 import { RecommendedSection } from "~/components/RecommendedSection";
 
-import { getQuestions } from "~/api-client/questions";
 import { generateQuestionMetadata } from "~/utils/metadata";
+import { getQuestions } from "~/_lib";
 
 interface QuestionPageProps {
   params: Promise<{

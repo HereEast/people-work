@@ -1,6 +1,6 @@
+import { getPeople } from "~/_lib";
 import { FeaturedList } from "./FeaturedList";
 
-import { getPeople } from "~/api-client/people";
 import { getFeaturedSlugs } from "~/utils/handlers";
 
 interface RecommendedPeopleProps {

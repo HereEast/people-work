@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
+import { connectDB } from "~/_lib";
 import { SEO_DATA } from "./data/seo-data";
-import { connectDB } from "~/lib/connectDB";
 import { QuestionDB } from "~/models/Question";
 import { PersonDB } from "~/models/Person";
 
