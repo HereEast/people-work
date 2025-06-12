@@ -3,7 +3,7 @@
 import { ReactNode, useState } from "react";
 
 import { Card } from "./Card";
-import { FEATURED } from "~/utils/data";
+import { FEATURED } from "~/utils/constants";
 
 interface FeaturedCardWrapperProps {
   children: ReactNode;

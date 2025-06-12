@@ -1,15 +1,37 @@
 import { Metadata } from "next";
 
-import { connectDB } from "~/_lib";
-import { SEO_DATA } from "./data/seo-data";
-import { QuestionDB } from "~/models/Question";
-import { PersonDB } from "~/models/Person";
+import { getPerson, getQuestion } from "~/_lib";
+import { BASE_URL } from "./constants";
+
+export const SEO_DATA = {
+  index: {
+    url: BASE_URL,
+    imageUrl: "/og-image.jpg",
+    title: "Job titles decoded. In a simple Q&A format.",
+    description:
+      "Real people, real jobs. Brief Q&As that demystify titles, share routines, and explore what keeps them going.",
+  },
+  person: {
+    title(name: string, title: string, company: string) {
+      return `${name}, ${title} at ${company}`;
+    },
+    description(name: string) {
+      return `Get to know how ${name} thinks about work, career, and personal growth. All in a simple Q&A.`;
+    },
+  },
+  question: {
+    title(question: string) {
+      return `Q: ${question}`;
+    },
+    description(tag: string) {
+      return `Discover how experts from different industries approach this question. #${tag}`;
+    },
+  },
+};
 
 // Person metadata
 export async function generatePersonMetadata(slug: string) {
-  await connectDB();
-
-  const person = await PersonDB.findOne({ slug }).exec();
+  const person = await getPerson(slug);
 
   if (person) {
     const title = SEO_DATA.person.title(
@@ -26,13 +48,11 @@ export async function generatePersonMetadata(slug: string) {
 
 // Question metadata
 export async function generateQuestionMetadata(slug: string) {
-  await connectDB();
-
-  const question = await QuestionDB.findOne({ slug, isActive: true }).exec();
+  const question = await getQuestion(slug);
 
   if (question) {
     const title = SEO_DATA.question.title(question.body);
-    const description = SEO_DATA.question.description;
+    const description = SEO_DATA.question.description(question.slug);
 
     return getMetadata({ title, description });
   }

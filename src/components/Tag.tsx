@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Link from "next/link";
 
 import { buttonVariants } from "./Button";
-import { EMOJIS } from "~/utils/data/emojis";
+import { EMOJIS } from "~/utils/constants";
 import { cn } from "~/utils/handlers";
 
 interface TagProps {
