@@ -9,22 +9,23 @@ export const SEO_DATA = {
     imageUrl: "/og-image.jpg",
     title: "Job titles decoded. In a simple Q&A format.",
     description:
-      "A small web hustle on a mission to demystify job titles and show real people behind them.",
+      "Real people, real jobs. Brief Q&As that demystify titles, share routines, and explore what keeps them going.",
   },
   person: {
     title(name: string, title: string, company: string) {
       return `${name}, ${title} at ${company}`;
     },
     description(name: string) {
-      return `Discover how ${name} approaches work, perspectives, and career growth. Explore unique insights and experiences in a simple Q&A format.`;
+      return `Get to know how ${name} thinks about work, career, and personal growth. All in a simple Q&A.`;
     },
   },
   question: {
     title(question: string) {
       return `Q: ${question}`;
     },
-    description:
-      "Explore diverse perspectives on this topic from professionals across industries.",
+    description(tag: string) {
+      return `Discover how experts from different industries approach this question. #${tag}`;
+    },
   },
 };
 
@@ -51,7 +52,7 @@ export async function generateQuestionMetadata(slug: string) {
 
   if (question) {
     const title = SEO_DATA.question.title(question.body);
-    const description = SEO_DATA.question.description;
+    const description = SEO_DATA.question.description(question.slug);
 
     return getMetadata({ title, description });
   }
