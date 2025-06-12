@@ -5,8 +5,8 @@ import { Answer } from "~/components/Answer";
 import { PersonCardDetails } from "~/components/PersonCardDetails";
 import { GoToButton } from "~/components/Buttons";
 
-import { getAnswersByQuestionSlug } from "~/api-client/answers";
 import { PersonData } from "~/schemas";
+import { getAnswersByQuestionSlug } from "~/_lib";
 
 interface AnswersListProps {
   slug: string;

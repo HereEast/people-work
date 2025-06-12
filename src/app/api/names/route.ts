@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { connectDB } from "~/lib/connectDB";
+import { connectDB } from "~/_lib";
 import { IName, Name } from "~/models/Name";
 
 // CREATE NAME (SHARE)

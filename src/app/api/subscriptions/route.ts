@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { connectDB } from "~/lib/connectDB";
+import { connectDB } from "~/_lib";
 import { ISubscriptionDB, SubscriptionDB } from "~/models/Subscription";
 import { mapSubscriptionData } from "~/utils/mappers";
 import { DBDoc } from "~/utils/types";

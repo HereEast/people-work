@@ -4,7 +4,7 @@ import { PageWrapper } from "~/components/PageWrapper";
 import { Subscribe } from "~/components/Subscribe";
 import { QuestionItem } from "~/components/(questions-page)";
 
-import { getQuestions } from "~/api-client/questions";
+import { getQuestions } from "~/_lib";
 
 export default async function QuestionsPage() {
   const questions = await getQuestions();
