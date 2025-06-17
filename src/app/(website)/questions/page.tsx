@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { PageWrapper } from "~/components/PageWrapper";
-import { Subscribe } from "~/components/Subscribe";
+import { Subscribe } from "~/components/SubscribeSection";
 import { QuestionItem } from "~/components/(questions-page)";
 
 import { getQuestions } from "~/_lib";

@@ -1,10 +1,8 @@
-"use client";
-
 import { AccentText } from "./AccentText";
 import { EmojiImage } from "./EmojiImage";
-import { SubscribeForm } from "./SubscribeForm";
+import { SubscribeForm } from "./subscribe-form/SubscribeForm";
 
-export function Subscribe() {
+export function SubscribeSection() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col items-center gap-6">

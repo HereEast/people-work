@@ -1,7 +1,7 @@
 import { PageWrapper } from "~/components/PageWrapper";
-import { Hero } from "~/components/(home)";
+import { HeroSection } from "~/components/(home)";
 import { FeaturedList } from "~/components/FeaturedList";
-import { Subscribe } from "~/components/Subscribe";
+import { SubscribeSection } from "~/components/SubscribeSection";
 
 import { getFeaturedSlugs } from "~/utils/handlers";
 import { getPeople } from "~/_lib";
@@ -12,18 +12,17 @@ export default async function HomePage() {
 
   return (
     <PageWrapper>
-      <section className="mb-10 mt-8 sm:mb-16 sm:mt-12">
-        <Hero />
-      </section>
+      <HeroSection />
 
+      {/* 
       {featuredPeople && (
         <section className="mb-20">
           <FeaturedList people={featuredPeople} />
         </section>
-      )}
+      )} */}
 
       <section className="mx-auto my-16 max-w-screen-sm">
-        <Subscribe />
+        <SubscribeSection />
       </section>
     </PageWrapper>
   );
