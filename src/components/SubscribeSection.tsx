@@ -1,10 +1,16 @@
+"use client";
+
+import { useState } from "react";
+
 import { AccentText } from "./AccentText";
 import { EmojiImage } from "./EmojiImage";
-import { SubscribeForm } from "./subscribe-form/SubscribeForm";
+import { SubscribeForm } from "./SubscribeForm";
 
 export function SubscribeSection() {
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
   return (
-    <div className="flex flex-col gap-8">
+    <section className="flex flex-col gap-8">
       <div className="flex flex-col items-center gap-6">
         <EmojiImage name="popcorn" classname="size-32" />
 
@@ -16,7 +22,18 @@ export function SubscribeSection() {
         </div>
       </div>
 
-      <SubscribeForm />
-    </div>
+      <div className="flex flex-col items-center justify-center gap-6">
+        <SubscribeForm setIsSubscribed={setIsSubscribed} />
+
+        {isSubscribed && (
+          <p className="text-center leading-[110%]">
+            Yay! You're on the list.{" "}
+            <AccentText className="text-[112%]">
+              Good things are coming.
+            </AccentText>
+          </p>
+        )}
+      </div>
+    </section>
   );
 }

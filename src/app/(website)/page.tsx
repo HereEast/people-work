@@ -14,16 +14,15 @@ export default async function HomePage() {
     <PageWrapper>
       <HeroSection />
 
-      {/* 
       {featuredPeople && (
-        <section className="mb-20">
+        <div className="mb-20">
           <FeaturedList people={featuredPeople} />
-        </section>
-      )} */}
+        </div>
+      )}
 
-      <section className="mx-auto my-16 max-w-screen-sm">
+      <div className="mx-auto my-16 max-w-screen-sm">
         <SubscribeSection />
-      </section>
+      </div>
     </PageWrapper>
   );
 }
