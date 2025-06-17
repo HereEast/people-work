@@ -1,14 +1,10 @@
 import { SubscriptionData } from "~/schemas";
 import { handleError } from "~/utils/handlers";
 
-interface SubscriptionProps {
-  email: string;
-}
-
-// CREATE SUBSCRIPTION (ADD EMAIL)
-export async function submitSubscription({
-  email,
-}: SubscriptionProps): Promise<SubscriptionData | null> {
+// Subscribe
+export async function submitSubscription(
+  email: string,
+): Promise<SubscriptionData | null> {
   if (!email) {
     throw new Error("Email is required.");
   }

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { PageWrapper } from "~/components/PageWrapper";
-import { Subscribe } from "~/components/Subscribe";
+import { SubscribeSection } from "~/components/SubscribeSection";
 import { QuestionItem } from "~/components/(questions-page)";
 
 import { getQuestions } from "~/_lib";
@@ -15,15 +15,17 @@ export default async function QuestionsPage() {
 
   return (
     <PageWrapper>
-      <ul className="mb-10 pt-6">
-        {questions.map((question, index) => (
-          <QuestionItem question={question} key={index} />
-        ))}
-      </ul>
+      <div className="mb-10 pt-6">
+        <ul>
+          {questions.map((question, index) => (
+            <QuestionItem question={question} key={index} />
+          ))}
+        </ul>
+      </div>
 
-      <section className="mx-auto my-16 max-w-screen-sm">
-        <Subscribe />
-      </section>
+      <div className="mx-auto my-16 max-w-screen-sm">
+        <SubscribeSection />
+      </div>
     </PageWrapper>
   );
 }

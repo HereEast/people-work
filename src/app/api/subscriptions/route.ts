@@ -5,7 +5,7 @@ import { ISubscriptionDB, SubscriptionDB } from "~/models/Subscription";
 import { mapSubscriptionData } from "~/utils/mappers";
 import { DBDoc } from "~/utils/types";
 
-// CREATE NEW SUBSCRIPTION (ADD EMAIL)
+// Subscribe
 export async function POST(req: Request) {
   const { email } = await req.json();
 
