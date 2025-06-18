@@ -1,5 +1,5 @@
 import { Card } from "~/components/Card";
-import { GoToButton } from "~/components/Buttons";
+import { GoToButton } from "~/components/GoToButton";
 import { Answer, Question } from "~/components/Answer";
 import { QuestionTag } from "~/components/QuestionTag";
 

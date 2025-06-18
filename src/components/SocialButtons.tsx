@@ -1,18 +1,8 @@
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
-
-import { ButtonLink } from "./ui";
 import { LinkedinIcon } from "./icons/Linkedin";
+import { ButtonLink } from "./ui";
 
 interface ButtonProps {
   href: string;
-}
-
-export function GoToButton({ href }: ButtonProps) {
-  return (
-    <ButtonLink href={href} size="icon">
-      <ArrowUpRightIcon className="w-5 shrink-0 sm:w-6" />
-    </ButtonLink>
-  );
 }
 
 export function LinkedinButton({ href }: ButtonProps) {
@@ -21,6 +11,7 @@ export function LinkedinButton({ href }: ButtonProps) {
       href={href}
       size="icon"
       target="_blank"
+      rel="noopener noreferrer"
       className="bg-linkedin hover:bg-linkedin hover:opacity-75"
     >
       <LinkedinIcon className="w-6" />
