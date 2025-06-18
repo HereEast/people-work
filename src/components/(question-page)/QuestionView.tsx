@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 import { Column } from "~/components/Column";
-import { Button } from "~/components/Button";
+import { Button, ButtonLink } from "~/components/Button";
 import { QuestionTag } from "~/components/Tag";
 import { StickyMobileWrapper } from "~/components/Card";
 
@@ -50,14 +50,14 @@ function DesktopQuestionView({ question }: QuestionViewProps) {
           <QuestionTag slug={question.slug} />
         </div>
 
-        <Button
+        <ButtonLink
           href={ROUTE.questions}
           variant="link"
           underline
           className="text-3xl"
         >
           All questions
-        </Button>
+        </ButtonLink>
       </div>
     </Column>
   );

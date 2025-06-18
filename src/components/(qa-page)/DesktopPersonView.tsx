@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { Button } from "~/components/Button";
+import { ButtonLink } from "~/components/Button";
 import { AccentText } from "~/components/AccentText";
 import { Column } from "~/components/Column";
 
@@ -96,7 +96,7 @@ function ContactLinks({ links }: ContactLinksProps) {
     <ul className="flex gap-2">
       {contacts.map(([name, url], index) => (
         <li key={index} className="group">
-          <Button
+          <ButtonLink
             href={url}
             variant="link"
             underline
@@ -104,7 +104,7 @@ function ContactLinks({ links }: ContactLinksProps) {
             className="capitalize"
           >
             {name}
-          </Button>
+          </ButtonLink>
 
           {index < contacts.length - 1 && (
             <span className="transition group-hover:opacity-30">,</span>
