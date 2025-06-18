@@ -1,11 +1,13 @@
 import Link from "next/link";
 
 import { PersonCardDetails } from "./PersonCardDetails";
-import { FeaturedCardWrapper } from "./FeaturedCardWrapper";
+import { Card } from "./Card";
 import { QuoteIcon } from "./icons";
 
 import { PersonData } from "~/schemas";
 import { getFeaturedAnswer } from "~/_lib";
+import { FEATURED } from "~/utils/constants";
+import { cn } from "~/utils/handlers";
 
 // Featured list
 interface FeaturedCardListProps {
@@ -17,7 +19,7 @@ export function FeaturedList({ people }: FeaturedCardListProps) {
     <div className="gap-2 md:columns-2 md:gap-4">
       {people.map((person, index) => (
         <div className="mb-2 break-inside-avoid md:mb-4" key={index}>
-          <FeaturedPersonCard person={person} />
+          <FeaturedCard person={person} />
         </div>
       ))}
     </div>
@@ -25,19 +27,22 @@ export function FeaturedList({ people }: FeaturedCardListProps) {
 }
 
 // Featured card
-interface FeaturedPersonCardProps {
+interface FeaturedCardProps {
   person: PersonData;
 }
 
-export async function FeaturedPersonCard({ person }: FeaturedPersonCardProps) {
+export async function FeaturedCard({ person }: FeaturedCardProps) {
   const featuredAnswer = await getFeaturedAnswer(person.slug);
 
   if (!featuredAnswer) {
     return null;
   }
 
+  const featuredItem = FEATURED.find((item) => item.slug === person.slug);
+  const featuredId = featuredItem?.id || 0;
+
   return (
-    <FeaturedCardWrapper slug={person.slug}>
+    <Card className={cn(`featured-card-${featuredId} `)}>
       <Link href={`/people/${person.slug}`} className="block p-6 sm:p-10">
         <div className="mb-8 space-y-5 lg:mb-10">
           <QuoteIcon />
@@ -49,6 +54,6 @@ export async function FeaturedPersonCard({ person }: FeaturedPersonCardProps) {
 
         <PersonCardDetails person={person} />
       </Link>
-    </FeaturedCardWrapper>
+    </Card>
   );
 }

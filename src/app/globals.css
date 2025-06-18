@@ -24,7 +24,7 @@ a:hover {
 @layer base {
   :root {
     --background: #e8e8e8;
-    --linkedin: #0077B7;
+    --linkedin: #0077b7;
 
     --featured-0: #d1dced;
     --featured-1: #d8d2f4;
@@ -37,6 +37,43 @@ a:hover {
   }
 }
 
+/* Featured Cards */
+.featured-card-0 {
+  background-color: var(--featured-0);
+  transition: background-color 0.2s ease;
+}
+
+.featured-card-0:hover {
+  background-color: var(--featured-hover-0);
+}
+
+.featured-card-1 {
+  background-color: var(--featured-1);
+  transition: background-color 0.2s ease;
+}
+
+.featured-card-1:hover {
+  background-color: var(--featured-hover-1);
+}
+
+.featured-card-2 {
+  background-color: var(--featured-2);
+  transition: background-color 0.2s ease;
+}
+
+.featured-card-2:hover {
+  background-color: var(--featured-hover-2);
+}
+
+.featured-card-3 {
+  background-color: var(--featured-3);
+  transition: background-color 0.2s ease;
+}
+
+.featured-card-3:hover {
+  background-color: var(--featured-hover-3);
+}
+
 /* Answer */
 
 .answer a {
@@ -46,7 +83,7 @@ a:hover {
 }
 
 .featured-answer em,
-.answer em  {
+.answer em {
   font-style: normal;
   font-family: var(--font-accent);
   font-size: 118%;
