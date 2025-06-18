@@ -22,11 +22,13 @@ export async function generateMetadata(props: QuestionPageProps) {
 export async function generateStaticParams() {
   const questions = await getQuestions();
 
-  return (
-    questions?.map((question) => ({
-      slug: question.slug,
-    })) || []
-  );
+  if (!questions) {
+    return [];
+  }
+
+  return questions.map((question) => ({
+    slug: question.slug,
+  }));
 }
 
 // PAGE
