@@ -25,7 +25,8 @@ export default async function QuestionsPage() {
   );
 }
 
-export function QuestionsList({ questions }: { questions: QuestionData[] }) {
+// Questions List
+function QuestionsList({ questions }: { questions: QuestionData[] }) {
   return (
     <div>
       <ul>
@@ -37,6 +38,7 @@ export function QuestionsList({ questions }: { questions: QuestionData[] }) {
   );
 }
 
+// Question Item
 interface QuestionItemProps {
   question: QuestionData;
 }
