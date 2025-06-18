@@ -1,7 +1,7 @@
 import { Card } from "~/components/Card";
 import { GoToButton } from "~/components/Buttons";
 import { Answer, Question } from "~/components/Answer";
-import { QuestionTag } from "~/components/Tag";
+import { QuestionTag } from "~/components/QuestionTag";
 
 import { AnswerData } from "~/schemas";
 

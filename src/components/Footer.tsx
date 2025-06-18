@@ -1,4 +1,4 @@
-import { ButtonLink } from "./Button";
+import { ButtonLink } from "./ui";
 
 import { ROUTE } from "~/utils/constants";
 

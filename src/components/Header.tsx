@@ -1,5 +1,5 @@
 import { LogoIcon } from "./icons";
-import { ButtonLink } from "./Button";
+import { ButtonLink } from "./ui";
 
 import { CONTACT, ROUTE } from "~/utils/constants";
 

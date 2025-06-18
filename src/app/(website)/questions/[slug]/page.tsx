@@ -44,14 +44,14 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
 
   return (
     <div>
-      <section className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
+      <div className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
         <QuestionView question={question} />
         <AnswersList slug={slug} />
-      </section>
+      </div>
 
-      <section className="mb-12 mt-24">
+      <div className="mb-12 mt-24">
         <RecommendedSection slug={slug} />
-      </section>
+      </div>
     </div>
   );
 }

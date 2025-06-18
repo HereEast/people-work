@@ -1,9 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { ButtonLink } from "~/components/Button";
+import { ButtonLink, StickyColumn } from "~/components/ui";
 import { AccentText } from "~/components/AccentText";
-import { StickyColumn } from "~/components/Column";
 
 import { PersonData } from "~/schemas";
 

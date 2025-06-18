@@ -1,12 +1,7 @@
-"use client";
-
-import { useRouter } from "next/navigation";
-import { ArrowLeftIcon } from "@heroicons/react/24/outline";
-
-import { StickyColumn } from "~/components/Column";
-import { Button, ButtonLink } from "~/components/Button";
-import { QuestionTag } from "~/components/Tag";
 import { StickyMobileWrapper } from "~/components/Card";
+import { ButtonLink, StickyColumn } from "../ui";
+import { ButtonBack } from "./ButtonBack";
+import { QuestionTag } from "../QuestionTag";
 
 import { QuestionData } from "~/schemas";
 import { ROUTE } from "~/utils/constants";
@@ -25,22 +20,13 @@ export function QuestionView({ question }: QuestionViewProps) {
 }
 
 // Desktop
-function DesktopQuestionView({ question }: QuestionViewProps) {
-  const router = useRouter();
-
+export function DesktopQuestionView({ question }: QuestionViewProps) {
   return (
     <StickyColumn>
       <div className="hidden h-full flex-col justify-between gap-10 pr-10 md:flex">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-6">
-            <Button
-              variant="link"
-              onClick={() => router.back()}
-              className="flex gap-2 text-3xl"
-            >
-              <ArrowLeftIcon className="size-8 shrink-0" />
-              <span>Back</span>
-            </Button>
+            <ButtonBack>Back</ButtonBack>
 
             <h1 className="text-5xl font-semibold leading-[95%] tracking-[-0.03ch]">
               {question.body}

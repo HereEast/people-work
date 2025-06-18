@@ -4,8 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
-import { Button } from "~/components/Button";
-import { Input } from "./Input";
+import { Button, Input } from "~/components/ui";
 
 import { submitSubscription } from "~/_lib/subscriptions/index";
 

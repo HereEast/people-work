@@ -1,6 +1,6 @@
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
-import { ButtonLink } from "./Button";
+import { ButtonLink } from "./ui";
 import { LinkedinIcon } from "./icons/Linkedin";
 
 interface ButtonProps {

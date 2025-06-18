@@ -1,7 +1,7 @@
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 import { EmojiImage } from "~/components/EmojiImage";
-import { ButtonLink } from "~/components/Button";
+import { ButtonLink } from "~/components/ui";
 
 import { ROUTE } from "~/utils/constants";
 
