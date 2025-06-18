@@ -6,11 +6,13 @@ import { StickyMobileWrapper } from "~/components/Card";
 
 import { PersonData } from "~/schemas";
 
-export interface MobilePersonViewProps {
+interface PersonViewProps {
   person: PersonData;
 }
 
-export function MobilePersonView({ person }: MobilePersonViewProps) {
+export function MobilePersonView({ person }: PersonViewProps) {
+  const work = person.work[0];
+
   return (
     <StickyMobileWrapper>
       <div className="flex items-end gap-2.5 py-3 sm:gap-4 sm:py-5">
@@ -28,25 +30,21 @@ export function MobilePersonView({ person }: MobilePersonViewProps) {
             <AccentText>{person.name}</AccentText>
           </h1>
 
-          {person.work.map((work, index) => (
-            <div
-              className="flex flex-col leading-[1.1] tracking-[0.02ch]"
-              key={index}
-            >
-              <h2>
-                {work.title},{" "}
-                {work.url && (
-                  <Link
-                    href={work.url}
-                    target="_blank"
-                    className="inline-block capitalize underline decoration-1 underline-offset-[2.5px] transition hover:no-underline hover:opacity-30 sm:decoration-[1.5px] sm:underline-offset-[3.5px]"
-                  >
-                    {work.company}
-                  </Link>
-                )}
-              </h2>
-            </div>
-          ))}
+          <div className="flex flex-col leading-[1.1] tracking-[0.02ch]">
+            <h2>
+              {work.title},{" "}
+              {work.url && (
+                <Link
+                  href={work.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block capitalize underline decoration-1 underline-offset-[2.5px] transition hover:no-underline hover:opacity-30 sm:decoration-[1.5px] sm:underline-offset-[3.5px]"
+                >
+                  {work.company}
+                </Link>
+              )}
+            </h2>
+          </div>
         </div>
       </div>
     </StickyMobileWrapper>

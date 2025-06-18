@@ -16,12 +16,12 @@ export async function RecommendedSection({ slug }: RecommendedPeopleProps) {
   }
 
   return (
-    <div className="space-y-8">
+    <section className="space-y-8">
       <h2 className="text-center text-xl font-medium sm:text-3xl sm:font-normal">
         Check some cool people
       </h2>
 
       {recommendedPeople && <FeaturedList people={recommendedPeople} />}
-    </div>
+    </section>
   );
 }

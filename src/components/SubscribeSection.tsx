@@ -15,6 +15,7 @@ export function SubscribeSection() {
 
       <div className="flex flex-col items-center justify-center gap-6">
         <SubscribeForm setIsSubscribed={setIsSubscribed} />
+
         {isSubscribed && <SubscribeSuccessMessage />}
       </div>
     </section>

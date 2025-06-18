@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
-import { Column } from "~/components/Column";
+import { StickyColumn } from "~/components/Column";
 import { Button, ButtonLink } from "~/components/Button";
 import { QuestionTag } from "~/components/Tag";
 import { StickyMobileWrapper } from "~/components/Card";
@@ -29,7 +29,7 @@ function DesktopQuestionView({ question }: QuestionViewProps) {
   const router = useRouter();
 
   return (
-    <Column variant="sticky">
+    <StickyColumn>
       <div className="hidden h-full flex-col justify-between gap-10 pr-10 md:flex">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-6">
@@ -59,7 +59,7 @@ function DesktopQuestionView({ question }: QuestionViewProps) {
           All questions
         </ButtonLink>
       </div>
-    </Column>
+    </StickyColumn>
   );
 }
 
