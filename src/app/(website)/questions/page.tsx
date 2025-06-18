@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 
-import { PageWrapper } from "~/components/PageWrapper";
 import { SubscribeSection } from "~/components/SubscribeSection";
 import { QuestionItem } from "~/components/(questions-page)";
 
@@ -14,7 +13,7 @@ export default async function QuestionsPage() {
   }
 
   return (
-    <PageWrapper>
+    <div>
       <div className="mb-10 pt-6">
         <ul>
           {questions.map((question, index) => (
@@ -26,6 +25,6 @@ export default async function QuestionsPage() {
       <div className="mx-auto my-16 max-w-screen-sm">
         <SubscribeSection />
       </div>
-    </PageWrapper>
+    </div>
   );
 }

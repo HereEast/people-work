@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 
-import { PageWrapper } from "~/components/PageWrapper";
 import { RecommendedSection } from "~/components/RecommendedSection";
 import { QAList, QAPersonView } from "~/components/(qa-page)";
 
@@ -22,35 +21,32 @@ export async function generateMetadata(props: PersonPageProps) {
 // PARAMS
 export async function generateStaticParams() {
   const people = await getPeople();
-
-  return (
-    people?.map((person) => ({
-      slug: person.slug,
-    })) || []
-  );
+  return people?.map((person) => ({ slug: person.slug })) || [];
 }
 
 // PAGE
 export default async function PersonQAPage(props: PersonPageProps) {
   const { slug } = await props.params;
 
-  const person = await getPerson(slug);
-  const answers = await getAnswersByPersonSlug(slug);
+  const [person, answers] = await Promise.all([
+    getPerson(slug),
+    getAnswersByPersonSlug(slug),
+  ]);
 
   if (!person || !answers) {
     notFound();
   }
 
   return (
-    <PageWrapper>
-      <section className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-4">
+    <div>
+      <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-4">
         <QAPersonView person={person} />
         <QAList data={answers} />
-      </section>
+      </div>
 
-      <section className="mb-12 mt-24">
+      <div className="mb-12 mt-24">
         <RecommendedSection slug={slug} />
-      </section>
-    </PageWrapper>
+      </div>
+    </div>
   );
 }

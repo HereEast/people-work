@@ -1,4 +1,3 @@
-import { PageWrapper } from "~/components/PageWrapper";
 import { HeroSection } from "~/components/(home)";
 import { FeaturedList } from "~/components/FeaturedList";
 import { SubscribeSection } from "~/components/SubscribeSection";
@@ -11,7 +10,7 @@ export default async function HomePage() {
   const featuredPeople = await getPeople(featuredSlugs);
 
   return (
-    <PageWrapper>
+    <div>
       <HeroSection />
 
       {featuredPeople && (
@@ -23,6 +22,6 @@ export default async function HomePage() {
       <div className="mx-auto my-16 max-w-screen-sm">
         <SubscribeSection />
       </div>
-    </PageWrapper>
+    </div>
   );
 }
