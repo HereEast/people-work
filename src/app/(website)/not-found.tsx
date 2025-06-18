@@ -1,14 +1,13 @@
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 import { EmojiImage } from "~/components/EmojiImage";
-import { PageWrapper } from "~/components/PageWrapper";
-import { Button } from "~/components/Button";
+import { ButtonLink } from "~/components/ui";
 
 import { ROUTE } from "~/utils/constants";
 
 export default function NotFound() {
   return (
-    <PageWrapper>
+    <div>
       <section className="flex h-full flex-col items-center justify-center gap-6">
         <div className="flex w-60 flex-col items-center gap-2 sm:w-full">
           <EmojiImage name="sad-potato" classname="w-32 sm:w-40" />
@@ -18,11 +17,14 @@ export default function NotFound() {
           </p>
         </div>
 
-        <Button href={ROUTE.index} className="h-12 px-5 sm:h-16 sm:text-2xl">
+        <ButtonLink
+          href={ROUTE.index}
+          className="h-12 px-5 sm:h-16 sm:text-2xl"
+        >
           <ArrowLeftIcon className="w-7 sm:w-8" />
           <span className="">Back to homepage</span>
-        </Button>
+        </ButtonLink>
       </section>
-    </PageWrapper>
+    </div>
   );
 }

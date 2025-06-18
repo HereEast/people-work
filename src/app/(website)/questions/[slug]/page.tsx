@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 
-import { PageWrapper } from "~/components/PageWrapper";
 import { QuestionView, AnswersList } from "~/components/(question-page)";
 import { RecommendedSection } from "~/components/RecommendedSection";
 
@@ -23,11 +22,13 @@ export async function generateMetadata(props: QuestionPageProps) {
 export async function generateStaticParams() {
   const questions = await getQuestions();
 
-  return (
-    questions?.map((question) => ({
-      slug: question.slug,
-    })) || []
-  );
+  if (!questions) {
+    return [];
+  }
+
+  return questions.map((question) => ({
+    slug: question.slug,
+  }));
 }
 
 // PAGE
@@ -44,16 +45,16 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
   const question = questions?.[currentIndex];
 
   return (
-    <PageWrapper>
-      <section className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
+    <div>
+      <div className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
         <QuestionView question={question} />
         <AnswersList slug={slug} />
-      </section>
+      </div>
 
-      <section className="mb-12 mt-24">
+      <div className="mb-12 mt-24">
         <RecommendedSection slug={slug} />
-      </section>
-    </PageWrapper>
+      </div>
+    </div>
   );
 }
 

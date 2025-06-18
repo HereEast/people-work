@@ -1,7 +1,7 @@
 "use client";
 
 import { useCookie } from "~/hooks/useCookie";
-import { Button } from "./Button";
+import { Button } from "./ui";
 
 export function CookieBanner() {
   const { isCookieBanner, setConsent } = useCookie();

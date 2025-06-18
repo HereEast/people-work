@@ -1,5 +1,5 @@
 import { LogoIcon } from "./icons";
-import { Button } from "./Button";
+import { ButtonLink } from "./ui";
 
 import { CONTACT, ROUTE } from "~/utils/constants";
 
@@ -13,14 +13,14 @@ export function Header() {
   return (
     <header className="fixed z-50 flex h-12 w-full items-center bg-bg px-2.5 text-xl sm:h-16 sm:text-3xl md:px-6">
       <nav className="flex w-full items-center justify-between gap-1">
-        <Button href={ROUTE.index} variant="link" className="w-10 sm:w-14">
+        <ButtonLink href={ROUTE.index} variant="link" className="w-10 sm:w-14">
           <LogoIcon />
-        </Button>
+        </ButtonLink>
 
         <div className="mb-1">
           {HEADER_LINKS.map((link, index) => (
             <>
-              <Button
+              <ButtonLink
                 href={link.path}
                 variant="link"
                 target={link.label === "Linkedin" ? "_blank" : "_self"}
@@ -32,7 +32,7 @@ export function Header() {
                     <span className="mr-1 sm:mr-2">,</span>
                   )}
                 </span>
-              </Button>
+              </ButtonLink>
             </>
           ))}
         </div>

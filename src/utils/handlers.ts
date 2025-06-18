@@ -3,13 +3,6 @@ import { ClassValue, clsx } from "clsx";
 
 import { FEATURED } from "./constants";
 
-// Format tag
-export function formatTagLabel(string: string) {
-  const formatted = string.split("-").join(" ");
-
-  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
-}
-
 // Featured slugs
 export function getFeaturedSlugs(
   count?: number,
@@ -31,24 +24,6 @@ export function getFeaturedSlugs(
   }
 
   return [...selected];
-}
-
-// Outer URL
-export function isOuterURL(url: string) {
-  return url.startsWith("https");
-}
-
-// Company URL
-export function getCompanyURL(url: string) {
-  return url?.startsWith("https") ? url : `https://${url}`;
-}
-
-// Parse answer text
-export function parseAnswer(text: string) {
-  const parser = new DOMParser();
-  const element = parser.parseFromString(text, "text/html");
-
-  return element.body.innerHTML;
 }
 
 // Handle errors

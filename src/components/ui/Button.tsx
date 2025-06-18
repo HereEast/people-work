@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { MouseEvent, ReactNode } from "react";
-import { cva } from "class-variance-authority";
+import { ReactNode } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "~/utils/handlers";
 
@@ -17,32 +17,35 @@ export const buttonVariants = cva(
         link: "inline-block h-fit bg-transparent px-0 hover:bg-transparent hover:opacity-30 sm:h-fit sm:px-0",
       },
       size: {
+        default: "",
         icon: "size-[44px] shrink-0 rounded-xs p-0 text-xl sm:size-14 sm:rounded-sm sm:px-0 sm:text-2xl",
       },
+    },
+    defaultVariants: {
+      variant: "base",
+      size: "default",
     },
   },
 );
 
-type ButtonProps = {
+type BaseButtonProps = VariantProps<typeof buttonVariants> & {
   children?: ReactNode;
-  href?: string | URL;
-  target?: "_blank" | "_self";
-  isDisabled?: boolean;
-  variant?: "base" | "accent" | "outline" | "link" | "tag";
-  size?: "icon";
   underline?: boolean;
-  rel?: string;
   className?: string;
-  onClick?: (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
 };
 
+// Button
+type ButtonProps = BaseButtonProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    isDisabled?: boolean;
+  };
+
 export function Button({
-  href,
   children,
   isDisabled,
-  onClick = () => {},
+  onClick,
   variant = "base",
-  size,
+  size = "default",
   underline = false,
   className = "",
   ...props
@@ -54,22 +57,46 @@ export function Button({
     className,
   );
 
-  if (href) {
-    return (
-      <Link href={href} className={classes} {...props}>
-        {children}
-      </Link>
-    );
-  }
+  const disabled = isDisabled || props.disabled;
 
   return (
     <button
-      disabled={isDisabled}
-      onClick={(e: MouseEvent<HTMLButtonElement>) => onClick?.(e)}
+      disabled={disabled}
+      onClick={onClick}
       className={classes}
       {...props}
     >
       {children}
     </button>
+  );
+}
+
+// ButtonLink
+type ButtonLinkProps = BaseButtonProps &
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    href: string | URL;
+  };
+
+export function ButtonLink({
+  children,
+  href,
+  onClick,
+  variant = "base",
+  size = "default",
+  underline = false,
+  className = "",
+  ...props
+}: ButtonLinkProps) {
+  const classes = cn(
+    buttonVariants({ variant, size }),
+    underline &&
+      "underline decoration-2 underline-offset-[3px] decoration-stone-900 hover:decoration-stone-900/0",
+    className,
+  );
+
+  return (
+    <Link href={href} className={classes} onClick={onClick} {...props}>
+      {children}
+    </Link>
   );
 }
