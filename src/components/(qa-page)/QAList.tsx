@@ -1,5 +1,5 @@
 import { Card } from "~/components/Card";
-import { GoToButton } from "~/components/GoToButton";
+import { GoToButton } from "~/components/ui/Buttons";
 import { Answer, Question } from "~/components/Answer";
 import { QuestionTag } from "~/components/QuestionTag";
 
@@ -15,7 +15,7 @@ export function QAList({ data }: QAListProps) {
   }
 
   return (
-    <div className="space-y-1.5 pt-4">
+    <div className="space-y-2 pt-4">
       {data.map((item, index) => (
         <QACard key={`${item.id}-${index}`} item={item} />
       ))}
