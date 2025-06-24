@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { SubscribeSection } from "~/components/Subscribe";
+import { SubscribeSection } from "~/components/SubscribeSection";
 import { QuestionTag } from "~/components/QuestionTag";
 
 import { getQuestions } from "~/_lib";

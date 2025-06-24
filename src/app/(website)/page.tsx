@@ -1,6 +1,6 @@
 import { HeroSection } from "~/components/(home)";
 import { FeaturedList } from "~/components/FeaturedList";
-import { SubscribeSection } from "~/components/Subscribe";
+import { SubscribeSection } from "~/components/SubscribeSection";
 
 import { getFeaturedSlugs } from "~/utils/handlers";
 import { getPeople } from "~/_lib";

@@ -5,7 +5,6 @@ import { useState } from "react";
 import { AccentText } from "./AccentText";
 import { EmojiImage } from "./EmojiImage";
 import { SubscribeForm } from "./SubscribeForm";
-import { PortalPopup } from "./Portal";
 
 // Subscribe Section
 export function SubscribeSection() {
@@ -18,32 +17,16 @@ export function SubscribeSection() {
       <div className="flex flex-col items-center justify-center gap-6">
         <SubscribeForm setIsSubscribed={setIsSubscribed} />
 
-        {isSubscribed && <SubscribeSuccessMessage />}
+        {isSubscribed && (
+          <p className="text-center leading-[110%]">
+            You're on the list!{" "}
+            <AccentText className="text-[112%]">
+              Good things are coming.
+            </AccentText>
+          </p>
+        )}
       </div>
     </section>
-  );
-}
-
-// Subscribe Popup
-interface SubscribePopupProps {
-  handleClose: () => void;
-}
-
-// On success show a message that can be closed + disappears in 2 seconds
-
-export function SubscribePopup({ handleClose }: SubscribePopupProps) {
-  const [isSubscribed, setIsSubscribed] = useState(false);
-
-  return (
-    <PortalPopup handleClose={handleClose} className="pt-12">
-      <SubscribeHeader />
-
-      <div className="flex flex-col items-center justify-center gap-6">
-        <SubscribeForm setIsSubscribed={setIsSubscribed} />
-
-        {isSubscribed && <SubscribeSuccessMessage />}
-      </div>
-    </PortalPopup>
   );
 }
 
@@ -59,15 +42,5 @@ export function SubscribeHeader() {
         </p>
       </div>
     </div>
-  );
-}
-
-// Subscribe Success Message
-export function SubscribeSuccessMessage() {
-  return (
-    <p className="text-center leading-[110%]">
-      Yay! You're on the list.{" "}
-      <AccentText className="text-[112%]">Good things are coming.</AccentText>
-    </p>
   );
 }

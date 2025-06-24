@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { Button, ButtonLink } from "./ui";
 import { EmojiImage } from "./EmojiImage";
-import { SubscribePopup } from "./Subscribe";
+import { SubscribePopup } from "./SubscribePopup";
 
 import { ROUTE } from "~/utils/constants";
 
