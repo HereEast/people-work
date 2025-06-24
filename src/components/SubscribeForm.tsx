@@ -58,7 +58,7 @@ export function SubscribeForm({ setIsSubscribed }: SubscribeFormProps) {
           <Button
             type="submit"
             isDisabled={isSubmitting}
-            className="h-16 w-full rounded-md px-5 pb-px text-xl font-medium sm:h-full sm:text-3xl sm:font-normal"
+            className="h-16 w-full rounded-md px-5 pb-px text-xl font-medium sm:h-full sm:rounded-[13px] sm:text-3xl sm:font-normal"
             aria-label="Subscribe to newsletter"
           >
             Subscribe

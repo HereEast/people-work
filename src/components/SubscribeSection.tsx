@@ -6,6 +6,7 @@ import { AccentText } from "./AccentText";
 import { EmojiImage } from "./EmojiImage";
 import { SubscribeForm } from "./SubscribeForm";
 
+// Subscribe Section
 export function SubscribeSection() {
   const [isSubscribed, setIsSubscribed] = useState(false);
 
@@ -16,13 +17,21 @@ export function SubscribeSection() {
       <div className="flex flex-col items-center justify-center gap-6">
         <SubscribeForm setIsSubscribed={setIsSubscribed} />
 
-        {isSubscribed && <SubscribeSuccessMessage />}
+        {isSubscribed && (
+          <p className="text-center leading-[110%]">
+            You're on the list!{" "}
+            <AccentText className="text-[112%]">
+              Good things are coming.
+            </AccentText>
+          </p>
+        )}
       </div>
     </section>
   );
 }
 
-function SubscribeHeader() {
+// Subscribe Header
+export function SubscribeHeader() {
   return (
     <div className="flex flex-col items-center gap-6">
       <EmojiImage name="popcorn" classname="size-32" />
@@ -33,14 +42,5 @@ function SubscribeHeader() {
         </p>
       </div>
     </div>
-  );
-}
-
-function SubscribeSuccessMessage() {
-  return (
-    <p className="text-center leading-[110%]">
-      Yay! You're on the list.{" "}
-      <AccentText className="text-[112%]">Good things are coming.</AccentText>
-    </p>
   );
 }

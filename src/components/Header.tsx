@@ -17,25 +17,25 @@ export function Header() {
           <LogoIcon />
         </ButtonLink>
 
-        <div className="mb-1">
+        <ul className="mb-1 flex gap-1 sm:gap-2">
           {HEADER_LINKS.map((link, index) => (
-            <>
+            <li className="group/header-link" key={link.label}>
               <ButtonLink
                 href={link.path}
                 variant="link"
                 target={link.label === "Linkedin" ? "_blank" : "_self"}
-                key={link.label}
               >
-                <span>
-                  {link.label}
-                  {index < HEADER_LINKS.length - 1 && (
-                    <span className="mr-1 sm:mr-2">,</span>
-                  )}
-                </span>
+                {link.label}
               </ButtonLink>
-            </>
+
+              {index < HEADER_LINKS.length - 1 && (
+                <span className="transition group-hover/header-link:opacity-30">
+                  ,
+                </span>
+              )}
+            </li>
           ))}
-        </div>
+        </ul>
       </nav>
     </header>
   );

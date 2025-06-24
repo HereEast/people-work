@@ -42,6 +42,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </ClientProvider>
 
         <CookieBanner />
+
+        <div id="portal-root" />
       </body>
     </html>
   );
