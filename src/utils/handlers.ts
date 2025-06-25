@@ -5,11 +5,11 @@ import { FEATURED } from "./constants";
 
 // Featured slugs
 export function getFeaturedSlugs(
-  count?: number,
-  excludedSlug?: string,
+  count?: number | null,
+  excludedSlugs?: string[],
 ): string[] {
   const slugs = FEATURED.map((item) => item.slug).filter(
-    (slug) => slug !== excludedSlug,
+    (slug) => !excludedSlugs?.includes(slug),
   );
 
   if (!count || count >= slugs.length) {

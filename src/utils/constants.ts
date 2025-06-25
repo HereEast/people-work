@@ -37,6 +37,21 @@ export const FEATURED = [
   },
 ];
 
+// Excluded
+export const EXCLUDED_PEOPLE = ["bartek-hlawka"];
+export const EXCLUDED_QUESTIONS = [
+  "where-to-start",
+  "drivers",
+  "best-advice",
+  "proud-moment",
+  "regrets",
+  "work-ethic",
+  "winning-mindset",
+  "face-the-unknown",
+  "recharging",
+  "values-evolution",
+];
+
 // Emojis
 interface EmojiData {
   value?: string;
@@ -48,7 +63,6 @@ type EmojisType = Record<string, EmojiData>;
 export const EMOJIS: EmojisType = {
   company: {
     value: "💼",
-    className: "mb-1",
   },
   role: {
     value: "😎",
@@ -56,68 +70,73 @@ export const EMOJIS: EmojisType = {
   "daily-tasks": {
     value: "📂",
   },
+  "tools-apps": {
+    value: "⚒️",
+  },
   skills: {
     value: "🧠",
-    className: "mb-1",
-  },
-  "best-thing": {
-    value: "🥐",
-  },
-  "worst-thing": {
-    value: "🥵",
-  },
-  "underrated-challenge": {
-    value: "🫠",
-  },
-  "top-goal": {
-    value: "🚀",
-  },
-  "current-goal": {
-    value: "📌",
-  },
-  "fav-mistake": {
-    value: "🙈",
-    className: "mb-1",
-  },
-  "unique-talent": {
-    value: "🤌",
-  },
-  "progress-check": {
-    value: "🐌",
-    className: "mb-1",
-  },
-  "grow-skills": {
-    value: "🥷",
   },
   "eye-opening": {
     value: "👀",
   },
-  "tools-apps": {
-    value: "⚒️",
+  "underrated-challenge": {
+    value: "🫠",
   },
-  "efficiency-tips": {
+  "where-to-start": {
+    value: "✏️",
+  },
+  drivers: {
+    value: "🥁",
+  },
+  // 10
+  "top-goal": {
+    value: "🚀",
+  },
+  "grow-skills": {
+    value: "🥷",
+  },
+  "unique-talent": {
+    value: "🤌",
+  },
+  "best-advice": {
+    value: "🥐",
+  },
+  "bad-advice": {
+    value: "💩",
+  },
+  "lesson-learned": {
+    value: "🥵",
+  },
+  "proud-moments": {
+    value: "🥳",
+  },
+  regrets: {
+    value: "💔",
+  },
+  "work-ethic": {
     value: "🦾",
+  },
+  "winning-mindset": {
+    value: "🏆",
+  },
+  // 20
+  "face-the-unknown": {
+    value: "🤔",
   },
   networking: {
     value: "💬",
   },
   "work-life": {
-    value: "🧟‍♂️",
+    value: "🍀",
+  },
+  recharging: {
+    value: "🔋",
+  },
+  "values-evolution": {
+    value: "🧭",
   },
   "dream-path": {
     value: "🤩",
-  },
-  "comfy-income": {
-    value: "💰",
-  },
-  "bad-advice": {
-    value: "💩",
-  },
-  "advice-to-20s-self": {
-    value: "🧐",
-  },
-  "career-advice": {
-    value: "✏️",
   },
   "exciting-trends": {
     value: "🎉",
@@ -127,6 +146,9 @@ export const EMOJIS: EmojisType = {
   },
   "media-picks": {
     value: "📚",
+  },
+  "advice-to-20s-self": {
+    value: "🧐",
   },
   "guest-wishlist": {
     value: "💜",
