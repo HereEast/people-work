@@ -7,6 +7,7 @@ import { GoToButton } from "~/components/ui/Buttons";
 
 import { PersonData } from "~/schemas";
 import { getAnswersByQuestionSlug } from "~/_lib";
+import { excludedSlugs } from "~/app/(website)/page";
 
 interface AnswersListProps {
   slug: string;
@@ -15,9 +16,13 @@ interface AnswersListProps {
 export async function AnswersList({ slug }: AnswersListProps) {
   const answers = await getAnswersByQuestionSlug(slug);
 
+  const filteredAnswers = answers?.filter(
+    (answer) => !excludedSlugs.includes(answer.person.slug),
+  );
+
   return (
     <div className="space-y-2 pt-4">
-      {answers?.map((data, index) => {
+      {filteredAnswers?.map((data, index) => {
         const person = data.person;
 
         return (

@@ -5,8 +5,10 @@ import { SubscribeSection } from "~/components/SubscribeSection";
 import { getFeaturedSlugs } from "~/utils/handlers";
 import { getPeople } from "~/_lib";
 
+export const excludedSlugs = ["bartek-hlawka"];
+
 export default async function HomePage() {
-  const featuredSlugs = getFeaturedSlugs();
+  const featuredSlugs = getFeaturedSlugs(null, excludedSlugs);
   const featuredPeople = await getPeople(featuredSlugs);
 
   return (

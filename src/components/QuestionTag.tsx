@@ -15,11 +15,13 @@ export function QuestionTag({ href, slug, className = "" }: QuestionTagProps) {
 
   return (
     <div className="flex items-center gap-1 sm:gap-1.5">
-      <Tag href={tagHref} size="icon" className={className}>
-        <span className={cn("text-[15px] sm:text-[22px]", emoji.className)}>
-          {emoji.value}
-        </span>
-      </Tag>
+      {emoji && (
+        <Tag href={tagHref} size="icon" className={className}>
+          <span className={cn("text-[15px] sm:text-[22px]", emoji.className)}>
+            {emoji.value}
+          </span>
+        </Tag>
+      )}
 
       <Tag href={tagHref} className={className}>
         <span className="mb-px opacity-90">#{slug}</span>
