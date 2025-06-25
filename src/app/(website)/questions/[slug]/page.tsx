@@ -4,7 +4,7 @@ import { QuestionView, AnswersList } from "~/components/(question-page)";
 import { RecommendedSection } from "~/components/RecommendedSection";
 
 import { generateQuestionMetadata } from "~/utils/metadata";
-import { getQuestions } from "~/_lib";
+import { getQuestion, getQuestions } from "~/_lib";
 
 interface QuestionPageProps {
   params: Promise<{
@@ -32,17 +32,14 @@ export async function generateStaticParams() {
 }
 
 // PAGE
-export default async function QuestionAnswersPage(props: QuestionPageProps) {
+export default async function QuestionPage(props: QuestionPageProps) {
   const { slug } = await props.params;
 
-  const questions = await getQuestions();
+  const question = await getQuestion(slug);
 
-  if (!questions) {
+  if (!question) {
     notFound();
   }
-
-  const currentIndex = questions?.findIndex((item) => item.slug === slug);
-  const question = questions?.[currentIndex];
 
   return (
     <div>
@@ -57,5 +54,3 @@ export default async function QuestionAnswersPage(props: QuestionPageProps) {
     </div>
   );
 }
-
-//<QuestionsNav questions={questions} currentIndex={currentIndex} />
