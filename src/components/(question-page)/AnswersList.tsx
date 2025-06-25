@@ -7,7 +7,7 @@ import { GoToButton } from "~/components/ui/Buttons";
 
 import { PersonData } from "~/schemas";
 import { getAnswersByQuestionSlug } from "~/_lib";
-import { excludedSlugs } from "~/app/(website)/page";
+import { EXCLUDED_PEOPLE } from "~/utils/constants";
 
 interface AnswersListProps {
   slug: string;
@@ -17,7 +17,7 @@ export async function AnswersList({ slug }: AnswersListProps) {
   const answers = await getAnswersByQuestionSlug(slug);
 
   const filteredAnswers = answers?.filter(
-    (answer) => !excludedSlugs.includes(answer.person.slug),
+    (answer) => !EXCLUDED_PEOPLE.includes(answer.person.slug),
   );
 
   return (

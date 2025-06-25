@@ -37,6 +37,21 @@ export const FEATURED = [
   },
 ];
 
+// Excluded
+export const EXCLUDED_PEOPLE = ["bartek-hlawka"];
+export const EXCLUDED_QUESTIONS = [
+  "where-to-start",
+  "drivers",
+  "best-advice",
+  "proud-moment",
+  "regrets",
+  "work-ethic",
+  "winning-mindset",
+  "face-the-unknown",
+  "recharging",
+  "values-evolution",
+];
+
 // Emojis
 interface EmojiData {
   value?: string;

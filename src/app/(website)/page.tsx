@@ -4,11 +4,10 @@ import { SubscribeSection } from "~/components/SubscribeSection";
 
 import { getFeaturedSlugs } from "~/utils/handlers";
 import { getPeople } from "~/_lib";
-
-export const excludedSlugs = ["bartek-hlawka"];
+import { EXCLUDED_PEOPLE } from "~/utils/constants";
 
 export default async function HomePage() {
-  const featuredSlugs = getFeaturedSlugs(null, excludedSlugs);
+  const featuredSlugs = getFeaturedSlugs(null, EXCLUDED_PEOPLE);
   const featuredPeople = await getPeople(featuredSlugs);
 
   return (
