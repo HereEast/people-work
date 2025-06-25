@@ -7,6 +7,19 @@ import { QuestionTag } from "~/components/QuestionTag";
 import { getQuestions } from "~/_lib";
 import { QuestionData } from "~/schemas";
 
+const excludedSlugs = [
+  "where-to-start",
+  "drivers",
+  "best-advice",
+  "proud-moment",
+  "regrets",
+  "work-ethic",
+  "winning-mindset",
+  "face-the-unknown",
+  "recharging",
+  "values-evolution",
+];
+
 export default async function QuestionsPage() {
   const questions = await getQuestions();
 
@@ -14,9 +27,14 @@ export default async function QuestionsPage() {
     notFound();
   }
 
+  // TODO: Remove
+  const filteredQuestions = questions?.filter(
+    (question) => !excludedSlugs.includes(question.slug),
+  );
+
   return (
     <div className="pt-6">
-      <QuestionsList questions={questions} />
+      <QuestionsList questions={filteredQuestions} />
 
       <div className="mx-auto my-16 max-w-screen-sm">
         <SubscribeSection />

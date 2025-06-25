@@ -92,7 +92,7 @@ export const EMOJIS: EmojisType = {
   "lesson-learned": {
     value: "🥵",
   },
-  "proud-moment": {
+  "proud-moments": {
     value: "🥳",
   },
   regrets: {
