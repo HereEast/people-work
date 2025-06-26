@@ -1,5 +1,5 @@
 import { getAnswersByPersonSlug, getQuestions } from "~/_lib";
-import { PERSON_SLUG, SubmitAnswerForm } from "./SingleAnswerForm";
+import { PERSON_SLUG, SubmitAnswerForm } from "./SubmitAnswerForm";
 
 export async function Admin() {
   const questions = await getQuestions();
