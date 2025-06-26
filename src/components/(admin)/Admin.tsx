@@ -1,9 +1,11 @@
 import { getAnswersByPersonSlug, getQuestions } from "~/_lib";
 import { SubmitAnswerForm } from "./SubmitAnswerForm";
 
+import { EDITING_PERSON_SLUG } from "~/utils/data";
+
 export async function Admin() {
   const questions = await getQuestions();
-  const answers = await getAnswersByPersonSlug("bartek-hlawka");
+  const answers = await getAnswersByPersonSlug(EDITING_PERSON_SLUG);
 
   if (!questions) {
     console.log("🔴 Error: Failed to fetch questions.");

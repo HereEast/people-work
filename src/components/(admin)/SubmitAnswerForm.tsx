@@ -1,13 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { QuestionData } from "~/schemas";
 import { Button } from "../ui";
+import { EDITING_PERSON_SLUG } from "~/utils/data";
+
+import { QuestionData } from "~/schemas";
 import { submitAnswer } from "~/_lib/admin";
-import { useState } from "react";
 
 interface SubmitAnswerFormProps {
   question: QuestionData;
@@ -19,8 +21,6 @@ const SubmitAnswerFormSchema = z.object({
 });
 
 type SubmitAnswerFormData = z.infer<typeof SubmitAnswerFormSchema>;
-
-export const PERSON_SLUG = "bartek-hlawka";
 
 export function SubmitAnswerForm({ question, answer }: SubmitAnswerFormProps) {
   const {
@@ -38,7 +38,7 @@ export function SubmitAnswerForm({ question, answer }: SubmitAnswerFormProps) {
     const data = {
       answer: formData.answer,
       questionId: question.id,
-      personSlug: PERSON_SLUG,
+      personSlug: EDITING_PERSON_SLUG,
     };
 
     const answer = await submitAnswer(data);
