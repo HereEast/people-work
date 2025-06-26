@@ -35,6 +35,10 @@ export const FEATURED = [
     id: 3,
     slug: "lara-simonova",
   },
+  {
+    id: 4,
+    slug: "bartek-hlawka",
+  },
 ];
 
 // Excluded

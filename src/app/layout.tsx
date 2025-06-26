@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
 
-import "../globals.css";
+import "./globals.css";
 
 import { ClientProvider } from "~/providers/ClientProvider";
 
