@@ -13,6 +13,7 @@ export interface IPersonDB {
   metadata: {
     experience: string;
     domain: string;
+    featuredAnswer: string;
     location: {
       country: string;
       city: string;
@@ -25,7 +26,6 @@ export interface IPersonDB {
       website?: string;
     };
   };
-  featuredAnswer: string;
   isActive: boolean;
   keyWords?: string[];
   createdAt: Date;
