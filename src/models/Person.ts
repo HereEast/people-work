@@ -25,6 +25,7 @@ export interface IPersonDB {
       website?: string;
     };
   };
+  featuredAnswer: string;
   isActive: boolean;
   keyWords?: string[];
   createdAt: Date;
@@ -45,6 +46,7 @@ const MetadataSchema = new Schema(
   {
     experience: { type: String },
     domain: { type: String },
+    featuredAnswer: { type: String },
     location: {
       country: { type: String },
       city: { type: String },

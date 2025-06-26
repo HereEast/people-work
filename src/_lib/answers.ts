@@ -5,7 +5,7 @@ import { IPersonDB, PersonDB } from "~/models/Person";
 import { AnswerDB, IAnswerDB } from "~/models/Answer";
 import { IQuestionDB, QuestionDB } from "~/models/Question";
 
-import { mapAnswersData, mapAnswerData } from "~/utils/mappers";
+import { mapAnswersData } from "~/utils/mappers";
 import { DBDoc } from "~/utils/types";
 
 // Answers by person slug
@@ -78,7 +78,17 @@ export async function getAnswersByQuestionSlug(slug: string) {
       return person.isActive;
     });
 
-    return mapAnswersData(answersByActivePeople);
+    const sortedAnswers = answersByActivePeople.sort((a, b) => {
+      const personA = a.personId as IPersonDB;
+      const personB = b.personId as IPersonDB;
+
+      return (
+        new Date(personB.createdAt).getTime() -
+        new Date(personA.createdAt).getTime()
+      );
+    });
+
+    return mapAnswersData(sortedAnswers);
   } catch (err) {
     console.error("🔴 Failed to fetch answers by Person slug:", err);
     return null;
@@ -86,34 +96,34 @@ export async function getAnswersByQuestionSlug(slug: string) {
 }
 
 // Featured answer
-export async function getFeaturedAnswer(slug: string) {
-  try {
-    await connectDB();
+// export async function getFeaturedAnswer(slug: string) {
+//   try {
+//     await connectDB();
 
-    const person: DBDoc<IPersonDB> = await PersonDB.findOne({
-      slug,
-      isActive: true,
-    }).exec();
+//     const person: DBDoc<IPersonDB> = await PersonDB.findOne({
+//       slug,
+//       isActive: true,
+//     }).exec();
 
-    if (!person) return null;
+//     if (!person) return null;
 
-    const query: FilterQuery<IAnswerDB> = {
-      personId: person.id,
-      featured: true,
-      questionId: { $exists: true, $ne: null },
-      $or: [{ disabled: false }, { disabled: { $exists: false } }],
-    };
+//     const query: FilterQuery<IAnswerDB> = {
+//       personId: person.id,
+//       featured: true,
+//       questionId: { $exists: true, $ne: null },
+//       $or: [{ disabled: false }, { disabled: { $exists: false } }],
+//     };
 
-    const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne(query)
-      .populate("questionId")
-      .populate("personId")
-      .exec();
+//     const doc: DBDoc<IAnswerDB> = await AnswerDB.findOne(query)
+//       .populate("questionId")
+//       .populate("personId")
+//       .exec();
 
-    if (!doc) return null;
+//     if (!doc) return null;
 
-    return mapAnswerData(doc);
-  } catch (err) {
-    console.error("🔴 Failed to fetch a featured answer:", err);
-    return null;
-  }
-}
+//     return mapAnswerData(doc);
+//   } catch (err) {
+//     console.error("🔴 Failed to fetch a featured answer:", err);
+//     return null;
+//   }
+// }

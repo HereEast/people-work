@@ -13,6 +13,7 @@ export type QuestionData = z.infer<typeof QuestionApiSchema>;
 export const PersonMetadataApiSchema = z.object({
   experience: z.string(),
   domain: z.string(),
+  featuredAnswer: z.string(),
   location: z.object({
     country: z.string(),
     city: z.string(),
@@ -53,7 +54,7 @@ export const AnswerApiSchema = z.object({
   answer: z.string(),
   question: QuestionApiSchema,
   person: PersonApiSchema,
-  featured: z.boolean().optional(),
+  // featured: z.boolean().optional(),
   marked: z.boolean().optional(),
 });
 

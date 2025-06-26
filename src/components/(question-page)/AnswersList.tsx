@@ -7,7 +7,7 @@ import { GoToButton } from "~/components/ui/Buttons";
 
 import { PersonData } from "~/schemas";
 import { getAnswersByQuestionSlug } from "~/_lib";
-import { EXCLUDED_PEOPLE } from "~/utils/constants";
+import { EXCLUDED_PEOPLE } from "~/utils/data";
 
 interface AnswersListProps {
   slug: string;
@@ -22,21 +22,15 @@ export async function AnswersList({ slug }: AnswersListProps) {
 
   return (
     <div className="space-y-2 pt-4">
-      {filteredAnswers?.map((data, index) => {
-        const person = data.person;
+      {filteredAnswers?.map((data, index) => (
+        <Card key={index} marked={data.marked}>
+          <div className="space-y-8 p-6 sm:space-y-10 sm:p-10">
+            <Answer marked={data.marked}>{data.answer}</Answer>
 
-        return (
-          <Card key={index} marked={data.featured || data.marked}>
-            <div className="space-y-8 p-6 sm:space-y-10 sm:p-10">
-              <Answer marked={data.marked || data.featured}>
-                {data.answer}
-              </Answer>
-
-              <CardFooter person={person} />
-            </div>
-          </Card>
-        );
-      })}
+            <CardFooter person={data.person} />
+          </div>
+        </Card>
+      ))}
     </div>
   );
 }
