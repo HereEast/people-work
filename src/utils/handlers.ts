@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { ClassValue, clsx } from "clsx";
 
-import { FEATURED } from "./constants";
+import { FEATURED } from "./data";
 
 // Featured slugs
 export function getFeaturedSlugs(
