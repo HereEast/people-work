@@ -1,5 +1,5 @@
 import { getAnswersByPersonSlug, getQuestions } from "~/_lib";
-import { PERSON_SLUG, SubmitAnswerForm } from "./SubmitAnswerForm";
+import { SubmitAnswerForm } from "./SubmitAnswerForm";
 
 export async function Admin() {
   const questions = await getQuestions();
@@ -11,10 +11,6 @@ export async function Admin() {
 
   return (
     <div className="rounded-2xl bg-stone-50 p-10">
-      <div className="mb-10">
-        <span>{PERSON_SLUG}</span>
-      </div>
-
       <div className="flex flex-col gap-10">
         {questions?.map((question) => {
           const answer = answers?.find(

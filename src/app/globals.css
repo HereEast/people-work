@@ -30,10 +30,12 @@ a:hover {
     --featured-1: #d8d2f4;
     --featured-2: #dfe59a;
     --featured-3: #f2d0d0;
+    --featured-4: #bec6b5;
     --featured-hover-0: #c3d4ef;
     --featured-hover-1: #cdc5f1;
     --featured-hover-2: #dee77c;
     --featured-hover-3: #f0c2c2;
+    --featured-hover-4: #abb89c;
   }
 }
 
@@ -74,6 +76,15 @@ a:hover {
   background-color: var(--featured-hover-3);
 }
 
+.featured-card-4 {
+  background-color: var(--featured-4);
+  transition: background-color 0.2s ease;
+}
+
+.featured-card-4:hover {
+  background-color: var(--featured-hover-4);
+}
+
 /* Answer */
 
 .answer a {
@@ -86,10 +97,16 @@ a:hover {
 .answer em {
   font-style: normal;
   font-family: var(--font-accent);
-  font-size: 118%;
+  font-size: 117%;
   line-height: 80%;
   font-weight: 400;
-  letter-spacing: -0.06ch;
+  letter-spacing: -0.04ch;
+
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1.5px;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 3px;
 }
 
 .featured-answer a {
@@ -141,11 +158,11 @@ a:hover {
 }
 
 .answer h6:has(+ ul) {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .answer h5:has(+ ul) {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 /* Margin between li in lists */
@@ -189,13 +206,9 @@ a:hover {
   .answer ul li::before {
     width: 10px;
     height: 10px;
-    top: 13px;
+    top: 14px;
   }
   /**/
-
-  /* .answer h5 + ul li:not(:last-child) {
-    margin-bottom: 16px;
-  } */
 
   .question,
   .answer a {
@@ -207,5 +220,14 @@ a:hover {
   .featured-answer a {
     text-decoration-thickness: 3px;
     text-underline-offset: 6px;
+  }
+
+  /* Dotted underline */
+  .answer h6:has(+ ul),
+  .answer h5:has(+ ul),
+  .answer h6,
+  .featured-answer em,
+  .answer em {
+    text-underline-offset: 4px;
   }
 }

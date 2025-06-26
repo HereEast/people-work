@@ -20,24 +20,24 @@ export const CONTACT = {
 // Featured
 export const FEATURED = [
   {
-    id: 0,
-    slug: "margo-laz",
-  },
-  {
-    id: 1,
-    slug: "dennis-lazard",
-  },
-  {
-    id: 2,
-    slug: "ivan-baranov",
+    id: 4,
+    slug: "bartek-hlawka",
   },
   {
     id: 3,
     slug: "lara-simonova",
   },
   {
-    id: 4,
-    slug: "bartek-hlawka",
+    id: 2,
+    slug: "ivan-baranov",
+  },
+  {
+    id: 1,
+    slug: "dennis-lazard",
+  },
+  {
+    id: 0,
+    slug: "margo-laz",
   },
 ];
 
@@ -112,7 +112,7 @@ export const EMOJIS: EmojisType = {
     value: "🥵",
   },
   "proud-moments": {
-    value: "🥳",
+    value: "🥹",
   },
   regrets: {
     value: "💔",
@@ -125,7 +125,7 @@ export const EMOJIS: EmojisType = {
   },
   // 20
   "face-the-unknown": {
-    value: "🤔",
+    value: "👽",
   },
   networking: {
     value: "💬",
@@ -134,10 +134,10 @@ export const EMOJIS: EmojisType = {
     value: "🍀",
   },
   recharging: {
-    value: "🔋",
+    value: "🪫",
   },
   "values-evolution": {
-    value: "🧭",
+    value: "🌊",
   },
   "dream-path": {
     value: "🤩",

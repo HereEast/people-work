@@ -26,7 +26,7 @@ function PersonViewHeader({ person }: PersonViewProps) {
   const work = person.work[0];
 
   return (
-    <div className="space-y-5 text-2xl sm:text-3xl md:leading-[110%]">
+    <div className="space-y-6 text-2xl sm:text-3xl md:leading-[110%]">
       <Image
         src={`/images/people/${person.slug}.jpg`}
         alt={`Image of ${person.name}`}
@@ -51,7 +51,7 @@ function PersonViewHeader({ person }: PersonViewProps) {
               rel="noopener noreferrer"
               className="inline-block capitalize underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
             >
-              {work.company}
+              {work.company || "Freelance"}
             </Link>
           )}
         </div>

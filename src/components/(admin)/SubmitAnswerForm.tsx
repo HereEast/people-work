@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { QuestionData } from "~/schemas";
 import { Button } from "../ui";
 import { submitAnswer } from "~/_lib/admin";
+import { useState } from "react";
 
 interface SubmitAnswerFormProps {
   question: QuestionData;
@@ -31,6 +32,8 @@ export function SubmitAnswerForm({ question, answer }: SubmitAnswerFormProps) {
     defaultValues: { answer: answer || "" },
   });
 
+  const [previewAnswer, setPreviewAnswer] = useState(answer);
+
   async function onSubmit(formData: SubmitAnswerFormData) {
     const data = {
       answer: formData.answer,
@@ -41,14 +44,14 @@ export function SubmitAnswerForm({ question, answer }: SubmitAnswerFormProps) {
     const answer = await submitAnswer(data);
 
     if (answer) {
-      console.log(answer);
+      setPreviewAnswer(answer.answer);
+      console.log("✅", answer);
     }
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
-      <div className="flex flex-col">
-        <span className="text-sm opacity-50">#{question.slug}</span>
+      <div>
         <span className="font-semibold">
           {`${question.order}. ${question.body}`}
         </span>
@@ -67,7 +70,7 @@ export function SubmitAnswerForm({ question, answer }: SubmitAnswerFormProps) {
           disabled
           className="w-full rounded-md border border-stone-200 p-6"
           rows={8}
-          value={answer || "No answer."}
+          value={previewAnswer || "No answer."}
         />
       </div>
 
