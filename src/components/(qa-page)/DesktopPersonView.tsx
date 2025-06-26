@@ -95,6 +95,7 @@ interface ContactLinksProps {
     twitter?: string;
     instagram?: string;
     email?: string;
+    website?: string;
   };
 }
 

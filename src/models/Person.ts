@@ -22,6 +22,7 @@ export interface IPersonDB {
       instagram?: string;
       twitter?: string;
       email?: string;
+      website?: string;
     };
   };
   isActive: boolean;
@@ -35,6 +36,7 @@ const LinksSchema = new Schema(
     twitter: { type: String },
     instagram: { type: String },
     email: { type: String },
+    website: { type: String },
   },
   { _id: false },
 );
