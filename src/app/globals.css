@@ -27,62 +27,71 @@ a:hover {
     --linkedin: #0077b7;
 
     --featured-0: #d1dced;
-    --featured-1: #d8d2f4;
-    --featured-2: #dfe59a;
-    --featured-3: #f2d0d0;
-    --featured-4: #bec6b5;
     --featured-hover-0: #c3d4ef;
+    --featured-1: #d8d2f4;
     --featured-hover-1: #cdc5f1;
+    --featured-2: #dfe59a;
     --featured-hover-2: #dee77c;
+    --featured-3: #f2d0d0;
     --featured-hover-3: #f0c2c2;
+    --featured-4: #bec6b5;
     --featured-hover-4: #abb89c;
+    --featured-5: #bdcfdb;
+    --featured-hover-5: #a9beca;
   }
 }
 
 /* Featured Cards */
-.featured-card-0 {
-  background-color: var(--featured-0);
+.featured-card {
   transition: background-color 0.2s ease;
 }
 
-.featured-card-0:hover {
-  background-color: var(--featured-hover-0);
+.featured-card-0 {
+  background-color: var(--featured-0);
+
+  &:hover {
+    background-color: var(--featured-hover-0);
+  }
 }
 
 .featured-card-1 {
   background-color: var(--featured-1);
-  transition: background-color 0.2s ease;
-}
 
-.featured-card-1:hover {
-  background-color: var(--featured-hover-1);
+  &:hover {
+    background-color: var(--featured-hover-1);
+  }
 }
 
 .featured-card-2 {
   background-color: var(--featured-2);
-  transition: background-color 0.2s ease;
-}
 
-.featured-card-2:hover {
-  background-color: var(--featured-hover-2);
+  &:hover {
+    background-color: var(--featured-hover-2);
+  }
 }
 
 .featured-card-3 {
   background-color: var(--featured-3);
-  transition: background-color 0.2s ease;
-}
 
-.featured-card-3:hover {
-  background-color: var(--featured-hover-3);
+  &:hover {
+    background-color: var(--featured-hover-3);
+  }
 }
 
 .featured-card-4 {
   background-color: var(--featured-4);
-  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--featured-hover-4);
+  }
 }
 
-.featured-card-4:hover {
-  background-color: var(--featured-hover-4);
+.featured-card-5 {
+  background-color: var(--featured-5);
+
+  &:hover {
+    background-color: var(--featured-hover-5);
+  }
 }
 
 /* Answer */
