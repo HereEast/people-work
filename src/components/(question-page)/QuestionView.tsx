@@ -28,7 +28,7 @@ export function DesktopQuestionView({ question }: QuestionViewProps) {
           <div className="flex flex-col gap-6">
             <ButtonBack>Back</ButtonBack>
 
-            <h1 className="text-5xl font-semibold leading-[95%] tracking-[-0.03ch]">
+            <h1 className="text-5xl font-semibold leading-[100%] tracking-[-0.02ch]">
               {question.body}
             </h1>
           </div>
