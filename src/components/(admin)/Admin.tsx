@@ -7,6 +7,8 @@ export async function Admin() {
   const questions = await getQuestions();
   const answers = await getAnswersByPersonSlug(EDITING_PERSON_SLUG);
 
+  console.log({ EDITING_PERSON_SLUG });
+
   if (!questions) {
     console.log("🔴 Error: Failed to fetch questions.");
   }
