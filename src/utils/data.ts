@@ -1,9 +1,9 @@
-export const EDITING_PERSON_SLUG = "alla-aloe";
+export const EDITING_PERSON_SLUG = "";
 export const FEATURED = [
-  {
-    id: 9,
-    slug: "alla-aloe",
-  },
+  // {
+  //   id: 9,
+  //   slug: "alla-aloe",
+  // },
   // {
   //   id: 8,
   //   slug: "gev-marotz",
@@ -16,17 +16,13 @@ export const FEATURED = [
   //   id: 6,
   //   slug: "kate-rovba",
   // },
-  {
-    id: 5,
-    slug: "agnieszka-bojanowska",
-  },
+  // {
+  //   id: 5,
+  //   slug: "agnieszka-bojanowska",
+  // },
   // {
   //   id: 4,
   //   slug: "bartek-hlawka",
-  // },
-  // {
-  //   id: 2,
-  //   slug: "ivan-baranov",
   // },
   {
     id: 2,
@@ -47,7 +43,7 @@ export const FEATURED = [
 ];
 
 // Excluded
-export const EXCLUDED_PEOPLE: string[] = [];
+export const EXCLUDED_PEOPLE: string[] = [""];
 
 // TODO: Remove
 export const EXCLUDED_QUESTIONS = [

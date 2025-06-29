@@ -5,10 +5,9 @@ import { Admin } from "~/components/(admin)/Admin";
 
 import { getFeaturedSlugs } from "~/utils/handlers";
 import { getPeople } from "~/_lib";
-import { EXCLUDED_PEOPLE } from "~/utils/data";
 
 export default async function HomePage() {
-  const featuredSlugs = getFeaturedSlugs(null, EXCLUDED_PEOPLE);
+  const featuredSlugs = getFeaturedSlugs();
   const featuredPeople = await getPeople(featuredSlugs);
 
   return (
