@@ -13,7 +13,10 @@ export const SEO_DATA = {
   },
   person: {
     title(name: string, title: string, company: string) {
-      return `${name}, ${title} at ${company}`;
+      return company.toLowerCase() === "freelance" ||
+        company.toLowerCase() === "self-employed"
+        ? `${name}, ${title}`
+        : `${name}, ${title} at ${company}`;
     },
     description(name: string) {
       return `Get to know how ${name} thinks about work, career, and personal growth. All in a simple Q&A.`;
