@@ -1,6 +1,6 @@
 import { Tag } from "./Tag";
 
-import { EMOJIS } from "~/utils/constants";
+import { EMOJIS } from "~/utils/data";
 import { cn } from "~/utils/handlers";
 
 interface QuestionTagProps {

@@ -15,8 +15,8 @@ const config: Config = {
         "2xl": "1440px",
       },
       maxWidth: {
-        "8xl": "1440px",
-        "9xl": "1800px",
+        "8xl": "1720px",
+        "9xl": "1920px",
       },
       fontFamily: {
         base: ["var(--font-base)"],

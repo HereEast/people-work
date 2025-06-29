@@ -39,7 +39,6 @@ export function mapAnswerData(doc: DBDoc<IAnswerDB>) {
   return {
     id: String(data._id),
     answer: data.answer,
-    featured: data.featured === true,
     marked: data.marked === true,
     question: {
       ...question,

@@ -13,6 +13,7 @@ export interface IPersonDB {
   metadata: {
     experience: string;
     domain: string;
+    featuredAnswer: string;
     location: {
       country: string;
       city: string;
@@ -22,6 +23,7 @@ export interface IPersonDB {
       instagram?: string;
       twitter?: string;
       email?: string;
+      website?: string;
     };
   };
   isActive: boolean;
@@ -35,6 +37,7 @@ const LinksSchema = new Schema(
     twitter: { type: String },
     instagram: { type: String },
     email: { type: String },
+    website: { type: String },
   },
   { _id: false },
 );
@@ -43,6 +46,7 @@ const MetadataSchema = new Schema(
   {
     experience: { type: String },
     domain: { type: String },
+    featuredAnswer: { type: String },
     location: {
       country: { type: String },
       city: { type: String },

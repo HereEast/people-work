@@ -26,7 +26,7 @@ function PersonViewHeader({ person }: PersonViewProps) {
   const work = person.work[0];
 
   return (
-    <div className="space-y-5 text-2xl sm:text-3xl md:leading-[110%]">
+    <div className="space-y-6 text-2xl sm:text-3xl md:leading-[110%]">
       <Image
         src={`/images/people/${person.slug}.jpg`}
         alt={`Image of ${person.name}`}
@@ -44,7 +44,7 @@ function PersonViewHeader({ person }: PersonViewProps) {
         <div className="space-y-px">
           <h2>{work.title}</h2>
 
-          {work.url && (
+          {work.url ? (
             <Link
               href={work.url}
               target="_blank"
@@ -53,6 +53,8 @@ function PersonViewHeader({ person }: PersonViewProps) {
             >
               {work.company}
             </Link>
+          ) : (
+            <h2 className="inline-block">{work.company}</h2>
           )}
         </div>
       </div>
@@ -95,6 +97,7 @@ interface ContactLinksProps {
     twitter?: string;
     instagram?: string;
     email?: string;
+    website?: string;
   };
 }
 

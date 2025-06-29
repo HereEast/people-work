@@ -5,8 +5,7 @@ import { Card } from "./Card";
 import { QuoteIcon } from "./icons";
 
 import { PersonData } from "~/schemas";
-import { getFeaturedAnswer } from "~/_lib";
-import { FEATURED } from "~/utils/constants";
+import { FEATURED } from "~/utils/data";
 import { cn } from "~/utils/handlers";
 
 // Featured list
@@ -32,7 +31,7 @@ interface FeaturedCardProps {
 }
 
 export async function FeaturedCard({ person }: FeaturedCardProps) {
-  const featuredAnswer = await getFeaturedAnswer(person.slug);
+  const { featuredAnswer } = person.metadata;
 
   if (!featuredAnswer) {
     return null;
@@ -42,13 +41,13 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
   const featuredId = featuredItem?.id || 0;
 
   return (
-    <Card className={cn(`featured-card-${featuredId} `)}>
+    <Card className={cn(`featured-card featured-card-${featuredId}`)}>
       <Link href={`/people/${person.slug}`} className="block p-6 sm:p-10">
         <div className="mb-8 space-y-5 lg:mb-10">
           <QuoteIcon />
 
-          <p className="text-3xl font-semibold leading-[95%] tracking-[-0.02ch] sm:text-4xl sm:leading-[100%]">
-            {featuredAnswer?.answer}
+          <p className="text-3xl font-semibold leading-[98%] tracking-[-0.01ch] sm:text-4xl sm:leading-[102%]">
+            {featuredAnswer}
           </p>
         </div>
 

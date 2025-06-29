@@ -29,9 +29,9 @@ interface QACardProps {
 }
 
 function QACard({ item }: QACardProps) {
-  const { question, answer, marked, featured } = item;
+  const { question, answer, marked } = item;
 
-  const isHighlighted = marked || featured;
+  const isHighlighted = marked;
   const questionUrl = `/questions/${question.slug}`;
 
   return (
