@@ -1,5 +1,9 @@
-export const EDITING_PERSON_SLUG = "";
+export const EDITING_PERSON_SLUG = "luba-kazakova";
 export const FEATURED = [
+  {
+    id: 7,
+    slug: "luba-kazakova",
+  },
   {
     id: 6,
     slug: "kate-rovba",

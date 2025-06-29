@@ -38,79 +38,10 @@ a:hover {
     --featured-hover-4: #abb89c;
     --featured-5: #bdcfdb;
     --featured-hover-5: #a9beca;
-    --featured-6: #50c878;
-    --featured-hover-6: #50c878;
-    --featured-7: #50c878;
-    --featured-hover-7: #50c878;
-  }
-}
-
-/* Featured Cards */
-.featured-card {
-  transition: background-color 0.2s ease;
-}
-
-.featured-card-0 {
-  background-color: var(--featured-0);
-
-  &:hover {
-    background-color: var(--featured-hover-0);
-  }
-}
-
-.featured-card-1 {
-  background-color: var(--featured-1);
-
-  &:hover {
-    background-color: var(--featured-hover-1);
-  }
-}
-
-.featured-card-2 {
-  background-color: var(--featured-2);
-
-  &:hover {
-    background-color: var(--featured-hover-2);
-  }
-}
-
-.featured-card-3 {
-  background-color: var(--featured-3);
-
-  &:hover {
-    background-color: var(--featured-hover-3);
-  }
-}
-
-.featured-card-4 {
-  background-color: var(--featured-4);
-
-  &:hover {
-    background-color: var(--featured-hover-4);
-  }
-}
-
-.featured-card-5 {
-  background-color: var(--featured-5);
-
-  &:hover {
-    background-color: var(--featured-hover-5);
-  }
-}
-
-.featured-card-6 {
-  background-color: var(--featured-6);
-
-  &:hover {
-    background-color: var(--featured-hover-6);
-  }
-}
-
-.featured-card-7 {
-  background-color: var(--featured-7);
-
-  &:hover {
-    background-color: var(--featured-hover-7);
+    --featured-6: #c9b3c8;
+    --featured-hover-6: #b5a0b4;
+    --featured-7: #f4db78;
+    --featured-hover-7: rgb(236, 208, 97);
   }
 }
 
@@ -213,11 +144,11 @@ a:hover {
 .answer ul li::before {
   content: "";
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   background-color: black;
   border-radius: 100%;
-  top: 8px;
+  top: 9px;
   left: 2px;
   z-index: 2;
 }
@@ -268,3 +199,73 @@ a:hover {
     text-underline-offset: 6px;
   } */
 }
+
+/* Featured Cards */
+.featured-card {
+  transition: background-color 0.2s ease;
+}
+
+.featured-card-0 {
+  background-color: var(--featured-0);
+
+  &:hover {
+    background-color: var(--featured-hover-0);
+  }
+}
+
+.featured-card-1 {
+  background-color: var(--featured-1);
+
+  &:hover {
+    background-color: var(--featured-hover-1);
+  }
+}
+
+.featured-card-2 {
+  background-color: var(--featured-2);
+
+  &:hover {
+    background-color: var(--featured-hover-2);
+  }
+}
+
+.featured-card-3 {
+  background-color: var(--featured-3);
+
+  &:hover {
+    background-color: var(--featured-hover-3);
+  }
+}
+
+.featured-card-4 {
+  background-color: var(--featured-4);
+
+  &:hover {
+    background-color: var(--featured-hover-4);
+  }
+}
+
+.featured-card-5 {
+  background-color: var(--featured-5);
+
+  &:hover {
+    background-color: var(--featured-hover-5);
+  }
+}
+
+.featured-card-6 {
+  background-color: var(--featured-6);
+
+  &:hover {
+    background-color: var(--featured-hover-6);
+  }
+}
+
+.featured-card-7 {
+  background-color: var(--featured-7);
+
+  &:hover {
+    background-color: var(--featured-hover-7);
+  }
+}
+/* */
