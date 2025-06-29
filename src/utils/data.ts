@@ -1,17 +1,33 @@
-export const EDITING_PERSON_SLUG = "luba-kazakova";
+export const EDITING_PERSON_SLUG = "alla-aloe";
 export const FEATURED = [
   {
-    id: 7,
-    slug: "luba-kazakova",
+    id: 9,
+    slug: "alla-aloe",
   },
-  {
-    id: 6,
-    slug: "kate-rovba",
-  },
+  // {
+  //   id: 8,
+  //   slug: "gev-marotz",
+  // },
+  // {
+  //   id: 7,
+  //   slug: "luba-kazakova",
+  // },
+  // {
+  //   id: 6,
+  //   slug: "kate-rovba",
+  // },
   {
     id: 5,
     slug: "agnieszka-bojanowska",
   },
+  // {
+  //   id: 4,
+  //   slug: "bartek-hlawka",
+  // },
+  // {
+  //   id: 2,
+  //   slug: "ivan-baranov",
+  // },
   {
     id: 2,
     slug: "ivan-baranov",
@@ -21,17 +37,12 @@ export const FEATURED = [
     slug: "dennis-lazard",
   },
   {
-    id: 4,
-    slug: "bartek-hlawka",
+    id: 0,
+    slug: "margo-laz",
   },
-
   {
     id: 3,
     slug: "lara-simonova",
-  },
-  {
-    id: 0,
-    slug: "margo-laz",
   },
 ];
 
