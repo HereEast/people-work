@@ -44,15 +44,17 @@ function PersonViewHeader({ person }: PersonViewProps) {
         <div className="space-y-px">
           <h2>{work.title}</h2>
 
-          {work.url && (
+          {work.url ? (
             <Link
               href={work.url}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block capitalize underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
             >
-              {work.company || "Freelance"}
+              {work.company}
             </Link>
+          ) : (
+            <h2 className="inline-block">{work.company}</h2>
           )}
         </div>
       </div>
