@@ -15,7 +15,7 @@ export function PersonCardDetails({ person }: PersonDetailsProps) {
         alt={`Image of ${person.name}`}
         width={200}
         height={200}
-        className="size-[70px] rounded-xs object-cover sm:size-[90px]"
+        className="size-[72px] rounded-xs object-cover sm:size-[90px]"
         priority
       />
 
