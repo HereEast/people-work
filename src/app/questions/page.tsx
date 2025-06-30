@@ -6,7 +6,6 @@ import { QuestionTag } from "~/components/QuestionTag";
 
 import { getQuestions } from "~/_lib";
 import { QuestionData } from "~/schemas";
-import { EXCLUDED_QUESTIONS } from "~/utils/constants";
 
 export default async function QuestionsPage() {
   const questions = await getQuestions();
@@ -15,14 +14,9 @@ export default async function QuestionsPage() {
     notFound();
   }
 
-  // TODO: Remove
-  const filteredQuestions = questions?.filter(
-    (question) => !EXCLUDED_QUESTIONS.includes(question.slug),
-  );
-
   return (
     <div className="pt-6">
-      <QuestionsList questions={filteredQuestions} />
+      <QuestionsList questions={questions} />
 
       <div className="mx-auto my-16 max-w-screen-sm">
         <SubscribeSection />
@@ -54,7 +48,7 @@ function QuestionItem({ question }: QuestionItemProps) {
     <li className="group border-t border-stone-900/15 last:border-b">
       <Link
         href={`/questions/${question.slug}`}
-        className="mx-px flex w-full flex-col-reverse gap-5 pb-5 pt-4 transition group-hover:opacity-100 md:grid md:grid-cols-2 md:items-center md:gap-10"
+        className="mx-px flex w-full flex-col-reverse gap-5 pb-6 pt-5 transition group-hover:opacity-100 md:grid md:grid-cols-2 md:items-center md:gap-10"
       >
         <QuestionTag
           slug={question.slug}
@@ -62,7 +56,7 @@ function QuestionItem({ question }: QuestionItemProps) {
         />
 
         <div className="mr-6">
-          <h2 className="text-3xl font-semibold leading-[100%] tracking-[-0.03ch] transition group-hover:opacity-30 sm:text-3xl md:leading-[110%] lg:text-5xl lg:leading-[100%]">
+          <h2 className="text-3xl font-semibold leading-[100%] tracking-[-0.02ch] transition group-hover:opacity-30 sm:text-3xl md:leading-[110%] lg:text-5xl lg:leading-[100%]">
             {question.body}
           </h2>
         </div>

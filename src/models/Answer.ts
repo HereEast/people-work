@@ -9,7 +9,7 @@ export interface IAnswerDB {
   questionId: mongoose.Types.ObjectId | IQuestionDB;
   name: string;
   answer: string;
-  featured?: boolean;
+  // featured?: boolean;
   marked?: boolean;
   disabled?: boolean;
 }
@@ -28,7 +28,7 @@ const AnswerDBSchema = new Schema(
     },
     name: { type: String, required: true },
     answer: { type: String, required: true },
-    featured: { type: Boolean },
+    // featured: { type: Boolean },
     marked: { type: Boolean },
     disabled: { type: Boolean, default: false },
   },
