@@ -107,7 +107,7 @@ a:hover {
 /* Lists */
 .answer ul li {
   position: relative;
-  padding: 0px 0px 0px 20px;
+  padding: 0px 0px 0px 16px;
 }
 
 .answer ul:not(:last-child) {
@@ -157,7 +157,7 @@ a:hover {
   background-color: black;
   border-radius: 100%;
   top: 9px;
-  left: 2px;
+  left: 0px;
   z-index: 2;
 }
 

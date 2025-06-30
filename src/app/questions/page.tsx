@@ -6,7 +6,6 @@ import { QuestionTag } from "~/components/QuestionTag";
 
 import { getQuestions } from "~/_lib";
 import { QuestionData } from "~/schemas";
-import { EXCLUDED_QUESTIONS } from "~/utils/data";
 
 export default async function QuestionsPage() {
   const questions = await getQuestions();
@@ -15,14 +14,9 @@ export default async function QuestionsPage() {
     notFound();
   }
 
-  // TODO: Remove
-  const filteredQuestions = questions?.filter(
-    (question) => !EXCLUDED_QUESTIONS.includes(question.slug),
-  );
-
   return (
     <div className="pt-6">
-      <QuestionsList questions={filteredQuestions} />
+      <QuestionsList questions={questions} />
 
       <div className="mx-auto my-16 max-w-screen-sm">
         <SubscribeSection />
