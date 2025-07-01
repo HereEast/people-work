@@ -6,6 +6,8 @@ import { Admin } from "~/components/(admin)/Admin";
 
 import { getFeaturedSlugs } from "~/utils/handlers";
 import { getPeople } from "~/_lib";
+import { ButtonLink } from "~/components/ui";
+import { ROUTE } from "~/utils/constants";
 
 export default async function HomePage() {
   const featuredSlugs = getFeaturedSlugs();
@@ -24,15 +26,21 @@ export default async function HomePage() {
       {/* <Admin /> */}
       <HeroSection />
 
-      {/* {featuredPeople && (
+      {featuredPeople && (
         <div className="mb-20">
           <FeaturedList people={featuredPeople} />
         </div>
-      )} */}
+      )}
 
       {peopleList && (
-        <div className="mb-20">
+        <div className="mb-20 space-y-6">
           <PeopleList people={peopleList} />
+          <ButtonLink
+            href={ROUTE.people}
+            className="h-16 w-full rounded-md bg-stone-800 pb-px text-xl tracking-[0.04ch] text-stone-50 hover:bg-stone-900 sm:h-24 sm:rounded-lg sm:text-3xl"
+          >
+            See All
+          </ButtonLink>
         </div>
       )}
 
