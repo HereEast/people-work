@@ -27,7 +27,7 @@ function PersonListItem({ person }: PersonListItemProps) {
   const work = person.work[0];
 
   return (
-    <li className="group border-t border-stone-900/15 px-1 last:border-b">
+    <li className="group border-t border-stone-900/15 px-px last:border-b">
       <Link
         href={`/people/${person.slug}`}
         className="grid w-full grid-cols-2 items-center gap-6 py-4 transition sm:grid-cols-[1fr_1fr_auto] lg:grid-cols-[2fr_2fr_auto] lg:gap-10 xl:grid-cols-[1.5fr_2fr_0.8fr_auto]"
@@ -63,7 +63,7 @@ function PersonView({ name, slug }: PersonViewProps) {
         priority
       />
 
-      <h3 className="text-xl font-semibold leading-[100%] transition group-hover:opacity-30 sm:text-3xl lg:truncate lg:text-nowrap">
+      <h3 className="text-xl font-semibold leading-[105%] transition group-hover:opacity-30 sm:text-3xl lg:truncate lg:text-nowrap">
         {name}
       </h3>
     </div>
@@ -82,6 +82,7 @@ function PersonJob({ title, company }: PersonJobProps) {
       <h4 className="truncate text-lg leading-[120%] transition group-hover:opacity-40 sm:text-2xl">
         {title}
       </h4>
+
       <h4 className="truncate text-lg leading-[120%] transition group-hover:opacity-40 sm:text-2xl">
         {company}
       </h4>

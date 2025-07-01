@@ -28,10 +28,10 @@ export const FEATURED = [
     id: 2,
     slug: "ivan-baranov",
   },
-  // {
-  //   id: 1,
-  //   slug: "dennis-lazard",
-  // },
+  {
+    id: 1,
+    slug: "dennis-lazard",
+  },
   {
     id: 0,
     slug: "margo-laz",
