@@ -10,13 +10,11 @@ interface PeopleListProps {
 
 export function PeopleList({ people }: PeopleListProps) {
   return (
-    <div>
-      <ul>
-        {people.map((person) => (
-          <PersonListItem key={person.id} person={person} />
-        ))}
-      </ul>
-    </div>
+    <ul>
+      {people.map((person) => (
+        <PersonListItem key={person.id} person={person} />
+      ))}
+    </ul>
   );
 }
 
@@ -65,7 +63,7 @@ function PersonView({ name, slug }: PersonViewProps) {
         priority
       />
 
-      <h3 className="text-xl font-semibold leading-[100%] transition group-hover:opacity-30 sm:text-3xl lg:text-nowrap">
+      <h3 className="text-xl font-semibold leading-[100%] transition group-hover:opacity-30 sm:text-3xl lg:truncate lg:text-nowrap">
         {name}
       </h3>
     </div>

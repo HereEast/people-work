@@ -17,9 +17,11 @@ export default async function HomePage() {
     featuredSlugs.includes(person.slug),
   );
 
-  const peopleList = people?.filter(
-    (person) => !person.isHidden && !featuredSlugs.includes(person.slug),
-  );
+  const peopleList = people
+    ?.filter(
+      (person) => !person.isHidden && !featuredSlugs.includes(person.slug),
+    )
+    .slice(0, 10);
 
   return (
     <div>
