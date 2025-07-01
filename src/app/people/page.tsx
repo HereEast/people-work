@@ -1,7 +1,22 @@
-import { redirect } from "next/navigation";
+import { PeopleList } from "~/components/PeopleList";
+import { SubscribeSection } from "~/components/SubscribeSection";
 
-import { ROUTE } from "~/utils/constants";
+import { getPeople } from "~/_lib";
 
-export default function PeoplePage() {
-  redirect(ROUTE.index);
+export default async function PeoplePage() {
+  const people = await getPeople();
+
+  const peopleList = people?.filter((person) => !person.isHidden);
+
+  return (
+    <div>
+      <div className="my-10">
+        {peopleList && <PeopleList people={peopleList} />}
+      </div>
+
+      <div className="mx-auto my-16 max-w-screen-sm">
+        <SubscribeSection />
+      </div>
+    </div>
+  );
 }

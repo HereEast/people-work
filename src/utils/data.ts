@@ -42,29 +42,6 @@ export const FEATURED = [
   },
 ];
 
-// Excluded
-export const EXCLUDED_PEOPLE: string[] = [
-  "bartek-hlawka",
-  "alla-aloe",
-  "luba-kazakova",
-  "kate-rovba",
-  "gev-marotz",
-];
-
-// TODO: Remove
-// export const EXCLUDED_QUESTIONS = [
-//   "where-to-start",
-//   "drivers",
-//   "best-advice",
-//   "proud-moment",
-//   "regrets",
-//   "work-ethic",
-//   "winning-mindset",
-//   "face-the-unknown",
-//   "recharging",
-//   "values-evolution",
-// ];
-
 // Emojis
 interface EmojiData {
   value?: string;

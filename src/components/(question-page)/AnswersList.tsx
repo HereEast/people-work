@@ -7,7 +7,6 @@ import { GoToButton } from "~/components/ui/Buttons";
 
 import { PersonData } from "~/schemas";
 import { getAnswersByQuestionSlug } from "~/_lib";
-import { EXCLUDED_PEOPLE } from "~/utils/data";
 
 interface AnswersListProps {
   slug: string;
@@ -16,9 +15,7 @@ interface AnswersListProps {
 export async function AnswersList({ slug }: AnswersListProps) {
   const answers = await getAnswersByQuestionSlug(slug);
 
-  const filteredAnswers = answers?.filter(
-    (answer) => !EXCLUDED_PEOPLE.includes(answer.person.slug),
-  );
+  const filteredAnswers = answers?.filter((answer) => !answer.person.isHidden);
 
   return (
     <div className="space-y-2 pt-4">

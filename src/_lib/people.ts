@@ -36,7 +36,9 @@ export async function getPeople(
       query.slug = { $in: slugs };
     }
 
-    const docs: DBDoc<IPersonDB>[] = await PersonDB.find(query).exec();
+    const docs: DBDoc<IPersonDB>[] = await PersonDB.find(query)
+      .sort({ createdAt: -1 })
+      .exec();
 
     if (!docs.length) return null;
 
