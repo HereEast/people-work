@@ -43,6 +43,7 @@ export const PersonApiSchema = z.object({
   keyWords: z.array(z.string()).optional(),
   slug: z.string(),
   isActive: z.boolean(),
+  isHidden: z.boolean().optional(),
   createdAt: z.date(),
 });
 

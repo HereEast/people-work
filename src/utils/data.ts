@@ -28,10 +28,10 @@ export const FEATURED = [
     id: 2,
     slug: "ivan-baranov",
   },
-  {
-    id: 1,
-    slug: "dennis-lazard",
-  },
+  // {
+  //   id: 1,
+  //   slug: "dennis-lazard",
+  // },
   {
     id: 0,
     slug: "margo-laz",
@@ -41,29 +41,6 @@ export const FEATURED = [
     slug: "lara-simonova",
   },
 ];
-
-// Excluded
-export const EXCLUDED_PEOPLE: string[] = [
-  "bartek-hlawka",
-  "alla-aloe",
-  "luba-kazakova",
-  "kate-rovba",
-  "gev-marotz",
-];
-
-// TODO: Remove
-// export const EXCLUDED_QUESTIONS = [
-//   "where-to-start",
-//   "drivers",
-//   "best-advice",
-//   "proud-moment",
-//   "regrets",
-//   "work-ethic",
-//   "winning-mindset",
-//   "face-the-unknown",
-//   "recharging",
-//   "values-evolution",
-// ];
 
 // Emojis
 interface EmojiData {

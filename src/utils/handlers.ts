@@ -1,17 +1,15 @@
 import { twMerge } from "tailwind-merge";
 import { ClassValue, clsx } from "clsx";
 
-import { EXCLUDED_PEOPLE, FEATURED } from "./data";
+import { FEATURED } from "./data";
 
 // Featured slugs
 export function getFeaturedSlugs(
   count?: number | null,
   excludedSlugs?: string[],
 ): string[] {
-  const excluded = [...(excludedSlugs || []), ...EXCLUDED_PEOPLE];
-
   const slugs = FEATURED.map((item) => item.slug).filter(
-    (slug) => !excluded?.includes(slug),
+    (slug) => !(excludedSlugs || [])?.includes(slug),
   );
 
   if (!count || count >= slugs.length) {

@@ -1,5 +1,6 @@
 import { HeroSection } from "~/components/(home)";
 import { FeaturedList } from "~/components/FeaturedList";
+import { PeopleList } from "~/components/PeopleList";
 import { SubscribeSection } from "~/components/SubscribeSection";
 import { Admin } from "~/components/(admin)/Admin";
 
@@ -8,16 +9,30 @@ import { getPeople } from "~/_lib";
 
 export default async function HomePage() {
   const featuredSlugs = getFeaturedSlugs();
-  const featuredPeople = await getPeople(featuredSlugs);
+  const people = await getPeople();
+
+  const featuredPeople = people?.filter((person) =>
+    featuredSlugs.includes(person.slug),
+  );
+
+  const peopleList = people?.filter(
+    (person) => !person.isHidden && !featuredSlugs.includes(person.slug),
+  );
 
   return (
     <div>
       {/* <Admin /> */}
       <HeroSection />
 
-      {featuredPeople && (
+      {/* {featuredPeople && (
         <div className="mb-20">
           <FeaturedList people={featuredPeople} />
+        </div>
+      )} */}
+
+      {peopleList && (
+        <div className="mb-20">
+          <PeopleList people={peopleList} />
         </div>
       )}
 

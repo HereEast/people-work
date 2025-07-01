@@ -27,6 +27,7 @@ export interface IPersonDB {
     };
   };
   isActive: boolean;
+  isHidden: boolean;
   keyWords?: string[];
   createdAt: Date;
 }
@@ -74,6 +75,7 @@ const PersonDBSchema = new Schema(
     metadata: { type: MetadataSchema },
     keyWords: { type: [String], default: [] },
     isActive: { type: Boolean, required: true },
+    isHidden: { type: Boolean },
   },
   { timestamps: true },
 );
