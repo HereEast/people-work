@@ -1,7 +1,6 @@
 import { Tag } from "./Tag";
 
-import { EMOJIS } from "~/utils/data";
-import { cn } from "~/utils/handlers";
+import { EMOJIS } from "~/utils/emojis";
 
 interface QuestionTagProps {
   slug: string;
@@ -17,9 +16,7 @@ export function QuestionTag({ href, slug, className = "" }: QuestionTagProps) {
     <div className="flex items-center gap-1 sm:gap-1.5">
       {emoji && (
         <Tag href={tagHref} size="icon" className={className}>
-          <span className={cn("text-[15px] sm:text-[22px]", emoji.className)}>
-            {emoji.value}
-          </span>
+          <span className="text-[15px] sm:text-[22px]">{emoji.value}</span>
         </Tag>
       )}
 
