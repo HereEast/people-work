@@ -26,22 +26,24 @@ a:hover {
     --background: #e8e8e8;
     --linkedin: #0077b7;
 
-    --featured-0: #d1dced;
+    /* --featured-0: #d1dced;
     --featured-hover-0: #c3d4ef;
     --featured-1: #d8d2f4;
-    --featured-hover-1: #cdc5f1;
-    --featured-2: #dfe59a;
-    --featured-hover-2: #dee77c;
+    --featured-hover-1: #cdc5f1; */
+    --featured-0: #dfe59a;
+    --featured-hover-0: #dee77c;
     --featured-3: #f2d0d0;
     --featured-hover-3: #f0c2c2;
-    --featured-4: #bec6b5;
-    --featured-hover-4: #abb89c;
-    --featured-5: #bdcfdb;
-    --featured-hover-5: #a9beca;
-    --featured-6: #c9b3c8;
-    --featured-hover-6: #b5a0b4;
-    --featured-7: #f4db78;
-    --featured-hover-7: rgb(236, 208, 97);
+    --featured-1: #bdcfdb;
+    --featured-hover-1: #a9beca;
+    --featured-2: #f6e089;
+    --featured-hover-2: rgb(241, 214, 107);
+    /* --featured-4: #bec6b5;
+    --featured-hover-4: #abb89c; */
+    /* --featured-6: #c9b3c8;
+    --featured-hover-6: #b5a0b4; */
+    /* --featured-9: #d1d0da;
+    --featured-hover-9: #b8b6c5; */
   }
 }
 
@@ -275,6 +277,14 @@ a:hover {
 
   &:hover {
     background-color: var(--featured-hover-7);
+  }
+}
+
+.featured-card-9 {
+  background-color: var(--featured-9);
+
+  &:hover {
+    background-color: var(--featured-hover-9);
   }
 }
 /* */

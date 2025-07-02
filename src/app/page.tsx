@@ -34,7 +34,7 @@ export default async function HomePage() {
         </div>
       )}
 
-      {/* {peopleList && (
+      {peopleList && (
         <div className="mb-20 space-y-6">
           <PeopleList people={peopleList} />
           <ButtonLink
@@ -44,7 +44,7 @@ export default async function HomePage() {
             See All
           </ButtonLink>
         </div>
-      )} */}
+      )}
 
       <div className="mx-auto my-16 max-w-screen-sm">
         <SubscribeSection />
