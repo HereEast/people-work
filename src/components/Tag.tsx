@@ -28,7 +28,9 @@ export function Tag({
   }
 
   return (
-    <div className={cn(baseClasses, "hover:border-stone-900/15")}>
+    <div
+      className={cn(baseClasses, "hover:border-stone-900/15, cursor-default")}
+    >
       {children}
     </div>
   );
