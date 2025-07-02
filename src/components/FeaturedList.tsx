@@ -5,7 +5,7 @@ import { Card } from "./Card";
 import { QuoteIcon } from "./icons";
 
 import { PersonData } from "~/schemas";
-import { FEATURED } from "~/utils/data";
+import { ALL_SLUGS } from "~/utils/data";
 import { cn } from "~/utils/handlers";
 
 // Featured list
@@ -37,7 +37,7 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
     return null;
   }
 
-  const featuredItem = FEATURED.find((item) => item.slug === person.slug);
+  const featuredItem = ALL_SLUGS.find((item) => item.slug === person.slug);
   const featuredId = featuredItem?.id || 0;
 
   return (
