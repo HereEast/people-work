@@ -4,11 +4,16 @@ import { FeaturedList } from "./FeaturedList";
 import { getFeaturedSlugs } from "~/utils/handlers";
 
 interface RecommendedPeopleProps {
-  slug?: string;
+  slug: string;
 }
 
 export async function RecommendedSection({ slug }: RecommendedPeopleProps) {
-  const slugs = getFeaturedSlugs(2, [slug || ""]);
+  const slugs = getFeaturedSlugs({
+    source: "all",
+    count: 2,
+    excludedSlugs: [slug],
+  });
+
   const recommendedPeople = await getPeople(slugs);
 
   if (!recommendedPeople) {
