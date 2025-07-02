@@ -5,7 +5,8 @@
 body {
   box-sizing: border-box;
   scroll-behavior: smooth;
-  letter-spacing: 0.02ch;
+  letter-spacing: 0.025ch;
+  text-decoration-skip-ink: none;
 }
 
 li {
@@ -41,14 +42,6 @@ a:hover {
   }
 }
 
-.hero-accent {
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-decoration-thickness: 2px;
-  text-decoration-skip-ink: none;
-  text-underline-offset: 3.5px;
-}
-
 /* Answer */
 
 .answer a {
@@ -60,35 +53,16 @@ a:hover {
 .answer em {
   font-style: normal;
   font-family: var(--font-accent);
-  font-size: 117%;
+  font-size: 115%;
   line-height: 70%;
   font-weight: 400;
-  letter-spacing: -0.04ch;
+  letter-spacing: -0.03ch;
 
   text-decoration: underline;
   text-decoration-style: dotted;
   text-decoration-thickness: 1.5px;
   text-decoration-skip-ink: none;
   text-underline-offset: 3px;
-}
-
-.featured-answer em {
-  font-style: normal;
-  /* font-family: var(--font-accent);
-  font-size: 117%; */
-  /* font-weight: 400; */
-  /* letter-spacing: -0.04ch; */
-
-  /* text-decoration: underline;
-  text-decoration-style: dotted;
-  text-decoration-thickness: 2px;
-  text-decoration-skip-ink: none;
-  text-underline-offset: 4px; */
-}
-
-.featured-answer a {
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
 }
 
 .answer a:hover {
@@ -134,12 +108,6 @@ a:hover {
   margin-bottom: 6px;
 }
 
-/* Margin between li in lists */
-/* .answer ul li:not(:last-child),
-.answer h6 + ul li:not(:last-child) {
-  margin-bottom: 2px;
-} */
-
 .answer h5 + ul li:not(:last-child) {
   margin-bottom: 8px;
 }
@@ -184,23 +152,11 @@ a:hover {
     text-underline-offset: 4px;
   }
 
-  /* Featured */
-  .featured-answer a {
-    text-decoration-thickness: 3px;
-    text-underline-offset: 6px;
-  }
-
   /* Dotted underline */
   .answer h6:has(+ ul),
   .answer h5:has(+ ul),
   .answer h6,
   .answer em {
     text-underline-offset: 4px;
-  }
-
-  /* .featured-answer em, */
-  .hero-accent {
-    text-decoration-thickness: 5px;
-    text-underline-offset: 6px;
   }
 }

@@ -14,7 +14,7 @@ export async function Answer({ children, marked }: AnswersProps) {
   if (marked) {
     return (
       <div
-        className="featured-answer text-3xl font-semibold leading-[95%] tracking-[-0.02ch] sm:text-5xl sm:font-semibold sm:leading-[95%] sm:tracking-[-0.02ch] md:font-semibold [&_a]:transition"
+        className="text-2xl font-semibold leading-[100%] sm:text-4xl sm:font-semibold sm:leading-[98%] sm:tracking-[-0.00ch] [&_a]:underline [&_a]:decoration-[3px] [&_a]:underline-offset-[6px] [&_a]:transition sm:[&_a]:decoration-2 sm:[&_a]:underline-offset-4 [&_em]:not-italic"
         dangerouslySetInnerHTML={{
           __html: parsedHTML,
         }}
@@ -24,7 +24,7 @@ export async function Answer({ children, marked }: AnswersProps) {
 
   return (
     <div
-      className="answer text-xl leading-[120%] tracking-[0.02ch] opacity-95 sm:text-3xl sm:leading-[120%] [&_a]:transition"
+      className="answer text-xl leading-[120%] opacity-95 sm:text-3xl sm:leading-[120%] [&_a]:transition"
       dangerouslySetInnerHTML={{
         __html: parsedHTML,
       }}
