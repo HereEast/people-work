@@ -25,7 +25,10 @@ export function PersonCardDetails({ person }: PersonDetailsProps) {
         </h3>
 
         {person.work.map((work, index) => (
-          <div className="flex flex-col font-medium leading-[115%]" key={index}>
+          <div
+            className="flex flex-col font-medium leading-[115%] tracking-[0ch]"
+            key={index}
+          >
             <h4>{work.title}</h4>
             <h4>{work.company || "Freelance"}</h4>
           </div>
