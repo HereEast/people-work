@@ -6,7 +6,6 @@ import { QuoteIcon } from "./icons";
 
 import { PersonData } from "~/schemas";
 import { ALL_SLUGS } from "~/utils/data";
-import { cn } from "~/utils/handlers";
 
 // Featured list
 interface FeaturedCardListProps {
@@ -41,7 +40,10 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
   const featuredId = featuredItem?.id || 0;
 
   return (
-    <Card className={cn(`featured-card featured-card-${featuredId}`)}>
+    <Card
+      className="transition duration-300 hover:brightness-[0.95] hover:saturate-[1.2]"
+      style={{ backgroundColor: `var(--featured-${featuredId})` }}
+    >
       <Link href={`/people/${person.slug}`} className="block p-6 sm:p-10">
         <div className="mb-8 space-y-5 lg:mb-10">
           <QuoteIcon />
