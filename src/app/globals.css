@@ -24,12 +24,12 @@ a:hover {
 
 @layer base {
   :root {
-    --background: #e8e8e8;
+    --background: #ededed;
     --linkedin: #0077b7;
 
     --featured-0: #dfe59a;
     --featured-1: #d8d2f4;
-    --featured-2: #d1dced;
+    --featured-2: #d1dced; 
     --featured-3: #f2d0d0;
     --featured-4: #bdcfdb;
     --featured-5: #f6e089;
