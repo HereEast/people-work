@@ -24,7 +24,7 @@ export default async function AboutPage() {
   ];
 
   return (
-    <div className="mb-4 grid grid-cols-2 gap-4">
+    <div className="mb-4 grid lg:grid-cols-2 lg:gap-4">
       <StickyColumn>
         <div className="flex h-full flex-col justify-between">
           <Image
@@ -40,7 +40,18 @@ export default async function AboutPage() {
         </div>
       </StickyColumn>
 
-      <div className="space-y-20 pr-10 pt-4">
+      <div className="mb-8 mt-4 sm:mb-10 lg:hidden">
+        <Image
+          src={`/images/about.jpg`}
+          alt="People Work image"
+          width={600}
+          height={600}
+          className="size-32 rounded-md object-cover sm:size-52"
+          priority
+        />
+      </div>
+
+      <div className="space-y-20 lg:pr-10 lg:pt-4">
         <About />
       </div>
     </div>

@@ -62,7 +62,7 @@ a:hover {
   text-decoration-style: dotted;
   text-decoration-thickness: 1.5px;
   text-decoration-skip-ink: none;
-  text-underline-offset: 3px;
+  text-underline-offset: 2.5px;
 }
 
 .answer a:hover {
@@ -157,6 +157,7 @@ a:hover {
   .answer h5:has(+ ul),
   .answer h6,
   .answer em {
-    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3.5px;
   }
 }

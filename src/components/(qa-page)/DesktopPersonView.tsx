@@ -49,7 +49,9 @@ function PersonViewHeader({ person }: PersonViewProps) {
 
       <div className="space-y-1">
         <h1>
-          <AccentText>{person.name}</AccentText>
+          <AccentText className="underline decoration-dotted decoration-[2px] underline-offset-[4px]">
+            {person.name}
+          </AccentText>
         </h1>
 
         <div className="space-y-px">
