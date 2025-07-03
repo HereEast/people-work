@@ -24,12 +24,12 @@ a:hover {
 
 @layer base {
   :root {
-    --background: #e8e8e8;
+    --background: #ededed;
     --linkedin: #0077b7;
 
     --featured-0: #dfe59a;
     --featured-1: #d8d2f4;
-    --featured-2: #d1dced;
+    --featured-2: #d1dced; 
     --featured-3: #f2d0d0;
     --featured-4: #bdcfdb;
     --featured-5: #f6e089;
@@ -62,7 +62,7 @@ a:hover {
   text-decoration-style: dotted;
   text-decoration-thickness: 1.5px;
   text-decoration-skip-ink: none;
-  text-underline-offset: 3px;
+  text-underline-offset: 2.5px;
 }
 
 .answer a:hover {
@@ -157,6 +157,7 @@ a:hover {
   .answer h5:has(+ ul),
   .answer h6,
   .answer em {
-    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3.5px;
   }
 }

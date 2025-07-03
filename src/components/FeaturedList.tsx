@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { PersonCardDetails } from "./PersonCardDetails";
 import { Card } from "./Card";
-import { QuoteIcon } from "./icons";
+import { QuoteIcon } from "./icons/QuoteIcon";
 
 import { PersonData } from "~/schemas";
 import { ALL_SLUGS } from "~/utils/data";

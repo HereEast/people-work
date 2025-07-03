@@ -1,4 +1,4 @@
-import { LogoIcon } from "./icons";
+import { LogoIcon } from "./icons/LogoIcon";
 import { ButtonLink } from "./ui";
 
 import { CONTACT, ROUTE } from "~/utils/constants";
