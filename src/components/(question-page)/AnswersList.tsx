@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { Card } from "~/components/Card";
-import { Answer } from "~/components/Answer";
+import { Answer, Clarifications } from "~/components/Answer";
 import { PersonCardDetails } from "~/components/PersonCardDetails";
 import { GoToButton } from "~/components/ui/Buttons";
 
@@ -37,9 +37,13 @@ function AnswerCard({ answerData }: AnswerCardProps) {
   return (
     <Card marked={marked}>
       <div className="space-y-8 p-6 sm:space-y-10 sm:p-10">
-        <Answer clarifications={clarifications} marked={marked}>
-          {answer}
-        </Answer>
+        <div className="space-y-8 sm:space-y-10">
+          <Answer marked={marked}>{answer}</Answer>
+
+          {clarifications && clarifications.length > 0 && (
+            <Clarifications data={clarifications} />
+          )}
+        </div>
 
         <AnswerCardFooter person={person} />
       </div>

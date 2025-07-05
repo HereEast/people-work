@@ -6,41 +6,31 @@ import { parseMarkdown } from "~/utils/parseMarkdown";
 // Answer
 interface AnswersProps {
   children: string;
-  clarifications: {
-    question: string;
-    answer: string;
-  }[];
   marked: boolean;
 }
 
 // Answer
-export async function Answer({
-  children,
-  clarifications,
-  marked,
-}: AnswersProps) {
+export async function Answer({ children, marked }: AnswersProps) {
   const parsedHTML = await parseMarkdown(children);
 
-  return (
-    <div className="space-y-8 sm:space-y-10">
-      {marked ? (
-        <div
-          className="text-2xl font-semibold leading-[100%] sm:text-4xl sm:font-semibold sm:leading-[98%] sm:tracking-[-0.00ch] [&_a]:underline [&_a]:decoration-[3px] [&_a]:underline-offset-[6px] [&_a]:transition sm:[&_a]:decoration-2 sm:[&_a]:underline-offset-4 [&_em]:not-italic"
-          dangerouslySetInnerHTML={{
-            __html: parsedHTML,
-          }}
-        />
-      ) : (
-        <div
-          className="answer text-xl leading-[120%] opacity-95 sm:text-3xl sm:leading-[120%] [&_a]:transition"
-          dangerouslySetInnerHTML={{
-            __html: parsedHTML,
-          }}
-        />
-      )}
+  if (marked) {
+    return (
+      <div
+        className="text-2xl font-semibold leading-[100%] sm:text-4xl sm:font-semibold sm:leading-[98%] sm:tracking-[-0.00ch] [&_a]:underline [&_a]:decoration-[3px] [&_a]:underline-offset-[6px] [&_a]:transition sm:[&_a]:decoration-2 sm:[&_a]:underline-offset-4 [&_em]:not-italic"
+        dangerouslySetInnerHTML={{
+          __html: parsedHTML,
+        }}
+      />
+    );
+  }
 
-      {clarifications.length > 0 && <Clarifications data={clarifications} />}
-    </div>
+  return (
+    <div
+      className="answer text-xl leading-[120%] opacity-95 sm:text-3xl sm:leading-[120%] [&_a]:transition"
+      dangerouslySetInnerHTML={{
+        __html: parsedHTML,
+      }}
+    />
   );
 }
 

@@ -1,6 +1,6 @@
 import { Card } from "~/components/Card";
 import { GoToButton } from "~/components/ui/Buttons";
-import { Answer, Question } from "~/components/Answer";
+import { Answer, Clarifications, Question } from "~/components/Answer";
 import { QuestionTag } from "~/components/QuestionTag";
 
 import { AnswerData, QuestionData } from "~/schemas";
@@ -36,9 +36,14 @@ function QACard({ answerData }: QACardProps) {
       <div className="space-y-6 p-6 sm:space-y-10 sm:p-10">
         <div className="space-y-6 sm:space-y-10">
           <Question>{question}</Question>
-          <Answer clarifications={clarifications} marked={marked}>
-            {answer}
-          </Answer>
+
+          <div className="space-y-8 sm:space-y-10">
+            <Answer marked={marked}>{answer}</Answer>
+
+            {clarifications && clarifications.length > 0 && (
+              <Clarifications data={clarifications} />
+            )}
+          </div>
         </div>
 
         <QACardFooter question={question} />
