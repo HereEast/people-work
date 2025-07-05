@@ -19,10 +19,10 @@ export const PersonMetadataApiSchema = z.object({
     city: z.string(),
   }),
   links: z.object({
-    linkedin: z.string().optional(),
-    twitter: z.string().optional(),
-    instagram: z.string().optional(),
-    email: z.string().optional(),
+    linkedin: z.string().default(""),
+    twitter: z.string().default(""),
+    instagram: z.string().default(""),
+    email: z.string().default(""),
   }),
 });
 
@@ -36,14 +36,14 @@ export const PersonApiSchema = z.object({
     z.object({
       company: z.string(),
       title: z.string(),
-      url: z.string().optional(),
+      url: z.string().default(""),
     }),
   ),
   metadata: PersonMetadataApiSchema,
-  keyWords: z.array(z.string()).optional(),
+  keyWords: z.array(z.string()).default([]),
   slug: z.string(),
   isActive: z.boolean(),
-  isHidden: z.boolean().optional(),
+  isHidden: z.boolean().default(false),
   createdAt: z.date(),
 });
 
@@ -55,8 +55,16 @@ export const AnswerApiSchema = z.object({
   answer: z.string(),
   question: QuestionApiSchema,
   person: PersonApiSchema,
-  // featured: z.boolean().optional(),
-  marked: z.boolean().optional(),
+  clarifications: z
+    .array(
+      z.object({
+        question: z.string(),
+        answer: z.string(),
+      }),
+    )
+    .default([]),
+  marked: z.boolean().default(false),
+  disabled: z.boolean().default(false),
 });
 
 export type AnswerData = z.infer<typeof AnswerApiSchema>;

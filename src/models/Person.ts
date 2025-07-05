@@ -8,7 +8,7 @@ export interface IPersonDB {
   work: {
     company: string;
     title: string;
-    url?: string;
+    url: string;
   }[];
   metadata: {
     experience: string;
@@ -19,16 +19,16 @@ export interface IPersonDB {
       city: string;
     };
     links: {
-      linkedin?: string;
-      instagram?: string;
-      twitter?: string;
-      email?: string;
-      website?: string;
+      linkedin: string;
+      instagram: string;
+      twitter: string;
+      email: string;
+      website: string;
     };
   };
   isActive: boolean;
   isHidden: boolean;
-  keyWords?: string[];
+  keyWords: string[];
   createdAt: Date;
 }
 
@@ -75,7 +75,7 @@ const PersonDBSchema = new Schema(
     metadata: { type: MetadataSchema },
     keyWords: { type: [String], default: [] },
     isActive: { type: Boolean, required: true },
-    isHidden: { type: Boolean },
+    isHidden: { type: Boolean, default: false },
   },
   { timestamps: true },
 );

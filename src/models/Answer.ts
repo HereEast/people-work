@@ -9,10 +9,21 @@ export interface IAnswerDB {
   questionId: mongoose.Types.ObjectId | IQuestionDB;
   name: string;
   answer: string;
-  // featured?: boolean;
-  marked?: boolean;
-  disabled?: boolean;
+  marked: boolean;
+  disabled: boolean;
+  clarifications: {
+    question: string;
+    answer: string;
+  }[];
 }
+
+const ClarificationDBSchema = new Schema(
+  {
+    question: { type: String },
+    answer: { type: String },
+  },
+  { _id: false },
+);
 
 const AnswerDBSchema = new Schema(
   {
@@ -28,8 +39,11 @@ const AnswerDBSchema = new Schema(
     },
     name: { type: String, required: true },
     answer: { type: String, required: true },
-    // featured: { type: Boolean },
-    marked: { type: Boolean },
+    clarifications: {
+      type: [ClarificationDBSchema],
+      default: [],
+    },
+    marked: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
   },
   { timestamps: true },

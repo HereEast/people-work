@@ -38,8 +38,6 @@ export function mapAnswerData(doc: DBDoc<IAnswerDB>) {
 
   return {
     id: String(data._id),
-    answer: data.answer,
-    marked: data.marked === true,
     question: {
       ...question,
       id: question._id.toString(),
@@ -48,6 +46,7 @@ export function mapAnswerData(doc: DBDoc<IAnswerDB>) {
       ...person,
       id: person._id.toString(),
     },
+    ...data,
   };
 }
 
