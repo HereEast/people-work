@@ -6,7 +6,7 @@ import { parseMarkdown } from "~/utils/parseMarkdown";
 // Answer
 interface AnswersProps {
   children: string;
-  marked: boolean;
+  marked?: boolean;
 }
 
 // Answer
