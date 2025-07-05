@@ -5,7 +5,7 @@ import { Answer } from "~/components/Answer";
 import { PersonCardDetails } from "~/components/PersonCardDetails";
 import { GoToButton } from "~/components/ui/Buttons";
 
-import { PersonData } from "~/schemas";
+import { AnswerData, PersonData } from "~/schemas";
 import { getAnswersByQuestionSlug } from "~/_lib";
 
 interface AnswersListProps {
@@ -15,29 +15,44 @@ interface AnswersListProps {
 export async function AnswersList({ slug }: AnswersListProps) {
   const answers = await getAnswersByQuestionSlug(slug);
 
-  const filteredAnswers = answers?.filter((answer) => !answer.person.isHidden);
+  const publicAnswers = answers?.filter((answer) => !answer.person.isHidden);
 
   return (
     <div className="space-y-2 pt-4">
-      {filteredAnswers?.map((data, index) => (
-        <Card key={index} marked={data.marked}>
-          <div className="space-y-8 p-6 sm:space-y-10 sm:p-10">
-            <Answer marked={data.marked}>{data.answer}</Answer>
-
-            <CardFooter person={data.person} />
-          </div>
-        </Card>
+      {publicAnswers?.map((data) => (
+        <AnswerCard key={data.person.id} answerData={data} />
       ))}
     </div>
   );
 }
 
+// Answer Card
+interface AnswerCardProps {
+  answerData: AnswerData;
+}
+
+function AnswerCard({ answerData }: AnswerCardProps) {
+  const { marked, person, answer, clarifications } = answerData;
+
+  return (
+    <Card marked={marked}>
+      <div className="space-y-8 p-6 sm:space-y-10 sm:p-10">
+        <Answer clarifications={clarifications} marked={marked}>
+          {answer}
+        </Answer>
+
+        <AnswerCardFooter person={person} />
+      </div>
+    </Card>
+  );
+}
+
 // Card Footer
-interface CardFooterProps {
+interface AnswerCardFooterProps {
   person: PersonData;
 }
 
-function CardFooter({ person }: CardFooterProps) {
+function AnswerCardFooter({ person }: AnswerCardFooterProps) {
   return (
     <div className="flex w-full items-end justify-between">
       <Link

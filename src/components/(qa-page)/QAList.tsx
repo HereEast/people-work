@@ -3,7 +3,7 @@ import { GoToButton } from "~/components/ui/Buttons";
 import { Answer, Question } from "~/components/Answer";
 import { QuestionTag } from "~/components/QuestionTag";
 
-import { AnswerData } from "~/schemas";
+import { AnswerData, QuestionData } from "~/schemas";
 
 interface QAListProps {
   data: AnswerData[];
@@ -17,7 +17,7 @@ export function QAList({ data }: QAListProps) {
   return (
     <div className="space-y-2 pt-4">
       {data.map((item, index) => (
-        <QACard key={`${item.id}-${index}`} item={item} />
+        <QACard key={`${item.id}-${index}`} answerData={item} />
       ))}
     </div>
   );
@@ -25,28 +25,40 @@ export function QAList({ data }: QAListProps) {
 
 // QA Card
 interface QACardProps {
-  item: AnswerData;
+  answerData: AnswerData;
 }
 
-function QACard({ item }: QACardProps) {
-  const { question, answer, marked } = item;
-
-  const isHighlighted = marked;
-  const questionUrl = `/questions/${question.slug}`;
+function QACard({ answerData }: QACardProps) {
+  const { question, answer, marked, clarifications } = answerData;
 
   return (
-    <Card marked={isHighlighted}>
+    <Card marked={marked}>
       <div className="space-y-6 p-6 sm:space-y-10 sm:p-10">
         <div className="space-y-6 sm:space-y-10">
           <Question>{question}</Question>
-          <Answer marked={isHighlighted}>{answer}</Answer>
+          <Answer clarifications={clarifications} marked={marked}>
+            {answer}
+          </Answer>
         </div>
 
-        <div className="flex w-full items-center justify-between gap-1">
-          <QuestionTag slug={question.slug} href={questionUrl} />
-          <GoToButton href={questionUrl} />
-        </div>
+        <QACardFooter question={question} />
       </div>
     </Card>
+  );
+}
+
+// Card Footer
+interface QACardFooterProps {
+  question: QuestionData;
+}
+
+function QACardFooter({ question }: QACardFooterProps) {
+  const questionUrl = `/questions/${question.slug}`;
+
+  return (
+    <div className="flex w-full items-center justify-between gap-1">
+      <QuestionTag slug={question.slug} href={questionUrl} />
+      <GoToButton href={questionUrl} />
+    </div>
   );
 }
