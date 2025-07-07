@@ -1,4 +1,4 @@
-export const EDITING_PERSON_SLUG = "luba-kazakova";
+export const EDITING_PERSON_SLUG = "";
 export const FEATURED = [
   {
     id: 5,

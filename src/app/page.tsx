@@ -26,7 +26,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <Admin />
+      {/* <Admin /> */}
       <HeroSection />
 
       {featuredPeople && (
