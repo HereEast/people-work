@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "../ui";
+import { Clarification } from "./ClarificationForms";
 import { submitClarification } from "~/_lib/admin";
 
 const FormSchema = z.object({
@@ -18,13 +19,10 @@ type FormData = z.infer<typeof FormSchema>;
 interface FormProps {
   answerId: string;
   personSlug: string;
-  clarification: {
-    question: string;
-    answer: string;
-  };
+  clarification: Clarification;
   onClose?: () => void;
   onDelete?: () => void;
-  onSuccess: (clarifications: { question: string; answer: string }[]) => void;
+  onSuccess: (clarifications: Clarification[]) => void;
 }
 
 // Form
@@ -44,26 +42,23 @@ export function SubmitClarificationForm(props: FormProps) {
     },
   });
 
-  const [previewAnswer, setPreviewAnswer] = useState(
-    clarification.answer || "",
-  );
+  const [prevAnswer, setPrevAnswer] = useState(clarification.answer || "");
 
+  // Submit
   async function onSubmit(formData: FormData) {
     if (!answerId || !personSlug || !formData.question || !formData.answer) {
       return;
     }
 
-    const data = {
+    const answer = await submitClarification({
       answer: formData.answer,
       question: formData.question,
       answerId,
       personSlug,
-    };
-
-    const answer = await submitClarification(data);
+    });
 
     if (answer) {
-      setPreviewAnswer(formData.answer);
+      setPrevAnswer(formData.answer);
       onSuccess(answer.clarifications);
     }
   }
@@ -87,7 +82,7 @@ export function SubmitClarificationForm(props: FormProps) {
           <textarea
             className="w-full rounded-md border border-stone-200 p-6"
             rows={8}
-            value={previewAnswer || "No answer."}
+            value={prevAnswer || "No answer."}
             disabled
           />
         </div>

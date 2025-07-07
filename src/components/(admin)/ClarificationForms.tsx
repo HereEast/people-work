@@ -11,7 +11,7 @@ interface ClarificationFormsProps {
   answer: AnswerData;
 }
 
-interface Clarification {
+export interface Clarification {
   question: string;
   answer: string;
 }

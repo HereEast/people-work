@@ -8,6 +8,7 @@ export async function Admin() {
   const questions = await getQuestions();
   const answers = await getAnswersByPersonSlug(EDITING_PERSON_SLUG);
 
+  // TODO: Select person
   console.log({ EDITING_PERSON_SLUG });
 
   if (!questions) {

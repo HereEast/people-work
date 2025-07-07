@@ -11,16 +11,16 @@ import { EDITING_PERSON_SLUG } from "~/utils/data";
 import { AnswerData, QuestionData } from "~/schemas";
 import { submitAnswer } from "~/_lib/admin";
 
-interface SubmitAnswerFormProps {
-  questionData: QuestionData;
-  answerData?: AnswerData;
-}
-
 const SubmitAnswerFormSchema = z.object({
   answer: z.string(),
 });
 
 type SubmitAnswerFormData = z.infer<typeof SubmitAnswerFormSchema>;
+
+interface SubmitAnswerFormProps {
+  questionData: QuestionData;
+  answerData?: AnswerData;
+}
 
 export function SubmitAnswerForm({
   questionData,
@@ -35,20 +35,17 @@ export function SubmitAnswerForm({
     defaultValues: { answer: answerData?.answer || "" },
   });
 
-  const [previewAnswer, setPreviewAnswer] = useState(answerData?.answer || "");
+  const [prevAnswer, setPrevAnswer] = useState(answerData?.answer || "");
 
   async function onSubmit(formData: SubmitAnswerFormData) {
-    const data = {
+    const answer = await submitAnswer({
       answer: formData.answer,
       questionId: questionData.id,
       personSlug: EDITING_PERSON_SLUG,
-    };
-
-    const answer = await submitAnswer(data);
+    });
 
     if (answer) {
-      setPreviewAnswer(answer.answer);
-      console.log("✅", answer);
+      setPrevAnswer(answer.answer);
     }
   }
 
@@ -72,13 +69,13 @@ export function SubmitAnswerForm({
             disabled
             className="w-full rounded-md border border-stone-200 p-6"
             rows={8}
-            value={previewAnswer || "No answer."}
+            value={prevAnswer || "No answer."}
           />
         </div>
       </div>
 
       <Button type="submit" disabled={isSubmitting}>
-        Submit
+        {isSubmitting ? "Submitting..." : "Submit"}
       </Button>
     </form>
   );

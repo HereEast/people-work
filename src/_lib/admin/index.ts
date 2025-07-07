@@ -1,6 +1,7 @@
 import { AnswerData } from "~/schemas";
 import { handleError } from "~/utils/handlers";
 
+// Answer
 interface SubmitAnswerProps {
   personSlug: string;
   questionId: string;
