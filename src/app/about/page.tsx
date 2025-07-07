@@ -60,7 +60,7 @@ export default async function AboutPage() {
 }
 
 // About
-export function About() {
+function About() {
   return (
     <div>
       <div className="mb-10 sm:mb-16">
@@ -154,7 +154,7 @@ function BodyContent() {
 }
 
 // Connect
-export function ConnectContent() {
+function ConnectContent() {
   return (
     <div>
       <div className="mb-6 space-y-1 text-3xl">
