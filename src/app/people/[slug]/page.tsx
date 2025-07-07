@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 
 import { RecommendedSection } from "~/components/RecommendedSection";
-import { QAPersonView } from "~/components/(qa-page)/QAPersonView";
-import { QAList } from "~/components/(qa-page)/QAList";
+import { QAPersonView } from "~/components/(people)/QAPersonView";
+import { QAList } from "~/components/(people)/QAList";
 
 import { generatePersonMetadata } from "~/utils/metadata";
 import { getAnswersByPersonSlug, getPeople, getPerson } from "~/_lib";
