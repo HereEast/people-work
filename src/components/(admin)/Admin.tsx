@@ -14,16 +14,16 @@ export async function Admin() {
   }
 
   return (
-    <div className="rounded-2xl bg-stone-50 p-10">
-      <div className="flex flex-col gap-10">
+    <div>
+      <div className="flex flex-col gap-6">
         {questions?.map((question) => {
           const answer = answers?.find(
             (answer) => answer.question.id === question.id,
           );
 
           return (
-            <div key={question.id}>
-              <SubmitAnswerForm question={question} answer={answer?.answer} />
+            <div className="rounded-2xl bg-stone-50 p-10" key={question.id}>
+              <SubmitAnswerForm questionData={question} answerData={answer} />
             </div>
           );
         })}

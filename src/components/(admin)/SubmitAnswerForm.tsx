@@ -8,12 +8,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../ui";
 import { EDITING_PERSON_SLUG } from "~/utils/data";
 
-import { QuestionData } from "~/schemas";
+import { AnswerData, QuestionData } from "~/schemas";
 import { submitAnswer } from "~/_lib/admin";
 
 interface SubmitAnswerFormProps {
-  question: QuestionData;
-  answer?: string;
+  questionData: QuestionData;
+  answerData?: AnswerData;
 }
 
 const SubmitAnswerFormSchema = z.object({
@@ -22,22 +22,25 @@ const SubmitAnswerFormSchema = z.object({
 
 type SubmitAnswerFormData = z.infer<typeof SubmitAnswerFormSchema>;
 
-export function SubmitAnswerForm({ question, answer }: SubmitAnswerFormProps) {
+export function SubmitAnswerForm({
+  questionData,
+  answerData,
+}: SubmitAnswerFormProps) {
   const {
     register,
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<SubmitAnswerFormData>({
     resolver: zodResolver(SubmitAnswerFormSchema),
-    defaultValues: { answer: answer || "" },
+    defaultValues: { answer: answerData?.answer || "" },
   });
 
-  const [previewAnswer, setPreviewAnswer] = useState(answer);
+  const [previewAnswer, setPreviewAnswer] = useState(answerData?.answer || "");
 
   async function onSubmit(formData: SubmitAnswerFormData) {
     const data = {
       answer: formData.answer,
-      questionId: question.id,
+      questionId: questionData.id,
       personSlug: EDITING_PERSON_SLUG,
     };
 
@@ -50,28 +53,28 @@ export function SubmitAnswerForm({ question, answer }: SubmitAnswerFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
-      <div>
-        <span className="font-semibold">
-          {`${question.order}. ${question.body}`}
-        </span>
-      </div>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+      <div className="space-y-6">
+        <label className="inline-block max-w-[660px] text-3xl font-semibold leading-[1.1]">
+          {`${questionData.order}. ${questionData.body}`}
+        </label>
 
-      <div className="grid grid-cols-2 gap-10">
-        {/* Input */}
-        <textarea
-          className="w-full rounded-md border border-stone-200 p-6"
-          rows={8}
-          {...register("answer")}
-        />
+        <div className="grid grid-cols-2 gap-10">
+          {/* Input */}
+          <textarea
+            className="w-full rounded-md border border-stone-200 p-6"
+            rows={8}
+            {...register("answer")}
+          />
 
-        {/* Answer */}
-        <textarea
-          disabled
-          className="w-full rounded-md border border-stone-200 p-6"
-          rows={8}
-          value={previewAnswer || "No answer."}
-        />
+          {/* Answer */}
+          <textarea
+            disabled
+            className="w-full rounded-md border border-stone-200 p-6"
+            rows={8}
+            value={previewAnswer || "No answer."}
+          />
+        </div>
       </div>
 
       <Button type="submit" disabled={isSubmitting}>
