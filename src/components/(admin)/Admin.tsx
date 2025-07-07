@@ -1,6 +1,7 @@
-import { getAnswersByPersonSlug, getQuestions } from "~/_lib";
 import { SubmitAnswerForm } from "./SubmitAnswerForm";
+import { ClarificationForms } from "./ClarificationForms";
 
+import { getAnswersByPersonSlug, getQuestions } from "~/_lib";
 import { EDITING_PERSON_SLUG } from "~/utils/data";
 
 export async function Admin() {
@@ -24,6 +25,8 @@ export async function Admin() {
           return (
             <div className="rounded-2xl bg-stone-50 p-10" key={question.id}>
               <SubmitAnswerForm questionData={question} answerData={answer} />
+
+              {answer && <ClarificationForms answer={answer} />}
             </div>
           );
         })}
