@@ -18,6 +18,7 @@ export interface Clarification {
 
 export function ClarificationForms({ answer }: ClarificationFormsProps) {
   const [list, setList] = useState<Clarification[]>(answer.clarifications);
+  const [isOpen, setIsOpen] = useState(false);
 
   // TODO: Delete clarification
   // async function handleDelete() {
@@ -49,43 +50,18 @@ export function ClarificationForms({ answer }: ClarificationFormsProps) {
       )}
 
       <div className="mt-10">
-        <NewClarification
-          answerId={answer?.id || ""}
-          personSlug={answer?.person.slug || ""}
-          onSuccess={handleSuccess}
-        />
+        {isOpen ? (
+          <SubmitClarificationForm
+            answerId={answer.id}
+            personSlug={answer.person.slug}
+            clarification={{ question: "", answer: "" }}
+            onClose={() => setIsOpen(false)}
+            onSuccess={handleSuccess}
+          />
+        ) : (
+          <Button onClick={() => setIsOpen(true)}>Add Clarification</Button>
+        )}
       </div>
     </>
-  );
-}
-
-// New
-interface NewClarificationProps {
-  answerId: string;
-  personSlug: string;
-  onSuccess: (clarifications: Clarification[]) => void;
-}
-
-export function NewClarification({
-  answerId,
-  personSlug,
-  onSuccess,
-}: NewClarificationProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  if (!isOpen) {
-    return <Button onClick={() => setIsOpen(true)}>Add Clarification</Button>;
-  }
-
-  return (
-    <div>
-      <SubmitClarificationForm
-        answerId={answerId}
-        personSlug={personSlug}
-        clarification={{ question: "", answer: "" }}
-        onClose={() => setIsOpen(false)}
-        onSuccess={onSuccess}
-      />
-    </div>
   );
 }
