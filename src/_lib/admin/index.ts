@@ -1,6 +1,7 @@
 import { AnswerData } from "~/schemas";
 import { handleError } from "~/utils/handlers";
 
+// Answer
 interface SubmitAnswerProps {
   personSlug: string;
   questionId: string;
@@ -17,7 +18,7 @@ export async function submitAnswer({
   }
 
   try {
-    const response = await fetch(`api/admin`, {
+    const response = await fetch(`api/admin/answer`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,6 +28,52 @@ export async function submitAnswer({
 
     if (!response.ok) {
       throw new Error("🔴 Failed to submit an answer.");
+    }
+
+    const data: AnswerData = await response.json();
+
+    return data;
+  } catch (err) {
+    handleError(err);
+
+    return null;
+  }
+}
+
+// Clarification
+interface SubmitClarificationProps {
+  personSlug: string;
+  answerId: string;
+  question: string;
+  answer: string;
+}
+
+export async function submitClarification({
+  personSlug,
+  answerId,
+  question,
+  answer,
+}: SubmitClarificationProps): Promise<AnswerData | null> {
+  if (!answer || !question) {
+    throw new Error("Answer and question are required.");
+  }
+
+  try {
+    const response = await fetch(`api/admin/clarification`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        answer,
+        question,
+        answerId,
+        personSlug,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("🔴 Failed to submit a clarification.");
     }
 
     const data: AnswerData = await response.json();
