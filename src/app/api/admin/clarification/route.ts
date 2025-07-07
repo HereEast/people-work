@@ -6,22 +6,17 @@ import { PersonDB } from "~/models/Person";
 
 export interface IFormDataProps {
   answerId: string;
-  clarificationQuestion: string;
-  clarificationAnswer: string;
+  question: string;
+  answer: string;
   personSlug: string;
 }
 
 export async function POST(req: Request) {
   const data = await req.json();
 
-  const {
-    answerId,
-    clarificationQuestion,
-    clarificationAnswer,
-    personSlug,
-  }: IFormDataProps = data;
+  const { answerId, question, answer, personSlug }: IFormDataProps = data;
 
-  if (!answerId || !clarificationQuestion || !clarificationAnswer) {
+  if (!answerId || !question || !answer) {
     return NextResponse.json(
       "🔴 Error: Answer ID, question, or answer is missing.",
       {
@@ -54,15 +49,15 @@ export async function POST(req: Request) {
 
     const existingClarification = answerDoc.clarifications.find(
       (clarification: { question: string }) =>
-        clarification.question === clarificationQuestion,
+        clarification.question === question,
     );
 
     if (existingClarification) {
-      existingClarification.answer = clarificationAnswer;
+      existingClarification.answer = answer;
     } else {
       answerDoc.clarifications.push({
-        question: clarificationQuestion,
-        answer: clarificationAnswer,
+        question,
+        answer,
       });
     }
 

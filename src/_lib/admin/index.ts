@@ -43,17 +43,17 @@ export async function submitAnswer({
 interface SubmitClarificationProps {
   personSlug: string;
   answerId: string;
-  clarificationQuestion: string;
-  clarificationAnswer: string;
+  question: string;
+  answer: string;
 }
 
 export async function submitClarification({
   personSlug,
   answerId,
-  clarificationQuestion,
-  clarificationAnswer,
+  question,
+  answer,
 }: SubmitClarificationProps): Promise<AnswerData | null> {
-  if (!clarificationAnswer || !clarificationQuestion) {
+  if (!answer || !question) {
     throw new Error("Answer and question are required.");
   }
 
@@ -64,8 +64,8 @@ export async function submitClarification({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        clarificationAnswer,
-        clarificationQuestion,
+        answer,
+        question,
         answerId,
         personSlug,
       }),

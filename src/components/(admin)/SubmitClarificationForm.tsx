@@ -9,8 +9,8 @@ import { Button } from "../ui";
 import { submitClarification } from "~/_lib/admin";
 
 const FormSchema = z.object({
-  clarificationQuestion: z.string().min(1),
-  clarificationAnswer: z.string().min(1),
+  question: z.string().min(1),
+  answer: z.string().min(1),
 });
 
 type FormData = z.infer<typeof FormSchema>;
@@ -23,15 +23,15 @@ interface FormProps {
     answer: string;
   };
   onClose?: () => void;
+  onDelete?: () => void;
+  onSuccess: (clarifications: { question: string; answer: string }[]) => void;
 }
 
 // Form
-export function SubmitClarificationForm({
-  clarification,
-  answerId,
-  personSlug,
-  onClose,
-}: FormProps) {
+export function SubmitClarificationForm(props: FormProps) {
+  const { clarification, answerId, personSlug, onClose, onDelete, onSuccess } =
+    props;
+
   const {
     register,
     handleSubmit,
@@ -39,8 +39,8 @@ export function SubmitClarificationForm({
   } = useForm<FormData>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      clarificationAnswer: clarification.answer || "",
-      clarificationQuestion: clarification.question || "",
+      answer: clarification.answer || "",
+      question: clarification.question || "",
     },
   });
 
@@ -49,18 +49,13 @@ export function SubmitClarificationForm({
   );
 
   async function onSubmit(formData: FormData) {
-    if (
-      !answerId ||
-      !personSlug ||
-      !formData.clarificationQuestion ||
-      !formData.clarificationAnswer
-    ) {
+    if (!answerId || !personSlug || !formData.question || !formData.answer) {
       return;
     }
 
     const data = {
-      clarificationAnswer: formData.clarificationAnswer,
-      clarificationQuestion: formData.clarificationQuestion,
+      answer: formData.answer,
+      question: formData.question,
       answerId,
       personSlug,
     };
@@ -68,15 +63,8 @@ export function SubmitClarificationForm({
     const answer = await submitClarification(data);
 
     if (answer) {
-      setPreviewAnswer(formData.clarificationAnswer);
-      console.log("✅", answer);
-    }
-  }
-
-  // TODO: Delete clarification
-  async function handleDelete() {
-    if (!answerId || !personSlug) {
-      return;
+      setPreviewAnswer(formData.answer);
+      onSuccess(answer.clarifications);
     }
   }
 
@@ -85,24 +73,22 @@ export function SubmitClarificationForm({
       <div className="space-y-1">
         <textarea
           className="w-full rounded-md border border-stone-200 px-6 py-4 text-2xl font-semibold leading-[1.1]"
-          {...register("clarificationQuestion")}
+          {...register("question")}
           rows={1}
         />
 
         <div className="grid grid-cols-2 gap-10">
-          {/* Input */}
           <textarea
             className="w-full rounded-md border border-stone-200 p-6"
             rows={8}
-            {...register("clarificationAnswer")}
+            {...register("answer")}
           />
 
-          {/* Answer */}
           <textarea
-            disabled
             className="w-full rounded-md border border-stone-200 p-6"
             rows={8}
             value={previewAnswer || "No answer."}
+            disabled
           />
         </div>
       </div>
@@ -113,8 +99,7 @@ export function SubmitClarificationForm({
         </Button>
 
         {onClose && <Button onClick={onClose}>Close</Button>}
-
-        {clarification.answer && <Button onClick={handleDelete}>Delete</Button>}
+        {onDelete && <Button onClick={onDelete}>Delete</Button>}
       </div>
     </form>
   );
