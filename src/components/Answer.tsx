@@ -36,13 +36,16 @@ export async function Answer({ children, marked }: AnswersProps) {
 
 // Clarifications
 interface ClarificationsProps {
+  name: string;
   data: {
     question: string;
     answer: string;
   }[];
 }
 
-export async function Clarifications({ data }: ClarificationsProps) {
+export async function Clarifications({ data, name }: ClarificationsProps) {
+  const personInitials = name.split(" ").map((word) => word[0].toUpperCase());
+
   const parsedArray = await Promise.all(
     data.map(async (item) => ({
       ...item,
@@ -57,15 +60,24 @@ export async function Clarifications({ data }: ClarificationsProps) {
           key={index}
           className="space-y-4 rounded-md bg-stone-800/[2%] p-5 leading-[115%] sm:rounded-lg sm:p-8 sm:pr-10"
         >
-          <h4 className="text-base font-semibold leading-[125%] sm:text-xl">
-            {question}
-          </h4>
-          <div
-            className="answer text-base leading-[130%] sm:text-xl sm:leading-[135%] [&_em]:underline-offset-2"
-            dangerouslySetInnerHTML={{
-              __html: answer,
-            }}
-          />
+          <div className="grid items-start gap-2 sm:grid-cols-[50px_1fr]">
+            <div className="hidden sm:block">PW: </div>
+            <h4 className="text-base font-semibold leading-[125%] sm:text-xl">
+              {question}
+            </h4>
+          </div>
+
+          <div className="grid items-start gap-2 sm:grid-cols-[50px_1fr]">
+            <div className="hidden sm:block sm:leading-[135%]">
+              {personInitials}:
+            </div>
+            <div
+              className="answer text-base leading-[130%] sm:text-xl sm:leading-[135%] [&_a]:underline-offset-2 [&_em]:text-[113%] [&_em]:decoration-2 [&_em]:underline-offset-[2.5px]"
+              dangerouslySetInnerHTML={{
+                __html: answer,
+              }}
+            />
+          </div>
         </li>
       ))}
     </ul>
@@ -82,7 +94,7 @@ export function Question({ children }: QuestionProps) {
     <h3>
       <Link
         href={`/questions/${children.slug}`}
-        className="decoration-skip-ink-none inline-block text-xl font-semibold leading-[110%] underline decoration-[1.5px] underline-offset-[2px] transition hover:opacity-30 sm:text-3xl sm:leading-[115%] sm:decoration-[2px] sm:underline-offset-[3.5px]"
+        className="decoration-skip-ink-none inline-block text-xl font-semibold leading-[110%] underline decoration-[1.5px] underline-offset-2 transition hover:opacity-30 sm:text-3xl sm:leading-[115%] sm:decoration-2 sm:underline-offset-[3.5px]"
       >
         {children.body}
       </Link>

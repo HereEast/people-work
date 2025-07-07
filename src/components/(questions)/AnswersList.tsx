@@ -41,7 +41,7 @@ function AnswerCard({ answerData }: AnswerCardProps) {
           <Answer marked={marked}>{answer}</Answer>
 
           {clarifications && clarifications.length > 0 && (
-            <Clarifications data={clarifications} />
+            <Clarifications data={clarifications} name={person.name} />
           )}
         </div>
 

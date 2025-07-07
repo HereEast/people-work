@@ -29,7 +29,7 @@ interface QACardProps {
 }
 
 function QACard({ answerData }: QACardProps) {
-  const { question, answer, marked, clarifications } = answerData;
+  const { question, answer, marked, clarifications, person } = answerData;
 
   return (
     <Card marked={marked}>
@@ -41,7 +41,7 @@ function QACard({ answerData }: QACardProps) {
             <Answer marked={marked}>{answer}</Answer>
 
             {clarifications && clarifications.length > 0 && (
-              <Clarifications data={clarifications} />
+              <Clarifications data={clarifications} name={person.name} />
             )}
           </div>
         </div>

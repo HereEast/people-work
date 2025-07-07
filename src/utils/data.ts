@@ -1,20 +1,21 @@
 export const EDITING_PERSON_SLUG = "";
 export const FEATURED = [
   {
-    id: 0,
-    slug: "ivan-baranov",
+    id: 5,
+    slug: "alla-aloe",
   },
   {
     id: 4,
     slug: "agnieszka-bojanowska",
   },
   {
-    id: 5,
-    slug: "alla-aloe",
-  },
-  {
     id: 3,
     slug: "lara-simonova",
+  },
+
+  {
+    id: 6,
+    slug: "luba-kazakova",
   },
 ];
 
@@ -42,6 +43,10 @@ export const ALL_SLUGS = [
   {
     id: 5,
     slug: "alla-aloe",
+  },
+  {
+    id: 6,
+    slug: "luba-kazakova",
   },
 ];
 

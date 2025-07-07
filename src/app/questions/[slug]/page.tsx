@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 
-import { QuestionView } from "~/components/(question-page)/QuestionView";
+import { QuestionView } from "~/components/(questions)/QuestionView";
 import { RecommendedSection } from "~/components/RecommendedSection";
-import { AnswersList } from "~/components/(question-page)/AnswersList";
+import { AnswersList } from "~/components/(questions)/AnswersList";
 
 import { generateQuestionMetadata } from "~/utils/metadata";
 import { getQuestion, getQuestions } from "~/_lib";

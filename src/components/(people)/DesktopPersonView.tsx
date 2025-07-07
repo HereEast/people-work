@@ -3,8 +3,8 @@ import Image from "next/image";
 
 import { StickyColumn } from "~/components/ui";
 import { AccentText } from "~/components/AccentText";
-import { ContactLinks } from "../ContactLinks";
-import { MetadataDetails } from "../MetadataDetails";
+import { ContactLinks } from "~/components/ContactLinks";
+import { MetadataDetails } from "~/components/MetadataDetails";
 
 import { PersonData } from "~/schemas";
 
@@ -49,7 +49,7 @@ function PersonViewHeader({ person }: PersonViewProps) {
 
       <div className="space-y-1">
         <h1>
-          <AccentText className="underline decoration-dotted decoration-[2px] underline-offset-[4px]">
+          <AccentText className="underline decoration-dotted decoration-2 underline-offset-4">
             {person.name}
           </AccentText>
         </h1>
