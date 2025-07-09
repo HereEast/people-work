@@ -1,32 +1,33 @@
 import { SubscriptionData } from "~/schemas";
-import { ISubscriptionDB, SubscriptionDB } from "~/models/Subscription";
-
-import { connectDB } from "./connectDB";
-import { mapSubscriptionData } from "~/utils/mappers";
-import { DBDoc } from "~/utils/types";
+import { handleError } from "~/utils/handlers";
 
 // Subscribe
 export async function submitSubscription(
   email: string,
 ): Promise<SubscriptionData | null> {
+  if (!email) {
+    throw new Error("Email is required.");
+  }
+
   try {
-    await connectDB();
+    const response = await fetch("api/subscriptions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
 
-    const doc: DBDoc<ISubscriptionDB> = await SubscriptionDB.findOne({
-      email,
-    }).exec();
-
-    if (!doc) {
-      const subscription = mapSubscriptionData(doc);
-      return subscription;
+    if (!response.ok) {
+      throw new Error("🔴 Failed to subscribe.");
     }
 
-    const newSubscription = new SubscriptionDB({ email });
-    await newSubscription.save();
+    const data: SubscriptionData = await response.json();
 
-    return mapSubscriptionData(newSubscription);
+    return data;
   } catch (err) {
-    console.error("🔴 Failed to create a new subscription:", err);
+    handleError(err);
+
     return null;
   }
 }

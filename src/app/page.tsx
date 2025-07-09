@@ -2,7 +2,6 @@ import { HeroSection } from "~/components/(home)/HeroSection";
 import { FeaturedList } from "~/components/FeaturedList";
 import { PeopleList } from "~/components/PeopleList";
 import { SubscribeSection } from "~/components/SubscribeSection";
-import { Admin } from "~/components/(admin)/Admin";
 
 import { getFeaturedSlugs } from "~/utils/handlers";
 import { getPeople } from "~/_lib";
@@ -26,7 +25,6 @@ export default async function HomePage() {
 
   return (
     <div>
-      {/* <Admin /> */}
       <HeroSection />
 
       {featuredPeople && (

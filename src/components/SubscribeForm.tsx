@@ -5,8 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 import { Button, Input } from "~/components/ui";
-
-import { submitSubscription } from "~/_lib/subscriptions/index";
+import { submitSubscription } from "~/_lib/subscriptions";
 
 const SubscribeFormSchema = z.object({
   email: z.string().email(),

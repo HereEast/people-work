@@ -10,6 +10,7 @@ export const ROUTE = {
   questions: "/questions",
   people: "/people",
   about: "/about",
+  admin: "/admin",
 };
 
 export const CONTACT = {

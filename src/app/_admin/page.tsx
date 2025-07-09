@@ -1,10 +1,10 @@
-import { SubmitAnswerForm } from "./SubmitAnswerForm";
-import { ClarificationForms } from "./ClarificationForms";
+import { Clarifications } from "~/components/(admin)/Clarifications";
+import { SubmitAnswerForm } from "~/components/(admin)/SubmitAnswerForm";
 
 import { getAnswersByPersonSlug, getQuestions } from "~/_lib";
 import { EDITING_PERSON_SLUG } from "~/utils/data";
 
-export async function Admin() {
+export default async function AdminPage() {
   const questions = await getQuestions();
   const answers = await getAnswersByPersonSlug(EDITING_PERSON_SLUG);
 
@@ -27,7 +27,7 @@ export async function Admin() {
             <div className="rounded-2xl bg-stone-50 p-10" key={question.id}>
               <SubmitAnswerForm questionData={question} answerData={answer} />
 
-              {answer && <ClarificationForms answer={answer} />}
+              {answer && <Clarifications answer={answer} />}
             </div>
           );
         })}
