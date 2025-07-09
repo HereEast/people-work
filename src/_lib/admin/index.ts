@@ -85,3 +85,46 @@ export async function submitClarification({
     return null;
   }
 }
+
+// Delete
+interface DeleteClarificationProps {
+  personSlug: string;
+  answerId: string;
+  question: string;
+}
+
+export async function deleteClarification({
+  personSlug,
+  answerId,
+  question,
+}: DeleteClarificationProps): Promise<AnswerData | null> {
+  if (!question || !answerId || !personSlug) {
+    throw new Error("Question, answerId, and personSlug are required.");
+  }
+
+  try {
+    const response = await fetch(`api/admin/clarification`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        question,
+        answerId,
+        personSlug,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("🔴 Failed to delete a clarification.");
+    }
+
+    const data: AnswerData = await response.json();
+
+    return data;
+  } catch (err) {
+    handleError(err);
+
+    return null;
+  }
+}

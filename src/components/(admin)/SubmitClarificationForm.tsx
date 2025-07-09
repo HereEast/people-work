@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { ReactNode } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,20 +18,15 @@ const FormSchema = z.object({
 type FormData = z.infer<typeof FormSchema>;
 
 interface FormProps {
+  children: ReactNode;
   answerId: string;
   personSlug: string;
   clarification: Clarification;
-  onClose?: () => void;
-  onDelete?: () => void;
-  onSuccess: (clarifications: Clarification[]) => void;
+  updateListOnAdd: (clarification: Clarification) => void;
 }
 
-// Form
-export function SubmitClarificationForm(props: FormProps) {
-  const { clarification, answerId, personSlug, onClose, onDelete, onSuccess } =
-    props;
-
-  const [prevAnswer, setPrevAnswer] = useState(clarification.answer || "");
+export function SubmitClarificationForm({ children, ...props }: FormProps) {
+  const { clarification, answerId, personSlug, updateListOnAdd } = props;
 
   const {
     register,
@@ -41,7 +36,7 @@ export function SubmitClarificationForm(props: FormProps) {
   } = useForm<FormData>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      answer: prevAnswer,
+      answer: clarification.answer || "",
       question: clarification.question || "",
     },
   });
@@ -60,8 +55,10 @@ export function SubmitClarificationForm(props: FormProps) {
     });
 
     if (answer) {
-      setPrevAnswer(formData.answer);
-      onSuccess(answer.clarifications);
+      updateListOnAdd({
+        question: formData.question,
+        answer: formData.answer,
+      });
       reset({ answer: formData.answer, question: formData.question });
     }
   }
@@ -91,7 +88,7 @@ export function SubmitClarificationForm(props: FormProps) {
           <textarea
             className="w-full rounded-md border border-stone-200 p-6"
             rows={8}
-            value={prevAnswer || "No answer."}
+            value={clarification.answer || "No answer."}
             disabled
           />
         </div>
@@ -102,8 +99,7 @@ export function SubmitClarificationForm(props: FormProps) {
           Submit Clarification
         </Button>
 
-        {onClose && <Button onClick={onClose}>Close</Button>}
-        {onDelete && <Button onClick={onDelete}>Delete</Button>}
+        {children}
       </div>
     </form>
   );
