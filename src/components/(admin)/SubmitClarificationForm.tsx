@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../ui";
 import { Clarification } from "./Clarifications";
 import { submitClarification } from "~/_lib/admin";
+import { cn } from "~/utils/handlers";
 
 const FormSchema = z.object({
   question: z.string().min(1),
@@ -30,19 +31,20 @@ export function SubmitClarificationForm(props: FormProps) {
   const { clarification, answerId, personSlug, onClose, onDelete, onSuccess } =
     props;
 
+  const [prevAnswer, setPrevAnswer] = useState(clarification.answer || "");
+
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, dirtyFields },
+    reset,
   } = useForm<FormData>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      answer: clarification.answer || "",
+      answer: prevAnswer,
       question: clarification.question || "",
     },
   });
-
-  const [prevAnswer, setPrevAnswer] = useState(clarification.answer || "");
 
   // Submit
   async function onSubmit(formData: FormData) {
@@ -60,6 +62,7 @@ export function SubmitClarificationForm(props: FormProps) {
     if (answer) {
       setPrevAnswer(formData.answer);
       onSuccess(answer.clarifications);
+      reset({ answer: formData.answer, question: formData.question });
     }
   }
 
@@ -67,14 +70,20 @@ export function SubmitClarificationForm(props: FormProps) {
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
       <div className="space-y-1">
         <textarea
-          className="w-full rounded-md border border-stone-200 px-6 py-4 text-2xl font-semibold leading-[1.1]"
+          className={cn(
+            "w-full rounded-md border border-stone-200 px-6 py-4 text-2xl font-semibold leading-[1.1] outline-none",
+            dirtyFields.question && "border-red-600",
+          )}
           {...register("question")}
           rows={1}
         />
 
-        <div className="grid grid-cols-2 gap-10">
+        <div className="grid grid-cols-2 gap-10 text-lg">
           <textarea
-            className="w-full rounded-md border border-stone-200 p-6"
+            className={cn(
+              "w-full rounded-md border border-stone-200 p-6 outline-none",
+              dirtyFields.answer && "border-red-600",
+            )}
             rows={8}
             {...register("answer")}
           />

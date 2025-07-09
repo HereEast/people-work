@@ -7,9 +7,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "../ui";
 
-import { EDITING_PERSON_SLUG } from "~/utils/data";
 import { AnswerData, QuestionData } from "~/schemas";
 import { submitAnswer } from "~/_lib/admin";
+import { EDITING_PERSON_SLUG } from "~/utils/data";
+import { cn } from "~/utils/handlers";
 
 const SubmitAnswerFormSchema = z.object({
   answer: z.string(),
@@ -26,16 +27,17 @@ export function SubmitAnswerForm({
   questionData,
   answerData,
 }: SubmitAnswerFormProps) {
+  const [prevAnswer, setPrevAnswer] = useState(answerData?.answer || "");
+
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
+    reset,
   } = useForm<SubmitAnswerFormData>({
     resolver: zodResolver(SubmitAnswerFormSchema),
-    defaultValues: { answer: answerData?.answer || "" },
+    defaultValues: { answer: prevAnswer },
   });
-
-  const [prevAnswer, setPrevAnswer] = useState(answerData?.answer || "");
 
   async function onSubmit(formData: SubmitAnswerFormData) {
     const answer = await submitAnswer({
@@ -46,6 +48,7 @@ export function SubmitAnswerForm({
 
     if (answer) {
       setPrevAnswer(answer.answer);
+      reset({ answer: formData.answer });
     }
   }
 
@@ -56,10 +59,13 @@ export function SubmitAnswerForm({
           {`${questionData.order}. ${questionData.body}`}
         </label>
 
-        <div className="grid grid-cols-2 gap-10">
+        <div className="grid grid-cols-2 gap-10 text-lg">
           {/* Input */}
           <textarea
-            className="w-full rounded-md border border-stone-200 p-6"
+            className={cn(
+              "w-full rounded-md border border-stone-200 p-6 outline-none",
+              isDirty && "border-red-600",
+            )}
             rows={8}
             {...register("answer")}
           />
