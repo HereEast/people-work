@@ -16,7 +16,7 @@ export interface Clarification {
   answer: string;
 }
 
-export function ClarificationForms({ answer }: ClarificationFormsProps) {
+export function Clarifications({ answer }: ClarificationFormsProps) {
   const [list, setList] = useState<Clarification[]>(answer.clarifications);
   const [isOpen, setIsOpen] = useState(false);
 

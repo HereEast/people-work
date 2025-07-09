@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "../ui";
-import { Clarification } from "./ClarificationForms";
+import { Clarification } from "./Clarifications";
 import { submitClarification } from "~/_lib/admin";
 
 const FormSchema = z.object({

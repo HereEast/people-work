@@ -6,8 +6,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "../ui";
-import { EDITING_PERSON_SLUG } from "~/utils/data";
 
+import { EDITING_PERSON_SLUG } from "~/utils/data";
 import { AnswerData, QuestionData } from "~/schemas";
 import { submitAnswer } from "~/_lib/admin";
 
