@@ -10,7 +10,7 @@ interface ButtonProps {
 
 export function GoToButton({ href }: ButtonProps) {
   return (
-    <ButtonLink href={href} size="icon" aria-label="Go to">
+    <ButtonLink href={href} size="icon">
       <ArrowUpRightIcon className="w-5 shrink-0 sm:w-6" />
     </ButtonLink>
   );
@@ -28,7 +28,6 @@ export function GoToPseudoButton({ className = "" }: GoToPseudoButtonProps) {
         buttonVariants({ variant: "base", size: "icon" }),
         className,
       )}
-      aria-label="Go to"
     >
       <ArrowUpRightIcon className="w-5 shrink-0 sm:w-6" />
     </div>
