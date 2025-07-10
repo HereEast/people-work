@@ -10,10 +10,9 @@ export const FEATURED = [
     slug: "agnieszka-bojanowska",
   },
   {
-    id: 3,
-    slug: "lara-simonova",
+    id: 7,
+    slug: "gev-marotz",
   },
-
   {
     id: 6,
     slug: "luba-kazakova",
@@ -49,16 +48,12 @@ export const ALL_SLUGS = [
     id: 6,
     slug: "luba-kazakova",
   },
+  {
+    id: 7,
+    slug: "gev-marotz",
+  },
 ];
 
-// {
-//   id: 8,
-//   slug: "gev-marotz",
-// },
-// {
-//   id: 7,
-//   slug: "luba-kazakova",
-// },
 // {
 //   id: 6,
 //   slug: "kate-rovba",
