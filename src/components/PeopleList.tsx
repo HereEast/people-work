@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { GoToPseudoButton } from "./ui";
 import { PersonData } from "~/schemas";
+import { getMetaDescription } from "~/utils/handlers";
 
 interface PeopleListProps {
   people: PersonData[];
@@ -24,16 +25,17 @@ interface PersonListItemProps {
 }
 
 function PersonListItem({ person }: PersonListItemProps) {
-  const work = person.work[0];
+  const ariaText = getMetaDescription(person, "aria");
 
   return (
     <li className="group border-t border-stone-900/15 px-px last:border-b">
       <Link
         href={`/people/${person.slug}`}
         className="grid w-full grid-cols-2 items-center gap-6 py-4 transition sm:grid-cols-[1fr_1fr_auto] lg:grid-cols-[2fr_2fr_auto] lg:gap-10 xl:grid-cols-[1.5fr_2fr_0.8fr_auto]"
+        aria-label={ariaText}
       >
         <PersonView person={person} />
-        <PersonJob title={work.title} company={work.company} />
+        <PersonJob title={person.work.title} company={person.work.company} />
 
         <CompanyDomain domain={person.metadata.domain} />
 
@@ -51,14 +53,7 @@ interface PersonViewProps {
 }
 
 function PersonView({ person }: PersonViewProps) {
-  const work = person.work[0];
-
-  const isFreelance =
-    work.company === "freelance" || work.company === "self-employed";
-
-  const altText = isFreelance
-    ? `${person.name}, ${work.title}`
-    : `${person.name}, ${work.title} at ${work.company}`;
+  const altText = getMetaDescription(person, "alt");
 
   return (
     <div className="flex items-center gap-3 sm:gap-6">

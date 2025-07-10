@@ -50,7 +50,6 @@ export function SubscribeForm({ setIsSubscribed }: SubscribeFormProps) {
           placeholder="Email"
           disabled={isSubmitting}
           className="sm:pl-6 sm:pr-52"
-          aria-label="Email address for newsletter subscription"
         />
 
         <div className="bottom-2 right-2 top-0 sm:absolute">
@@ -58,7 +57,6 @@ export function SubscribeForm({ setIsSubscribed }: SubscribeFormProps) {
             type="submit"
             isDisabled={isSubmitting}
             className="h-16 w-full rounded-md px-5 pb-px text-xl font-medium sm:h-full sm:rounded-[13px] sm:text-3xl sm:font-normal"
-            aria-label="Subscribe to newsletter"
           >
             Subscribe
           </Button>

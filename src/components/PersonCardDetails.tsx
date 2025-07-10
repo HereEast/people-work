@@ -2,20 +2,14 @@ import Image from "next/image";
 
 import { AccentText } from "./AccentText";
 import { PersonData } from "~/schemas";
+import { getMetaDescription } from "~/utils/handlers";
 
 interface PersonDetailsProps {
   person: PersonData;
 }
 
 export function PersonCardDetails({ person }: PersonDetailsProps) {
-  const work = person.work[0];
-
-  const isFreelance =
-    work.company === "freelance" || work.company === "self-employed";
-
-  const altText = isFreelance
-    ? `${person.name}, ${work.title}`
-    : `${person.name}, ${work.title} at ${work.company}`;
+  const altText = getMetaDescription(person, "alt");
 
   return (
     <div className="flex items-end gap-3 sm:gap-4">
@@ -33,15 +27,10 @@ export function PersonCardDetails({ person }: PersonDetailsProps) {
           <AccentText>{person.name}</AccentText>
         </h4>
 
-        {person.work.map((work, index) => (
-          <div
-            className="flex flex-col font-medium leading-[115%] tracking-[0ch]"
-            key={index}
-          >
-            <h4>{work.title}</h4>
-            <h4>{work.company || "Freelance"}</h4>
-          </div>
-        ))}
+        <div className="flex flex-col font-medium leading-[115%] tracking-[0ch]">
+          <h5 className="font-medium">{person.work.title}</h5>
+          <h5 className="font-medium">{person.work.company}</h5>
+        </div>
       </div>
     </div>
   );

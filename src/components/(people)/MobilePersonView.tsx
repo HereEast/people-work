@@ -5,20 +5,14 @@ import { AccentText } from "~/components/AccentText";
 import { StickyMobileWrapper } from "~/components/Card";
 
 import { PersonData } from "~/schemas";
+import { getMetaDescription } from "~/utils/handlers";
 
 interface PersonViewProps {
   person: PersonData;
 }
 
 export function MobilePersonView({ person }: PersonViewProps) {
-  const work = person.work[0];
-
-  const isFreelance =
-    work.company === "freelance" || work.company === "self-employed";
-
-  const altText = isFreelance
-    ? `${person.name}, ${work.title}`
-    : `${person.name}, ${work.title} at ${work.company}`;
+  const altText = getMetaDescription(person, "alt");
 
   return (
     <StickyMobileWrapper>
@@ -33,26 +27,27 @@ export function MobilePersonView({ person }: PersonViewProps) {
         />
 
         <div className="flex flex-col gap-0.5 pb-px text-lg text-stone-50 sm:text-2xl">
-          <h3 className="leading-none">
+          <h2 className="leading-none">
             <AccentText>{person.name}</AccentText>
-          </h3>
+          </h2>
 
           <div className="flex flex-col leading-[1.1] tracking-[0.02ch]">
-            <h4>{work.title}</h4>
+            <h3>{person.work.title}</h3>
 
-            {work.url ? (
-              <h4 className="inline-block capitalize">
+            {person.work.url ? (
+              <h3 className="inline-block capitalize">
                 <Link
-                  href={work.url}
+                  href={person.work.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline decoration-1 underline-offset-[2.5px] transition hover:no-underline hover:opacity-30 sm:decoration-[1.5px] sm:underline-offset-[3.5px]"
+                  aria-label={`Visit ${person.work.company} website`}
                 >
-                  {work.company}
+                  {person.work.company}
                 </Link>
-              </h4>
+              </h3>
             ) : (
-              <h4 className="inline-block">{work.company}</h4>
+              <h3 className="inline-block">{person.work.company}</h3>
             )}
           </div>
         </div>

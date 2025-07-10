@@ -18,10 +18,18 @@ export async function AnswersList({ slug }: AnswersListProps) {
   const publicAnswers = answers?.filter((answer) => !answer.person.isHidden);
 
   return (
-    <div className="space-y-2 pt-4">
-      {publicAnswers?.map((data) => (
-        <AnswerCard key={data.person.id} answerData={data} />
-      ))}
+    <div className="pt-4">
+      <ul
+        role="list"
+        aria-label="Professional answers to this question"
+        className="space-y-2"
+      >
+        {publicAnswers?.map((data) => (
+          <li key={data.person.id}>
+            <AnswerCard answerData={data} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -62,6 +70,7 @@ function AnswerCardFooter({ person }: AnswerCardFooterProps) {
       <Link
         href={`/people/${person.slug}`}
         className="transition hover:opacity-30"
+        aria-label={`View ${person.name}'s Q&A page`}
       >
         <PersonCardDetails person={person} />
       </Link>

@@ -9,7 +9,10 @@ export function LinkedinIcon({ className = "" }: IconProps) {
       viewBox="0 0 416 418"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="img"
     >
+      <title>LinkedIn</title>
       <path
         d="M101.202 151.965C101.202 144.172 94.8848 137.854 87.0918 137.854H27.0293C19.2362 137.854 12.9189 144.172 12.9189 151.965V403.745C12.9189 411.538 19.2362 417.855 27.0293 417.855H87.0918C94.8848 417.855 101.202 411.538 101.202 403.745V151.965Z"
         fill="white"

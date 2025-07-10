@@ -16,7 +16,11 @@ export function SubscribePopup({ handleClose }: SubscribePopupProps) {
 
   if (isSubscribed) {
     return (
-      <PortalPopup handleClose={handleClose} className="p-10 sm:max-w-[460px]">
+      <PortalPopup
+        handleClose={handleClose}
+        className="p-10 sm:max-w-[460px]"
+        aria-label="Subscription success popup"
+      >
         <div className="flex flex-col items-center gap-1">
           <p className="text-center leading-[110%]">You're on the list! </p>
           <p className="text-center leading-[110%]">
@@ -31,7 +35,11 @@ export function SubscribePopup({ handleClose }: SubscribePopupProps) {
   }
 
   return (
-    <PortalPopup handleClose={handleClose} className="pt-12">
+    <PortalPopup
+      handleClose={handleClose}
+      className="pt-12"
+      aria-label="Subscribe to newsletter popup"
+    >
       <SubscribeHeader />
       <SubscribeForm setIsSubscribed={setIsSubscribed} />
     </PortalPopup>

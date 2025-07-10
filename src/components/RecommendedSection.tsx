@@ -21,9 +21,12 @@ export async function RecommendedSection({ slug }: RecommendedPeopleProps) {
   }
 
   return (
-    <section className="space-y-8">
-      <h2 className="text-center text-xl font-medium sm:text-3xl sm:font-normal">
-        Check some cool people
+    <section className="space-y-8" aria-labelledby="recommended-heading">
+      <h2
+        id="recommended-heading"
+        className="text-center text-xl font-medium sm:text-3xl sm:font-normal"
+      >
+        Check other cool people
       </h2>
 
       {recommendedPeople && <FeaturedList people={recommendedPeople} />}

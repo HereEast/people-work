@@ -10,9 +10,13 @@ export default async function PeoplePage() {
 
   return (
     <div>
-      <div className="my-10">
+      <section className="my-10" aria-labelledby="people-heading">
+        <h1 id="people-heading" className="sr-only">
+          All Professionals
+        </h1>
+
         {peopleList && <PeopleList people={peopleList} />}
-      </div>
+      </section>
 
       <div className="mx-auto my-16 max-w-screen-sm">
         <SubscribeSection />

@@ -32,13 +32,11 @@ export type PersonMetadataData = z.infer<typeof PersonMetadataApiSchema>;
 export const PersonApiSchema = z.object({
   id: z.string(),
   name: z.string(),
-  work: z.array(
-    z.object({
-      company: z.string(),
-      title: z.string(),
-      url: z.string().default(""),
-    }),
-  ),
+  work: z.object({
+    company: z.string(),
+    title: z.string(),
+    url: z.string().default(""),
+  }),
   metadata: PersonMetadataApiSchema,
   keyWords: z.array(z.string()).default([]),
   slug: z.string(),

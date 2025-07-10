@@ -14,9 +14,10 @@ const SEO_DATA = {
 // Person metadata
 export async function generatePersonMetadata(slug: string) {
   const person = await getPerson(slug);
-  const work = person?.work[0];
 
-  if (person && work) {
+  if (person) {
+    const work = person.work;
+
     const isFreelance =
       work.company === "freelance" || work.company === "self-employed";
 

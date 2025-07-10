@@ -25,6 +25,10 @@ export function DesktopPersonView({ person }: PersonViewProps) {
   return (
     <StickyColumn>
       <div className="flex h-full flex-col justify-between">
+        <h1 id="person-heading" className="sr-only">
+          {`What does a ${person.work.title} actually do? Real experience from ${person.name}`}
+        </h1>
+
         <PersonViewHeader person={person} />
         <MetadataDetails metadata={metadata} />
       </div>
@@ -34,7 +38,7 @@ export function DesktopPersonView({ person }: PersonViewProps) {
 
 // Person Header
 function PersonViewHeader({ person }: PersonViewProps) {
-  const work = person.work[0];
+  const work = person.work;
 
   const isFreelance =
     work.company === "freelance" || work.company === "self-employed";
@@ -55,28 +59,29 @@ function PersonViewHeader({ person }: PersonViewProps) {
       />
 
       <div className="space-y-1">
-        <h3>
+        <h2>
           <AccentText className="underline decoration-dotted decoration-2 underline-offset-4">
             {person.name}
           </AccentText>
-        </h3>
+        </h2>
 
         <div className="space-y-px">
-          <h4>{work.title}</h4>
+          <h3>{work.title}</h3>
 
           {work.url ? (
-            <h4 className="inline-block capitalize">
+            <h3 className="inline-block capitalize">
               <Link
                 href={work.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
+                aria-label={`Visit ${work.company} website`}
               >
                 {work.company}
               </Link>
-            </h4>
+            </h3>
           ) : (
-            <h4 className="inline-block">{work.company}</h4>
+            <h3 className="inline-block">{work.company}</h3>
           )}
         </div>
       </div>

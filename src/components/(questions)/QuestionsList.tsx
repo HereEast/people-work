@@ -11,7 +11,7 @@ interface QuestionsListProps {
 export function QuestionsList({ questions }: QuestionsListProps) {
   return (
     <div>
-      <ul>
+      <ul role="list" aria-label="List of career questions">
         {questions.map((question) => (
           <QuestionItem question={question} key={question.id} />
         ))}
@@ -31,6 +31,7 @@ function QuestionItem({ question }: QuestionItemProps) {
       <Link
         href={`/questions/${question.slug}`}
         className="grid grid-cols-[1fr_auto] items-center gap-6 py-4 transition lg:grid-cols-2 lg:gap-4 lg:py-5"
+        aria-label={`View answers to: ${question.body}`}
       >
         <div className="lg:pr-10">
           <h2 className="text-xl font-semibold leading-[120%] tracking-[-0.02ch] transition group-hover:opacity-30 sm:text-3xl lg:text-5xl lg:leading-[100%]">

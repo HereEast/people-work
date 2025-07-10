@@ -14,7 +14,13 @@ export default async function QuestionsPage() {
 
   return (
     <div className="pt-6">
-      <QuestionsList questions={questions} />
+      <section aria-labelledby="questions-heading">
+        <h1 id="questions-heading" className="sr-only">
+          All Questions
+        </h1>
+
+        <QuestionsList questions={questions} />
+      </section>
 
       <div className="mx-auto my-16 max-w-screen-sm">
         <SubscribeSection />

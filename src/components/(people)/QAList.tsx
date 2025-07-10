@@ -16,9 +16,17 @@ export function QAList({ data }: QAListProps) {
 
   return (
     <div className="space-y-2 pt-4">
-      {data.map((item, index) => (
-        <QACard key={`${item.id}-${index}`} answerData={item} />
-      ))}
+      <ul
+        className="space-y-2"
+        role="list"
+        aria-label={`${data[0]?.person.name}'s answers to career questions`}
+      >
+        {data.map((item, index) => (
+          <li key={`${item.id}-${index}`}>
+            <QACard answerData={item} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -33,7 +41,7 @@ function QACard({ answerData }: QACardProps) {
 
   return (
     <Card marked={marked}>
-      <div className="space-y-6 p-6 sm:space-y-10 sm:p-10">
+      <article className="space-y-6 p-6 sm:space-y-10 sm:p-10">
         <div className="space-y-6 sm:space-y-10">
           <Question>{question}</Question>
 
@@ -47,7 +55,7 @@ function QACard({ answerData }: QACardProps) {
         </div>
 
         <QACardFooter question={question} />
-      </div>
+      </article>
     </Card>
   );
 }

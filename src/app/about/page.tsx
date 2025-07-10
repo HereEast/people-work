@@ -24,13 +24,16 @@ export default async function AboutPage() {
     },
   ];
 
+  const altText =
+    "People Work - Real people, real jobs. Career insights via simple Q&As";
+
   return (
     <div className="mb-4 grid lg:grid-cols-2 lg:gap-4">
       <StickyColumn>
         <div className="flex h-full flex-col justify-between">
           <Image
             src={`/images/about.jpg`}
-            alt="People Work image"
+            alt={altText}
             width={600}
             height={600}
             className="size-60 rounded-md object-cover"
@@ -44,7 +47,7 @@ export default async function AboutPage() {
       <div className="mb-8 mt-4 sm:mb-10 lg:hidden">
         <Image
           src={`/images/about.jpg`}
-          alt="People Work image"
+          alt={altText}
           width={600}
           height={600}
           className="size-32 rounded-md object-cover sm:size-52"
@@ -62,19 +65,19 @@ export default async function AboutPage() {
 // About
 function About() {
   return (
-    <div>
-      <div className="mb-10 sm:mb-16">
+    <article>
+      <section className="mb-10 sm:mb-16">
         <LeadContent />
-      </div>
+      </section>
 
-      <div className="mb-10 sm:mb-16">
+      <section className="mb-10 sm:mb-16">
         <BodyContent />
-      </div>
+      </section>
 
-      <div className="border-t border-stone-900/15 pt-10 sm:pt-16">
+      <section className="border-t border-stone-900/15 pt-10 sm:pt-16">
         <ConnectContent />
-      </div>
-    </div>
+      </section>
+    </article>
   );
 }
 
@@ -114,7 +117,7 @@ function BodyContent() {
       </div>
 
       <div className="mb-10">
-        <h2 className="mb-3 font-semibold">What we do</h2>
+        <h4 className="mb-3 font-semibold">What we do</h4>
 
         <div className="space-y-10">
           <Answer>
@@ -137,7 +140,7 @@ function BodyContent() {
       </div>
 
       <div className="mb-16">
-        <h2 className="mb-3 font-semibold">How we do</h2>
+        <h4 className="mb-3 font-semibold">How we do</h4>
         <Answer>
           Everything's structured in a *clean Q&A format* that makes it *easy to
           explore* and *compare* different voices side by side. You get

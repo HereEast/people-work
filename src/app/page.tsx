@@ -28,21 +28,32 @@ export default async function HomePage() {
       <HeroSection />
 
       {featuredPeople && (
-        <div className="mb-20">
+        <section className="mb-20" aria-labelledby="featured-heading">
+          <h2 id="featured-heading" className="sr-only">
+            Featured Professionals
+          </h2>
+
           <FeaturedList people={featuredPeople} />
-        </div>
+        </section>
       )}
 
       {peopleList && (
-        <div className="mb-20 space-y-6">
-          <PeopleList people={peopleList} />
-          <ButtonLink
-            href={ROUTE.people}
-            className="h-16 w-full rounded-md bg-stone-800 pb-px text-xl tracking-[0.04ch] text-stone-50 hover:bg-stone-900 sm:h-24 sm:rounded-lg sm:text-3xl"
-          >
-            See All
-          </ButtonLink>
-        </div>
+        <section className="mb-20" aria-labelledby="people-heading">
+          <h2 id="people-heading" className="sr-only">
+            All Professionals
+          </h2>
+
+          <div className="space-y-6">
+            <PeopleList people={peopleList} />
+
+            <ButtonLink
+              href={ROUTE.people}
+              className="h-16 w-full rounded-md bg-stone-800 pb-px text-xl tracking-[0.04ch] text-stone-50 hover:bg-stone-900 sm:h-24 sm:rounded-lg sm:text-3xl"
+            >
+              View All
+            </ButtonLink>
+          </div>
+        </section>
       )}
 
       <div className="mx-auto my-16 max-w-screen-sm">

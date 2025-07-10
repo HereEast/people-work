@@ -24,6 +24,7 @@ export function HeroSection() {
           variant="link"
           underline
           className="md:decoration-4 md:underline-offset-[6px]"
+          aria-label="Subscribe to newsletter"
         >
           <AccentText className="text-[116%]">Subscribe</AccentText>
         </ButtonLink>

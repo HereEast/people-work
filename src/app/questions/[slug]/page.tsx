@@ -44,10 +44,17 @@ export default async function QuestionPage(props: QuestionPageProps) {
 
   return (
     <div>
-      <div className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
+      <section className="grid w-full grid-cols-1 lg:grid-cols-2 lg:gap-4">
         <QuestionView question={question} />
-        <AnswersList slug={slug} />
-      </div>
+
+        <section aria-labelledby="answers-heading">
+          <h2 id="answers-heading" className="sr-only">
+            Answers to this question
+          </h2>
+
+          <AnswersList slug={slug} />
+        </section>
+      </section>
 
       <div className="mb-12 mt-24">
         <RecommendedSection slug={slug} />

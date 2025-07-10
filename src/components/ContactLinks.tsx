@@ -16,7 +16,7 @@ export function ContactLinks({ links }: ContactLinksProps) {
   const contacts = Object.entries(links).filter(([, url]) => url);
 
   return (
-    <ul className="flex gap-2">
+    <ul className="flex gap-2" role="list" aria-label="Contact information">
       {contacts.map(([name, url], index) => (
         <li key={name} className="group">
           <ButtonLink
@@ -26,12 +26,18 @@ export function ContactLinks({ links }: ContactLinksProps) {
             target="_blank"
             rel="noopener noreferrer"
             className="capitalize"
+            aria-label={`Visit ${name} profile`}
           >
             {name}
           </ButtonLink>
 
           {index < contacts.length - 1 && (
-            <span className="transition group-hover:opacity-30">,</span>
+            <span
+              className="transition group-hover:opacity-30"
+              aria-hidden="true"
+            >
+              ,
+            </span>
           )}
         </li>
       ))}

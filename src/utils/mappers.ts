@@ -45,6 +45,7 @@ export function mapAnswerData(doc: DBDoc<IAnswerDB>) {
     person: {
       ...person,
       id: person._id.toString(),
+      work: person.work[0],
     },
     ...data,
   };
@@ -63,6 +64,7 @@ export function mapPersonData(doc: DBDoc<IPersonDB>): PersonData {
   return {
     ...obj,
     id: doc._id.toString(),
+    work: doc.work[0],
   };
 }
 

@@ -18,6 +18,7 @@ export function ButtonBack({ children }: ButtonBackProps) {
       variant="link"
       onClick={() => router.back()}
       className="flex gap-2 text-3xl"
+      aria-label="Go back to previous page"
     >
       <ArrowLeftIcon className="size-8 shrink-0" />
       <span>{children}</span>
