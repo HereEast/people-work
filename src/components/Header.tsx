@@ -13,7 +13,12 @@ export function Header() {
   return (
     <header className="fixed z-50 flex h-12 w-full items-center bg-bg px-2.5 text-xl sm:h-16 sm:text-3xl md:px-6">
       <nav className="flex w-full items-center justify-between gap-1">
-        <ButtonLink href={ROUTE.index} variant="link" className="w-10 sm:w-14">
+        <ButtonLink
+          href={ROUTE.index}
+          variant="link"
+          className="w-10 sm:w-14"
+          aria-label="Home"
+        >
           <LogoIcon />
         </ButtonLink>
 
@@ -29,7 +34,10 @@ export function Header() {
               </ButtonLink>
 
               {index < HEADER_LINKS.length - 1 && (
-                <span className="transition group-hover/header-link:opacity-30">
+                <span
+                  className="transition group-hover/header-link:opacity-30"
+                  aria-hidden="true"
+                >
                   ,
                 </span>
               )}

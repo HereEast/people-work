@@ -21,7 +21,7 @@ export function Footer() {
     <footer className="w-full px-2.5 py-4 md:px-6">
       <nav className="flex w-full flex-col-reverse justify-between text-xl sm:flex-row sm:text-3xl">
         <div className="flex gap-1 sm:gap-2">
-          <ButtonLink href={ROUTE.index} variant="link">
+          <ButtonLink href={ROUTE.index} variant="link" aria-label="Home">
             people-work.net
           </ButtonLink>
           <span>( 2025 )</span>
@@ -33,6 +33,7 @@ export function Footer() {
               variant="link"
               className="flex items-center gap-1"
               onClick={() => setShowSubscribe(true)}
+              aria-label="Subscribe to newsletter"
             >
               <span>Subscribe</span>
               <EmojiImage name="mouse-cursor" classname="size-6 sm:size-8" />
@@ -50,7 +51,10 @@ export function Footer() {
               </ButtonLink>
 
               {index < FOOTER_LINKS.length - 1 && (
-                <span className="transition group-hover/footer-link:opacity-30">
+                <span
+                  className="transition group-hover/footer-link:opacity-30"
+                  aria-hidden="true"
+                >
                   ,
                 </span>
               )}
