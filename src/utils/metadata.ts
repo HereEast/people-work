@@ -3,47 +3,30 @@ import { Metadata } from "next";
 import { getPerson, getQuestion } from "~/_lib";
 import { BASE_URL } from "./constants";
 
-export const SEO_DATA = {
-  index: {
-    url: BASE_URL,
-    imageUrl: "/og-image.jpg",
-    title: "Job titles decoded. In a simple Q&A format.",
-    description:
-      "Real people, real jobs. Brief Q&As that demystify titles, share routines, and explore what keeps them going.",
-  },
-  person: {
-    title(name: string, title: string, company: string) {
-      return company.toLowerCase() === "freelance" ||
-        company.toLowerCase() === "self-employed"
-        ? `${name}, ${title}`
-        : `${name}, ${title} at ${company}`;
-    },
-    description(name: string) {
-      return `Get to know how ${name} thinks about work, career, and personal growth. All in a simple Q&A.`;
-    },
-  },
-  question: {
-    title(question: string) {
-      return `Q: ${question}`;
-    },
-    description(tag: string) {
-      return `Discover how experts from different industries approach this question. #${tag}`;
-    },
-  },
+const SEO_DATA = {
+  url: BASE_URL,
+  imageUrl: "/og-image.jpg",
+  title: "Real people, real jobs. Career insights via simple Q&As",
+  description:
+    "Discover what professionals actually do in their jobs. Get real career insights from Creative Directors, Data Scientists, AI Engineers, CEOs, and more.",
 };
 
 // Person metadata
 export async function generatePersonMetadata(slug: string) {
   const person = await getPerson(slug);
+  const work = person?.work[0];
 
-  if (person) {
-    const title = SEO_DATA.person.title(
-      person.name,
-      person.work[0].title,
-      person.work[0].company,
-    );
+  if (person && work) {
+    const isFreelance =
+      work.company === "freelance" || work.company === "self-employed";
 
-    const description = SEO_DATA.person.description(person.name);
+    const title = isFreelance
+      ? `What does a ${work.title} actually do? Real experience from ${person.name}`
+      : `What does a ${work.title} actually do? Real experience from ${person.name} at ${work.company}.`;
+
+    const description = isFreelance
+      ? `Get real insights into a ${work.title}'s daily routine, responsibilities, and challenges from ${person.name}. No fluff, just honest career advice in a simple Q&A format.`
+      : `Get real insights into a ${work.title}'s daily routine, responsibilities, and challenges from ${person.name} at ${work.company}. No fluff, just honest career advice in a simple Q&A format.`;
 
     return getMetadata({ title, description });
   }
@@ -54,14 +37,14 @@ export async function generateQuestionMetadata(slug: string) {
   const question = await getQuestion(slug);
 
   if (question) {
-    const title = SEO_DATA.question.title(question.body);
-    const description = SEO_DATA.question.description(question.slug);
+    const title = question.body;
+    const description = `${question.body} Discover how experts from different industries approach this question.`;
 
     return getMetadata({ title, description });
   }
 }
 
-// Get metadata
+// Index metadata
 interface MetadataInput {
   title?: string;
   description?: string;
@@ -69,18 +52,18 @@ interface MetadataInput {
 }
 
 export function getMetadata(input: MetadataInput = {}): Metadata {
-  const title = input.title || SEO_DATA.index.title;
-  const description = input.description || SEO_DATA.index.description;
-  const imageUrl = input.imageUrl || SEO_DATA.index.imageUrl;
+  const title = input.title || SEO_DATA.title;
+  const description = input.description || SEO_DATA.description;
+  const imageUrl = input.imageUrl || SEO_DATA.imageUrl;
 
   return {
     title,
     description,
-    metadataBase: new URL(SEO_DATA.index.url),
+    metadataBase: new URL(SEO_DATA.url),
     openGraph: {
       title,
       description,
-      url: SEO_DATA.index.url,
+      url: SEO_DATA.url,
       siteName: "people-work.net",
       images: [
         {
