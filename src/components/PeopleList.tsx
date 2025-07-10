@@ -32,7 +32,7 @@ function PersonListItem({ person }: PersonListItemProps) {
         href={`/people/${person.slug}`}
         className="grid w-full grid-cols-2 items-center gap-6 py-4 transition sm:grid-cols-[1fr_1fr_auto] lg:grid-cols-[2fr_2fr_auto] lg:gap-10 xl:grid-cols-[1.5fr_2fr_0.8fr_auto]"
       >
-        <PersonView name={person.name} slug={person.slug} />
+        <PersonView person={person} />
         <PersonJob title={work.title} company={work.company} />
 
         <CompanyDomain domain={person.metadata.domain} />
@@ -47,25 +47,33 @@ function PersonListItem({ person }: PersonListItemProps) {
 
 // Image and Name
 interface PersonViewProps {
-  name: string;
-  slug: string;
+  person: PersonData;
 }
 
-function PersonView({ name, slug }: PersonViewProps) {
+function PersonView({ person }: PersonViewProps) {
+  const work = person.work[0];
+
+  const isFreelance =
+    work.company === "freelance" || work.company === "self-employed";
+
+  const altText = isFreelance
+    ? `${person.name}, ${work.title}`
+    : `${person.name}, ${work.title} at ${work.company}`;
+
   return (
     <div className="flex items-center gap-3 sm:gap-6">
       <Image
-        src={`/images/people/${slug}.jpg`}
-        alt={`Image of ${name}`}
+        src={`/images/people/${person.slug}.jpg`}
+        alt={altText}
         width={200}
         height={200}
         className="size-10 rounded-xs object-cover transition group-hover:opacity-30 sm:size-14 sm:rounded-sm"
         priority
       />
 
-      <h3 className="text-xl font-semibold leading-[105%] transition group-hover:opacity-30 sm:text-3xl lg:truncate lg:text-nowrap">
-        {name}
-      </h3>
+      <h4 className="text-xl font-semibold leading-[105%] transition group-hover:opacity-30 sm:text-3xl lg:truncate lg:text-nowrap">
+        {person.name}
+      </h4>
     </div>
   );
 }
@@ -98,7 +106,7 @@ interface CompanyDomainProps {
 function CompanyDomain({ domain }: CompanyDomainProps) {
   return (
     <div className="hidden truncate transition group-hover:opacity-40 sm:text-2xl xl:block">
-      <h5 className="truncate">{domain}</h5>
+      <h4 className="truncate">{domain}</h4>
     </div>
   );
 }
