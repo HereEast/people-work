@@ -16,7 +16,7 @@ export function ContactLinks({ links }: ContactLinksProps) {
   const contacts = Object.entries(links).filter(([, url]) => url);
 
   return (
-    <ul className="flex gap-2" role="list" aria-label="Contact information">
+    <ul className="flex gap-2" aria-label="Contact information">
       {contacts.map(([name, url], index) => (
         <li key={name} className="group">
           <ButtonLink

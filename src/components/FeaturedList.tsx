@@ -17,7 +17,6 @@ export function FeaturedList({ people }: FeaturedCardListProps) {
   return (
     <ul
       className="columns-1 gap-4 md:columns-2"
-      role="list"
       aria-label="Featured professionals and their insights"
     >
       {people.map((person) => (

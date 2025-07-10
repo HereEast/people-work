@@ -11,7 +11,7 @@ interface QuestionsListProps {
 export function QuestionsList({ questions }: QuestionsListProps) {
   return (
     <div>
-      <ul role="list" aria-label="List of career questions">
+      <ul aria-label="List of career questions">
         {questions.map((question) => (
           <QuestionItem question={question} key={question.id} />
         ))}

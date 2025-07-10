@@ -18,7 +18,6 @@ export function QAList({ data }: QAListProps) {
     <div className="space-y-2 pt-4">
       <ul
         className="space-y-2"
-        role="list"
         aria-label={`${data[0]?.person.name}'s answers to career questions`}
       >
         {data.map((item, index) => (

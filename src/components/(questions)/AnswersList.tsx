@@ -20,7 +20,6 @@ export async function AnswersList({ slug }: AnswersListProps) {
   return (
     <div className="pt-4">
       <ul
-        role="list"
         aria-label="Professional answers to this question"
         className="space-y-2"
       >
