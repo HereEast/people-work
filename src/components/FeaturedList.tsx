@@ -48,9 +48,9 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
         <div className="mb-8 space-y-5 lg:mb-10">
           <QuoteIcon />
 
-          <p className="text-3xl font-semibold leading-[98%] sm:text-4xl">
+          <h3 className="text-3xl font-semibold leading-[98%] sm:text-4xl">
             {featuredAnswer}
-          </p>
+          </h3>
         </div>
 
         <PersonCardDetails person={person} />

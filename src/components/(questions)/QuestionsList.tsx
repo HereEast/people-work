@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { QuestionTag } from "./QuestionTag";
+import { QuestionTag } from "../QuestionTag";
 import { QuestionData } from "~/schemas";
-import { GoToPseudoButton } from "./ui";
+import { GoToPseudoButton } from "../ui";
 
 interface QuestionsListProps {
   questions: QuestionData[];

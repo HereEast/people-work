@@ -82,7 +82,7 @@ function About() {
 function LeadContent() {
   return (
     <div className="text-2xl font-semibold leading-[100%] sm:text-4xl sm:font-semibold sm:leading-[110%]">
-      <p>
+      <h1>
         <AccentText className="font-normal underline decoration-dotted decoration-2 underline-offset-[3px] sm:decoration-[3px] sm:underline-offset-4">
           People Work
         </AccentText>{" "}
@@ -90,12 +90,13 @@ function LeadContent() {
         <AccentText className="font-normal underline decoration-dotted decoration-2 underline-offset-[3px] sm:decoration-[3px] sm:underline-offset-4">
           demystify job titles
         </AccentText>{" "}
-        and show the real people behind them. No fluff, no jargon — just{" "}
+        and show the real people behind them through simple Q&As. No fluff, no
+        jargon — just honest{" "}
         <AccentText className="font-normal underline decoration-dotted decoration-2 underline-offset-[3px] sm:decoration-[3px] sm:underline-offset-4">
-          honest Q&As
+          career insights
         </AccentText>{" "}
-        about real work.
-      </p>
+        from professionals actually doing the work.
+      </h1>
     </div>
   );
 }
@@ -127,9 +128,10 @@ function BodyContent() {
             they are* — and what their *work actually looks like* day to day.
           </Answer>
           <Answer>
-            We feature people from *all kinds of backgrounds* and *industries*
-            because career paths are rarely linear, and that's what makes them
-            interesting.
+            We feature *all kinds of professionals* — Creative Directors, Data
+            Scientists, AI Engineers, CEOs, Health Coaches, startup founders,
+            marketing professionals, and more. Every career path is unique, and
+            that's what makes every story interesting.
           </Answer>
         </div>
       </div>
@@ -139,9 +141,8 @@ function BodyContent() {
         <Answer>
           Everything's structured in a *clean Q&A format* that makes it *easy to
           explore* and *compare* different voices side by side. You get
-          authentic stories, diverse perspectives, and real takeaways to help
-          you navigate your own path. It's *career insight* without the
-          corporate nonsense.
+          authentic insights, diverse perspectives, and real takeaways to help
+          you navigate your own professional path.
         </Answer>
       </div>
 

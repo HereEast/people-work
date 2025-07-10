@@ -36,11 +36,18 @@ export function DesktopPersonView({ person }: PersonViewProps) {
 function PersonViewHeader({ person }: PersonViewProps) {
   const work = person.work[0];
 
+  const isFreelance =
+    work.company === "freelance" || work.company === "self-employed";
+
+  const altText = isFreelance
+    ? `${person.name}, ${work.title}`
+    : `${person.name}, ${work.title} at ${work.company}`;
+
   return (
     <div className="space-y-6 text-2xl sm:text-3xl md:leading-[110%]">
       <Image
         src={`/images/people/${person.slug}.jpg`}
-        alt={`Image of ${person.name}`}
+        alt={altText}
         width={600}
         height={600}
         className="size-60 rounded-md object-cover"
@@ -48,26 +55,28 @@ function PersonViewHeader({ person }: PersonViewProps) {
       />
 
       <div className="space-y-1">
-        <h1>
+        <h3>
           <AccentText className="underline decoration-dotted decoration-2 underline-offset-4">
             {person.name}
           </AccentText>
-        </h1>
+        </h3>
 
         <div className="space-y-px">
-          <h2>{work.title}</h2>
+          <h4>{work.title}</h4>
 
           {work.url ? (
-            <Link
-              href={work.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block capitalize underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
-            >
-              {work.company}
-            </Link>
+            <h4 className="inline-block capitalize">
+              <Link
+                href={work.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
+              >
+                {work.company}
+              </Link>
+            </h4>
           ) : (
-            <h2 className="inline-block">{work.company}</h2>
+            <h4 className="inline-block">{work.company}</h4>
           )}
         </div>
       </div>

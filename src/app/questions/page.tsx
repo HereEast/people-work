@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { QuestionsList } from "~/components/QuestionsList";
+import { QuestionsList } from "~/components/(questions)/QuestionsList";
 import { SubscribeSection } from "~/components/SubscribeSection";
 
 import { getQuestions } from "~/_lib";
