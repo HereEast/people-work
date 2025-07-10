@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { PortalPopup } from "./Portal";
 import { AccentText } from "./AccentText";
-import { SubscribeHeader } from "./SubscribeSection";
+import { SubscribeSectionTitle } from "./SubscribeSection";
 import { SubscribeForm } from "./SubscribeForm";
 
 interface SubscribePopupProps {
@@ -40,7 +40,7 @@ export function SubscribePopup({ handleClose }: SubscribePopupProps) {
       className="pt-12"
       aria-label="Subscribe to newsletter popup"
     >
-      <SubscribeHeader />
+      <SubscribeSectionTitle />
       <SubscribeForm setIsSubscribed={setIsSubscribed} />
     </PortalPopup>
   );
