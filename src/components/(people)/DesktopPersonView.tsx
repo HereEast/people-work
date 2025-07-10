@@ -7,6 +7,7 @@ import { ContactLinks } from "~/components/ContactLinks";
 import { MetadataDetails } from "~/components/MetadataDetails";
 
 import { PersonData } from "~/schemas";
+import { getAttributeDescription } from "~/utils/handlers";
 
 interface PersonViewProps {
   person: PersonData;
@@ -40,12 +41,7 @@ export function DesktopPersonView({ person }: PersonViewProps) {
 function PersonViewHeader({ person }: PersonViewProps) {
   const work = person.work;
 
-  const isFreelance =
-    work.company === "freelance" || work.company === "self-employed";
-
-  const altText = isFreelance
-    ? `${person.name}, ${work.title}`
-    : `${person.name}, ${work.title} at ${work.company}`;
+  const altText = getAttributeDescription(person, "alt");
 
   return (
     <div className="space-y-6 text-2xl sm:text-3xl md:leading-[110%]">

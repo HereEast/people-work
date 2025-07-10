@@ -6,7 +6,7 @@ import { QuoteIcon } from "./icons/QuoteIcon";
 
 import { PersonData } from "~/schemas";
 import { ALL_SLUGS } from "~/utils/data";
-import { getMetaDescription } from "~/utils/handlers";
+import { getAttributeDescription } from "~/utils/handlers";
 
 // Featured list
 interface FeaturedCardListProps {
@@ -43,7 +43,7 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
   const featuredItem = ALL_SLUGS.find((item) => item.slug === person.slug);
   const featuredId = featuredItem?.id || 0;
 
-  const ariaText = getMetaDescription(person, "aria");
+  const ariaText = getAttributeDescription(person, "aria");
 
   return (
     <Card

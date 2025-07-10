@@ -5,14 +5,14 @@ import { AccentText } from "~/components/AccentText";
 import { StickyMobileWrapper } from "~/components/Card";
 
 import { PersonData } from "~/schemas";
-import { getMetaDescription } from "~/utils/handlers";
+import { getAttributeDescription } from "~/utils/handlers";
 
 interface PersonViewProps {
   person: PersonData;
 }
 
 export function MobilePersonView({ person }: PersonViewProps) {
-  const altText = getMetaDescription(person, "alt");
+  const altText = getAttributeDescription(person, "alt");
 
   return (
     <StickyMobileWrapper>

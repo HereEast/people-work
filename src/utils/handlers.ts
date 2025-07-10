@@ -36,8 +36,11 @@ export function getFeaturedSlugs({
   return [...selected];
 }
 
-// Get meta description
-export function getMetaDescription(person: PersonData, type: "alt" | "aria") {
+// Get attribute description
+export function getAttributeDescription(
+  person: PersonData,
+  type: "alt" | "aria",
+) {
   const work = person.work;
 
   const isFreelance =

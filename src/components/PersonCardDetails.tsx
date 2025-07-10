@@ -2,14 +2,14 @@ import Image from "next/image";
 
 import { AccentText } from "./AccentText";
 import { PersonData } from "~/schemas";
-import { getMetaDescription } from "~/utils/handlers";
+import { getAttributeDescription } from "~/utils/handlers";
 
 interface PersonDetailsProps {
   person: PersonData;
 }
 
 export function PersonCardDetails({ person }: PersonDetailsProps) {
-  const altText = getMetaDescription(person, "alt");
+  const altText = getAttributeDescription(person, "alt");
 
   return (
     <div className="flex items-end gap-3 sm:gap-4">

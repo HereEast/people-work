@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { GoToPseudoButton } from "./ui";
 import { PersonData } from "~/schemas";
-import { getMetaDescription } from "~/utils/handlers";
+import { getAttributeDescription } from "~/utils/handlers";
 
 interface PeopleListProps {
   people: PersonData[];
@@ -25,7 +25,7 @@ interface PersonListItemProps {
 }
 
 function PersonListItem({ person }: PersonListItemProps) {
-  const ariaText = getMetaDescription(person, "aria");
+  const ariaText = getAttributeDescription(person, "aria");
 
   return (
     <li className="group border-t border-stone-900/15 px-px last:border-b">
@@ -53,7 +53,7 @@ interface PersonViewProps {
 }
 
 function PersonView({ person }: PersonViewProps) {
-  const altText = getMetaDescription(person, "alt");
+  const altText = getAttributeDescription(person, "alt");
 
   return (
     <div className="flex items-center gap-3 sm:gap-6">
