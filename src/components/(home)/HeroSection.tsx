@@ -5,7 +5,7 @@ import { AccentText } from "~/components/AccentText";
 export function HeroSection() {
   return (
     <section className="mb-10 mt-8 max-w-8xl sm:mb-16 sm:mt-12">
-      <p className="text-3xl font-medium leading-[105%] tracking-normal sm:text-5xl sm:leading-[95%] lg:text-7xl lg:leading-[95%]">
+      <h1 className="text-3xl font-medium leading-[105%] tracking-normal sm:text-5xl sm:leading-[95%] lg:text-7xl lg:leading-[95%]">
         Real people,{" "}
         <AccentText className="text-[116%] underline decoration-dotted decoration-[2.5px] underline-offset-4 sm:decoration-[5px] sm:underline-offset-[6px]">
           real jobs
@@ -24,10 +24,11 @@ export function HeroSection() {
           variant="link"
           underline
           className="md:decoration-4 md:underline-offset-[6px]"
+          aria-label="Subscribe to newsletter"
         >
           <AccentText className="text-[116%]">Subscribe</AccentText>
         </ButtonLink>
-      </p>
+      </h1>
     </section>
   );
 }

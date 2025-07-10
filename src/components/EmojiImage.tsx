@@ -29,6 +29,7 @@ export function EmojiImage({ name, classname }: EmojiImageProps) {
       className={cn("object-contain", classname)}
       priority
       onError={() => setError(true)}
+      aria-hidden="true"
     />
   );
 }

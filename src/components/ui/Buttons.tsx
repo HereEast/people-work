@@ -43,9 +43,9 @@ export function ClosePopupButton({ handleClose }: ClosePopupButtonProps) {
   return (
     <Button
       onClick={handleClose}
-      aria-label="Close"
       size="icon"
       className="absolute right-6 top-6 bg-transparent hover:bg-stone-600/10 sm:size-12"
+      aria-label="Close popup"
     >
       <XMarkIcon className="size-6" />
     </Button>

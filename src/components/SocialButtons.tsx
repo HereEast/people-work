@@ -13,6 +13,7 @@ export function LinkedinButton({ href }: ButtonProps) {
       target="_blank"
       rel="noopener noreferrer"
       className="bg-linkedin hover:bg-linkedin hover:opacity-75"
+      aria-label="Visit LinkedIn profile"
     >
       <LinkedinIcon className="w-6" />
     </ButtonLink>

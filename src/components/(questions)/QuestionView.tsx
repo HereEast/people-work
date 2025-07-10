@@ -26,7 +26,7 @@ export function DesktopQuestionView({ question }: QuestionViewProps) {
       <div className="hidden h-full flex-col justify-between gap-10 pr-10 md:flex">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-6">
-            <ButtonBack>Back</ButtonBack>
+            <ButtonBack aria-label="Back to all questions">Back</ButtonBack>
 
             <h1 className="text-5xl font-semibold leading-[100%] tracking-[-0.02ch]">
               {question.body}

@@ -7,6 +7,7 @@ import { ContactLinks } from "~/components/ContactLinks";
 import { MetadataDetails } from "~/components/MetadataDetails";
 
 import { PersonData } from "~/schemas";
+import { getAttributeDescription } from "~/utils/handlers";
 
 interface PersonViewProps {
   person: PersonData;
@@ -25,6 +26,10 @@ export function DesktopPersonView({ person }: PersonViewProps) {
   return (
     <StickyColumn>
       <div className="flex h-full flex-col justify-between">
+        <h1 id="person-heading" className="sr-only">
+          {`What does a ${person.work.title} actually do? Real experience from ${person.name}`}
+        </h1>
+
         <PersonViewHeader person={person} />
         <MetadataDetails metadata={metadata} />
       </div>
@@ -34,13 +39,15 @@ export function DesktopPersonView({ person }: PersonViewProps) {
 
 // Person Header
 function PersonViewHeader({ person }: PersonViewProps) {
-  const work = person.work[0];
+  const work = person.work;
+
+  const altText = getAttributeDescription(person, "alt");
 
   return (
     <div className="space-y-6 text-2xl sm:text-3xl md:leading-[110%]">
       <Image
         src={`/images/people/${person.slug}.jpg`}
-        alt={`Image of ${person.name}`}
+        alt={altText}
         width={600}
         height={600}
         className="size-60 rounded-md object-cover"
@@ -48,26 +55,29 @@ function PersonViewHeader({ person }: PersonViewProps) {
       />
 
       <div className="space-y-1">
-        <h1>
+        <h2>
           <AccentText className="underline decoration-dotted decoration-2 underline-offset-4">
             {person.name}
           </AccentText>
-        </h1>
+        </h2>
 
         <div className="space-y-px">
-          <h2>{work.title}</h2>
+          <h3>{work.title}</h3>
 
           {work.url ? (
-            <Link
-              href={work.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block capitalize underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
-            >
-              {work.company}
-            </Link>
+            <h3 className="inline-block capitalize">
+              <Link
+                href={work.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-2 underline-offset-[3.5px] transition hover:no-underline hover:opacity-30"
+                aria-label={`Visit ${work.company} website`}
+              >
+                {work.company}
+              </Link>
+            </h3>
           ) : (
-            <h2 className="inline-block">{work.company}</h2>
+            <h3 className="inline-block">{work.company}</h3>
           )}
         </div>
       </div>

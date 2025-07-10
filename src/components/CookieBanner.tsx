@@ -20,11 +20,16 @@ export function CookieBanner() {
             variant="outline"
             onClick={() => setConsent(false)}
             className="w-full sm:w-fit"
+            aria-label="Decline cookies"
           >
             Decline
           </Button>
 
-          <Button onClick={() => setConsent(true)} className="w-full sm:w-fit">
+          <Button
+            onClick={() => setConsent(true)}
+            className="w-full sm:w-fit"
+            aria-label="Accept cookies"
+          >
             Accept
           </Button>
         </div>

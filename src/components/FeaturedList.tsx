@@ -6,6 +6,7 @@ import { QuoteIcon } from "./icons/QuoteIcon";
 
 import { PersonData } from "~/schemas";
 import { ALL_SLUGS } from "~/utils/data";
+import { getAttributeDescription } from "~/utils/handlers";
 
 // Featured list
 interface FeaturedCardListProps {
@@ -14,13 +15,16 @@ interface FeaturedCardListProps {
 
 export function FeaturedList({ people }: FeaturedCardListProps) {
   return (
-    <div className="columns-1 gap-4 md:columns-2">
+    <ul
+      className="columns-1 gap-4 md:columns-2"
+      aria-label="Featured professionals and their insights"
+    >
       {people.map((person) => (
-        <div className="mb-4 break-inside-avoid" key={person.id}>
+        <li className="mb-4 break-inside-avoid" key={person.id}>
           <FeaturedCard person={person} />
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 
@@ -39,21 +43,29 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
   const featuredItem = ALL_SLUGS.find((item) => item.slug === person.slug);
   const featuredId = featuredItem?.id || 0;
 
+  const ariaText = getAttributeDescription(person, "aria");
+
   return (
     <Card
       className="transition duration-300 hover:brightness-[0.95] hover:saturate-[1.2]"
       style={{ backgroundColor: `var(--featured-${featuredId})` }}
     >
-      <Link href={`/people/${person.slug}`} className="block p-6 sm:p-10">
-        <div className="mb-8 space-y-5 lg:mb-10">
-          <QuoteIcon />
+      <Link
+        href={`/people/${person.slug}`}
+        className="block p-6 sm:p-10"
+        aria-label={ariaText}
+      >
+        <article>
+          <div className="mb-8 space-y-5 lg:mb-10">
+            <QuoteIcon />
 
-          <p className="text-3xl font-semibold leading-[98%] sm:text-4xl">
-            {featuredAnswer}
-          </p>
-        </div>
+            <h3 className="text-3xl font-semibold leading-[98%] sm:text-4xl">
+              {featuredAnswer}
+            </h3>
+          </div>
 
-        <PersonCardDetails person={person} />
+          <PersonCardDetails person={person} />
+        </article>
       </Link>
     </Card>
   );

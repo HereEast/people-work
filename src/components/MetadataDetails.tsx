@@ -16,11 +16,7 @@ export function MetadataDetails({ metadata }: MetadataDetailsProps) {
             <span>:</span>
           </span>
 
-          {typeof item.value === "string" ? (
-            <span>{item.value}</span>
-          ) : (
-            item.value
-          )}
+          {typeof item.value === "string" ? <h4>{item.value}</h4> : item.value}
         </li>
       ))}
     </ul>

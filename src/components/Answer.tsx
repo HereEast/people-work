@@ -95,6 +95,7 @@ export function Question({ children }: QuestionProps) {
       <Link
         href={`/questions/${children.slug}`}
         className="decoration-skip-ink-none inline-block text-xl font-semibold leading-[110%] underline decoration-[1.5px] underline-offset-2 transition hover:opacity-30 sm:text-3xl sm:leading-[115%] sm:decoration-2 sm:underline-offset-[3.5px]"
+        aria-label={`View all answers to: ${children.body}`}
       >
         {children.body}
       </Link>
