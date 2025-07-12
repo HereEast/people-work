@@ -1,4 +1,4 @@
-export const EDITING_PERSON_SLUG = "hugo-barbera";
+export const EDITING_PERSON_SLUG = "";
 
 export const FEATURED = [
   {
