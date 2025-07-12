@@ -6,8 +6,6 @@ import { getPeople } from "~/_lib";
 export default async function PeoplePage() {
   const people = await getPeople();
 
-  const peopleList = people?.filter((person) => !person.isHidden);
-
   return (
     <div>
       <section className="my-10" aria-labelledby="people-heading">
@@ -15,7 +13,7 @@ export default async function PeoplePage() {
           All Professionals
         </h1>
 
-        {peopleList && <PeopleList people={peopleList} />}
+        {people && <PeopleList people={people} />}
       </section>
 
       <div className="mx-auto my-16 max-w-screen-sm">

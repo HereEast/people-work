@@ -10,9 +10,12 @@ interface PeopleListProps {
 }
 
 export function PeopleList({ people }: PeopleListProps) {
+  // Filter out isHidden = WIP people
+  const filteredPeople = people.filter((person) => !person.isHidden);
+
   return (
     <ul>
-      {people.map((person) => (
+      {filteredPeople.map((person) => (
         <PersonListItem key={person.id} person={person} />
       ))}
     </ul>

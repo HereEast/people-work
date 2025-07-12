@@ -17,6 +17,8 @@ export default async function AdminPage() {
 
   return (
     <div>
+      <div>{EDITING_PERSON_SLUG}</div>
+
       <div className="flex flex-col gap-6">
         {questions?.map((question) => {
           const answer = answers?.find(
