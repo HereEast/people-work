@@ -1,4 +1,4 @@
-export const EDITING_PERSON_SLUG = "luba-kazakova";
+export const EDITING_PERSON_SLUG = "hugo-barbera";
 
 export const FEATURED = [
   {
@@ -55,10 +55,14 @@ export const ALL_SLUGS = [
 ];
 
 // {
-//   id: 6,
+//   id: 8,
 //   slug: "kate-rovba",
 // },
 // {
-//   id: 4,
+//   id: 9,
 //   slug: "bartek-hlawka",
+// },
+// {
+//   id: 10,
+//   slug: "hugo-barbera",
 // },

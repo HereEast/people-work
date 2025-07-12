@@ -8,6 +8,8 @@ import { getPeople } from "~/_lib";
 import { ButtonLink } from "~/components/ui";
 import { ROUTE } from "~/utils/constants";
 
+const MAX_PEOPLE_COUNT = 10;
+
 export default async function HomePage() {
   const featuredSlugs = getFeaturedSlugs({ source: "featured" });
   const people = await getPeople();
@@ -16,17 +18,15 @@ export default async function HomePage() {
     (person) => !person.isHidden && featuredSlugs.includes(person.slug),
   );
 
-  // Filter out isHidden = WIP people
   const peopleList = people
-    ?.filter(
-      (person) => !person.isHidden && !featuredSlugs.includes(person.slug),
-    )
-    .slice(0, 10);
+    ?.filter((person) => !featuredSlugs.includes(person.slug))
+    .slice(0, MAX_PEOPLE_COUNT);
 
   return (
     <div>
       <HeroSection />
 
+      {/* Featured People */}
       {featuredPeople && (
         <section className="mb-20" aria-labelledby="featured-heading">
           <h2 id="featured-heading" className="sr-only">
@@ -37,6 +37,7 @@ export default async function HomePage() {
         </section>
       )}
 
+      {/* 10 People (not featured) */}
       {peopleList && (
         <section className="mb-20" aria-labelledby="people-heading">
           <h2 id="people-heading" className="sr-only">
