@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { RecommendedSection } from "~/components/RecommendedSection";
 import { QAPersonView } from "~/components/(people)/QAPersonView";
-import { QAList } from "~/components/(people)/QAList";
+import { PersonQAList } from "~/components/(people)/PersonQAList";
 
 import { generatePersonMetadata } from "~/utils/metadata";
 import { getAnswersByPersonSlug, getPeople, getPerson } from "~/_lib";
@@ -51,7 +51,7 @@ export default async function PersonQAPage(props: PersonPageProps) {
             Questions and Answers
           </h2>
 
-          <QAList data={answers} />
+          <PersonQAList data={answers} />
         </section>
       </section>
 

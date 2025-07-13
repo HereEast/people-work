@@ -52,7 +52,7 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
     >
       <Link
         href={`/people/${person.slug}`}
-        className="block p-6 sm:p-10"
+        className="block min-w-0 p-6 sm:p-10"
         aria-label={ariaText}
       >
         <article>

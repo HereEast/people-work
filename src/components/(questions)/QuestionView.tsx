@@ -1,5 +1,5 @@
-import { StickyMobileWrapper } from "~/components/Card";
 import { ButtonLink, StickyColumn } from "../ui";
+import { StickyMobileWrapper } from "~/components/ui/StickyMobileWrapper";
 import { ButtonBack } from "./ButtonBack";
 import { QuestionTag } from "../QuestionTag";
 
@@ -54,8 +54,8 @@ function MobileQuestionView({ question }: QuestionViewProps) {
   return (
     <StickyMobileWrapper>
       <div className="gap-2 pb-4 pt-3 text-stone-50 sm:py-5">
-        <h1 className="text-xl font-medium leading-[110%] sm:text-3xl">
-          Q: {question.body}
+        <h1 className="text-xl font-semibold leading-[110%] sm:text-3xl">
+          {question.body}
         </h1>
       </div>
     </StickyMobileWrapper>

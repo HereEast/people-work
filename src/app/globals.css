@@ -44,12 +44,6 @@ a:hover {
 
 /* Answer */
 
-.answer a {
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 2.2px;
-}
-
 .answer em {
   font-style: normal;
   font-family: var(--font-accent);
@@ -58,16 +52,11 @@ a:hover {
   font-weight: 400;
   letter-spacing: -0.03ch;
 
-  text-decoration: underline;
+  /* text-decoration: underline;
   text-decoration-style: dotted;
   text-decoration-thickness: 1.5px;
   text-decoration-skip-ink: none;
-  text-underline-offset: 2.5px;
-}
-
-.answer a:hover {
-  opacity: 30%;
-  text-decoration: none;
+  text-underline-offset: 2.5px; */
 }
 
 .answer p:not(:last-child) {
@@ -77,7 +66,7 @@ a:hover {
 /* Lists */
 .answer ul li {
   position: relative;
-  padding: 0px 0px 0px 16px;
+  padding: 0px 0px 0px 18px;
 }
 
 .answer ul:not(:last-child) {
@@ -86,18 +75,18 @@ a:hover {
 
 /* Margin between List and P after*/
 .answer ul + p {
-  margin-top: 28px;
+  margin-top: 24px;
 }
 
 /* Headers for h6, h5 */
-.answer h6:has(+ ul),
-.answer h5:has(+ ul),
+
+.answer h5,
 .answer h6 {
   text-decoration: underline;
   text-decoration-style: dotted;
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: 1.5px;
   text-decoration-skip-ink: none;
-  text-underline-offset: 3px;
+  text-underline-offset: 2.5px;
 }
 
 .answer h6:has(+ ul) {
@@ -120,12 +109,12 @@ a:hover {
   height: 6px;
   background-color: black;
   border-radius: 100%;
-  top: 9px;
-  left: 0px;
+  top: 8px;
+  left: 1px;
   z-index: 2;
 }
 
-/* Desktop */
+/* DESKTOP */
 @media (min-width: 640px) {
   .answer ul:not(:last-child) {
     margin-bottom: 32px;
@@ -147,14 +136,8 @@ a:hover {
   }
   /**/
 
-  .answer a {
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
-  }
-
   /* Dotted underline */
-  .answer h6:has(+ ul),
-  .answer h5:has(+ ul),
+  .answer h5,
   .answer h6,
   .answer em {
     text-decoration-thickness: 2px;

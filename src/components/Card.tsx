@@ -26,12 +26,3 @@ export function Card({
     </div>
   );
 }
-
-// Sticky Mobile Card
-export function StickyMobileWrapper({ children }: CardProps) {
-  return (
-    <div className="sticky top-12 z-40 -mx-2.5 bg-stone-800 px-3 sm:top-16 md:-mx-6 md:px-6 lg:hidden">
-      {children}
-    </div>
-  );
-}
