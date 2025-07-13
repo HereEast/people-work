@@ -22,7 +22,7 @@ export function Header() {
           <LogoIcon />
         </ButtonLink>
 
-        <ul className="mb-1 flex gap-1 sm:gap-2">
+        <ul className="mb-0.5 flex gap-1 sm:gap-2">
           {HEADER_LINKS.map((link, index) => (
             <li className="group/header-link" key={link.label}>
               <ButtonLink

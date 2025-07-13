@@ -1,5 +1,5 @@
-import { StickyMobileWrapper } from "~/components/Card";
 import { ButtonLink, StickyColumn } from "../ui";
+import { StickyMobileWrapper } from "~/components/ui/StickyMobileWrapper";
 import { ButtonBack } from "./ButtonBack";
 import { QuestionTag } from "../QuestionTag";
 

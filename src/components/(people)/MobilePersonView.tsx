@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { AccentText } from "~/components/AccentText";
-import { StickyMobileWrapper } from "~/components/Card";
+import { StickyMobileWrapper } from "~/components/ui/StickyMobileWrapper";
 
 import { PersonData } from "~/schemas";
 import { getAttributeDescription } from "~/utils/handlers";

@@ -17,12 +17,25 @@ export function QAList({ data }: QAListProps) {
   return (
     <div className="space-y-2 pt-4">
       <ul
-        className="space-y-2"
+        className="sm:space-y-2"
         aria-label={`${data[0]?.person.name}'s answers to career questions`}
       >
         {data.map((item, index) => (
-          <li key={`${item.id}-${index}`}>
-            <QACard answerData={item} />
+          <li
+            key={`${item.id}-${index}`}
+            className="border-b border-stone-900/10 px-2 first:border-t sm:border-b-0 sm:px-0 sm:first:border-t-0"
+          >
+            {/* Mobile */}
+            <div className="pb-8 pt-6 sm:hidden">
+              <QAContent answerData={item} />
+            </div>
+
+            {/* Desktop */}
+            <div className="hidden sm:block">
+              <Card className="p-10" marked={item.marked}>
+                <QAContent answerData={item} />
+              </Card>
+            </div>
           </li>
         ))}
       </ul>
@@ -31,40 +44,38 @@ export function QAList({ data }: QAListProps) {
 }
 
 // QA Card
-interface QACardProps {
+interface QAContentProps {
   answerData: AnswerData;
 }
 
-function QACard({ answerData }: QACardProps) {
+function QAContent({ answerData }: QAContentProps) {
   const { question, answer, marked, clarifications, person } = answerData;
 
   return (
-    <Card marked={marked}>
-      <article className="space-y-6 p-6 sm:space-y-10 sm:p-10">
-        <div className="space-y-6 sm:space-y-10">
-          <Question>{question}</Question>
+    <article className="space-y-6 sm:space-y-10">
+      <div className="space-y-6 sm:space-y-10">
+        <Question>{question}</Question>
 
-          <div className="space-y-8 sm:space-y-10">
-            <Answer marked={marked}>{answer}</Answer>
+        <div className="space-y-8 sm:space-y-10">
+          <Answer marked={marked}>{answer}</Answer>
 
-            {clarifications && clarifications.length > 0 && (
-              <Clarifications data={clarifications} name={person.name} />
-            )}
-          </div>
+          {clarifications && clarifications.length > 0 && (
+            <Clarifications data={clarifications} name={person.name} />
+          )}
         </div>
+      </div>
 
-        <QACardFooter question={question} />
-      </article>
-    </Card>
+      <QAItemFooter question={question} />
+    </article>
   );
 }
 
 // Card Footer
-interface QACardFooterProps {
+interface QAItemFooterProps {
   question: QuestionData;
 }
 
-function QACardFooter({ question }: QACardFooterProps) {
+function QAItemFooter({ question }: QAItemFooterProps) {
   const questionUrl = `/questions/${question.slug}`;
 
   return (
