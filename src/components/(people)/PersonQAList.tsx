@@ -9,13 +9,13 @@ interface QAListProps {
   data: AnswerData[];
 }
 
-export function QAList({ data }: QAListProps) {
+export function PersonQAList({ data }: QAListProps) {
   if (!data?.length) {
     return null;
   }
 
   return (
-    <div className="space-y-2 pt-4">
+    <div className="sm:pt-4">
       <ul
         className="sm:space-y-2"
         aria-label={`${data[0]?.person.name}'s answers to career questions`}
@@ -27,13 +27,13 @@ export function QAList({ data }: QAListProps) {
           >
             {/* Mobile */}
             <div className="pb-8 pt-6 sm:hidden">
-              <QAContent answerData={item} />
+              <QAItem answerData={item} />
             </div>
 
             {/* Desktop */}
             <div className="hidden sm:block">
               <Card className="p-10" marked={item.marked}>
-                <QAContent answerData={item} />
+                <QAItem answerData={item} />
               </Card>
             </div>
           </li>
@@ -44,11 +44,11 @@ export function QAList({ data }: QAListProps) {
 }
 
 // QA Card
-interface QAContentProps {
+interface QAItemProps {
   answerData: AnswerData;
 }
 
-function QAContent({ answerData }: QAContentProps) {
+function QAItem({ answerData }: QAItemProps) {
   const { question, answer, marked, clarifications, person } = answerData;
 
   return (
@@ -70,7 +70,7 @@ function QAContent({ answerData }: QAContentProps) {
   );
 }
 
-// Card Footer
+// Item Footer
 interface QAItemFooterProps {
   question: QuestionData;
 }

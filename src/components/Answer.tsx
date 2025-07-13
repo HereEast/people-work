@@ -26,37 +26,13 @@ export async function Answer({ children, marked }: AnswersProps) {
 
   return (
     <div
-      className="answer text-lg leading-[125%] opacity-95 sm:text-3xl sm:leading-[120%] [&_a:hover]:no-underline [&_a:hover]:opacity-30 [&_a]:underline [&_a]:decoration-[1.5px] [&_a]:underline-offset-[2px] [&_a]:transition sm:[&_a]:decoration-[2px] sm:[&_a]:underline-offset-[3.5px]"
+      className="answer text-lg leading-[125%] opacity-95 sm:text-3xl sm:leading-[120%] [&_a:hover]:no-underline [&_a:hover]:opacity-30 [&_a]:underline [&_a]:decoration-[1.2px] [&_a]:underline-offset-[2px] [&_a]:transition sm:[&_a]:decoration-[2px] sm:[&_a]:underline-offset-[3.5px]"
       dangerouslySetInnerHTML={{
         __html: parsedHTML,
       }}
     />
   );
 }
-
-// export async function Answer({ children, marked }: AnswersProps) {
-//   const parsedHTML = await parseMarkdown(children);
-
-//   if (marked) {
-//     return (
-//       <div
-//         className="text-2xl font-semibold leading-[100%] sm:text-4xl sm:font-semibold sm:leading-[98%] sm:tracking-[-0.00ch] [&_a]:underline [&_a]:decoration-[2px] [&_a]:underline-offset-[3.5px] [&_a]:transition sm:[&_a]:decoration-2 sm:[&_a]:underline-offset-4 [&_em]:not-italic"
-//         dangerouslySetInnerHTML={{
-//           __html: parsedHTML,
-//         }}
-//       />
-//     );
-//   }
-
-//   return (
-//     <div
-//       className="answer text-xl leading-[120%] opacity-95 sm:text-3xl sm:leading-[120%] [&_a]:transition"
-//       dangerouslySetInnerHTML={{
-//         __html: parsedHTML,
-//       }}
-//     />
-//   );
-// }
 
 // Clarifications
 interface ClarificationsProps {
@@ -126,17 +102,3 @@ export function Question({ children }: QuestionProps) {
     </h3>
   );
 }
-
-// export function Question({ children }: QuestionProps) {
-//   return (
-//     <h3>
-//       <Link
-//         href={`/questions/${children.slug}`}
-//         className="decoration-skip-ink-none inline-block text-xl font-semibold leading-[110%] underline decoration-[1.5px] underline-offset-2 transition hover:opacity-30 sm:text-3xl sm:leading-[115%] sm:decoration-2 sm:underline-offset-[3.5px]"
-//         aria-label={`View all answers to: ${children.body}`}
-//       >
-//         {children.body}
-//       </Link>
-//     </h3>
-//   );
-// }
