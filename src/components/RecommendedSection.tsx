@@ -9,9 +9,9 @@ interface RecommendedPeopleProps {
 
 export async function RecommendedSection({ slug }: RecommendedPeopleProps) {
   const slugs = getFeaturedSlugs({
-    source: "all",
-    count: 2,
-    excludedSlugs: [slug],
+    listType: "all",
+    maxCount: 2,
+    excludeSlugs: [slug],
   });
 
   const recommendedPeople = await getPeople(slugs);

@@ -11,7 +11,7 @@ import { ROUTE } from "~/utils/constants";
 const MAX_PEOPLE_COUNT = 10;
 
 export default async function HomePage() {
-  const featuredSlugs = getFeaturedSlugs({ source: "featured" });
+  const featuredSlugs = getFeaturedSlugs({ listType: "featured" });
   const people = await getPeople();
 
   const featuredPeople = people?.filter(

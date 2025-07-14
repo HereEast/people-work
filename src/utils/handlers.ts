@@ -5,30 +5,34 @@ import { ALL_SLUGS, FEATURED } from "./data";
 import { PersonData } from "~/schemas";
 
 // Featured slugs
-interface GetFeaturedSlugsProps {
-  source: "featured" | "all";
-  count?: number | null;
-  excludedSlugs?: string[];
+interface GetFeaturedSlugsOptions {
+  listType: "featured" | "all";
+  maxCount?: number;
+  excludeSlugs?: string[];
 }
 
 export function getFeaturedSlugs({
-  source,
-  count,
-  excludedSlugs,
-}: GetFeaturedSlugsProps) {
-  const list = source === "featured" ? FEATURED : ALL_SLUGS;
+  listType,
+  maxCount,
+  excludeSlugs = [],
+}: GetFeaturedSlugsOptions) {
+  if (maxCount !== undefined && (maxCount < 0 || !Number.isInteger(maxCount))) {
+    throw new Error("maxCount must be a non-negative integer");
+  }
+
+  const list = listType === "featured" ? FEATURED : ALL_SLUGS;
 
   const slugs = list
     .map((item) => item.slug)
-    .filter((slug) => !(excludedSlugs || [])?.includes(slug));
+    .filter((slug) => !excludeSlugs.includes(slug));
 
-  if (!count || count >= slugs.length) {
+  if (!maxCount || maxCount >= slugs.length) {
     return [...slugs];
   }
 
   const selected = new Set<string>();
 
-  while (selected.size < count) {
+  while (selected.size < maxCount) {
     const randomSlug = slugs[Math.floor(Math.random() * slugs.length)];
     selected.add(randomSlug);
   }
