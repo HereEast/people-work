@@ -170,7 +170,7 @@ function ConnectContent() {
 
       <ButtonLink
         href={CONTACT.email}
-        className="h-32 w-full rounded-md bg-stone-800 pb-px text-xl tracking-[0.04ch] text-stone-50 hover:bg-stone-900 sm:h-52 sm:rounded-lg sm:text-3xl"
+        className="h-32 w-full rounded-md pb-px text-xl tracking-[0.04ch] sm:h-52 sm:rounded-lg sm:text-3xl"
       >
         Drop an Email
       </ButtonLink>
