@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { ImagePlaceholder } from "../ui/ImagePlaceholder";
 import { AccentText } from "~/components/AccentText";
 import { StickyMobileWrapper } from "~/components/ui/StickyMobileWrapper";
 
@@ -17,14 +18,18 @@ export function MobilePersonView({ person }: PersonViewProps) {
   return (
     <StickyMobileWrapper>
       <div className="flex items-end gap-2.5 py-3 sm:gap-4 sm:py-5">
-        <Image
-          src={`/images/people/${person.slug}.jpg`}
-          alt={altText}
-          width={600}
-          height={600}
-          className="mb-px size-[60px] rounded-xs object-cover sm:size-[80px]"
-          priority
-        />
+        {/* Image */}
+        <div className="relative size-[60px] overflow-hidden rounded-xs sm:size-[80px]">
+          <ImagePlaceholder />
+          <Image
+            src={`/images/people/${person.slug}.jpg`}
+            alt={altText}
+            width={600}
+            height={600}
+            className="relative object-cover"
+            priority
+          />
+        </div>
 
         <div className="flex flex-col gap-0.5 pb-px text-lg text-stone-50 sm:text-2xl">
           <h2 className="leading-none">

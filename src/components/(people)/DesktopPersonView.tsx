@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { ImagePlaceholder } from "../ui/ImagePlaceholder";
 import { StickyColumn } from "~/components/ui";
 import { AccentText } from "~/components/AccentText";
 import { ContactLinks } from "~/components/ContactLinks";
@@ -45,14 +46,18 @@ function PersonViewHeader({ person }: PersonViewProps) {
 
   return (
     <div className="space-y-6 text-2xl sm:text-3xl md:leading-[110%]">
-      <Image
-        src={`/images/people/${person.slug}.jpg`}
-        alt={altText}
-        width={600}
-        height={600}
-        className="size-60 rounded-md object-cover"
-        priority
-      />
+      {/* Image */}
+      <div className="relative size-60 overflow-hidden rounded-md">
+        <ImagePlaceholder />
+        <Image
+          src={`/images/people/${person.slug}.jpg`}
+          alt={altText}
+          width={600}
+          height={600}
+          className="relative object-cover"
+          priority
+        />
+      </div>
 
       <div className="space-y-1">
         <h2>
