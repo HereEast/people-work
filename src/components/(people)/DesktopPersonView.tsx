@@ -15,8 +15,17 @@ interface PersonViewProps {
 }
 
 export function DesktopPersonView({ person }: PersonViewProps) {
+  const year = new Date().getFullYear();
+  const createdAtYear = new Date(person.createdAt).getFullYear();
+
+  const yearsOfExperienceDB = parseInt(person.metadata.experience);
+  const yearsOfExperience = year - createdAtYear + yearsOfExperienceDB;
+
   const metadata = [
-    { label: "Experience", value: person.metadata.experience },
+    {
+      label: "Experience",
+      value: `${yearsOfExperience} years`,
+    },
     { label: "Space", value: person.metadata.domain },
     {
       label: "Contacts",
