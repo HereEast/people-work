@@ -1,12 +1,13 @@
 import localFont from "next/font/local";
+import { Inter as InterGoogle } from "next/font/google";
+
+export const Inter = InterGoogle({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const Nm = localFont({
   src: [
-    // {
-    //   path: "../../public/fonts/nm-light.otf",
-    //   weight: "200",
-    //   style: "normal",
-    // },
     {
       path: "../../public/fonts/nm-book.otf",
       weight: "300",
@@ -30,47 +31,6 @@ export const Nm = localFont({
     {
       path: "../../public/fonts/nm-bold.otf",
       weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-base",
-});
-
-export const InnovatorGrotesk = localFont({
-  src: [
-    {
-      path: "../../public/fonts/innovator-grotesk-light.woff2",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/innovator-grotesk-regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/innovator-grotesk-medium.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/innovator-grotesk-semibold.woff2",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/innovator-grotesk-bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/innovator-grotesk-extrabold.woff2",
-      weight: "800",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/innovator-grotesk-black.woff2",
-      weight: "900",
       style: "normal",
     },
   ],
