@@ -10,7 +10,7 @@ interface ButtonProps {
 
 export function GoToButton({ href }: ButtonProps) {
   return (
-    <ButtonLink href={href} size="icon">
+    <ButtonLink href={href} size="icon" variant="secondary">
       <ArrowUpRightIcon className="w-5 shrink-0 sm:w-6" />
     </ButtonLink>
   );
@@ -25,7 +25,7 @@ export function GoToPseudoButton({ className = "" }: GoToPseudoButtonProps) {
   return (
     <div
       className={cn(
-        buttonVariants({ variant: "base", size: "icon" }),
+        buttonVariants({ variant: "secondary", size: "icon" }),
         className,
       )}
     >
@@ -44,6 +44,7 @@ export function ClosePopupButton({ handleClose }: ClosePopupButtonProps) {
     <Button
       onClick={handleClose}
       size="icon"
+      variant="secondary"
       className="absolute right-6 top-6 bg-transparent hover:bg-stone-600/10 sm:size-12"
       aria-label="Close popup"
     >

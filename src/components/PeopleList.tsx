@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { ImagePlaceholder } from "./ui/ImagePlaceholder";
 import { GoToPseudoButton } from "./ui";
 import { PersonData } from "~/schemas";
 import { getAttributeDescription } from "~/utils/handlers";
@@ -60,14 +61,18 @@ function PersonView({ person }: PersonViewProps) {
 
   return (
     <div className="flex items-center gap-3 sm:gap-6">
-      <Image
-        src={`/images/people/${person.slug}.jpg`}
-        alt={altText}
-        width={200}
-        height={200}
-        className="size-10 rounded-xs object-cover transition group-hover:opacity-30 sm:size-14 sm:rounded-sm"
-        priority
-      />
+      <div className="relative size-10 overflow-hidden rounded-xs sm:size-14 sm:rounded-sm">
+        <ImagePlaceholder />
+
+        <Image
+          src={`/images/people/${person.slug}.jpg`}
+          alt={altText}
+          width={200}
+          height={200}
+          className="relative object-cover transition group-hover:opacity-30"
+          priority
+        />
+      </div>
 
       <h4 className="text-xl font-semibold leading-[105%] transition group-hover:opacity-30 sm:text-3xl lg:truncate lg:text-nowrap">
         {person.name}

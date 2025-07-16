@@ -47,8 +47,7 @@ export function getAttributeDescription(
 ) {
   const work = person.work;
 
-  const isFreelance =
-    work.company === "freelance" || work.company === "self-employed";
+  const isFreelance = isFreelanceWork(work.company);
 
   if (type === "alt") {
     const altText = isFreelance
@@ -67,6 +66,14 @@ export function getAttributeDescription(
   }
 
   return "";
+}
+
+// Is freelance
+export function isFreelanceWork(company: string) {
+  return (
+    company.toLowerCase() === "freelance" ||
+    company.toLowerCase() === "self-employed"
+  );
 }
 
 // Handle errors

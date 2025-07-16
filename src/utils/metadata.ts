@@ -2,6 +2,7 @@ import { Metadata } from "next";
 
 import { getPerson, getQuestion } from "~/_lib";
 import { BASE_URL } from "./constants";
+import { isFreelanceWork } from "./handlers";
 
 const SEO_DATA = {
   url: BASE_URL,
@@ -18,8 +19,7 @@ export async function generatePersonMetadata(slug: string) {
   if (person) {
     const work = person.work;
 
-    const isFreelance =
-      work.company === "freelance" || work.company === "self-employed";
+    const isFreelance = isFreelanceWork(work.company);
 
     const title = isFreelance
       ? `What does a ${work.title} actually do? Real experience from ${person.name}`

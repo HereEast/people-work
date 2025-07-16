@@ -11,7 +11,7 @@ import { GoogleAnalytics } from "~/components/GoogleAnalytics";
 import { CookieBanner } from "~/components/CookieBanner";
 
 import { getMetadata } from "~/utils/metadata";
-import { InnovatorGrotesk, Mondwest, Nm } from "~/utils/fonts";
+import { Inter, Mondwest, Nm } from "~/utils/fonts";
 
 export const metadata: Metadata = getMetadata();
 
@@ -23,7 +23,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
-      className={`${Nm.className} ${Mondwest.variable} scroll-smooth`}
+      className={`${Inter.className} ${Nm.className} ${Mondwest.variable} scroll-smooth`}
     >
       <GoogleAnalytics />
 

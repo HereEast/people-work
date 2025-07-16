@@ -21,6 +21,7 @@ const config: Config = {
       fontFamily: {
         base: ["var(--font-base)"],
         accent: ["var(--font-accent)"],
+        inter: ["var(--font-inter)"],
       },
       fontSize: {
         sm: "16px",

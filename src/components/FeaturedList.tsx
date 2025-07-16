@@ -14,17 +14,34 @@ interface FeaturedCardListProps {
 }
 
 export function FeaturedList({ people }: FeaturedCardListProps) {
+  const mid = Math.ceil(people.length / 2);
+
+  const columnOne = people.slice(0, mid);
+  const columnTwo = people.slice(mid);
+
   return (
-    <ul
-      className="columns-1 gap-4 md:columns-2"
-      aria-label="Featured professionals and their insights"
-    >
-      {people.map((person) => (
-        <li className="mb-4 break-inside-avoid" key={person.id}>
-          <FeaturedCard person={person} />
-        </li>
-      ))}
-    </ul>
+    <div className="grid gap-4 md:grid-cols-2">
+      <ul
+        className="grid h-fit grid-cols-1 gap-4"
+        aria-label="Featured professionals and insights"
+      >
+        {columnOne.map((person) => (
+          <li key={person.id}>
+            <FeaturedCard person={person} />
+          </li>
+        ))}
+      </ul>
+      <ul
+        className="grid h-fit grid-cols-1 gap-4"
+        aria-label="Featured professionals and insights"
+      >
+        {columnTwo.map((person) => (
+          <li key={person.id}>
+            <FeaturedCard person={person} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

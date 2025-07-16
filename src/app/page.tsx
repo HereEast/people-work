@@ -14,12 +14,16 @@ export default async function HomePage() {
   const featuredSlugs = getFeaturedSlugs({ listType: "featured" });
   const people = await getPeople();
 
-  const featuredPeople = people?.filter(
-    (person) => !person.isHidden && featuredSlugs.includes(person.slug),
-  );
+  const featuredPeople = featuredSlugs
+    .map((slug) =>
+      people?.find((person) => person.slug === slug && !person.isHidden),
+    )
+    .filter((person) => person !== undefined);
 
   const peopleList = people
-    ?.filter((person) => !featuredSlugs.includes(person.slug))
+    ?.filter(
+      (person) => !person.isHidden && !featuredSlugs.includes(person.slug),
+    )
     .slice(0, MAX_PEOPLE_COUNT);
 
   return (
@@ -49,7 +53,7 @@ export default async function HomePage() {
 
             <ButtonLink
               href={ROUTE.people}
-              className="h-16 w-full rounded-md bg-stone-800 pb-px text-xl tracking-[0.04ch] text-stone-50 hover:bg-stone-900 sm:h-24 sm:rounded-lg sm:text-3xl"
+              className="h-16 w-full rounded-md pb-px text-xl tracking-[0.04ch] sm:h-24 sm:rounded-lg sm:text-3xl"
             >
               View All
             </ButtonLink>
