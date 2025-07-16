@@ -21,7 +21,9 @@ export default async function HomePage() {
     .filter((person) => person !== undefined);
 
   const peopleList = people
-    ?.filter((person) => !featuredSlugs.includes(person.slug))
+    ?.filter(
+      (person) => !person.isHidden && !featuredSlugs.includes(person.slug),
+    )
     .slice(0, MAX_PEOPLE_COUNT);
 
   return (
