@@ -14,9 +14,11 @@ export default async function HomePage() {
   const featuredSlugs = getFeaturedSlugs({ listType: "featured" });
   const people = await getPeople();
 
-  const featuredPeople = people?.filter(
-    (person) => !person.isHidden && featuredSlugs.includes(person.slug),
-  );
+  const featuredPeople = featuredSlugs
+    .map((slug) =>
+      people?.find((person) => person.slug === slug && !person.isHidden),
+    )
+    .filter((person) => person !== undefined);
 
   const peopleList = people
     ?.filter((person) => !featuredSlugs.includes(person.slug))
