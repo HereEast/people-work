@@ -1,8 +1,9 @@
 import Link from "next/link";
 
 import { Card } from "~/components/Card";
-import { Answer, Clarifications } from "~/components/Answer";
+import { Answer } from "~/components/Answer";
 import { PersonCardDetails } from "~/components/PersonCardDetails";
+import { Clarifications } from "../Clarifications";
 import { GoToButton } from "~/components/ui/Buttons";
 
 import { AnswerData, PersonData } from "~/schemas";
@@ -12,7 +13,7 @@ interface AnswersListProps {
   slug: string;
 }
 
-export async function AnswersList({ slug }: AnswersListProps) {
+export async function QuestionAnswersList({ slug }: AnswersListProps) {
   const answers = await getAnswersByQuestionSlug(slug);
 
   const publicAnswers = answers?.filter((answer) => !answer.person.isHidden);

@@ -1,7 +1,8 @@
 import { Card } from "~/components/Card";
 import { GoToButton } from "~/components/ui/Buttons";
-import { Answer, Clarifications, Question } from "~/components/Answer";
+import { Answer, Question } from "~/components/Answer";
 import { QuestionTag } from "~/components/QuestionTag";
+import { Clarifications } from "~/components/Clarifications";
 
 import { AnswerData, QuestionData } from "~/schemas";
 
@@ -9,7 +10,7 @@ interface QAListProps {
   data: AnswerData[];
 }
 
-export function PersonQAList({ data }: QAListProps) {
+export function PersonAnswersList({ data }: QAListProps) {
   if (!data?.length) {
     return null;
   }

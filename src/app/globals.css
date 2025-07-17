@@ -61,6 +61,10 @@ a:hover {
   margin-bottom: 24px;
 }
 
+.subanswer p:not(:last-child) {
+  margin-bottom: 20px;
+}
+
 /* Lists */
 .answer ul li {
   position: relative;
@@ -120,6 +124,10 @@ a:hover {
 
   .answer p:not(:last-child) {
     margin-bottom: 32px;
+  }
+
+  .subanswer p:not(:last-child) {
+    margin-bottom: 20px;
   }
 
   /* Bullet point */
