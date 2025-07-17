@@ -3,11 +3,11 @@ import { MobilePersonView } from "./MobilePersonView";
 
 import { PersonData } from "~/schemas";
 
-export interface PersonViewProps {
+export interface PersonDataQAProps {
   person: PersonData;
 }
 
-export function QAPersonView({ person }: PersonViewProps) {
+export function PersonDataView({ person }: PersonDataQAProps) {
   return (
     <>
       <DesktopPersonView person={person} />

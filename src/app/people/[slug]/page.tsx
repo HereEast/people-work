@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 
 import { RecommendedSection } from "~/components/RecommendedSection";
-import { QAPersonView } from "~/components/(people)/QAPersonView";
-import { PersonQAList } from "~/components/(people)/PersonQAList";
+import { PersonDataView } from "~/components/(people)/PersonDataView";
+import { PersonAnswersList } from "~/components/(people)/PersonAnswersList";
 
 import { generatePersonMetadata } from "~/utils/metadata";
 import { getAnswersByPersonSlug, getPeople, getPerson } from "~/_lib";
@@ -44,14 +44,14 @@ export default async function PersonQAPage(props: PersonPageProps) {
         className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-4"
         aria-labelledby="person-heading"
       >
-        <QAPersonView person={person} />
+        <PersonDataView person={person} />
 
         <section aria-labelledby="qa-heading">
           <h2 id="qa-heading" className="sr-only">
             Questions and Answers
           </h2>
 
-          <PersonQAList data={answers} />
+          <PersonAnswersList data={answers} />
         </section>
       </section>
 

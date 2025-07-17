@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { QuestionView } from "~/components/(questions)/QuestionView";
 import { RecommendedSection } from "~/components/RecommendedSection";
-import { AnswersList } from "~/components/(questions)/AnswersList";
+import { QuestionAnswersList } from "~/components/(questions)/QuestionAnswersList";
 
 import { generateQuestionMetadata } from "~/utils/metadata";
 import { getQuestion, getQuestions } from "~/_lib";
@@ -52,7 +52,7 @@ export default async function QuestionPage(props: QuestionPageProps) {
             Answers to this question
           </h2>
 
-          <AnswersList slug={slug} />
+          <QuestionAnswersList slug={slug} />
         </section>
       </section>
 

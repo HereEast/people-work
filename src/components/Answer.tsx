@@ -16,7 +16,7 @@ export async function Answer({ children, marked }: AnswersProps) {
   if (marked) {
     return (
       <div
-        className="text-[28px] font-semibold leading-[105%] tracking-[-0.005ch] sm:text-4xl sm:font-semibold sm:leading-[100%] sm:tracking-normal [&_a:hover]:no-underline [&_a:hover]:opacity-30 [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-[3.5px] [&_a]:transition sm:[&_a]:decoration-[2.5px] sm:[&_a]:underline-offset-[5px] [&_em]:not-italic"
+        className="text-[28px] font-semibold leading-[105%] tracking-[-0.005ch] sm:text-4xl sm:font-semibold sm:leading-[105%] sm:tracking-[0.005ch] [&_a:hover]:no-underline [&_a:hover]:opacity-30 [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-[3.5px] [&_a]:transition sm:[&_a]:decoration-[2.5px] sm:[&_a]:underline-offset-[5px] [&_em]:not-italic"
         dangerouslySetInnerHTML={{
           __html: parsedHTML,
         }}
@@ -31,56 +31,6 @@ export async function Answer({ children, marked }: AnswersProps) {
         __html: parsedHTML,
       }}
     />
-  );
-}
-
-// Clarifications
-interface ClarificationsProps {
-  name: string;
-  data: {
-    question: string;
-    answer: string;
-  }[];
-}
-
-export async function Clarifications({ data, name }: ClarificationsProps) {
-  const personInitials = name.split(" ").map((word) => word[0].toUpperCase());
-
-  const parsedArray = await Promise.all(
-    data.map(async (item) => ({
-      ...item,
-      answer: await parseMarkdown(item.answer),
-    })),
-  );
-
-  return (
-    <ul className="space-y-1.5">
-      {parsedArray.map(({ question, answer }, index) => (
-        <li
-          key={index}
-          className="space-y-4 rounded-md bg-stone-800/5 p-5 pb-6 leading-[115%] sm:rounded-lg sm:p-8 sm:pr-10"
-        >
-          <div className="grid items-start gap-2 sm:grid-cols-[50px_1fr]">
-            <div className="hidden sm:block">PW: </div>
-            <h4 className="text-base font-semibold leading-[125%] sm:text-xl">
-              {question}
-            </h4>
-          </div>
-
-          <div className="grid items-start gap-2 sm:grid-cols-[50px_1fr]">
-            <div className="hidden sm:block sm:leading-[135%]">
-              {personInitials}:
-            </div>
-            <div
-              className="answer text-base leading-[130%] sm:text-xl sm:leading-[135%] [&_a]:underline-offset-2 [&_em]:text-[113%] [&_em]:decoration-2 [&_em]:underline-offset-[2.5px]"
-              dangerouslySetInnerHTML={{
-                __html: answer,
-              }}
-            />
-          </div>
-        </li>
-      ))}
-    </ul>
   );
 }
 
