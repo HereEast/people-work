@@ -10,12 +10,19 @@ export interface IFormDataProps {
   question: string;
   answer: string;
   personSlug: string;
+  prevQuestion?: string;
 }
 
 export async function POST(req: Request) {
   const data = await req.json();
 
-  const { answerId, question, answer, personSlug }: IFormDataProps = data;
+  const {
+    answerId,
+    question,
+    answer,
+    personSlug,
+    prevQuestion,
+  }: IFormDataProps = data;
 
   if (!answerId || !question || !answer) {
     return NextResponse.json(
@@ -50,10 +57,11 @@ export async function POST(req: Request) {
 
     const existingClarification = answerDoc.clarifications.find(
       (clarification: { question: string }) =>
-        clarification.question === question,
+        clarification.question === prevQuestion,
     );
 
     if (existingClarification) {
+      existingClarification.question = question;
       existingClarification.answer = answer;
     } else {
       answerDoc.clarifications.push({

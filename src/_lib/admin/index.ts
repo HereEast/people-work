@@ -46,6 +46,7 @@ interface SubmitClarificationProps {
   answerId: string;
   question: string;
   answer: string;
+  prevQuestion?: string;
 }
 
 export async function submitClarification({
@@ -53,6 +54,7 @@ export async function submitClarification({
   answerId,
   question,
   answer,
+  prevQuestion,
 }: SubmitClarificationProps): Promise<AnswerData | null> {
   if (!answer || !question) {
     throw new Error("Answer and question are required.");
@@ -69,6 +71,7 @@ export async function submitClarification({
         question,
         answerId,
         personSlug,
+        prevQuestion,
       }),
     });
 
