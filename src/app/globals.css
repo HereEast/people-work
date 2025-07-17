@@ -5,7 +5,7 @@
 body {
   box-sizing: border-box;
   scroll-behavior: smooth;
-  letter-spacing: 0.025ch;
+  letter-spacing: 0.03ch;
   text-decoration-skip-ink: none;
 }
 
@@ -35,10 +35,8 @@ a:hover {
     --featured-5: #f6e089;
     --featured-6: #c9d0c1;
     --featured-7: #c4abde;
-    --featured-8: #f9bfdb;
-    /* --featured-8: #ffc2eb; */
-    /* --featured-9: #d1d0da;
-    --featured-hover-9: #b8b6c5; */
+    --featured-8: #ffc2eb;
+    --featured-9: #c9c4c0;
   }
 }
 
