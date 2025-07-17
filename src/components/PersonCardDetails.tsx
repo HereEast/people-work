@@ -16,7 +16,7 @@ export function PersonCardDetails({ person }: PersonDetailsProps) {
   return (
     <div className="flex items-end gap-3 sm:gap-4">
       {/* Image */}
-      <div className="relative size-[70px] overflow-hidden rounded-xs sm:size-[90px]">
+      <div className="relative size-[70px] shrink-0 overflow-hidden rounded-xs sm:size-[90px]">
         <ImagePlaceholder />
         <Image
           src={`/images/people/${person.slug}.jpg`}

@@ -61,7 +61,7 @@ function PersonView({ person }: PersonViewProps) {
 
   return (
     <div className="flex items-center gap-3 sm:gap-6">
-      <div className="relative size-10 overflow-hidden rounded-xs sm:size-14 sm:rounded-sm">
+      <div className="relative size-10 shrink-0 overflow-hidden rounded-xs sm:size-14 sm:rounded-sm">
         <ImagePlaceholder />
 
         <Image

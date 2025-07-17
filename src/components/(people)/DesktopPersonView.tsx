@@ -56,7 +56,7 @@ function PersonViewHeader({ person }: PersonViewProps) {
   return (
     <div className="space-y-6 text-2xl sm:text-3xl md:leading-[110%]">
       {/* Image */}
-      <div className="relative size-60 overflow-hidden rounded-md">
+      <div className="relative size-60 shrink-0 overflow-hidden rounded-md">
         <ImagePlaceholder />
         <Image
           src={`/images/people/${person.slug}.jpg`}
