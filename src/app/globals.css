@@ -45,10 +45,10 @@ a:hover {
 .answer em {
   font-style: normal;
   font-family: var(--font-accent);
-  font-size: 115%;
+  font-size: 114.5%;
   line-height: 70%;
   font-weight: 400;
-  letter-spacing: -0.03ch;
+  letter-spacing: -0.02ch;
 
   /* text-decoration: underline;
   text-decoration-style: dotted;

@@ -61,8 +61,3 @@ export const ALL_SLUGS = [
     slug: "bartek-hlawka",
   },
 ];
-
-// {
-//   id: 10,
-//   slug: "hugo-barbera",
-// },
