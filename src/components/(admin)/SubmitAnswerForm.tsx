@@ -9,7 +9,6 @@ import { Button } from "../ui";
 
 import { AnswerData, QuestionData } from "~/schemas";
 import { submitAnswer } from "~/_lib/admin";
-import { EDITING_PERSON_SLUG } from "~/utils/data";
 import { cn } from "~/utils/handlers";
 
 const SubmitAnswerFormSchema = z.object({
@@ -19,11 +18,13 @@ const SubmitAnswerFormSchema = z.object({
 type SubmitAnswerFormData = z.infer<typeof SubmitAnswerFormSchema>;
 
 interface SubmitAnswerFormProps {
+  personSlug: string;
   questionData: QuestionData;
   answerData?: AnswerData;
 }
 
 export function SubmitAnswerForm({
+  personSlug,
   questionData,
   answerData,
 }: SubmitAnswerFormProps) {
@@ -43,7 +44,7 @@ export function SubmitAnswerForm({
     const answer = await submitAnswer({
       answer: formData.answer,
       questionId: questionData.id,
-      personSlug: EDITING_PERSON_SLUG,
+      personSlug,
     });
 
     if (answer) {

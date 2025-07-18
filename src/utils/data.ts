@@ -1,5 +1,3 @@
-export const EDITING_PERSON_SLUG = "";
-
 export const FEATURED = [
   {
     id: 9,
