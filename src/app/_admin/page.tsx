@@ -3,7 +3,7 @@ import { SubmitAnswerForm } from "~/components/(admin)/SubmitAnswerForm";
 
 import { getAnswersByPersonSlug, getQuestions } from "~/_lib";
 
-const EDITING_PERSON_SLUG = "adam-myhill";
+const EDITING_PERSON_SLUG = "";
 
 export default async function AdminPage() {
   const questions = await getQuestions();

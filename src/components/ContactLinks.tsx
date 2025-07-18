@@ -18,7 +18,7 @@ export function ContactLinks({ links }: ContactLinksProps) {
   return (
     <ul className="flex gap-2" aria-label="Contact information">
       {contacts.map(([name, url], index) => (
-        <li key={name} className="group">
+        <li key={name} className="group flex">
           <ButtonLink
             href={name === "email" ? `mailto:${url}` : url}
             variant="link"
