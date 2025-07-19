@@ -14,9 +14,9 @@ export function AccentText({
   return (
     <span
       className={cn(
-        "font-accent text-[116%] leading-[80%] tracking-[-0.02ch]",
+        "font-accent text-[116%] font-normal leading-[80%] tracking-[-0.02ch]",
         underline &&
-          "underline decoration-dotted decoration-[7%] underline-offset-[0.1em] sm:decoration-[5.5%] sm:underline-offset-[0.08em]",
+          "underline decoration-dotted decoration-[7%] underline-offset-[0.1em] sm:decoration-[5.5%] sm:underline-offset-[0.12em]",
         className,
       )}
     >
