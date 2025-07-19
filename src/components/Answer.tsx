@@ -16,7 +16,7 @@ export async function Answer({ children, marked }: AnswersProps) {
   if (marked) {
     return (
       <div
-        className="text-[28px] font-semibold leading-[105%] tracking-[-0.005ch] sm:text-4xl sm:font-semibold sm:leading-[105%] sm:tracking-[0.005ch] [&_a:hover]:no-underline [&_a:hover]:opacity-30 [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-[3.5px] [&_a]:transition sm:[&_a]:decoration-[2.5px] sm:[&_a]:underline-offset-[5px] [&_em]:not-italic"
+        className="text-3xl font-semibold leading-[105%] tracking-[-0.005ch] sm:text-4xl sm:font-semibold sm:leading-[102%] sm:tracking-[0.005ch] [&_a:hover]:no-underline [&_a:hover]:opacity-30 [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-[3.5px] [&_a]:transition sm:[&_a]:decoration-[2.5px] sm:[&_a]:underline-offset-[5px] [&_em]:not-italic"
         dangerouslySetInnerHTML={{
           __html: parsedHTML,
         }}
