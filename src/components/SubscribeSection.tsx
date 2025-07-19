@@ -12,6 +12,7 @@ export function SubscribeSection() {
 
   return (
     <section
+      id="subscribe-form"
       className="flex flex-col gap-8"
       aria-labelledby="subscribe-heading"
     >
