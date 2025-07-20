@@ -84,18 +84,27 @@ function About() {
 // Lead
 function LeadContent() {
   return (
-    <div className="text-2xl font-semibold leading-[100%] sm:text-4xl sm:font-semibold sm:leading-[110%]">
+    <div className="text-3xl font-semibold leading-[105%] sm:text-4xl sm:font-semibold sm:leading-[110%]">
       <h1>
-        <AccentText className="font-normal underline decoration-dotted decoration-2 underline-offset-[3px] sm:decoration-[3px] sm:underline-offset-4">
+        <AccentText
+          underline
+          className="decoration-2 underline-offset-[3px] sm:decoration-[3px] sm:underline-offset-4"
+        >
           People Work
         </AccentText>{" "}
         is a small digital hustle on a mission to{" "}
-        <AccentText className="font-normal underline decoration-dotted decoration-2 underline-offset-[3px] sm:decoration-[3px] sm:underline-offset-4">
+        <AccentText
+          underline
+          className="decoration-2 underline-offset-[3px] sm:decoration-[3px] sm:underline-offset-4"
+        >
           demystify job titles
         </AccentText>{" "}
-        and show the real people behind them through simple Q&As. No fluff, no
-        jargon — just honest{" "}
-        <AccentText className="font-normal underline decoration-dotted decoration-2 underline-offset-[3px] sm:decoration-[3px] sm:underline-offset-4">
+        and show the real people behind them via simple Q&As. No fluff, no
+        jargon – just honest{" "}
+        <AccentText
+          underline
+          className="decoration-2 underline-offset-[3px] sm:decoration-[3px] sm:underline-offset-4"
+        >
           career insights
         </AccentText>{" "}
         from professionals actually doing the work.

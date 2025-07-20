@@ -4,21 +4,23 @@ import { AccentText } from "~/components/AccentText";
 
 export function HeroSection() {
   return (
-    <section className="mb-10 mt-8 max-w-8xl sm:mb-16 sm:mt-12">
-      <h1 className="text-3xl font-medium leading-[105%] tracking-normal sm:text-5xl sm:leading-[95%] lg:text-7xl lg:leading-[95%]">
+    <section className="mb-10 mt-8 max-w-hero sm:mb-16 sm:mt-12">
+      <h1 className="text-2xl font-medium leading-[115%] sm:text-5xl sm:leading-[95%] lg:text-7xl lg:leading-[95%]">
         Real people,{" "}
-        <AccentText className="text-[116%] underline decoration-dotted decoration-[2.5px] underline-offset-4 sm:decoration-[5px] sm:underline-offset-[6px]">
+        <AccentText underline className="sm:underline-offset-[0.08em]">
           real jobs
         </AccentText>
-        . Brief Q&As that{" "}
-        <AccentText className="text-[116%] underline decoration-dotted decoration-[2.5px] underline-offset-4 sm:decoration-[5px] sm:underline-offset-[6px]">
+        . Simple Q&As that{" "}
+        <AccentText underline className="sm:underline-offset-[0.08em]">
           demystify titles
-        </AccentText>
-        , share routines, and explore what keeps them going.
-        <EmojiImage
-          name="red-cat-face"
-          classname="relative -top-px ml-1 mr-2 inline-block size-10 object-contain leading-none sm:ml-3 sm:mr-4 sm:size-14 lg:size-[68px]"
-        />
+        </AccentText>{" "}
+        and explore what professionals actually do.
+        <span className="relative ml-2 mr-3 inline-block size-5 shrink-0 sm:ml-4 sm:mr-5 sm:size-9 lg:size-[58px]">
+          <EmojiImage
+            name="red-cat-face"
+            classname="absolute size-full top-0.5 scale-[1.25]"
+          />
+        </span>
         <ButtonLink
           href="#subscribe-form"
           variant="link"
@@ -26,7 +28,7 @@ export function HeroSection() {
           className="md:decoration-4 md:underline-offset-[6px]"
           aria-label="Subscribe to newsletter"
         >
-          <AccentText className="text-[116%]">Subscribe</AccentText>
+          <AccentText>Subscribe</AccentText>
         </ButtonLink>
       </h1>
     </section>

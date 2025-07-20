@@ -24,10 +24,7 @@ export function SubscribePopup({ handleClose }: SubscribePopupProps) {
         <div className="flex flex-col items-center gap-1">
           <p className="text-center leading-[110%]">You're on the list! </p>
           <p className="text-center leading-[110%]">
-            <span>Lots of</span>{" "}
-            <AccentText className="text-[112%]">
-              good stuff is coming!
-            </AccentText>
+            <span>Lots of</span> <AccentText>good stuff is coming!</AccentText>
           </p>
         </div>
       </PortalPopup>

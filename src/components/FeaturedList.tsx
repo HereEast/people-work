@@ -20,9 +20,9 @@ export function FeaturedList({ people }: FeaturedCardListProps) {
   const columnTwo = people.slice(mid);
 
   return (
-    <div className="grid gap-4 md:grid-cols-2">
+    <div className="grid gap-2 md:grid-cols-2 md:gap-4">
       <ul
-        className="grid h-fit grid-cols-1 gap-4"
+        className="grid h-fit grid-cols-1 gap-2 md:gap-4"
         aria-label="Featured professionals and insights"
       >
         {columnOne.map((person) => (
@@ -32,7 +32,7 @@ export function FeaturedList({ people }: FeaturedCardListProps) {
         ))}
       </ul>
       <ul
-        className="grid h-fit grid-cols-1 gap-4"
+        className="grid h-fit grid-cols-1 gap-2 md:gap-4"
         aria-label="Featured professionals and insights"
       >
         {columnTwo.map((person) => (
@@ -76,7 +76,7 @@ export async function FeaturedCard({ person }: FeaturedCardProps) {
           <div className="mb-8 space-y-5 lg:mb-10">
             <QuoteIcon />
 
-            <h3 className="text-3xl font-semibold leading-[98%] sm:text-4xl">
+            <h3 className="text-3xl font-semibold leading-[102%] sm:text-4xl sm:tracking-[0.005ch]">
               {featuredAnswer}
             </h3>
           </div>

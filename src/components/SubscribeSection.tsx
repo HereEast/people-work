@@ -12,6 +12,7 @@ export function SubscribeSection() {
 
   return (
     <section
+      id="subscribe-form"
       className="flex flex-col gap-8"
       aria-labelledby="subscribe-heading"
     >
@@ -26,10 +27,7 @@ export function SubscribeSection() {
 
         {isSubscribed && (
           <p className="text-center leading-[110%]">
-            You're on the list!{" "}
-            <AccentText className="text-[112%]">
-              Good things are coming.
-            </AccentText>
+            You're on the list! <AccentText>Good stuff is coming!</AccentText>
           </p>
         )}
       </div>
@@ -46,7 +44,8 @@ export function SubscribeSectionTitle() {
       <div className="flex flex-col items-center text-xl font-medium leading-[120%] sm:text-3xl sm:font-normal">
         <p>There's more to come!</p>
         <p>
-          <AccentText>Subscribe</AccentText> <span>to stay tuned.</span>
+          <AccentText underline>Subscribe</AccentText>{" "}
+          <span>to stay tuned.</span>
         </p>
       </div>
     </div>

@@ -15,7 +15,7 @@ const config: Config = {
         "2xl": "1440px",
       },
       maxWidth: {
-        "8xl": "1720px",
+        hero: "1640px",
         "9xl": "1920px",
       },
       fontFamily: {
@@ -27,7 +27,7 @@ const config: Config = {
         sm: "16px",
         xl: "20px",
         "2xl": "24px",
-        "3xl": "30px",
+        "3xl": "28px",
         "4xl": "40px",
         "5xl": "50px",
         "7xl": "76px",
