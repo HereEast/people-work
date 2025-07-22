@@ -1,19 +1,19 @@
 export const FEATURED = [
   {
-    id: 9,
-    slug: "bartek-hlawka",
-  },
-  {
-    id: 5,
-    slug: "alla-aloe",
-  },
-  {
-    id: 8,
-    slug: "kate-rovba",
+    id: 10,
+    slug: "hugo-barbera",
   },
   {
     id: 7,
     slug: "gev-marotz",
+  },
+  {
+    id: 9,
+    slug: "bartek-hlawka",
+  },
+  {
+    id: 8,
+    slug: "kate-rovba",
   },
 ];
 
@@ -57,5 +57,9 @@ export const ALL_SLUGS = [
   {
     id: 9,
     slug: "bartek-hlawka",
+  },
+  {
+    id: 10,
+    slug: "hugo-barbera",
   },
 ];
