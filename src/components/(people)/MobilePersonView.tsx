@@ -17,7 +17,7 @@ export function MobilePersonView({ person }: PersonViewProps) {
 
   return (
     <StickyMobileWrapper>
-      <div className="flex items-end gap-2.5 py-3 sm:gap-4 sm:py-5">
+      <div className="flex items-end gap-3 py-3 sm:gap-4 sm:py-5">
         {/* Image */}
         <div className="relative size-[60px] shrink-0 overflow-hidden rounded-xs sm:size-[80px]">
           <ImagePlaceholder />

@@ -102,9 +102,9 @@ a:hover {
   margin-bottom: 6px;
 }
 
-.answer h5 + ul li:not(:last-child) {
+/* .answer h5 + ul li:not(:last-child) {
   margin-bottom: 8px;
-}
+} */
 
 /* Bullet Point */
 .answer ul li::before {
@@ -114,7 +114,7 @@ a:hover {
   height: 6px;
   background-color: black;
   border-radius: 100%;
-  top: 8px;
+  top: 8.5px;
   left: 1px;
   z-index: 2;
 }
