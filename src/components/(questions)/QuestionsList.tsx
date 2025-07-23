@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { QuestionTag } from "../QuestionTag";
 import { QuestionData } from "~/schemas";
-import { GoToPseudoButton } from "../ui";
+import { GoToButton } from "../ui";
 
 interface QuestionsListProps {
   questions: QuestionData[];
@@ -48,7 +48,7 @@ function QuestionItem({ question }: QuestionItemProps) {
           </div>
 
           <div className="">
-            <GoToPseudoButton className="group-hover:bg-stone-600/15" />
+            <GoToButton className="group-hover:bg-stone-600/15" />
           </div>
         </div>
       </Link>
