@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ImagePlaceholder } from "./ui/ImagePlaceholder";
-import { GoToPseudoButton } from "./ui";
+import { GoToButton } from "./ui";
 import { PersonData } from "~/schemas";
 import { getAttributeDescription } from "~/utils/handlers";
 
@@ -44,7 +44,7 @@ function PersonListItem({ person }: PersonListItemProps) {
         <CompanyDomain domain={person.metadata.domain} />
 
         <div className="hidden sm:block">
-          <GoToPseudoButton className="group-hover:bg-stone-600/25" />
+          <GoToButton className="group-hover:bg-stone-600/25" />
         </div>
       </Link>
     </li>

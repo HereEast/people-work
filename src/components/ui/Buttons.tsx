@@ -1,36 +1,32 @@
-import { ArrowUpRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { Button, ButtonLink, buttonVariants } from ".";
 import { cn } from "~/utils/handlers";
 
 // Go To
 interface ButtonProps {
-  href: string;
-}
-
-export function GoToButton({ href }: ButtonProps) {
-  return (
-    <ButtonLink href={href} size="icon" variant="secondary">
-      <ArrowUpRightIcon className="w-5 shrink-0 sm:w-6" />
-    </ButtonLink>
-  );
-}
-
-// Go To Pseudo
-interface GoToPseudoButtonProps {
+  href?: string;
   className?: string;
 }
 
-export function GoToPseudoButton({ className = "" }: GoToPseudoButtonProps) {
+export function GoToButton({ href, className = "" }: ButtonProps) {
+  if (!href) {
+    return (
+      <div
+        className={cn(
+          buttonVariants({ variant: "secondary", size: "icon" }),
+          className,
+        )}
+      >
+        <ArrowRightIcon className="w-5 shrink-0 sm:w-6" />
+      </div>
+    );
+  }
+
   return (
-    <div
-      className={cn(
-        buttonVariants({ variant: "secondary", size: "icon" }),
-        className,
-      )}
-    >
-      <ArrowUpRightIcon className="w-5 shrink-0 sm:w-6" />
-    </div>
+    <ButtonLink href={href} size="icon" variant="secondary">
+      <ArrowRightIcon className="w-5 shrink-0 sm:w-6" />
+    </ButtonLink>
   );
 }
 
