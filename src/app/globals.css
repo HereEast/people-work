@@ -5,7 +5,7 @@
 body {
   box-sizing: border-box;
   scroll-behavior: smooth;
-  letter-spacing: 0.03ch;
+  letter-spacing: 0.035ch;
   text-decoration-skip-ink: none;
 }
 
@@ -38,8 +38,9 @@ a:hover {
     --featured-8: #ffc2eb;
     --featured-9: #c9c4c0;
     --featured-10: #aab4a0;
-    --featured-11: #9c8580;
-    --featured-12: #b6b5eb;
+    --featured-11: #a3b6c2;
+    --featured-12: #9c8580;
+    --featured-13: #b6b5eb;
   }
 }
 
@@ -47,11 +48,11 @@ a:hover {
 
 .answer em {
   font-style: normal;
-  font-family: var(--font-accent);
+  /* font-family: var(--font-accent);
   font-size: 114.5%;
   line-height: 70%;
   font-weight: 400;
-  letter-spacing: -0.02ch;
+  letter-spacing: -0.02ch; */
 
   /* text-decoration: underline;
   text-decoration-style: dotted;

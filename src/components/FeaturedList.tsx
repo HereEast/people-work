@@ -20,28 +20,41 @@ export function FeaturedList({ people }: FeaturedCardListProps) {
   const columnTwo = people.slice(mid);
 
   return (
-    <div className="grid gap-2 md:grid-cols-2 md:gap-4">
-      <ul
-        className="grid h-fit grid-cols-1 gap-2 md:gap-4"
-        aria-label="Featured professionals and insights"
-      >
-        {columnOne.map((person) => (
-          <li key={person.id}>
-            <FeaturedCard person={person} />
-          </li>
-        ))}
-      </ul>
-      <ul
-        className="grid h-fit grid-cols-1 gap-2 md:gap-4"
-        aria-label="Featured professionals and insights"
-      >
-        {columnTwo.map((person) => (
-          <li key={person.id}>
-            <FeaturedCard person={person} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <div className="md:hidden">
+        <ul className="space-y-2">
+          {people.map((person) => (
+            <li key={person.id}>
+              <FeaturedCard person={person} />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="hidden grid-cols-2 gap-4 md:grid">
+        <ul
+          className="grid h-fit grid-cols-1 gap-4"
+          aria-label="Featured professionals and insights"
+        >
+          {columnOne.map((person) => (
+            <li key={person.id}>
+              <FeaturedCard person={person} />
+            </li>
+          ))}
+        </ul>
+
+        <ul
+          className="grid h-fit grid-cols-1 gap-4"
+          aria-label="Featured professionals and insights"
+        >
+          {columnTwo.map((person) => (
+            <li key={person.id}>
+              <FeaturedCard person={person} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
 

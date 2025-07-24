@@ -26,7 +26,7 @@ export async function Answer({ children, marked }: AnswersProps) {
 
   return (
     <div
-      className="answer text-lg leading-[130%] opacity-95 sm:text-3xl sm:leading-[120%] [&_a:hover]:no-underline [&_a:hover]:opacity-30 [&_a]:underline [&_a]:decoration-[1.2px] [&_a]:underline-offset-2 [&_a]:transition sm:[&_a]:decoration-2 sm:[&_a]:underline-offset-[3.5px]"
+      className="answer text-lg leading-[130%] opacity-95 sm:text-3xl sm:leading-[122%] [&_a:hover]:no-underline [&_a:hover]:opacity-30 [&_a]:underline [&_a]:decoration-[1.2px] [&_a]:underline-offset-2 [&_a]:transition sm:[&_a]:decoration-2 sm:[&_a]:underline-offset-[3.5px]"
       dangerouslySetInnerHTML={{
         __html: parsedHTML,
       }}
