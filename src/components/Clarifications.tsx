@@ -20,11 +20,11 @@ export async function Clarifications({ data, name }: ClarificationsProps) {
   );
 
   return (
-    <ul className="space-y-1.5">
+    <ul className="space-y-2">
       {parsedArray.map(({ question, answer }, index) => (
         <li
           key={index}
-          className="space-y-5 rounded-md bg-stone-600/[0.08] p-5 pb-6 leading-[115%] sm:rounded-lg sm:bg-stone-600/[0.03] sm:p-10"
+          className="space-y-5 rounded-md bg-stone-600/10 p-6 leading-[115%] sm:rounded-lg sm:bg-stone-600/5 sm:p-10"
         >
           {/* Question */}
           <div className="grid items-start gap-2 text-base sm:grid-cols-[50px_1fr] sm:text-xl">
