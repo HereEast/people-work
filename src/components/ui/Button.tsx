@@ -14,7 +14,7 @@ export const buttonVariants = cva(
         accent: "font-accent",
         outline:
           "border border-stone-900/15 bg-transparent hover:border-stone-900/25",
-        tag: "border border-stone-900/15 bg-transparent text-sm tracking-[0.02ch] hover:border-stone-900/25 sm:text-xl",
+        tag: "border border-stone-900/15 bg-transparent text-base tracking-[0.02ch] hover:border-stone-900/25 sm:text-xl",
         link: "inline-block h-fit bg-transparent px-0 hover:bg-transparent hover:opacity-30 sm:h-fit sm:px-0",
       },
       size: {

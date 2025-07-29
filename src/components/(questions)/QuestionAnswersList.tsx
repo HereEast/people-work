@@ -22,16 +22,15 @@ export async function QuestionAnswersList({ slug }: AnswersListProps) {
     <div className="sm:pt-4">
       <ul
         aria-label="Professional answers to this question"
-        className="sm:space-y-2"
+        className="space-y-2"
       >
         {publicAnswers?.map((data) => (
-          <li
-            key={data.person.id}
-            className="border-b border-stone-900/10 px-2 first:border-t sm:border-b-0 sm:px-0 sm:first:border-t-0"
-          >
+          <li key={data.person.id}>
             {/* Mobile */}
-            <div className="pb-8 pt-7 sm:hidden">
-              <AnswerItem answerData={data} />
+            <div className="sm:hidden">
+              <Card className="p-6" marked={data.marked}>
+                <AnswerItem answerData={data} />
+              </Card>
             </div>
 
             {/* Desktop */}

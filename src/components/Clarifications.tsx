@@ -24,12 +24,12 @@ export async function Clarifications({ data, name }: ClarificationsProps) {
       {parsedArray.map(({ question, answer }, index) => (
         <li
           key={index}
-          className="space-y-6 rounded-md bg-stone-50 p-6 pb-7 leading-[115%] sm:rounded-lg sm:bg-stone-600/5 sm:p-10 sm:pr-12"
+          className="space-y-6 rounded-md bg-stone-600/5 p-5 pb-6 leading-[115%] sm:rounded-lg sm:p-10 sm:pr-12"
         >
           {/* Question */}
           <div className="grid items-start gap-2 sm:grid-cols-[72px_1fr]">
             <Label>PW</Label>
-            <h4 className="text-lg font-semibold leading-[115%] tracking-[0.005ch] sm:text-xl sm:leading-[125%] sm:tracking-[0.03ch]">
+            <h4 className="text-base font-semibold leading-[120%] tracking-[0.02ch] sm:text-xl sm:leading-[125%] sm:tracking-[0.03ch]">
               {question}
             </h4>
           </div>

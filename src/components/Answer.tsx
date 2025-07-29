@@ -16,7 +16,7 @@ export async function Answer({ children, marked }: AnswersProps) {
   if (marked) {
     return (
       <div
-        className="text-2xl font-semibold leading-[110%] tracking-[-0.000ch] sm:text-4xl sm:font-semibold sm:leading-[102%] sm:tracking-[0.005ch] [&_a:hover]:no-underline [&_a:hover]:opacity-30 [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-[3.5px] [&_a]:transition sm:[&_a]:decoration-[2.5px] sm:[&_a]:underline-offset-[5px] [&_em]:not-italic"
+        className="text-2xl font-semibold leading-[102%] tracking-[-0.000ch] sm:text-4xl sm:font-semibold sm:leading-[102%] sm:tracking-[0.005ch] [&_a:hover]:no-underline [&_a:hover]:opacity-30 [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-[3.5px] [&_a]:transition sm:[&_a]:decoration-[2.5px] sm:[&_a]:underline-offset-[5px] [&_em]:not-italic"
         dangerouslySetInnerHTML={{
           __html: parsedHTML,
         }}
@@ -44,7 +44,7 @@ export function Question({ children }: QuestionProps) {
     <h3>
       <Link
         href={`/questions/${children.slug}`}
-        className="inline-block text-lg font-semibold leading-[120%] underline decoration-[1.4px] underline-offset-2 transition hover:opacity-30 sm:text-3xl sm:leading-[115%] sm:decoration-2 sm:underline-offset-[3.5px]"
+        className="inline-block text-lg font-semibold leading-[120%] tracking-[0.02ch] underline decoration-[1.4px] underline-offset-2 transition hover:opacity-30 sm:text-3xl sm:leading-[115%] sm:decoration-2 sm:underline-offset-[3.5px]"
         aria-label={`View all answers to: ${children.body}`}
       >
         {children.body}

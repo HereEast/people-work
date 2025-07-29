@@ -18,17 +18,15 @@ export function PersonAnswersList({ data }: QAListProps) {
   return (
     <div className="sm:pt-4">
       <ul
-        className="px-2 sm:space-y-2 sm:px-0"
+        className="space-y-2"
         aria-label={`${data[0]?.person.name}'s answers to career questions`}
       >
         {data.map((item, index) => (
-          <li
-            key={`${item.id}-${index}`}
-            className="border-b border-stone-900/10 first:border-t sm:border-b-0 sm:px-0 sm:first:border-t-0"
-          >
-            {/* Mobile */}
-            <div className="pb-8 pt-6 sm:hidden">
-              <QAItem answerData={item} />
+          <li key={`${item.id}-${index}`}>
+            <div className="sm:hidden">
+              <Card className="p-6" marked={item.marked}>
+                <QAItem answerData={item} />
+              </Card>
             </div>
 
             {/* Desktop */}
