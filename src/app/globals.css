@@ -46,7 +46,8 @@ a:hover {
 
 /* Answer */
 
-.answer em {
+.answer em,
+.subanswer em {
   font-style: normal;
   /* font-family: var(--font-accent);
   font-size: 114.5%;

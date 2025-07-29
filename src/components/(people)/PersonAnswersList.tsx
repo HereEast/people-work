@@ -57,7 +57,7 @@ function QAItem({ answerData }: QAItemProps) {
       <div className="space-y-6 sm:space-y-10">
         <Question>{question}</Question>
 
-        <div className="space-y-8 sm:space-y-10">
+        <div className="space-y-8 sm:space-y-12">
           <Answer marked={marked}>{answer}</Answer>
 
           {clarifications && clarifications.length > 0 && (
