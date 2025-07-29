@@ -41,10 +41,7 @@ function QuestionItem({ question }: QuestionItemProps) {
 
         <div className="grid w-full grid-cols-[1fr_auto] lg:ml-auto lg:min-w-[380px] lg:max-w-[480px] lg:gap-4">
           <div className="hidden lg:block">
-            <QuestionTag
-              slug={question.slug}
-              className="group-hover:opacity-45"
-            />
+            <QuestionTag slug={question.slug} />
           </div>
 
           <div className="">
