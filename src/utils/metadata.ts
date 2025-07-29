@@ -7,7 +7,7 @@ import { isFreelanceWork } from "./handlers";
 const SEO_DATA = {
   url: BASE_URL,
   imageUrl: "/og-image.jpg",
-  title: "Real people, real jobs. Career insights via simple Q&As",
+  title: "Job titles explained via simple Q&As. Real people, real jobs.",
   description:
     "Discover what professionals actually do in their jobs. Get real career insights from Creative Directors, Data Scientists, AI Engineers, CEOs, and more.",
 };

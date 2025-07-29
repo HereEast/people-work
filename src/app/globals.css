@@ -103,9 +103,9 @@ a:hover {
   margin-bottom: 6px;
 }
 
-/* .answer h5 + ul li:not(:last-child) {
-  margin-bottom: 8px;
-} */
+.answer h5 + ul li:not(:last-child) {
+  margin-bottom: 6px;
+}
 
 /* Bullet Point */
 .answer ul li::before {
@@ -115,7 +115,7 @@ a:hover {
   height: 6px;
   background-color: black;
   border-radius: 100%;
-  top: 8.5px;
+  top: 8px;
   left: 1px;
   z-index: 2;
 }
@@ -124,6 +124,10 @@ a:hover {
 @media (min-width: 640px) {
   .answer ul:not(:last-child) {
     margin-bottom: 32px;
+  }
+
+  .answer h5 + ul li:not(:last-child) {
+    margin-bottom: 8px;
   }
 
   .answer p:not(:last-child) {
