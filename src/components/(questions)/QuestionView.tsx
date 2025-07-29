@@ -53,9 +53,10 @@ export function DesktopQuestionView({ question }: QuestionViewProps) {
 function MobileQuestionView({ question }: QuestionViewProps) {
   return (
     <StickyMobileWrapper>
-      <div className="gap-2 pb-4 pt-3 text-stone-50 sm:py-5">
-        <h1 className="text-xl font-semibold leading-[110%] sm:text-3xl">
-          {question.body}
+      <div className="py-3.5 text-stone-50 sm:py-5">
+        <h1 className="text-lg font-semibold leading-[115%] sm:text-3xl">
+          <span className="mr-1 opacity-50">Q:</span>
+          <span>{question.body}</span>
         </h1>
       </div>
     </StickyMobileWrapper>

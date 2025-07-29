@@ -37,8 +37,8 @@ export function StickyMobileWrapper({ children }: StickyMobileWrapperProps) {
   return (
     <div
       className={cn(
-        "sticky top-12 z-40 -mx-2.5 transform bg-stone-800 px-4 duration-100 sm:top-16 md:-mx-6 md:px-6 lg:hidden",
-        showPanel ? "opacity-100" : "opacity-0",
+        "sticky top-12 z-40 -mx-2.5 mb-2 transform bg-stone-900 px-2.5 duration-100 sm:top-16 md:-mx-6 md:px-6 lg:hidden",
+        showPanel ? "opacity-100" : "hidden opacity-0",
       )}
     >
       {children}
