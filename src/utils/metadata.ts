@@ -7,9 +7,9 @@ import { isFreelanceWork } from "./handlers";
 const SEO_DATA = {
   url: BASE_URL,
   imageUrl: "/og-image.jpg",
-  title: "Job titles explained via simple Q&As. Real people, real jobs.",
+  title: "Job titles explained via simple Q&As",
   description:
-    "Discover what professionals actually do in their jobs. Get real career insights from Creative Directors, Data Scientists, AI Engineers, CEOs, and more.",
+    "Discover what AI Engineers, Data Scientists, CEOs, Creative Directors, and more actually do in their jobs. Real career insights and tangible advice.",
 };
 
 // Person metadata
@@ -26,8 +26,8 @@ export async function generatePersonMetadata(slug: string) {
       : `What does a ${work.title} actually do? Real experience from ${person.name} at ${work.company}.`;
 
     const description = isFreelance
-      ? `Get real insights into a ${work.title}'s daily routine, responsibilities, and challenges from ${person.name}. No fluff, just honest career advice in a simple Q&A format.`
-      : `Get real insights into a ${work.title}'s daily routine, responsibilities, and challenges from ${person.name} at ${work.company}. No fluff, just honest career advice in a simple Q&A format.`;
+      ? `Get real insights into a ${work.title}'s daily routine, responsibilities, and challenges from ${person.name}. Career advice in a simple Q&A format.`
+      : `Get real insights into a ${work.title}'s daily routine, responsibilities, and challenges from ${person.name} at ${work.company}. Career advice in a simple Q&A format.`;
 
     return getMetadata({ title, description });
   }
@@ -75,6 +75,12 @@ export function getMetadata(input: MetadataInput = {}): Metadata {
       ],
       locale: "en-EN",
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
     },
   };
 }
