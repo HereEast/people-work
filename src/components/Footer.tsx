@@ -15,7 +15,7 @@ const FOOTER_LINKS = [
 ];
 
 export function Footer() {
-  const [showSubscribe, setShowSubscribe] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
     <footer className="w-full px-2.5 py-4 md:px-6">
@@ -32,7 +32,7 @@ export function Footer() {
             <Button
               variant="link"
               className="flex items-center gap-1"
-              onClick={() => setShowSubscribe(true)}
+              onClick={() => setIsPopupOpen(true)}
               aria-label="Subscribe to newsletter"
             >
               <span>Subscribe</span>
@@ -63,8 +63,8 @@ export function Footer() {
         </ul>
       </nav>
 
-      {showSubscribe && (
-        <SubscribePopup handleClose={() => setShowSubscribe(false)} />
+      {isPopupOpen && (
+        <SubscribePopup handleClose={() => setIsPopupOpen(false)} />
       )}
     </footer>
   );

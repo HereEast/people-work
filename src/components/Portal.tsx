@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import { createPortal } from "react-dom";
 
 import { ClosePopupButton } from "./ui";
@@ -11,49 +11,35 @@ interface PortalProps {
 }
 
 export function Portal({ children }: PortalProps) {
-  if (typeof window === "undefined") {
-    return null;
-  }
-
   const portalRoot = document.getElementById("portal-root");
 
   return portalRoot ? createPortal(children, portalRoot) : null;
 }
 
 // Portal Popup
-interface PortalPopupProps extends PortalProps {
+interface PopupProps extends PortalProps {
   handleClose: () => void;
   className?: string;
 }
 
-export function PortalPopup({
-  children,
-  handleClose,
-  className = "",
-}: PortalPopupProps) {
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, []);
-
+export function Popup({ children, handleClose, className = "" }: PopupProps) {
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-stone-600/30 backdrop-blur-2xl"
-      onClick={handleClose ? () => handleClose() : undefined}
-    >
+    <Portal>
       <div
-        className={cn(
-          "relative flex w-full max-w-[95vw] flex-col gap-8 rounded-2xl bg-bg p-6 sm:w-[640px] sm:p-10",
-          className,
-        )}
-        onClick={(e) => e.stopPropagation()}
+        className="fixed inset-0 z-50 flex items-center justify-center bg-stone-600/30 backdrop-blur-2xl"
+        onClick={handleClose ? () => handleClose() : undefined}
       >
-        <ClosePopupButton handleClose={handleClose} />
-        {children}
+        <div
+          className={cn(
+            "relative flex w-full max-w-[95vw] flex-col gap-8 rounded-2xl bg-bg p-6 sm:w-[640px] sm:p-10",
+            className,
+          )}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <ClosePopupButton handleClose={handleClose} />
+          {children}
+        </div>
       </div>
-    </div>
+    </Portal>
   );
 }
