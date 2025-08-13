@@ -1,5 +1,4 @@
 import { ButtonLink } from "~/components/ui";
-import { EmojiImage } from "~/components/EmojiImage";
 import { AccentText } from "~/components/AccentText";
 
 export function HeroSection() {
@@ -14,19 +13,12 @@ export function HeroSection() {
         <AccentText underline className="sm:underline-offset-[0.08em]">
           demystify titles
         </AccentText>{" "}
-        and explore what professionals actually do.
-        <span className="relative ml-2 mr-3 inline-block size-5 shrink-0 sm:ml-4 sm:mr-5 sm:size-9 lg:size-[58px]">
-          <EmojiImage
-            name="red-cat-face"
-            classname="absolute size-full top-0.5 scale-[1.25]"
-          />
-        </span>
+        and explore what professionals actually do.{" "}
         <ButtonLink
           href="#subscribe-form"
           variant="link"
           underline
           className="md:decoration-4 md:underline-offset-[6px]"
-          aria-label="Subscribe to newsletter"
         >
           <AccentText>Subscribe</AccentText>
         </ButtonLink>
